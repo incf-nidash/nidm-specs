@@ -1,0 +1,55 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix prov: <http://www.w3.org/prov/#> .
+@prefix ofmri: <http://openfmri.org/terms#> .
+@prefix : <#> .
+
+## OpenfMRI Balloon Analog Risk-taking Task Dataset (ds001)
+:ds000001 a void:Dataset ;
+foaf:homepage <http://openfmri.org/dataset/ds000001> ;
+dcterms:title "Balloon Analog Risk-taking Task" ;
+dcterms:description "Subjects perform the Balloon Analog Risk-taking Task in an event-related design." ;
+dcterms:creator :R_Poldrack ;
+dcterms:publisher :R_Poldrack ;
+dcterms:contributor :T_Schonberg,
+                    :C_Trepel,
+                    :C_Fox,
+                    :R_Poldrack ;
+dcterms:source <http://openfmri.org/dataset/ds000001> ;
+dcterms:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+void:sparqlEndpoint <http://bips.incf.org:8890/sparql> ;
+void:uriLookupEndpoint <http://openfmri.aws.amazon.com.s3.amazonaws.com/void.ttl> ;
+void:dataDump <http://openfmri.aws.amazon.com.s3.amazonaws.com/ds001/nidm.ttl> ;
+prov:wasDerivedFrom <http://openfmri.org/dataset/ds000001> ;
+
+void:vocabulary <http://purl.org/dc/terms/> ;
+void:exampleResource <http://example.org/resource/ex> ;
+void:subset :aws-openfmri-ds001 .
+
+# authors (listed as contributers above)
+:R_Poldrack a foaf:Person;
+	rdfs:label “Russel A. Poldrack”;
+	foaf:homepage <http://www.russpoldrack.org/>;
+:C_Trepel a foaf:Person;
+	rdfs:label “Christopher Trepel”;
+:C_Fox a foaf:Person;
+	rdfs:label “Craig Fox”;
+:T_Schonberg a foaf:Person;
+	rdfs:label “Tom Schonberg”;
+
+## datasets linked to
+
+# example interlinking to :DS1
+#:DS1 rdf:type void:Dataset ;
+#foaf:homepage <http://dbpedia.org/> ;
+#dcterms:title "DBPedia" ;
+#dcterms:description "Linked Data version of Wikipedia." ; 
+#void:exampleResource <http://dbpedia.org/resource/Ludwig_van_Beethoven> .
+
+:aws-openfmri-ds001 rdf:type void:Linkset ;
+void:linkPredicate <http://www.w3.org/2002/07/owl#sameAs> ;
+void:target <http://openfmri.aws.amazon.com.s3.amazonaws.com/ds001/void.ttl> ;
+void:target :DS1 .
