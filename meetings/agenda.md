@@ -1,9 +1,9 @@
 # Agenda
 
-#. Neuroimaging Terms
+1. Neuroimaging Terms
 
-#. Data Modeling
+2. Data Modeling
 
-#. Minutes, wikis, blogs, google docs, google groups, etc.
+3. Minutes, wikis, blogs, google docs, google groups, etc.
 
-   #. ideas for simpler, integrated coordination of our work?
+   a. ideas for simpler, integrated coordination of our work?
