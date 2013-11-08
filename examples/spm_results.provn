@@ -3,21 +3,31 @@ document
     prefix spm <http://www.fil.ion.ucl.ac.uk/spm/>
     prefix nidm <http://nidm.nidash.org/>
     
-    entity(statistical_map,
-        [prov:type = "spm:spm",
-        spm:location = "spmT_0001.img" %% xsd:anyURI,
-        spm:statisticType = "T" %% xsd:string,
-        spm:degreesOfFreedom = "1.000000 73.000000",
-        spm:numberOfDimensions = "3" %% xsd:int,
-        spm:dimensions = "53 63 46",
-        spm:dimensionsUnits = "mm mm mm",
-        spm:coordinateSpace = "MNI" %% xsd:string,
-        ndim:voxelSize = "3.000000 3.000000 3.000000"])
+    entity(spm:statistical_map_id,
+        [prov:type = "spm:statistical_map",
+        prov:location = "file:///path/to/spmT_0001.img" %% xsd:anyURI,
+        nidm:fileName = "spmT_0001.img" %% xsd:string,
+        nidm:statisticType = nidm:t_statistic,
+        nidm:errorDegreesOfFreedom = "73.000000" %% xsd:float,
+        nidm:effectDegreesOfFreedom = "1.000000" %% xsd:float,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]",
+        nidm:coordinateSpace = "MNI" %% xsd:string,
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]",
+        nidm:voxelUnits = "["mm", "mm", "mm"]"])
+        
+    entity(spm:dimension_id,
+        [prov:type = "nidm:dimensions",
+        spm:dimensions = "[53, 63, 46]",
+        spm:dimensionsUnits = "["mm", "mm", "mm"]",
+        nidm:dim1 = "53" %% xsd:float,
+        nidm:dim2 = "63" %% xsd:float,
+        nidm:dim3 = "46" %% xsd:float,])
 
     entity(contrast_map,
         [prov:type = "spm:contrastMap",
         spm:location = "con_0001.img" %% xsd:anyURI,
-        spm:label = "listening &gt; rest" %% xsd:string,
+        prov:label = "listening &gt; rest" %% xsd:string,
         spm:numberOfDimensions = "3" %% xsd:int,
         spm:dimensions = "53 63 46",
         spm:dimensionsUnits = "mm mm mm",
