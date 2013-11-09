@@ -5,5 +5,5 @@ by the [INCF](http://www.incf.org) **N**euro **I**maging **DA**ta **SH**aring Ta
 describe an extension the the W3C PROV standard for the domain of human brain mapping.
 
 The goals of this repo are to foster collaboration among the standards developers working on 
-the NI-DM model, and to provide a common location where users of NI-DM can find rlated 
+the NI-DM model, and to provide a common location where users of NI-DM can find related 
 information and resources.
