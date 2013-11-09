@@ -2,217 +2,253 @@ document
     prefix neurolex <http://neurolex.org/wiki/Main_Page/>
     prefix spm <http://www.fil.ion.ucl.ac.uk/spm/>
     prefix nidm <http://nidm.nidash.org/>
+    prefix niiri <http://iri.nidash.org/>
     
-    entity(spm:statistical_map_id,
-        [prov:type = "spm:statistical_map",
+    entity('niiri:statistical_map_id',
+        [prov:type = 'nidm:statisticalMap',
         prov:location = "file:///path/to/spmT_0001.img" %% xsd:anyURI,
+        prov:label = "Statistical Map: listening &gt; rest",
+        nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:fileName = "spmT_0001.img" %% xsd:string,
-        nidm:statisticType = nidm:t_statistic,
+        nidm:statisticType = 'nidm:tStatistic',
         nidm:errorDegreesOfFreedom = "73.000000" %% xsd:float,
         nidm:effectDegreesOfFreedom = "1.000000" %% xsd:float,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]" %% xsd:string,
+        nidm:coordinateSpace = "MNI" %% xsd:string,
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string,
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:voxelToWorld = "[[1,2,3,4],
+                              [1,2,3,4],
+                              [1,2,3,4],
+                              [0,0,0,1]]" %% xsd:string])
+        
+    entity('niiri:contrast_map_id',
+        [prov:type = 'nidm:contrastMap',
+        prov:location = "file///path/to/con_0001.img" %% xsd:anyURI,
+        prov:label = "Contrast Map: listening &gt; rest" %% xsd:string,
+        nidm:contrastName = "listening &gt; rest" %% xsd:string,
+        nidm:fileName = "con_0001.img" %% xsd:string,
         nidm:numberOfDimensions = "3" %% xsd:int,
         nidm:dimensions = "[53, 63, 46]",
         nidm:coordinateSpace = "MNI" %% xsd:string,
         nidm:voxelSize = "[3.000000, 3.000000, 3.000000]",
-        nidm:voxelUnits = "["mm", "mm", "mm"]"])
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:voxelToWorld = "[[1,2,3,4],
+                              [1,2,3,4],
+                              [1,2,3,4],
+                              [0,0,0,1]]" %% xsd:string])
         
-    entity(spm:dimension_id,
-        [prov:type = "nidm:dimensions",
-        spm:dimensions = "[53, 63, 46]",
-        spm:dimensionsUnits = "["mm", "mm", "mm"]",
-        nidm:dim1 = "53" %% xsd:float,
-        nidm:dim2 = "63" %% xsd:float,
-        nidm:dim3 = "46" %% xsd:float,])
+    wasDerivedFrom('niiri:statistical_map_id','niiri:contrast_map_id', -)
 
-    entity(contrast_map,
-        [prov:type = "spm:contrastMap",
-        spm:location = "con_0001.img" %% xsd:anyURI,
-        prov:label = "listening &gt; rest" %% xsd:string,
-        spm:numberOfDimensions = "3" %% xsd:int,
-        spm:dimensions = "53 63 46",
-        spm:dimensionsUnits = "mm mm mm",
-        spm:coordinateSpace = "MNI" %% xsd:string,
-        spm:contrastVector = "1.000000 0.000000",
-        spm:designMatrix = "designMatrix.png",
-        ndim:voxelSize = "3.000000 3.000000 3.000000"])
-    used(statistical_map,contrast_map, -)
-
-    entity(search_space,
-        [prov:type = "spm:mask",
-        spm:location = "mask.img" %% xsd:anyURI,
-        spm:numberOfDimensions = "3" %% xsd:int,
-        spm:dimensions = "53 63 46",
-        spm:dimensionsUnits = "mm mm mm",
-        spm:coordinateSpace = "MNI" %% xsd:string,
+    entity('niiri:search_space_id',
+        [prov:type = 'nidm:mask',
+        prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+        prov:label = "Search Space" %% xsd:string,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]",
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
         ndim:voxelSize = "3.000000 3.000000 3.000000",
         spm:searchVolumeInVoxels = "65593" %% xsd:int,
         spm:searchVolumeInProductOfUnits = "1771011.000000" %% xsd:float,
+        spm:reselSize = "1" %% xsd:float, 
         spm:searchVolumeInResels = "2552.680325" %% xsd:float,        
-        spm:searchVolumeReselsGeometry = "3.000000 72.321613 850.716735 2552.680325",
-        spm:noiseFWHMInVoxels = "2.958812 2.966284 2.611804",
-        spm:noiseFWHMInUnits = "8.876436 8.898853 7.835413"])
+        spm:searchVolumeReselsGeometry = "[3.000000, 72.321613, 850.716735, 2552.680325]",
+        spm:noiseFWHMInVoxels = "[2.958812, 2.966284, 2.611804]",
+        spm:noiseFWHMInUnits = "[8.876436, 8.898853, 7.835413]"])
 
-    entity(height_threshold,
-        [prov:type = "spm:heightThreshold",
-        spm:label = "p&lt;0.05 (FWE)" %%xsd:string,
+    entity('niiri:height_threshold_id',
+        [prov:type = 'nidm:heightThreshold',
+        prov:label = "Height Threshold: p&lt;0.05 (FWE)" %% xsd:string,
         spm:userSpecifiedThresholdType = "p-value FWE",
-        spm:value = "5.235300" %% xsd:float,
-        spm:p = "0.000001" %% xsd:float,
-        spm:pFWER = "0.050000" %% xsd:float])
+        prov:value = "5.235300" %% xsd:float,
+        spm:pValue = "0.000001" %% xsd:float,
+        spm:pValueFWER = "0.050000" %% xsd:float])
 
-    entity(extent_threshold,
-        [prov:type = "spm:extentThreshold",
+    entity('niiri:extent_threshold_id',
+        [prov:type = 'nidm:extentThreshold',
+        prov:label = "Extent Threshold",
         spm:clusterSizeInVoxels = "0.000000" %% xsd:float,
         spm:clusterSizeInResels = "0.000000" %% xsd:float,
-        spm:p = "1.000000" %% xsd:float,
-        spm:pFWER = "1.000000" %% xsd:float])
+        spm:pValue = "1.000000" %% xsd:float,
+        spm:pValueFWER = "1.000000" %% xsd:float])
 
-    activity(inference,
-        [prov:type = "spm:inference"])
-    used(inference, statistical_map, -)
-    used(inference, search_space, -)
-    used(inference, height_threshold, -)
-    used(inference, extent_threshold, -)
+    activity('niiri:inference_id',
+        [prov:type = "spm:inference",
+        prov:label = "Inference"])
+    
+    used('niiri:inference_id', 'niiri:statistical_map_id', -)
+    used('niiri:inference_id', 'niiri:search_space_id', -)
+    used('niiri:inference_id', 'niiri:height_threshold_id', -)
+    used('niiri:inference_id', 'niiri:extent_threshold_id', -)
 
-    agent(software,
-        [prov:type = "spm:software",
-        spm:value = "SPM" %% xsd:string,
-        spm:version = "SPM12b" %% xsd:string,
-        spm:revision = "5707" %% xsd:string])
-    wasAttributedTo(software, inference)
+    agent('niiri:software_id',
+        [prov:type = 'nidm:spm',
+        prov:type = 'prov:SoftwareAgent',
+        prov:label = "SPM12b" %% xsd:string,
+        nidm:softwareVersion = "SPM12b" %% xsd:string,
+        nidm:softwareRevision = "5707" %% xsd:string])
 
-    entity(stat_image_properties,
-        [prov:type = "spm:statisticImageProperties",
-        spm:expectedNumberOfVoxelsPerCluster = "0.553331" %% xsd:float,
-        spm:expectedNumberOfClusters = "0.088917" %% xsd:float,
-        spm:heightCriticalThresholdFWE05 = "5.235300" %% xsd:float,
-        spm:heightCriticalThresholdFDR05 = "6.225379" %% xsd:float,
-        spm:smallestSignifClusterSizeInVoxelsFWE05 = "1.000000" %% xsd:float,
-        spm:smallestSignifClusterSizeInVoxelsFDR05 = "3.000000" %% xsd:float])
-    wasGeneratedBy(stat_image_properties, inference, -)
+    wasAssociatedWith('niiri:software_id', 'niiri:inference_id')
 
-    entity(excursion_set,
-        [prov:type = "spm:excursionSet",
-        spm:value = "thresh_spmT_0001.img" %% xsd:anyURI,
-        spm:mip = "MIP.png" %% xsd:anyURI,
-        spm:underlayFile = "mwStructural.nii" %% xsd:anyURI,
-        spm:numberOfDimensions = "3" %% xsd:int,
-        spm:dimensions = "53 63 46",
-        spm:dimensionsUnits = "mm mm mm",
-        spm:coordinateSpace = "MNI" %% xsd:string,
-        ndim:voxelSize = "3.000000 3.000000 3.000000"])
-    wasGeneratedBy(excursion_set, inference, -)
+    entity('niiri:excursion_set_id',
+        [prov:type = 'spm:excursionSet',
+        prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
+        prov:label = "Excursion Set" %% xsd:string,
+        spm:maximumIntensityProjection = "file:///path/to/MIP.png" %% xsd:anyURI,
+        nidm:underlayFile = "file://path/to/mwStructural.nii" %% xsd:anyURI,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]",
+        nidm:dimensionsUnits = "['mm', 'mm', 'mm']",
+        nidm:coordinateSpace = "MNI" %% xsd:string,
+        ndim:voxelSize = "[3.000000, 3.000000, 3.000000]"])
+    
+    wasGeneratedBy('niiri:excursion_set_id', 'niiri:inference_id', -)  
 
-    entity(set_level,
-        [prov:type = "prov:Collection"])
-    hadMember(set_level, excursion_set)
-
-    entity(cluster_level,
-        [prov:type = "prov:Collection"])
-    hadMember(cluster_level, excursion_set)
-
-    entity(peak_level,
-        [prov:type = "prov:Collection"])
-    hadMember(peak_level, excursion_set)
-
-    entity(set,
-        [prov:type = "spm:setLevelStatistic",
-        spm:value = "8.000000" %% xsd:float,
-        spm:p = "0.000000" %% xsd:float])
-    hadMember(set, set_level)
-
+    entity('niiri:set_level_statistic_id',
+        [prov:type = 'spm:setLevelStatistic',
+        prov:label = "Set Level Statistic" %% xsd:string,
+        prov:value = "8" %% xsd:int,
+        nidm:pValue = "0.000000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:set_level_statistic_id', 'niiri:excursion_set_id')
         
-    entity(cluster_0001,
-        [prov:type = "spm:clusterLevelStatistic",
+    entity('niiri:cluster_0001',
+        [prov:type = 'spm:clusterLevelStatistic',
+        prov:label = "Cluster Level Statistic: 0001" %% xsd:string,
         spm:clusterSizeInVoxels = "530" %% xsd:int,
         spm:clusterSizeInResels = "23.120919" %% xsd:float,
-        spm:unit = "voxels" %% xsd:string,
-        spm:p = "0.000000" %% xsd:float,
-        spm:pFWER = "0.000000" %% xsd:float,
+        nidm:pValue = "0.000000" %% xsd:float,
+        spm:pValueFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(cluster_0001, cluster_level)
-    hadMember(cluster_0001, set)    
-    entity(cluster_0002,
-        [prov:type = "spm:clusterLevelStatistic",
+    
+    wasDerivedFrom('niiri:cluster_0001', 'niiri:set_level_statistic_id')   
+    
+    entity('niiri:cluster_0002',
+        [prov:type = 'spm:clusterLevelStatistic',
+        prov:label = "Cluster Level Statistic: 0002" %% xsd:string,
         spm:clusterSizeInVoxels = "445" %% xsd:int,
         spm:clusterSizeInResels = "19.412847" %% xsd:float,
         spm:unit = "voxels" %% xsd:string,
-        spm:p = "0.000000" %% xsd:float,
-        spm:pFWER = "0.000000" %% xsd:float,
+        nidm:pValue = "0.000000" %% xsd:float,
+        spm:pValueFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(cluster_0002, cluster_level)
-    hadMember(cluster_0002, set)
     
-    entity(peak_0001,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "-60.000000" %% xsd:float,
-        neurolex:y_coord = "-28.000000" %% xsd:float,
-        neurolex:z_coord = "13.000000" %% xsd:float,
-        spm:T-statistic = "13.934620" %% xsd:float,
+    wasDerivedFrom('niiri:cluster_0002', 'niiri:set_level_statistic_id')
+    
+    entity('niiri:peak_0001',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0001',
+        prov:value = "13.934620" %% xsd:float,
+        spm:equiv_Z-statistic = "9999999.000000" %% xsd:float,
+        spm:pValue = "0.000000" %% xsd:float,
+        spm:pValueFWER = "0.000000" %% xsd:float,
+        spm:qFDR = "0.000000" %% xsd:float])
+
+    entity('niiri:coordinate_0001',
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "-60.00000" %% xsd:float,
+        nidm:coordinate2 = "-28.00000" %% xsd:float,
+        nidm:coordinate3 = "13.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0001', 'niiri:cluster_0001')
+    
+    entity('niiri:peak_0002',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0002',
+        prov:value = "11.345750" %% xsd:float,
         spm:equiv_Z-statistic = "9999999.000000" %% xsd:float,
         spm:p = "0.000000" %% xsd:float,
         spm:pFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0001, peak_level)
-    hadMember(peak_0001, cluster_0001)
-    entity(peak_0002,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "-66.000000" %% xsd:float,
-        neurolex:y_coord = "-13.000000" %% xsd:float,
-        neurolex:z_coord = "4.000000" %% xsd:float,
-        spm:T-statistic = "11.345750" %% xsd:float,
-        spm:equiv_Z-statistic = "9999999.000000" %% xsd:float,
-        spm:p = "0.000000" %% xsd:float,
-        spm:pFWER = "0.000000" %% xsd:float,
-        spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0002, peak_level)
-    hadMember(peak_0002, cluster_0001)
-    entity(peak_0003,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "-63.000000" %% xsd:float,
-        neurolex:y_coord = "-7.000000" %% xsd:float,
-        neurolex:z_coord = "-2.000000" %% xsd:float,
-        spm:T-statistic = "9.821856" %% xsd:float,
+
+    entity('niiri:coordinate_0002',
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "-66.00000" %% xsd:float,
+        nidm:coordinate2 = "-13.00000" %% xsd:float,
+        nidm:coordinate3 = "4.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0002', 'niiri:cluster_0001')
+    
+    entity('niiri:peak_0003',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0003',
+        prov:value = "9.821856" %% xsd:float,
         spm:equiv_Z-statistic = "7.804049" %% xsd:float,
         spm:p = "0.000000" %% xsd:float,
         spm:pFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0003, peak_level)
-    hadMember(peak_0003, cluster_0001)
-    entity(peak_0004,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "57.000000" %% xsd:float,
-        neurolex:y_coord = "-22.000000" %% xsd:float,
-        neurolex:z_coord = "13.000000" %% xsd:float,
-        spm:T-statistic = "13.720881" %% xsd:float,
+
+    entity('niiri:coordinate_0003',
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "-63.00000" %% xsd:float,
+        nidm:coordinate2 = "-7.00000" %% xsd:float,
+        nidm:coordinate3 = "-2.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0003', 'niiri:cluster_0001')
+    
+    entity('niiri:peak_0004',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0004',
+        prov:value = "13.720881" %% xsd:float,
         spm:equiv_Z-statistic = "9999999.000000" %% xsd:float,
         spm:p = "0.000000" %% xsd:float,
         spm:pFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0004, peak_level)
-    hadMember(peak_0004, cluster_0002)
-    entity(peak_0005,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "66.000000" %% xsd:float,
-        neurolex:y_coord = "-13.000000" %% xsd:float,
-        neurolex:z_coord = "-2.000000" %% xsd:float,
-        spm:T-statistic = "12.322902" %% xsd:float,
+    
+    entity('niiri:coordinate_0004,
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "57.00000" %% xsd:float,
+        nidm:coordinate2 = "-22.00000" %% xsd:float,
+        nidm:coordinate3 = "13.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0004', 'niiri:cluster_0002')
+    
+    entity('niiri:peak_0005',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0005',
+        prov:value = "12.322902" %% xsd:float,
         spm:equiv_Z-statistic = "9999999.000000" %% xsd:float,
         spm:p = "0.000000" %% xsd:float,
         spm:pFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0005, peak_level)
-    hadMember(peak_0005, cluster_0002)
-    entity(peak_0006,
-        [prov:type = "spm:peakLevelStatistic",
-        neurolex:x_coord = "57.000000" %% xsd:float,
-        neurolex:y_coord = "-40.000000" %% xsd:float,
-        neurolex:z_coord = "7.000000" %% xsd:float,
-        spm:T-statistic = "9.620708" %% xsd:float,
+    
+    entity('niiri:coordinate_0005',
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "-66.00000" %% xsd:float,
+        nidm:coordinate2 = "-13.00000" %% xsd:float,
+        nidm:coordinate3 = "-2.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0005', 'niiri:cluster_0002')
+    
+    entity('niiri:peak_0006',
+        [prov:type = 'spm:peakLevelStatistic',
+        prov:atLocation = 'niiri:coordinate_0
+        prov:value = "9.620708" %% xsd:float,
         spm:equiv_Z-statistic = "7.702694" %% xsd:float,
         spm:p = "0.000000" %% xsd:float,
         spm:pFWER = "0.000000" %% xsd:float,
         spm:qFDR = "0.000000" %% xsd:float])
-    hadMember(peak_0006, peak_level)
-    hadMember(peak_0006, cluster_0002)
+
+    entity('niiri:coordinate_0006',
+        [prov:type = 'prov:location',
+        prov:type = 'nidm:Coordinate',
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:coordinate1 = "-57.00000" %% xsd:float,
+        nidm:coordinate2 = "-40.00000" %% xsd:float,
+        nidm:coordinate3 = "7.00000" %% xsd:float])
+    
+    wasDerivedFrom('niiri:peak_0006', 'niiri:cluster_0002')
+
 endDocument
