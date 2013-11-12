@@ -4,7 +4,7 @@ document
     prefix nidm <http://nidm.nidash.org/>
     
     entity(statistical_map,
-        [prov:type = "fsl:statisticalMap",
+        [prov:type = 'fsl:statisticalMap',
         fsl:label = "tstat1",
         fsl:value = "tstat1.nii.gz" %% xsd:string,
         fsl:statisticType = "T" %% xsd:string,
@@ -16,7 +16,7 @@ document
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
 
     entity(contrast_map,
-        [prov:type = "spm:contrastMap",
+        [prov:type = 'spm:contrastMap',
         fsl:value = "cope1.nii.gz" %% xsd:anyURI,
         fsl:label = "listening &gt; rest" %% xsd:string,
         fsl:numberOfDimensions = "3" %% xsd:int,
@@ -29,7 +29,7 @@ document
     used(statistical_map,contrast_map, -)
 
     entity(search_space,
-        [prov:type = "fsl:mask",
+        [prov:type = 'fsl:mask',
         fsl:value = "mask.nii.gz" %% xsd:anyURI,
         fsl:numberOfDimensions = "3" %% xsd:int,
         fsl:dimensions = "53 63 46",
@@ -39,36 +39,36 @@ document
         fsl:searchVolumeInVoxels = "45359"])
 
     entity(height_threshold,
-        [prov:type = "fsl:heightThreshold",
+        [prov:type = 'fsl:heightThreshold',
         fsl:value = "5.235300" %% xsd:float,
         fsl:p = "0.000001" %% xsd:float,
         fsl:pGRF = "0.050000" %% xsd:float])
 
     entity(extent_threshold,
-        [prov:type = "fsl:clusterThreshold",
+        [prov:type = 'fsl:clusterThreshold',
         fsl:pGRF = "1.000000" %% xsd:float])
 
     activity(inference,
-        [prov:type = "fsl:inference"])
+        [prov:type = 'fsl:inference'])
     used(inference, statistical_map, -)
     used(inference, search_space, -)
     used(inference, height_threshold, -)
     used(inference, extent_threshold, -)
 
     agent(software,
-        [prov:type = "fsl:software",
+        [prov:type = 'fsl:software',
         fsl:value = "FSL" %% xsd:string,
         fsl:version = "5.0.1" %% xsd:string,
         fsl:featVersion = "6.00" %% xsd:string])
     wasAttributedTo(software, inference)
 
     entity(stat_image_properties,
-        [prov:type = "fsl:statisticImageProperties",
+        [prov:type = 'fsl:statisticImageProperties',
          fsl:reselSizeInVoxels = "12.2251" %%xsd:float])
     wasGeneratedBy(stat_image_properties, inference, -)
 
     entity(excursion_set,
-        [prov:type = "spm:excursionSet",
+        [prov:type = 'spm:excursionSet',
         fsl:value = "thresh_spmT_0001.img" %% xsd:anyURI,
         fsl:slicesPlot = "rendered_thresh_zstat1.png",
         fsl:underlayFile = "todo.nii" %% xsd:anyURI,
@@ -80,23 +80,23 @@ document
     wasGeneratedBy(excursion_set, inference, -)
 
     entity(cluster_level,
-        [prov:type = "prov:Collection"])
+        [prov:type = 'prov:Collection'])
     hadMember(cluster_level, excursion_set)
 
     entity(peak_level,
-        [prov:type = "prov:Collection"])
+        [prov:type = 'prov:Collection'])
     hadMember(peak_level, excursion_set)
 
         
     entity(cluster_0001,
-        [prov:type = "spm:clusterLevelStatistic",
+        [prov:type = 'spm:clusterLevelStatistic',
         fsl:clusterSizeInVoxels = "530" %% xsd:int,
         fsl:centerOfGravityInVoxels = "-30.8    -68.5   -13.4",        
         fsl:centerOfGravityInUnits = "40.2  16.4    13.2",
         fsl:pGRF = "0.000000" %% xsd:float])
     hadMember(cluster_0001, cluster_level)  
     entity(cluster_0002,
-        [prov:type = "spm:clusterLevelStatistic",
+        [prov:type = 'fsl:clusterLevelStatistic',
         fsl:clusterSizeInVoxels = "445" %% xsd:int,
         fsl:centerOfGravityInVoxels = "24.1 -77.1   -4.27",        
         fsl:centerOfGravityInUnits = "25.6  12.8    14.6",        
@@ -104,28 +104,28 @@ document
     hadMember(cluster_0002, cluster_level)
     
     entity(peak_0001,
-        [prov:type = "fsl:clusterMaximumStatistic",
+        [prov:type = 'fsl:clusterMaximumStatistic',
         fsl:coordinateInVoxels = "45 15 14",
         fsl:coordinateInUnits = "-48.1  -73.7  -9.24",
         fsl:equiv_Z-statistic = "6.14" %% xsd:float])
     hadMember(peak_0001, peak_level)
     hadMember(peak_0001, cluster_0001)
     entity(peak_0002,
-        [prov:type = "fsl:localMaximumStatistic",
+        [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "42 21 13",
         fsl:coordinateInUnits = "-38.1  -53.4  -18",
         fsl:equiv_Z-statistic = "6.04" %% xsd:float])
     hadMember(peak_0002, peak_level)
     hadMember(peak_0002, cluster_0001)
     entity(peak_0003,
-        [prov:type = "fsl:localMaximumStatistic",
+        [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "40 15 12",
         fsl:coordinateInUnits = "-29.6  -73.8  -16.9",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
     hadMember(peak_0003, peak_level)
     hadMember(peak_0003, cluster_0001)
     entity(peak_0004,
-        [prov:type = "fsl:localMaximumStatistic",
+        [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "39 13 12",
         fsl:coordinateInUnits = "0.791 -87.2 3.23",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
@@ -133,14 +133,14 @@ document
     hadMember(peak_0004, cluster_0001)
 
     entity(peak_0005,
-        [prov:type = "fsl:clusterMaximumStatistic",
+        [prov:type = 'fsl:clusterMaximumStatistic',
         fsl:coordinateInVoxels = "32 10 16",
         fsl:coordinateInUnits = "16.1 -96.6 5.82",
         fsl:equiv_Z-statistic = "5.87" %% xsd:float])
     hadMember(peak_0005, peak_level)
     hadMember(peak_0005, cluster_0002)
     entity(peak_0006,
-        [prov:type = "fsl:localMaximumStatistic",
+        [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "28 7 16",
         fsl:coordinateInUnits = "-25.5 -80.4 -15.3",
         fsl:equiv_Z-statistic = "5.65" %% xsd:float])
