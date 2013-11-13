@@ -2,8 +2,9 @@ document
     prefix neurolex <http://neurolex.org/wiki/Main_Page/>
     prefix fsl <http://http://fsl.fmrib.ox.ac.uk/>
     prefix nidm <http://nidm.nidash.org/>
+    prefix niiri <http://iri.nidash.org/>
     
-    entity(statistical_map,
+    entity(niiri:statistical_map_id,
         [prov:type = 'fsl:statisticalMap',
         fsl:label = "tstat1",
         fsl:value = "tstat1.nii.gz" %% xsd:string,
@@ -15,8 +16,8 @@ document
         fsl:coordinateSpace = "MNI" %% xsd:string,
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
 
-    entity(contrast_map,
-        [prov:type = 'spm:contrastMap',
+    entity(niiri:contrast_map_id,
+        [prov:type = 'fsl:contrastMap',
         fsl:value = "cope1.nii.gz" %% xsd:anyURI,
         fsl:label = "listening &gt; rest" %% xsd:string,
         fsl:numberOfDimensions = "3" %% xsd:int,
@@ -26,9 +27,9 @@ document
         fsl:contrastVector = "1.000000 0.000000",
         fsl:designMatrix = "designMatrix.png",
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
-    used(statistical_map,contrast_map, -)
+    wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id, -)
 
-    entity(search_space,
+    entity(niiri:search_space_id,
         [prov:type = 'fsl:mask',
         fsl:value = "mask.nii.gz" %% xsd:anyURI,
         fsl:numberOfDimensions = "3" %% xsd:int,
@@ -38,37 +39,37 @@ document
         fsl:voxelSize = "3.000000 3.000000 3.000000",
         fsl:searchVolumeInVoxels = "45359"])
 
-    entity(height_threshold,
+    entity(niiri:height_threshold_id,
         [prov:type = 'fsl:heightThreshold',
         fsl:value = "5.235300" %% xsd:float,
         fsl:p = "0.000001" %% xsd:float,
         fsl:pGRF = "0.050000" %% xsd:float])
 
-    entity(extent_threshold,
+    entity(niiri:extent_threshold_id,
         [prov:type = 'fsl:clusterThreshold',
         fsl:pGRF = "1.000000" %% xsd:float])
 
-    activity(inference,
+    activity(niiri:inference_id,
         [prov:type = 'fsl:inference'])
-    used(inference, statistical_map, -)
-    used(inference, search_space, -)
-    used(inference, height_threshold, -)
-    used(inference, extent_threshold, -)
+    used(niiri:inference_id, niiri:statistical_map_id, -)
+    used(niiri:inference_id, niiri:search_space_id, -)
+    used(niiri:inference_id, niiri:height_threshold_id, -)
+    used(niiri:inference_id, niiri:extent_threshold_id, -)
 
-    agent(software,
+    agent(niiri:software_id,
         [prov:type = 'fsl:software',
         fsl:value = "FSL" %% xsd:string,
         fsl:version = "5.0.1" %% xsd:string,
         fsl:featVersion = "6.00" %% xsd:string])
-    wasAttributedTo(software, inference)
+    wasAssociatedWith(niiri:inference_id, niiri:software_id)
 
-    entity(stat_image_properties,
+    entity(niiri:stat_image_properties_id,
         [prov:type = 'fsl:statisticImageProperties',
          fsl:reselSizeInVoxels = "12.2251" %%xsd:float])
-    wasGeneratedBy(stat_image_properties, inference, -)
+    wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id, -)
 
-    entity(excursion_set,
-        [prov:type = 'spm:excursionSet',
+    entity(niiri:excursion_set_id,
+        [prov:type = 'fsl:excursionSet',
         fsl:value = "thresh_spmT_0001.img" %% xsd:anyURI,
         fsl:slicesPlot = "rendered_thresh_zstat1.png",
         fsl:underlayFile = "todo.nii" %% xsd:anyURI,
@@ -77,73 +78,73 @@ document
         fsl:dimensionsUnits = "mm mm mm",
         fsl:coordinateSpace = "MNI" %% xsd:string,
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
-    wasGeneratedBy(excursion_set, inference, -)
+    wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
 
-    entity(cluster_level,
+    entity(niiri:cluster_level_id,
         [prov:type = 'prov:Collection'])
-    hadMember(cluster_level, excursion_set)
+    hadMember(niiri:cluster_level_id, niiri:excursion_set_id)
 
-    entity(peak_level,
+    entity(niiri:peak_level_id,
         [prov:type = 'prov:Collection'])
-    hadMember(peak_level, excursion_set)
+    hadMember(niiri:peak_level_id, niiri:excursion_set_id)
 
         
-    entity(cluster_0001,
-        [prov:type = 'spm:clusterLevelStatistic',
+    entity(niiri:cluster_0001,
+        [prov:type = 'fsl:clusterLevelStatistic',
         fsl:clusterSizeInVoxels = "530" %% xsd:int,
         fsl:centerOfGravityInVoxels = "-30.8    -68.5   -13.4",        
         fsl:centerOfGravityInUnits = "40.2  16.4    13.2",
         fsl:pGRF = "0.000000" %% xsd:float])
-    hadMember(cluster_0001, cluster_level)  
-    entity(cluster_0002,
+    hadMember(niiri:cluster_0001, niiri:cluster_level_id)  
+    entity(niiri:cluster_0002,
         [prov:type = 'fsl:clusterLevelStatistic',
         fsl:clusterSizeInVoxels = "445" %% xsd:int,
         fsl:centerOfGravityInVoxels = "24.1 -77.1   -4.27",        
         fsl:centerOfGravityInUnits = "25.6  12.8    14.6",        
         fsl:pGRF = "0.000000" %% xsd:float])
-    hadMember(cluster_0002, cluster_level)
+    hadMember(niiri:cluster_0002, niiri:cluster_level_id)
     
-    entity(peak_0001,
+    entity(niiri:peak_0001,
         [prov:type = 'fsl:clusterMaximumStatistic',
         fsl:coordinateInVoxels = "45 15 14",
         fsl:coordinateInUnits = "-48.1  -73.7  -9.24",
         fsl:equiv_Z-statistic = "6.14" %% xsd:float])
-    hadMember(peak_0001, peak_level)
-    hadMember(peak_0001, cluster_0001)
-    entity(peak_0002,
+    hadMember(niiri:peak_0001, niiri:peak_level_id)
+    hadMember(niiri:peak_0001, niiri:cluster_0001)
+    entity(niiri:peak_0002,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "42 21 13",
         fsl:coordinateInUnits = "-38.1  -53.4  -18",
         fsl:equiv_Z-statistic = "6.04" %% xsd:float])
-    hadMember(peak_0002, peak_level)
-    hadMember(peak_0002, cluster_0001)
-    entity(peak_0003,
+    hadMember(niiri:peak_0002, niiri:peak_level_id)
+    hadMember(niiri:peak_0002, niiri:cluster_0001)
+    entity(niiri:peak_0003,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "40 15 12",
         fsl:coordinateInUnits = "-29.6  -73.8  -16.9",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
-    hadMember(peak_0003, peak_level)
-    hadMember(peak_0003, cluster_0001)
-    entity(peak_0004,
+    hadMember(niiri:peak_0003, niiri:peak_level_id)
+    hadMember(niiri:peak_0003, niiri:cluster_0001)
+    entity(niiri:peak_0004,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "39 13 12",
         fsl:coordinateInUnits = "0.791 -87.2 3.23",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
-    hadMember(peak_0004, peak_level)
-    hadMember(peak_0004, cluster_0001)
+    hadMember(niiri:peak_0004, niiri:peak_level_id)
+    hadMember(niiri:peak_0004, niiri:cluster_0001)
 
-    entity(peak_0005,
+    entity(niiri:peak_0005,
         [prov:type = 'fsl:clusterMaximumStatistic',
         fsl:coordinateInVoxels = "32 10 16",
         fsl:coordinateInUnits = "16.1 -96.6 5.82",
         fsl:equiv_Z-statistic = "5.87" %% xsd:float])
-    hadMember(peak_0005, peak_level)
-    hadMember(peak_0005, cluster_0002)
-    entity(peak_0006,
+    hadMember(niiri:peak_0005, niiri:peak_level_id)
+    hadMember(niiri:peak_0005, niiri:cluster_0002)
+    entity(niiri:peak_0006,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "28 7 16",
         fsl:coordinateInUnits = "-25.5 -80.4 -15.3",
         fsl:equiv_Z-statistic = "5.65" %% xsd:float])
-    hadMember(peak_0006, peak_level)
-    hadMember(peak_0006, cluster_0002)
+    hadMember(niiri:peak_0006, niiri:peak_level_id)
+    hadMember(niiri:peak_0006, niiri:cluster_0002)
 endDocument
