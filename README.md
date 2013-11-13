@@ -1,7 +1,9 @@
 ## NIDASH Data Model
 
+#### A Product of the [INCF Neuroimaging Data Sharing Task Force](http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force)
+
 The NIDASH Data Model (NI-DM) is a collection of specification documents and examples developed
-by the [INCF](http://www.incf.org) **N**euro **I**maging **DA**ta **SH**aring Task Force that 
+by the [INCF](http://www.incf.org) **N**euro **I**maging **DA**ta **SH**aring (NIDASH) Task Force that 
 describe an extension the the W3C PROV standard for the domain of human brain mapping.
 
 The goals of this repo are to foster collaboration among the standards developers working on 
