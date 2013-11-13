@@ -16,7 +16,8 @@ niiri:statistical_map_id a prov:Entity , fsl:statisticalMap ;
 	fsl:dimensions "53 63 46"^^xsd:string ;
 	fsl:dimensionsUnits "mm mm mm"^^xsd:string ;
 	fsl:coordinateSpace "MNI"^^xsd:string ;
-	fsl:voxelSize "3.000000 3.000000 3.000000"^^xsd:string .
+	fsl:voxelSize "3.000000 3.000000 3.000000"^^xsd:string ;
+	prov:wasDerivedFrom niiri:contrast_map_id .
 
 niiri:contrast_map_id a prov:Entity , fsl:contrastMap ;
 	fsl:value "cope1.nii.gz"^^xsd:anyURI ;
@@ -47,7 +48,8 @@ niiri:extent_threshold_id a prov:Entity , fsl:clusterThreshold ;
 	fsl:pGRF "1.0"^^xsd:float .
 
 niiri:inference_id a prov:Activity , fsl:inference ;
-	prov:used niiri:statistical_map_id , niiri:search_space_id , niiri:height_threshold_id , niiri:extent_threshold_id .
+	prov:used niiri:statistical_map_id , niiri:search_space_id , niiri:height_threshold_id , niiri:extent_threshold_id ;
+	prov:wasGeneratedBy niiri:software_id .
 
 niiri:software_id a prov:Agent , fsl:software ;
 	fsl:value "FSL"^^xsd:string ;
@@ -72,7 +74,7 @@ niiri:excursion_set_id a prov:Entity , fsl:excursionSet ;
 niiri:cluster_level_id a prov:Entity , prov:Collection ;
 	prov:hadMember niiri:excursion_set_id .
 
-niiri:peak_level a prov:Entity , prov:Collection .
+niiri:peak_level_id a prov:Entity , prov:Collection .
 
 niiri:peak_level_id prov:hadMember niiri:excursion_set_id .
 
