@@ -1,6 +1,6 @@
 ## NIDASH Data Model
 
-#### A Product of the [INCF Neuroimaging Data Sharing Task Force](http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force)
+#### A Product of the [INCF Neuroimaging Data Sharing Task Force](http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force) and the [BIRN Derived Data Working Group](http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/)
 
 The NIDASH Data Model (NI-DM) is a collection of specification documents and examples developed
 by the [INCF](http://www.incf.org) **N**euro **I**maging **DA**ta **SH**aring (NIDASH) Task Force and the [BIRN](http://www.birncommunity.org)
