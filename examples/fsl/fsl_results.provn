@@ -6,53 +6,54 @@ document
 
     entity(niiri:statistical_map_id,
         [prov:type = 'fsl:statisticalMap',
-        fsl:statisticType = "T" %% xsd:string,
-        fsl:numberOfDimensions = "3" %% xsd:int,
-        fsl:dimensions = "53 63 46",
-        fsl:dimensionsUnits = "mm mm mm",
-        fsl:coordinateSpace = "MNI" %% xsd:string,
-        fsl:voxelSize = "3.000000 3.000000 3.000000"])
         prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
         prov:label = "Statistical Map: listening &gt; rest: tstat1",
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:fileName = "tstat1.nii.gz" %% xsd:string,
+        nidm:statisticType = 'nidm:tStatistic',
         nidm:errorDegreesOfFreedom = "73.000000" %% xsd:float,
         nidm:effectDegreesOfFreedom = "1.000000" %% xsd:float,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "53 63 46",
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:voxelSize = "[3.000000 3.000000 3.000000]" %% xsd:string,
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string])
 
     entity(niiri:contrast_map_id,
-        [prov:type = 'fsl:contrastMap',
-        fsl:numberOfDimensions = "3" %% xsd:int,
-        fsl:dimensions = "53 63 46",
-        fsl:dimensionsUnits = "mm mm mm",
-        fsl:coordinateSpace = "MNI" %% xsd:string,
-        fsl:voxelSize = "3.000000 3.000000 3.000000"])
+        [prov:type = 'nidm:contrastMap',
         prov:location = "file:///path/to/cope1.nii.gz" %% xsd:anyURI,
         prov:label = "Contrast Map: listening &gt; rest" %% xsd:string,
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:fileName = "cope1.nii.gz" %% xsd:string,
-        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]",
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]",
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string])
+
     wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id)
 
     entity(niiri:search_space_id,
-        [prov:type = 'fsl:mask',
-        fsl:numberOfDimensions = "3" %% xsd:int,
-        fsl:dimensions = "53 63 46",
-        fsl:dimensionsUnits = "mm mm mm",
-        fsl:coordinateSpace = "MNI" %% xsd:string,
-        fsl:voxelSize = "3.000000 3.000000 3.000000",
-        fsl:searchVolumeInVoxels = "45359"])
+        [prov:type = 'nidm:mask',
         prov:location = "file:///path/to/mask.nii.gz" %% xsd:anyURI,
         nidm:fileName = "mask.nii.gz" %% xsd:string,
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
         prov:label = "Search Space" %% xsd:string,
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "[53, 63, 46]",
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:voxelSize = "3.000000 3.000000 3.000000",
+        nidm:searchVolumeInVoxels = "45359",
         fsl:reselSizeInVoxels = "12.2251" %%xsd:float])
 
     entity(niiri:height_threshold_id,
-        [prov:type = 'fsl:heightThreshold',
-        fsl:value = "5.235300" %% xsd:float,
-        fsl:p = "0.000001" %% xsd:float,
+        [prov:type = 'nidm:heightThreshold',
         prov:label = "Height Threshold: p&lt;0.05 (FWE)" %% xsd:string,
+        prov:value = "5.235300" %% xsd:float,
+        nidm:pValueUncorrected = "0.000001" %% xsd:float,
         fsl:pGRF = "0.050000" %% xsd:float])
 
     entity(niiri:extent_threshold_id,
@@ -61,7 +62,7 @@ document
         fsl:pGRF = "1.000000" %% xsd:float])
 
     activity(niiri:inference_id,
-        [prov:type = 'fsl:inference'])
+        [prov:type = 'fsl:inference',
         prov:label = "Inference"])
 
     used(niiri:inference_id, niiri:statistical_map_id, -)
@@ -71,9 +72,8 @@ document
 
     agent(niiri:software_id,
         [prov:type = 'fsl:software',
-        fsl:value = "FSL" %% xsd:string,
-        fsl:version = "5.0.1" %% xsd:string,
         prov:label = "FSL" %% xsd:string,
+        nidm:softwareVersion = "5.0.1" %% xsd:string])
 
     wasAssociatedWith(niiri:inference_id, niiri:software_id, -)
 
@@ -85,18 +85,18 @@ document
         prov:label = "Excursion Set" %% xsd:string,        
         fsl:slicesPlot = "rendered_thresh_zstat1.png",
         fsl:underlayFile = "todo.nii" %% xsd:anyURI,
-        fsl:numberOfDimensions = "3" %% xsd:int,
-        fsl:dimensions = "53 63 46",
-        fsl:dimensionsUnits = "mm mm mm",
-        fsl:coordinateSpace = "MNI" %% xsd:string,
-        fsl:voxelSize = "3.000000 3.000000 3.000000"])
-    wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
+        nidm:numberOfDimensions = "3" %% xsd:int,
+        nidm:dimensions = "53 63 46",
+        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:voxelSize = "3.000000 3.000000 3.000000"])
 
+    wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
         
     entity(niiri:cluster_0001,
         [prov:type = 'fsl:clusterLevelStatistic',
-        fsl:clusterSizeInVoxels = "530" %% xsd:int,
         prov:label = "Cluster Level Statistic: 0001" %% xsd:string,
+        nidm:clusterSizeInVoxels = "530" %% xsd:int,
         fsl:centerOfGravityInVoxels = "-30.8    -68.5   -13.4",        
         fsl:centerOfGravityInUnits = "40.2  16.4    13.2",
         fsl:pGRF = "0.000000" %% xsd:float])
@@ -105,8 +105,8 @@ document
     
     entity(niiri:cluster_0002,
         [prov:type = 'fsl:clusterLevelStatistic',
-        fsl:clusterSizeInVoxels = "445" %% xsd:int,
         prov:label = "Cluster Level Statistic: 0002" %% xsd:string,
+        nidm:clusterSizeInVoxels = "445" %% xsd:int,
         fsl:centerOfGravityInVoxels = "24.1 -77.1   -4.27",        
         fsl:centerOfGravityInUnits = "25.6  12.8    14.6",        
         fsl:pGRF = "0.000000" %% xsd:float])
@@ -115,9 +115,9 @@ document
     
     entity(niiri:peak_0001,
         [prov:type = 'fsl:clusterMaximumStatistic',
-        fsl:equiv_Z-statistic = "6.14" %% xsd:float])
         prov:label = "Peak 1" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0001',
+        nidm:equivalentZStatistic = "6.14" %% xsd:float])
 
     entity(niiri:coordinate_0001,
         [prov:type = 'prov:location',
@@ -135,9 +135,9 @@ document
 
     entity(niiri:peak_0002,
         [prov:type = 'fsl:localMaximumStatistic',
-        fsl:equiv_Z-statistic = "6.04" %% xsd:float])
         prov:label = "Peak 2" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0002',
+        nidm:equivalentZStatistic = "6.04" %% xsd:float])
 
     entity(niiri:coordinate_0002,
         [prov:type = 'prov:location',
@@ -155,9 +155,9 @@ document
 
     entity(niiri:peak_0003,
         [prov:type = 'fsl:localMaximumStatistic',
-        fsl:equiv_Z-statistic = "5.75" %% xsd:float])
         prov:label = "Peak 3" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0003',
+        nidm:equivalentZStatistic = "5.75" %% xsd:float])
 
     entity(niiri:coordinate_0003,
         [prov:type = 'prov:location',
@@ -175,9 +175,9 @@ document
 
     entity(niiri:peak_0004,
         [prov:type = 'fsl:localMaximumStatistic',
-        fsl:equiv_Z-statistic = "5.75" %% xsd:float])
         prov:label = "Peak 4" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0004',
+        nidm:equivalentZStatistic = "5.75" %% xsd:float])
 
     entity(niiri:coordinate_0004,
         [prov:type = 'prov:location',
@@ -195,9 +195,9 @@ document
 
     entity(niiri:peak_0005,
         [prov:type = 'fsl:clusterMaximumStatistic',
-        fsl:equiv_Z-statistic = "5.87" %% xsd:float])
         prov:label = "Peak 5" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0005',
+        nidm:equivalentZStatistic = "5.87" %% xsd:float])
 
     entity(niiri:coordinate_0005,
         [prov:type = 'prov:location',
@@ -215,9 +215,9 @@ document
 
     entity(niiri:peak_0006,
         [prov:type = 'fsl:localMaximumStatistic',
-        fsl:equiv_Z-statistic = "5.65" %% xsd:float])
         prov:label = "Peak 6" %% xsd:string,
         prov:atLocation = 'niiri:coordinate_0006',
+        nidm:equivalentZStatistic = "5.65" %% xsd:float])
 
     entity(niiri:coordinate_0006,
         [prov:type = 'prov:location',
