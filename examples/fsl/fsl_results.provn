@@ -7,7 +7,6 @@ document
     entity(niiri:statistical_map_id,
         [prov:type = 'fsl:statisticalMap',
         fsl:label = "tstat1",
-        fsl:value = "tstat1.nii.gz" %% xsd:string,
         fsl:statisticType = "T" %% xsd:string,
         fsl:degreesOfFreedom = "73.000000",
         fsl:numberOfDimensions = "3" %% xsd:int,
@@ -15,10 +14,12 @@ document
         fsl:dimensionsUnits = "mm mm mm",
         fsl:coordinateSpace = "MNI" %% xsd:string,
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
+        prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
+        nidm:fileName = "tstat1.nii.gz" %% xsd:string,
+        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string])
 
     entity(niiri:contrast_map_id,
         [prov:type = 'fsl:contrastMap',
-        fsl:value = "cope1.nii.gz" %% xsd:anyURI,
         fsl:label = "listening &gt; rest" %% xsd:string,
         fsl:numberOfDimensions = "3" %% xsd:int,
         fsl:dimensions = "53 63 46",
@@ -28,16 +29,21 @@ document
         fsl:designMatrix = "designMatrix.png",
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
     wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id, -)
+        prov:location = "file:///path/to/cope1.nii.gz" %% xsd:anyURI,
+        nidm:fileName = "cope1.nii.gz" %% xsd:string,
+        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
 
     entity(niiri:search_space_id,
         [prov:type = 'fsl:mask',
-        fsl:value = "mask.nii.gz" %% xsd:anyURI,
         fsl:numberOfDimensions = "3" %% xsd:int,
         fsl:dimensions = "53 63 46",
         fsl:dimensionsUnits = "mm mm mm",
         fsl:coordinateSpace = "MNI" %% xsd:string,
         fsl:voxelSize = "3.000000 3.000000 3.000000",
         fsl:searchVolumeInVoxels = "45359"])
+        prov:location = "file:///path/to/mask.nii.gz" %% xsd:anyURI,
+        nidm:fileName = "mask.nii.gz" %% xsd:string,
+        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
 
     entity(niiri:height_threshold_id,
         [prov:type = 'fsl:heightThreshold',
@@ -70,7 +76,9 @@ document
 
     entity(niiri:excursion_set_id,
         [prov:type = 'fsl:excursionSet',
-        fsl:value = "thresh_spmT_0001.img" %% xsd:anyURI,
+        prov:location = "file:///path/to/thresh_spmT_0001.nii.gz" %% xsd:anyURI,
+        nidm:fileName = "thresh_spmT_0001.nii.gz" %% xsd:string,
+        nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
         fsl:slicesPlot = "rendered_thresh_zstat1.png",
         fsl:underlayFile = "todo.nii" %% xsd:anyURI,
         fsl:numberOfDimensions = "3" %% xsd:int,
