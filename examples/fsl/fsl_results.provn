@@ -3,7 +3,7 @@ document
     prefix fsl <http://http://fsl.fmrib.ox.ac.uk/>
     prefix nidm <http://nidm.nidash.org/>
     prefix niiri <http://iri.nidash.org/>
-    
+
     entity(niiri:statistical_map_id,
         [prov:type = 'fsl:statisticalMap',
         fsl:label = "tstat1",
@@ -30,11 +30,11 @@ document
         fsl:contrastVector = "1.000000 0.000000",
         fsl:designMatrix = "designMatrix.png",
         fsl:voxelSize = "3.000000 3.000000 3.000000"])
-    wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id, -)
         prov:location = "file:///path/to/cope1.nii.gz" %% xsd:anyURI,
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:fileName = "cope1.nii.gz" %% xsd:string,
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
+    wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id)
 
     entity(niiri:search_space_id,
         [prov:type = 'fsl:mask',
@@ -71,8 +71,8 @@ document
         fsl:value = "FSL" %% xsd:string,
         fsl:version = "5.0.1" %% xsd:string,
         fsl:featVersion = "6.00" %% xsd:string])
-    wasAssociatedWith(niiri:inference_id, niiri:software_id)
 
+    wasAssociatedWith(niiri:inference_id, niiri:software_id, -)
 
     entity(niiri:excursion_set_id,
         [prov:type = 'fsl:excursionSet',
@@ -112,36 +112,42 @@ document
         fsl:coordinateInVoxels = "45 15 14",
         fsl:coordinateInUnits = "-48.1  -73.7  -9.24",
         fsl:equiv_Z-statistic = "6.14" %% xsd:float])
-    hadMember(niiri:peak_0001, niiri:cluster_0001)
+
+    wasDerivedFrom(niiri:peak_0001, niiri:cluster_0001)
+
     entity(niiri:peak_0002,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "42 21 13",
         fsl:coordinateInUnits = "-38.1  -53.4  -18",
         fsl:equiv_Z-statistic = "6.04" %% xsd:float])
-    hadMember(niiri:peak_0002, niiri:cluster_0001)
+
+    wasDerivedFrom(niiri:peak_0002, niiri:cluster_0001)
+
     entity(niiri:peak_0003,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "40 15 12",
         fsl:coordinateInUnits = "-29.6  -73.8  -16.9",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
-    hadMember(niiri:peak_0003, niiri:cluster_0001)
+
+    wasDerivedFrom(niiri:peak_0003, niiri:cluster_0001)
+
     entity(niiri:peak_0004,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "39 13 12",
         fsl:coordinateInUnits = "0.791 -87.2 3.23",
         fsl:equiv_Z-statistic = "5.75" %% xsd:float])
-    hadMember(niiri:peak_0004, niiri:cluster_0001)
+    wasDerivedFrom(niiri:peak_0004, niiri:cluster_0001)
 
     entity(niiri:peak_0005,
         [prov:type = 'fsl:clusterMaximumStatistic',
         fsl:coordinateInVoxels = "32 10 16",
         fsl:coordinateInUnits = "16.1 -96.6 5.82",
         fsl:equiv_Z-statistic = "5.87" %% xsd:float])
-    hadMember(niiri:peak_0005, niiri:cluster_0002)
+    wasDerivedFrom(niiri:peak_0005, niiri:cluster_0002)
     entity(niiri:peak_0006,
         [prov:type = 'fsl:localMaximumStatistic',
         fsl:coordinateInVoxels = "28 7 16",
         fsl:coordinateInUnits = "-25.5 -80.4 -15.3",
         fsl:equiv_Z-statistic = "5.65" %% xsd:float])
-    hadMember(niiri:peak_0006, niiri:cluster_0002)
+    wasDerivedFrom(niiri:peak_0006, niiri:cluster_0002)
 endDocument
