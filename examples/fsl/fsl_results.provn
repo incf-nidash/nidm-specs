@@ -14,23 +14,23 @@ document
         nidm:errorDegreesOfFreedom = "73.000000" %% xsd:float,
         nidm:effectDegreesOfFreedom = "1.000000" %% xsd:float,
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "[53, 63, 46]" ,
+        nidm:dimensions = "[53, 63, 46]" %% xsd:string,
         nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
         nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string,
-        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string])
 
     entity(niiri:contrast_map_id,
         [prov:type = 'nidm:contrastMap',
         prov:location = "file:///path/to/cope1.nii.gz" %% xsd:anyURI,
-        prov:label = "Contrast Map: listening &gt; rest" %% xsd:string,
+        prov:label = "Contrast Map: listening &gt; rest",
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:fileName = "cope1.nii.gz" %% xsd:string,
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "[53, 63, 46]",
+        nidm:dimensions = "[53, 63, 46]" %% xsd:string,
         nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]",
-        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string,
+        nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string])
 
     wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id)
@@ -42,11 +42,11 @@ document
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
         prov:label = "Search Space" %% xsd:string,
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "[53, 63, 46]",
-        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:dimensions = "[53, 63, 46]" %% xsd:string,
+        nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]",
-        nidm:searchVolumeInVoxels = "45359",
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string,
+        nidm:searchVolumeInVoxels = "45359" %% xsd:int,
         fsl:reselSizeInVoxels = "12.2251" %%xsd:float])
 
     entity(niiri:height_threshold_id,
@@ -83,13 +83,13 @@ document
         nidm:fileName = "thresh_spmT_0001.nii.gz" %% xsd:string,
         nidm:voxelToWorldMapping = "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]" %% xsd:string,
         prov:label = "Excursion Set" %% xsd:string,        
-        fsl:slicesPlot = "rendered_thresh_zstat1.png",
-        fsl:underlayFile = "todo.nii" %% xsd:anyURI,
+        fsl:slicesPlot = "file:///path/to/rendered_thresh_zstat1.png" %% xsd:anyURI,
+        fsl:underlayFile = "file:///path/to/todo.nii" %% xsd:anyURI,
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "53 63 46",
-        nidm:voxelUnits = "['mm', 'mm', 'mm']",
+        nidm:dimensions = "53 63 46" %% xsd:string,
+        nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]"])
+        nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string])
 
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
         
@@ -97,8 +97,8 @@ document
         [prov:type = 'fsl:clusterLevelStatistic',
         prov:label = "Cluster Level Statistic: 0001" %% xsd:string,
         nidm:clusterSizeInVoxels = "530" %% xsd:int,
-        fsl:centerOfGravityInVoxels = "[-30.8,   -68.5,   -13.4]",        
-        fsl:centerOfGravityInUnits = "[40.2,  16.4,    13.2]",
+        fsl:centerOfGravityInVoxels = "[-30.8,   -68.5,   -13.4]" %% xsd:string,         
+        fsl:centerOfGravityInUnits = "[40.2,  16.4,    13.2]" %% xsd:string, 
         fsl:pGRF = "0.000000" %% xsd:float])
 
     wasDerivedFrom(niiri:cluster_0001, niiri:excursion_set_id)  
@@ -107,8 +107,8 @@ document
         [prov:type = 'fsl:clusterLevelStatistic',
         prov:label = "Cluster Level Statistic: 0002" %% xsd:string,
         nidm:clusterSizeInVoxels = "445" %% xsd:int,
-        fsl:centerOfGravityInVoxels = "[24.1, -77.1,  -4.27]",        
-        fsl:centerOfGravityInUnits = "[25.6,  12.8,    14.6]",        
+        fsl:centerOfGravityInVoxels = "[24.1, -77.1,  -4.27]" %% xsd:string,      
+        fsl:centerOfGravityInUnits = "[25.6,  12.8,    14.6]" %% xsd:string, 
         fsl:pGRF = "0.000000" %% xsd:float])
     
     wasDerivedFrom(niiri:cluster_0002, niiri:excursion_set_id)
