@@ -73,12 +73,12 @@ document
   activity(niiri:statistical_estimation_id, -, -,
     [prov:type = 'spm:estimation',
     prov:label = "Statistical estimation"])
-  used(niiri:statistical_estimation_id, niiri:contrast_id,-)
-  used(niiri:statistical_estimation_id, niiri:design_matrix_id,-)
-  wasGeneratedBy(niiri:contrast_map_id, niiri:statistical_estimation_id,-)
-  wasGeneratedBy(niiri:contrast_variance_map_id, niiri:statistical_estimation_id,-)
-  wasGeneratedBy(niiri:residual_sum_of_squares_map_id, niiri:statistical_estimation_id,-)
-  wasGeneratedBy(niiri:statistical_map_id, niiri:statistical_estimation_id,-)
+  used(niiri:statistical_estimation_id, niiri:contrast_id)
+  used(niiri:statistical_estimation_id, niiri:design_matrix_id)
+  wasGeneratedBy(niiri:contrast_map_id, niiri:statistical_estimation_id)
+  wasGeneratedBy(niiri:contrast_variance_map_id, niiri:statistical_estimation_id)
+  wasGeneratedBy(niiri:residual_sum_of_squares_map_id, niiri:statistical_estimation_id)
+  wasGeneratedBy(niiri:statistical_map_id, niiri:statistical_estimation_id)
 
   entity(niiri:search_space_id,
     [prov:type = 'nidm:mask',
@@ -116,17 +116,17 @@ document
   activity(niiri:inference_id, -, -,
     [prov:type = 'spm:inference',
     prov:label = "Inference"])
-  used(niiri:inference_id, niiri:statistical_map_id,-)
-  used(niiri:inference_id, niiri:search_space_id,-)
-  used(niiri:inference_id, niiri:height_threshold_id,-)
-  used(niiri:inference_id, niiri:extent_threshold_id,-)
+  used(niiri:inference_id, niiri:statistical_map_id)
+  used(niiri:inference_id, niiri:search_space_id)
+  used(niiri:inference_id, niiri:height_threshold_id)
+  used(niiri:inference_id, niiri:extent_threshold_id)
   agent(niiri:software_id,
     [prov:type = 'nidm:spm',
     prov:type = 'prov:SoftwareAgent',
     prov:label = "SPM" %% xsd:string,
     nidm:softwareVersion = "SPM12b" %% xsd:string,
     nidm:softwareRevision = "5759" %% xsd:string])
-  wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
+  wasAssociatedWith(niiri:inference_id, niiri:software_id)
   entity(niiri:stat_image_properties_id,
     [prov:type = 'spm:statisticImageProperties',
     spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
@@ -135,7 +135,7 @@ document
     spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])
-  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id,-)
+  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id)
   entity(niiri:excursion_set_id,
     [prov:type = 'spm:excursionSet',
     prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
@@ -150,7 +150,7 @@ document
     nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
     nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
+  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id)
   entity(niiri:set_level_statistic_id,
     [prov:type = 'spm:setLevelStatistic',
     prov:label = "Set Level Statistic" %% xsd:string,
