@@ -17,11 +17,11 @@
         "type": "xsd:anyURI"
       },
       "prov:label": {
-        "$": "Statistical Map: listening &gt; rest",
+        "$": "Statistical Map: listening > rest",
         "type": "xsd:string"
       },
       "nidm:contrastName": {
-        "$": "listening &gt; rest",
+        "$": "listening > rest",
         "type": "xsd:string"
       },
       "nidm:fileName": {
@@ -69,6 +69,52 @@
         "type": "xsd:string"
       }
     },
+    "niiri:data_scaling_id": {
+      "prov:type": {
+        "$": "nidm:dataScalingMap",
+        "type": "xsd:QName"
+      },
+      "prov:location": {
+        "$": "file:///path/to/data_scaling.nii",
+        "type": "xsd:anyURI"
+      },
+      "prov:label": {
+        "$": "Data scaling",
+        "type": "xsd:string"
+      },
+      "nidm:fileName": {
+        "$": "data_scaling.nii",
+        "type": "xsd:string"
+      },
+      "nidm:numberOfDimensions": {
+        "$": "3",
+        "type": "xsd:int"
+      },
+      "nidm:dimensions": {
+        "$": "[53,63,46]",
+        "type": "xsd:string"
+      },
+      "nidm:coordinateSystem": {
+        "$": "nidm:mniCoordinateSystem",
+        "type": "xsd:string"
+      },
+      "nidm:voxelSize": {
+        "$": "[3, 3, 3]",
+        "type": "xsd:string"
+      },
+      "nidm:voxelUnits": {
+        "$": "['mm', 'mm', 'mm']",
+        "type": "xsd:string"
+      },
+      "nidm:voxelToWorldMapping": {
+        "$": "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]",
+        "type": "xsd:string"
+      },
+      "crypto:sha": {
+        "$": "e43b6e01b0463fe7d40782137867a...",
+        "type": "xsd:string"
+      }
+    },
     "niiri:contrast_map_id": {
       "prov:type": {
         "$": "nidm:contrastMap",
@@ -79,11 +125,11 @@
         "type": "xsd:anyURI"
       },
       "prov:label": {
-        "$": "Contrast Map: listening &gt; rest",
+        "$": "Contrast Map: listening > rest",
         "type": "xsd:string"
       },
       "nidm:contrastName": {
-        "$": "listening &gt; rest",
+        "$": "listening > rest",
         "type": "xsd:string"
       },
       "nidm:fileName": {
@@ -235,7 +281,7 @@
         "type": "xsd:QName"
       },
       "nidm:contrastName": {
-        "$": "listening &gt; rest",
+        "$": "listening > rest",
         "type": "xsd:string"
       },
       "prov:label": {
@@ -327,7 +373,7 @@
         "type": "xsd:QName"
       },
       "prov:label": {
-        "$": "Height Threshold: p&lt;0.05 (FWE)",
+        "$": "Height Threshold: p<0.05 (FWE)",
         "type": "xsd:string"
       },
       "spm:userSpecifiedThresholdType": {
@@ -1015,6 +1061,16 @@
     }
   },
   "activity": {
+    "niiri:statistical_estimation_id": {
+      "prov:type": {
+        "$": "spm:estimation",
+        "type": "xsd:QName"
+      },
+      "prov:label": {
+        "$": "Statistical estimation",
+        "type": "xsd:string"
+      }
+    },
     "niiri:inference_id": {
       "prov:type": {
         "$": "spm:inference",
@@ -1051,113 +1107,121 @@
     }
   },
   "wasGeneratedBy": {
-    "_:wGB26": {
+    "_:wGB15": {
+      "prov:entity": "niiri:contrast_map_id",
+      "prov:activity": "niiri:statistical_estimation_id"
+    },
+    "_:wGB16": {
+      "prov:entity": "niiri:contrast_standard_error_map_id",
+      "prov:activity": "niiri:statistical_estimation_id"
+    },
+    "_:wGB17": {
+      "prov:entity": "niiri:residual_mean_squares_map_id",
+      "prov:activity": "niiri:statistical_estimation_id"
+    },
+    "_:wGB18": {
+      "prov:entity": "niiri:statistical_map_id",
+      "prov:activity": "niiri:statistical_estimation_id"
+    },
+    "_:wGB30": {
       "prov:entity": "niiri:stat_image_properties_id",
       "prov:activity": "niiri:inference_id"
     },
-    "_:wGB28": {
+    "_:wGB32": {
       "prov:entity": "niiri:excursion_set_id",
       "prov:activity": "niiri:inference_id"
     }
   },
   "used": {
-    "_:u19": {
+    "_:u3": {
+      "prov:activity": "niiri:statistical_estimation_id",
+      "prov:entity": "niiri:data_scaling_id"
+    },
+    "_:u13": {
+      "prov:activity": "niiri:statistical_estimation_id",
+      "prov:entity": "niiri:contrast_id"
+    },
+    "_:u14": {
+      "prov:activity": "niiri:statistical_estimation_id",
+      "prov:entity": "niiri:design_matrix_id"
+    },
+    "_:u23": {
       "prov:activity": "niiri:inference_id",
       "prov:entity": "niiri:statistical_map_id"
     },
-    "_:u20": {
+    "_:u24": {
       "prov:activity": "niiri:inference_id",
       "prov:entity": "niiri:search_space_id"
     },
-    "_:u21": {
+    "_:u25": {
       "prov:activity": "niiri:inference_id",
       "prov:entity": "niiri:height_threshold_id"
     },
-    "_:u22": {
+    "_:u26": {
       "prov:activity": "niiri:inference_id",
       "prov:entity": "niiri:extent_threshold_id"
     }
   },
   "wasDerivedFrom": {
-    "_:wDF3": {
+    "_:wDF5": {
       "prov:generatedEntity": "niiri:statistical_map_id",
       "prov:usedEntity": "niiri:contrast_map_id"
     },
-    "_:wDF5": {
+    "_:wDF7": {
       "prov:generatedEntity": "niiri:statistical_map_id",
       "prov:usedEntity": "niiri:contrast_standard_error_map_id"
     },
-    "_:wDF7": {
+    "_:wDF9": {
       "prov:generatedEntity": "niiri:contrast_standard_error_map_id",
       "prov:usedEntity": "niiri:residual_mean_squares_map_id"
     },
-    "_:wDF10": {
-      "prov:generatedEntity": "niiri:contrast_map_id",
-      "prov:usedEntity": "niiri:design_matrix_id"
-    },
-    "_:wDF11": {
-      "prov:generatedEntity": "niiri:contrast_map_id",
-      "prov:usedEntity": "niiri:contrast_id"
-    },
-    "_:wDF12": {
-      "prov:generatedEntity": "niiri:contrast_standard_error_map_id",
-      "prov:usedEntity": "niiri:design_matrix_id"
-    },
-    "_:wDF13": {
-      "prov:generatedEntity": "niiri:contrast_standard_error_map_id",
-      "prov:usedEntity": "niiri:contrast_id"
-    },
-    "_:wDF14": {
-      "prov:generatedEntity": "niiri:residual_mean_squares_map_id",
-      "prov:usedEntity": "niiri:design_matrix_id"
-    },
-    "_:wDF30": {
+    "_:wDF34": {
       "prov:generatedEntity": "niiri:set_level_statistic_id",
       "prov:usedEntity": "niiri:excursion_set_id"
     },
-    "_:wDF32": {
+    "_:wDF36": {
       "prov:generatedEntity": "niiri:cluster_0001",
       "prov:usedEntity": "niiri:set_level_statistic_id"
     },
-    "_:wDF34": {
+    "_:wDF38": {
       "prov:generatedEntity": "niiri:cluster_0002",
       "prov:usedEntity": "niiri:set_level_statistic_id"
     },
-    "_:wDF36": {
+    "_:wDF40": {
       "prov:generatedEntity": "niiri:cluster_0003",
       "prov:usedEntity": "niiri:set_level_statistic_id"
     },
-    "_:wDF39": {
+    "_:wDF43": {
       "prov:generatedEntity": "niiri:peak_0001",
       "prov:usedEntity": "niiri:cluster_0001"
     },
-    "_:wDF42": {
+    "_:wDF46": {
       "prov:generatedEntity": "niiri:peak_0002",
       "prov:usedEntity": "niiri:cluster_0001"
     },
-    "_:wDF45": {
+    "_:wDF49": {
       "prov:generatedEntity": "niiri:peak_0003",
       "prov:usedEntity": "niiri:cluster_0001"
     },
-    "_:wDF48": {
+    "_:wDF52": {
       "prov:generatedEntity": "niiri:peak_0004",
       "prov:usedEntity": "niiri:cluster_0002"
     },
-    "_:wDF51": {
+    "_:wDF55": {
       "prov:generatedEntity": "niiri:peak_0005",
       "prov:usedEntity": "niiri:cluster_0002"
     },
-    "_:wDF54": {
+    "_:wDF58": {
       "prov:generatedEntity": "niiri:peak_0006",
       "prov:usedEntity": "niiri:cluster_0002"
     },
-    "_:wDF57": {
+    "_:wDF61": {
       "prov:generatedEntity": "niiri:peak_0007",
       "prov:usedEntity": "niiri:cluster_0003"
     }
   },
   "wasAssociatedWith": {
-    "_:wAW24": {
+    "_:wAW28": {
       "prov:activity": "niiri:inference_id",
       "prov:agent": "niiri:software_id"
     }
