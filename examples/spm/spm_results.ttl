@@ -40,7 +40,7 @@ niiri:contrast_map_id
 
 niiri:statistical_map_id prov:wasDerivedFrom niiri:contrast_map_id .
 
-niiri:contrast_variance_map_id
+niiri:contrast_standard_error_map_id
   a prov:entity, nidm:contrastStandardErrorMap ; 
   prov:location "file:///path/to/contrastSE.nii"^^xsd:anyURI ;
   prov:label "Contrast Standard Error Map"^^xsd:string ;
@@ -53,12 +53,12 @@ niiri:contrast_variance_map_id
   nidm:voxelToWorldMapping "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]"^^xsd:string ;
   crypto:sha "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
-niiri:statistical_map_id prov:wasDerivedFrom niiri:contrast_variance_map_id .
+niiri:statistical_map_id prov:wasDerivedFrom niiri:contrast_standard_error_map_id .
 
-niiri:residual_sum_of_squares_map_id
-  a prov:entity, nidm:residualSumOfSquaresMap ; 
+niiri:residual_mean_squares_map_id
+  a prov:entity, nidm:residualMeanSquaresMap ; 
   prov:location "file:///path/to/ResMS.img"^^xsd:anyURI ;
-  prov:label "Residual Sum-of-Squares Map"^^xsd:string ;
+  prov:label "Residual Mean Squares Map"^^xsd:string ;
   nidm:fileName "ResMS.img"^^xsd:string ;
   nidm:numberOfDimensions "3"^^xsd:int ;
   nidm:dimensions "[53,63,46]"^^xsd:string ;
@@ -68,16 +68,17 @@ niiri:residual_sum_of_squares_map_id
   nidm:voxelToWorldMapping "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]"^^xsd:string ;
   crypto:sha "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
-niiri:contrast_variance_map_id prov:wasDerivedFrom niiri:residual_sum_of_squares_map_id .
+niiri:contrast_standard_error_map_id prov:wasDerivedFrom niiri:residual_mean_squares_map_id .
 
 niiri:design_matrix_id
   a prov:entity, nidm:designMatrix ; 
-  prov:location "file:///path/to/design_matrix.png"^^xsd:anyURI ;
+  prov:location "file:///path/to/design_matrix.csv"^^xsd:anyURI ;
   prov:label "Design Matrix"^^xsd:string ;
-  nidm:fileName "design_matrix.png"^^xsd:string .
+  nidm:fileName "design_matrix.csv"^^xsd:string .
 
 niiri:contrast_id
   a prov:entity, nidm:contrast ; 
+  nidm:contrastName "listening &gt; rest"^^xsd:string ;
   prov:label "Contrast weights"^^xsd:string ;
   prov:value "[1, 0, 0]"^^xsd:string .
 
@@ -85,11 +86,11 @@ niiri:contrast_map_id prov:wasDerivedFrom niiri:design_matrix_id .
 
 niiri:contrast_map_id prov:wasDerivedFrom niiri:contrast_id .
 
-niiri:contrast_variance_map_id prov:wasDerivedFrom niiri:design_matrix_id .
+niiri:contrast_standard_error_map_id prov:wasDerivedFrom niiri:design_matrix_id .
 
-niiri:contrast_variance_map_id prov:wasDerivedFrom niiri:contrast_id .
+niiri:contrast_standard_error_map_id prov:wasDerivedFrom niiri:contrast_id .
 
-niiri:residual_sum_of_squares_map_id prov:wasDerivedFrom niiri:design_matrix_id .
+niiri:residual_mean_squares_map_id prov:wasDerivedFrom niiri:design_matrix_id .
 
 niiri:search_space_id
   a prov:entity, nidm:mask ; 
@@ -143,7 +144,7 @@ niiri:software_id
   a prov:agent, nidm:spm, prov:SoftwareAgent ; 
   prov:label "SPM"^^xsd:string ;
   nidm:softwareVersion "SPM12b"^^xsd:string ;
-  nidm:softwareRevision "5759"^^xsd:string .
+  nidm:softwareRevision "5765"^^xsd:string .
 
 niiri:inference_id prov:wasAssociatedWith niiri:software_id .
 
@@ -355,3 +356,4 @@ niiri:coordinate_0007
   nidm:coordinate3 "-14"^^xsd:float .
 
 niiri:peak_0007 prov:wasDerivedFrom niiri:cluster_0003 .
+
