@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>NI-DM SPM Results Output Object Model Specification</title>
+    <meta charset='utf-8'>
+     <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    
+    <LINK href="../../../spec/stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+   
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "base",
+          shortName:  "SPMResults",
+   		  overrideCopyright: "<p class=copyright>NI-DM © Free To Everyone!</p>",
+          editors: [
+                {   name:       "David Keator",                   
+                    company:    "INCF",
+                    companyURL: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
+                    
+               	    
+          ],
+          previousMaturity: "FPWD",
+          previousPublishDate:  "2013-12-10",
+          wg:           "NIDASH Working Group",
+          wgURI:        "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+          wgPublicList: "derived_data@birncommunity.org",
+          wgPatentURI:  "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+          afterEnd: function () {
+          
+          var currentDate = new Date()
+		  var date = currentDate.toString('dddd, MMMM ,yyyy')
+     			$("#respecHeader h2").text("NI-DM Specification " + date);
+     			$("#respecHeader img").attr({ src: "../../../spec/stylesheet/nidm-text.png", width: 100, height:50 });
+   	      },
+           localBiblio:  {
+   		 "KEATORNI13": {
+  		      title:    "Towards structured sharing of raw and derived neuroimaging data across existing resources"
+ 		   ,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
+		    ,   authors:  [
+		            "David B. Keator"
+		        ,   "Karl Helmer"
+		        ,	"Jason Steffener"
+		        ,	"Jessica A. Turner"
+		        ,	"Theodorus G.M. VanErp"
+		        ,	"Syam Gadde"
+		        ,	"Naveen Ashish"
+		        ,	"Gully A. Burns"
+		        ,	"Nolan B. Nichols"
+		        ]
+		    	,   publisher:  "	Elsevier"
+		    	}
+			}			
+      };
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This document describes the encoding of a SPM results output using the NI-DM data model.  
+      </p>
+    </section>
+
+    <section id='sotd'>
+      <p>
+        The document separates the overall <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
+        SPM</a> graph into smaller sub-graphs for clarity in 
+        understanding how to construct the various entities and relationships.  
+      </p>
+     
+    </section>
+    
+    <section class='informative'>
+      <h2>Introduction</h2>
+      <p>
+        The Statistical Parametric Mapping (SPM) software Results Object Model (SPM-ROM) is 
+        a <a href="../../../spec/NIDM_Spec.html">
+        NI-DM</a> compliant structured representation of the....   
+      </p>
+      <p>
+       	The SPM results specification formally describes the encoding of the SPM results into a 
+       	NI-DM representation.
+      </p>
+    </section>
+    
+    <section id='conformance'>
+      <p>
+        The single conformance class described in this specification is 
+        the <dfn>SPM Results Object Model</dfn>, a class of NI-DM formatted objects for describing
+        a neuroimaging analysis result created with the <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
+        SPM</a> software.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Overview</h2>
+      <p>
+        The SPM Results Object Model is summarized in Fig. 2.  It consists of an  
+        <dfn>inference</dfn> activity which uses both statistical maps and parameters to generate an 
+        <dfn>excursion_set</dfn>.  The <dfn>excursion_set</dfn> consists of peaks grouped by the
+        <dfn>peak_level</dfn> collection, clusters which contain the peaks and are grouped into a 
+        <dfn>cluster_level</dfn> collection, and sets which contain all clusters and are grouped
+        into a <dfn>set_level</dfn> collection.
+        Set 
+        <figure>
+          <object data="../spm_results.pdf" type="application/pdf" width="100%" height="100%">
+ 
+			  <p>It appears you don't have a PDF plugin for this browser.
+			  No biggie... you can <a href="../spm_results.pdf">click here to
+			  download the PDF file.</a></p>
+			  
+			</object>
+          <figcaption>caption</figcaption>
+        </figure> 
+      </p>
+      <section>
+        <h2>Inference Activity</h2>
+        <p>
+          
+        </p>
+        <section>
+			<h2>Agent</h2>
+			<p>
+			 
+			</p>
+		  </section>
+		  <section>
+		  	<h2>Entities</h2>
+		  	<p>
+		  	</p>
+			  <section>
+				<h2>Maps</h2>
+				<p>
+				 
+				</p>
+				  <section>
+					<h2>Statistical Map</h2>
+					<p>
+					 
+					</p>
+					<p>
+					  Further discussion of the <a>Statistical Maps</a> can be found in [[!REF]].
+					</p>
+				  </section>
+				  <section>
+					<h2>Contrast Map</h2>
+					<p>
+					 
+					</p>
+					<p>
+					  Further discussion of the <a>Contrast Maps</a> can be found in [[!REF]].
+					</p>
+				  </section>
+				  <section>
+					<h2>Thresholded Statistical Map</h2>
+					<p>
+					 
+					</p>
+					<p>
+					  Further discussion of the <a>Thresholded Statistical Maps</a> can be found in [[!REF]].
+					</p>
+				  </section>
+			  </section>
+			  <section>
+				<h2>Parameters</h2>
+				<p>
+				 
+				</p>
+				 <section>
+					<h2>search_space</h2>
+					<p>
+					 
+					</p>
+				</section>
+				<section>
+					<h2>height_threshold</h2>
+					<p>The parameter entities consist of a unique identifier (typically would be a 
+					machine-readable id but has been encoded as a text string here for readability), 
+					followed by a prov:label which gives a human readable, short label for the entity.  
+					The label is followed by one or more attributes describing the data contained 
+					within the entity in the form “namespace:term label”.  
+					</p>
+					<p>
+					In this example we have four attributes.  The first indicates the SPM namespace 
+					has defined a term “HeightThreshold” whose value is the term ID defining a 
+					height threshold with respect to the SPM software. The second indicates the 
+					SPM namespace has defined a term “t-statistic”.  The third indicates the SPM 
+					namespace has defined a term “p-value”.  The fourth indicates the SPM namespace 
+					has defined a term “pFWER”.  Taken together, the user can completely interpret 
+					this entity as some height threshold on a t-statistic with an associated 
+					uncorrected p-value and the equivalent family-wise error rate p-value.  Note, 
+					a similar syntax (replacing the corresponding entries) would be used if the 
+					threshold were to be an f-statistic (spm:f-statistic) with a false discovery 
+					rate (spm:pFDR)  p-value threshold correction.
+					
+					<pre class='example highlight'>
+						entity(height_threshold_param, 
+						[prov:label="Height Threshold",
+						spm:HeightThreshold = spm_0019, 
+						spm:t-statistic="3.100000" %% xsd:float, 
+						spm:p_value = “0.001” %% xsd:float, 
+						spm:pFWER="0.728" %% xsd:float])
+					</pre>
+					</p>
+				</section>
+				<section>
+					<h2>extent_threshold</h2>
+					<p>The parameter entities consist of a unique identifier (typically would be a 
+					machine-readable id but has been encoded as a text string here for readability), 
+					followed by a prov:label which gives a human readable, short label for the entity.  
+					The label is followed by one or more attributes describing the data contained 
+					within the entity in the form “namespace:term label”.  
+					</p>
+					<p>In this example we have five attributes.  The first indicates the SPM 
+					namespace has defined a term “ExtentThreshold” whose value is the term ID 
+					defining a extent threshold with respect to the SPM software. The second 
+					indicates the PROV namespace has defined a term “label” whose value in this 
+					entity is 0.  The third indicates the SPM namespace has defined a term “unit” 
+					whose value is “voxels”.  The forth indicates the SPM namespace has defined a 
+					term “p-value”.  The fifth indicates the SPM namespace has defined a term “pFDR”.
+					</p>
+					<p>
+					Taken together, the user can completely interpret this entity as some extent 
+					threshold with a value of 0 voxels with an associated uncorrected p-value and 
+					the equivalent false discovery rate corrected p-value.  Note, a similar syntax 
+					(replacing the corresponding entries) would be used if the threshold were to be 
+					associated with vertices (spm:unit = vertices) with a family-wise corrected 
+					(spm:pFWER) p-value threshold correction.
+					<pre class='example highlight'>
+						entity(extent_threshold_param, 
+						[prov:label="Extent Threshold", 
+						spm:ExtentThreshold = spm_0017,
+						prov:value=0, 
+						spm:unit = voxels,
+						spm:p-value = 1.000 %%xsd:float, 
+						spm:pFDR = 1.000 %%xsd:float])
+
+					
+					</pre>
+					</p>
+				</section>
+			  </section>
+			  <section>
+				<h2>Metadata</h2>
+				<p>
+				 
+				</p>
+			  </section>
+		</section>	
+		 
+      </section>
+       <section>
+		<h2>Peak Entities</h2>
+		<p>
+				 
+		</p>
+		</section>
+		<section>
+			<h2>Cluster Entities</h2>
+			<p>
+					 
+			</p>
+		</section>
+		<section>
+			<h2>Set Entity</h2>
+			<p>
+					 
+			</p>
+		</section>
+    </section>
+  </body>
+</html>
+ 
