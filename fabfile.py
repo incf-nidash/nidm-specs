@@ -29,5 +29,5 @@ def publish():
     clean()
     local('pelican content -o output -s publishconf.py')
     local('ghp-import output')
-    local('git push upstream  gh-pages:master --force')
+    local('git push upstream gh-pages --force')
 
