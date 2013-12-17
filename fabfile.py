@@ -9,6 +9,11 @@ def clean():
     else:
         local('mkdir output')
 
+def copy_specs():
+    local('rm -r content/spec && '
+          'cp -r spec content/spec && '
+          'cp -r examples/*/spec/* content/spec')
+
 def build():
     clean()
     local('pelican content -o output -s pelicanconf.py')
@@ -30,4 +35,3 @@ def publish():
     local('pelican content -o output -s publishconf.py')
     local('ghp-import output')
     local('git push upstream gh-pages --force')
-
