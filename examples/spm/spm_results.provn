@@ -5,6 +5,25 @@ document
   prefix niiri <http://iri.nidash.org/>
   prefix crypto <http://www.w3.org/2000/10/swap/crypto#>
 
+  entity(niiri:coordinate_space_id_1,
+    [prov:type = 'nidm:coordinateSpace',
+    prov:label = "Coordinate space 1" %% xsd:string,
+    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
+    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
+    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+    nidm:numberOfDimensions = "3" %% xsd:int,
+    nidm:dimensions = "[53,63,46]" %% xsd:string])
+  entity(niiri:coordinate_space_id_2,
+    [prov:type = 'nidm:coordinateSpace',
+    prov:label = "Coordinate space 2" %% xsd:string,
+    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
+    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
+    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+    nidm:numberOfDimensions = "3" %% xsd:int,
+    nidm:dimensions = "[53,63,46]" %% xsd:string])
+
   entity(niiri:statistical_map_id,
     [prov:type = 'nidm:statisticalMap',
     prov:location = "file:///path/to/spmT_0001.img" %% xsd:anyURI,
@@ -14,66 +33,68 @@ document
     nidm:statisticType = 'nidm:tStatistic',
     nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
     nidm:effectDegreesOfFreedom = "1" %% xsd:float,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  
   entity(niiri:data_scaling_id,
     [prov:type = 'nidm:dataScalingMap',
     prov:location = "file:///path/to/data_scaling.nii" %% xsd:anyURI,
     prov:label = "Data scaling" %% xsd:string,
     nidm:fileName = "data_scaling.nii" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
-    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  used(niiri:statistical_estimation_id, niiri:data_scaling_id)
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e18b6e01b0463fe7d40782137867a..." %% xsd:string])  
+
+  used(niiri:model_fitting_id, niiri:data_scaling_id,-)
   entity(niiri:contrast_map_id,
     [prov:type = 'nidm:contrastMap',
     prov:location = "file:///path/to/con_0001.img" %% xsd:anyURI,
     prov:label = "Contrast Map: listening > rest" %% xsd:string,
     nidm:contrastName = "listening > rest" %% xsd:string,
     nidm:fileName = "con_0001.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_map_id)
+  
+  
+  entity(niiri:beta_map_id_1,
+    [prov:type = 'nidm:betaMap',
+    prov:location = "file:///path/to/beta_0001.img" %% xsd:anyURI,
+    prov:label = "Beta Map 1" %% xsd:string,
+    nidm:fileName = "beta_0001.img" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "f51b6e01b0463fe7d40782137867a..." %% xsd:string])
+  
+
+  entity(niiri:beta_map_id_2,
+    [prov:type = 'nidm:betaMap',
+    prov:location = "file:///path/to/beta_0002.img" %% xsd:anyURI,
+    prov:label = "Beta Map 2" %% xsd:string,
+    nidm:contrastName = "listening &gt; rest" %% xsd:string,
+    nidm:fileName = "beta_0002.img" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "p89b6e01b0463fe7d40782137867a..." %% xsd:string])
+  
+
+  wasGeneratedBy(niiri:beta_map_id_1, niiri:model_fitting_id,-)
+  wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
+  used(niiri:contrast_estimation_id, niiri:beta_map_id_1, -)
+  used(niiri:contrast_estimation_id, niiri:beta_map_id_2, -)
+
   entity(niiri:contrast_standard_error_map_id,
     [prov:type = 'nidm:contrastStandardErrorMap',
     prov:location = "file:///path/to/contrastSE.nii" %% xsd:anyURI,
     prov:label = "Contrast Standard Error Map" %% xsd:string,
     nidm:fileName = "contrastSE.nii" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_standard_error_map_id)
+  
   entity(niiri:residual_mean_squares_map_id,
     [prov:type = 'nidm:residualMeanSquaresMap',
     prov:location = "file:///path/to/ResMS.img" %% xsd:anyURI,
     prov:label = "Residual Mean Squares Map" %% xsd:string,
     nidm:fileName = "ResMS.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasDerivedFrom(niiri:contrast_standard_error_map_id, niiri:residual_mean_squares_map_id)
+  
   entity(niiri:design_matrix_id,
     [prov:type = 'nidm:designMatrix',
     prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
@@ -84,26 +105,26 @@ document
     nidm:contrastName = "listening > rest" %% xsd:string,
     prov:label = "Contrast weights" %% xsd:string,
     prov:value = "[1, 0, 0]" %% xsd:string])
-  activity(niiri:statistical_estimation_id,
+  activity(niiri:model_fitting_id,
     [prov:type = 'spm:estimation',
     prov:label = "Statistical estimation"])
-  used(niiri:statistical_estimation_id, niiri:contrast_id)
-  used(niiri:statistical_estimation_id, niiri:design_matrix_id)
-  wasGeneratedBy(niiri:contrast_map_id, niiri:statistical_estimation_id)
-  wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:statistical_estimation_id)
-  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:statistical_estimation_id)
-  wasGeneratedBy(niiri:statistical_map_id, niiri:statistical_estimation_id)
+  used(niiri:model_fitting_id, niiri:design_matrix_id,-)
+  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
+  activity(niiri:contrast_estimation_id, -, -,
+    [prov:type = 'spm:contrast',
+    prov:label = "Contrast estimation"])
+  used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
+  used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
+  used(niiri:contrast_estimation_id, niiri:contrast_id,-)
+  wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
+  wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)  
+  wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id,-)
   entity(niiri:search_space_id,
     [prov:type = 'nidm:mask',
     prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
     prov:label = "Search Space" %% xsd:string,
     nidm:fileName = "mask.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_2',
     spm:searchVolumeInVoxels = "65593" %% xsd:int,
     spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
     spm:reselSize = "22.9229643140043" %% xsd:float,
@@ -112,6 +133,8 @@ document
     spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
     spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+ 
+  
   entity(niiri:height_threshold_id,
     [prov:type = 'nidm:heightThreshold',
     prov:label = "Height Threshold: p<0.05 (FWE)" %% xsd:string,
@@ -129,26 +152,27 @@ document
   activity(niiri:inference_id,
     [prov:type = 'spm:inference',
     prov:label = "Inference"])
-  used(niiri:inference_id, niiri:statistical_map_id)
-  used(niiri:inference_id, niiri:search_space_id)
-  used(niiri:inference_id, niiri:height_threshold_id)
-  used(niiri:inference_id, niiri:extent_threshold_id)
+  used(niiri:inference_id, niiri:statistical_map_id,-)
+  used(niiri:inference_id, niiri:search_space_id,-)
+  used(niiri:inference_id, niiri:height_threshold_id,-)
+  used(niiri:inference_id, niiri:extent_threshold_id,-)
   agent(niiri:software_id,
     [prov:type = 'nidm:spm',
     prov:type = 'prov:SoftwareAgent',
     prov:label = "SPM" %% xsd:string,
     nidm:softwareVersion = "SPM12b" %% xsd:string,
     nidm:softwareRevision = "5765" %% xsd:string])
-  wasAssociatedWith(niiri:inference_id, niiri:software_id)
+  wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
   entity(niiri:stat_image_properties_id,
     [prov:type = 'spm:statisticImageProperties',
+    prov:label = "Statistical image properties",
     spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
     spm:expectedNumberOfClusters = "0.0889172687960151" %% xsd:float,
     spm:heightCriticalThresholdFWE05 = "5.23529984739211" %% xsd:float,
     spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])
-  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id)
+  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id,-)
   entity(niiri:excursion_set_id,
     [prov:type = 'spm:excursionSet',
     prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
@@ -156,14 +180,10 @@ document
     spm:maximumIntensityProjection = "file:///path/to/MIP.png" %% xsd:anyURI,
     nidm:underlayFile = "file:///path/to/mwStructural.nii" %% xsd:anyURI,
     nidm:fileName = "thresh_spmT_0001.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
+    nidm:hasCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id)
+
+  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
   entity(niiri:set_level_statistic_id,
     [prov:type = 'spm:setLevelStatistic',
     prov:label = "Set Level Statistic" %% xsd:string,
@@ -210,7 +230,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0001" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "-60" %% xsd:float,
     nidm:coordinate2 = "-28" %% xsd:float,
     nidm:coordinate3 = "13" %% xsd:float])
@@ -228,7 +247,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0002" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "-66" %% xsd:float,
     nidm:coordinate2 = "-13" %% xsd:float,
     nidm:coordinate3 = "4" %% xsd:float])
@@ -246,7 +264,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0003" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "-63" %% xsd:float,
     nidm:coordinate2 = "-7" %% xsd:float,
     nidm:coordinate3 = "-2" %% xsd:float])
@@ -264,7 +281,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0004" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "57" %% xsd:float,
     nidm:coordinate2 = "-22" %% xsd:float,
     nidm:coordinate3 = "13" %% xsd:float])
@@ -282,7 +298,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0005" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "66" %% xsd:float,
     nidm:coordinate2 = "-13" %% xsd:float,
     nidm:coordinate3 = "-2" %% xsd:float])
@@ -300,7 +315,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0006" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "57" %% xsd:float,
     nidm:coordinate2 = "-40" %% xsd:float,
     nidm:coordinate3 = "7" %% xsd:float])
@@ -318,7 +332,6 @@ document
     [prov:type = 'prov:location',
     prov:type = 'nidm:coordinate',
     prov:label = "Coordinate: 0007" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:coordinate1 = "36" %% xsd:float,
     nidm:coordinate2 = "-31" %% xsd:float,
     nidm:coordinate3 = "-14" %% xsd:float])
