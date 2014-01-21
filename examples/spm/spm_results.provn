@@ -33,7 +33,7 @@ document
     nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
     nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
     crypto:sha = "e18b6e01b0463fe7d40782137867a..." %% xsd:string])  
-  used(niiri:statistical_estimation_id, niiri:data_scaling_id,-)
+  used(niiri:model_fitting_id, niiri:data_scaling_id,-)
   entity(niiri:contrast_map_id,
     [prov:type = 'nidm:contrastMap',
     prov:location = "file:///path/to/con_0001.img" %% xsd:anyURI,
@@ -73,8 +73,8 @@ document
     nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
     nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
     crypto:sha = "p89b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:beta_map_id_1, niiri:statistical_estimation_id,-)
-  wasGeneratedBy(niiri:beta_map_id_2, niiri:statistical_estimation_id,-)
+  wasGeneratedBy(niiri:beta_map_id_1, niiri:model_fitting_id,-)
+  wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
   used(niiri:contrast_estimation_id, niiri:beta_map_id_1, -)
   used(niiri:contrast_estimation_id, niiri:beta_map_id_2, -)
 
@@ -90,7 +90,7 @@ document
     nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
     nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasDerivedFrom(niiri:statistical_map_id, niiri:contrast_standard_error_map_id)
+  
   entity(niiri:residual_mean_squares_map_id,
     [prov:type = 'nidm:residualMeanSquaresMap',
     prov:location = "file:///path/to/ResMS.img" %% xsd:anyURI,
@@ -103,7 +103,7 @@ document
     nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
     nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasDerivedFrom(niiri:contrast_standard_error_map_id, niiri:residual_mean_squares_map_id)
+  
   entity(niiri:design_matrix_id,
     [prov:type = 'nidm:designMatrix',
     prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
@@ -114,14 +114,16 @@ document
     nidm:contrastName = "listening > rest" %% xsd:string,
     prov:label = "Contrast weights" %% xsd:string,
     prov:value = "[1, 0, 0]" %% xsd:string])
-  activity(niiri:statistical_estimation_id,
+  activity(niiri:model_fitting_id,
     [prov:type = 'spm:estimation',
     prov:label = "Statistical estimation"])
-  used(niiri:statistical_estimation_id, niiri:design_matrix_id,-)
-  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:statistical_estimation_id,-)
+  used(niiri:model_fitting_id, niiri:design_matrix_id,-)
+  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
   activity(niiri:contrast_estimation_id, -, -,
     [prov:type = 'spm:contrast',
     prov:label = "Contrast estimation"])
+  used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
+  used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
   used(niiri:contrast_estimation_id, niiri:contrast_id,-)
   wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
   wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)  
@@ -145,7 +147,7 @@ document
     spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
     spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:search_space_id, niiri:statistical_estimation_id,-)
+  
   
   entity(niiri:height_threshold_id,
     [prov:type = 'nidm:heightThreshold',
