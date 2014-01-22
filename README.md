@@ -12,6 +12,5 @@ information and resources.
 
 ### Developer Resources
 
-[Getting Started with NI-DM](https://github.com/ni-/ni-dm/wiki/Getting-Started-with-NI-DM)
-
-[Useful SPARQL Queries](https://github.com/ni-/ni-dm/wiki/Useful-sparql-queries)
+* [Getting Started with NI-DM](https://github.com/ni-/ni-dm/wiki/Getting-Started-with-NI-DM)
+* [Useful SPARQL Queries](https://github.com/ni-/ni-dm/wiki/Useful-sparql-queries)
