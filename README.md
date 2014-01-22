@@ -9,3 +9,9 @@ by the [INCF](http://www.incf.org) **N**euro **I**maging **DA**ta **SH**aring (N
 The goals of this repo are to foster collaboration among the standards developers working on 
 the NI-DM model, and to provide a common location where users of NI-DM can find related 
 information and resources.
+
+### Developer Resources
+
+[Getting Started with NI-DM](https://github.com/ni-/ni-dm/wiki/Getting-Started-with-NI-DM)
+
+[Useful SPARQL Queries](https://github.com/ni-/ni-dm/wiki/Useful-sparql-queries)
