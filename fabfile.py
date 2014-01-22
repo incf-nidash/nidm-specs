@@ -10,9 +10,17 @@ def clean():
         local('mkdir output')
 
 def copy_specs():
-    local('rm -r content/spec && '
-          'cp -r spec content/spec && '
-          'cp -r examples/*/spec/* content/spec')
+    if os.path.isdir('content/specs'):
+        local('rm -rf content/specs')
+        local('mkdir content/specs')
+        local('git checkout master -- spec examples')
+        local('git mv spec/* content/specs')
+        local('git mv examples/*/spec/* content/specs')
+    else:
+        local('mkdir content/specs')
+        local('git checkout master -- spec examples')
+        local('git mv spec/* content/specs')
+        local('git mv examples/*/spec/* content/specs')
 
 def build():
     clean()
