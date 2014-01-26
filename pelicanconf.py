@@ -6,7 +6,7 @@ AUTHOR = u'NIDASH'
 SITENAME = u'NIDASH Data Model'
 SITEURL = ''
 
-THEME = 'bootstrap2'
+THEME = 'pelican-bootstrap3'
 
 TIMEZONE = 'UTC'
 
