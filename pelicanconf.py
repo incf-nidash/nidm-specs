@@ -13,7 +13,7 @@ TIMEZONE = 'UTC'
 
 DEFAULT_LANG = u'en'
 
-STATIC_PATHS = ['images', 'spec', 'extra/CNAME']
+STATIC_PATHS = ['images', 'specs', 'extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 # Feed generation is usually not desired when developing
