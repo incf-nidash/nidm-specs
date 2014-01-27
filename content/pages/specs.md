@@ -1,0 +1,6 @@
+Title: NI-DM Specifications
+URL: specs/
+save_as: specs/index.html
+
+- [NI-DM Primer](http://nidm.nidash.org/NIDM_Spec.html)
+- [NI-DM SPM Results](http://nidm.nidash.org/SPM_Results_OM_NIDM_Spec.html)
