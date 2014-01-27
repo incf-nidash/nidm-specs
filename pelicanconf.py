@@ -28,7 +28,7 @@ LINKS =  (('INCF', 'http://incf.org'),
            '/Neuroimaging_Task_Force'),)
 
 # Social widget
-SOCIAL = (('GitHub', 'http://github.com/ni-'),)
+SOCIAL = (('github', 'http://github.com/ni-'),)
 
 # AddThis Pro
 ADDTHIS_PROFILE = 'ra-52e5a80938eff3d6'
