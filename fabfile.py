@@ -16,11 +16,13 @@ def copy_specs():
         local('git checkout master -- spec examples')
         local('git mv spec/* content/specs')
         local('git mv examples/*/spec/* content/specs')
+        local('rm -rf examples spec')
     else:
         local('mkdir content/specs')
         local('git checkout master -- spec examples')
         local('git mv spec/* content/specs')
         local('git mv examples/*/spec/* content/specs')
+        local('rm -rf examples spec')
 
 def build():
     clean()
