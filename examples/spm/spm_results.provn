@@ -336,4 +336,17 @@ document
     nidm:coordinate2 = "-31" %% xsd:float,
     nidm:coordinate3 = "-14" %% xsd:float])
   wasDerivedFrom(niiri:peak_0007, niiri:cluster_0003)
+    entity(niiri:input_data_id,
+    [prov:type = 'prov:collection',
+    prov:type = 'nidm:modelEstimationInputs',
+    prov:label = "Model Estimation Inputs"])
+  entity(niiri:scaled_data_id,
+    [prov:type = 'nidm:scaledData',
+    prov:location = "file:///path/to/sd_0001.nii.gz" %% xsd:anyURI,
+    prov:label = "Scaled Data" %% xsd:string,
+    nidm:fileName = "sd_0001.nii.gz" %% xsd:string,
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  hadMember(niiri:input_data_id, niiri:scaled_data_id)
+  hadMember(niiri:input_data_id, niiri:data_scaling_id)
+  used(niiri:model_fitting_id, niiri:input_data_id, -)
 endDocument
