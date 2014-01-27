@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'NIDASH'
+AUTHOR = u'NIDASH Task Force'
 SITENAME = u'NIDASH Data Model'
 SITEURL = ''
 
 THEME = 'pelican-bootstrap3'
+BOOTSTRAP_THEME = 'readable'
 
 TIMEZONE = 'UTC'
 
@@ -23,11 +24,29 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS =  (('INCF', 'http://incf.org'),
           ('NIDASH Wiki', 
-          	'http://wiki-new.incf.org/mediawiki/index.php'
-          	'/Neuroimaging_Task_Force'),)
+           'http://wiki-new.incf.org/mediawiki/index.php' \
+           '/Neuroimaging_Task_Force'),)
 
 # Social widget
 SOCIAL = (('GitHub', 'http://github.com/ni-'),)
+
+# AddThis Pro
+ADDTHIS_PROFILE = 'ra-52e5a80938eff3d6'
+
+# GitHub widget
+GITHUB_USER = 'ni-'
+GITHUB_REPO_COUNT = 3
+GITHUB_SKIP_FORK = True
+GITHUB_SHOW_USER_LINK = True
+
+# Side panel menu
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
+TAG_CLOUD_MAX_ITEMS = 25
+DISPLAY_TAGS_ON_SIDEBAR = True
+DISPLAY_CATEGORIES_ON_SIDEBAR = True
+DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
+RECENT_POST_COUNT = 5
 
 DEFAULT_PAGINATION = 10
 
