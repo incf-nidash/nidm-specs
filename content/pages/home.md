@@ -1,4 +1,4 @@
-Title: Welcome to the NIDASH Data Model
+Title:
 URL:
 save_as: index.html
 
