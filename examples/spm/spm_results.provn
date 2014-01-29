@@ -104,7 +104,6 @@ document
     nidm:contrastName = "listening > rest" %% xsd:string,
     prov:label = "Contrast weights" %% xsd:string,
     nidm:statisticType = 'nidm:tStatistic',
-    nidm:numberOfTails = 1,
     prov:value = "[1, 0, 0]" %% xsd:string])
   activity(niiri:model_fitting_id,
     [prov:type = 'spm:estimation',
@@ -152,7 +151,8 @@ document
     spm:pValueFWER = "1" %% xsd:float])
   activity(niiri:inference_id,
     [prov:type = 'spm:inference',
-    prov:label = "Inference"])
+    prov:label = "Inference",
+    nidm:statisticalTest = 'nidm:oneTailedTtest',])
   used(niiri:inference_id, niiri:statistical_map_id,-)
   used(niiri:inference_id, niiri:search_space_id,-)
   used(niiri:inference_id, niiri:height_threshold_id,-)
