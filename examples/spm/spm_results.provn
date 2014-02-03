@@ -102,17 +102,19 @@ document
   entity(niiri:contrast_id,
     [prov:type = 'nidm:contrast',
     nidm:contrastName = "listening > rest" %% xsd:string,
-    prov:label = "Contrast" %% xsd:string,
+    prov:label = "Contrast: Listening > Rest" %% xsd:string,
     nidm:statisticType = 'nidm:tStatistic',
     prov:value = "[1, 0, 0]" %% xsd:string])
   activity(niiri:model_fitting_id,
     [prov:type = 'spm:estimation',
     prov:label = "Model fitting"])
+  wasAssociatedWith(niiri:model_fitting_id, niiri:software_id,-)
   used(niiri:model_fitting_id, niiri:design_matrix_id,-)
   wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
   activity(niiri:contrast_estimation_id, -, -,
     [prov:type = 'spm:contrast',
     prov:label = "Contrast estimation"])
+  wasAssociatedWith(niiri:contrast_estimation_id, niiri:software_id,-)
   used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
   used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
   used(niiri:contrast_estimation_id, niiri:contrast_id,-)
@@ -144,7 +146,7 @@ document
     spm:pValueFWER = "0.05" %% xsd:float])
   entity(niiri:extent_threshold_id,
     [prov:type = 'nidm:extentThreshold',
-    prov:label = "Extent Threshold" %% xsd:string,
+    prov:label = "Extent Threshold: k>=0" %% xsd:string,
     nidm:clusterSizeInVoxels = "0" %% xsd:float,
     spm:clusterSizeInResels = "0" %% xsd:float,
     nidm:pValueUncorrected = "1" %% xsd:float,
@@ -152,7 +154,7 @@ document
   activity(niiri:inference_id,
     [prov:type = 'spm:inference',
     prov:label = "Inference",
-    nidm:statisticalTest = 'nidm:oneTailedTtest',])
+    nidm:statisticalTest = 'nidm:oneTailedTtest'])
   used(niiri:inference_id, niiri:statistical_map_id,-)
   used(niiri:inference_id, niiri:search_space_id,-)
   used(niiri:inference_id, niiri:height_threshold_id,-)
