@@ -56,8 +56,8 @@ document
     nidm:fileName = "beta_0001.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:beta_map_id_1, niiri:model_fitting_id)
-  used(niiri:contrast_estimation_id, niiri:beta_map_id_1)
+  wasGeneratedBy(niiri:beta_map_id_1, niiri:model_fitting_id,-)
+  used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
   entity(niiri:beta_map_id_2,
     [prov:type = 'nidm:betaMap',
     prov:location = "file:///path/to/beta_0002.img" %% xsd:anyURI,
@@ -65,8 +65,8 @@ document
     nidm:fileName = "beta_0002.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id)
-  used(niiri:contrast_estimation_id, niiri:beta_map_id_2)
+  wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
+  used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
   entity(niiri:contrast_standard_error_map_id,
     [prov:type = 'nidm:contrastStandardErrorMap',
     prov:type = 'spm:standardError',
@@ -91,12 +91,13 @@ document
     [prov:type = 'nidm:contrast',
     nidm:statisticType = 'nidm:tStatistic',
     nidm:contrastName = "listening > rest" %% xsd:string,
-    prov:label = "Contrast" %% xsd:string,
+    prov:label = "Contrast: Listening > Rest" %% xsd:string,
     prov:value = "[1, 0, 0]" %% xsd:string])
   activity(niiri:model_fitting_id,
     [prov:type = 'spm:estimation',
     prov:label = "Model fitting"])
-  used(niiri:model_fitting_id, niiri:design_matrix_id)
+  wasAssociatedWith(niiri:model_fitting_id, niiri:software_id,-)
+  used(niiri:model_fitting_id, niiri:design_matrix_id,-)
   entity(niiri:input_data_id,
     [prov:type = 'prov:collection',
     prov:type = 'nidm:modelEstimationInputs',
@@ -109,17 +110,18 @@ document
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   hadMember(niiri:input_data_id, niiri:scaled_data_id)
   hadMember(niiri:input_data_id, niiri:data_scaling_id)
-  used(niiri:model_fitting_id, niiri:input_data_id)
-  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id)
+  used(niiri:model_fitting_id, niiri:input_data_id,-)
+  wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
   activity(niiri:contrast_estimation_id,
     [prov:type = 'spm:contrast',
     prov:label = "Contrast estimation"])
-  used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id)
-  used(niiri:contrast_estimation_id, niiri:design_matrix_id)
-  used(niiri:contrast_estimation_id, niiri:contrast_id)
-  wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id)
-  wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id)
-  wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id)
+  wasAssociatedWith(niiri:contrast_estimation_id, niiri:software_id,-)
+  used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
+  used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
+  used(niiri:contrast_estimation_id, niiri:contrast_id,-)
+  wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
+  wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)
+  wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id,-)
   entity(niiri:search_space_id,
     [prov:type = 'nidm:mask',
     prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
@@ -143,7 +145,7 @@ document
     spm:pValueFWER = "0.05" %% xsd:float])
   entity(niiri:extent_threshold_id,
     [prov:type = 'nidm:extentThreshold',
-    prov:label = "Extent Threshold" %% xsd:string,
+    prov:label = "Extent Threshold: k>=0" %% xsd:string,
     nidm:clusterSizeInVoxels = "0" %% xsd:float,
     spm:clusterSizeInResels = "0" %% xsd:float,
     nidm:pValueUncorrected = "1" %% xsd:float,
@@ -152,17 +154,17 @@ document
     [prov:type = 'spm:inference',
     prov:label = "Inference",
     nidm:statisticalTest = 'nidm:oneTailedTtest'])
-  used(niiri:inference_id, niiri:statistical_map_id)
-  used(niiri:inference_id, niiri:search_space_id)
-  used(niiri:inference_id, niiri:height_threshold_id)
-  used(niiri:inference_id, niiri:extent_threshold_id)
+  used(niiri:inference_id, niiri:statistical_map_id,-)
+  used(niiri:inference_id, niiri:search_space_id,-)
+  used(niiri:inference_id, niiri:height_threshold_id,-)
+  used(niiri:inference_id, niiri:extent_threshold_id,-)
   agent(niiri:software_id,
     [prov:type = 'nidm:spm',
     prov:type = 'prov:SoftwareAgent',
     prov:label = "SPM" %% xsd:string,
     nidm:softwareVersion = "SPM12b" %% xsd:string,
     nidm:softwareRevision = "5853" %% xsd:string])
-  wasAssociatedWith(niiri:inference_id, niiri:software_id)
+  wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
   entity(niiri:stat_image_properties_id,
     [prov:type = 'spm:statisticImageProperties',
     prov:label = "Statistical image properties",
@@ -172,7 +174,7 @@ document
     spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
     spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])
-  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id)
+  wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id,-)
   entity(niiri:excursion_set_id,
     [prov:type = 'spm:excursionSet',
     prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
@@ -182,7 +184,7 @@ document
     nidm:fileName = "thresh_spmT_0001.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id)
+  wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
   entity(niiri:set_level_statistic_id,
     [prov:type = 'spm:setLevelStatistic',
     prov:label = "Set Level Statistic" %% xsd:string,
