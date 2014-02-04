@@ -34,11 +34,11 @@ document
     nidm:effectDegreesOfFreedom = "1" %% xsd:float,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  entity(niiri:data_scaling_id,
-    [prov:type = 'nidm:dataScalingMap',
-    prov:location = "file:///path/to/data_scaling.nii" %% xsd:anyURI,
-    prov:label = "Data scaling" %% xsd:string,
-    nidm:fileName = "data_scaling.nii" %% xsd:string,
+  entity(niiri:first_level_mean_BOLD_intensity,
+    [prov:type = 'nidm:firstLevelMeanBOLDIntensity',
+    prov:location = "file:///path/to/first_level_mean_BOLD_intensity.nii" %% xsd:anyURI,
+    prov:label = "First level mean BOLD intensity" %% xsd:string,
+    nidm:fileName = "first_level_mean_BOLD_intensity.nii" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   entity(niiri:contrast_map_id,
@@ -85,6 +85,7 @@ document
   entity(niiri:design_matrix_id,
     [prov:type = 'nidm:designMatrix',
     prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
+    nidm:visualisation = "file:///path/to/design_matrix.png" %% xsd:anyURI,
     prov:label = "Design Matrix" %% xsd:string,
     nidm:fileName = "design_matrix.csv" %% xsd:string])
   entity(niiri:contrast_id,
@@ -102,14 +103,14 @@ document
     [prov:type = 'prov:collection',
     prov:type = 'nidm:modelEstimationInputs',
     prov:label = "Model Estimation Inputs"])
-  entity(niiri:scaled_data_id,
-    [prov:type = 'nidm:scaledData',
+  entity(niiri:data_id,
+    [prov:type = 'nidm:data',
     prov:location = "file:///path/to/sd_0001.nii.gz" %% xsd:anyURI,
-    prov:label = "Scaled Data" %% xsd:string,
+    prov:label = "Data" %% xsd:string,
     nidm:fileName = "sd_0001.nii.gz" %% xsd:string,
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  hadMember(niiri:input_data_id, niiri:scaled_data_id)
-  hadMember(niiri:input_data_id, niiri:data_scaling_id)
+  hadMember(niiri:input_data_id, niiri:data_id)
+  hadMember(niiri:input_data_id, niiri:first_level_mean_BOLD_intensity)
   used(niiri:model_fitting_id, niiri:input_data_id,-)
   wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
   activity(niiri:contrast_estimation_id,
@@ -179,6 +180,7 @@ document
     [prov:type = 'spm:excursionSet',
     prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
     prov:label = "Excursion Set" %% xsd:string,
+    nidm:clusterLabels = "file:///path/to/cluster_labels.img" %% xsd:anyURI,
     spm:maximumIntensityProjection = "file:///path/to/MIP.png" %% xsd:anyURI,
     nidm:underlayFile = "file:///path/to/mwStructural.nii" %% xsd:anyURI,
     nidm:fileName = "thresh_spmT_0001.img" %% xsd:string,
