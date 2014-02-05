@@ -49,6 +49,15 @@ document
     nidm:fileName = "con_0001.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  entity(niiri:mask_id_2,
+    [prov:type = 'nidm:maskMap',
+    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+    prov:label = "Mask" %% xsd:string,
+    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  wasGeneratedBy(niiri:mask_id_2, niiri:model_fitting_id,-)
+  used(niiri:model_fitting_id, niiri:mask_id_1,-)
   entity(niiri:beta_map_id_1,
     [prov:type = 'nidm:betaMap',
     prov:location = "file:///path/to/beta_0001.img" %% xsd:anyURI,
@@ -67,6 +76,17 @@ document
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
   used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
+  entity(niiri:mask_id_3,
+    [prov:type = 'nidm:maskMap',
+    prov:location = "file:///path/to/custom_mask_2.nii" %% xsd:anyURI,
+    prov:label = "Custom mask 2" %% xsd:string,
+    nidm:maskType = 'nidm:inclusiveMask',
+    nidm:fileName = "custom_mask_2.nii" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  used(niiri:contrast_estimation_id, niiri:mask_id_3,-)
+  used(niiri:contrast_estimation_id, niiri:mask_id_2,-)
+
   entity(niiri:contrast_standard_error_map_id,
     [prov:type = 'nidm:contrastStandardErrorMap',
     prov:type = 'spm:standardError',
@@ -88,6 +108,14 @@ document
     nidm:visualisation = "file:///path/to/design_matrix.png" %% xsd:anyURI,
     prov:label = "Design Matrix" %% xsd:string,
     nidm:fileName = "design_matrix.csv" %% xsd:string])
+  entity(niiri:mask_id_1,
+    [prov:type = 'nidm:maskMap',
+    prov:location = "file:///path/to/custom_mask.nii" %% xsd:anyURI,
+    prov:label = "Custom mask" %% xsd:string,
+    nidm:fileName = "custom_mask.nii" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  used(niiri:model_fitting_id, niiri:mask_id_1,-)
   entity(niiri:contrast_id,
     [prov:type = 'nidm:contrast',
     nidm:statisticType = 'nidm:tStatistic',
