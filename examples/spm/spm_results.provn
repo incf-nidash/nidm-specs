@@ -142,11 +142,18 @@ document
   wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
   wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)
   wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id,-)
+  entity(niiri:sub_volume_id,
+    [prov:type = 'nidm:subVolumeMask',
+    prov:location = "file:///path/to/svc_mask.nii" %% xsd:anyURI,
+    prov:label = "Sub-volume" %% xsd:string,
+    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_2',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   entity(niiri:search_space_id,
     [prov:type = 'nidm:mask',
-    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+    prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
     prov:label = "Search Space" %% xsd:string,
-    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:fileName = "final_mask.nii" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_2',
     spm:searchVolumeInVoxels = "65593" %% xsd:int,
     spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
@@ -175,7 +182,8 @@ document
     prov:label = "Inference",
     nidm:statisticalTest = 'nidm:oneTailedTtest'])
   used(niiri:inference_id, niiri:statistical_map_id,-)
-  used(niiri:inference_id, niiri:search_space_id,-)
+  used(niiri:inference_id, niiri:sub_volume_id,-)
+  wasGeneratedBy(niiri:search_space_id,niiri:inference_id,-)
   used(niiri:inference_id, niiri:height_threshold_id,-)
   used(niiri:inference_id, niiri:extent_threshold_id,-)
   agent(niiri:software_id,

@@ -30,11 +30,11 @@
   "wasGeneratedBy": {
     "_:wGB9": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:excursion_set_id"
+      "prov:entity": "niiri:stat_image_properties_id"
     },
     "_:wGB8": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:stat_image_properties_id"
+      "prov:entity": "niiri:search_space_id"
     },
     "_:wGB7": {
       "prov:activity": "niiri:contrast_estimation_id",
@@ -51,6 +51,10 @@
     "_:wGB3": {
       "prov:activity": "niiri:model_fitting_id",
       "prov:entity": "niiri:beta_map_id_2"
+    },
+    "_:wGB10": {
+      "prov:activity": "niiri:inference_id",
+      "prov:entity": "niiri:excursion_set_id"
     },
     "_:wGB4": {
       "prov:activity": "niiri:model_fitting_id",
@@ -543,7 +547,7 @@
         "type": "xsd:string"
       },
       "nidm:fileName": {
-        "$": "mask.img",
+        "$": "final_mask.nii",
         "type": "xsd:string"
       },
       "spm:searchVolumeInProductOfUnits": {
@@ -551,7 +555,7 @@
         "type": "xsd:float"
       },
       "prov:location": {
-        "$": "file:///path/to/mask.img",
+        "$": "file:///path/to/final_mask.nii",
         "type": "xsd:anyURI"
       },
       "spm:noiseFWHMInUnits": {
@@ -852,6 +856,37 @@
       },
       "prov:label": "Contrast: Listening \u003e Rest"
     },
+    "niiri:peak_0001": {
+      "spm:qValueFDR": {
+        "$": "6.3705194444993e-11",
+        "type": "xsd:float"
+      },
+      "prov:type": {
+        "$": "spm:peakLevelStatistic",
+        "type": "xsd:QName"
+      },
+      "spm:pValueFWER": {
+        "$": "0",
+        "type": "xsd:float"
+      },
+      "nidm:equivalentZStatistic": {
+        "$": "999999999",
+        "type": "xsd:float"
+      },
+      "prov:value": {
+        "$": "13.9346199035645",
+        "type": "xsd:float"
+      },
+      "prov:location": {
+        "$": "niiri:coordinate_0001",
+        "type": "xsd:QName"
+      },
+      "nidm:pValueUncorrected": {
+        "$": "4.44089209850063e-16",
+        "type": "xsd:float"
+      },
+      "prov:label": "Peak Level Statistic: 0001"
+    },
     "niiri:design_matrix_id": {
       "prov:type": {
         "$": "nidm:designMatrix",
@@ -901,37 +936,6 @@
         "type": "xsd:float"
       },
       "prov:label": "Statistical image properties"
-    },
-    "niiri:peak_0001": {
-      "spm:qValueFDR": {
-        "$": "6.3705194444993e-11",
-        "type": "xsd:float"
-      },
-      "prov:type": {
-        "$": "spm:peakLevelStatistic",
-        "type": "xsd:QName"
-      },
-      "spm:pValueFWER": {
-        "$": "0",
-        "type": "xsd:float"
-      },
-      "nidm:equivalentZStatistic": {
-        "$": "999999999",
-        "type": "xsd:float"
-      },
-      "prov:value": {
-        "$": "13.9346199035645",
-        "type": "xsd:float"
-      },
-      "prov:location": {
-        "$": "niiri:coordinate_0001",
-        "type": "xsd:QName"
-      },
-      "nidm:pValueUncorrected": {
-        "$": "4.44089209850063e-16",
-        "type": "xsd:float"
-      },
-      "prov:label": "Peak Level Statistic: 0001"
     },
     "niiri:peak_0002": {
       "spm:qValueFDR": {
@@ -1081,6 +1085,29 @@
         "$": "niiri:coordinate_space_id_1",
         "type": "xsd:QName"
       }
+    },
+    "niiri:sub_volume_id": {
+      "prov:type": {
+        "$": "nidm:subVolumeMask",
+        "type": "xsd:QName"
+      },
+      "crypto:sha": {
+        "$": "e43b6e01b0463fe7d40782137867a...",
+        "type": "xsd:string"
+      },
+      "nidm:fileName": {
+        "$": "mask.img",
+        "type": "xsd:string"
+      },
+      "prov:location": {
+        "$": "file:///path/to/svc_mask.nii",
+        "type": "xsd:anyURI"
+      },
+      "prov:label": "Sub-volume",
+      "nidm:coordinateSpace": {
+        "$": "niiri:coordinate_space_id_2",
+        "type": "xsd:QName"
+      }
     }
   },
   "prefix": {
@@ -1156,7 +1183,7 @@
     },
     "_:u12": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:search_space_id"
+      "prov:entity": "niiri:sub_volume_id"
     },
     "_:u11": {
       "prov:activity": "niiri:inference_id",
