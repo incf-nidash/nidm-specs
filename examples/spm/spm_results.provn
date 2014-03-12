@@ -49,6 +49,15 @@ document
     nidm:fileName = "con_0001.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  entity(niiri:mask_id_2,
+    [prov:type = 'nidm:maskMap',
+    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+    prov:label = "Mask" %% xsd:string,
+    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  wasGeneratedBy(niiri:mask_id_2, niiri:model_fitting_id,-)
+  used(niiri:model_fitting_id, niiri:mask_id_1,-)
   entity(niiri:beta_map_id_1,
     [prov:type = 'nidm:betaMap',
     prov:location = "file:///path/to/beta_0001.img" %% xsd:anyURI,
@@ -67,6 +76,7 @@ document
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
   used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
+
   entity(niiri:contrast_standard_error_map_id,
     [prov:type = 'nidm:contrastStandardErrorMap',
     prov:type = 'spm:standardError',
@@ -88,6 +98,14 @@ document
     nidm:visualisation = "file:///path/to/design_matrix.png" %% xsd:anyURI,
     prov:label = "Design Matrix" %% xsd:string,
     nidm:fileName = "design_matrix.csv" %% xsd:string])
+  entity(niiri:mask_id_1,
+    [prov:type = 'nidm:maskMap',
+    prov:location = "file:///path/to/custom_mask.nii" %% xsd:anyURI,
+    prov:label = "Custom mask" %% xsd:string,
+    nidm:fileName = "custom_mask.nii" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  used(niiri:model_fitting_id, niiri:mask_id_1,-)
   entity(niiri:contrast_id,
     [prov:type = 'nidm:contrast',
     nidm:statisticType = 'nidm:tStatistic',
@@ -117,17 +135,25 @@ document
     [prov:type = 'spm:contrast',
     prov:label = "Contrast estimation"])
   wasAssociatedWith(niiri:contrast_estimation_id, niiri:software_id,-)
+  used(niiri:contrast_estimation_id, niiri:mask_id_2,-)
   used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
   used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
   used(niiri:contrast_estimation_id, niiri:contrast_id,-)
   wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
   wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)
   wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id,-)
+  entity(niiri:sub_volume_id,
+    [prov:type = 'nidm:subVolumeMask',
+    prov:location = "file:///path/to/svc_mask.nii" %% xsd:anyURI,
+    prov:label = "Sub-volume" %% xsd:string,
+    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_2',
+    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   entity(niiri:search_space_id,
     [prov:type = 'nidm:mask',
-    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+    prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
     prov:label = "Search Space" %% xsd:string,
-    nidm:fileName = "mask.img" %% xsd:string,
+    nidm:fileName = "final_mask.nii" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_2',
     spm:searchVolumeInVoxels = "65593" %% xsd:int,
     spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
@@ -155,8 +181,10 @@ document
     [prov:type = 'spm:inference',
     prov:label = "Inference",
     nidm:statisticalTest = 'nidm:oneTailedTtest'])
+  used(niiri:inference_id, niiri:mask_id_2,-)
   used(niiri:inference_id, niiri:statistical_map_id,-)
-  used(niiri:inference_id, niiri:search_space_id,-)
+  used(niiri:inference_id, niiri:sub_volume_id,-)
+  wasGeneratedBy(niiri:search_space_id,niiri:inference_id,-)
   used(niiri:inference_id, niiri:height_threshold_id,-)
   used(niiri:inference_id, niiri:extent_threshold_id,-)
   agent(niiri:software_id,
