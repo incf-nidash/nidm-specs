@@ -92,14 +92,14 @@ document
     nidm:fileName = "ResMS.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  entity(niiri:resels_per_voxels_map_id,
+  entity(niiri:resels_per_voxel_map_id,
     [prov:type = 'spm:reselsPerVoxelMap',
     prov:location = "file:///path/to/RPV.img" %% xsd:anyURI,
     prov:label = "Resels per Voxel Map" %% xsd:string,
     nidm:fileName = "RPV.img" %% xsd:string,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  used(niiri:inference_id, niiri:resels_per_voxels_map_id,-)
+  used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
   entity(niiri:design_matrix_id,
     [prov:type = 'nidm:designMatrix',
     prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
@@ -139,7 +139,7 @@ document
   hadMember(niiri:input_data_id, niiri:first_level_mean_BOLD_intensity)
   used(niiri:model_fitting_id, niiri:input_data_id,-)
   wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
-  wasGeneratedBy(niiri:resels_per_voxels_map_id, niiri:model_fitting_id,-)
+  wasGeneratedBy(niiri:resels_per_voxel_map_id, niiri:model_fitting_id,-)
   
   activity(niiri:contrast_estimation_id,
     [prov:type = 'spm:contrast',
