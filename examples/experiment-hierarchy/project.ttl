@@ -12,25 +12,8 @@
 @prefix niiri: <http://iri.nidash.org/> .
 @prefix : <#> .
 
-# Metadata about this set of dataset descriptors
-<> a void:DatasetDescription;
-	dcterms:title "A VoID Description of the NITRC-IR Dataset";
-	foaf:primaryTopic <http://www.nitrc.org/ir/>;
-	.
-	
-
-# Reference to the NITRC IR
-<http://www.nitrc.org/ir/> a void:Datast;
-	dcterms:title "NITRC-IR";
-	dcterms:description "NITRC Image Repository";
-    foaf:homepage <http://www.nitrc.org/ir/>;
-	void:subset <http://www.nitrc.org/ir/data/projects/ABIDE>;
-	void:subset <http://www.nitrc.org/ir/data/projects/projectB>;
-	void:subset <http://www.nitrc.org/ir/data/projects/projectC>
-	.
-
 # The ABIDE dataset with core terms.
-<http://www.nitrc.org/ir/data/projects/ABIDE> a void:Dataset, 
+<http://www.nitrc.org/ir/data/projects/ABIDE/> a void:Dataset, 
 												prov:Entity, 
 												nidm:Project;
 	dcterms:title "ABIDE";
@@ -65,9 +48,10 @@
 					<http://www.w3.org/ns/prov-o/>,
 					<http://xmlns.com/foaf/0.1/>;
 	void:triples 1000000000;
+	void:inDataset  <http://www.nitrc.org/ir/>;
 	prov:wasAttributedTo niiri:investigatorExample;
 	prov:wasGeneratedBy niiri:projectActivityExample;
-	dcterms:hasPart niiri:studyObjectExample;
+	dcterms:hasPart niiri:studyExample;
 	.
 
 # Provide contact information for the ABIDE dataset.
@@ -77,27 +61,19 @@
 	foaf:mbox <mailto:mostofsky@kennedykrieger.org>;
 	foaf:mbox <mailto:michael.milham@childmind.org>;
 	.
-	
-<http://www.nitrc.org/ir/data/projects/projectB> a void:Dataset, 
-												   prov:Entity, 
-												   nidm:Project;
-	dcterms:title "Project B";
-	dcterms:description "This is Project B";
-    dcterms:contributor :PI-B;
-    dcterms:source <http://central.xnat.org/data/projects>;
-	dcterms:created "2008-11-17"^^xsd:date;
-    dcterms:modified "2007-11-17"^^xsd:date;
-	prov:wasGeneratedBy :projectActivityB;
+
+# Associate a project actiity with the project object
+niiri:projectActivityExample a prov:Activity, nidm:ProjectActivity;
+	prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+	prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+	prov:wasAssociatedWith <http://fcon_1000.projects.nitrc.org/indi/>;
+	prov:qualifiedAssociation niiri:projectAssociationExample;
 	.
 	
-<http://www.nitrc.org/ir/data/projects/projectC> a void:Dataset, 
-												   prov:Entity, 
-												   nidm:Project;
-	dcterms:title "Project C";
-	dcterms:description "This is Project C";
-    dcterms:contributor :PI_B;
-    dcterms:source <http://central.xnat.org/data/projects>;
-	dcterms:created "2008-11-17"^^xsd:date;
-    dcterms:modified "2006-11-17"^^xsd:date;
-	prov:wasGeneratedBy :projectActivityC;
+# Associate a role, agent, and plan with the project Activity
+niiri:projectAssociationExample a prov:Association;
+	prov:hadRole :institution;
+	prov:agent <http://fcon_1000.projects.nitrc.org/indi/>;
+	prov:hadPlan :projectProtocol;
 	.
+	 

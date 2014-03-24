@@ -1,0 +1,47 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov-o/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix waiver: <http://vocab.org/waiver/terms/> .
+@prefix xnat: <http://www.nitrc.org/ir/data/> .
+@prefix nidm: <http://nidm.nidash.org/terms> .
+@prefix niiri: <http://iri.nidash.org/> .
+@prefix : <#> .
+
+# An example study resource
+niiri:studyExample a prov:Entity, nidm:Study;
+	dcterms:title "Demographics Questionnaire";
+	dcterms:description "A survey of basic deographics.";
+    dcterms:source <http://www.nitrc.org/ir/data/projects/ABIDE>;
+	dcterms:date "2009-11-25"^^xsd:date;
+	dcterms:created "2009-11-25"^^xsd:date;
+	dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:modified "2009-11-25"^^xsd:date;
+	prov:wasAttributedTo niiri:investigatorExample;
+	prov:wasGeneratedBy niiri:projectActivityExample;
+	dcterms:hasPart niiri:studyExample;
+	.
+
+# Provide contact information for the ABIDE dataset.
+:person a foaf:Person;
+	rdfs:label "Intenational Neuroimaging Data-sharing Initiative";
+	.
+
+# Associate a project actiity with the project object
+niiri:studyActivityExample a prov:Activity, nidm:ProjectActivity;
+	prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+	prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+	prov:wasAssociatedWith <http://fcon_1000.projects.nitrc.org/indi/>;
+	prov:qualifiedAssociation niiri:projectAssociationExample;
+	.
+	
+# Associate a role, agent, and plan with the project Activity
+niiri:projectAssociationExample a prov:Association;
+	prov:hadRole :institution;
+	prov:agent <http://fcon_1000.projects.nitrc.org/indi/>;
+	prov:hadPlan :projectProtocol;
+	.
