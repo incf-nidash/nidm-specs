@@ -30,15 +30,15 @@
   "wasGeneratedBy": {
     "_:wGB9": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:stat_image_properties_id"
+      "prov:entity": "niiri:search_space_id"
     },
     "_:wGB8": {
-      "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:search_space_id"
+      "prov:activity": "niiri:contrast_estimation_id",
+      "prov:entity": "niiri:statistical_map_id"
     },
     "_:wGB7": {
       "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:statistical_map_id"
+      "prov:entity": "niiri:contrast_standard_error_map_id"
     },
     "_:wGB1": {
       "prov:activity": "niiri:model_fitting_id",
@@ -48,25 +48,29 @@
       "prov:activity": "niiri:model_fitting_id",
       "prov:entity": "niiri:beta_map_id_1"
     },
+    "_:wGB11": {
+      "prov:activity": "niiri:inference_id",
+      "prov:entity": "niiri:excursion_set_id"
+    },
     "_:wGB3": {
       "prov:activity": "niiri:model_fitting_id",
       "prov:entity": "niiri:beta_map_id_2"
     },
     "_:wGB10": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:excursion_set_id"
+      "prov:entity": "niiri:stat_image_properties_id"
     },
     "_:wGB4": {
       "prov:activity": "niiri:model_fitting_id",
       "prov:entity": "niiri:residual_mean_squares_map_id"
     },
     "_:wGB5": {
-      "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:contrast_map_id"
+      "prov:activity": "niiri:model_fitting_id",
+      "prov:entity": "niiri:resels_per_voxel_map_id"
     },
     "_:wGB6": {
       "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:contrast_standard_error_map_id"
+      "prov:entity": "niiri:contrast_map_id"
     }
   },
   "entity": {
@@ -320,17 +324,21 @@
         "$": "spm:clusterLevelStatistic",
         "type": "xsd:QName"
       },
-      "spm:pValueFWER": {
-        "$": "0",
-        "type": "xsd:float"
-      },
       "nidm:clusterSizeInVoxels": {
         "$": "445",
         "type": "xsd:int"
       },
+      "spm:pValueNonStationaryFWER": {
+        "$": "0",
+        "type": "xsd:float"
+      },
       "nidm:pValueUncorrected": {
         "$": "3.91543427861809e-46",
         "type": "xsd:float"
+      },
+      "nidm:labelId": {
+        "$": "2",
+        "type": "xsd:string"
       },
       "prov:label": "Cluster Level Statistic: 0002",
       "spm:clusterSizeInResels": {
@@ -347,17 +355,21 @@
         "$": "spm:clusterLevelStatistic",
         "type": "xsd:QName"
       },
-      "spm:pValueFWER": {
-        "$": "1.39237954499549e-10",
-        "type": "xsd:float"
-      },
       "nidm:clusterSizeInVoxels": {
         "$": "38",
         "type": "xsd:int"
       },
+      "spm:pValueNonStationaryFWER": {
+        "$": "1.39237954499549e-10",
+        "type": "xsd:float"
+      },
       "nidm:pValueUncorrected": {
         "$": "1.56592642027122e-09",
         "type": "xsd:float"
+      },
+      "nidm:labelId": {
+        "$": "3",
+        "type": "xsd:string"
       },
       "prov:label": "Cluster Level Statistic: 0003",
       "spm:clusterSizeInResels": {
@@ -424,17 +436,21 @@
         "$": "spm:clusterLevelStatistic",
         "type": "xsd:QName"
       },
-      "spm:pValueFWER": {
-        "$": "0",
-        "type": "xsd:float"
-      },
       "nidm:clusterSizeInVoxels": {
         "$": "530",
         "type": "xsd:int"
       },
+      "spm:pValueNonStationaryFWER": {
+        "$": "0",
+        "type": "xsd:float"
+      },
       "nidm:pValueUncorrected": {
         "$": "9.56276736481136e-52",
         "type": "xsd:float"
+      },
+      "nidm:labelId": {
+        "$": "1",
+        "type": "xsd:string"
       },
       "prov:label": "Cluster Level Statistic: 0001",
       "spm:clusterSizeInResels": {
@@ -466,6 +482,29 @@
         "type": "xsd:float"
       },
       "prov:label": "Coordinate: 0001"
+    },
+    "niiri:resels_per_voxel_map_id": {
+      "prov:type": {
+        "$": "spm:reselsPerVoxelMap",
+        "type": "xsd:QName"
+      },
+      "crypto:sha": {
+        "$": "e43b6e01b0463fe7d40782137867a...",
+        "type": "xsd:string"
+      },
+      "nidm:fileName": {
+        "$": "RPV.img",
+        "type": "xsd:string"
+      },
+      "prov:location": {
+        "$": "file:///path/to/RPV.img",
+        "type": "xsd:anyURI"
+      },
+      "prov:label": "Resels per Voxel Map",
+      "nidm:coordinateSpace": {
+        "$": "niiri:coordinate_space_id_1",
+        "type": "xsd:QName"
+      }
     },
     "niiri:coordinate_0005": {
       "prov:type": [
@@ -638,12 +677,12 @@
         "$": "nidm:heightThreshold",
         "type": "xsd:QName"
       },
-      "spm:pValueFWER": {
-        "$": "0.05",
-        "type": "xsd:float"
-      },
       "prov:value": {
         "$": "5.23529984739211",
+        "type": "xsd:float"
+      },
+      "spm:pValueNonStationaryFWER": {
+        "$": "0.05",
         "type": "xsd:float"
       },
       "nidm:pValueUncorrected": {
@@ -715,12 +754,12 @@
         "$": "nidm:extentThreshold",
         "type": "xsd:QName"
       },
-      "spm:pValueFWER": {
-        "$": "1",
-        "type": "xsd:float"
-      },
       "nidm:clusterSizeInVoxels": {
         "$": "0",
+        "type": "xsd:float"
+      },
+      "spm:pValueNonStationaryFWER": {
+        "$": "1",
         "type": "xsd:float"
       },
       "nidm:pValueUncorrected": {
@@ -1167,15 +1206,19 @@
   "used": {
     "_:u14": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:extent_threshold_id"
+      "prov:entity": "niiri:height_threshold_id"
     },
     "_:u13": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:height_threshold_id"
+      "prov:entity": "niiri:sub_volume_id"
+    },
+    "_:u15": {
+      "prov:activity": "niiri:inference_id",
+      "prov:entity": "niiri:extent_threshold_id"
     },
     "_:u10": {
-      "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:mask_id_2"
+      "prov:activity": "niiri:contrast_estimation_id",
+      "prov:entity": "niiri:contrast_id"
     },
     "_:u1": {
       "prov:activity": "niiri:contrast_estimation_id",
@@ -1183,15 +1226,15 @@
     },
     "_:u12": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:sub_volume_id"
+      "prov:entity": "niiri:statistical_map_id"
     },
     "_:u11": {
       "prov:activity": "niiri:inference_id",
-      "prov:entity": "niiri:statistical_map_id"
+      "prov:entity": "niiri:mask_id_2"
     },
     "_:u3": {
-      "prov:activity": "niiri:model_fitting_id",
-      "prov:entity": "niiri:mask_id_1"
+      "prov:activity": "niiri:inference_id",
+      "prov:entity": "niiri:resels_per_voxel_map_id"
     },
     "_:u2": {
       "prov:activity": "niiri:contrast_estimation_id",
@@ -1199,27 +1242,27 @@
     },
     "_:u5": {
       "prov:activity": "niiri:model_fitting_id",
-      "prov:entity": "niiri:input_data_id"
+      "prov:entity": "niiri:design_matrix_id"
     },
     "_:u4": {
       "prov:activity": "niiri:model_fitting_id",
-      "prov:entity": "niiri:design_matrix_id"
+      "prov:entity": "niiri:mask_id_1"
     },
     "_:u7": {
       "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:residual_mean_squares_map_id"
+      "prov:entity": "niiri:mask_id_2"
     },
     "_:u6": {
-      "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:mask_id_2"
+      "prov:activity": "niiri:model_fitting_id",
+      "prov:entity": "niiri:input_data_id"
     },
     "_:u9": {
       "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:contrast_id"
+      "prov:entity": "niiri:design_matrix_id"
     },
     "_:u8": {
       "prov:activity": "niiri:contrast_estimation_id",
-      "prov:entity": "niiri:design_matrix_id"
+      "prov:entity": "niiri:residual_mean_squares_map_id"
     }
   },
   "agent": {
