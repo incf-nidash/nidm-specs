@@ -12,36 +12,40 @@
 @prefix niiri: <http://iri.nidash.org/> .
 @prefix : <#> .
 
-# An example study resource
-niiri:studyExample a prov:Entity, nidm:Study;
-	dcterms:title "Demographics Questionnaire";
-	dcterms:description "A survey of basic deographics.";
+# An example study resource.
+<http://www.nitrc.org/ir/data/projects/ABIDE/> a prov:Entity,
+                                                 nidm:Study,
+                                                 nidm:Demographics;
+    dcterms:title "Demographics Questionnaire";
+    dcterms:description "A survey of basic demographics.";
     dcterms:source <http://www.nitrc.org/ir/data/projects/ABIDE>;
-	dcterms:date "2009-11-25"^^xsd:date;
-	dcterms:created "2009-11-25"^^xsd:date;
-	dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:date "2009-11-25"^^xsd:date;
+    dcterms:created "2009-11-25"^^xsd:date;
+    dcterms:issued "2009-11-25"^^xsd:date;
     dcterms:modified "2009-11-25"^^xsd:date;
-	prov:wasAttributedTo niiri:investigatorExample;
-	prov:wasGeneratedBy niiri:projectActivityExample;
-	dcterms:hasPart niiri:studyExample;
-	.
+    prov:wasAttributedTo niiri:participantExample;
+    prov:wasGeneratedBy niiri:studyActivityExample;
+    dcterms:hasPart niiri:acquisitionExample;
+    dcterms:isPartOf <http://www.nitrc.org/ir/data/projects/ABIDE/>;
+    nidm:visit niiri:baselineVisit;
+    .
 
-# Provide contact information for the ABIDE dataset.
-:person a foaf:Person;
-	rdfs:label "Intenational Neuroimaging Data-sharing Initiative";
-	.
+# Provide a subject that this questionaire is performed on.
+niiri:participantExample a foaf:Person, prov:Person;
+    rdfs:label "PersonA";
+    .
 
-# Associate a project actiity with the project object
-niiri:studyActivityExample a prov:Activity, nidm:ProjectActivity;
-	prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
-	prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
-	prov:wasAssociatedWith <http://fcon_1000.projects.nitrc.org/indi/>;
-	prov:qualifiedAssociation niiri:projectAssociationExample;
-	.
-	
-# Associate a role, agent, and plan with the project Activity
+# Associate a study activity with the study object.
+niiri:studyActivityExample a prov:Activity, nidm:StudyActivity;
+    prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+    prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+    prov:wasAssociatedWith niiri:participantExample;
+    prov:qualifiedAssociation niiri:projectAssociationExample;
+    .
+
+# Associate a role, agent, and plan with the study activity.
 niiri:projectAssociationExample a prov:Association;
-	prov:hadRole :institution;
-	prov:agent <http://fcon_1000.projects.nitrc.org/indi/>;
-	prov:hadPlan :projectProtocol;
-	.
+    prov:hadRole nidm:participant;
+    prov:agent niiri:participantExample;
+    prov:hadPlan niiri:visitProtocol;
+    .

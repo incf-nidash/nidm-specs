@@ -8,9 +8,10 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix waiver: <http://vocab.org/waiver/terms/> .
 @prefix xnat: <http://www.nitrc.org/ir/data/> .
-@prefix nidm: <http://nidm.nidash.org/terms> .
+@prefix nidm: <http://nidm.nidash.org/terms/> .
 @prefix niiri: <http://iri.nidash.org/> .
 @prefix : <#> .
+
 
 # Metadata about this set of dataset descriptors
 <> a void:DatasetDescription;
@@ -23,13 +24,13 @@
     dcterms:title "NITRC-IR";
     dcterms:description "NITRC Image Repository";
     foaf:homepage <http://www.nitrc.org/ir/>;
-    void:subset <http://www.nitrc.org/ir/data/projects/ABIDE>;
+    void:subset <http://www.nitrc.org/ir/data/projects/ABIDE/>;
     void:subset <http://www.nitrc.org/ir/data/projects/projectB>;
     void:subset <http://www.nitrc.org/ir/data/projects/projectC>
     .
 
 # The ABIDE dataset with core terms.
-<http://www.nitrc.org/ir/data/projects/ABIDE> a void:Dataset, 
+<http://www.nitrc.org/ir/data/projects/ABIDE/> a void:Dataset, 
                                                 prov:Entity, 
                                                 nidm:Project;
     dcterms:title "ABIDE";
@@ -54,7 +55,7 @@
     void:feature <http://www.w3.org/ns/formats/Turtle>;
     void:sparqlEndpoint <http://iri.nidash.org/sparql>;
     void:dataDump <http://fcon_1000.projects.nitrc.org/indi/abide/abide.ttl>;
-    void:rootResource niiri:projectExample;
+    void:rootResource <http://www.nitrc.org/ir/data/projects/ABIDE/>;
     void:uriLookupEndpoint <http://iri.nidash.org/describe/term/>;
     void:exampleResource niiri:exampleStudyAbide;
     void:exampleResource niiri:exampleAcquisitionAbide;
@@ -99,4 +100,100 @@
     dcterms:created "2008-11-17"^^xsd:date;
     dcterms:modified "2006-11-17"^^xsd:date;
     prov:wasGeneratedBy :projectActivityC;
+    .
+
+# Provide contact information for the ABIDE dataset.
+<http://fcon_1000.projects.nitrc.org/indi/> a foaf:Organization;
+    rdfs:label "Intenational Neuroimaging Data-sharing Initiative";
+    foaf:mbox <mailto:dimara01@nyumc.org>;
+    foaf:mbox <mailto:mostofsky@kennedykrieger.org>;
+    foaf:mbox <mailto:michael.milham@childmind.org>;
+    .
+
+# Associate a project activity with the project object
+niiri:projectActivityExample a prov:Activity, nidm:ProjectActivity;
+    prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+    prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+    prov:wasAssociatedWith <http://fcon_1000.projects.nitrc.org/indi/>;
+    prov:qualifiedAssociation niiri:projectAssociationExample;
+    .
+
+# Associate a role, agent, and plan with the project Activity
+niiri:projectAssociationExample a prov:Association;
+    prov:hadRole :institution;
+    prov:agent <http://fcon_1000.projects.nitrc.org/indi/>;
+    prov:hadPlan :projectProtocol;
+    .
+
+# An example study resource.
+niiri:studyExample a prov:Entity, nidm:Study, nidm:Demographics;
+    dcterms:title "Demographics Questionnaire";
+    dcterms:description "A survey of basic demographics.";
+    dcterms:source <http://www.nitrc.org/ir/data/projects/ABIDE>;
+    dcterms:date "2009-11-25"^^xsd:date;
+    dcterms:created "2009-11-25"^^xsd:date;
+    dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:modified "2009-11-25"^^xsd:date;
+    prov:wasAttributedTo niiri:participantExample;
+    prov:wasGeneratedBy niiri:studyActivityExample;
+    dcterms:hasPart niiri:acquisitionExample;
+    dcterms:isPartOf niiri:projectExample;
+    nidm:visit niiri:baselineVisit;
+    .
+
+# Provide a subject that this questionaire is performed on.
+niiri:participantExample a foaf:Person, prov:Person;
+    rdfs:label "PersonA";
+    .
+
+# Associate a study activity with the study object.
+niiri:studyActivityExample a prov:Activity, nidm:StudyActivity;
+    prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+    prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+    prov:wasAssociatedWith niiri:participantExample;
+    prov:qualifiedAssociation niiri:projectAssociationExample;
+    .
+
+# Associate a role, agent, and plan with the study activity.
+niiri:projectAssociationExample a prov:Association;
+    prov:hadRole nidm:participant;
+    prov:agent niiri:participantExample;
+    prov:hadPlan niiri:visitProtocol;
+    .
+
+# An example acquisition resource.
+niiri:acquisitionExample a prov:Entity, nidm:Acquisition, nidm:Demographics;
+    dcterms:title "Demographics Questionnaire";
+    dcterms:description "A survey of basic demographics.";
+    dcterms:source <http://www.nitrc.org/ir/data/projects/ABIDE>;
+    dcterms:date "2009-11-25"^^xsd:date;
+    dcterms:created "2009-11-25"^^xsd:date;
+    dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:modified "2009-11-25"^^xsd:date;
+    prov:wasAttributedTo niiri:softwareExample;
+    prov:wasGeneratedBy niiri:acquisitionActivityExample;
+    dcterms:isPartOf niiri:studyExample;
+	nidm:gender "male";
+	nidm:handedness "left";
+	nidm:age 11;
+    .
+
+# Provide a software agent that acuired the info.
+niiri:softwareExample a prov:Software;
+    rdfs:label "Acquisition Software";
+    .
+
+# Associate a study activity with the study object.
+niiri:acquisitionActivityExample a prov:Activity, nidm:AcquisitionActivity;
+    prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+    prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+    prov:wasAssociatedWith niiri:softwareExample;
+    prov:qualifiedAssociation niiri:acquisitionAssociationExample;
+    .
+
+# Associate a role, agent, and plan with the study activity.
+niiri:acquisitionAssociationExample a prov:Association;
+    prov:hadRole nidm:process;
+    prov:agent niiri:softwareExample;
+    prov:hadPlan :acquisitionProtocol;
     .
