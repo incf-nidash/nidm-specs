@@ -34,13 +34,6 @@ document
     nidm:effectDegreesOfFreedom = "1" %% xsd:float,
     nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  entity(niiri:first_level_mean_BOLD_intensity,
-    [prov:type = 'nidm:firstLevelMeanBOLDIntensity',
-    prov:location = "file:///path/to/first_level_mean_BOLD_intensity.nii" %% xsd:anyURI,
-    prov:label = "First level mean BOLD intensity" %% xsd:string,
-    nidm:fileName = "first_level_mean_BOLD_intensity.nii" %% xsd:string,
-    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
-    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   entity(niiri:contrast_map_id,
     [prov:type = 'nidm:contrastMap',
     prov:location = "file:///path/to/con_0001.img" %% xsd:anyURI,
@@ -124,19 +117,14 @@ document
     prov:label = "Model fitting"])
   wasAssociatedWith(niiri:model_fitting_id, niiri:software_id,-)
   used(niiri:model_fitting_id, niiri:design_matrix_id,-)
-  entity(niiri:input_data_id,
-    [prov:type = 'prov:collection',
-    prov:type = 'nidm:modelEstimationInputs',
-    prov:label = "Model Estimation Inputs"])
-  entity(niiri:data_id,
+  entity(niiri:image_data_id,
     [prov:type = 'nidm:imageData',
-    prov:location = "file:///path/to/sd_0001.nii.gz" %% xsd:anyURI,
+    prov:type = 'prov:collection',
     prov:label = "Image data" %% xsd:string,
-    nidm:fileName = "sd_0001.nii.gz" %% xsd:string,
-    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  hadMember(niiri:input_data_id, niiri:data_id)
-  hadMember(niiri:input_data_id, niiri:first_level_mean_BOLD_intensity)
-  used(niiri:model_fitting_id, niiri:input_data_id,-)
+    nidm:grandMeanScaling = "true" %%xsd:boolean,
+    nidm:targetBrainIntensity = "100" %% xsd:float,
+    nidm:measuredMedianBrainIntensity = "115.32" %% xsd:float])
+  used(niiri:model_fitting_id, niiri:image_data_id,-)
   wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
   wasGeneratedBy(niiri:resels_per_voxel_map_id, niiri:model_fitting_id,-)
   
