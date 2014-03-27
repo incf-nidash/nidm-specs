@@ -668,6 +668,10 @@
       "nidm:grandMeanScaling": {
         "$": "true",
         "type": "xsd:boolean"
+      },
+      "nidm:smoothingFWHM": {
+        "$": "[6, 6, 6]",
+        "type": "xsd:string"
       }
     },
     "niiri:height_threshold_id": {
@@ -852,6 +856,10 @@
       "prov:label": "Contrast: Listening \u003e Rest"
     },
     "niiri:design_matrix_id": {
+      "nidm:repeatedMeasures": {
+        "$": "False",
+        "type": "xsd:string"
+      },
       "prov:type": {
         "$": "nidm:designMatrix",
         "type": "xsd:QName"
@@ -860,9 +868,17 @@
         "$": "file:///path/to/design_matrix.png",
         "type": "xsd:anyURI"
       },
+      "nidm:groupComparison": {
+        "$": "True",
+        "type": "xsd:string"
+      },
       "nidm:fileName": {
         "$": "design_matrix.csv",
         "type": "xsd:string"
+      },
+      "nidm:designType": {
+        "$": "nidm:oneSampleTest",
+        "type": "xsd:QName"
       },
       "prov:location": {
         "$": "file:///path/to/design_matrix.csv",
@@ -1261,7 +1277,15 @@
         "$": "spm:contrast",
         "type": "xsd:QName"
       },
-      "prov:label": "Contrast estimation"
+      "nidm:groupInferenceMethod": {
+        "$": "nidm:randomEffects",
+        "type": "xsd:QName"
+      },
+      "prov:label": "Contrast estimation",
+      "nidm:estimationMethod": {
+        "$": "nidm:ordinaryLeastSquares",
+        "type": "xsd:QName"
+      }
     },
     "niiri:model_fitting_id": {
       "prov:type": {
