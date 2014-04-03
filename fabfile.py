@@ -29,11 +29,14 @@ def copy_specs():
 def build():
     clean()
     copy_specs()
-    local('pelican content -o output -s pelicanconf.py')
+    local('pelican content/ -s pelicanconf.py')
 
 def rebuild():
     clean()
     build()
+
+def regenerate():
+    local('pelican content/ -r -s pelicanconf.py')
 
 def autobuild():
     local('pelican -r -s pelicanconf.py')
@@ -46,6 +49,6 @@ def serve():
 def publish():
     clean()
     copy_specs()
-    local('pelican content -o output -s publishconf.py')
+    local('pelican content/ -s publishconf.py')
     local('ghp-import output')
     local('git push upstream gh-pages --force')
