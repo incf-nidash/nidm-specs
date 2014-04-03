@@ -11,6 +11,8 @@ BOOTSTRAP_THEME = 'readable'
 
 TIMEZONE = 'UTC'
 
+PATH = "content"
+
 DEFAULT_LANG = u'en'
 
 STATIC_PATHS = ['images', 'specs', 'extra/CNAME']
