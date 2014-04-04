@@ -1,117 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<title>NI-DM Experiment Hierarchy Object Model Specification</title>
+
+<head>
+    <title>NI-DM Experiment Component Specification</title>
     <meta charset='utf-8'>
-     <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
-            async class='remove'></script>
-    
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+
     <LINK href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
-   
+
     <script class='remove'>
-      var respecConfig = {
-          specStatus: "base",
-          shortName:  "SPMResults",
-   		  overrideCopyright: "<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">NI-DM</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/ni-/ni-o" property="cc:attributionName" rel="cc:attributionURL">NIDASH Working Group</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/ni-/ni-o" rel="dct:source">https://github.com/ni-/ni-o</a>.",
-          editors: [
-                {   name:       "David Keator",                   
-                    company:    "INCF",
-                    companyURL: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
-                    
-               	    
-          ],
-          previousMaturity: "FPWD",
-          previousPublishDate:  "2013-12-10",
-          wg:           "NIDASH Working Group",
-          wgURI:        "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
-          wgPublicList: "derived_data@birncommunity.org",
-          wgPatentURI:  "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
-          afterEnd: function () {
-          
-          var currentDate = new Date()
-		  var date = currentDate.toString('dddd, MMMM ,yyyy')
-     			$("#respecHeader h2").text("NI-DM Specification " + date);
-     			$("#respecHeader img").attr({ src: "./stylesheet/nidm-text.png", width: 100, height:50 });
-   	      },
-           localBiblio:  {
-   		 "KEATORNI13": {
-  		      title:    "Towards structured sharing of raw and derived neuroimaging data across existing resources"
- 		   ,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
-		    ,   authors:  [
-		            "David B. Keator"
-		        ,   "Karl Helmer"
-		        ,	"Jason Steffener"
-		        ,	"Jessica A. Turner"
-		        ,	"Theodorus G.M. VanErp"
-		        ,	"Syam Gadde"
-		        ,	"Naveen Ashish"
-		        ,	"Gully A. Burns"
-		        ,	"Nolan B. Nichols"
-		        ]
-		    	,   publisher:  "	Elsevier"
-		    	}
-			}			
-      };
+    var respecConfig = {
+        specStatus: "unofficial",
+        shortName: "experiment",
+        overrideCopyright: "<a rel='license' href='http://creativecommons.org/licenses/by/4.0/'><img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/by/4.0/80x15.png' /></a><br /><span xmlns:dct='http://purl.org/dc/terms/' href='http://purl.org/dc/dcmitype/Text' property='dct:title' rel='dct:type'>NIDASH Experiment Component</span> is licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/4.0/''>Creative Commons Attribution 4.0 International License</a>.<br />Based on a work at <a xmlns:dct='http://purl.org/dc/terms/' href='http://github.com/ni-/ni-dm' rel='dct:source'>http://github.com/ni-/ni-dm</a>.",
+        editors: [{
+                name: "David Keator",
+                company: "INCF",
+                companyURL: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force"
+            }, {
+                name: "B. Nolan Nichols",
+                company: "University of Washington",
+                companyURL: "http://ibic.washington.edu"
+            }],
+        //previousMaturity: "FPWD",
+        //previousPublishDate: "2013-12-10",
+        wg: "NIDASH Working Group",
+        wgURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+        wgPublicList: "derived_data@birncommunity.org",
+        wgPatentURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+        afterEnd: function() {
+
+            var currentDate = new Date()
+            var date = currentDate.toString('dddd, MMMM ,yyyy')
+            $("#respecHeader h2").text("NI-DM Specification " + date);
+            $("#respecHeader img").attr({
+                src: "./stylesheet/nidm-text.png",
+                width: 100,
+                height: 50
+            });
+        },
+        localBiblio: {
+            "KEATORNI13": {
+                title: "Towards structured sharing of raw and derived neuroimaging data across existing resources",
+                href: "http://www.sciencedirect.com/science/article/pii/S105381191300596X",
+                authors: [
+                    "David B. Keator", "Karl Helmer", "Jason Steffener", "Jessica A. Turner", "Theodorus G.M. VanErp", "Syam Gadde", "Naveen Ashish", "Gully A. Burns", "Nolan B. Nichols"
+                ],
+                publisher: "  Elsevier"
+            }
+        }
+    };
     </script>
-  </head>
-  <body>
+</head>
+
+<body>
     <section id='abstract'>
-      <p>
-        This document describes the encoding of a experiment hierarchy (experiment-subject-visit-data) using the NI-DM data model.  
-      </p>
+        <p>
+            This document describes the encoding of a experiment hierarchy (experiment-subject-visit-data) using the NI-DM data model.
+        </p>
     </section>
 
     <section id='sotd'>
-      <p>
-        The document separates the overall experiment hierarchy graph into smaller sub-graphs for clarity in 
-        understanding how to construct the various entities and relationships.  
-      </p>
-     
-    </section>
-    
-    <section class='informative'>
-      <h2>Introduction</h2>
-      <p>
-          
-      </p>
-      <p>
-      </p>
-    </section>
-    
-    <section id='conformance'>
-      <p>
-        The single conformance class described in this specification is 
-        the <dfn>Experiment Hierarchy Object Model</dfn>, a class of NI-DM formatted objects for describing
-        a ...</a> software.
-      </p>
-    </section>
-    
-    <section>
-      <h2>Overview</h2>
-      <p>
-         
-      </p>
-      <section>
-        <h2>Experiement</h2>
         <p>
-          
+            The document separates the overall experiment hierarchy graph into smaller sub-graphs for clarity in understanding how to construct the various entities and relationships.
+        </p>
+
+    </section>
+
+    <section class='informative'>
+        <h2>Introduction</h2>
+        <p>
+
+        </p>
+        <p>
+        </p>
+    </section>
+
+    <section id='conformance'>
+        <p>
+            The single conformance class described in this specification is the
+            <dfn>Experiment Hierarchy Object Model</dfn>, a class of NI-DM formatted objects for describing a ...</a>software.
+        </p>
+    </section>
+
+    <section>
+        <h2>Overview</h2>
+        <p>
+
         </p>
         <section>
-			<h2>Subject</h2>
-			<p>
-			 
-			</p>
-	    </section>
-		  <section>
-		  	<h2>Visit</h2>
-		  	<p>
-		  	</p>
-			
-		  </section>	
-		 
-      </section>
-      
+            <h2>Experiement</h2>
+            <p>
+
+            </p>
+            <section>
+                <h2>Subject</h2>
+                <p>
+
+                </p>
+            </section>
+            <section>
+                <h2>Visit</h2>
+                <p>
+                </p>
+
+            </section>
+
+        </section>
+
     </section>
-  </body>
+</body>
+
 </html>
- 
