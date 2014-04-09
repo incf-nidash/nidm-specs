@@ -23,48 +23,55 @@ logger = logging.getLogger(__name__)
 
 class TestSPMResultsDataModel(unittest.TestCase):
 
-    def compare_query_results_all_attributes(self, res, res_other):
-        print res.bindings[0].items()
-
-
-    def compare_query_results(self, res, res_other, info_str=""):
-        if not res.bindings:
-            self.my_execption = info_str+""": Empty query results"""
-        for idx, row in enumerate(res.bindings):
-            rowfmt = []
-            # FIXME: Deal with more than 1 item
-            print "Item %d" % idx
-            for key, val in sorted(row.items()):
-                found_other = False
-                for idx_other, row_other in enumerate(res_other.bindings):
-                    if not found_other:
-                        # FIXME: Probably not the most efficient way to look for corresponding value
-                        for key_other, val_other in sorted(row_other.items()):
-                            if key_other == key:
-                                found_other = True
-                                break
-                if not found_other:
-                    self.my_execption = self.my_execption + """
-                        """+info_str+""": Value of """+key+""" not found"""
-                elif not val_other == val:
-                    self.my_execption = self.my_execption + """
-                        """+info_str+""": Value of """+key+""" should be """+val+""" ("""+val_other+""" instead)"""
+    # def compare_query_results(self, res, res_other, info_str=""):
+    #     if not res.bindings:
+    #         self.my_execption = info_str+""": Empty query results"""
+    #     for idx, row in enumerate(res.bindings):
+    #         rowfmt = []
+    #         # FIXME: Deal with more than 1 item
+    #         print "Item %d" % idx
+    #         for key, val in sorted(row.items()):
+    #             found_other = False
+    #             for idx_other, row_other in enumerate(res_other.bindings):
+    #                 if not found_other:
+    #                     # FIXME: Probably not the most efficient way to look for corresponding value
+    #                     for key_other, val_other in sorted(row_other.items()):
+    #                         if key_other == key:
+    #                             found_other = True
+    #                             break
+    #             if not found_other:
+    #                 self.my_execption = self.my_execption + """
+    #                     """+info_str+""": Value of """+key+""" not found"""
+    #             elif not val_other == val:
+    #                 self.my_execption = self.my_execption + """
+    #                     """+info_str+""": Value of """+key+""" should be """+val+""" ("""+val_other+""" instead)"""
 
     def print_results(self, res):
         for idx, row in enumerate(res.bindings):
             rowfmt = []
             print "Item %d" % idx
             for key, val in sorted(row.items()):
-                print type(val)
-                print val.decode()
                 rowfmt.append('%s-->%s' % (key, val.decode()))
             print '\n'.join(rowfmt)
+
+    def successful_retreive(self, res, info_str=""):
+        if not res.bindings:
+            self.my_execption = info_str+""": Empty query results"""
+        for idx, row in enumerate(res.bindings):
+            rowfmt = []
+            for key, val in sorted(row.items()):
+                if not val.decode():
+                    rowfmt.append('%s-->%s' % (key, val.decode()))
+            self.my_execption += rowfmt
 
     def setUp(self):
         self.seq = range(10)
         self.my_execption = ""
         # Display log messages
         logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+        # FIXME: This is not the right thing to do to get the test directory...
+        self.test_dir = os.path.dirname(os.path.realpath('TestSPMResultsDataModel.py'))
 
     def compare_full_graphs(self, gt_ttl_file, other_ttl_file):
         gt = Graph()
@@ -129,44 +136,49 @@ class TestSPMResultsDataModel(unittest.TestCase):
                         missing_s.append(s)
 
         self.my_execption += exc_wrong+exc_added+exc_missing
-    #             for (s_ex,  p_ex, o_ex) in spmexport.triples((s,  p, None)):
-    #                 self.my_execption += """
-    # Added:   '%s' \ton '%s' \t(value: '%s')"""%(os.path.basename(p_ex), s_ex, os.path.basename(o_ex))
-    #         elif (s,  p, None) in gt:
-    #             for (s_gt,  p_gt, o_gt) in spmexport.triples((s,  p, None)):
-    #                 self.my_execption += """
-    # Missing: '%s' \ton '%s' \t(instead of '%s')"""%(os.path.basename(p_gt), gt.label(s_gt), os.path.basename(o_gt))
-    #         else:
-    #             self.my_execption += """
-    # Could not determine issue in: '%s' \ton '%s' \t('%s')"""%(os.path.basename(p), gt.label(s), os.path.basename(o))
 
 
     '''Test01: Analysis of single-subject auditory data based on test01_spm_batch.m using SPM12b r5918 
     '''
-    def test_ex1_auditory_singlesub(self):
-        # FIXME: Is this the right thing to do to get the test directory?
-        test_dir = os.path.dirname(os.path.realpath('TestSPMResultsDataModel.py'))
-
+    def test_ex1_auditory_singlesub_full_graph(self):
         # ground_truth_json = os.path.join(test_dir, 'spm', 'GroundTruth', 'test01', 'test01_spm_results.json');
-        ground_truth_ttl = os.path.join(test_dir, 'spm', 'GroundTruth', 'test01', 'test01_spm_results.ttl');
+        ground_truth_ttl = os.path.join(self.test_dir, 'spm', 'GroundTruth', 'test01', 'test01_spm_results.ttl');
         # spm_export_json = os.path.join(test_dir, 'spm', 'SPMexport', 'test01', 'spm_nidm.json');
-        spm_export_ttl = os.path.join(test_dir, 'spm', 'SPMexport', 'test01', 'spm_nidm.ttl');
+        spm_export_ttl = os.path.join(self.test_dir, 'spm', 'SPMexport', 'test01', 'spm_nidm.ttl');
 
         self.compare_full_graphs(ground_truth_ttl, spm_export_ttl)
 
-        # add_graph = spmexport - gt
-        # for s,p,o in add_graph.triples( (None,  None, None) ):
-        #     print "Additional: (%s, %s, %s)"%(os.path.basename(s),p,o)
+        if self.my_execption:
+            raise Exception(self.my_execption)
 
-        # print "gt:"
-        # print gt
+    def test_ex1_metaanalysis(self):
+        prefixInfo = """
+        prefix prov: <http://www.w3.org/ns/prov#>
+        prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+        prefix nidm: <http://nidm.nidash.org/>
 
-        # prefixInfo = """
-        # prefix prov: <http://www.w3.org/ns/prov#>
-        # prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
-        # prefix nidm: <http://nidm.nidash.org/>
-        # """
+        """
+
+        query = prefixInfo+"""
+        SELECT ?cfile ?efile WHERE {
+         ?aid a spm:estimation .
+         ?cid a nidm:contrastMap ;
+              prov:wasGeneratedBy ?aid ;
+              prov:atLocation ?cfile .
+         ?eid a nidm:contrastStandardErrorMap ;
+              prov:wasGeneratedBy ?aid ;
+              prov:atLocation ?efile .
+        }
+        """
+
+        # FIXME: This needs to be shared across test on same datasets
+        spmexport = Graph()
+        spm_export_ttl = os.path.join(self.test_dir, 'spm', 'SPMexport', 'test01', 'spm_nidm.ttl');
+        spmexport.parse(spm_export_ttl, format='turtle')
+
+        self.successful_retreive(spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap')
         
+       
         # # FIXME: Check how this work with more than 1 contrast
         # # FIXME comparison of sha and coordinateSpace
 
