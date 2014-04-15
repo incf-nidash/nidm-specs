@@ -218,54 +218,13 @@ document
     prov:label = "Contrast weights: 1 -1 0 0" %% xsd:string,
     prov:value = "[1, -1, 0, 0]" %% xsd:string])
   
-  entity(niiri:search_space_id,
-    [prov:type = 'nidm:mask',
-    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
-    prov:label = "Search Space" %% xsd:string,
-    nidm:fileName = "mask.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
-    spm:searchVolumeInVoxels = "65593" %% xsd:int,
-    spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
-    spm:reselSize = "22.9229643140043" %% xsd:float,
-    spm:searchVolumeInResels = "2552.68032521656" %% xsd:float,
-    spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string,
-    spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
-    spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
-    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  entity(niiri:height_threshold_id,
-    [prov:type = 'nidm:heightThreshold',
-    prov:label = "Height Threshold: p<0.05 (FWE)" %% xsd:string,
-    spm:userSpecifiedThresholdType = "p-value FWE" %% xsd:string,
-    prov:value = "5.23529984739211" %% xsd:float,
-    nidm:pValueUncorrected = "7.62276079258051e-07" %% xsd:float,
-    spm:pValueFWER = "0.05" %% xsd:float])
-  entity(niiri:extent_threshold_id,
-    [prov:type = 'nidm:extentThreshold',
-    prov:label = "Extent Threshold: k>=0" %% xsd:string,
-    nidm:clusterSizeInVoxels = "0" %% xsd:float,
-    spm:clusterSizeInResels = "0" %% xsd:float,
-    nidm:pValueUncorrected = "1" %% xsd:float,
-    spm:pValueFWER = "1" %% xsd:float])
-  activity(niiri:inference_id,
-    [prov:type = 'spm:inference',
-    prov:label = "Inference 1"])
-  used(niiri:inference_id, niiri:statistical_map_id,-)
-  used(niiri:inference_id, niiri:search_space_id,-)
-  used(niiri:inference_id, niiri:height_threshold_id,-)
-  used(niiri:inference_id, niiri:extent_threshold_id,-)
   agent(niiri:software_id,
     [prov:type = 'nidm:spm',
     prov:type = 'prov:SoftwareAgent',
     prov:label = "SPM" %% xsd:string,
     nidm:softwareVersion = "SPM12b" %% xsd:string,
     nidm:softwareRevision = "5765" %% xsd:string])
-  wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
-
+  
 
   entity(niiri:search_space_id_3,
     [prov:type = 'nidm:mask',
@@ -302,62 +261,14 @@ document
     spm:pValueFWER = "1" %% xsd:float])
   activity(niiri:inference_id_3,
     [prov:type = 'nidm:inference',
-    prov:label = "Inference 3 (conjunction)",
-    nidm:statisticalTest = 'nidm:conjunction'])
+    prov:label = "Conjunction Inference",
+    nidm:statisticalTest = 'nidm:conjunctionInference'])
   used(niiri:inference_id_3, niiri:statistical_map_id,-)
   used(niiri:inference_id_3, niiri:statistical_map_id_2,-)
   used(niiri:inference_id_3, niiri:search_space_id_3,-)
   used(niiri:inference_id_3, niiri:height_threshold_id_3,-)
   used(niiri:inference_id_3, niiri:extent_threshold_id_3,-)
-
-  entity(niiri:search_space_id_2,
-    [prov:type = 'nidm:mask',
-    prov:location = "file:///path/to/mask2.img" %% xsd:anyURI,
-    prov:label = "Search Space" %% xsd:string,
-    nidm:fileName = "mask2.img" %% xsd:string,
-    nidm:numberOfDimensions = "3" %% xsd:int,
-    nidm:dimensions = "[53,63,46]" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-    nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-    nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-    nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
-    spm:searchVolumeInVoxels = "65593" %% xsd:int,
-    spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
-    spm:reselSize = "22.9229643140043" %% xsd:float,
-    spm:searchVolumeInResels = "2552.68032521656" %% xsd:float,
-    spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string,
-    spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
-    spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
-    crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  entity(niiri:height_threshold_id_2,
-    [prov:type = 'nidm:heightThreshold',
-    prov:label = "Height Threshold: p<0.001 (unc)" %% xsd:string,
-    spm:userSpecifiedThresholdType = "p-value uncorrected" %% xsd:string,
-    prov:value = "5.23529984739211" %% xsd:float,
-    nidm:pValueUncorrected = "7.62276079258051e-07" %% xsd:float,
-    spm:pValueFWER = "0.05" %% xsd:float])
-  entity(niiri:extent_threshold_id_2,
-    [prov:type = 'nidm:extentThreshold',
-    prov:label = "Extent Threshold: k>=5" %% xsd:string,
-    nidm:clusterSizeInVoxels = "5" %% xsd:float,
-    spm:clusterSizeInResels = "1.6" %% xsd:float,
-    nidm:pValueUncorrected = "1" %% xsd:float,
-    spm:pValueFWER = "1" %% xsd:float])
-  activity(niiri:inference_id_2,
-    [prov:type = 'spm:inference',
-    prov:label = "Inference 2",
-    nidm:statisticalTest = 'nidm:oneTailedTtest'])
-  used(niiri:inference_id_2, niiri:statistical_map_id_2,-)
-  used(niiri:inference_id_2, niiri:search_space_id_2,-)
-  used(niiri:inference_id_2, niiri:height_threshold_id_2,-)
-  used(niiri:inference_id_2, niiri:extent_threshold_id_2,-)
-  agent(niiri:software_id,
-    [prov:type = 'nidm:spm',
-    prov:type = 'prov:SoftwareAgent',
-    prov:label = "SPM" %% xsd:string,
-    nidm:softwareVersion = "SPM12b" %% xsd:string,
-    nidm:softwareRevision = "5765" %% xsd:string])
-  wasAssociatedWith(niiri:inference_id_2, niiri:software_id,-)
-
+  wasAssociatedWith(niiri:inference_id_3, niiri:software_id,-)
+   
   
 endDocument
