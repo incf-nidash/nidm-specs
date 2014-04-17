@@ -4,14 +4,12 @@ document
     prefix prov <http://www.w3.org/ns/prov-o/>
     prefix nidm <http://www.incf.org/ns/nidash/nidm#>
     prefix niiri <http://iri.nidash.org/>
-    prefix cml <http://www.connectomics.org/cff-2>
+    prefix cml <http://www.connectomics.org/cff-2/>
 
-    # Connectome File Format container.
     entity(cml:connectome, 
         [prov:type = 'prov:Collection',
          prov:type = 'nidm:ConnectomeFileFormat'])
 
-    # Example metadata representation.
     entity(cml:connectome-meta, 
         [prov:type = 'nidm:ConnectomeMeta',
          dcterms:title = "NM-MIR-023 - tp1",
@@ -27,7 +25,8 @@ document
          cml:subject_name = "NM-MIR-023",
          cml:subject_timepoint = "tp1"])
 
-    # Example connectome network representaion.
+    hadMember(cml:connectome, cml:connectome-meta)
+
     entity(cml:connectome-network-1, 
         [prov:type = "cml:ConnectomeNetwork",
         cml:src = "CNetwork/connectome_scale500.gpickle",
@@ -35,24 +34,27 @@ document
         cml:name = "connectome_scale500",
         cml:fileformat = "NXGPickle",
         cml:resolution = "scale500"])
+        
+    hadMember(cml:connectome, cml:connectome-network-1)
 
-    # Example connectome surface representation.
     entity(cml:connectome-surface-1, 
         [prov:type = 'nidm:ConnectomeSurface',
         cml:src = "CSurface/surface_rh.pial.gii",
         cml:dtype = "Surfaceset",
         cml:name = "Surface rh.pial",
         cml:fileformat = "Gifti"])
+        
+    hadMember(cml:connectome, cml:connectome-surface-1)
 
-    # Example connectome volume representation.
     entity(cml:connectome-volume-1, 
         [prov:type = 'cml:ConnectomeVolume',
         cml:src = "CVolume/raw_diffusion.nii.gz",
         cml:dtype = "DTI",
         cml:name = "Raw Diffusion",
         cml:fileformat = "Nifti1GZ"])
+    
+    hadMember(cml:connectome, cml:connectome-volume-1)
 
-    # Example connectome track representation.
     entity(cml:connectome-track-1, 
         [prov:type = 'cml:ConnectomeTrack',
         cml:src = "CTrack/filtered_tractography.trk",
@@ -62,13 +64,16 @@ document
         cml:spline_filtered = "True",
         cml:fiber_cutoff_upper = "500.0",
         cml:fiber_cutoff_lower = "20.0"])
+    
+    hadMember(cml:connectome, cml:connectome-track-1)
         
-    # Example connectome data representation.
     entity(cml:connectome-data-1, 
         [prov:type = 'cml:ConnectomeData',
         cml:src = "CData/final_fiber_labels_(scale500).npy",
         cml:dtype = "FiberLabels",
         cml:name = "Final fiber labels (scale500)",
         cml:fileformat = "NumPy"])
+    
+    hadMember(cml:connectome, cml:connectome-data-1)
 
 endDocument
