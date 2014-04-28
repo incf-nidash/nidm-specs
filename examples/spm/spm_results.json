@@ -13,20 +13,6 @@
       "prov:agent": "niiri:software_id"
     }
   },
-  "hadMember": {
-    "_:hM2": {
-      "prov:collection": "niiri:input_data_id",
-      "prov:entity": [
-        "niiri:first_level_mean_BOLD_intensity"
-      ]
-    },
-    "_:hM1": {
-      "prov:collection": "niiri:input_data_id",
-      "prov:entity": [
-        "niiri:data_id"
-      ]
-    }
-  },
   "wasGeneratedBy": {
     "_:wGB9": {
       "prov:activity": "niiri:inference_id",
@@ -279,19 +265,6 @@
         "type": "xsd:QName"
       }
     },
-    "niiri:input_data_id": {
-      "prov:type": [
-        {
-          "$": "prov:collection",
-          "type": "xsd:QName"
-        },
-        {
-          "$": "nidm:modelEstimationInputs",
-          "type": "xsd:QName"
-        }
-      ],
-      "prov:label": "Model Estimation Inputs"
-    },
     "niiri:beta_map_id_1": {
       "prov:type": {
         "$": "nidm:betaMap",
@@ -380,7 +353,7 @@
     "niiri:coordinate_0007": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -405,7 +378,7 @@
     "niiri:coordinate_0006": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -461,7 +434,7 @@
     "niiri:coordinate_0001": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -509,7 +482,7 @@
     "niiri:coordinate_0005": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -534,7 +507,7 @@
     "niiri:coordinate_0004": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -582,7 +555,7 @@
         "type": "xsd:QName"
       },
       "nidm:randomFieldStationarity": {
-        "$": "spm:nonStationaryRamdomField",
+        "$": "spm:nonStationaryRandomField",
         "type": "xsd:QName"
       },
       "spm:noiseFWHMInVoxels": {
@@ -614,7 +587,7 @@
     "niiri:coordinate_0003": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -654,7 +627,7 @@
     "niiri:coordinate_0002": {
       "prov:type": [
         {
-          "$": "prov:location",
+          "$": "prov:Location",
           "type": "xsd:QName"
         },
         {
@@ -838,47 +811,30 @@
       },
       "prov:label": "Peak Level Statistic: 0007"
     },
-    "niiri:first_level_mean_BOLD_intensity": {
-      "prov:type": {
-        "$": "nidm:firstLevelMeanBOLDIntensity",
-        "type": "xsd:QName"
-      },
-      "crypto:sha": {
-        "$": "e43b6e01b0463fe7d40782137867a...",
-        "type": "xsd:string"
-      },
-      "nidm:fileName": {
-        "$": "first_level_mean_BOLD_intensity.nii",
-        "type": "xsd:string"
-      },
-      "prov:location": {
-        "$": "file:///path/to/first_level_mean_BOLD_intensity.nii",
-        "type": "xsd:anyURI"
-      },
-      "prov:label": "First level mean BOLD intensity",
-      "nidm:coordinateSpace": {
-        "$": "niiri:coordinate_space_id_1",
-        "type": "xsd:QName"
-      }
-    },
     "niiri:data_id": {
-      "prov:type": {
-        "$": "nidm:data",
-        "type": "xsd:QName"
+      "prov:type": [
+        {
+          "$": "nidm:data",
+          "type": "xsd:QName"
+        },
+        {
+          "$": "prov:Collection",
+          "type": "xsd:QName"
+        }
+      ],
+      "nidm:targetIntensity": {
+        "$": "100",
+        "type": "xsd:float"
       },
-      "crypto:sha": {
-        "$": "e43b6e01b0463fe7d40782137867a...",
-        "type": "xsd:string"
+      "nidm:medianIntensity": {
+        "$": "115.32",
+        "type": "xsd:float"
       },
-      "nidm:fileName": {
-        "$": "sd_0001.nii.gz",
-        "type": "xsd:string"
-      },
-      "prov:location": {
-        "$": "file:///path/to/sd_0001.nii.gz",
-        "type": "xsd:anyURI"
-      },
-      "prov:label": "Data"
+      "prov:label": "Data",
+      "nidm:grandMeanScaling": {
+        "$": "true",
+        "type": "xsd:boolean"
+      }
     },
     "niiri:contrast_id": {
       "prov:type": {
@@ -898,37 +854,6 @@
         "type": "xsd:string"
       },
       "prov:label": "Contrast: Listening \u003e Rest"
-    },
-    "niiri:peak_0001": {
-      "spm:qValueFDR": {
-        "$": "6.3705194444993e-11",
-        "type": "xsd:float"
-      },
-      "prov:type": {
-        "$": "spm:peakLevelStatistic",
-        "type": "xsd:QName"
-      },
-      "spm:pValueFWER": {
-        "$": "0",
-        "type": "xsd:float"
-      },
-      "nidm:equivalentZStatistic": {
-        "$": "999999999",
-        "type": "xsd:float"
-      },
-      "prov:value": {
-        "$": "13.9346199035645",
-        "type": "xsd:float"
-      },
-      "prov:location": {
-        "$": "niiri:coordinate_0001",
-        "type": "xsd:QName"
-      },
-      "nidm:pValueUncorrected": {
-        "$": "4.44089209850063e-16",
-        "type": "xsd:float"
-      },
-      "prov:label": "Peak Level Statistic: 0001"
     },
     "niiri:design_matrix_id": {
       "prov:type": {
@@ -979,6 +904,37 @@
         "type": "xsd:float"
       },
       "prov:label": "Statistical image properties"
+    },
+    "niiri:peak_0001": {
+      "spm:qValueFDR": {
+        "$": "6.3705194444993e-11",
+        "type": "xsd:float"
+      },
+      "prov:type": {
+        "$": "spm:peakLevelStatistic",
+        "type": "xsd:QName"
+      },
+      "spm:pValueFWER": {
+        "$": "0",
+        "type": "xsd:float"
+      },
+      "nidm:equivalentZStatistic": {
+        "$": "999999999",
+        "type": "xsd:float"
+      },
+      "prov:value": {
+        "$": "13.9346199035645",
+        "type": "xsd:float"
+      },
+      "prov:location": {
+        "$": "niiri:coordinate_0001",
+        "type": "xsd:QName"
+      },
+      "nidm:pValueUncorrected": {
+        "$": "4.44089209850063e-16",
+        "type": "xsd:float"
+      },
+      "prov:label": "Peak Level Statistic: 0001"
     },
     "niiri:peak_0002": {
       "spm:qValueFDR": {
@@ -1258,7 +1214,7 @@
     },
     "_:u6": {
       "prov:activity": "niiri:model_fitting_id",
-      "prov:entity": "niiri:input_data_id"
+      "prov:entity": "niiri:data_id"
     },
     "_:u9": {
       "prov:activity": "niiri:contrast_estimation_id",
