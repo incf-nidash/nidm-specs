@@ -12,7 +12,7 @@ cff = prov.Namespace("cff", "http://www.connectomics.org/cff-2/")
 get_id = lambda : uuid1().hex
 
 # parse cff xml file
-filename = "meta.cml"
+filename = "/Users/fariba/Desktop/UCI/freesurfer/scripts/meta.cml"
 tree = xml.dom.minidom.parse(filename)
 collections = tree.documentElement
 
@@ -65,10 +65,38 @@ tracks = collections.getElementsByTagName("cml:connectome-track")
 c = 0
 for t in tracks:
   c = c + 1
-  print v.getAttribute("src") + " " + v.getAttribute("dtype") + " " + v.getAttribute("name") + " " + v.getAttribute("fileformat")
+  print t.getAttribute("src") + " " + t.getAttribute("dtype") + " " + t.getAttribute("name") + " " + t.getAttribute("fileformat")
   cml_track = g.entity(cff[get_id()])
-  cml_track.add_extra_attributes({prov.PROV['type']:'cff:cml_tag',prov.PROV['label']:'cml_track_tag',cff['dtype']:v.getAttribute("dtype"),cff['src']:v.getAttribute("src"),cff['name']:v.getAttribute("name"),cff['fileformat']:v.getAttribute("fileformat")})
+  cml_track.add_extra_attributes({prov.PROV['type']:'cff:cml_tag',prov.PROV['label']:'cml_track_tag',cff['dtype']:t.getAttribute("dtype"),cff['src']:t.getAttribute("src"),cff['name']:t.getAttribute("name"),cff['fileformat']:t.getAttribute("fileformat")})
   g.hadMember(cml_collection,cml_track)
+
+networks = collections.getElementsByTagName("cml:connectome-network")
+c = 0
+for n in networks:
+  c = c + 1
+  print n.getAttribute("src") + " " + n.getAttribute("dtype") + " " + n.getAttribute("name") + " " + n.getAttribute("fileformat")
+  cml_network = g.entity(cff[get_id()])
+  cml_network.add_extra_attributes({prov.PROV['type']:'cff:cml_tag',prov.PROV['label']:'cml_network_tag',cff['dtype']:n.getAttribute("dtype"),cff['src']:n.getAttribute("src"),cff['name']:n.getAttribute("name"),cff['fileformat']:n.getAttribute("fileformat")})
+  g.hadMember(cml_collection,cml_network)
+
+surfaces = collections.getElementsByTagName("cml:connectome-surface")
+c = 0
+for s in surfaces:
+  c = c + 1
+  print s.getAttribute("src") + " " + s.getAttribute("dtype") + " " + s.getAttribute("name") + " " + s.getAttribute("fileformat")
+  cml_surface = g.entity(cff[get_id()])
+  cml_surface.add_extra_attributes({prov.PROV['type']:'cff:cml_tag',prov.PROV['label']:'cml_surface_tag',cff['dtype']:s.getAttribute("dtype"),cff['src']:s.getAttribute("src"),cff['name']:s.getAttribute("name"),cff['fileformat']:s.getAttribute("fileformat")})
+  g.hadMember(cml_collection,cml_surface)
+
+data = collections.getElementsByTagName("cml:connectome-data")
+c = 0
+for d in data:
+  c = c + 1
+  print d.getAttribute("src") + " " + d.getAttribute("dtype") + " " + d.getAttribute("name") + " " + d.getAttribute("fileformat")
+  cml_data = g.entity(cff[get_id()])
+  cml_data.add_extra_attributes({prov.PROV['type']:'cff:cml_tag',prov.PROV['label']:'cml_data_tag',cff['dtype']:d.getAttribute("dtype"),cff['src']:d.getAttribute("src"),cff['name']:d.getAttribute("name"),cff['fileformat']:d.getAttribute("fileformat")})
+  g.hadMember(cml_collection,cml_data)
+
 
 provn = g.get_provn()
 with open('cff-test.provn', 'wt') as fp:
