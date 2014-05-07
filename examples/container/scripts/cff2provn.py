@@ -6,23 +6,6 @@ import urllib2
 import prov.model as prov
 from uuid import uuid1
 
-if __name__ == "__main__":
-  import argparse
-  parser = argparse.ArgumentParser(prog='cff2provn.py', description=__doc__)
-  parser.add_argument('-m', '--meta_file', type=str, required=True,
-                        help='Path to meta.cml file')
-  parser.add_argument('-p', '--project_id', type=str, required=True,
-                        help='Project tag to use for the generated prov files')
-  parser.add_argument('-o', '--output_dir', type=str,
-                        help='Output directory')
-
-  args = parser.parse_args()
-  filename = args.meta_file
-  project_id = args.project_id
-  output_dir = args.output_dir
-  if output_dir is None:
-    output_dir = os.getcwd()
-
 dcterms = prov.Namespace("dcterms", "http://purl.org/dc/terms/")
 xsd = prov.Namespace("xsd","http://www.w3.org/2001/XMLSchema#")
 cml = prov.Namespace("cml", "http://www.connectomics.org/cff-2/")
@@ -144,14 +127,19 @@ g.rdf().serialize(outfilename+'.ttl', format='turtle')
 g.rdf().serialize(outfilename+'.xml', format='xml')
 
 
-'''
 if __name__ == "__main__":
   import argparse
   parser = argparse.ArgumentParser(prog='cff2provn.py', description=__doc__)
   parser.add_argument('-m', '--meta_file', type=str, required=True,
                         help='Path to meta.cml file')
+  parser.add_argument('-p', '--project_id', type=str, required=True,
+                        help='Project tag to use for the generated prov files')
+  parser.add_argument('-o', '--output_dir', type=str,
+                        help='Output directory')
 
   args = parser.parse_args()
   filename = args.meta_file
-  print filename
-'''
+  project_id = args.project_id
+  output_dir = args.output_dir
+  if output_dir is None:
+    output_dir = os.getcwd()
