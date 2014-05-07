@@ -32,7 +32,7 @@ def cff2provn(filename):
 
     cml_collection = g.collection(cml[get_id()])
     cml_collection.add_extra_attributes(
-        {prov.PROV['type']: cml['ConnectomeFileFormat'],
+        {prov.PROV['type']: cml['connectome'],
          prov.PROV['label']: filename})
     g.wasDerivedFrom(cml_collection, url_entity)
 
@@ -54,7 +54,7 @@ def cff2provn(filename):
 
     cml_meta = g.entity(cml[get_id()])
     cml_meta.add_extra_attributes(
-        {prov.PROV['type']: cml['ConnectomeMeta'], cml['species']: species, cml['timepoint']: tp,
+        {prov.PROV['type']: cml['connectome-meta'], cml['species']: species, cml['timepoint']: tp,
          cml['subject_name']: sub})
     g.hadMember(cml_collection, cml_meta)
 
