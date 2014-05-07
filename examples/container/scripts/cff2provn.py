@@ -142,18 +142,29 @@ def main(args=None):
     filename = args.meta_file
     project_id = args.project_id
     output_dir = args.output_dir
-    if output_dir is None:
-        output_dir = os.getcwd()
+    outformat = args.format
 
     # process cff file
     g = cff2provn(filename)
-    provn = g.get_provn()
-    outfilename = output_dir + '/' + project_id
-    with open(outfilename + '.provn', 'wt') as fp:
-        fp.writelines(provn)
 
-    g.rdf().serialize(outfilename + '.ttl', format='turtle')
-    g.rdf().serialize(outfilename + '.xml', format='xml')
+    # print or write file
+    if outformat == "provn":
+        out = g.get_provn()
+        ext = ".provn"
+    elif outformat == "turtle":
+        out = g.rdf().serialize(format='turtle')
+        ext = ".ttl"
+    elif outformat == "xml":
+        out = g.rdf().serialize(format='xml')
+        ext = ".xml"
+
+    if output_dir:
+        outfilename = os.path.join(os.path.abspath(output_dir), project_id)
+        outfilename_ext = ''.join([outfilename, ext])
+        with open(outfilename_ext, 'wt') as fp:
+            fp.write(out)
+    else:
+        print out
 
 
 if __name__ == "__main__":
@@ -167,6 +178,8 @@ if __name__ == "__main__":
                         help='Project tag to use for the generated prov files')
     parser.add_argument('-o', '--output_dir', type=str,
                         help='Output directory')
+    parser.add_argument('-f', '--format', type=str, default="turtle", choices=["provn", "turtle", "xml"],
+                        help='Output format')
     args = parser.parse_args()
 
     sys.exit(main(args=args))
