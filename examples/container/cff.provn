@@ -1,0 +1,79 @@
+document    
+    prefix xsd <http://www.w3.org/2001/XMLSchema#>
+    prefix dcterms <http://purl.org/dc/elements/1.1/>
+    prefix prov <http://www.w3.org/ns/prov-o/>
+    prefix nidm <http://www.incf.org/ns/nidash/nidm#>
+    prefix niiri <http://iri.nidash.org/>
+    prefix cml <http://www.connectomics.org/cff-2/>
+
+    entity(cml:connectome, 
+        [prov:type = 'prov:Collection',
+         prov:type = 'cml:ConnectomeFileFormat'])
+
+    entity(cml:connectome-meta, 
+        [prov:type = 'cml:ConnectomeMeta',
+         dcterms:title = "NM-MIR-023 - tp1",
+         dcterms:creator = "ADS",
+         dcterms:publisher = "ads",
+         dcterms:description = "",
+         cml:version = "2.0",
+         cml:generator = "cfflib",
+         cml:species = "Homo sapiens",
+         cml:email = "adshereen@gmail.com",
+         cml:subject_workingdir = "/home/brain/connectome/hand_motor/NM-MIR/NM-MIR-023/tp1",
+         cml:description = "",
+         cml:subject_name = "NM-MIR-023",
+         cml:subject_timepoint = "tp1"])
+
+    hadMember(cml:connectome, cml:connectome-meta)
+
+    entity(cml:connectome-network-1, 
+        [prov:type = "cml:ConnectomeNetwork",
+        cml:src = "CNetwork/connectome_scale500.gpickle",
+        cml:dtype = "AttributeNetwork",
+        cml:name = "connectome_scale500",
+        cml:fileformat = "NXGPickle",
+        cml:resolution = "scale500"])
+        
+    hadMember(cml:connectome, cml:connectome-network-1)
+
+    entity(cml:connectome-surface-1, 
+        [prov:type = 'cml:ConnectomeSurface',
+        cml:src = "CSurface/surface_rh.pial.gii",
+        cml:dtype = "Surfaceset",
+        cml:name = "Surface rh.pial",
+        cml:fileformat = "Gifti"])
+        
+    hadMember(cml:connectome, cml:connectome-surface-1)
+
+    entity(cml:connectome-volume-1, 
+        [prov:type = 'cml:ConnectomeVolume',
+        cml:src = "CVolume/raw_diffusion.nii.gz",
+        cml:dtype = "DTI",
+        cml:name = "Raw Diffusion",
+        cml:fileformat = "Nifti1GZ"])
+    
+    hadMember(cml:connectome, cml:connectome-volume-1)
+
+    entity(cml:connectome-track-1, 
+        [prov:type = 'cml:ConnectomeTrack',
+        cml:src = "CTrack/filtered_tractography.trk",
+        cml:dtype = "FilteredFibers",
+        cml:name = "Filtered Tractography",
+        cml:fileformat = "TrackVis",
+        cml:spline_filtered = "True",
+        cml:fiber_cutoff_upper = "500.0",
+        cml:fiber_cutoff_lower = "20.0"])
+    
+    hadMember(cml:connectome, cml:connectome-track-1)
+        
+    entity(cml:connectome-data-1, 
+        [prov:type = 'cml:ConnectomeData',
+        cml:src = "CData/final_fiber_labels_(scale500).npy",
+        cml:dtype = "FiberLabels",
+        cml:name = "Final fiber labels (scale500)",
+        cml:fileformat = "NumPy"])
+    
+    hadMember(cml:connectome, cml:connectome-data-1)
+
+endDocument
