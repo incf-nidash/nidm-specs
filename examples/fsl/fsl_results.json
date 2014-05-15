@@ -94,6 +94,10 @@
         "$": "[[1,2,3,4], [1,2,3,4], [1,2,3,4], [0,0,0,1]]",
         "type": "xsd:string"
       },
+      "nidm:visualisation": {
+        "$": "file:///path/to/rendered_thresh_zstat1.png",
+        "type": "xsd:anyURI"
+      },
       "nidm:voxelUnits": {
         "$": "[\u0027mm\u0027, \u0027mm\u0027, \u0027mm\u0027]",
         "type": "xsd:string"
@@ -102,16 +106,12 @@
         "$": "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
         "type": "xsd:string"
       },
-      "fsl:slicesPlot": {
-        "$": "file:///path/to/rendered_thresh_zstat1.png",
-        "type": "xsd:anyURI"
-      },
       "nidm:underlayFile": {
         "$": "file:///path/to/todo.nii",
         "type": "xsd:anyURI"
       },
       "prov:type": {
-        "$": "nidm:excursionSet",
+        "$": "nidm:ExcursionSetMap",
         "type": "xsd:QName"
       },
       "nidm:numberOfDimensions": {
@@ -260,10 +260,6 @@
         "$": "pe2.nii.gz",
         "type": "xsd:string"
       },
-      "nidm:contrastName": {
-        "$": "listening \u0026gt; rest",
-        "type": "xsd:string"
-      },
       "prov:location": {
         "$": "file:///path/to/pe2.img",
         "type": "xsd:anyURI"
@@ -305,14 +301,6 @@
       "nidm:clusterSizeInVoxels": {
         "$": "445",
         "type": "xsd:int"
-      },
-      "fsl:centerOfGravityInVoxels": {
-        "$": "[]",
-        "type": "xsd:string"
-      },
-      "fsl:centerOfGravityInUnits": {
-        "$": "[]",
-        "type": "xsd:string"
       },
       "nidm:pFWER": {
         "$": "0.000000",
@@ -363,7 +351,7 @@
     },
     "niiri:center_of_gravity_1": {
       "prov:type": {
-        "$": "fsl:centerOfGravity",
+        "$": "nidm:centerOfGravity",
         "type": "xsd:QName"
       },
       "prov:location": {
@@ -374,7 +362,7 @@
     },
     "niiri:center_of_gravity_2": {
       "prov:type": {
-        "$": "fsl:centerOfGravity",
+        "$": "nidm:centerOfGravity",
         "type": "xsd:QName"
       },
       "prov:location": {
@@ -405,7 +393,7 @@
           "type": "xsd:QName"
         },
         {
-          "$": "fsl:ZStatisticalMap",
+          "$": "nidm:ZStatisticalMap",
           "type": "xsd:QName"
         }
       ],
@@ -563,13 +551,13 @@
         "$": "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
         "type": "xsd:string"
       },
+      "nidm:reselSizeInVoxels": {
+        "$": "12.2251",
+        "type": "xsd:float"
+      },
       "nidm:searchVolumeInVoxels": {
         "$": "45359",
         "type": "xsd:int"
-      },
-      "fsl:reselSizeInVoxels": {
-        "$": "12.2251",
-        "type": "xsd:float"
       },
       "nidm:fileName": {
         "$": "mask.nii.gz",
@@ -725,7 +713,11 @@
         "$": "0.000001",
         "type": "xsd:float"
       },
-      "prov:label": "Height Threshold: p\u0026lt;0.05 (FWE)"
+      "prov:label": "Height Threshold: p\u0026lt;0.05 (FWE)",
+      "nidm:userSpecifiedThresholdType": {
+        "$": "nidm:pValueFWER",
+        "type": "xsd:string"
+      }
     },
     "niiri:peak_0006": {
       "prov:type": {
@@ -779,7 +771,7 @@
     "niiri:peak_0005": {
       "prov:type": [
         {
-          "$": "fsl:clusterMaximumStatistic",
+          "$": "nidm:clusterMaximumStatistic",
           "type": "xsd:QName"
         },
         {
@@ -814,7 +806,7 @@
     },
     "niiri:contrast_variance_map_id": {
       "prov:type": {
-        "$": "fsl:varcope",
+        "$": "nidm:varcope",
         "type": "xsd:QName"
       },
       "crypto:sha": {
@@ -853,7 +845,7 @@
     "niiri:peak_0001": {
       "prov:type": [
         {
-          "$": "fsl:clusterMaximumStatistic",
+          "$": "nidm:clusterMaximumStatistic",
           "type": "xsd:QName"
         },
         {
@@ -968,12 +960,12 @@
     }
   },
   "prefix": {
-    "fsl": "http://http://fsl.fmrib.ox.ac.uk/",
+    "fsl": "http://www.incf.org/ns/nidash/nidm#",
     "crypto": "http://www.w3.org/2000/10/swap/crypto#",
     "prov": "http://www.w3.org/ns/prov#",
     "niiri": "http://iri.nidash.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema",
-    "nidm": "http://nidm.nidash.org/"
+    "nidm": "http://www.incf.org/ns/nidash/nidm#"
   },
   "wasDerivedFrom": {
     "_:wDF7": {
