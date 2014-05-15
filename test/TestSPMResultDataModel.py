@@ -239,7 +239,7 @@ class TestSPMResultsDataModel(unittest.TestCase):
             OPTIONAL { ?cid nidm:coordinate2 ?coord2 }
             OPTIONAL { ?cid nidm:coordinate3 ?coord3 }
          ?iid a nidm:inference .
-         ?esid a spm:excursionSet;
+         ?esid a nidm:ExcursionSetMap;
             prov:wasGeneratedBy ?iid .
          ?setid a spm:setLevelStatistic;
             prov:wasDerivedFrom ?esid .
