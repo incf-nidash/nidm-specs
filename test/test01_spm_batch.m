@@ -87,7 +87,7 @@ for i = 1:numPeaks
         clusterId = clusterId + 1;
         strClusterId = num2str(clusterId, '%04g');
         disp(['entity(niiri:cluster_' strClusterId ','])
-        disp(['  [prov:type = ''spm:clusterLevelStatistic'','])
+        disp(['  [prov:type = ''spm:ClusterStatistic'','])
         disp(['  prov:label = "Cluster Level Statistic: ' strClusterId '" %% xsd:string,'])
         clusterSizeInVoxels = TabDat.dat{i,5};
         disp(['  nidm:clusterSizeInVoxels = "' num2str(clusterSizeInVoxels) '" %% xsd:int,'])
@@ -102,7 +102,7 @@ for i = 1:numPeaks
     
     strPeakId = num2str(i, '%04g');
     disp(['entity(niiri:peak_' strPeakId ',']);
-    disp('  [prov:type = ''spm:peakLevelStatistic'',')
+    disp('  [prov:type = ''spm:PeakStatistic'',')
     disp(['  prov:label = "Peak Level Statistic: ' strPeakId '" %% xsd:string,'])
     disp(['  prov:location = ''niiri:coordinate_' strPeakId ''','])
     disp(['  prov:value = "' num2str(TabDat.dat{i,9}) '" %% xsd:float,'])
