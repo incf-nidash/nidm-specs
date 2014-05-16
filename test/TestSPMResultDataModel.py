@@ -230,7 +230,7 @@ class TestSPMResultsDataModel(unittest.TestCase):
         # - "value" of "extent threshold"
         query = prefixInfo+"""
         SELECT ?equivz ?coord1 ?coord2 ?coord3 ?ethresh ?hthresh WHERE {
-         ?pid a spm:peakLevelStatistic ;
+         ?pid a spm:PeakStatistic ;
             prov:atLocation ?cid ;
             nidm:equivalentZStatistic ?equivz ;
             prov:wasDerivedFrom ?clid .
@@ -241,9 +241,9 @@ class TestSPMResultsDataModel(unittest.TestCase):
          ?iid a nidm:inference .
          ?esid a nidm:ExcursionSetMap;
             prov:wasGeneratedBy ?iid .
-         ?setid a spm:setLevelStatistic;
+         ?setid a spm:SetStatistic;
             prov:wasDerivedFrom ?esid .
-         ?clid a spm:clusterLevelStatistic;
+         ?clid a spm:ClusterStatistic;
             prov:wasDerivedFrom ?setid .
          ?tid a nidm:extentThreshold ;
             nidm:clusterSizeInVoxels ?ethresh .
