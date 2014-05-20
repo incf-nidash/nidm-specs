@@ -1,0 +1,621 @@
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<title>NIDASH Data Model (NI-DM) for fMRI Results Specification</title>
+			<meta charset='utf-8'>
+			<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+			async class='remove'></script>
+
+			<LINK href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+
+				<script class='remove'>
+				var respecConfig = {
+					specStatus: "base",
+					shortName:  "SPMResults",
+					overrideCopyright: "<p class=copyright>NI-DM © Free To Everyone!</p>",
+					editors: [
+					{   name:       "David Keator",                   
+					company:    "INCF",
+					companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" },
+					{   name:       "Camille Maumet",                   
+					company:    "INCF",
+					companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
+					],
+					previousMaturity: "FPWD",
+					previousPublishDate:  "2013-12-10",
+					wg:           "NIDASH Working Group",
+					wgURI:        "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+					wgPublicList: "derived_data@birncommunity.org",
+					wgPatentURI:  "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+					afterEnd: function () {
+
+						var currentDate = new Date()
+						var date = currentDate.toString('dddd, MMMM ,yyyy')
+						$("#respecHeader h2").text("NI-DM Specification " + date);
+						$("#respecHeader img").attr({ src: "../../../spec/stylesheet/nidm-text.png", width: 100, height:50 });
+					},
+					localBiblio:  {
+						"KEATORNI13": {
+							title:    "Towards structured sharing of raw and derived neuroimaging data across existing resources"
+							,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
+							,   authors:  [
+							"David B. Keator"
+							,   "Karl Helmer"
+							,	"Jason Steffener"
+							,	"Jessica A. Turner"
+							,	"Theodorus G.M. VanErp"
+							,	"Syam Gadde"
+							,	"Naveen Ashish"
+							,	"Gully A. Burns"
+							,	"Nolan B. Nichols"
+							]
+							,   publisher:  "	Elsevier"
+						}
+					}	
+
+				};
+				</script>
+			</head>
+			<body>
+				<section id='abstract'>
+					<p>
+						This document describes the encoding of a SPM results output using the NI-DM data model.  
+					</p>
+				</section>
+
+				<section id='sotd'>
+					<p>
+						<!--FIXME: Status of this document-->
+					</p>
+
+				</section>
+
+				<section class='informative'>
+					<h2>Introduction</h2>
+					<p>
+						The NIDASH Data Model (NI-DM) for fMRI Results (FIXME: do we want a name for that?) is 
+						a <a href="../../../spec/NIDM_Spec.html">
+						NI-DM</a> compliant structured representation of the....   
+					</p>
+					<p>
+						The fMRI results specification formally describes the encoding of the functional MRI results into a NI-DM representation.
+					</p>
+
+
+		    <!-- FIXME:<section id='conformance'>
+		      <p>
+		         The single conformance class described in this specification is 
+		        the <dfn>SPM Results Object Model</dfn>, a class of NI-DM formatted objects for describing
+		        a neuroimaging analysis result created with the <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
+		        SPM</a> software.
+		      </p>
+		  </section>-->
+		  <section>
+		  	<h3>Namespaces</h3>
+		  	The following namespaces prefixes are used throughout this document.
+		  	<p>
+		  		The following namespaces prefixes are used throughout this document.
+		  	</p><div style="text-align: left;">
+		  	<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+		  		<caption id="namespace-table"><span>Table 1<sup><a class="internalDFN" href="#namespace-table"><span class="diamond"> ◊:</span></a></sup> </span>Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
+		  		<tbody><tr><td><b>prefix</b></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
+		  			<tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NI-DM namespace (see <a class="section-ref" href="#term-NamespaceDeclaration"><span>Section 5.7.4</span></a>)</td></tr>
+		  			<tr><td>prov</td><td>http://www.w3.org/ns/prov#</td><td>The PROV namespace (FIXME: add link)</td></tr>
+		  			<tr><td>xsd</td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [<cite><a class="bibref" href="#bib-XMLSCHEMA11-2">XMLSCHEMA11-2</a></cite>]</td></tr>
+		  			<tr><td>(others)</td><td>(various)</td><td>All other namespace prefixes are used in examples only. <br> In particular, IRIs starting with "http://example.com" represent<br> some application-dependent IRI [<cite><a class="bibref" href="#bib-RFC3987">RFC3987</a></cite>]</td></tr>
+		  		</tbody></table>
+		  	</div>
+		  </section>
+		</section>
+
+		<section>
+			<h2>NI- for Neuroimaging Results (NI-R) Overview</h2>
+
+			<p>
+				NI-R Data Model is summarized in Fig. 1.  
+				FIXME: Description
+
+			</p>
+
+			<section>
+				<h3>NI-R Core Structures</h3>
+				<figure>
+					<img src="NI-Results Overview.png" width=500px/>
+					<figcaption>NI- Results: Core Structure.</figcaption>
+				</figure> 
+				<p>The concepts found in the core of NI-Results are introduced in the rest of this section.
+					They are summarized in  <a href="#overview-types-and-relations">Table 2</a>, where they are categorized as type or relation.
+					The first column lists concepts, the second column indicates whether a concept maps to a type or a relation, whereas the third column contains the corresponding name, as it appears in Figure 1.    Names of relations have a verbal form in the past tense to express what happened in the past, as opposed to what may or will happen. In the core of PROV, all relations are binary. 
+				</p>
+
+				<div style="text-align: left;">
+					<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+						<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NI-Results core concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+						<tbody><tr><td><b>NI-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<!-- ------------- Beginning of PROV Entities ------------- -->
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">Data</a>
+								</td>
+								<td rowspan="12" style="text-align: center;">NI-ResultsDM Types<br/> (PROV Entities)</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Data</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-Data"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">DesignMatrix</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Design Matrix</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-DesignMatrix"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ParameterEstimateMap</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Parameter Estimate Map</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ParameterEstimateMap"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ResidualMeanSquaresMap</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Residual Mean Squares Map</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ResidualMeanSquaresMap"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ContrastWeights</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Contrast Weights</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ContrastWeights"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">Mask</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Mask</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-Mask"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ContrastEstimateMap</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Contrast Estimate Map</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ContrastEstimateMap"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ContrastStandardErrorMap</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Contrast Standard Error Map</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ContrastStandardErrorMap"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">StatisticalMap</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Statistical Map</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-StatisticalMap"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ExcursionSet</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Excursion Set</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ExcursionSet"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ClusterStatistic</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Cluster Statistic</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ClusterStatistic"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">PeakStatistic</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Peak Statistic</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-PeakStatistic"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<!-- ------------- End of PROV Entities ------------- -->
+							<!-- ------------- Beginning of PROV Activities ------------- -->
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ModelParameterEstimation</a>
+								</td>
+								<td rowspan="3" style="text-align: center;">NI-ResultsDM Types<br/> (PROV Activities)</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Model Parameter Estimation</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ModelParameterEstimation"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">ContrastEstimation</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Contrast Estimation</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-ContrastEstimation"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-entity" class="internalDFN">Inference</a>
+								</td>
+								<td><a title="dfn-Entity" href="#dfn-entity" class="internalDFN">Inference</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="#section-Inference"><span>Section 2.1.1</span></a>
+								</td>
+							</tr>
+							<!-- ------------- End of PROV Activities ------------- -->
+							<!-- ------------- Beginning of PROV Relations ------------- -->
+							<tr>
+								<td><a href="#concept-generation" class="internalDFN">Generation</a>
+								</td>
+								<td rowspan="3" style="text-align: center;">PROV Relations<br/> 
+								</td>
+								<td><a title="wasGeneratedBy" href="#dfn-wasgeneratedby" class="internalDFN">WasGeneratedBy</a>
+								</td>
+								<td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasgeneratedby"><span>PROV-DM wasGeneratedBy</span></a>
+								</td>
+							</tr>
+							<tr>
+								<td><a href="#concept-usage" class="internalDFN">Usage</a></td><td><a title="used" href="#dfn-used" class="internalDFN">Used</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-used"><span>PROV-DM used</span></a></td>
+							</tr>
+							<tr>
+								<td><a href="#concept-derivation" class="internalDFN">Derivation</a></td><td><a title="wasDerivedFrom" href="#dfn-wasderivedfrom" class="internalDFN">WasDerivedFrom</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasderivedfrom"><span>PROV-DM wasDerivedFrom</span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				</section>
+			</section>
+			<section>
+				<h1>Illustration of NIDASH Results Data Model by an example.</h1>
+			</section>
+			<section>
+				<h1>NIDASH Results Data Model Types and Relations.</h1>
+				<section>
+					<h2>Element 1: Model Parameter Estimation ins and outs</h2>
+					<section id="section-ModelParametersEstimation"> <!-- ModelParametersEstimation -->
+
+<h3 label="ModelParametersEstimation">ModelParametersEstimation</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ModelParametersEstimation"title="ModelParametersEstimation" class="internalDFN">ModelParametersEstimation</dfn><sup><a class="internalDFN" href="#concept-ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup>is an Activity defined as The process of estimating the parameters of a general linear model from the available data.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ModelParametersEstimation"> A <dfn title="dfn-ModelParametersEstimation" id="dfn-ModelParametersEstimation" class="internalDFN">ModelParametersEstimation</dfn><sup><a class="internalDFN" href="#dfn-ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ModelParametersEstimation.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ModelParametersEstimation.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-Data"> <!-- Data -->
+
+<h3 label="Data">Data</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-Data"title="Data" class="internalDFN">Data</dfn><sup><a class="internalDFN" href="#concept-Data"><span class="diamond"> ◊</span></a></sup>is an Entity defined as "A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.". </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Data"> A <dfn title="dfn-Data" id="dfn-Data" class="internalDFN">Data</dfn><sup><a class="internalDFN" href="#dfn-Data"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="Data.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Data.</li>
+<li><span class="attribute" id="Data.grandMeanScaling">grandMeanScaling</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> grandMeanScaling describing the  -- missing definition --.</li>
+<li><span class="attribute" id="Data.targetIntensity">targetIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> targetIntensity describing the  -- missing definition --.</li>
+<li><span class="attribute" id="Data.medianIntensity">medianIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> medianIntensity describing the  -- missing definition --.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-DesignMatrix"> <!-- DesignMatrix -->
+
+<h3 label="DesignMatrix">DesignMatrix</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-DesignMatrix"title="DesignMatrix" class="internalDFN">DesignMatrix</dfn><sup><a class="internalDFN" href="#concept-DesignMatrix"><span class="diamond"> ◊</span></a></sup>is an Entity defined as Design matrix associated with a particular design.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-DesignMatrix"> A <dfn title="dfn-DesignMatrix" id="dfn-DesignMatrix" class="internalDFN">DesignMatrix</dfn><sup><a class="internalDFN" href="#dfn-DesignMatrix"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="DesignMatrix.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the DesignMatrix.</li>
+<li><span class="attribute" id="DesignMatrix.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
+<li><span class="attribute" id="DesignMatrix.visualisation">visualisation</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> visualisation describing the Graphical representation of an entity..</li>
+<li><span class="attribute" id="DesignMatrix.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
+</ul>
+</div>
+</section>
+
+<section id="section-CustomMask"> <!-- CustomMask -->
+
+<h3 label="CustomMask">CustomMask</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-CustomMask"title="CustomMask" class="internalDFN">CustomMask</dfn><sup><a class="internalDFN" href="#concept-CustomMask"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-CustomMask"> A <dfn title="dfn-CustomMask" id="dfn-CustomMask" class="internalDFN">CustomMask</dfn><sup><a class="internalDFN" href="#dfn-CustomMask"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="CustomMask.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the CustomMask.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ParameterEstimateMap"> <!-- ParameterEstimateMap -->
+
+<h3 label="ParameterEstimateMap">ParameterEstimateMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ParameterEstimateMap"title="ParameterEstimateMap" class="internalDFN">ParameterEstimateMap</dfn><sup><a class="internalDFN" href="#concept-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the estimate of a model parameter.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ParameterEstimateMap"> A <dfn title="dfn-ParameterEstimateMap" id="dfn-ParameterEstimateMap" class="internalDFN">ParameterEstimateMap</dfn><sup><a class="internalDFN" href="#dfn-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ParameterEstimateMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ParameterEstimateMap.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ResidualMeanSquaresMap"> <!-- ResidualMeanSquaresMap -->
+
+<h3 label="ResidualMeanSquaresMap">ResidualMeanSquaresMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ResidualMeanSquaresMap"title="ResidualMeanSquaresMap" class="internalDFN">ResidualMeanSquaresMap</dfn><sup><a class="internalDFN" href="#concept-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the residual of the mean squares fit to the data.
+. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ResidualMeanSquaresMap"> A <dfn title="dfn-ResidualMeanSquaresMap" id="dfn-ResidualMeanSquaresMap" class="internalDFN">ResidualMeanSquaresMap</dfn><sup><a class="internalDFN" href="#dfn-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ResidualMeanSquaresMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ResidualMeanSquaresMap.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ContrastWeights"> <!-- ContrastWeights -->
+
+<h3 label="ContrastWeights">ContrastWeights</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ContrastWeights"title="ContrastWeights" class="internalDFN">ContrastWeights</dfn><sup><a class="internalDFN" href="#concept-ContrastWeights"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastWeights"> A <dfn title="dfn-ContrastWeights" id="dfn-ContrastWeights" class="internalDFN">ContrastWeights</dfn><sup><a class="internalDFN" href="#dfn-ContrastWeights"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ContrastWeights.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastWeights.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-Mask"> <!-- Mask -->
+
+<h3 label="Mask">Mask</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-Mask"title="Mask" class="internalDFN">Mask</dfn><sup><a class="internalDFN" href="#concept-Mask"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Mask"> A <dfn title="dfn-Mask" id="dfn-Mask" class="internalDFN">Mask</dfn><sup><a class="internalDFN" href="#dfn-Mask"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="Mask.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Mask.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ContrastEstimation"> <!-- ContrastEstimation -->
+
+<h3 label="ContrastEstimation">ContrastEstimation</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ContrastEstimation"title="ContrastEstimation" class="internalDFN">ContrastEstimation</dfn><sup><a class="internalDFN" href="#concept-ContrastEstimation"><span class="diamond"> ◊</span></a></sup>is an Activity defined as The process of estimating a contrast from the estimated parameters of statistical model.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastEstimation"> A <dfn title="dfn-ContrastEstimation" id="dfn-ContrastEstimation" class="internalDFN">ContrastEstimation</dfn><sup><a class="internalDFN" href="#dfn-ContrastEstimation"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ContrastEstimation.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastEstimation.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ContrastEstimateMap"> <!-- ContrastEstimateMap -->
+
+<h3 label="ContrastEstimateMap">ContrastEstimateMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ContrastEstimateMap"title="ContrastEstimateMap" class="internalDFN">ContrastEstimateMap</dfn><sup><a class="internalDFN" href="#concept-ContrastEstimateMap"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastEstimateMap"> A <dfn title="dfn-ContrastEstimateMap" id="dfn-ContrastEstimateMap" class="internalDFN">ContrastEstimateMap</dfn><sup><a class="internalDFN" href="#dfn-ContrastEstimateMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ContrastEstimateMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastEstimateMap.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ContrastStandardErrorMap"> <!-- ContrastStandardErrorMap -->
+
+<h3 label="ContrastStandardErrorMap">ContrastStandardErrorMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ContrastStandardErrorMap"title="ContrastStandardErrorMap" class="internalDFN">ContrastStandardErrorMap</dfn><sup><a class="internalDFN" href="#concept-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the standard error of a given contrast.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastStandardErrorMap"> A <dfn title="dfn-ContrastStandardErrorMap" id="dfn-ContrastStandardErrorMap" class="internalDFN">ContrastStandardErrorMap</dfn><sup><a class="internalDFN" href="#dfn-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ContrastStandardErrorMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastStandardErrorMap.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> contrastName describing the Name of the contrast..</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> atCoordinateSpace describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> crypto:sha512 describing the  -- missing definition --.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-StatisticalMap"> <!-- StatisticalMap -->
+
+<h3 label="StatisticalMap">StatisticalMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-StatisticalMap"title="StatisticalMap" class="internalDFN">StatisticalMap</dfn><sup><a class="internalDFN" href="#concept-StatisticalMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is a statistic. . </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-StatisticalMap"> A <dfn title="dfn-StatisticalMap" id="dfn-StatisticalMap" class="internalDFN">StatisticalMap</dfn><sup><a class="internalDFN" href="#dfn-StatisticalMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="StatisticalMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the StatisticalMap.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-Inference"> <!-- Inference -->
+
+<h3 label="Inference">Inference</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-Inference"title="Inference" class="internalDFN">Inference</dfn><sup><a class="internalDFN" href="#concept-Inference"><span class="diamond"> ◊</span></a></sup>is an Activity defined as The process of inferring the excursion set from a statistical map.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Inference"> A <dfn title="dfn-Inference" id="dfn-Inference" class="internalDFN">Inference</dfn><sup><a class="internalDFN" href="#dfn-Inference"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="Inference.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Inference.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ExcursionSet"> <!-- ExcursionSet -->
+
+<h3 label="ExcursionSet">ExcursionSet</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ExcursionSet"title="ExcursionSet" class="internalDFN">ExcursionSet</dfn><sup><a class="internalDFN" href="#concept-ExcursionSet"><span class="diamond"> ◊</span></a></sup>is an Entity defined as Set of map elements surviving a thresholding procedure.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ExcursionSet"> A <dfn title="dfn-ExcursionSet" id="dfn-ExcursionSet" class="internalDFN">ExcursionSet</dfn><sup><a class="internalDFN" href="#dfn-ExcursionSet"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ExcursionSet.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ExcursionSet.</li>
+<li><span class="attribute" id="ExcursionSet.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ExcursionSet.clusterLabelsMap">clusterLabelsMap</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterLabelsMap describing the A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer..</li>
+<li><span class="attribute" id="ExcursionSet.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="ExcursionSet.coordinateSpace">coordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> coordinateSpace describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ExcursionSet.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> crypto:sha512 describing the  -- missing definition --.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-ClusterStatistic"> <!-- ClusterStatistic -->
+
+<h3 label="ClusterStatistic">ClusterStatistic</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-ClusterStatistic"title="ClusterStatistic" class="internalDFN">ClusterStatistic</dfn><sup><a class="internalDFN" href="#concept-ClusterStatistic"><span class="diamond"> ◊</span></a></sup>is an Entity defined as Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. . </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ClusterStatistic"> A <dfn title="dfn-ClusterStatistic" id="dfn-ClusterStatistic" class="internalDFN">ClusterStatistic</dfn><sup><a class="internalDFN" href="#dfn-ClusterStatistic"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="ClusterStatistic.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ClusterStatistic.</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInVoxels">clusterSizeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterSizeInVoxels describing the Number of voxels that make up the cluster..</li>
+<li><span class="attribute" id="ClusterStatistic.clusterLabelId">clusterLabelId</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterLabelId describing the Integer associated with a particular cluster as specified in the clusterLabelsMap..</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInResels">clusterSizeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterSizeInResels describing the Number of resels that make up a cluster..</li>
+<li><span class="attribute" id="ClusterStatistic.pValueUncorrected">pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> pValueUncorrected describing the A p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="ClusterStatistic.pValueFWER">pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> pValueFWER describing the "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+<li><span class="attribute" id="ClusterStatistic.qValueFDR">qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> qValueFDR describing the P-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-PeakStatistic"> <!-- PeakStatistic -->
+
+<h3 label="PeakStatistic">PeakStatistic</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-PeakStatistic"title="PeakStatistic" class="internalDFN">PeakStatistic</dfn><sup><a class="internalDFN" href="#concept-PeakStatistic"><span class="diamond"> ◊</span></a></sup>is an Entity defined as Statistic defined at the peak-level in an excursion set.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-PeakStatistic"> A <dfn title="dfn-PeakStatistic" id="dfn-PeakStatistic" class="internalDFN">PeakStatistic</dfn><sup><a class="internalDFN" href="#dfn-PeakStatistic"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="PeakStatistic.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the PeakStatistic.</li>
+</ul>
+</div>
+</section>
+
+<section id="section-SearchSpace"> <!-- SearchSpace -->
+
+<h3 label="SearchSpace">SearchSpace</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-SearchSpace"title="SearchSpace" class="internalDFN">SearchSpace</dfn><sup><a class="internalDFN" href="#concept-SearchSpace"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-SearchSpace"> A <dfn title="dfn-SearchSpace" id="dfn-SearchSpace" class="internalDFN">SearchSpace</dfn><sup><a class="internalDFN" href="#dfn-SearchSpace"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="SearchSpace.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SearchSpace.</li>
+</ul>
+</div>
+</section>
+
+
+
+
+				<section>
+					<h2>Contrast Estimation</h2>
+				</section>
+				<section>
+					<h2>Inference</h2>
+				</section>
+				<section>
+					<h2>Data Array</h2>
+				</section>
+			</section>
+<!-- 			<section>
+				<h2>Other terms</h2>
+
+			</section> -->
+		</body>
+		</html>
