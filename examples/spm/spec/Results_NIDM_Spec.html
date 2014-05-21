@@ -109,12 +109,18 @@
 		</section>
 
 		<section>
-			<h2>NI- for Neuroimaging Results (NI-R) Overview</h2>
+			<h2>NI-R Data Model Overview</h2>
 
 			<p>
-				NI-R Data Model is summarized in Fig. 1.  
-				FIXME: Description
+				The NIDASH Data Model for neuroimaging results (NI-R Data Model) is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NI-R data model is represented in Fig. 1.
 
+				<figure>
+				
+					<img src="../../../spec/NI-R_Domain overview.png" width=600px/>
+					<figcaption>NI- Results: Domain overview.</figcaption>
+				</figure>
+
+				
 			</p>
 
 			<section>
@@ -287,14 +293,16 @@
 			<section>
 				<h1>NIDASH Results Data Model Types and Relations.</h1>
 				<section>
-					<h2>Element 1: Model Parameter Estimation ins and outs</h2>
-					<section id="section-ModelParametersEstimation"> <!-- ModelParametersEstimation -->
+					<h2>Element 1: Model Fitting</h2>
+					
+<!-- Beginning of automatically-generated: model fitting -->
+<section id="section-ModelParametersEstimation"> <!-- ModelParametersEstimation -->
 
 <h3 label="ModelParametersEstimation">ModelParametersEstimation</h3>
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ModelParametersEstimation"title="ModelParametersEstimation" class="internalDFN">ModelParametersEstimation</dfn><sup><a class="internalDFN" href="#concept-ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup>is an Activity defined as The process of estimating the parameters of a general linear model from the available data.. </div>
+A <dfn id="concept-ModelParametersEstimation"title="ModelParametersEstimation" class="internalDFN">ModelParametersEstimation</dfn><sup><a class="internalDFN" href="#concept-ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup>is a the process of estimating the parameters of a general linear model from the available data (sub-type of prov:Activity). </div>
 
 <p></p>
 
@@ -311,16 +319,16 @@ A <dfn id="concept-ModelParametersEstimation"title="ModelParametersEstimation" c
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-Data"title="Data" class="internalDFN">Data</dfn><sup><a class="internalDFN" href="#concept-Data"><span class="diamond"> ◊</span></a></sup>is an Entity defined as "A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.". </div>
+A <dfn id="concept-Data"title="Data" class="internalDFN">Data</dfn><sup><a class="internalDFN" href="#concept-Data"><span class="diamond"> ◊</span></a></sup>is a "A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn." (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-Data"> A <dfn title="dfn-Data" id="dfn-Data" class="internalDFN">Data</dfn><sup><a class="internalDFN" href="#dfn-Data"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="Data.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Data.</li>
-<li><span class="attribute" id="Data.grandMeanScaling">grandMeanScaling</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> grandMeanScaling describing the  -- missing definition --.</li>
-<li><span class="attribute" id="Data.targetIntensity">targetIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> targetIntensity describing the  -- missing definition --.</li>
-<li><span class="attribute" id="Data.medianIntensity">medianIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> medianIntensity describing the  -- missing definition --.</li>
+<li><span class="attribute" id="Data.grandMeanScaling">grandMeanScaling</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> binary flag defining whether the grand mean of the data was scaled.</li>
+<li><span class="attribute" id="Data.targetIntensity">targetIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true).</li>
+<li><span class="attribute" id="Data.medianIntensity">medianIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> value corresponding to the median intensity of the Data.</li>
 </ul>
 </div>
 </section>
@@ -331,33 +339,16 @@ A <dfn id="concept-Data"title="Data" class="internalDFN">Data</dfn><sup><a class
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-DesignMatrix"title="DesignMatrix" class="internalDFN">DesignMatrix</dfn><sup><a class="internalDFN" href="#concept-DesignMatrix"><span class="diamond"> ◊</span></a></sup>is an Entity defined as Design matrix associated with a particular design.. </div>
+A <dfn id="concept-DesignMatrix"title="DesignMatrix" class="internalDFN">DesignMatrix</dfn><sup><a class="internalDFN" href="#concept-DesignMatrix"><span class="diamond"> ◊</span></a></sup>is a design matrix associated with a particular design (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-DesignMatrix"> A <dfn title="dfn-DesignMatrix" id="dfn-DesignMatrix" class="internalDFN">DesignMatrix</dfn><sup><a class="internalDFN" href="#dfn-DesignMatrix"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="DesignMatrix.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the DesignMatrix.</li>
-<li><span class="attribute" id="DesignMatrix.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
-<li><span class="attribute" id="DesignMatrix.visualisation">visualisation</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> visualisation describing the Graphical representation of an entity..</li>
-<li><span class="attribute" id="DesignMatrix.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
-</ul>
-</div>
-</section>
-
-<section id="section-CustomMask"> <!-- CustomMask -->
-
-<h3 label="CustomMask">CustomMask</h3>
-
-<div class="glossary-ref">   
-
-A <dfn id="concept-CustomMask"title="CustomMask" class="internalDFN">CustomMask</dfn><sup><a class="internalDFN" href="#concept-CustomMask"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
-
-<p></p>
-
-<div class="attributes" id="attributes-CustomMask"> A <dfn title="dfn-CustomMask" id="dfn-CustomMask" class="internalDFN">CustomMask</dfn><sup><a class="internalDFN" href="#dfn-CustomMask"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
-<ul>
-<li><span class="attribute" id="CustomMask.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the CustomMask.</li>
+<li><span class="attribute" id="DesignMatrix.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to a csv file describing the design matrix.</li>
+<li><span class="attribute" id="DesignMatrix.visualisation">visualisation</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity.</li>
+<li><span class="attribute" id="DesignMatrix.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
 </ul>
 </div>
 </section>
@@ -368,13 +359,17 @@ A <dfn id="concept-CustomMask"title="CustomMask" class="internalDFN">CustomMask<
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ParameterEstimateMap"title="ParameterEstimateMap" class="internalDFN">ParameterEstimateMap</dfn><sup><a class="internalDFN" href="#concept-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the estimate of a model parameter.. </div>
+A <dfn id="concept-ParameterEstimateMap"title="ParameterEstimateMap" class="internalDFN">ParameterEstimateMap</dfn><sup><a class="internalDFN" href="#concept-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the estimate of a model parameter (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-ParameterEstimateMap"> A <dfn title="dfn-ParameterEstimateMap" id="dfn-ParameterEstimateMap" class="internalDFN">ParameterEstimateMap</dfn><sup><a class="internalDFN" href="#dfn-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ParameterEstimateMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ParameterEstimateMap.</li>
+<li><span class="attribute" id="ParameterEstimateMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="ParameterEstimateMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ParameterEstimateMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ParameterEstimateMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
@@ -385,14 +380,18 @@ A <dfn id="concept-ParameterEstimateMap"title="ParameterEstimateMap" class="inte
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ResidualMeanSquaresMap"title="ResidualMeanSquaresMap" class="internalDFN">ResidualMeanSquaresMap</dfn><sup><a class="internalDFN" href="#concept-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the residual of the mean squares fit to the data.
-. </div>
+A <dfn id="concept-ResidualMeanSquaresMap"title="ResidualMeanSquaresMap" class="internalDFN">ResidualMeanSquaresMap</dfn><sup><a class="internalDFN" href="#concept-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the residual of the mean squares fit to the data.
+ (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-ResidualMeanSquaresMap"> A <dfn title="dfn-ResidualMeanSquaresMap" id="dfn-ResidualMeanSquaresMap" class="internalDFN">ResidualMeanSquaresMap</dfn><sup><a class="internalDFN" href="#dfn-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ResidualMeanSquaresMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ResidualMeanSquaresMap.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
@@ -403,30 +402,36 @@ A <dfn id="concept-ResidualMeanSquaresMap"title="ResidualMeanSquaresMap" class="
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ContrastWeights"title="ContrastWeights" class="internalDFN">ContrastWeights</dfn><sup><a class="internalDFN" href="#concept-ContrastWeights"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+A <dfn id="concept-ContrastWeights"title="ContrastWeights" class="internalDFN">ContrastWeights</dfn><sup><a class="internalDFN" href="#concept-ContrastWeights"><span class="diamond"> ◊</span></a></sup>is a vector defining the linear combination associated with a particular contrast.  (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-ContrastWeights"> A <dfn title="dfn-ContrastWeights" id="dfn-ContrastWeights" class="internalDFN">ContrastWeights</dfn><sup><a class="internalDFN" href="#dfn-ContrastWeights"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ContrastWeights.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastWeights.</li>
+<li><span class="attribute" id="ContrastWeights.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastWeights.prov:value">prov:value</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Name of the contrast..</li>
 </ul>
 </div>
 </section>
 
-<section id="section-Mask"> <!-- Mask -->
+<section id="section-MaskMap"> <!-- MaskMap -->
 
-<h3 label="Mask">Mask</h3>
+<h3 label="MaskMap">MaskMap</h3>
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-Mask"title="Mask" class="internalDFN">Mask</dfn><sup><a class="internalDFN" href="#concept-Mask"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+A <dfn id="concept-MaskMap"title="MaskMap" class="internalDFN">MaskMap</dfn><sup><a class="internalDFN" href="#concept-MaskMap"><span class="diamond"> ◊</span></a></sup>is a map or surface on which the associated results are displayed.  (sub-type of prov:Entity). </div>
 
 <p></p>
 
-<div class="attributes" id="attributes-Mask"> A <dfn title="dfn-Mask" id="dfn-Mask" class="internalDFN">Mask</dfn><sup><a class="internalDFN" href="#dfn-Mask"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<div class="attributes" id="attributes-MaskMap"> A <dfn title="dfn-MaskMap" id="dfn-MaskMap" class="internalDFN">MaskMap</dfn><sup><a class="internalDFN" href="#dfn-MaskMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
-<li><span class="attribute" id="Mask.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Mask.</li>
+<li><span class="attribute" id="MaskMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the MaskMap.</li>
+<li><span class="attribute" id="MaskMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="MaskMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="MaskMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="MaskMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
@@ -437,7 +442,7 @@ A <dfn id="concept-Mask"title="Mask" class="internalDFN">Mask</dfn><sup><a class
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ContrastEstimation"title="ContrastEstimation" class="internalDFN">ContrastEstimation</dfn><sup><a class="internalDFN" href="#concept-ContrastEstimation"><span class="diamond"> ◊</span></a></sup>is an Activity defined as The process of estimating a contrast from the estimated parameters of statistical model.. </div>
+A <dfn id="concept-ContrastEstimation"title="ContrastEstimation" class="internalDFN">ContrastEstimation</dfn><sup><a class="internalDFN" href="#concept-ContrastEstimation"><span class="diamond"> ◊</span></a></sup>is a the process of estimating a contrast from the estimated parameters of statistical model (sub-type of prov:Activity). </div>
 
 <p></p>
 
@@ -448,19 +453,24 @@ A <dfn id="concept-ContrastEstimation"title="ContrastEstimation" class="internal
 </div>
 </section>
 
-<section id="section-ContrastEstimateMap"> <!-- ContrastEstimateMap -->
+<section id="section-ContrastMap"> <!-- ContrastMap -->
 
-<h3 label="ContrastEstimateMap">ContrastEstimateMap</h3>
+<h3 label="ContrastMap">ContrastMap</h3>
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ContrastEstimateMap"title="ContrastEstimateMap" class="internalDFN">ContrastEstimateMap</dfn><sup><a class="internalDFN" href="#concept-ContrastEstimateMap"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+A <dfn id="concept-ContrastMap"title="ContrastMap" class="internalDFN">ContrastMap</dfn><sup><a class="internalDFN" href="#concept-ContrastMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is statistical contrast (sub-type of prov:Entity). </div>
 
 <p></p>
 
-<div class="attributes" id="attributes-ContrastEstimateMap"> A <dfn title="dfn-ContrastEstimateMap" id="dfn-ContrastEstimateMap" class="internalDFN">ContrastEstimateMap</dfn><sup><a class="internalDFN" href="#dfn-ContrastEstimateMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<div class="attributes" id="attributes-ContrastMap"> A <dfn title="dfn-ContrastMap" id="dfn-ContrastMap" class="internalDFN">ContrastMap</dfn><sup><a class="internalDFN" href="#dfn-ContrastMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
-<li><span class="attribute" id="ContrastEstimateMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastEstimateMap.</li>
+<li><span class="attribute" id="ContrastMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastMap.</li>
+<li><span class="attribute" id="ContrastMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="ContrastMap.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ContrastMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ContrastMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
@@ -471,18 +481,18 @@ A <dfn id="concept-ContrastEstimateMap"title="ContrastEstimateMap" class="intern
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-ContrastStandardErrorMap"title="ContrastStandardErrorMap" class="internalDFN">ContrastStandardErrorMap</dfn><sup><a class="internalDFN" href="#concept-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is the standard error of a given contrast.. </div>
+A <dfn id="concept-ContrastStandardErrorMap"title="ContrastStandardErrorMap" class="internalDFN">ContrastStandardErrorMap</dfn><sup><a class="internalDFN" href="#concept-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the standard error of a given contrast (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-ContrastStandardErrorMap"> A <dfn title="dfn-ContrastStandardErrorMap" id="dfn-ContrastStandardErrorMap" class="internalDFN">ContrastStandardErrorMap</dfn><sup><a class="internalDFN" href="#dfn-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ContrastStandardErrorMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastStandardErrorMap.</li>
-<li><span class="attribute" id="ContrastStandardErrorMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
-<li><span class="attribute" id="ContrastStandardErrorMap.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> contrastName describing the Name of the contrast..</li>
-<li><span class="attribute" id="ContrastStandardErrorMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
-<li><span class="attribute" id="ContrastStandardErrorMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> atCoordinateSpace describing the  -- missing definition --.</li>
-<li><span class="attribute" id="ContrastStandardErrorMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> crypto:sha512 describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
@@ -493,17 +503,33 @@ A <dfn id="concept-ContrastStandardErrorMap"title="ContrastStandardErrorMap" cla
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-StatisticalMap"title="StatisticalMap" class="internalDFN">StatisticalMap</dfn><sup><a class="internalDFN" href="#concept-StatisticalMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as A map whose value at each location is a statistic. . </div>
+A <dfn id="concept-StatisticalMap"title="StatisticalMap" class="internalDFN">StatisticalMap</dfn><sup><a class="internalDFN" href="#concept-StatisticalMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is a statistic.  (sub-type of prov:Entity). </div>
 
 <p></p>
 
 <div class="attributes" id="attributes-StatisticalMap"> A <dfn title="dfn-StatisticalMap" id="dfn-StatisticalMap" class="internalDFN">StatisticalMap</dfn><sup><a class="internalDFN" href="#dfn-StatisticalMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="StatisticalMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the StatisticalMap.</li>
+<li><span class="attribute" id="StatisticalMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+<li><span class="attribute" id="StatisticalMap.contrastName">contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="StatisticalMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="StatisticalMap.errorDegreesOfFreedom">errorDegreesOfFreedom</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the error.</li>
+<li><span class="attribute" id="StatisticalMap.effectDegreesOfFreedom">effectDegreesOfFreedom</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the effect.</li>
+<li><span class="attribute" id="StatisticalMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="StatisticalMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
 </ul>
 </div>
 </section>
 
+
+
+
+<!-- End of automatically-generated model fitting-->
+</section>
+
+<section>
+<h2>Element 2: Inference</h2>
+<!-- Beginning of automatically-generated: inference -->
 <section id="section-Inference"> <!-- Inference -->
 
 <h3 label="Inference">Inference</h3>
@@ -534,11 +560,11 @@ A <dfn id="concept-ExcursionSet"title="ExcursionSet" class="internalDFN">Excursi
 <div class="attributes" id="attributes-ExcursionSet"> A <dfn title="dfn-ExcursionSet" id="dfn-ExcursionSet" class="internalDFN">ExcursionSet</dfn><sup><a class="internalDFN" href="#dfn-ExcursionSet"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ExcursionSet.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ExcursionSet.</li>
-<li><span class="attribute" id="ExcursionSet.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> prov:location describing the  -- missing definition --.</li>
-<li><span class="attribute" id="ExcursionSet.clusterLabelsMap">clusterLabelsMap</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterLabelsMap describing the A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer..</li>
-<li><span class="attribute" id="ExcursionSet.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> originalFileName describing the Original name associated with a file (without path) in the context of the analysis software package..</li>
-<li><span class="attribute" id="ExcursionSet.coordinateSpace">coordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> coordinateSpace describing the  -- missing definition --.</li>
-<li><span class="attribute" id="ExcursionSet.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> crypto:sha512 describing the  -- missing definition --.</li>
+<li><span class="attribute" id="ExcursionSet.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="ExcursionSet.clusterLabelsMap">clusterLabelsMap</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer..</li>
+<li><span class="attribute" id="ExcursionSet.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="ExcursionSet.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file..</li>
+<li><span class="attribute" id="ExcursionSet.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file..</li>
 </ul>
 </div>
 </section>
@@ -556,12 +582,12 @@ A <dfn id="concept-ClusterStatistic"title="ClusterStatistic" class="internalDFN"
 <div class="attributes" id="attributes-ClusterStatistic"> A <dfn title="dfn-ClusterStatistic" id="dfn-ClusterStatistic" class="internalDFN">ClusterStatistic</dfn><sup><a class="internalDFN" href="#dfn-ClusterStatistic"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="ClusterStatistic.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ClusterStatistic.</li>
-<li><span class="attribute" id="ClusterStatistic.clusterSizeInVoxels">clusterSizeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterSizeInVoxels describing the Number of voxels that make up the cluster..</li>
-<li><span class="attribute" id="ClusterStatistic.clusterLabelId">clusterLabelId</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterLabelId describing the Integer associated with a particular cluster as specified in the clusterLabelsMap..</li>
-<li><span class="attribute" id="ClusterStatistic.clusterSizeInResels">clusterSizeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> clusterSizeInResels describing the Number of resels that make up a cluster..</li>
-<li><span class="attribute" id="ClusterStatistic.pValueUncorrected">pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> pValueUncorrected describing the A p-value reported without correction for multiple testing.        .</li>
-<li><span class="attribute" id="ClusterStatistic.pValueFWER">pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> pValueFWER describing the "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
-<li><span class="attribute" id="ClusterStatistic.qValueFDR">qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> qValueFDR describing the P-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInVoxels">clusterSizeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Number of voxels that make up the cluster..</li>
+<li><span class="attribute" id="ClusterStatistic.clusterLabelId">clusterLabelId</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Integer associated with a particular cluster as specified in the clusterLabelsMap..</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInResels">clusterSizeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Number of resels that make up a cluster..</li>
+<li><span class="attribute" id="ClusterStatistic.pValueUncorrected">pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> A p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="ClusterStatistic.pValueFWER">pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+<li><span class="attribute" id="ClusterStatistic.qValueFDR">qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> P-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
 </ul>
 </div>
 </section>
@@ -579,43 +605,108 @@ A <dfn id="concept-PeakStatistic"title="PeakStatistic" class="internalDFN">PeakS
 <div class="attributes" id="attributes-PeakStatistic"> A <dfn title="dfn-PeakStatistic" id="dfn-PeakStatistic" class="internalDFN">PeakStatistic</dfn><sup><a class="internalDFN" href="#dfn-PeakStatistic"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
 <li><span class="attribute" id="PeakStatistic.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the PeakStatistic.</li>
+<li><span class="attribute" id="PeakStatistic.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="PeakStatistic.equivalentZStatistic">equivalentZStatistic</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score..</li>
+<li><span class="attribute" id="PeakStatistic.pValueUncorrected">pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> A p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="PeakStatistic.pValueFWER">pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+<li><span class="attribute" id="PeakStatistic.qValueFDR">qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> P-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
 </ul>
 </div>
 </section>
 
-<section id="section-SearchSpace"> <!-- SearchSpace -->
+<section id="section-SearchSpaceMap"> <!-- SearchSpaceMap -->
 
-<h3 label="SearchSpace">SearchSpace</h3>
+<h3 label="SearchSpaceMap">SearchSpaceMap</h3>
 
 <div class="glossary-ref">   
 
-A <dfn id="concept-SearchSpace"title="SearchSpace" class="internalDFN">SearchSpace</dfn><sup><a class="internalDFN" href="#concept-SearchSpace"><span class="diamond"> ◊</span></a></sup>is an   defined as  -- Missing definition --. </div>
+A <dfn id="concept-SearchSpaceMap"title="SearchSpaceMap" class="internalDFN">SearchSpaceMap</dfn><sup><a class="internalDFN" href="#concept-SearchSpaceMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as mask in which the inference was performed.. </div>
 
 <p></p>
 
-<div class="attributes" id="attributes-SearchSpace"> A <dfn title="dfn-SearchSpace" id="dfn-SearchSpace" class="internalDFN">SearchSpace</dfn><sup><a class="internalDFN" href="#dfn-SearchSpace"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<div class="attributes" id="attributes-SearchSpaceMap"> A <dfn title="dfn-SearchSpaceMap" id="dfn-SearchSpaceMap" class="internalDFN">SearchSpaceMap</dfn><sup><a class="internalDFN" href="#dfn-SearchSpaceMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
 <ul>
-<li><span class="attribute" id="SearchSpace.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SearchSpace.</li>
+<li><span class="attribute" id="SearchSpaceMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SearchSpaceMap.</li>
+<li><span class="attribute" id="SearchSpaceMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="SearchSpaceMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="SearchSpaceMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file..</li>
+<li><span class="attribute" id="SearchSpaceMap.randomFieldStationarity">randomFieldStationarity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Is the random field assumed to be stationary across the entire search volume?.</li>
+<li><span class="attribute" id="SearchSpaceMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file..</li>
+</ul>
+</div>
+</section>
+
+<section id="section-SubVolumeMap"> <!-- SubVolumeMap -->
+
+<h3 label="SubVolumeMap">SubVolumeMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-SubVolumeMap"title="SubVolumeMap" class="internalDFN">SubVolumeMap</dfn><sup><a class="internalDFN" href="#concept-SubVolumeMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as mask defined by the user to restrain the space in which inference is performed.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-SubVolumeMap"> A <dfn title="dfn-SubVolumeMap" id="dfn-SubVolumeMap" class="internalDFN">SubVolumeMap</dfn><sup><a class="internalDFN" href="#dfn-SubVolumeMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="SubVolumeMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SubVolumeMap.</li>
+<li><span class="attribute" id="SubVolumeMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="SubVolumeMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="SubVolumeMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file..</li>
+<li><span class="attribute" id="SubVolumeMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file..</li>
+</ul>
+</div>
+</section>
+
+<!-- End of automatically-generated: inference -->
+</section>
+
+<section>
+<h2>Element 3: User-specified masking</h2>
+<!-- Beginning of automatically-generated: masking -->
+<section id="section-CustomMaskMap"> <!-- CustomMaskMap -->
+
+<h3 label="CustomMaskMap">CustomMaskMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-CustomMaskMap"title="CustomMaskMap" class="internalDFN">CustomMaskMap</dfn><sup><a class="internalDFN" href="#concept-CustomMaskMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as mask defined by the user to restrain the space in which model fitting is performed.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-CustomMaskMap"> A <dfn title="dfn-CustomMaskMap" id="dfn-CustomMaskMap" class="internalDFN">CustomMaskMap</dfn><sup><a class="internalDFN" href="#dfn-CustomMaskMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="CustomMaskMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the CustomMaskMap.</li>
+<li><span class="attribute" id="CustomMaskMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="CustomMaskMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="CustomMaskMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file..</li>
+<li><span class="attribute" id="CustomMaskMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file..</li>
+</ul>
+</div>
+</section>
+
+<section id="section-SubVolumeMap"> <!-- SubVolumeMap -->
+
+<h3 label="SubVolumeMap">SubVolumeMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn id="concept-SubVolumeMap"title="SubVolumeMap" class="internalDFN">SubVolumeMap</dfn><sup><a class="internalDFN" href="#concept-SubVolumeMap"><span class="diamond"> ◊</span></a></sup>is an Entity defined as mask defined by the user to restrain the space in which inference is performed.. </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-SubVolumeMap"> A <dfn title="dfn-SubVolumeMap" id="dfn-SubVolumeMap" class="internalDFN">SubVolumeMap</dfn><sup><a class="internalDFN" href="#dfn-SubVolumeMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+<ul>
+<li><span class="attribute" id="SubVolumeMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SubVolumeMap.</li>
+<li><span class="attribute" id="SubVolumeMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Path to the corresponding image file..</li>
+<li><span class="attribute" id="SubVolumeMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Original name associated with a file (without path) in the context of the analysis software package..</li>
+<li><span class="attribute" id="SubVolumeMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file..</li>
+<li><span class="attribute" id="SubVolumeMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file..</li>
 </ul>
 </div>
 </section>
 
 
+<!-- End of automatically-generated: masking -->
 
-
-				<section>
-					<h2>Contrast Estimation</h2>
-				</section>
-				<section>
-					<h2>Inference</h2>
-				</section>
-				<section>
-					<h2>Data Array</h2>
-				</section>
-			</section>
-<!-- 			<section>
-				<h2>Other terms</h2>
-
-			</section> -->
 		</body>
 		</html>
