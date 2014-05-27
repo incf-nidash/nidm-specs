@@ -29,7 +29,7 @@ auditory_preproc_spm_batch
 smoothedFiles = strcat(fullfile(funcDir, 'swr'), spm_str_manip(funcFiles, 't'));
 
 % New folder for test01
-analysisDir = fullfile(spm_str_manip(dataDir, 'h'), 'test01');
+analysisDir = fullfile(spm_file(dataDir, 'path'), 'test01');
 if ~exist(analysisDir, 'dir')
     mkdir(analysisDir)
 end
@@ -58,7 +58,7 @@ matlabbatch{end+1}.spm.stats.fmri_est.spmmat{1} = spmMat;
 % --- Specify contrasts
 % Dependency on estimated model
 matlabbatch{end+1}.spm.stats.con.spmmat{1} = spmMat;
-matlabbatch{end}.spm.stats.con.consess{1}.tcon.name = 'passine listening > rest';
+matlabbatch{end}.spm.stats.con.consess{1}.tcon.name = 'passive listening > rest';
 matlabbatch{end}.spm.stats.con.consess{1}.tcon.weights = 1;
 
 % --- Inference
