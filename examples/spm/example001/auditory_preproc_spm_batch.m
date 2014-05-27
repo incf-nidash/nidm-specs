@@ -49,8 +49,7 @@ if exist(lastSmoothFile, 'file') ~=2
     % --- Smooth functional images
     matlabbatch{5}.spm.spatial.smooth.data(1) = cfg_dep('Old Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{4}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
 
-    spm_jobman('interactive', matlabbatch);
-    pause;
+    spm_jobman('run', matlabbatch);
 else
     disp('Pre-processing on auditory data already computed')
 end
