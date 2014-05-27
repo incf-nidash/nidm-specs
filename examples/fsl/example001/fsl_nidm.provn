@@ -221,6 +221,15 @@ document
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = "967da4a28494ad3fdc836b573c9886171e3e0fbbe8304840378c5448" %% xsd:string])    
 
+    entity(niiri:data_id,
+        [prov:type = 'nidm:Data',
+        prov:type = 'prov:Collection',
+        prov:label = "Data" %% xsd:string,
+        nidm:grandMeanScaling = "true" %%xsd:boolean,
+        nidm:targetIntensity = "10000" %% xsd:float,
+        nidm:medianIntensity = "TODO" %% xsd:float])
+      used(niiri:model_pe_id, niiri:data_id,-)
+
     entity(niiri:design_matrix_id,
         [prov:type = 'nidm:DesignMatrix',
         prov:location = "file://./design_matrix.csv" %% xsd:anyURI,
