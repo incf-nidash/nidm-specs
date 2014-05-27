@@ -87,8 +87,8 @@ for i = 1:numPeaks
         clusterId = clusterId + 1;
         strClusterId = num2str(clusterId, '%04g');
         disp(['entity(niiri:cluster_' strClusterId ','])
-        disp(['  [prov:type = ''spm:ClusterStatistic'','])
-        disp(['  prov:label = "Cluster Statistic: ' strClusterId '" %% xsd:string,'])
+        disp(['  [prov:type = ''spm:clusterLevelStatistic'','])
+        disp(['  prov:label = "Cluster Level Statistic: ' strClusterId '" %% xsd:string,'])
         clusterSizeInVoxels = TabDat.dat{i,5};
         disp(['  nidm:clusterSizeInVoxels = "' num2str(clusterSizeInVoxels) '" %% xsd:int,'])
         disp(['  nidm:labelId = "' num2str(clusterId) '",'])
@@ -97,13 +97,13 @@ for i = 1:numPeaks
         disp(['  nidm:pValueUncorrected = "' num2str(TabDat.dat{i,6}) '" %% xsd:float,'])
         disp(['  spm:pValueFWER = "' num2str(TabDat.dat{i,3}) '" %% xsd:float,'])
         disp(['  spm:qValueFDR = "' num2str(TabDat.dat{i,4}) '" %% xsd:float])'])
-        disp(['wasDerivedFrom(niiri:cluster_' strClusterId ', niiri:set_statistic_id)'])
+        disp(['wasDerivedFrom(niiri:cluster_' strClusterId ', niiri:set_level_statistic_id)'])
     end
     
     strPeakId = num2str(i, '%04g');
     disp(['entity(niiri:peak_' strPeakId ',']);
-    disp('  [prov:type = ''spm:PeakStatistic'',')
-    disp(['  prov:label = "Peak Statistic: ' strPeakId '" %% xsd:string,'])
+    disp('  [prov:type = ''spm:peakLevelStatistic'',')
+    disp(['  prov:label = "Peak Level Statistic: ' strPeakId '" %% xsd:string,'])
     disp(['  prov:location = ''niiri:coordinate_' strPeakId ''','])
     disp(['  prov:value = "' num2str(TabDat.dat{i,9}) '" %% xsd:float,'])
     disp(['  nidm:equivalentZStatistic = "' num2str(TabDat.dat{i,10}) '" %% xsd:float,'])
