@@ -43,6 +43,8 @@ if exist(lastSmoothFile, 'file') ~=2
     matlabbatch{4}.spm.tools.oldnorm.write.subj.matname(1) = cfg_dep('Old Segment: Norm Params Subj->MNI', substruct('.','val', '{}',{3}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','snfile', '()',{':'}));
     % Dependency on realigned and resliced functional files
     matlabbatch{4}.spm.tools.oldnorm.write.subj.resample(1) = cfg_dep('Realign: Estimate & Reslice: Resliced Images (Sess 1)', substruct('.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','sess', '()',{1}, '.','rfiles'));
+    
+    matlabbatch{4}.spm.tools.oldnorm.write.roptions.vox = [3 3 3];
 
     % --- Smooth functional images
     matlabbatch{5}.spm.spatial.smooth.data(1) = cfg_dep('Old Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{4}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
