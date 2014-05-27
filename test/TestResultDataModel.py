@@ -101,6 +101,7 @@ class TestResultDataModel(object):
         missing_s = list()
 
         exc_wrong = ""
+        exc_wrong_literal = ""
         exc_added = ""
         exc_missing = ""
 
@@ -125,7 +126,7 @@ class TestResultDataModel(object):
                 # If subject and predicate found in gt_graph, then object is wrong
                 elif (s,  p, None) in gt_graph:
                     if isinstance(o, rdflib.term.Literal):
-                        exc_wrong += "\nWrong o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
+                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
                     else:
                         exc_wrong += "\nWrong o:\ts('%s') p('%s') o('%s') not in gold std (instead o: '%s'?)"%(get_readable_name(other_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
                 # If subject and object found in gt_graph, then predicate is wrong
@@ -162,4 +163,4 @@ class TestResultDataModel(object):
                         exc_missing += "\nMissing s:\t'%s' "%(get_readable_name(gt_graph,s))
                         missing_s.append(s)
 
-        self.my_execption += exc_wrong+exc_added+exc_missing
+        self.my_execption += exc_missing+exc_added+exc_wrong+exc_wrong_literal
