@@ -54,8 +54,7 @@ def get_alternatives(graph,s=None,p=None, o=None):
 '''
 class TestResultDataModel(object):
     def setUp(self):
-        # self.ground_truth_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'examples')
-        self.ground_truth_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fsl', 'GroundTruth')
+        self.ground_truth_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'examples')
 
         self.my_execption = ""
 
