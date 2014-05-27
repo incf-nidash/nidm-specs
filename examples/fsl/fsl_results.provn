@@ -33,28 +33,24 @@ document
         nidm:dimensions = "[53,63,46]" %% xsd:string])
 
     entity(niiri:statistical_map_id,
-        [prov:type = 'nidm:StatisticalMap',
-        prov:type = 'nidm:TStatisticalMap',
+        [prov:type = 'nidm:TStatisticalMap',
         prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
         prov:label = "Statistical Map: listening &gt; rest: tstat1",
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:originalFileName = "tstat1.nii.gz" %% xsd:string,
-        nidm:statisticType = 'nidm:tStatistic',
         nidm:errorDegreesOfFreedom = "73.000000" %% xsd:float,
         nidm:effectDegreesOfFreedom = "1.000000" %% xsd:float,
         nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8"])
 
     entity(niiri:z_statistical_map_id,
-        [prov:type = 'nidm:StatisticalMap',
-        prov:type = 'fsl:ZStatisticalMap',
+        [prov:type = 'fsl:ZStatisticalMap',
         prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
         prov:label = "Z-statistical Map: listening &gt; rest: zstat1",
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:originalFileName = "zstat1.nii.gz" %% xsd:string,
         nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8"])
-
    
     entity(niiri:contrast_map_id,
         [prov:type = 'nidm:ContrastMap',
@@ -83,8 +79,8 @@ document
         crypto:sha = "p89b6e01b0463fe7d40782137867a..." %% xsd:string])
   
 
-    wasGeneratedBy(niiri:beta_map_id_1, niiri:model_fitting_id,-)
-    wasGeneratedBy(niiri:beta_map_id_2, niiri:model_fitting_id,-)
+    wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
+    wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
   
     entity(niiri:contrast_variance_map_id,
         [prov:type = 'fsl:Varcope',
@@ -112,28 +108,39 @@ document
         nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])    
 
+  entity(niiri:data_id,
+        [prov:type = 'nidm:Data',
+        prov:type = 'prov:Collection',
+        prov:label = "Data" %% xsd:string,
+        nidm:grandMeanScaling = "true" %%xsd:boolean,
+        nidm:targetIntensity = "100" %% xsd:float,
+        nidm:medianIntensity = "115.32" %% xsd:float])
+      used(niiri:model_pe_id, niiri:data_id,-)
+      wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_pe_id,-)
+      wasGeneratedBy(niiri:resels_per_voxel_map_id, niiri:model_pe_id,-)
+
     entity(niiri:design_matrix_id,
         [prov:type = 'nidm:DesignMatrix',
         prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
         prov:label = "Design Matrix" %% xsd:string,
         nidm:originalFileName = "design_matrix.csv" %% xsd:string])
     entity(niiri:contrast_id,
-        [prov:type = 'nidm:Contrast',
+        [prov:type = 'nidm:TContrast',
         nidm:contrastName = "listening > rest" %% xsd:string,
         prov:label = "Contrast weights" %% xsd:string,
-        prov:value = "[1, 0, 0]" %% xsd:string])
+        prov:constrastWeights = "[1, 0, 0]" %% xsd:string])
 
-    activity(niiri:model_fitting_id,
-        [prov:type = 'nidm:ModelFitting',
-        prov:label = "Model fitting"])
+    activity(niiri:model_pe_id,
+        [prov:type = 'nidm:ModelParametersEstimation',
+        prov:label = "Model parameters estimation"])
 
     activity(niiri:contrast_estimation_id,
         [prov:type = 'nidm:ContrastEstimation',
         prov:label = "Contrast estimation"])
 
-    used(niiri:model_fitting_id, niiri:design_matrix_id,-)
-    wasAssociatedWith(niiri:model_fitting_id, niiri:software_id,-)
-    wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_fitting_id,-)
+    used(niiri:model_pe_id, niiri:design_matrix_id,-)
+    wasAssociatedWith(niiri:model_pe_id, niiri:software_id,-)
+    wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_pe_id,-)
 
     used(niiri:contrast_estimation_id, niiri:contrast_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
