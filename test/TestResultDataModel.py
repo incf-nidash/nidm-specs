@@ -147,6 +147,8 @@ class TestResultDataModel(object):
                     # for (s_gt_graph,  p_gt_graph, o_gt_graph) in gt_graph.triples((s,  p, None)):
                     #     gt_graph_possible_value += "; "+os.path.basename(p_gt_graph)
                     exc_added += "\nAdded:\tin '%s', '%s' \t ('%s')."%(get_readable_name(gt_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o))
+                else:
+                    exc_added += "\nAdded:\tin '%s', '%s' \t ('%s')."%(get_readable_name(gt_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o))
                 
             # If subject and predicate are found in gt_graph 
             elif (s,  p, o) in gt_graph:
