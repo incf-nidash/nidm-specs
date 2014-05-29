@@ -66,10 +66,10 @@
 							The three major software analysis package for neuroimaging: SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) and AFNI (<a href="http://afni.nimh.nih.gov/afni/">AFNI</a>) provide implementations of mass univariate analyses. While there are many commonalities across software packages, there are also software-specific outputs that can be of interest for the end-user.
 						</p>
 						<p>
-							This document describes the encoding of results of a mass univariate neuroimaging analysis using the NI-DM data model. The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
+							This document describes the encoding of results of a mass univariate neuroimaging analysis using the NI-DM data model ([[!KEATORNI13]]). The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
 						</p>
 						<p>
-							This is the third component of NI-DM and is referred to as NIDASH Results Data Model (NIDM-R). 
+							This is the third component of NI-DM and is referred to as NIDASH Results Data Model (NIDM-R).
 						</p>
 						<!--If the overview is ready then add here:<p>
 							The NI-DM Document Overview describes the overall state of NI-DM.
@@ -186,7 +186,7 @@
 					
 					<p>The concepts found in the core of NIDM-R are introduced in the rest of this section.
 						They are summarized in  <a href="#overview-types-and-relations">Table 2</a>, where they are categorized as type or relation.
-						The first column lists concepts, the second column indicates whether a concept maps to a type or a relation, whereas the third column contains the corresponding name, as it appears in Figure 1.    Names of relations have a verbal form in the past tense to express what happened in the past, as opposed to what may or will happen. In the core of PROV, all relations are binary. 
+						The first column lists concepts, the second column indicates whether a concept maps to a type or a relation, whereas the third column contains the corresponding name, as it appears in Figure 2.    Names of relations have a verbal form in the past tense to express what happened in the past, as opposed to what may or will happen. In the core of PROV, all relations are binary. 
 					</p>
 
 					<div style="text-align: left;">
@@ -325,12 +325,29 @@
 						
 					<section id="overview-Data">
 						<h4>Data</h4>
+						The Data entity used by the <a href="#"overview-ParameterEstimateMap">Model Parameters Estimation</a> entity represents the data used in model fitting.  The optional attribute <dfn>nidm:grandMeanScaling</dfn> 
+						of type <a href="http://www.w3.org/TR/xmlschema-2/#boolean">xsd:boolean</a> indicating the presence or absence of grand mean data scaling.  If nidm:grandMeanScaling = "true" then the target intensity can be
+						indicated using the attribute <dfn>nidm:targetIntensity</dfn> with type <a href="http://www.w3.org/TR/xmlschema-2/#float">xsd:float</a>.  Because it is common to apply a brain mask when calculating the min/max of the data, 
+						prior to scaling, the mean intensity in the scaled data may not equal the nidm:targetIntensity exactly.  For meta-analyses it may be more stable to use a
+						median brain intensity.  This can be encoded in the entity using the attribute <dfn>nidm:medianIntensity</dfn> of type <a href="http://www.w3.org/TR/xmlschema-2/#float">xsd:float</a>.  See <a href="#attributes-Data">Data</a>
+						for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
 					</section>
 					<section id="overview-DesignMatrix">
 						<h4>Design matrix</h4>
+						The Design matrix entity used by the <a href="#"overview-ParameterEstimateMap">Model Parameters Estimation</a> entity represents the design matrix used in model fitting.  The optional attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location">
+						prov:location</a> specifies a deferenceable URL to a file encoding the design matrix.  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:visualization</dfn> can be used to link to
+						a graphics file representation of the design matrix (e.g. similar to the design matrix image in Pthe SPM software package).  Again this path would ideally be a dereferencable URL but could alternatively be a relative or absolute path to the graphics file.
+						See <a href="#attributes-DesignMatrix">Design Matrix</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+			
 					</section>
 					<section id="overview-ParameterEstimateMap">
 						<h4>Parameter Estimate Map</h4>
+						The Parameter Estimate Map entity is used to represent the calculated parameter array (e.g. "betamap" in a typical voxelwise GLM analysis).  The entity is associated with the <a href="#overview-ModelParametersEstimation">Model Parameters Estimation</a> activity and used by
+						the <a href="#overview-ContrastEstimation">Contrast Estimation</a> activity. he optional attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location">
+						prov:location</a> specifies a deferenceable URL to a file representing the parameter arrray.  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software
+						package that created it in case the prov:location was set to a URL.  This feature was added to account for the way, for example, the SPM software names the parameter array images "beta_XXXX.img" and its correspondence to particular model parameters.  The optional attribute <dfn>nidm:coordinateSpace</dfn>
+						is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute <dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+						See <a href="#attributes-ParameterEstimateMap">ParameterEstimateMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
 					</section>
 					<section id="overview-ResidualMeanSquaresMap">
 						<h4>ResidualMeanSquaresMap</h4>
@@ -356,7 +373,9 @@
 					<section id="overview-ContrastEstimation">
 						<h4>Contrast Estimation</h4>
 					</section>
-
+					<section id="overview-Coordinate">
+						<h4>Coordinate</h4>
+					</section>
 					</section>
 					<section>
 						<h1>Inference</h1>
