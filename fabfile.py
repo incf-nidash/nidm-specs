@@ -25,6 +25,16 @@ def copy_specs():
         local('git mv examples/*/spec/* content/specs')
         local('rm -rf examples spec')
         local('git reset')
+    # hack html paths to images
+    spec_path = os.path.abspath('content/specs')
+    for path in os.listdir(spec_path):
+        if path.endswith('.html'):
+            html = os.path.join(spec_path, path)
+            with open(html, 'r+') as f:
+                text = f.read().replace('../../../spec', '.')
+                f.seek(0)
+                f.write(text)
+                f.truncate()
 
 def build():
     clean()
