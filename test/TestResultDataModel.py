@@ -155,7 +155,7 @@ class TestResultDataModel(object):
                 # If subject and predicate found in other_graph
                 if (s,  p, None) in other_graph:
                     # Do nothing as already taken into account before
-                    a = 1
+                    exc_missing += "\nMissing o:\tp('%s') o('%s') \ton '%s'"%(get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
                 # If subject found in other_graph
                 elif (s,  None, None) in other_graph:
                     exc_missing += "\nMissing p, o:\tp('%s') o('%s') \ton '%s'"%(get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
