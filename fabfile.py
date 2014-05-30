@@ -36,10 +36,15 @@ def copy_specs():
                 f.write(text)
                 f.truncate()
 
+def clean_specs():
+    if os.path.isdir('content/specs'):
+        local('rm -rf content/specs/*')
+
 def build():
     clean()
     copy_specs()
     local('pelican content/ -s pelicanconf.py')
+    clean_specs()
 
 def rebuild():
     clean()
@@ -62,3 +67,4 @@ def publish():
     local('pelican content/ -s publishconf.py')
     local('ghp-import output')
     local('git push upstream gh-pages --force')
+    clean_specs()
