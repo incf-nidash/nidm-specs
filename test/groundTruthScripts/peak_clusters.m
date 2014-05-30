@@ -40,7 +40,6 @@ function peak_clusters(featDir)
         entities = [entities ['\n\t' '[prov:type = ''prov:Location'',']];
         entities = [entities ['\n\t' 'prov:type = ''nidm:Coordinate'',']];
         entities = [entities ['\n\t' 'prov:label = "Coordinate 000' index '" %%%% xsd:string,']];
-        entities = [entities ['\n\t' 'nidm:coordinateSystem = ''nidm:mniCoordinateSystem'',']];
         entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(clusterTable.Z_COGX_vox_(i)) '" %%%% xsd:float,']];
         entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(clusterTable.Z_COGY_vox_(i)) '" %%%% xsd:float,']];
         entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(clusterTable.Z_COGZ_vox_(i)) '" %%%% xsd:float,']];
@@ -56,7 +55,9 @@ function peak_clusters(featDir)
             peakIndex = [index '_' num2str(j)];
             
             entities = [entities ['\n\n' 'entity(niiri:peak_000' peakIndex ',']];
-            entities = [entities ['\n\t' '[prov:type = ''fsl:ClusterMaximumStatistic'',']];
+            if j == 1
+                entities = [entities ['\n\t' '[prov:type = ''fsl:ClusterMaximumStatistic'',']];
+            end
             entities = [entities ['\n\t' 'prov:type = ''nidm:PeakLevelStatistic'',']];
             entities = [entities ['\n\t' 'prov:label = "Peak 000' peakIndex '" %%%% xsd:string,']];
             entities = [entities ['\n\t' 'prov:location = ''niiri:coordinate_000' peakIndex ''',']];
@@ -66,7 +67,6 @@ function peak_clusters(featDir)
             entities = [entities ['\n\t' '[prov:type = ''prov:Location'',']];
             entities = [entities ['\n\t' 'prov:type = ''nidm:Coordinate'',']];
             entities = [entities ['\n\t' 'prov:label = "Coordinate 000' peakIndex '" %%%% xsd:string,']];
-            entities = [entities ['\n\t' 'nidm:coordinateSystem = ''nidm:mniCoordinateSystem'',']];
             entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(peaks{j,'x'}) '" %%%% xsd:int,']];
             entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(peaks{j,'y'}) '" %%%% xsd:int,']];
             entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(peaks{j,'z'}) '" %%%% xsd:int,']];
