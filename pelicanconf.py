@@ -52,5 +52,7 @@ RECENT_POST_COUNT = 5
 
 DEFAULT_PAGINATION = 10
 
+READERS = {'html': None}
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
