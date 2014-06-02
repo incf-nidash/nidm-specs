@@ -26,7 +26,7 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 LINKS =  (('INCF', 'http://incf.org'),
           ('NIDASH Wiki', 
-           'http://wiki-new.incf.org/mediawiki/index.php' \
+           'http://wiki.incf.org/mediawiki/index.php' \
            '/Neuroimaging_Task_Force'),)
 
 # Social widget
