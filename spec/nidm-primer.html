@@ -7,7 +7,7 @@
     <link href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
     <script class='remove'>
         var respecConfig = {
-            specStatus: "base",
+            specStatus: "unofficial",
             shortName: "nidm-p",
             overrideCopyright: "<p class=copyright>NI-DM © Free To Everyone!</p>",
             editors: [
@@ -18,9 +18,9 @@
             previousMaturity: "FPWD",
             previousPublishDate: "2013-12-10",
             wg: "NIDASH Working Group",
-            wgURI: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            wgURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
             wgPublicList: "derived_data@birncommunity.org",
-            wgPatentURI: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            wgPatentURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
             afterEnd: function () {
 
                 var currentDate = new Date();
@@ -141,40 +141,41 @@
     <section>
         <h2>Introduction</h2>
         <p>
-            This primer document provides an accessible introduction to the NIDASH Data Model (NI-DM) for neuroimaging
-            data sharing and related provenance information. The provenance of a given piece of neuroimaging information
-            represents its origin. NI-DM is a suite of specifications that provide a set of recommendations for sharing
-            data in the context of provenance information. NI-DM datasets contain descriptions of the entities and
-            activities involved in producing a given piece of neuroimaging research information.
+            This primer document provides an accessible introduction to the NIDASH Data Model (NI-DM) for neuroimaging data
+            sharing at Web scale. NI-DM is an extensible framework for community driven development of metadata standards
+            that captures a broad spectrum of research information, particularly data provenance. The provenance of a
+            given piece of neuroimaging data represents its origin, which can facilitate reproducible research by capturing
+            a description of how data was processed. The NIDASH Family of Documents includes specifications that define
+            recommendations for how to model neuroimaging research information across several stages of the research
+            process, referred to as NI-DM Components.
         </p>
         <p>
-            The design of NIDASH stems from the need to address metadata-related barriers to data sharing [[!KEATORNI13]]
-            that impact the reproducibility of scientific discoveries in neuroimaging, which is a focus of the NIDASH
-            Working Group. Provenance information is a key aspect of reproducibility, and the NIDASH Family of Documents
-            adopted the W3C PROV Working Group's approach to developing data sharing standards by extending the W3C PROV
-            Recommendations. This approach embeds provenance as a fundamental data sharing primitive that captures the
-            details of how a given dataset or analysis was produced. Summarizing, NIDASH Working Group recommends that
-            the metadata for a data sharing framework should support:
+            As a specification for neuroimaging data exchange, NI-DM Components address specific information needs for the
+            neuroimaging community. Different NI-DM users or developers may have different perspectives on the types of
+            neuroimaging data they would like to exchange.
         </p>
         <ol>
-            <li>a core vocabulary of neuroimaging terms with definitions that extend PROV;</li>
-            <li>a dataset descriptor the provides metadata about documents being shared;</li>
-            <li>data structures to organize experiment data acquired in a neuroimaging project;</li>
-            <li>data structures to model the preprocessing workflow of neuroimaging data;</li>
-            <li>data structures to model the provenance of neuroimaging results.</li>
+            <li>
+                One perspective may focus on representing high-level information about a neuroimaging database. For example,
+                an XNAT database provider may want to provide an standard description of the projects it contains that is
+                interoperable with a similar description of a COINS or HID database. This dataset descriptor would allow a
+                service to aggregate dataset descriptions that could then be interrogated at a finer level of detail.
+            </li>
+            <li>
+                A second focus may be to query for low-level details about participant demographics and DICOM metadata (e.g.,
+                TR or slice thickness) stored in an XNAT database. For example, a user may identify a dataset of interest in
+                the previous example and want to retrieve the download links for structural scans from normal controls over
+                18 years of age.
+            </li>
+            <li>
+                A third perspective might be interested in the results of a statistical analysis. For example, an author
+                may have published their dataset with OpenfMRI and included their results from a task-based fMRI experiment.
+                A researcher may be interested in including this dataset in a meta-analysis, and can query its NI-DM
+                representation to retrieve all the necessary pieces of information.
+            </li>
         </ol>
         <p>
-            Figure 1 shows the organization of NIDASH and how the specification documents relate to each other.
-        </p>
-        <p>
-            Underlying the NI-DM Core is a conceptual data model called PROV ([[!prov-primer]], which defines a common
-            vocabulary used to describe provenance. The PROV model is extended by NI-DM Core with terms that are used to
-            describe neuroimaging research, and each term is designated as a PROV Entity, Activity, Agent, or attribute.
-            In the next layer, NI-DM defines the Experiment Hierarchy ([[!NIDM-E]]), Preprocessing (NIDM-P), and Results
-            ([[!NIDM-R]]). Each of the models in this layer provide additional constraints on PROV to define an
-            arrangement of Entities, Activities, Agents, and Attributes using the NIDM-Core vocabulary and to construct
-            a dataset document. The NIDM Descriptor ([[!NIDM-D]] provides a way to describe and link dataset documents
-            by adding metadata about the project, principle investigator, license, as well as other important details.
+
         </p>
         <figure>
             <img src="nidm-organization.png">
