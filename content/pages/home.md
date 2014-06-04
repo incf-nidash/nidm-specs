@@ -6,7 +6,7 @@ The NIDASH Data Model (NI-DM) is a collection of specification documents that de
 </br>
 </br>
 </br>
-![Alt NI-DM](specs/Figure_1.png "NI-DM Provenance Information Graph")
+![Alt NI-DM](specs/NIDM_overview.png "NI-DM Provenance Information Graph")
 </br>
 </br>
 </br>
