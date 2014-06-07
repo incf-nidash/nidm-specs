@@ -14,21 +14,22 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix void: <http://www.w3.org/TR/void/> .
-@prefix ofmri: <http://openfmri.org/terms#> .
+@prefix ofmri: <http://openfmri.s3.amazonaws.com/> .
 @prefix cogat: <http://www.cognitiveatlas.org/rdf/id/> .
 @prefix : <#> .
 
-:openfmri 
+:this
     a dctypes:Dataset, prov:Collection;
+    dct:title "OpenfMRI"@en ;
+    dct:identifier "openfmri"@en ;
+    dct:description "OpenfMRI.org is a project dedicated to the free and open sharing of functional magnetic resonance imaging (fMRI) datasets, including raw data."@en ;
     idot:accessPattern <https://openfmri.org/data-sets>, <openfmri.s3.amazonaws.com>;
     idot:alternatePrefix "ofmri" ;
     idot:exampleIdentifier "ds000001" ;
     idot:preferredPrefix "openfmri" ;
     dct:accrualPeriodicity freq:continuous ;
     dct:alternative "OpenfMRI"@en ;
-    dct:description "OpenfMRI.org is a project dedicated to the free and open sharing of functional magnetic resonance imaging (fMRI) datasets, including raw data."@en ;
     dct:hasPart :ds000001, :ds000002, :ds000003, :ds000004, :ds000005, :ds000006, :ds000007, :ds000008, :ds000009, :ds000011, :ds000017, :ds000051,:ds000052, :ds000101, :ds000102, :ds000105, :ds000107, :ds000108, :ds000109, :ds000110, :ds000113, :ds000114, :ds000116 ;
-    dct:identifier "openfmri"@en ;
     dct:language <http://lexvo.org/id/iso639-3/en> ;
     dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
     dct:publisher <https://openfmri.org> ;
@@ -36,7 +37,6 @@
 
 In some cases, it may be necessary to license particular datasets in a more restrictive fashion; the license for each dataset is listed at the bottom of the data page.""" ;
     dct:source :data-sets ;
-    dct:title "OpenfMRI"@en ;
     pav:hasCurrentVersion :1.0.0 ;
     cito:citesAsAuthority <http://www.ncbi.nlm.nih.gov/pubmed/23847528> ;
     schemaorg:logo <https://openfmri.org/sites/all/themes/openfmri/logo.png> ;
@@ -46,11 +46,8 @@ In some cases, it may be necessary to license particular datasets in a more rest
     dcat:theme <http://dbpedia.org/page/Neuroimaging> ;
     foaf:page <https://openfmri.org/> .
 
-:bart 
-    a cogat:trm_4d559bcd67c18 ;
-    void:inDataset :ds000001 .
 
-:ds000001 
+ofmri:ds000001 
     a dctypes:Dataset ;
     idot:identifierPattern "ds\\d+" ;
     dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
@@ -63,19 +60,23 @@ In some cases, it may be necessary to license particular datasets in a more rest
     dcat:distribution :ds000001xnat, :ds000001aws, :ds000001ofmri, :ds000001rdf ;
     dcat:landingPage <https://openfmri.org/dataset/ds000001> .
 
-:ds000001xnat 
+:bart 
+    a cogat:trm_4d559bcd67c18 ;
+    void:inDataset ofmri:ds000001 . 
+
+ofmri:ds000001xnat 
     a dcat:Distribution, dctypes:Dataset ;
     dct:format "text/html" .
 
-:ds000001aws 
+ofmri:ds000001aws 
     a dcat:Distribution, dctypes:Dataset ;
     dct:format "text/html" .
     
-:ds000001ofmri 
+ofmri:ds000001ofmri 
     a dcat:Distribution, dctypes:Dataset ;
     dct:format "text/html" .
 
-:ds000001experiment 
+ofmri:ds000001experiment 
     a void:Dataset, dcat:Distribution, dctypes:Dataset ;
     pav:createdWith :ofmri2nidm ;
     void:dataDump <https://openfmri.org/dataset/ds000001/experiment.ttl> ;
@@ -83,7 +84,7 @@ In some cases, it may be necessary to license particular datasets in a more rest
     void:uriRegexPattern "https://openfmri.org/dataset/ds000001/experiment.ttl\\d+" ;
     dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
     
-:ds000001preprocessing 
+ofmri:ds000001preprocessing 
     a void:Dataset, dcat:Distribution, dctypes:Dataset ;
     pav:createdWith :ofmri2nidm ;
     void:dataDump <https://openfmri.org/dataset/ds000001/preprocessing.ttl> ;
@@ -91,7 +92,7 @@ In some cases, it may be necessary to license particular datasets in a more rest
     void:uriRegexPattern "https://openfmri.org/dataset/ds000001/preprocessing.ttl#\\d+" ;
     dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
 
-:ds000001results 
+ofmri:ds000001results 
     a void:Dataset, dcat:Distribution, dctypes:Dataset ;
     pav:createdWith :spm12 ;
     void:dataDump <https://openfmri.org/dataset/ds000001/results.ttl> ;
@@ -100,7 +101,7 @@ In some cases, it may be necessary to license particular datasets in a more rest
     dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
 
 # The full rdf distribution of a NI-DM Project.
-:ds000001rdf 
+ofmri:ds000001rdf 
     a void:Dataset, dcat:Distribution, dctypes:Dataset ;
     void:classPartition [
         void:class rdfs:Class ;
@@ -125,25 +126,25 @@ In some cases, it may be necessary to license particular datasets in a more rest
     ] ;
 
 # Link NI-DM components as void:subsets.
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate prov:used ;
-        void:subjectsTarget [
-            void:class <http://incf.org/ns/nidash/nidm#Result> ;
-            void:entities 88102 ;
-            void:objectsTarget [
-                void:class <http://incf.org/ns/nidash/nidm#Preprocessing> ;
-                void:entities 2819
-                ]
-        ], [
-        a void:LinkSet ;
-        void:linkPredicate prov:used ;
-        void:subjectsTarget [
+void:subset [
+    a void:LinkSet ;
+    void:linkPredicate prov:used ;
+    void:subjectsTarget [
+        void:class <http://incf.org/ns/nidash/nidm#Result> ;
+        void:entities 88102 ;
+        void:objectsTarget [
             void:class <http://incf.org/ns/nidash/nidm#Preprocessing> ;
-            void:entities 88102 ;
-            void:objectsTarget [
-                void:class <http://incf.org/ns/nidash/nidm#Experiment> ;
-                void:entities 2819
+            void:entities 2819
+            ]
+    ], [
+    a void:LinkSet ;
+    void:linkPredicate prov:used ;
+    void:subjectsTarget [
+        void:class <http://incf.org/ns/nidash/nidm#Preprocessing> ;
+        void:entities 88102 ;
+        void:objectsTarget [
+            void:class <http://incf.org/ns/nidash/nidm#Experiment> ;
+            void:entities 2819
                 ]            
             ]
         ] 
@@ -151,7 +152,7 @@ In some cases, it may be necessary to license particular datasets in a more rest
     void:triples 1492029 .
 
 # Description of the sparql endpoint hosting a dataset.
-:service 
+ofmri:service 
     a sd:Service ;
     sd:defaultDatasetDescription [
         a sd:Dataset ;
