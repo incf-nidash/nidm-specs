@@ -451,7 +451,11 @@ nidm:originalFileName rdf:type owl:DatatypeProperty ;
 
 nidm:pValue rdf:type owl:DatatypeProperty ;
             
-            prov:definition "\"A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone.\"" .
+            prov:definition "\"A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone.\"" ;
+            
+            rdfs:domain nidm:SetStatistic ;
+            
+            rdfs:range xsd:float .
 
 
 
@@ -459,7 +463,9 @@ nidm:pValue rdf:type owl:DatatypeProperty ;
 
 nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
-                prov:definition "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" .
+                prov:definition "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
+                
+                rdfs:subPropertyOf nidm:pValue .
 
 
 
@@ -467,7 +473,16 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
 
 nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
-                       prov:definition "A p-value reported without correction for multiple testing.        " .
+                       prov:definition "A p-value reported without correction for multiple testing.        " ;
+                       
+                       rdfs:domain nidm:ClusterStatistic ,
+                                   nidm:ExtentThreshold ,
+                                   nidm:HeightThreshold ,
+                                   nidm:PeakStatistic ;
+                       
+                       rdfs:subPropertyOf nidm:pValue ;
+                       
+                       rdfs:range xsd:float .
 
 
 
