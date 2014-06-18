@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neuroimaging Data Model Overview (NIDM-O)</title>
+    <meta charset='utf-8'>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <link href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+    <script class='remove'>
+        var respecConfig = {
+            specStatus: "base",
+            shortName: "nidm-o",
+            overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
+            editors: [
+                {   name: "B. Nolan Nichols",
+                    company: "University of Washington",
+                    companyURL: "http://www.ibic.washington.edu/" }
+            ],
+            previousMaturity: "FPWD",
+            previousPublishDate: "2013-12-10",
+            wg: "NIDASH Working Group",
+            wgURI: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            wgPublicList: "derived_data@birncommunity.org",
+            wgPatentURI: "http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            afterEnd: function () {
+
+                var currentDate = new Date();
+                var date = currentDate.toString('dddd, MMMM ,yyyy');
+                $("#respecHeader h2").text("NIDM Specification " + date);
+                $("#respecHeader img").attr({ src: "./stylesheet/nidm-text.png", width: 100, height: 50 });
+            },
+            localBiblio: {
+                "KEATORNI13": {
+                    title: "Towards structured sharing of raw and derived neuroimaging data across existing resources",
+                    href: "http://www.sciencedirect.com/science/article/pii/S105381191300596X",
+                    authors: [
+                        "David B. Keator"
+                        , "Karl Helmer"
+                        , "Jason Steffener"
+                        , "Jessica A. Turner"
+                        , "Theodorus G.M. VanErp"
+                        , "Syam Gadde"
+                        , "Naveen Ashish"
+                        , "Gully A. Burns"
+                        , "B. Nolan Nichols"
+                    ], publisher: "	Elsevier"
+                },
+                "NIDM-O": {
+                    title: "NIDM Overview",
+                    href:  "http://nidm.nidash.org/specs/nidm-overview.html"
+                },
+                "NIDM-P": {
+                    title: "NIDM Primer",
+                    href:  "http://nidm.nidash.org/specs/nidm-primer.html"
+                },
+                "NIDM-D": {
+                    title: "NIDM Descriptor",
+                    href:  "http://nidm.nidash.org/specs/nidm-descriptor.html"
+                },
+                "NIDM-E": {
+                    title: "NIDM Experiment",
+                    href:  "http://nidm.nidash.org/specs/nidm-experiment.html"
+                },
+                "NIDM-R": {
+                    title: "NIDM Results",
+                    href:  "http://nidm.nidash.org/specs/Results_NIDM_Spec.html"
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <section id='abstract'>
+        <p>
+            Neuroimaging research contains information about experimental design, data acquisition, analysis, and results
+            that are associated with study participants. The culmination and tracking of this information provides insight
+            in to normal and diseased brain states with potential for translation to clinical applications. This document
+            provides an overview of the NIDASH Family of Documents that details a framework for data sharing in Human brain
+            imaging.
+        </p>
+    </section>
+
+    <section id="sodt">
+        <p>
+
+        </p>
+    </section>
+
+    <section class="introductory">
+        <h2>Overview</h2>
+        This section provides an overview of the NIDASH Family of Documents and suggestions to the neuroimaging community
+        for implementing these standards to support data sharing activities, as well as in reporting issues or comments.
+        <section>
+        <h4>NIDASH Family of Documents</h4>
+            <p>
+                This document is part of the NIDASH Family of Documents, a set of documents defining various aspects of
+                neuroimaging research that are necessary to achieve the vision of inter-operable interchange of information in
+                heterogeneous environments such as the Web, research consortia, and laboratories. A list of current <abbr
+                title="Neuroimaging Data Sharing">NIDASH</abbr> documents and the latest revision of this specification can be
+                found in the <a href="http://nidm.nidash.org/specs"><abbr title="NIDASH Data Model">NIDM </abbr>specification
+                index</a>. These documents are listed below.
+            </p>
+            <ul>
+                <li><a href="http://nidm.nidash.org/specs/nidm-overview.html">NIDM-OVERVIEW</a> (Draft), an overview of the
+                    NIDASH Model Specificatin Suite (this document);
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-primer.html">NIDM-PRIMER</a> (Draft), a primer for the NIDASH
+                    data model [[!NIDM-P]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-descriptor.html">NIDM-DESCRIPTOR</a> (Draft), the NIDM Dataset
+                    Descriptor is a high level description of neuroimaging data modeled using NIDM [[!NIDM-D]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-experiment.html">NIDM-EXPERIMENT</a> (Draft), a data model for
+                    describing the organization of raw neuroimaging experiment data [[!NIDM-E]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/Results_NIDM_Spec.html">NIDM-RESULTS</a> (Draft), a data model for
+                    describing the results of neuroimaging analyses.[[!NIDM-R]].
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4>Implementations Encouraged</h4>
+            <p>
+                The NIDASH Working Group encourages implementation of the specifications overviewed in this document. Work on
+                this document by the NIDASH Working Group is ongoing, errors and suggestions may be reported in the <a
+                href="https://github.com/ni-/ni-dm/issues">issue tracker</a> and these may be addressed in future revisions.
+            </p>
+        </section>
+
+        <section>
+            <h4>Please Send Comments</h4>
+            <p>
+                This document was published by the NIDASH Working Group as a Working Draft. If you wish to make comments
+                regarding this document, please report using the <a href="https://github.com/ni-/ni-dm/issues">NIDM issue
+                tracker</a>. You can also ask questions at <a href="http://neurostars.org/">Neurostars Q&A.</a> All comments
+                are welcome.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This document provides a non-normative overview of the Neuroimaging Data Sharing (NIDASH) Family of Documents
+            and a roadmap to using them. <a href="http://en.wikipedia.org/wiki/Neuroimaging">Neuroimaging</a> is a research
+            discipline that uses imaging technologies to observe neurobiology at all levels of analysis, from molecules to
+            organ systems (i.e., the brain). The focus of these documents is currently on Human neuroimaging using Magnetic
+            Resonance Imaging (MRI); however, the concepts described herein are intended to generalize beyond human brain
+            imaging. The goal of NIDASH is to enable the wide publication and interchange of provenance information related
+            to neuroimaging research to enable reproducible findings, which ranges from the experimental design and data
+            acquisition of individual participant data to the analysis and results that produce scientific findings.
+        </p>
+        <p>
+            The design of NIDASH stems from the need to address metadata-related barriers to data sharing [[!KEATORNI13]]
+            that impact the reproducibility of scientific discoveries in neuroimaging, which is a focus of the NIDASH
+            Working Group. Provenance information is a key aspect of reproducibility, and the NIDASH Family of Documents
+            adopted the W3C PROV Working Group's approach to developing data sharing standards by extending the W3C PROV
+            Recommendations. This approach embeds provenance as a fundamental data sharing primitive that captures the
+            details of how a given dataset or analysis was produced. Summarizing, NIDASH Working Group recommends that
+            the metadata for a data sharing framework should support:
+        </p>
+        <ol>
+            <li>a core vocabulary of neuroimaging terms with definitions that extend PROV;</li>
+            <li>a dataset descriptor the provides metadata about documents being shared;</li>
+            <li>data structures to organize experiment data acquired in a neuroimaging project;</li>
+            <li>data structures to model the preprocessing workflow of neuroimaging data;</li>
+            <li>data structures to model the provenance of neuroimaging results.</li>
+        </ol>
+        <p>
+            Figure 1 shows the organization of NIDASH and how the specification documents relate to each other.
+        </p>
+        <p>
+            Underlying the NIDM Core is a conceptual data model called PROV ([[!prov-primer]], which defines a common
+            vocabulary used to describe provenance. The PROV model is extended by NIDM Core with terms that are used to
+            describe neuroimaging research, and each term is designated as a PROV Entity, Activity, Agent, or attribute.
+            In the next layer, NIDM defines the Experiment Hierarchy ([[!NIDM-E]]), Preprocessing (NIDM-P), and Results
+            ([[!NIDM-R]]). Each of the models in this layer provide additional constraints on PROV to define an
+            arrangement of Entities, Activities, Agents, and Attributes using the NIDM-Core vocabulary and to construct
+            a dataset document. The NIDM Descriptor ([[!NIDM-D]] provides a way to describe and link dataset documents
+            by adding metadata about the project, principle investigator, license, as well as other important details.
+        </p>
+        <figure>
+            <img src="nidm-organization.png">
+            <figcaption>The Organization of NIDASH</figcaption>
+        </figure>
+    </section>
+
+    <section>
+        <h4>Document Roadmap</h4>
+        <p>
+            NIDASH (currently) consists of 5 documents (including this one). In order to use NIDM you do not need to
+            be familiar with every specification, but there are a few that will help you get started quickly depending
+            on your usage. To help navigate NIDASH, each document is broadly classified as being intended for a specific
+            audience.
+        </p>
+        <ol>
+            <li>Users - this audience want to understand the general organization of NIDASH and use apps</li>
+            <li>Developers - this audience will use the specifications to build NIDM apps</li>
+        </ol>
+        <p>
+            In the table below and Figure 1, we denote the type of each document as a Note or Component of NIDASH.
+        </p>
+        <table class="thinborder">
+            <tr>
+                <th>Part</th>
+                <th>Audience</th>
+                <th>Type</th>
+                <th>Document</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Users</td>
+                <td>Note</td>
+                <td>
+                    <a href="nidm-primer.html">NIDM-Primer</a> is the entry point to NIDASH that offers an introduction
+                    to key concepts and examples of how NIDM is to be used.
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Developers</td>
+                <td>Component</td>
+                <td>
+                    <a href="nidm-descriptor.html">NIDM-Descriptor</a> defines how to describe metadata about NIDM
+                    dataset documents and how to link NIDM components together appropriately.
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Developers</td>
+                <td>Component</td>
+                <td>
+                    <a href="nidm-experiment.html">NIDM-Experiment</a> defines how to describe metadata about an
+                    experiment, which includes a Project, Study, and Acquisitions of data from study participants.
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Developers</td>
+                <td>Component</td>
+                <td>
+                    <a href="Results_NIDM_Spec.html">NIDM-Results</a> defines how to describe metadata about the results
+                    of a neuroimaging analysis.
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h4>Namespaces</h4>
+        <p>
+            All terms defined within NIDM are defined within the namespace <a href="http://incf.org/ns/nidash/nidm#">
+            http://incf.org/ns/nidash/nidm#</a>. The prefix convention that is used is <b>nidm</b>. Thus, all of the
+            terms defined in these specifications will be accessible at the same namespace for simplicity.
+        </p>
+    </section>
+
+    <section>
+        <h4>Additional Information</h4>
+        <p>
+            TBD
+        </p>
+    </section>
+    <section class="appendix">
+        <h4>Acknowledgements</h4>
+        <p>
+            This document has been produced by the NIDASH Working Group, and its contents reflect extensive discussion
+            within the Working Group as a whole.
+        </p>
+        <p>
+            Members of the NIDASH Working Group at the time of publication of this document were:
+        </p>
+    </section>
+</body>
+</html>
