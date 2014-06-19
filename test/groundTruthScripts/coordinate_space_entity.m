@@ -47,7 +47,7 @@ function coordinate_space_entity(niftiFile, num, forcedelete)
     % FIXME: Find units automatically     
     entities = [entities '\n\t' 'nidm:voxelUnits = "[''mm'', ''mm'', ''mm'']" %%%% xsd:string,'];
     entities = [entities '\n\t' 'nidm:voxelSize = "' voxelSize '" %%%% xsd:string,'];
-    entities = [entities '\n\t' 'nidm:coordinateSystem = ''nidm:mniCoordinateSystem'','];
+    entities = [entities '\n\t' 'nidm:worldCoordinateSystem = ''nidm:mniCoordinateSystem'','];
     entities = [entities '\n\t' 'nidm:numberOfDimensions = "' num2str(numel(vol.dim)) '" %%%% xsd:int,'];
     entities = [entities '\n\t' 'nidm:dimensions = "' dimensions '" %%%% xsd:string])'];
 
