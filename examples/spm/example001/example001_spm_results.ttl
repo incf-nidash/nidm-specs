@@ -13,11 +13,11 @@ niiri:spm_results_id a prov:Entity , prov:Bundle ;
 	nidm:objectModel nidm:SpmResults ;
 	nidm:version "0.1.0"^^xsd:string .
 
-_:blank15 a prov:Generation .
+_:blank17 a prov:Generation .
 
-niiri:spm_results_id prov:qualifiedGeneration _:blank15 .
+niiri:spm_results_id prov:qualifiedGeneration _:blank17 .
 
-_:blank15 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
+_:blank17 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
 
 niiri:coordinate_space_id_1 a prov:Entity , nidm:CoordinateSpace ;
 	rdfs:label "Coordinate space 1" ;
@@ -28,9 +28,10 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm:CoordinateSpace ;
 	nidm:numberOfDimensions "3"^^xsd:int ;
 	nidm:dimensions "[53,63,46]"^^xsd:string .
 
-niiri:statistical_map_id a prov:Entity , nidm:TStatisticalMap ;
-	rdfs:label "Statistical Map: passive listening > rest" ;
+niiri:statistic_map_id a prov:Entity , nidm:StatisticMap ;
+	rdfs:label "Statistic Map: passive listening > rest" ;
 	prov:atLocation "file:///path/to/spmT_0001.nii.gz"^^xsd:anyURI ;
+	nidm:statisticType nidm:tStatistic ;
 	nidm:contrastName "listening > rest"^^xsd:string ;
 	nidm:originalFileName "spmT_0001.nii.gz"^^xsd:string ;
 	nidm:errorDegreesOfFreedom "72.9999999990787"^^xsd:float ;
@@ -109,7 +110,7 @@ niiri:data_id a prov:Entity , nidm:Data , prov:Collection ;
 	rdfs:label "Data" ;
 	nidm:grandMeanScaling "true"^^xsd:boolean ;
 	nidm:targetIntensity "100"^^xsd:float ;
-	nidm:medianIntensity "TODO"^^xsd:float .
+	nidm:medianIntensity "0"^^xsd:float .
 
 niiri:model_pe_id prov:used niiri:data_id .
 
@@ -126,7 +127,7 @@ niiri:contrast_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
 niiri:contrast_standard_error_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
-niiri:statistical_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
+niiri:statistic_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
 niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	rdfs:label "Search Space" ;
@@ -159,7 +160,7 @@ niiri:extent_threshold_id a prov:Entity , nidm:ExtentThreshold ;
 
 niiri:inference_id a prov:Activity , nidm:InferenceOneTailed ;
 	rdfs:label "Inference" ;
-	prov:used niiri:statistical_map_id .
+	prov:used niiri:statistic_map_id .
 
 niiri:search_space_id prov:wasGeneratedBy niiri:inference_id .
 

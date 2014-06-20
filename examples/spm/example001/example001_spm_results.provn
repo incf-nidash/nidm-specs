@@ -22,10 +22,11 @@ document
       nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
       nidm:numberOfDimensions = "3" %% xsd:int,
       nidm:dimensions = "[53,63,46]" %% xsd:string])
-    entity(niiri:statistical_map_id,
-      [prov:type = 'nidm:TStatisticalMap',
+    entity(niiri:statistic_map_id,
+      [prov:type = 'nidm:StatisticMap',
+      nidm:statisticType = 'nidm:tStatistic',
       prov:location = "file:///path/to/spmT_0001.nii.gz" %% xsd:anyURI,
-      prov:label = "Statistical Map: passive listening > rest" %% xsd:string,
+      prov:label = "Statistic Map: passive listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
       nidm:originalFileName = "spmT_0001.nii.gz" %% xsd:string,
       nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
@@ -118,7 +119,7 @@ document
     used(niiri:contrast_estimation_id, niiri:contrast_id,-)
     wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
     wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)
-    wasGeneratedBy(niiri:statistical_map_id, niiri:contrast_estimation_id,-)
+    wasGeneratedBy(niiri:statistic_map_id, niiri:contrast_estimation_id,-)
     entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
@@ -151,7 +152,7 @@ document
     activity(niiri:inference_id,
       [prov:type = 'nidm:InferenceOneTailed',
       prov:label = "Inference"])
-    used(niiri:inference_id, niiri:statistical_map_id,-)
+    used(niiri:inference_id, niiri:statistic_map_id,-)
     wasGeneratedBy(niiri:search_space_id,niiri:inference_id,-)
     used(niiri:inference_id, niiri:height_threshold_id,-)
     used(niiri:inference_id, niiri:extent_threshold_id,-)

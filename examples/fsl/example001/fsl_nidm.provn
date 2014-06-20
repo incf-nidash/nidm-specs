@@ -125,10 +125,11 @@ document
         nidm:numberOfDimensions = "3" %% xsd:int,
         nidm:dimensions = "[64, 64, 42]" %% xsd:string])
 
-    entity(niiri:statistical_map_id_1,
-        [prov:type = 'nidm:TStatisticalMap',
+    entity(niiri:statistic_map_id_1,
+        [prov:type = 'nidm:StatisticMap',
+        nidm:statisticType = 'nidm:tStatistic',
         prov:location = "file://./stats/tstat1.nii.gz" %% xsd:anyURI,
-        prov:label = "Statistical Map: Generation",
+        prov:label = "Statistic Map: Generation",
         nidm:contrastName = "Generation" %% xsd:string,
         nidm:fileName = "tstat1.nii.gz" %% xsd:string,
         nidm:errorDegreesOfFreedom = "102" %% xsd:float,
@@ -136,10 +137,11 @@ document
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_11',
         crypto:sha = "94840ed4a5a894a66152730121b187cb79ba3ac0af75beeefecaee8e" %% xsd:string])
 
-    entity(niiri:z_statistical_map_id_1,
-        [prov:type = 'fsl:ZStatisticalMap',
+    entity(niiri:z_statistic_map_id_1,
+        [prov:type = 'nidm:StatisticMap',
+        nidm:statisticType = 'fsl:zStatistic',
         prov:location = "file://./stats/zstat1.nii.gz" %% xsd:anyURI,
-        prov:label = "Z-statistical Map: Generation",
+        prov:label = "Z-Statistic Map: Generation",
         nidm:contrastName = "Generation" %% xsd:string,
         nidm:fileName = "zstat1.nii.gz" %% xsd:string,
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_10',
@@ -260,8 +262,8 @@ document
     used(niiri:contrast_estimation_id_1, niiri:design_matrix_id,-)
     wasGeneratedBy(niiri:contrast_map_id_1, niiri:contrast_estimation_id_1,-)
     wasGeneratedBy(niiri:contrast_variance_map_id_1, niiri:contrast_estimation_id_1,-)  
-    wasGeneratedBy(niiri:statistical_map_id_1, niiri:contrast_estimation_id_1,-)
-    wasGeneratedBy(niiri:z_statistical_map_id_1, niiri:contrast_estimation_id_1,-)
+    wasGeneratedBy(niiri:statistic_map_id_1, niiri:contrast_estimation_id_1,-)
+    wasGeneratedBy(niiri:z_statistic_map_id_1, niiri:contrast_estimation_id_1,-)
 
     entity(niiri:search_space_id,
         [prov:type = 'nidm:SearchSpaceMap',
@@ -290,7 +292,7 @@ document
         [prov:type = 'nidm:InferenceOneTailed',
         prov:label = "Inference: Generation"])
 
-    used(niiri:inference_id_1, niiri:z_statistical_map_id_1, -)
+    used(niiri:inference_id_1, niiri:z_statistic_map_id_1, -)
     wasGeneratedBy(niiri:search_space_id, niiri:inference_id_1, -)
     used(niiri:inference_id_1, niiri:height_threshold_id, -)
     used(niiri:inference_id_1, niiri:extent_threshold_id, -)
