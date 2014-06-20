@@ -422,15 +422,15 @@
 					
 					</section>
 					<section id="overview-StatisticMap">
-						<h4>Statistical Map</h4>
-						The Statistical Map entity is used to represent a map of statistics derived from selected parameters from the  <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a> consistent with a 
+						<h4>Statistic Map</h4>
+						The Statistic Map entity is used to represent a map of statistics derived from selected parameters from the  <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a> consistent with a 
 						set of <a href="#overview-ContrastWeights">ContrastWeights</a>. The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">
 						prov:type</a> identifies the type of statistic in the map (e.g. <dfn>nidm:TStatisticMap</dfn>) giving semantic meaning to the map.The attribute 
-						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the statistical map (e.g. in the case of voxelwise 
+						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the Statistic Map (e.g. in the case of voxelwise 
 						fMRI analyses this would be an image with voxel values equal to the statistic).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
 						<dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
 						<dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute  
-						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the statistical map.  The optional attribute 
+						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the Statistic Map.  The optional attribute 
 						<dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
 						See <a href="#attributes-StatisticMap">StatisticMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
 					
@@ -707,7 +707,7 @@
 						http://blogs.warwick.ac.uk/nichols/entry/fwhm_resel_details/">fwhm_resel_details</a>.  SPM explicitly saves a map (e.g. RPV.img).  This entity represents the map.  The attribute 
 						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">
 						prov:type</a> with value <dfn>spm:ReselsPerVoxelMap</dfn> specifies the type as a map whose value at each location is the number of resels per voxel.The attribute 
-						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the statistical map (e.g. in the case of voxelwise 
+						<a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the Statistic Map (e.g. in the case of voxelwise 
 						fMRI analyses this would be an image with voxel values equal to the statistic).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
 						<dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
 						<dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-CoordinateSpace">CoordinateSpace</a>).  The optional attribute  
@@ -1133,10 +1133,10 @@ A <dfn title="concept-StatisticMap">StatisticMap</dfn><sup><a title="concept-Sta
 <li><span class="attribute" id="StatisticMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
 </ul>
 </div>
-<pre class='example highlight'>entity(niiri:statistical_map_id,
+<pre class='example highlight'>entity(niiri:statistic_map_id,
     [prov:type = 'nidm:StatisticMap',
     prov:location = "file:///path/to/spmT_0001.img" %% xsd:anyURI,
-    prov:label = "Statistical Map: listening > rest" %% xsd:string,
+    prov:label = "Statistic Map: listening > rest" %% xsd:string,
     nidm:contrastName = "listening > rest" %% xsd:string,
     nidm:originalFileName = "spmT_0001.img" %% xsd:string,
     nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
@@ -1211,7 +1211,7 @@ A <dfn title="concept-ExtentThreshold">ExtentThreshold</dfn><sup><a title="conce
 
 <div class="glossary-ref">   
 
-A <dfn title="concept-Inference">Inference</dfn><sup><a title="concept-Inference"><span class="diamond"> ◊</span></a></sup>is a the process of inferring the excursion set from a statistical map (sub-type of prov:Activity). </div>
+A <dfn title="concept-Inference">Inference</dfn><sup><a title="concept-Inference"><span class="diamond"> ◊</span></a></sup>is a the process of inferring the excursion set from a Statistic Map (sub-type of prov:Activity). </div>
 
 <p></p>
 
@@ -1466,11 +1466,11 @@ A <dfn title="concept-ZStatisticMap">ZStatisticMap</dfn><sup><a title="concept-Z
 <li><span class="attribute" id="ZStatisticMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
 </ul>
 </div>
-<pre class='example highlight'>entity(niiri:z_statistical_map_id,
+<pre class='example highlight'>entity(niiri:z_statistic_map_id,
         [prov:type = 'nidm:statisticalMap',
         prov:type = 'fsl:ZStatisticMap',
         prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
-        prov:label = "Z-statistical Map: listening &gt; rest: zstat1",
+        prov:label = "Z-Statistic Map: listening &gt; rest: zstat1",
         nidm:contrastName = "listening &gt; rest" %% xsd:string,
         nidm:originalFileName = "zstat1.nii.gz" %% xsd:string,
         nidm:coordinateSpace = 'niiri:coordinate_space_id_1',

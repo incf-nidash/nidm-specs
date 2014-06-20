@@ -130,8 +130,8 @@ class TestSPMResultsDataModel(unittest.TestCase, TestResultDataModel):
         """
 
         # Look for:
-        # - "location" of "Statistical map",
-        # - "nidm:errorDegreesOfFreedom" in "Statistical map".
+        # - "location" of "Statistic Map",
+        # - "nidm:errorDegreesOfFreedom" in "Statistic Map".
         query = prefixInfo+"""
         SELECT ?sfile ?dof WHERE {
          ?sid a nidm:statisticalMap ;
