@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 '''Test of NI-DM SPM export tool
 
+To run the test, copy the NIDM turtle file 'spm_nidm.ttl' obtained by exporting the 
+results of example001 (as specified in 'examples/spm/example001') in a directory named 
+spmexport' under 'test' and from the command line call:
+
+python test/TestSPMResultDataModel.py 
+
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>, Satrajit Ghosh
 @copyright: University of Warwick 2014
 '''
