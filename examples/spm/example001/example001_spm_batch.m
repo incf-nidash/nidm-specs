@@ -17,6 +17,9 @@
 % Path to original data directory
 dataDir = test_config();
 
+spm defaults fmri;
+spm_jobman('initcfg');
+
 funcDir = fullfile(dataDir, 'fM00223');
 funcFiles = cellstr(spm_select('FPList', funcDir, '^fM.*\.img$'));
 anatFile = spm_select('FPList', fullfile(dataDir,'sM00223'), '^s.*\.img$') ;
@@ -71,9 +74,14 @@ matlabbatch{end}.spm.stats.results.write.tspm.basename = 'thresh';
 
 spm_jobman('run', matlabbatch);
 
+xSPM = evalin('base', 'xSPM');
+SPM = evalin('base', 'SPM');
+TabDat = evalin('base', 'TabDat');
+save('nidm_example001.mat', 'xSPM', 'SPM', 'TabDat')
+
 % % Rename excursion set file
 % movefile(fullfile(analysisDir, 'spmT_0001_thresh.nii'), fullfile(analysisDir, 'thresh_spmT_0001.nii'))
 % Gzip all nifti files
-niiFiles = cellstr(spm_select('FPList', analysisDir, '.*.nii$'));
-gzip(niiFiles)
+% niiFiles = cellstr(spm_select('FPList', analysisDir, '.*.nii$'));
+% gzip(niiFiles)
 
