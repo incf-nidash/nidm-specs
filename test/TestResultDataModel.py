@@ -154,8 +154,11 @@ class TestResultDataModel(object):
             elif (s,  p, o) in gt_graph:
                 # If subject and predicate found in other_graph
                 if (s,  p, None) in other_graph:
-                    # Do nothing as already taken into account before
-                    exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
+                    if isinstance(o, rdflib.term.Literal):
+                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
+                    else:
+                        exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
+
                 # If subject found in other_graph
                 elif (s,  None, None) in other_graph:
                     exc_missing += "\nMissing p, o:\tp('%s') o('%s') \ton '%s'"%(get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
