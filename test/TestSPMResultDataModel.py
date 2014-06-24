@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 '''Test of NI-DM SPM export tool
 
+To run the test, copy the NIDM turtle file 'spm_nidm.ttl' obtained by exporting the 
+results of example001 (as specified in 'examples/spm/example001') in a directory named 
+spmexport' under 'test' and from the command line call:
+
+python test/TestSPMResultDataModel.py 
+
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>, Satrajit Ghosh
 @copyright: University of Warwick 2014
 '''
@@ -59,129 +65,131 @@ class TestSPMResultsDataModel(unittest.TestCase, TestResultDataModel):
         if self.my_execption:
             raise Exception(self.my_execption)
 
-    '''Test02: Test availability of attributes needed to perform a meta-analysis as specified in use-case *1* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
-    def test02_metaanalysis_usecase1(self):
-        prefixInfo = """
-        prefix prov: <http://www.w3.org/ns/prov#>
-        prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
-        prefix nidm: <http://nidm.nidash.org/>
 
-        """
-        # Look for:
-        # - "location" of "Contrast map",
-        # - "location" of "Contrast variance map",
-        # - "prov:type" in "nidm" namespace of the analysis software.
-        query = prefixInfo+"""
-        SELECT ?cfile ?efile ?stype WHERE {
-         ?aid a spm:contrast ;
-              prov:wasAssociatedWith ?sid.
-         ?sid a prov:Agent;
-              a prov:SoftwareAgent;
-              a ?stype . 
-         FILTER regex(str(?stype), "nidm") 
-         ?cid a nidm:contrastMap ;
-              prov:wasGeneratedBy ?aid ;
-              prov:atLocation ?cfile .
-         ?eid a nidm:contrastStandardErrorMap ;
-              prov:wasGeneratedBy ?aid ;
-              prov:atLocation ?efile .
-        }
-        """
+    # '''Test02: Test availability of attributes needed to perform a meta-analysis as specified in use-case *1* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
+    # def test02_metaanalysis_usecase1(self):
+    #     prefixInfo = """
+    #     prefix prov: <http://www.w3.org/ns/prov#>
+    #     prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+    #     prefix nidm: <http://nidm.nidash.org/>
 
-        if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-            raise Exception(self.my_execption)
+    #     """
+    #     # Look for:
+    #     # - "location" of "Contrast map",
+    #     # - "location" of "Contrast variance map",
+    #     # - "prov:type" in "nidm" namespace of the analysis software.
+    #     query = prefixInfo+"""
+    #     SELECT ?cfile ?efile ?stype WHERE {
+    #      ?aid a spm:contrast ;
+    #           prov:wasAssociatedWith ?sid.
+    #      ?sid a prov:Agent;
+    #           a prov:SoftwareAgent;
+    #           a ?stype . 
+    #      FILTER regex(str(?stype), "nidm") 
+    #      ?cid a nidm:contrastMap ;
+    #           prov:wasGeneratedBy ?aid ;
+    #           prov:atLocation ?cfile .
+    #      ?eid a nidm:contrastStandardErrorMap ;
+    #           prov:wasGeneratedBy ?aid ;
+    #           prov:atLocation ?efile .
+    #     }
+    #     """
 
-    '''Test03: Test availability of attributes needed to perform a meta-analysis as specified in use-case *2* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
-    def test03_metaanalysis_usecase2(self):
-        prefixInfo = """
-        prefix prov: <http://www.w3.org/ns/prov#>
-        prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
-        prefix nidm: <http://nidm.nidash.org/>
+    #     if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+    #         raise Exception(self.my_execption)
 
-        """
+    # '''Test03: Test availability of attributes needed to perform a meta-analysis as specified in use-case *2* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
+    # def test03_metaanalysis_usecase2(self):
+    #     prefixInfo = """
+    #     prefix prov: <http://www.w3.org/ns/prov#>
+    #     prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+    #     prefix nidm: <http://nidm.nidash.org/>
 
-        # Look for:
-        # - "location" of "Contrast map",
-        # - "prov:type" in "nidm" namespace of the analysis software.
-        query = prefixInfo+"""
-        SELECT ?cfile ?efile ?stype WHERE {
-         ?aid a spm:contrast ;
-              prov:wasAssociatedWith ?sid.
-         ?sid a prov:Agent;
-              a prov:SoftwareAgent;
-              a ?stype . 
-         FILTER regex(str(?stype), "nidm") 
-         ?cid a nidm:contrastMap ;
-              prov:wasGeneratedBy ?aid ;
-              prov:atLocation ?cfile .
-        }
-        """
+    #     """
 
-        if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-            raise Exception(self.my_execption)
+    #     # Look for:
+    #     # - "location" of "Contrast map",
+    #     # - "prov:type" in "nidm" namespace of the analysis software.
+    #     query = prefixInfo+"""
+    #     SELECT ?cfile ?efile ?stype WHERE {
+    #      ?aid a spm:contrast ;
+    #           prov:wasAssociatedWith ?sid.
+    #      ?sid a prov:Agent;
+    #           a prov:SoftwareAgent;
+    #           a ?stype . 
+    #      FILTER regex(str(?stype), "nidm") 
+    #      ?cid a nidm:contrastMap ;
+    #           prov:wasGeneratedBy ?aid ;
+    #           prov:atLocation ?cfile .
+    #     }
+    #     """
 
-    '''Test04: Test availability of attributes needed to perform a meta-analysis as specified in use-case *3* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
-    def test04_metaanalysis_usecase3(self):
-        prefixInfo = """
-        prefix prov: <http://www.w3.org/ns/prov#>
-        prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
-        prefix nidm: <http://nidm.nidash.org/>
+    #     if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+    #         raise Exception(self.my_execption)
 
-        """
+    # '''Test04: Test availability of attributes needed to perform a meta-analysis as specified in use-case *3* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
+    # def test04_metaanalysis_usecase3(self):
+    #     prefixInfo = """
+    #     prefix prov: <http://www.w3.org/ns/prov#>
+    #     prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+    #     prefix nidm: <http://nidm.nidash.org/>
 
-        # Look for:
-        # - "location" of "Statistic Map",
-        # - "nidm:errorDegreesOfFreedom" in "Statistic Map".
-        query = prefixInfo+"""
-        SELECT ?sfile ?dof WHERE {
-         ?sid a nidm:statisticalMap ;
-              prov:atLocation ?sfile ;
-              nidm:errorDegreesOfFreedom ?dof .
-        }
-        """
+    #     """
 
-        if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-            raise Exception(self.my_execption)
+    #     # Look for:
+    #     # - "location" of "Statistic Map",
+    #     # - "nidm:errorDegreesOfFreedom" in "Statistic Map".
+    #     query = prefixInfo+"""
+    #     SELECT ?sfile ?dof WHERE {
+    #      ?sid a nidm:statisticalMap ;
+    #           prov:atLocation ?sfile ;
+    #           nidm:errorDegreesOfFreedom ?dof .
+    #     }
+    #     """
 
-    '''Test05: Test availability of attributes needed to perform a meta-analysis as specified in use-case *4* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
-    def test05_metaanalysis_usecase4(self):
-        prefixInfo = """
-        prefix prov: <http://www.w3.org/ns/prov#>
-        prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
-        prefix nidm: <http://nidm.nidash.org/>
+    #     if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+    #         raise Exception(self.my_execption)
 
-        """
+    # '''Test05: Test availability of attributes needed to perform a meta-analysis as specified in use-case *4* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
+    # def test05_metaanalysis_usecase4(self):
+    #     prefixInfo = """
+    #     prefix prov: <http://www.w3.org/ns/prov#>
+    #     prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+    #     prefix nidm: <http://nidm.nidash.org/>
 
-        # Look for:
-        # - For each "Peak" "equivZStat" and"coordinate1" (and optionally "coordinate2" and "coordinate3"),
-        # - "clusterSizeInVoxels" of "height threshold"
-        # - "value" of "extent threshold"
-        query = prefixInfo+"""
-        SELECT ?equivz ?coord1 ?coord2 ?coord3 ?ethresh ?hthresh WHERE {
-         ?pid a spm:peakStatistic ;
-            prov:atLocation ?cid ;
-            nidm:equivalentZStatistic ?equivz ;
-            prov:wasDerivedFrom ?clid .
-         ?cid a nidm:coordinate;
-            nidm:coordinate1 ?coord1 .
-            OPTIONAL { ?cid nidm:coordinate2 ?coord2 }
-            OPTIONAL { ?cid nidm:coordinate3 ?coord3 }
-         ?iid a nidm:inference .
-         ?esid a spm:excursionSet;
-            prov:wasGeneratedBy ?iid .
-         ?setid a spm:setStatistic;
-            prov:wasDerivedFrom ?esid .
-         ?clid a spm:clusterStatistic;
-            prov:wasDerivedFrom ?setid .
-         ?tid a nidm:extentThreshold ;
-            nidm:clusterSizeInVoxels ?ethresh .
-         ?htid a nidm:heightThreshold ;
-            prov:value ?hthresh .
-        }
-        """
+    #     """
 
-        if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-            raise Exception(self.my_execption)
+    #     # Look for:
+    #     # - For each "Peak" "equivZStat" and"coordinate1" (and optionally "coordinate2" and "coordinate3"),
+    #     # - "clusterSizeInVoxels" of "height threshold"
+    #     # - "value" of "extent threshold"
+    #     query = prefixInfo+"""
+    #     SELECT ?equivz ?coord1 ?coord2 ?coord3 ?ethresh ?hthresh WHERE {
+    #      ?pid a spm:peakStatistic ;
+    #         prov:atLocation ?cid ;
+    #         nidm:equivalentZStatistic ?equivz ;
+    #         prov:wasDerivedFrom ?clid .
+    #      ?cid a nidm:coordinate;
+    #         nidm:coordinate1 ?coord1 .
+    #         OPTIONAL { ?cid nidm:coordinate2 ?coord2 }
+    #         OPTIONAL { ?cid nidm:coordinate3 ?coord3 }
+    #      ?iid a nidm:inference .
+    #      ?esid a spm:excursionSet;
+    #         prov:wasGeneratedBy ?iid .
+    #      ?setid a spm:setStatistic;
+    #         prov:wasDerivedFrom ?esid .
+    #      ?clid a spm:clusterStatistic;
+    #         prov:wasDerivedFrom ?setid .
+    #      ?tid a nidm:extentThreshold ;
+    #         nidm:clusterSizeInVoxels ?ethresh .
+    #      ?htid a nidm:heightThreshold ;
+    #         prov:value ?hthresh .
+    #     }
+    #     """
+
+    #     if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+    #         raise Exception(self.my_execption)
+
 
 
 if __name__ == '__main__':
