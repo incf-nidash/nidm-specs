@@ -72,6 +72,14 @@ document
       nidm:originalFileName = "ResMS.nii.gz" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:grand_mean_map_id,
+      [prov:type = 'nidm:GrandMeanMap',
+      prov:location = "file:///path/to/GrandMean.img" %% xsd:anyURI,
+      prov:label = "Grand Mean Map" %% xsd:string,
+      nidm:originalFileName = "GrandMean.img" %% xsd:string,
+      nidm:maskedMedian = 115,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     entity(niiri:resels_per_voxel_map_id,
       [prov:type = 'spm:ReselsPerVoxelMap',
       prov:location = "file://./RPV.nii.gz" %% xsd:anyURI,
@@ -102,11 +110,11 @@ document
         prov:type = 'prov:Collection',
         prov:label = "Data" %% xsd:string,
         nidm:grandMeanScaling = "true" %%xsd:boolean,
-        nidm:targetIntensity = "100" %% xsd:float,
-        nidm:medianIntensity = "0" %% xsd:float])
+        nidm:targetIntensity = "100" %% xsd:float])
     used(niiri:model_pe_id, niiri:data_id,-)
     wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_pe_id,-)
     wasGeneratedBy(niiri:resels_per_voxel_map_id, niiri:model_pe_id,-)
+    wasGeneratedBy(niiri:grand_mean_map_id, niiri:model_pe_id,-)
     
     activity(niiri:contrast_estimation_id,
       [prov:type = 'nidm:ContrastEstimation',

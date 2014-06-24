@@ -223,13 +223,21 @@ document
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = "967da4a28494ad3fdc836b573c9886171e3e0fbbe8304840378c5448" %% xsd:string])    
 
+    entity(niiri:grand_mean_map_id,
+      [prov:type = 'nidm:GrandMeanMap',
+      prov:location = "file:///path/to/GrandMean.img" %% xsd:anyURI,
+      prov:label = "Grand Mean Map" %% xsd:string,
+      nidm:originalFileName = "GrandMean.img" %% xsd:string,
+      nidm:maskedMedian = 115,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+
     entity(niiri:data_id,
         [prov:type = 'nidm:Data',
         prov:type = 'prov:Collection',
         prov:label = "Data" %% xsd:string,
         nidm:grandMeanScaling = "1" %%xsd:boolean,
-        nidm:targetIntensity = "10000" %% xsd:float,
-        nidm:medianIntensity = "0" %% xsd:float])
+        nidm:targetIntensity = "10000" %% xsd:float])
       used(niiri:model_parameters_estimation_id, niiri:data_id,-)
 
     entity(niiri:design_matrix_id,
@@ -254,6 +262,8 @@ document
     used(niiri:model_parameters_estimation_id, niiri:design_matrix_id,-)
     wasAssociatedWith(niiri:model_parameters_estimation_id, niiri:software_id,-)
     wasGeneratedBy(niiri:residual_mean_squares_map_id, niiri:model_parameters_estimation_id,-)
+    wasGeneratedBy(niiri:grand_mean_map_id, niiri:model_parameters_estimation_id,-)
+    
 
     used(niiri:contrast_estimation_id_1, niiri:contrast_id_1,-)
     used(niiri:contrast_estimation_id_1, niiri:beta_map_id_1,-)
