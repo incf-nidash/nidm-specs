@@ -13,24 +13,25 @@ niiri:spm_results_id a prov:Entity , prov:Bundle ;
 	nidm:objectModel nidm:SpmResults ;
 	nidm:version "0.1.0"^^xsd:string .
 
-_:blank48 a prov:Generation .
+_:blank49 a prov:Generation .
 
-niiri:spm_results_id prov:qualifiedGeneration _:blank48 .
+niiri:spm_results_id prov:qualifiedGeneration _:blank49 .
 
-_:blank48 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
+_:blank49 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
 
 niiri:coordinate_space_id_1 a prov:Entity , nidm:CoordinateSpace ;
 	rdfs:label "Coordinate space 1" ;
-	nidm:voxelToWorldMapping "[[ -3, 0, 0, 78],[ 0, 3, 0, -112],[ 0, 0, 3, -70],[ 0, 0, 0, 1]]"^^xsd:string ;
+	nidm:voxelToWorldMapping "[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]"^^xsd:string ;
 	nidm:voxelUnits "['mm', 'mm', 'mm']"^^xsd:string ;
 	nidm:voxelSize "[3, 3, 3]"^^xsd:string ;
 	nidm:coordinateSystem nidm:mniCoordinateSystem ;
 	nidm:numberOfDimensions "3"^^xsd:int ;
-	nidm:dimensions "[53, 63, 52]"^^xsd:string .
+	nidm:dimensions "[53,63,46]"^^xsd:string .
 
-niiri:statistical_map_id a prov:Entity , nidm:TStatisticalMap ;
-	rdfs:label "Statistical Map: passive listening > rest" ;
+niiri:statistic_map_id a prov:Entity , nidm:StatisticMap ;
+	rdfs:label "Statistic Map: passive listening > rest" ;
 	prov:atLocation "file://./spmT_0001.nii.gz"^^xsd:anyURI ;
+	nidm:statisticType nidm:tStatistic ;
 	nidm:contrastName "passive listening > rest"^^xsd:string ;
 	nidm:originalFileName "spmT_0001.nii.gz"^^xsd:string ;
 	nidm:errorDegreesOfFreedom "83.9999999999599"^^xsd:float ;
@@ -124,7 +125,7 @@ niiri:contrast_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
 niiri:contrast_standard_error_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
-niiri:statistical_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
+niiri:statistic_map_id prov:wasGeneratedBy niiri:contrast_estimation_id .
 
 niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	rdfs:label "Search Space" ;
@@ -133,7 +134,7 @@ niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	nidm:atCoordinateSpace niiri:coordinate_space_id_1 ;
 	spm:searchVolumeInVoxels "69306"^^xsd:int ;
 	spm:searchVolumeInProductOfUnits "1871262"^^xsd:float ;
-	spm:reselSize "22.9229643140043"^^xsd:float ;
+	spm:reselSize "132.907586178202"^^xsd:float ;
 	spm:searchVolumeInResels "467.07642343881"^^xsd:float ;
 	spm:searchVolumeReselsGeometry "[7, 42.96312274763, 269.40914815306, 467.07642343881]"^^xsd:string ;
 	spm:noiseFWHMInVoxels "[5.41278985910694, 5.43638957240286, 4.51666658877481]"^^xsd:string ;
@@ -157,7 +158,7 @@ niiri:extent_threshold_id a prov:Entity , nidm:ExtentThreshold ;
 
 niiri:inference_id a prov:Activity , nidm:InferenceOneTailed ;
 	rdfs:label "Inference" ;
-	prov:used niiri:statistical_map_id .
+	prov:used niiri:statistic_map_id .
 
 niiri:search_space_id prov:wasGeneratedBy niiri:inference_id .
 
