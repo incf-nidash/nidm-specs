@@ -1,5 +1,16 @@
-% Ad-hoc code to write automatically peaks and clusters (otherwise very 
-% long manually...)
+% Ad-hoc code to write automatically peaks and clusters and statistical 
+% image properties (otherwise very long manually...)
+
+disp(['entity(niiri:stat_image_properties_id,'])
+disp(['  [prov:type = ''spm:StatisticImageProperties'','])
+disp(['  prov:label = "Statistical image properties",'])
+disp(['  spm:expectedNumberOfVoxelsPerCluster = "' mat2str(TabDat.ftr{3,2}) '" %% xsd:float,'])
+disp(['  spm:expectedNumberOfClusters = "' mat2str(TabDat.ftr{4,2}) '" %% xsd:float,'])
+disp(['  spm:heightCriticalThresholdFWE05 = "' mat2str(TabDat.ftr{5,2}(1)) '" %% xsd:float,'])
+disp(['  spm:heightCriticalThresholdFDR05 = "' mat2str(TabDat.ftr{5,2}(2)) '" %% xsd:float,'])
+disp(['  spm:smallestSignifClusterSizeInVoxelsFWE05 = "' mat2str(TabDat.ftr{5,2}(3)) '" %% xsd:float,'])
+disp(['  spm:smallestSignifClusterSizeInVoxelsFDR05 = "' mat2str(TabDat.ftr{5,2}(4)) '" %% xsd:float])'])
+
 numPeaks = size(TabDat.dat, 1);
 clusterId = 0;
 for i = 1:numPeaks
@@ -40,4 +51,5 @@ for i = 1:numPeaks
     disp(['  nidm:coordinate3 = "' mat2str(TabDat.dat{i,12}(3)) '" %% xsd:float])'])
     disp(['wasDerivedFrom(niiri:peak_' strPeakId ', niiri:cluster_' strClusterId ')   '])
 end
-aa=1
+
+
