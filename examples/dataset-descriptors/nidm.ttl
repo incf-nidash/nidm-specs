@@ -46,12 +46,13 @@ In some cases, it may be necessary to license particular datasets in a more rest
     foaf:page <https://openfmri.org/> .
 
 # Summary-level description of OpenfMRI projects.
-ofmri:ds001 
+:ds001 
     a dctypes:Dataset, prov:Entity, nidm:Project ;
     dct:title "Balloon Analog Risk-taking Task"@en ;
     dct:identifier "ds001"@en ;
     dct:description "Subjects perform the Balloon Analog Risk-taking Task in an event-related design."@en ;
     dcat:accessURL <https://openfmri.org/dataset/ds001> ;
+    pav:hasCurrentVersion :ds001-1.0.0 ;
     prov:specializationOf :this ;
     cogat:task :obart .
 
@@ -59,7 +60,7 @@ ofmri:ds001
     a cogat:trm_4d559bcd67c18 ;
     void:inDataset ofmri:ds001 .
 
-ofmri:ds005 
+:ds005 
     a dctypes:Dataset, prov:Entity, nidm:Project ;
     dct:title "Mixed-gambles task"@en ;
     dct:identifier "ds005"@en ;
@@ -67,6 +68,7 @@ ofmri:ds005
     cito:citesAsAuthority <http://www.ncbi.nlm.nih.gov/pubmed/17255512> ;
     dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
     dcat:accessURL <https://openfmri.org/dataset/ds005> ;
+    pav:hasCurrentVersion :ds005-1.0.0 ;
     prov:specializationOf :this ;
     cogat:task :mixed-gambles-task ;
     nidm:sampleSize 16 ;
@@ -78,16 +80,44 @@ ofmri:ds005
     cogat:conditions "002 parametric gain", "003 parametric loss", "004 distance from indifference" .
     
 # Version-level description of OpenfMRI projects.
+:ds001-1.0.0
+    a dctypes:Dataset ;
+    dct:title "Balloon Analog Risk-taking Task"@en ;
+    dct:description "Subjects perform the Balloon Analog Risk-taking Task in an event-related design."@en ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:creator <https://openfmri.org/> ;
+    dct:publisher <https://openfmri.org/> ;
+    dct:isVersionOf :openfmri ;
+    dct:created "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:language <http://lexvo.org/id/iso639-3/eng> ;
+    pav:previousVersion :ds001-0.1.0 ;
+    pav:version "1.0.0" ;
+    pav:retrievedFrom <https://openfmri.org/dataset/ds001> ;
+    prov:wasDerivedFrom <https://openfmri.org/dataset/ds001> ;
+    dcat:distribution :ds001-1.0.0-rdf
+    prov:specializationOf :openfmri .
 
-
-dct:creator <https://openfmri.org/> ;
-dct:isVersionOf :openfmri ;
-dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
-pav:previousVersion :ds001-0.1.0 ;
-pav:version "1.0.0" ;
+:ds005-1.0.0
+    a dctypes:Dataset ;
+    dct:title "Mixed-gambles task"@en ;
+    dct:description "Subjects were presented with mixed (gain/loss) gambles, and decided whether they would accept each gamble.  No outcomes of these gambles were presented during scanning, but after the scan three gambles were selected at random and played for real money."@en ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:creator <https://openfmri.org/> ;
+    dct:publisher <https://openfmri.org/> ;
+    dct:isVersionOf :openfmri ;
+    dct:created "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:language <http://lexvo.org/id/iso639-3/eng> ;
+    pav:previousVersion :ds005-0.1.0 ;
+    pav:version "1.0.0" ;
+    pav:retrievedFrom <https://openfmri.org/dataset/ds005> ;
+    prov:wasDerivedFrom <https://openfmri.org/dataset/ds005> ;
+    dcat:distribution :ds005-1.0.0-rdf
+    prov:specializationOf :openfmri .
 
 # NI-DM Project Distribution.
-:ds005rdf 
+:ds005-1.0.0-rdf 
     a void:Dataset, dcat:Distribution, dctypes:Dataset ;
     prov:specializationOf ofmri:ds005 ;
     # Link NI-DM components as void:subsets.
