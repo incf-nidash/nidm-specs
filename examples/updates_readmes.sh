@@ -3,9 +3,11 @@
 # in the Prov Store (https://provenance.ecs.soton.ac.uk/store). If there is none, the document is uploaded and its README file is updated
 # to link to the json, turtle and svg serialisations. 
 
-# Replace mylogin and mykey with yout login and ApiKey (cf. https://provenance.ecs.soton.ac.uk/store/account/developer/)
-login="mylogin"
-apikey="mykey"
+# To use this script you need to have an account on the Prov Store (cf. https://provenance.ecs.soton.ac.uk/store/account/signup/)
+
+# Create a file named store_login_key.txt in the same directory including the following text: "mylogin:mykey" where mylogin 
+# must be replaced by your Prov Store login and mykey by your ApiKey (cf. https://provenance.ecs.soton.ac.uk/store/account/developer/)
+login_apikey=`cat store_login_key.txt`
 
 update_readme () {
 	cwd=$PWD
@@ -39,7 +41,7 @@ update_readme () {
 
 	# Upload document to provstore
 	output=`curl -s -i -X POST https://provenance.ecs.soton.ac.uk/store/api/v0/documents/ \
-		-H 'Content-Type: application/json' -H "Authorization: ApiKey ${login}:${apikey}" \
+		-H 'Content-Type: application/json' -H "Authorization: ApiKey ${login_apikey}" \
 		-d "{\"content\":${jsondoc},\"public\":true,\"rec_id\":\"${doctitle}\"}"`
 
 	# Retreive document id
@@ -58,7 +60,7 @@ update_readme () {
 	if [ "$thisdoccontent" == "$samedoccontent" ]; then
 	  	echo "Same as previous: delete just created document ({$docid}}"
 	  	output=`curl -s -i -X DELETE https://provenance.ecs.soton.ac.uk/store/api/v0/documents/{$docid}/ \
-			-H 'Content-Type: application/json' -H "Authorization: ApiKey ${login}:${apikey}"`
+			-H 'Content-Type: application/json' -H "Authorization: ApiKey ${login_apikey}"`
 		docid=${samedocid}
 
 	fi
