@@ -29,7 +29,7 @@ for i = 1:numPeaks
         disp(['  nidm:pValueUncorrected = "' mat2str(TabDat.dat{i,6}) '" %% xsd:float,'])
         disp(['  nidm:pValueFWER = "' mat2str(TabDat.dat{i,3}) '" %% xsd:float,'])
         disp(['  nidm:qValueFDR = "' mat2str(TabDat.dat{i,4}) '" %% xsd:float])'])
-        disp(['wasDerivedFrom(niiri:cluster_' strClusterId ', niiri:set_statistic_id)'])
+        disp(['wasDerivedFrom(niiri:cluster_' strClusterId ', niiri:excursion_set_id)'])
     end
     
     strPeakId = num2str(i, '%04g');
