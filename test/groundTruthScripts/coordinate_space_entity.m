@@ -15,8 +15,8 @@ function coordinate_space_entity(niftiFile, num, forcedelete)
     niftiImg = nifti(niftiFile);
     niftiHdr = niftiImg.hdr;
     
-    dimensions = [ '[' num2str(vol.dim, '%g, ')];
-    dimensions(end) = ']';
+    dimensionsInVoxels = [ '[' num2str(vol.dim, '%g, ')];
+    dimensionsInVoxels(end) = ']';
     
     voxelSize = [ '[' num2str(niftiHdr.pixdim(2:4), '%g, ')];
     voxelSize(end) = ']';
@@ -47,9 +47,9 @@ function coordinate_space_entity(niftiFile, num, forcedelete)
     % FIXME: Find units automatically     
     entities = [entities '\n\t' 'nidm:voxelUnits = "[''mm'', ''mm'', ''mm'']" %%%% xsd:string,'];
     entities = [entities '\n\t' 'nidm:voxelSize = "' voxelSize '" %%%% xsd:string,'];
-    entities = [entities '\n\t' 'nidm:coordinateSystem = ''nidm:mniCoordinateSystem'','];
+    entities = [entities '\n\t' 'nidm:worldCoordinateSystem = ''nidm:mniCoordinateSystem'','];
     entities = [entities '\n\t' 'nidm:numberOfDimensions = "' num2str(numel(vol.dim)) '" %%%% xsd:int,'];
-    entities = [entities '\n\t' 'nidm:dimensions = "' dimensions '" %%%% xsd:string])'];
+    entities = [entities '\n\t' 'nidm:dimensionsInVoxels = "' dimensionsInVoxels '" %%%% xsd:string])'];
 
     fprintf(myfile, entities);
     fclose(myfile);
