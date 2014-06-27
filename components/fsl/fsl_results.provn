@@ -8,7 +8,7 @@ document
     entity(niiri:spm_results_id,
     [prov:type = 'prov:Bundle',
     prov:label = "FSL Results",
-    nidm:objectModel = 'nidm:FslResults',
+    nidm:objectModel = 'nidm:FSLResults',
     nidm:version = "0.1.0"])
     wasGeneratedBy(niiri:fsl_results_id, -, 2014-05-19T10:30:00)
     bundle niiri:fsl_results_id
@@ -19,18 +19,18 @@ document
         nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
         nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "[53,63,46]" %% xsd:string])
+        nidm:dimensionsInVoxels = "[53,63,46]" %% xsd:string])
     entity(niiri:coordinate_space_id_2,
         [prov:type = 'nidm:CoordinateSpace',
         prov:label = "Coordinate space 2" %% xsd:string,
         nidm:voxelToWorldMapping = "[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]" %% xsd:string,
         nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
         nidm:voxelSize = "[3, 3, 3]" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "[53,63,46]" %% xsd:string])
+        nidm:dimensionsInVoxels = "[53,63,46]" %% xsd:string])
 
     entity(niiri:statistic_map_id,
         [prov:type = 'nidm:StatisticMap',
@@ -196,7 +196,7 @@ document
     used(niiri:inference_id, niiri:extent_threshold_id, -)
 
     agent(niiri:software_id,
-        [prov:type = 'nidm:Fsl',
+        [prov:type = 'nidm:FSL',
         prov:type = 'prov:SoftwareAgent',
         prov:label = "FSL" %% xsd:string,
         nidm:softwareVersion = "5.0.1" %% xsd:string])
@@ -212,9 +212,9 @@ document
         prov:label = "Excursion Set" %% xsd:string,        
         nidm:visualisation = "file:///path/to/rendered_thresh_zstat1.png" %% xsd:anyURI,
         nidm:numberOfDimensions = "3" %% xsd:int,
-        nidm:dimensions = "53 63 46" %% xsd:string,
+        nidm:dimensionsInVoxels = "53 63 46" %% xsd:string,
         nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
         nidm:voxelSize = "[3.000000, 3.000000, 3.000000]" %% xsd:string])
 
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
@@ -237,13 +237,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "COG coordinate 1" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "-30.8" %% xsd:float,
-        nidm:coordinate2 = "-68.5" %% xsd:float,
-        nidm:coordinate3 = "-13.4" %% xsd:float,
-        nidm:coordinate1InUnits = "40.2" %% xsd:float,
-        nidm:coordinate2InUnits = "16.4" %% xsd:float,
-        nidm:coordinate3InUnits = "13.2" %% xsd:float])  
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "-30.8" %% xsd:float,
+        fsl:coordinate2InVoxels = "-68.5" %% xsd:float,
+        fsl:coordinate3InVoxels = "-13.4" %% xsd:float,
+        nidm:coordinate1 = "40.2" %% xsd:float,
+        nidm:coordinate2 = "16.4" %% xsd:float,
+        nidm:coordinate3 = "13.2" %% xsd:float])  
 
     entity(niiri:cluster_0002,
         [prov:type = 'nidm:ClusterStatistic',
@@ -263,13 +263,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "COG coordinate 2" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "24.1" %% xsd:float,
-        nidm:coordinate2 = "-77.1" %% xsd:float,
-        nidm:coordinate3 = "-4.27" %% xsd:float,
-        nidm:coordinate1InUnits = "25.6" %% xsd:float,
-        nidm:coordinate2InUnits = "12.8" %% xsd:float,
-        nidm:coordinate3InUnits = "14.6" %% xsd:float])  
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "24.1" %% xsd:float,
+        fsl:coordinate2InVoxels = "-77.1" %% xsd:float,
+        fsl:coordinate3InVoxels = "-4.27" %% xsd:float,
+        nidm:coordinate1 = "25.6" %% xsd:float,
+        nidm:coordinate2 = "12.8" %% xsd:float,
+        nidm:coordinate3 = "14.6" %% xsd:float])  
     
     
     entity(niiri:peak_0001,
@@ -283,13 +283,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 1" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "45" %% xsd:int,
-        nidm:coordinate2 = "15" %% xsd:int,
-        nidm:coordinate3 = "14" %% xsd:int,
-        nidm:coordinate1InUnits = "-48.1" %% xsd:float,
-        nidm:coordinate2InUnits = "-73.7" %% xsd:float,
-        nidm:coordinate3InUnits = "-9.24" %% xsd:float])        
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "45" %% xsd:int,
+        fsl:coordinate2InVoxels = "15" %% xsd:int,
+        fsl:coordinate3InVoxels = "14" %% xsd:int,
+        nidm:coordinate1 = "-48.1" %% xsd:float,
+        nidm:coordinate2 = "-73.7" %% xsd:float,
+        nidm:coordinate3 = "-9.24" %% xsd:float])        
 
     wasDerivedFrom(niiri:peak_0001, niiri:cluster_0001)
 
@@ -303,13 +303,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 2" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "42" %% xsd:int,
-        nidm:coordinate2 = "21" %% xsd:int,
-        nidm:coordinate3 = "13" %% xsd:int,
-        nidm:coordinate1InUnits = "-38.1" %% xsd:float,
-        nidm:coordinate2InUnits = "-53.4" %% xsd:float,
-        nidm:coordinate3InUnits = "-18" %% xsd:float])  
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "42" %% xsd:int,
+        fsl:coordinate2InVoxels = "21" %% xsd:int,
+        fsl:coordinate3InVoxels = "13" %% xsd:int,
+        nidm:coordinate1 = "-38.1" %% xsd:float,
+        nidm:coordinate2 = "-53.4" %% xsd:float,
+        nidm:coordinate3 = "-18" %% xsd:float])  
 
     wasDerivedFrom(niiri:peak_0002, niiri:cluster_0001)
 
@@ -323,13 +323,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 3" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "40" %% xsd:int,
-        nidm:coordinate2 = "15" %% xsd:int,
-        nidm:coordinate3 = "12" %% xsd:int,
-        nidm:coordinate1InUnits = "-29.6" %% xsd:float,
-        nidm:coordinate2InUnits = "-73.8" %% xsd:float,
-        nidm:coordinate3InUnits = "-16.9" %% xsd:float])          
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "40" %% xsd:int,
+        fsl:coordinate2InVoxels = "15" %% xsd:int,
+        fsl:coordinate3InVoxels = "12" %% xsd:int,
+        nidm:coordinate1 = "-29.6" %% xsd:float,
+        nidm:coordinate2 = "-73.8" %% xsd:float,
+        nidm:coordinate3 = "-16.9" %% xsd:float])          
 
     wasDerivedFrom(niiri:peak_0003, niiri:cluster_0001)
 
@@ -343,13 +343,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 4" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "39" %% xsd:int,
-        nidm:coordinate2 = "13" %% xsd:int,
-        nidm:coordinate3 = "12" %% xsd:int,
-        nidm:coordinate1InUnits = "0.791" %% xsd:float,
-        nidm:coordinate2InUnits = "-87.2" %% xsd:float,
-        nidm:coordinate3InUnits = "3.23" %% xsd:float])            
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "39" %% xsd:int,
+        fsl:coordinate2InVoxels = "13" %% xsd:int,
+        fsl:coordinate3InVoxels = "12" %% xsd:int,
+        nidm:coordinate1 = "0.791" %% xsd:float,
+        nidm:coordinate2 = "-87.2" %% xsd:float,
+        nidm:coordinate3 = "3.23" %% xsd:float])            
 
     wasDerivedFrom(niiri:peak_0004, niiri:cluster_0001)
 
@@ -364,13 +364,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 5" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "32" %% xsd:int,
-        nidm:coordinate2 = "10" %% xsd:int,
-        nidm:coordinate3 = "16" %% xsd:int,
-        nidm:coordinate1InUnits = "16.1" %% xsd:float,
-        nidm:coordinate2InUnits = "-96.6" %% xsd:float,
-        nidm:coordinate3InUnits = "5.82" %% xsd:float])            
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "32" %% xsd:int,
+        fsl:coordinate2InVoxels = "10" %% xsd:int,
+        fsl:coordinate3InVoxels = "16" %% xsd:int,
+        nidm:coordinate1 = "16.1" %% xsd:float,
+        nidm:coordinate2 = "-96.6" %% xsd:float,
+        nidm:coordinate3 = "5.82" %% xsd:float])            
 
     wasDerivedFrom(niiri:peak_0005, niiri:cluster_0002)
 
@@ -384,13 +384,13 @@ document
         [prov:type = 'prov:Location',
         prov:type = 'nidm:Coordinate',
         prov:label = "Coordinate 6" %% xsd:string,
-        nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
-        nidm:coordinate1 = "28" %% xsd:int,
-        nidm:coordinate2 = "7" %% xsd:int,
-        nidm:coordinate3 = "16" %% xsd:int,
-        nidm:coordinate1InUnits = "-25.5" %% xsd:float,
-        nidm:coordinate2InUnits = "-80.4" %% xsd:float,
-        nidm:coordinate3InUnits = "-15.3" %% xsd:float])            
+        nidm:worldCoordinateSystem = 'nidm:mniCoordinateSystem',
+        fsl:coordinate1InVoxels = "28" %% xsd:int,
+        fsl:coordinate2InVoxels = "7" %% xsd:int,
+        fsl:coordinate3InVoxels = "16" %% xsd:int,
+        nidm:coordinate1 = "-25.5" %% xsd:float,
+        nidm:coordinate2 = "-80.4" %% xsd:float,
+        nidm:coordinate3 = "-15.3" %% xsd:float])            
 
     wasDerivedFrom(niiri:peak_0006, niiri:cluster_0002)
     endBundle

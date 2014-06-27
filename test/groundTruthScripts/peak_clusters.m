@@ -40,12 +40,12 @@ function peak_clusters(featDir)
         entities = [entities ['\n\t' '[prov:type = ''prov:Location'',']];
         entities = [entities ['\n\t' 'prov:type = ''nidm:Coordinate'',']];
         entities = [entities ['\n\t' 'prov:label = "Coordinate 000' index '" %%%% xsd:string,']];
-        entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(clusterTable.Z_COGX_vox_(i)) '" %%%% xsd:float,']];
-        entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(clusterTable.Z_COGY_vox_(i)) '" %%%% xsd:float,']];
-        entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(clusterTable.Z_COGZ_vox_(i)) '" %%%% xsd:float,']];
-        entities = [entities ['\n\t' 'nidm:coordinate1InUnits = "' num2str(clusterTableStd{num2str(index),{'Z_COGX_mm_'}}) '" %%%% xsd:float,']];
-        entities = [entities ['\n\t' 'nidm:coordinate2InUnits = "' num2str(clusterTableStd{num2str(index),{'Z_COGY_mm_'}}) '" %%%% xsd:float,']];
-        entities = [entities ['\n\t' 'nidm:coordinate3InUnits = "' num2str(clusterTableStd{num2str(index),{'Z_COGZ_mm_'}}) '" %%%% xsd:float])  ']];
+        entities = [entities ['\n\t' 'nidm:coordinate1InVoxels = "' num2str(clusterTable.Z_COGX_vox_(i)) '" %%%% xsd:float,']];
+        entities = [entities ['\n\t' 'nidm:coordinate2InVoxels = "' num2str(clusterTable.Z_COGY_vox_(i)) '" %%%% xsd:float,']];
+        entities = [entities ['\n\t' 'nidm:coordinate3InVoxels = "' num2str(clusterTable.Z_COGZ_vox_(i)) '" %%%% xsd:float,']];
+        entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(clusterTableStd{num2str(index),{'Z_COGX_mm_'}}) '" %%%% xsd:float,']];
+        entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(clusterTableStd{num2str(index),{'Z_COGY_mm_'}}) '" %%%% xsd:float,']];
+        entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(clusterTableStd{num2str(index),{'Z_COGZ_mm_'}}) '" %%%% xsd:float])  ']];
         
         % For each peak in that cluster
         peaks = peakTable(peakTable.CLUSTER==str2num(clusterTable.Properties.RowNames{i}),:);
@@ -67,12 +67,12 @@ function peak_clusters(featDir)
             entities = [entities ['\n\t' '[prov:type = ''prov:Location'',']];
             entities = [entities ['\n\t' 'prov:type = ''nidm:Coordinate'',']];
             entities = [entities ['\n\t' 'prov:label = "Coordinate 000' peakIndex '" %%%% xsd:string,']];
-            entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(peaks{j,'x'}) '" %%%% xsd:int,']];
-            entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(peaks{j,'y'}) '" %%%% xsd:int,']];
-            entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(peaks{j,'z'}) '" %%%% xsd:int,']];
-            entities = [entities ['\n\t' 'nidm:coordinate1InUnits = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'x'}) '" %%%% xsd:float,']];
-            entities = [entities ['\n\t' 'nidm:coordinate2InUnits = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'y'}) '" %%%% xsd:float,']];
-            entities = [entities ['\n\t' 'nidm:coordinate3InUnits = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'z'}) '" %%%% xsd:float])   ']];     
+            entities = [entities ['\n\t' 'nidm:coordinate1InVoxels = "' num2str(peaks{j,'x'}) '" %%%% xsd:int,']];
+            entities = [entities ['\n\t' 'nidm:coordinate2InVoxels = "' num2str(peaks{j,'y'}) '" %%%% xsd:int,']];
+            entities = [entities ['\n\t' 'nidm:coordinate3InVoxels = "' num2str(peaks{j,'z'}) '" %%%% xsd:int,']];
+            entities = [entities ['\n\t' 'nidm:coordinate1 = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'x'}) '" %%%% xsd:float,']];
+            entities = [entities ['\n\t' 'nidm:coordinate2 = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'y'}) '" %%%% xsd:float,']];
+            entities = [entities ['\n\t' 'nidm:coordinate3 = "' num2str(peaksStd{peaks(j,:).Properties.RowNames, 'z'}) '" %%%% xsd:float])   ']];     
 
             entities = [entities ['\n\t' 'wasDerivedFrom(niiri:peak_000' peakIndex ', niiri:cluster_000' index ')']];
         end
