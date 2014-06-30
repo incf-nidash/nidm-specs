@@ -1,0 +1,163 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix freq: <http://purl.org/cld/freq/> .
+@prefix idot: <http://identifiers.org/idot/> .
+@prefix lexvo: <http://lexvo.org/ontology#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schemaorg: <http://schema.org/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix void: <http://www.w3.org/TR/void/> .
+@prefix ofmri: <http://openfmri.s3.amazonaws.com/> .
+@prefix cogat: <http://www.cognitiveatlas.org/rdf/id/> .
+@prefix : <#> .
+
+:this
+    a dctypes:Dataset, prov:Collection;
+    dct:title "OpenfMRI"@en ;
+    dct:identifier "openfmri"@en ;
+    dct:description "OpenfMRI.org is a project dedicated to the free and open sharing of functional magnetic resonance imaging (fMRI) datasets, including raw data."@en ;
+    idot:accessPattern <https://openfmri.org/data-sets>, <openfmri.s3.amazonaws.com>;
+    idot:alternatePrefix "ofmri" ;
+    idot:exampleIdentifier "ds000001" ;
+    idot:preferredPrefix "openfmri" ;
+    dct:accrualPeriodicity freq:continuous ;
+    dct:alternative "OpenfMRI"@en ;
+    dct:hasPart :ds000001, :ds000002, :ds000003, :ds000004, :ds000005, :ds000006, :ds000007, :ds000008, :ds000009, :ds000011, :ds000017, :ds000051,:ds000052, :ds000101, :ds000102, :ds000105, :ds000107, :ds000108, :ds000109, :ds000110, :ds000113, :ds000114, :ds000116 ;
+    dct:language <http://lexvo.org/id/iso639-3/en> ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:publisher <https://openfmri.org> ;
+    dct:rights """Unless otherwise noted, this database and its contents are made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/. We hope that all users will follow the ODC Attribution/Share-Alike Community Norms; in particular, while not legally required, we hope that all users of the data will acknowledge the OpenfMRI project in any publications.
+
+In some cases, it may be necessary to license particular datasets in a more restrictive fashion; the license for each dataset is listed at the bottom of the data page.""" ;
+    dct:source :data-sets ;
+    pav:hasCurrentVersion :1.0.0 ;
+    cito:citesAsAuthority <http://www.ncbi.nlm.nih.gov/pubmed/23847528> ;
+    schemaorg:logo <https://openfmri.org/sites/all/themes/openfmri/logo.png> ;
+    void:vocabulary <http://purl.org/dc/terms/>, <http://www.w3.org/ns/dcat#>, <http://www.w3.org/ns/prov#> ;
+    dcat:accessURL <https://openfmri.org/data-sets> ;
+    dcat:keyword "fmri", "neuroimaging" ;
+    dcat:theme <http://dbpedia.org/page/Neuroimaging> ;
+    foaf:page <https://openfmri.org/> .
+
+
+ofmri:ds000001 
+    a dctypes:Dataset ;
+    idot:identifierPattern "ds\\d+" ;
+    dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
+    dct:creator <https://openfmri.org/> ;
+    dct:isVersionOf :openfmri ;
+    dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
+    pav:previousVersion :ds000001-0.1.0 ;
+    pav:version "1.0.0" ;
+    dcat:accessURL <https://openfmri.org/dataset/ds000001> ;
+    dcat:distribution :ds000001xnat, :ds000001aws, :ds000001ofmri, :ds000001rdf ;
+    dcat:landingPage <https://openfmri.org/dataset/ds000001> .
+
+:bart 
+    a cogat:trm_4d559bcd67c18 ;
+    void:inDataset ofmri:ds000001 . 
+
+ofmri:ds000001xnat 
+    a dcat:Distribution, dctypes:Dataset ;
+    dct:format "text/html" .
+
+ofmri:ds000001aws 
+    a dcat:Distribution, dctypes:Dataset ;
+    dct:format "text/html" .
+    
+ofmri:ds000001ofmri 
+    a dcat:Distribution, dctypes:Dataset ;
+    dct:format "text/html" .
+
+ofmri:ds000001experiment 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    pav:createdWith :ofmri2nidm ;
+    void:dataDump <https://openfmri.org/dataset/ds000001/experiment.ttl> ;
+    void:exampleResource <https://openfmri.org/dataset/ds000001/experiment.ttl#sub001> ;
+    void:uriRegexPattern "https://openfmri.org/dataset/ds000001/experiment.ttl\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
+    
+ofmri:ds000001preprocessing 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    pav:createdWith :ofmri2nidm ;
+    void:dataDump <https://openfmri.org/dataset/ds000001/preprocessing.ttl> ;
+    void:exampleResource <https://openfmri.org/dataset/ds000001/preprocessing.ttl#node001> ;
+    void:uriRegexPattern "https://openfmri.org/dataset/ds000001/preprocessing.ttl#\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
+
+ofmri:ds000001results 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    pav:createdWith :spm12 ;
+    void:dataDump <https://openfmri.org/dataset/ds000001/results.ttl> ;
+    void:exampleResource <https://openfmri.org/dataset/ds000001/results.ttl#map> ;
+    void:uriRegexPattern "https://openfmri.org/dataset/ds000001/results.ttl#\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
+
+# The full rdf distribution of a NI-DM Project.
+ofmri:ds000001rdf 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    void:classPartition [
+        void:class rdfs:Class ;
+        void:entities 291
+    ], [
+        void:class rdfs:Literal ;
+        void:entities 782032
+    ], [
+        void:class sd:Graph ;
+        void:entities 3
+    ], [
+        void:class <http://incf.org/ns/nidash/nidm#Study> ;
+        void:entities 14
+    ] ;
+    void:distinctObjects 1209321 ;
+    void:distinctSubjects 822920 ;
+    void:entities 982739 ;
+    void:properties 208 ;
+    void:propertyPartition [
+        void:property <http://www.w3.org/ns/prov#specializationOf> ;
+        void:triples 79
+    ] ;
+
+# Link NI-DM components as void:subsets.
+void:subset [
+    a void:LinkSet ;
+    void:linkPredicate prov:used ;
+    void:subjectsTarget [
+        void:class <http://incf.org/ns/nidash/nidm#Result> ;
+        void:entities 88102 ;
+        void:objectsTarget [
+            void:class <http://incf.org/ns/nidash/nidm#Preprocessing> ;
+            void:entities 2819
+            ]
+    ], [
+    a void:LinkSet ;
+    void:linkPredicate prov:used ;
+    void:subjectsTarget [
+        void:class <http://incf.org/ns/nidash/nidm#Preprocessing> ;
+        void:entities 88102 ;
+        void:objectsTarget [
+            void:class <http://incf.org/ns/nidash/nidm#Experiment> ;
+            void:entities 2819
+                ]            
+            ]
+        ] 
+    ] ;
+    void:triples 1492029 .
+
+# Description of the sparql endpoint hosting a dataset.
+ofmri:service 
+    a sd:Service ;
+    sd:defaultDatasetDescription [
+        a sd:Dataset ;
+        sd:defaultGraph [
+            dct:source :ds000001rdf ;
+            a sd:Graph
+        ]
+    ] .
