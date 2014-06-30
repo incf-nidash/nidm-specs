@@ -1,0 +1,102 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov-o/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix waiver: <http://vocab.org/waiver/terms/> .
+@prefix xnat: <http://www.nitrc.org/ir/data/> .
+@prefix nidm: <http://nidm.nidash.org/terms> .
+@prefix niiri: <http://iri.nidash.org/> .
+@prefix : <#> .
+
+# Metadata about this set of dataset descriptors
+<> a void:DatasetDescription;
+    dcterms:title "A VoID Description of the NITRC-IR Dataset";
+    foaf:primaryTopic <http://www.nitrc.org/ir/>;
+    .
+
+# Reference to the NITRC IR
+<http://www.nitrc.org/ir/> a void:Dataset;
+    dcterms:title "NITRC-IR";
+    dcterms:description "NITRC Image Repository";
+    foaf:homepage <http://www.nitrc.org/ir/>;
+    void:subset <http://www.nitrc.org/ir/data/projects/ABIDE>;
+    void:subset <http://www.nitrc.org/ir/data/projects/projectB>;
+    void:subset <http://www.nitrc.org/ir/data/projects/projectC>
+    .
+
+# The ABIDE dataset with core terms.
+<http://www.nitrc.org/ir/data/projects/ABIDE> a void:Dataset, 
+                                                prov:Entity, 
+                                                nidm:Project;
+    dcterms:title "ABIDE";
+    dcterms:description "Autism Brain Imaging Data Exchange";
+    dcterms:creator <http://fcon_1000.projects.nitrc.org/indi/>;
+    dcterms:publisher <http://fcon_1000.projects.nitrc.org/indi/>;
+    dcterms:contributor <http://fcon_1000.projects.nitrc.org/indi/>;
+    dcterms:source <http://www.nitrc.org/ir/>;
+    dcterms:date "2009-11-25"^^xsd:date;
+    dcterms:created "2009-11-25"^^xsd:date;
+    dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:modified "2009-11-25"^^xsd:date;
+    dcterms:license <http://creativecommons.org/licenses/by-nc-sa/3.0/>;
+    dcterms:subject <http://live.dbpedia.org/resource/Autism>;
+    dcterms:subject <http://dbpedia.org/page/Neuroimaging>;
+    dcterms:subject <http://dbpedia.org/resource/Magnetic_resonance_imaging_of_the_brain>;
+    dcterms:subject <http://dbpedia.org/resource/Resting_state_fMRI>;
+    foaf:homepage <http://fcon_1000.projects.nitrc.org/indi/abide/>;
+    foaf:page <http://www.nitrc.org/ir/>;
+    waiver:norms <http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode>;
+    waiver:waiver <http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode>;
+    void:feature <http://www.w3.org/ns/formats/Turtle>;
+    void:sparqlEndpoint <http://iri.nidash.org/sparql>;
+    void:dataDump <http://fcon_1000.projects.nitrc.org/indi/abide/abide.ttl>;
+    void:rootResource niiri:projectExample;
+    void:uriLookupEndpoint <http://iri.nidash.org/describe/term/>;
+    void:exampleResource niiri:exampleStudyAbide;
+    void:exampleResource niiri:exampleAcquisitionAbide;
+    void:vocabulary <http://purl.org/dc/terms/>,
+                    <http://vocab.org/waiver/terms/>,
+                    <http://nidm.nidash.org/terms>,
+                    <http://www.w3.org/ns/prov-o/>,
+                    <http://xmlns.com/foaf/0.1/>;
+    void:triples 1000000000;
+    prov:wasAttributedTo niiri:investigatorExample;
+    prov:wasGeneratedBy niiri:projectActivityExample;
+    dcterms:hasPart niiri:studyObjectExample;
+    .
+
+# Provide contact information for the ABIDE dataset.
+<http://fcon_1000.projects.nitrc.org/indi/> a foaf:Organization;
+    rdfs:label "Intenational Neuroimaging Data-sharing Initiative";
+    foaf:mbox <mailto:dimara01@nyumc.org>;
+    foaf:mbox <mailto:mostofsky@kennedykrieger.org>;
+    foaf:mbox <mailto:michael.milham@childmind.org>;
+    .
+
+<http://www.nitrc.org/ir/data/projects/projectB> a void:Dataset, 
+                                                   prov:Entity, 
+                                                   nidm:Project;
+    dcterms:title "Project B";
+    dcterms:description "This is Project B";
+    dcterms:contributor :PI-B;
+    dcterms:source <http://central.xnat.org/data/projects>;
+    dcterms:created "2008-11-17"^^xsd:date;
+    dcterms:modified "2007-11-17"^^xsd:date;
+    prov:wasGeneratedBy :projectActivityB;
+    .
+    
+<http://www.nitrc.org/ir/data/projects/projectC> a void:Dataset, 
+                                                   prov:Entity, 
+                                                   nidm:Project;
+    dcterms:title "Project C";
+    dcterms:description "This is Project C";
+    dcterms:contributor :PI_B;
+    dcterms:source <http://central.xnat.org/data/projects>;
+    dcterms:created "2008-11-17"^^xsd:date;
+    dcterms:modified "2006-11-17"^^xsd:date;
+    prov:wasGeneratedBy :projectActivityC;
+    .

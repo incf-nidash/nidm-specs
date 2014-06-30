@@ -1,0 +1,51 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov-o/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix waiver: <http://vocab.org/waiver/terms/> .
+@prefix xnat: <http://www.nitrc.org/ir/data/> .
+@prefix nidm: <http://nidm.nidash.org/terms> .
+@prefix niiri: <http://iri.nidash.org/> .
+@prefix : <#> .
+
+# An example study resource.
+<http://www.nitrc.org/ir/data/projects/ABIDE/> a prov:Entity,
+                                                 nidm:Study,
+                                                 nidm:Demographics;
+    dcterms:title "Demographics Questionnaire";
+    dcterms:description "A survey of basic demographics.";
+    dcterms:source <http://www.nitrc.org/ir/data/projects/ABIDE>;
+    dcterms:date "2009-11-25"^^xsd:date;
+    dcterms:created "2009-11-25"^^xsd:date;
+    dcterms:issued "2009-11-25"^^xsd:date;
+    dcterms:modified "2009-11-25"^^xsd:date;
+    prov:wasAttributedTo niiri:participantExample;
+    prov:wasGeneratedBy niiri:studyActivityExample;
+    dcterms:hasPart niiri:acquisitionExample;
+    dcterms:isPartOf <http://www.nitrc.org/ir/data/projects/ABIDE/>;
+    nidm:visit niiri:baselineVisit;
+    .
+
+# Provide a subject that this questionaire is performed on.
+niiri:participantExample a foaf:Person, prov:Person;
+    rdfs:label "PersonA";
+    .
+
+# Associate a study activity with the study object.
+niiri:studyActivityExample a prov:Activity, nidm:StudyActivity;
+    prov:startedAt "2008-10-20T16:26:45Z"^^xsd:datetime;
+    prov:endedAt "2009-10-20T16:26:45Z"^^xsd:datetime;
+    prov:wasAssociatedWith niiri:participantExample;
+    prov:qualifiedAssociation niiri:projectAssociationExample;
+    .
+
+# Associate a role, agent, and plan with the study activity.
+niiri:projectAssociationExample a prov:Association;
+    prov:hadRole nidm:participant;
+    prov:agent niiri:participantExample;
+    prov:hadPlan niiri:visitProtocol;
+    .
