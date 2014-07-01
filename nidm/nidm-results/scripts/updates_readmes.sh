@@ -46,14 +46,16 @@ update_readme () {
 
 	# Retreive document id
 	docid=`echo $output | sed -e 's/^.*"id": \([^"]*\),.*$/\1/'`
+	docuri=`echo $output | sed -e 's/^.*"resource_uri": "\([^"]*\)",.*$/\1/'`
 
 	echo "docid: "$docid
+	echo "samedocid: "$samedocid
 
 	# Check if uploaded document is identical to previous version. If identical delete the just created document.
 	# This cannot be done before the upload as we do not have access to the original file through the APIs.
 	
 	# Get content of the current document after upload to the prov store
-	thisdoccontent=`curl -s https://provenance.ecs.soton.ac.uk/${samedocuri%?}.json \
+	thisdoccontent=`curl -s https://provenance.ecs.soton.ac.uk/${docuri%?}.json \
 			-H 'Content-Type: application/json'\
 			-H 'Accept: application/json'`
 
