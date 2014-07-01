@@ -86,7 +86,7 @@ update_readme () {
 # Declare all documents that we want to upload
 declare -a docnames=("spm_results" "example001_spm_results" "spm_results_2contrasts" "spm_results_conjunction" "spm_inference_activities" "fsl_results" "fsl_nidm") #
 declare -a doctitles=("SPM" "SPM example 001" "SPM example 002" "SPM Conjunctions" "SPM Inference" "FSL" "FSL example 001") #
-declare -a dirnames=("spm" "spm/example001" "spm/example002" "spm/example003" "spm/example004" "fsl" "fsl/example001") #
+declare -a dirnames=("../spm" "../spm/example001" "../spm/example002" "../spm/example003" "../spm/example004" "../fsl" "../fsl/example001") #
 
 # Upload each document and update README if needed
 max=${#docnames[@]}
