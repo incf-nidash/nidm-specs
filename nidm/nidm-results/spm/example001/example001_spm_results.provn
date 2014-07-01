@@ -129,7 +129,7 @@ document
     entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = "file://./final_mask.nii" %% xsd:anyURI,
-      prov:label = "Search Space" %% xsd:string,
+      prov:label = "Search Space Map" %% xsd:string,
       nidm:originalFileName = "final_mask.nii" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       spm:searchVolumeInVoxels = "69306" %% xsd:int,
@@ -179,14 +179,10 @@ document
       spm:maximumIntensityProjection = "file://./MIP.png" %% xsd:anyURI,
       nidm:originalFileName = "thresh_spmT_0001.nii.gz" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
-      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
-    entity(niiri:set_statistic_id,
-      [prov:type = 'spm:SetStatistic',
-      prov:label = "Set Statistic" %% xsd:string,
-      prov:value = "9" %% xsd:int,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string,
+      nidm:numberOfClusters = "9" %% xsd:int,
       nidm:pValue = "0" %% xsd:float])
-    wasDerivedFrom(niiri:set_statistic_id, niiri:excursion_set_id)
+    wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
 entity(niiri:stat_image_properties_id,
   [prov:type = 'spm:StatisticImageProperties',
   prov:label = "Statistical image properties",
@@ -197,18 +193,18 @@ entity(niiri:stat_image_properties_id,
   spm:smallestSignifClusterSizeInVoxelsFWE05 = "12" %% xsd:float,
   spm:smallestSignifClusterSizeInVoxelsFDR05 = "29" %% xsd:float])
 entity(niiri:cluster_0001,
-  [prov:type = 'nidm:ClusterStatistic',
-  prov:label = "Cluster Statistic: 0001" %% xsd:string,
+  [prov:type = 'nidm:Cluster',
+  prov:label = "Cluster 0001" %% xsd:string,
   nidm:clusterSizeInVoxels = "839" %% xsd:int,
   nidm:clusterLabelId = "1",
   spm:clusterSizeInResels = "6.31265696809113" %% xsd:float,
   nidm:pValueUncorrected = "3.55896824480477e-19" %% xsd:float,
   nidm:pValueFWER = "0" %% xsd:float,
   nidm:qValueFDR = "1.77948412240239e-18" %% xsd:float])
-wasDerivedFrom(niiri:cluster_0001, niiri:set_statistic_id)
+wasDerivedFrom(niiri:cluster_0001, niiri:excursion_set_id)
 entity(niiri:peak_0001,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0001" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0001" %% xsd:string,
   prov:location = 'niiri:coordinate_0001',
   prov:value = "17.5207633972168" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -224,8 +220,8 @@ entity(niiri:coordinate_0001,
   nidm:coordinate3 = "11" %% xsd:float])
 wasDerivedFrom(niiri:peak_0001, niiri:cluster_0001)   
 entity(niiri:peak_0002,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0002" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0002" %% xsd:string,
   prov:location = 'niiri:coordinate_0002',
   prov:value = "13.0321407318115" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -241,8 +237,8 @@ entity(niiri:coordinate_0002,
   nidm:coordinate3 = "11" %% xsd:float])
 wasDerivedFrom(niiri:peak_0002, niiri:cluster_0001)   
 entity(niiri:peak_0003,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0003" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0003" %% xsd:string,
   prov:location = 'niiri:coordinate_0003',
   prov:value = "10.2856016159058" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -258,18 +254,18 @@ entity(niiri:coordinate_0003,
   nidm:coordinate3 = "-1" %% xsd:float])
 wasDerivedFrom(niiri:peak_0003, niiri:cluster_0001)   
 entity(niiri:cluster_0002,
-  [prov:type = 'nidm:ClusterStatistic',
-  prov:label = "Cluster Statistic: 0002" %% xsd:string,
+  [prov:type = 'nidm:Cluster',
+  prov:label = "Cluster 0002" %% xsd:string,
   nidm:clusterSizeInVoxels = "695" %% xsd:int,
   nidm:clusterLabelId = "2",
   spm:clusterSizeInResels = "5.22919736927692" %% xsd:float,
   nidm:pValueUncorrected = "5.34280282632073e-17" %% xsd:float,
   nidm:pValueFWER = "0" %% xsd:float,
   nidm:qValueFDR = "1.33570070658018e-16" %% xsd:float])
-wasDerivedFrom(niiri:cluster_0002, niiri:set_statistic_id)
+wasDerivedFrom(niiri:cluster_0002, niiri:excursion_set_id)
 entity(niiri:peak_0004,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0004" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0004" %% xsd:string,
   prov:location = 'niiri:coordinate_0004',
   prov:value = "13.5425577163696" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -285,8 +281,8 @@ entity(niiri:coordinate_0004,
   nidm:coordinate3 = "-4" %% xsd:float])
 wasDerivedFrom(niiri:peak_0004, niiri:cluster_0002)   
 entity(niiri:peak_0005,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0005" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0005" %% xsd:string,
   prov:location = 'niiri:coordinate_0005',
   prov:value = "12.4728717803955" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -302,8 +298,8 @@ entity(niiri:coordinate_0005,
   nidm:coordinate3 = "11" %% xsd:float])
 wasDerivedFrom(niiri:peak_0005, niiri:cluster_0002)   
 entity(niiri:peak_0006,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0006" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0006" %% xsd:string,
   prov:location = 'niiri:coordinate_0006',
   prov:value = "9.72103404998779" %% xsd:float,
   nidm:equivalentZStatistic = "Inf" %% xsd:float,
@@ -319,18 +315,18 @@ entity(niiri:coordinate_0006,
   nidm:coordinate3 = "5" %% xsd:float])
 wasDerivedFrom(niiri:peak_0006, niiri:cluster_0002)   
 entity(niiri:cluster_0003,
-  [prov:type = 'nidm:ClusterStatistic',
-  prov:label = "Cluster Statistic: 0003" %% xsd:string,
+  [prov:type = 'nidm:Cluster',
+  prov:label = "Cluster 0003" %% xsd:string,
   nidm:clusterSizeInVoxels = "37" %% xsd:int,
   nidm:clusterLabelId = "3",
   spm:clusterSizeInResels = "0.278388924695318" %% xsd:float,
   nidm:pValueUncorrected = "0.00497953247554004" %% xsd:float,
   nidm:pValueFWER = "0.000255384009130943" %% xsd:float,
   nidm:qValueFDR = "0.00829922079256674" %% xsd:float])
-wasDerivedFrom(niiri:cluster_0003, niiri:set_statistic_id)
+wasDerivedFrom(niiri:cluster_0003, niiri:excursion_set_id)
 entity(niiri:peak_0007,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0007" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0007" %% xsd:string,
   prov:location = 'niiri:coordinate_0007',
   prov:value = "6.55745935440063" %% xsd:float,
   nidm:equivalentZStatistic = "5.87574033699266" %% xsd:float,
@@ -346,18 +342,18 @@ entity(niiri:coordinate_0007,
   nidm:coordinate3 = "-13" %% xsd:float])
 wasDerivedFrom(niiri:peak_0007, niiri:cluster_0003)   
 entity(niiri:cluster_0004,
-  [prov:type = 'nidm:ClusterStatistic',
-  prov:label = "Cluster Statistic: 0004" %% xsd:string,
+  [prov:type = 'nidm:Cluster',
+  prov:label = "Cluster 0004" %% xsd:string,
   nidm:clusterSizeInVoxels = "29" %% xsd:int,
   nidm:clusterLabelId = "4",
   spm:clusterSizeInResels = "0.218196724761195" %% xsd:float,
   nidm:pValueUncorrected = "0.0110257032104773" %% xsd:float,
   nidm:pValueFWER = "0.000565384750377596" %% xsd:float,
   nidm:qValueFDR = "0.0137821290130967" %% xsd:float])
-wasDerivedFrom(niiri:cluster_0004, niiri:set_statistic_id)
+wasDerivedFrom(niiri:cluster_0004, niiri:excursion_set_id)
 entity(niiri:peak_0008,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0008" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0008" %% xsd:string,
   prov:location = 'niiri:coordinate_0008',
   prov:value = "6.19558477401733" %% xsd:float,
   nidm:equivalentZStatistic = "5.60645028016544" %% xsd:float,
@@ -373,18 +369,18 @@ entity(niiri:coordinate_0008,
   nidm:coordinate3 = "-16" %% xsd:float])
 wasDerivedFrom(niiri:peak_0008, niiri:cluster_0004)   
 entity(niiri:cluster_0005,
-  [prov:type = 'nidm:ClusterStatistic',
-  prov:label = "Cluster Statistic: 0005" %% xsd:string,
+  [prov:type = 'nidm:Cluster',
+  prov:label = "Cluster 0005" %% xsd:string,
   nidm:clusterSizeInVoxels = "12" %% xsd:int,
   nidm:clusterLabelId = "5",
   spm:clusterSizeInResels = "0.0902882999011843" %% xsd:float,
   nidm:pValueUncorrected = "0.0818393184514307" %% xsd:float,
   nidm:pValueFWER = "0.00418900977248904" %% xsd:float,
   nidm:qValueFDR = "0.0818393184514307" %% xsd:float])
-wasDerivedFrom(niiri:cluster_0005, niiri:set_statistic_id)
+wasDerivedFrom(niiri:cluster_0005, niiri:excursion_set_id)
 entity(niiri:peak_0009,
-  [prov:type = 'nidm:PeakStatistic',
-  prov:label = "Peak Statistic: 0009" %% xsd:string,
+  [prov:type = 'nidm:Peak',
+  prov:label = "Peak 0009" %% xsd:string,
   prov:location = 'niiri:coordinate_0009',
   prov:value = "5.27320194244385" %% xsd:float,
   nidm:equivalentZStatistic = "4.88682085490477" %% xsd:float,
