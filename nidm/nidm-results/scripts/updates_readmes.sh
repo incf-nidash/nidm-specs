@@ -46,17 +46,21 @@ update_readme () {
 
 	# Retreive document id
 	docid=`echo $output | sed -e 's/^.*"id": \([^"]*\),.*$/\1/'`
+	docuri=`echo $output | sed -e 's/^.*"resource_uri": "\([^"]*\)",.*$/\1/'`
 
 	echo "docid: "$docid
+	echo "samedocid: "$samedocid
 
 	# Check if uploaded document is identical to previous version. If identical delete the just created document.
 	# This cannot be done before the upload as we do not have access to the original file through the APIs.
 	
 	# Get content of the current document after upload to the prov store
-	thisdoccontent=`curl -s https://provenance.ecs.soton.ac.uk/${samedocuri%?}.json \
+	thisdoccontent=`curl -s https://provenance.ecs.soton.ac.uk/${docuri%?}.json \
 			-H 'Content-Type: application/json'\
 			-H 'Accept: application/json'`
 
+	# FIXME: This is not functional as order does not seem to be preserved when uploading to prov store.
+	# We will need to compare the graphs using rdflib (for example)
 	if [ "$thisdoccontent" == "$samedoccontent" ]; then
 	  	echo "Same as previous: delete just created document ({$docid}}"
 	  	output=`curl -s -i -X DELETE https://provenance.ecs.soton.ac.uk/store/api/v0/documents/{$docid}/ \
@@ -84,7 +88,7 @@ update_readme () {
 # Declare all documents that we want to upload
 declare -a docnames=("spm_results" "example001_spm_results" "spm_results_2contrasts" "spm_results_conjunction" "spm_inference_activities" "fsl_results" "fsl_nidm") #
 declare -a doctitles=("SPM" "SPM example 001" "SPM example 002" "SPM Conjunctions" "SPM Inference" "FSL" "FSL example 001") #
-declare -a dirnames=("spm" "spm/example001" "spm/example002" "spm/example003" "spm/example004" "fsl" "fsl/example001") #
+declare -a dirnames=("../spm" "../spm/example001" "../spm/example002" "../spm/example003" "../spm/example004" "../fsl" "../fsl/example001") #
 
 # Upload each document and update README if needed
 max=${#docnames[@]}
