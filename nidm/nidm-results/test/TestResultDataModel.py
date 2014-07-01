@@ -59,7 +59,7 @@ def get_alternatives(graph,s=None,p=None, o=None):
 '''
 class TestResultDataModel(object):
     def setUp(self):
-        self.ground_truth_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'examples')
+        self.ground_truth_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
         self.my_execption = ""
 
@@ -92,8 +92,8 @@ class TestResultDataModel(object):
                     return False
         return True
 
-        if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-            raise Exception(self.my_execption)
+        # if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+        #     raise Exception(self.my_execption)
 
 
     ''' Compare gt_graph and other_graph '''
@@ -160,7 +160,7 @@ class TestResultDataModel(object):
                 # If subject and predicate found in other_graph
                 if (s,  p, None) in other_graph:
                     if isinstance(o, rdflib.term.Literal):
-                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
+                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(gt_graph, p),get_readable_name(gt_graph, s),get_readable_name(gt_graph, o),get_alternatives(other_graph,s=s,p=p))
                     else:
                         exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
 
