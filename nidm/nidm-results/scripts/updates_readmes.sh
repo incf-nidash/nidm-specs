@@ -59,6 +59,8 @@ update_readme () {
 			-H 'Content-Type: application/json'\
 			-H 'Accept: application/json'`
 
+	# FIXME: This is not functional as order does not seem to be preserved when uploading to prov store.
+	# We will need to compare the graphs using rdflib (for example)
 	if [ "$thisdoccontent" == "$samedoccontent" ]; then
 	  	echo "Same as previous: delete just created document ({$docid}}"
 	  	output=`curl -s -i -X DELETE https://provenance.ecs.soton.ac.uk/store/api/v0/documents/{$docid}/ \
