@@ -65,6 +65,36 @@ class TestSPMResultsDataModel(unittest.TestCase, TestResultDataModel):
         if self.my_execption:
             raise Exception(self.my_execption)
 
+    # '''Test06: StatisticMap: existance and attributes'''
+    # def test06_StatisticMap(self):
+    #     prefixInfo = """
+    #     prefix prov: <http://www.w3.org/ns/prov#>
+    #     prefix spm: <http://www.fil.ion.ucl.ac.uk/spm/ns/#>
+    #     prefix nidm: <http://nidm.nidash.org/>
+
+    #     """
+
+    #     # Look for: instance of type StatisticMap
+    #     query = prefixInfo+"""
+    #     SELECT ?smapid WHERE {
+    #     }
+    #     """
+
+    #     res = self.spmexport.query(query)
+
+    #     if not self.successful_retreive(res, 'StatisticMap'):
+    #         raise Exception(self.my_execption)
+       
+    #     # If StatisticMap was found check that all the attributes are available for 
+    #     # each StatisticMap entity
+    #     for idx, row in enumerate(res.bindings):
+    #         rowfmt = []
+    #         for key, val in sorted(row.items()):
+    #             logging.debug('%s-->%s' % (key, val.decode()))
+    #             if not val.decode():
+    #                 self.my_execption += "\nMissing: \t %s" % (key)
+    #                 return False
+
 
     # '''Test02: Test availability of attributes needed to perform a meta-analysis as specified in use-case *1* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
     # def test02_metaanalysis_usecase1(self):
@@ -95,8 +125,8 @@ class TestSPMResultsDataModel(unittest.TestCase, TestResultDataModel):
     #     }
     #     """
 
-    #     if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
-    #         raise Exception(self.my_execption)
+        # if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
+        #     raise Exception(self.my_execption)
 
     # '''Test03: Test availability of attributes needed to perform a meta-analysis as specified in use-case *2* at: http://wiki.incf.org/mediawiki/index.php/Queries'''
     # def test03_metaanalysis_usecase2(self):
