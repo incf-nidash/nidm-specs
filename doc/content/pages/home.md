@@ -6,7 +6,7 @@ The Neuroimaging Data Model (NIDM) is a collection of specification documents th
 </br>
 </br>
 </br>
-![Alt NIDM](specs/nidm-overview.png "NIDM Provenance Information Graph")
+![Alt NIDM](specs/img/nidm-results-edc-overview.png "NIDM Provenance Information Graph")
 </br>
 </br>
 </br>
