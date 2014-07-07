@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'NIDASH Task Force'
-SITENAME = u'NIDASH Data Model'
+AUTHOR = u'NIDM Working Group'
+SITENAME = u'Neuroimaging Data Model'
 SITEURL = ''
 
 THEME = 'pelican-bootstrap3'
@@ -25,18 +25,16 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS =  (('INCF', 'http://incf.org'),
-          ('NIDASH Wiki', 
-           'http://wiki.incf.org/mediawiki/index.php' \
-           '/Neuroimaging_Task_Force'),)
+          ('NIDASH Wiki', 'http://wiki.incf.org/mediawiki/index.php),)
 
 # Social widget
-SOCIAL = (('github', 'http://github.com/ni-'),)
+SOCIAL = (('github', 'http://github.com/incf-nidash'),)
 
 # AddThis Pro
 ADDTHIS_PROFILE = 'ra-52e5a80938eff3d6'
 
 # GitHub widget
-GITHUB_USER = 'ni-'
+GITHUB_USER = 'incf-nidash'
 GITHUB_REPO_COUNT = 3
 GITHUB_SKIP_FORK = True
 GITHUB_SHOW_USER_LINK = True
