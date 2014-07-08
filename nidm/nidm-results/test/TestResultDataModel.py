@@ -124,17 +124,17 @@ class TestResultDataModel(object):
                     if not p in exlude:
                         exc_added += "\nAdded p:\t'%s'"%(get_readable_name(other_graph,p))
                         exlude.append(p)
-                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)
-                elif (None,  None, o) not in gt_graph and isinstance(o, rdflib.term.URIRef):
-                    if not o in exlude:
-                        exc_added += "\nAdded o:\t'%s'"%(get_readable_name(other_graph,o))
-                        exlude.append(o)
                 # If subject and predicate found in gt_graph, then object is wrong
                 elif (s,  p, None) in gt_graph:
                     if isinstance(o, rdflib.term.Literal):
                         exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is %s (instead of o: %s?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
                     elif not isinstance(o, rdflib.term.BNode):
                         exc_wrong += "\nWrong o:\ts('%s') p('%s') o('%s') not in gold std (instead o: %s?)"%(get_readable_name(other_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
+                                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)
+                elif (None,  None, o) not in gt_graph and isinstance(o, rdflib.term.URIRef):
+                    if not o in exlude:
+                        exc_added += "\nAdded o:\t'%s'"%(get_readable_name(other_graph,o))
+                        exlude.append(o)
                 # If subject and object found in gt_graph, then predicate is wrong
                 elif (s,  None, o) in gt_graph:
                     exc_wrong += "\nWrong p:\tBetween '%s' and '%s' is '%s' (instead of '%s'?)"%(get_readable_name(other_graph,s),get_readable_name(other_graph,o),get_readable_name(other_graph,p),get_alternatives(gt_graph,s=s,o=o))
@@ -158,23 +158,22 @@ class TestResultDataModel(object):
                 
             # If subject and predicate are found in gt_graph 
             elif (s,  p, o) in gt_graph:
-                # If subject and predicate found in other_graph
-                if (s,  p, None) in other_graph:
-                    if isinstance(o, rdflib.term.Literal):
-                        if (not exc_wrong_literal):
-                            exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(gt_graph, p),get_readable_name(gt_graph, s),get_readable_name(gt_graph, o),get_alternatives(other_graph,s=s,p=p))
+                # This has already been taken into account as "Wrong o" or "Wrong literal o"
+                if not (s,  p, None) in other_graph:
+                #     if isinstance(o, rdflib.term.Literal):
+                #         if (not exc_wrong_literal):
+                #             exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(gt_graph, p),get_readable_name(gt_graph, s),get_readable_name(gt_graph, o),get_alternatives(other_graph,s=s,p=p))
+                # else:
+                #     if (not exc_missing):
+                #         exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
+                    # If subject found in other_graph
+                    if (s,  None, None) in other_graph:
+                        exc_missing += "\nMissing p:\tp('%s') \ton '%s' (o('%s'))"%(get_readable_name(gt_graph,p),get_readable_name(gt_graph,s),get_readable_name(gt_graph,o))
+                    # If subject is *not* found in other_graph
                     else:
-                        if (not exc_missing):
-                            exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
-
-                # If subject found in other_graph
-                elif (s,  None, None) in other_graph:
-                    exc_missing += "\nMissing p:\tp('%s') \ton '%s' (o('%s'))"%(get_readable_name(gt_graph,p),get_readable_name(gt_graph,s),get_readable_name(gt_graph,o))
-                # If subject is *not* found in other_graph
-                else:
-                    if not s in missing_s:
-                        if not isinstance(s, rdflib.term.BNode):
-                            exc_missing += "\nMissing s:\t'%s' "%(get_readable_name(gt_graph,s))
-                            missing_s.append(s)
+                        if not s in missing_s:
+                            if not isinstance(s, rdflib.term.BNode):
+                                exc_missing += "\nMissing s:\t'%s' "%(get_readable_name(gt_graph,s))
+                                missing_s.append(s)
 
         self.my_execption += exc_missing+exc_added+exc_wrong+exc_wrong_literal
