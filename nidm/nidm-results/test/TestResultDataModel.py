@@ -163,9 +163,10 @@ class TestResultDataModel(object):
                     if isinstance(o, rdflib.term.Literal):
                         if (not exc_wrong_literal):
                             exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is ('%s') (instead o: '%s'?)"%(get_readable_name(gt_graph, p),get_readable_name(gt_graph, s),get_readable_name(gt_graph, o),get_alternatives(other_graph,s=s,p=p))
-                    else:
-                        if (not exc_missing):
-                            exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
+                    # This has already been taken into account as "Wrong o"
+                    # else:
+                    #     if (not exc_missing):
+                    #         exc_missing += "\nMissing o (%s):\tp('%s') o('%s') \ton '%s'"%(type(o), get_readable_name(gt_graph,p),get_readable_name(gt_graph,o),get_readable_name(gt_graph,s))
 
                 # If subject found in other_graph
                 elif (s,  None, None) in other_graph:
