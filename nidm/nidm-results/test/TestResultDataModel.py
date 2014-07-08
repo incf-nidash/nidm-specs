@@ -124,17 +124,17 @@ class TestResultDataModel(object):
                     if not p in exlude:
                         exc_added += "\nAdded p:\t'%s'"%(get_readable_name(other_graph,p))
                         exlude.append(p)
-                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)
-                elif (None,  None, o) not in gt_graph and isinstance(o, rdflib.term.URIRef):
-                    if not o in exlude:
-                        exc_added += "\nAdded o:\t'%s'"%(get_readable_name(other_graph,o))
-                        exlude.append(o)
                 # If subject and predicate found in gt_graph, then object is wrong
                 elif (s,  p, None) in gt_graph:
                     if isinstance(o, rdflib.term.Literal):
                         exc_wrong_literal += "\nWrong literal o:\t p('%s') of s('%s') is %s (instead of o: %s?)"%(get_readable_name(other_graph, p),get_readable_name(other_graph, s),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
                     elif not isinstance(o, rdflib.term.BNode):
                         exc_wrong += "\nWrong o:\ts('%s') p('%s') o('%s') not in gold std (instead o: %s?)"%(get_readable_name(other_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o),get_alternatives(gt_graph,s=s,p=p))
+                                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)
+                elif (None,  None, o) not in gt_graph and isinstance(o, rdflib.term.URIRef):
+                    if not o in exlude:
+                        exc_added += "\nAdded o:\t'%s'"%(get_readable_name(other_graph,o))
+                        exlude.append(o)
                 # If subject and object found in gt_graph, then predicate is wrong
                 elif (s,  None, o) in gt_graph:
                     exc_wrong += "\nWrong p:\tBetween '%s' and '%s' is '%s' (instead of '%s'?)"%(get_readable_name(other_graph,s),get_readable_name(other_graph,o),get_readable_name(other_graph,p),get_alternatives(gt_graph,s=s,o=o))
