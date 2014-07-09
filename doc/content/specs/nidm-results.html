@@ -1,7 +1,7 @@
 			<!DOCTYPE html>
 			<html>
 			<head>
-				<title>Component 3: NIDASH Results Data Model 0.1.0 (NIDM-R) </title>
+				<title>NIDM-Results 0.1.0</title>
 				<meta charset='utf-8'>
 				<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
 				async class='remove'></script>
@@ -12,7 +12,7 @@
 					var respecConfig = {
 						specStatus: "base",
 						shortName:  "SPMResults",
-						overrideCopyright: "<p class=copyright>NI-DM © Free To Everyone!</p>",
+						overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
 						editors: [
 						{   name:       "David Keator",                   
 						company:    "INCF",
@@ -31,7 +31,7 @@
 
 							var currentDate = new Date()
 							var date = currentDate.toString('dddd, MMMM ,yyyy')
-							$("#respecHeader h2").text("NI-DM Specification " + date);
+							$("#respecHeader h2").text("NIDM Specification " + date);
 							$("#respecHeader img").attr({ src: "spec/stylesheet/nidm-text.png", width: 100, height:50 });
 						},
 						localBiblio:  {
@@ -69,16 +69,16 @@
 							The three major software analysis package for neuroimaging: SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) and AFNI (<a href="http://afni.nimh.nih.gov/afni/">AFNI</a>) provide implementations of mass univariate analyses. While there are many commonalities across software packages, there are also software-specific outputs that can be of interest for the end-user.
 						</p>
 						<p>
-							This document describes the encoding of results of a mass univariate neuroimaging analysis using the NI-DM data model ([[!KEATORNI13]]). The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
+							This document describes the encoding of results of a mass univariate neuroimaging analysis using the NIDM data model ([[!KEATORNI13]]). The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
 						</p>
 						<p>
-							NIDASH Results Data Model (NIDM-R) is a part of NI-DM as depicted in Fig. 1.
-							<figure>
-							<img src="img/nidm-results-overview.png" width=600px/>
-								<figcaption>NIDM-Results as part of NI-DM.</figcaption>
+							NIDM-Results is a part of NIDM as depicted in <a href="#fig-nidmresults-in-nidm"></a>.
+							<figure id="fig-nidmresults-in-nidm">
+							<img src="img/nidm-results-edc-overview.png" alt="NIDM-Results as part of NIDM" width=600px/>
+								<figcaption>NIDM-Results as part of NIDM.</figcaption>
 							</figure>
 						<!--If the overview is ready then add here:<p>
-							The NI-DM Document Overview describes the overall state of NI-DM.
+							The NIDM Document Overview describes the overall state of NIDM.
 						</p>-->
 					</section>
 
@@ -90,8 +90,8 @@
 						<!-- Douplicate section tag to have h4 titles as in PROV specification-->
 						<section>
 						<section>
-							<h4 id="nidash-family-of-documents">NI- Family of Documents</h4>
-							This document is part of the NIDASH family of documents.
+							<h4 id="nidm-family-of-documents">NIDM Family of Documents</h4>
+							This document is part of the NIDM family of documents.
 						</section>				
 
 						<section>
@@ -109,19 +109,19 @@
 					<section class='informative'>
 						<h2>Introduction</h2>
 						<p>
-							The NIDASH Results Data Model (NIDM-R) is 
+							NIDM-Results is 
 							a <a href="nidm.html">
-							NI-DM</a> compliant structured representation of the results of a massively univariate neuroimaging study.  
+							NIDM</a> compliant structured representation of the results of a massively univariate neuroimaging study.  
 						</p>
 						<p>
-							The NIDM-R specification formally describes the encoding of the massively univariate neuroimaging results into a NI-DM representation. Extensions are provided to describe software-specific objects for SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) analysis software.
+							NIDM-Results specification formally describes the encoding of the massively univariate neuroimaging results into a NIDM representation. Extensions are provided to describe software-specific objects for SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) analysis software.
 						</p>
 
 
 			    <!-- FIXME:<section id='conformance'>
 			      <p>
 			         The single conformance class described in this specification is 
-			        the <dfn>SPM Results Object Model</dfn>, a class of NI-DM formatted objects for describing
+			        the <dfn>SPM Results Object Model</dfn>, a class of NIDM formatted objects for describing
 			        a neuroimaging analysis result created with the <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
 			        SPM</a> software.
 			      </p>
@@ -129,11 +129,11 @@
 				<section class="informative" id="structure-of-this-document"> 
 				<h3>Structure of this Document</h3>
 
-				<p><a href="#section-ni-r-overview">Section 2</a> provides an overview of the NI-R data model, distinguishing a core set of types and  relations, commonly found in provenance, from extended structures catering for more specific uses. It also introduces a modular organization of the data model in components. </p>
+				<p><a href="#section-nidmresults-overview">Section 2</a> provides an overview of NIDM-Results, distinguishing a core set of types and  relations, commonly found in provenance, from extended structures catering for more specific uses. It also introduces a modular organization of the data model in components. </p>
 
-				<p><a href="#ni-r-dm-example">Section 3</a> illustrates how the NI-R data model can be used to express the results of a neuroimaging study in SPM and FSL.</p>
+				<p><a href="#nidmresults-dm-example">Section 3</a> illustrates how NIDM-Results can be used to express the results of a neuroimaging study in SPM and FSL.</p>
 
-				<p><a href="#data-model-components">Section 4</a> provides the definitions (and examples) of NI-R concepts, structured according to three components.</p>
+				<p><a href="#data-model-components">Section 4</a> provides the definitions (and examples) of NIDM-Results concepts, structured according to three components.</p>
 
 
 				</section>
@@ -158,7 +158,7 @@
 			  	<table class="thinborder" style="margin-left: auto; margin-right: auto;">
 			  		<caption id="namespace-table"><span>Table 1<sup><a class="internalDFN" href="#namespace-table"><span class="diamond"> ◊:</span></a></sup> </span>Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
 			  		<tbody><tr><td><b>prefix</b></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
-			  			<tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NI-DM namespace</td>
+			  			<tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NIDM namespace</td>
 			  			</tr>
 			  			<tr><td>prov</td><td>http://www.w3.org/ns/prov#</td><td>The PROV namespace [[prov-dm]]</td></tr>
 			  			<tr><td>xsd</td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [[XMLSCHEMA11-2]]</td></tr>
@@ -171,34 +171,43 @@
 			<section>
 				<h2>Overview</h2>
 
-				<p>This section introduces neuroimaging results concepts with informal explanations and illustrative examples (e.g. see <a href="#illustration-SPM">SPM results</a>). NI-R distinguishes software-agnostic structures, forming the essence of the results, from software-specific structures catering for more specific uses of results by different analysis software. Core and extended structures are respectively presented in Section 2.1 and Section 2.2. Furthermore, the PROV data model is organized according to components, which form thematic groupings of concepts (see Section 2.3). A provenance description is an instance of a provenance structure, whether core or extended, described below.</p>
-
-
+				<p>This section introduces neuroimaging results concepts with informal explanations and illustrative examples (e.g. see <a href="#illustration-SPM">SPM results</a>). NIDM-Results distinguishes software-agnostic structures, forming the essence of the results, from software-specific structures catering for more specific uses of results by different analysis software. Core and extended structures are respectively presented in Section 2.1 and Section 2.2. </p>
 				
-
 				<section>
-					<h3>NI-R Core Structures</h3>
+				<h1>Domain covered by NIDM-Results</h1>
+				<p>
+				NIDM-Results is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NIDM-Results data model is represented in <a href="#fig-nidmresults-domain"></a>.
 
+				<figure id="fig-nidmresults-domain">
+					<img src="img/nidm-results-domain-overview.png" width=600px/>
+					<figcaption>Domain overview</figcaption>
+				</figure>
+				</p>
+				</section>
+					
+				<section>
+					<h3>NIDM-Results Core Structures</h3>
+					<p>The concepts found in the core of NIDM-Results are introduced in the rest of this section. 
+					</p>
+
+					<section>
+						<h3>Overview</h3>
+						The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). NIDM-Results is divided in two elements: "Model fitting" and "Inference", the structures and relations belonging to each element are presented in details in <a href="#modelfitting"></a> and <a href="#inference"></a>.
+						<figure id="fig-nidmresults-core-uml">
+							<img alt="Core structures" src="img/nidm-results-core-uml.png" width=900px/>
+							<figcaption>Core structures overview</figcaption>
+						</figure>
+					</section>
+
+					<section id="sec-reuse-prov">
+					<h3>Re-use of PROV-DM Structures</h3>
 					<p>
-					The NIDASH Results Data Model (NIDM-R) is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NI-R data model is represented in Fig. 1.
-
-					<figure>
-						<img src="img/nidm-results-domain-overview.png" width=600px/>
-						<figcaption>NIDM-R: Domain overview.</figcaption>
-					</figure>
-
-					
+						PROV relations used in NIDM-Results are summarized in  <a href="#overview-types-and-relations">Table 2</a>.
 					</p>
-					
-					<p>The concepts found in the core of NIDM-R are introduced in the rest of this section.
-						They are summarized in  <a href="#overview-types-and-relations">Table 2</a>, where they are categorized as type or relation.
-						The first column lists concepts, the second column indicates whether a concept maps to a type or a relation, whereas the third column contains the corresponding name, as it appears in Figure 2.    Names of relations have a verbal form in the past tense to express what happened in the past, as opposed to what may or will happen. In the core of PROV, all relations are binary. 
-					</p>
-
 					<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
-							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>PROV relations in use in NI-R</caption> <!-- Table 2 -->
-							<tbody><tr><td><b>NIDM-R Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>PROV relations in use in NIDM-Results</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
 								<!-- ------------- Beginning of PROV Relations ------------- -->
 								<tr>
 									<td><a href="#concept-generation" class="internalDFN">Generation</a>
@@ -219,24 +228,24 @@
 							</tbody>
 						</table>
 					</div>
-
+					</section>
 					
 
 					<section id="modelfitting">
 						<h1>Model fitting</h1>
-						<figure>
+						<!--<figure id="fig-nidmresults-model-fitting">
 							<img src="img/nidm-results-model-fitting.png" width=750px/>
 							<figcaption>Core Model Fitting Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
-						</figure> 
+						</figure> -->
 						<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
-							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NI-R Model Fitting Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
-							<tbody><tr><td><b>NIDM-R Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NIDM-Results Model Fitting Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
 								<!-- ------------- Beginning of PROV Entities ------------- -->
 								<tr>
 									<td><a title="concept-Data">Data</a>
 									</td>
-									<td rowspan="9" style="text-align: center;">NIDM-R Types<br/> (PROV Entities)</td>
+									<td rowspan="9" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
 									<td><a>Data</a>
 									</td>
 									<td><a href="#overview-Data"></a></td>
@@ -310,7 +319,7 @@
 								<tr>
 									<td><a title="concept-ModelParametersEstimation">ModelParametersEstimation</a>
 									</td>
-									<td rowspan="2" style="text-align: center;">NIDM-R Types<br/> (PROV Activities)</td>
+									<td rowspan="2" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
 									<td><a>ModelParametersEstimation</a>
 									</td>
 									<td><a href="#overview-ModelParametersEstimation"></a>
@@ -476,20 +485,20 @@
 					<section id="inference">
 						<h1>Inference</h1>
 						The Inference activity in this context represents the process of inferring the<a href="#overview-ExcursionSet">ExcursionSet</a> from a <a href="#overview-StatisticMap">StatisticMap</a>.  
-						<figure>
+						<!--<figure id="fig-nidmresults-inference">
 							<img src="img/nidm-results-inference.png" width=750px/>
 							<figcaption>Core Inference Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
-						</figure> 
+						</figure> -->
 
 						<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
-							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NI-R Inference Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
-							<tbody><tr><td><b>NIDM-R Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NIDM-Results Inference Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
 								<!-- ------------- Beginning of PROV Entities ------------- -->
 								<tr>
 									<td><a title="concept-HeightThreshold">HeightThreshold</a>
 									</td>
-									<td rowspan="5" style="text-align: center;">NIDM-R Types<br/> (PROV Entities)</td>
+									<td rowspan="5" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
 									<td><a>HeightThreshold</a>
 									</td>
 									<td><a href="#overview-HeightThreshold"></a></td>
@@ -526,7 +535,7 @@
 									<td><a title="concept-Inference">Inference</a>
 									</td>
 									<td><a>Inference</a>
-									<td rowspan="1" style="text-align: center;">NIDM-R Types<br/> (PROV Activities)</td>
+									<td rowspan="1" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
 									</td>
 									<td><a href="#overview-Inference"></a></td>
 								</tr>
@@ -607,7 +616,7 @@
 </section>
 <!-- This section will be updated late on with details about the Masking and Conjunction modelling -->
 					<!--<section>
-						<h1>NI-R Extended structures</h1>
+						<h1>NIDM-Results Extended structures</h1>
 
 						<section>
 						<h1>Masking</h1>
@@ -624,21 +633,19 @@
 
 						<section>
 						<h1>SPM-specific concepts</h1>
+
+						SPM-specific structures are outlined in <a href="#fig-nidmresults-core-uml-spm"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to SPM-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional SPM-specific attributes.
 						
-						<figure id=SPM-SpecificConcepts>
-							<img src="img/nidm-results-model-fitting-spm.png" width=750px/>
-							<figcaption>SPM-specific Model fitting Structures. Color coding corresponds to the prov:type (blue: SPM-specific prov:entity or attributes, red: SPM-specific prov:activity); Grey boxes corresponds to generic concepts (as in <a href="#modelfitting"></a>).</figcaption>
+						<figure id="fig-nidmresults-core-uml-spm">
+							<img src="img/nidm-results-core-uml-spm.png" width=900px/>
+							<figcaption>SPM-specific Structures. </figcaption>
 						</figure> 
 
-						<figure>
-							<img src="img/nidm-results-inference-spm.png" width=750px/>
-							<figcaption>SPM-specific Inference Structures. Color coding corresponds to the prov:type (blue: SPM-specific prov:entity or attributes, red: SPM-specific prov:activity); Grey boxes corresponds to generic concepts (as in <a href="#inference"></a>).</figcaption>
-						</figure> 
-						
+					
 						<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
 							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>SPM-specific entities and generic entities including SPM-specific attributes</caption> <!-- Table 2 -->
-							<tbody><tr><td><b>NIDM-R Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
 								<!-- ------------- Beginning of PROV Entities ------------- -->
 								<tr>
 									<td><a title="concept-ReselsPerVoxelMap">ReselsPerVoxelMap</a>
@@ -767,20 +774,17 @@
 				</section>
 					<section>
 						<h1>FSL-specific concepts</h1>
-						<figure>
-							<img src="img/nidm-results-model-fitting-fsl.png" width=750px/>
-							<figcaption>FSL-specific Model fitting Structures. Color coding corresponds to the prov:type (blue: FSL-specific prov:entity or attributes, red: FSL-specific prov:activity); Grey boxes corresponds to generic concepts (as in <a href="#modelfitting"></a>).</figcaption>
-						</figure> 
-
-						<figure>
-							<img src="img/nidm-results-inference-fsl.png" width=750px/>
-							<figcaption>FSL-specific Inference Structures. Color coding corresponds to the prov:type (blue: FSL-specific prov:entity or attributes, red: FSL-specific prov:activity); Grey boxes corresponds to generic concepts (as in <a href="#inference"></a>).</figcaption>
+						FSL-specific structures are outlined in <a href="#fig-nidmresults-core-uml-fsl"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to FSL-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional FSL-specific attributes.
+						
+						<figure id="fig-nidmresults-core-uml-fsl">
+							<img src="img/nidm-results-core-uml-fsl.png" width=900px/>
+							<figcaption>FSL-specific Structures. </figcaption>
 						</figure> 
 						
 						<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
 							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>FSL-specific entities and generic entities including FSL-specific attributes</caption> <!-- Table 2 -->
-							<tbody><tr><td><b>NIDM-R Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
 								<!-- ------------- Beginning of PROV Entities ------------- -->
 								<tr>
 									<td><a title="concept-ZStatisticMap">ZStatisticMap</a>
@@ -841,21 +845,21 @@
 
 				</section>
 				<section id="illustration-SPM">
-					<h1>Illustration of NIDASH Results Data Model by an example.</h1>
-					<p><a href="https://raw.githubusercontent.com/ni-/ni-dm/master/examples/spm/spm_results.png">SPM Results Graph</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/blob/master/examples/spm/spm_results.provn">SPM Results PROV-N serialization</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/blob/master/examples/spm/spm_results.json">SPM Results JSON serialization</a></p>
+					<h1>Illustration of NIDM-Results by an example.</h1>
+					<p><a href="https://raw.githubusercontent.com/ni-/NIDM/master/examples/spm/spm_results.png">SPM Results Graph</a></p>
+					<p><a href="https://github.com/ni-/NIDM/blob/master/examples/spm/spm_results.provn">SPM Results PROV-N serialization</a></p>
+					<p><a href="https://github.com/ni-/NIDM/blob/master/examples/spm/spm_results.json">SPM Results JSON serialization</a></p>
 					<p>Further SPM Examples:</p>
-					<p><a href="https://github.com/ni-/ni-dm/tree/master/examples/spm/example001">example001</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/tree/master/examples/spm/example002">example002</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/tree/master/examples/spm/example003">example003</a></p>
+					<p><a href="https://github.com/ni-/NIDM/tree/master/examples/spm/example001">example001</a></p>
+					<p><a href="https://github.com/ni-/NIDM/tree/master/examples/spm/example002">example002</a></p>
+					<p><a href="https://github.com/ni-/NIDM/tree/master/examples/spm/example003">example003</a></p>
 					
-					<p><a href="https://raw.githubusercontent.com/ni-/ni-dm/master/examples/fsl/fsl_results.png">FSL Results Graph</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/blob/master/examples/fsl/fsl_results.provn">FSL Results PROV-N serialization</a></p>
-					<p><a href="https://github.com/ni-/ni-dm/blob/master/examples/fsl/fsl_results.json">FSL Results JSON serialization</a></p>
+					<p><a href="https://raw.githubusercontent.com/ni-/NIDM/master/examples/fsl/fsl_results.png">FSL Results Graph</a></p>
+					<p><a href="https://github.com/ni-/NIDM/blob/master/examples/fsl/fsl_results.provn">FSL Results PROV-N serialization</a></p>
+					<p><a href="https://github.com/ni-/NIDM/blob/master/examples/fsl/fsl_results.json">FSL Results JSON serialization</a></p>
 				</section>
 				<section>
-					<h1>NIDASH Results Data Model Types and Relations.</h1>
+					<h1>NIDM-Results Types and Relations.</h1>
 					<section>
 						<h2>Element 1: Model Fitting</h2>
 						
@@ -1002,11 +1006,11 @@ A <dfn title="concept-ContrastWeights">ContrastWeights</dfn><sup><a title="conce
 <li><span class="attribute" id="ContrastWeights.Name of the contrast.">prov:value:Name of the contrast.</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
 </ul>
 </div>
-<pre class='example highlight'>"entity(niiri:t_contrast_id,
+<pre class='example highlight'>entity(niiri:t_contrast_id,
     [prov:type = 'nidm:TContrastWeights',
     nidm:contrastName = ""listening > rest"" %% xsd:string,
     prov:label = ""Contrast: Listening > Rest"" %% xsd:string,
-    prov:value = ""[1, 0, 0]"" %% xsd:string])"</pre></section>
+    prov:value = ""[1, 0, 0]"" %% xsd:string])</pre></section>
 
 <section id="section-MaskMap"> <!-- MaskMap -->
 
