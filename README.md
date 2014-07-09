@@ -10,5 +10,5 @@ The goals of this repo are to foster collaboration among the standards developer
 
 ### Developer Resources
 
-* [Getting Started with NI-DM](https://github.com/ni-/ni-dm/wiki/Getting-Started-with-NI-DM)
-* [Useful SPARQL Queries](https://github.com/ni-/ni-dm/wiki/Useful-sparql-queries)
+* [Getting Started with NIDM](https://github.com/incf-nidash/nidm/wiki/Getting-Started-with-NI-DM)
+* [Useful SPARQL Queries](https://github.com/incf-nidash/nidm/wiki/Useful-sparql-queries)
