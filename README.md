@@ -1,6 +1,6 @@
 ## NeuroImaging Data Model (NIDM)
 
-#### A Product of the [INCF Neuroimaging Data Sharing Task Force](http://wiki-new.incf.org/mediawiki/index.php/Neuroimaging_Task_Force) and the [BIRN Derived Data Working Group](http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/)
+#### A Product of the [INCF Neuroimaging Data Sharing Task Force](http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force) and the [BIRN Derived Data Working Group](http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/)
 
 The NeuroImaging Data Model (NIDM) is a collection of specification documents and examples developed
 by the [INCF](http://www.incf.org) <b>N</b>euro <b>I</b>maging <b>DA</b>ta <b>SH</b>aring (NIDASH) Task Force and the [BIRN](http://www.birncommunity.org)
