@@ -11,7 +11,7 @@ import re
 import rdflib
 from rdflib import Namespace, RDF
 from rdflib.graph import Graph
-import urllib2
+import urllib2, urllib
 import logging
 logging.basicConfig()
 
@@ -69,28 +69,43 @@ class TestExamples(unittest.TestCase):
                 else:
                     self.attributes[class_name] = common_attributes.union([data_property])
 
-        example_dirnames = set([   os.path.join('spm'), 
-                                        os.path.join('spm', 'example001'),
-                                        os.path.join('spm', 'example002'),
-                                        os.path.join('spm', 'example003'),
-                                        os.path.join('spm', 'example004'),
-                                        os.path.join('fsl'),
-                                        os.path.join('fsl', 'example001')])
+        example_filenames = set([   os.path.join('spm', 'spm_results.provn')])# , 
+                                        # os.path.join('spm', 'example001'),
+                                        # os.path.join('spm', 'example002'),
+                                        # os.path.join('spm', 'example003'),
+                                        # os.path.join('spm', 'example004'),
+                                        # os.path.join('fsl'),
+                                        # os.path.join('fsl', 'example001')])
 
         self.examples = dict()
-        for example_dir in example_dirnames:
-            # Get URL of turtle from README file
-            readme_file = os.path.join(os.path.dirname(os.path.dirname(
-                            os.path.abspath(__file__))), example_dir, 'README')
-            readme_file = open(readme_file, 'r')
-            readme_txt = readme_file.read()
-            turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
-            extracted_data = turtle_search.search(readme_txt) 
-            ttl_file_url = extracted_data.group('ttl_file');
+        for example_file in example_filenames:
+            # # Get URL of turtle from README file
+            # readme_file = os.path.join(os.path.dirname(os.path.dirname(
+            #                 os.path.abspath(__file__))), example_dir, 'README')
+            # readme_file = open(readme_file, 'r')
+            # readme_txt = readme_file.read()
+            # turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
+            # extracted_data = turtle_search.search(readme_txt) 
+            # ttl_file_url = extracted_data.group('ttl_file');
+
+            # Find corresponding provn file
+            provn_file = os.path.join(os.path.dirname(os.path.dirname(
+                            os.path.abspath(__file__))), example_file)
+            provn_file = open(provn_file, 'r')
+            ex_provn = provn_file.read()
+
+
+            url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
+            headers = { 'Content-type' : "text/provenance-notation",
+                        'Accept' : "text/turtle" }
+            # print urllib.urlencode(data)
+            req = urllib2.Request(url, ex_provn, headers)
+            response = urllib2.urlopen(req)
 
             # Read turtle
-            self.examples[example_dir] = Graph()
-            self.examples[example_dir].parse(ttl_file_url, format='turtle')
+            self.examples[example_file] = Graph()
+            # self.examples[example_dir].parse(ttl_file_url, format='turtle')
+            self.examples[example_file].parse(response.geturl(), format='turtle')
 
     def test_check_classes(self):
         my_exception = dict()
