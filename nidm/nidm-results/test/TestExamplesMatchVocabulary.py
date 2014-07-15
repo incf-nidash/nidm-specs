@@ -64,10 +64,18 @@ class TestExamples(unittest.TestCase):
         common_attributes = set([PROV['atLocation'], RDFS['label'], PROV['value']])
         for data_property in self.owl.subjects(RDF['type'], OWL['DatatypeProperty']):
             for class_name in self.owl.objects(data_property, RDFS['domain']):
+                # Add attribute to current class
                 if class_name in self.attributes:
                     self.attributes[class_name].add(data_property)
                 else:
                     self.attributes[class_name] = common_attributes.union([data_property])
+                # Add attribute to children of current class
+                for child_class in self.owl.subjects(RDFS['subClassOf'], class_name):
+                    # Add attribute to current class
+                    if child_class in self.attributes:
+                        self.attributes[child_class].add(data_property)
+                    else:
+                        self.attributes[child_class] = common_attributes.union([data_property])
 
         example_filenames = set([   os.path.join('spm', 'spm_results.provn')])# , 
                                         # os.path.join('spm', 'example001'),
