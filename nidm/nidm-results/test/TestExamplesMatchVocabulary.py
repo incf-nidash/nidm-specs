@@ -166,6 +166,7 @@ class TestExamples(unittest.TestCase):
                     if p not in self.common_attributes:
                         # Get all defined types of current object
                         found_attributes = False
+                        class_names = ""
                         for class_name in example_graph.objects(s, RDF['type']):
 
                             attributes = self.attributes.get(class_name)
@@ -176,11 +177,13 @@ class TestExamples(unittest.TestCase):
                                 if p in attributes:
                                     found_attributes = True
 
+                            class_names += ", "+example_graph.qname(class_name)
+
                         # if not found_attributes:
                             # if attributes:
                                 # if not (p in attributes):
                         if not found_attributes:
-                            key = example_graph.qname(p)+" in "+example_graph.qname(class_name)
+                            key = example_graph.qname(p)+" in "+class_names[2:]
                             if not key in my_exception:
                                 my_exception[key] = set([example_name])
                             else:
