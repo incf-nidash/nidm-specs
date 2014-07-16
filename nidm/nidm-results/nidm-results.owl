@@ -190,8 +190,8 @@ NIDM Concept ID: nidm_11. """ ;
                   
                   rdfs:domain nidm:ContrastMap ,
                               nidm:FContrastWeights ,
-                              nidm:TContrastWeights ,
-                              nidm:StatisticMap ;
+                              nidm:StatisticMap ,
+                              nidm:TContrastWeights ;
                   
                   rdfs:range xsd:string .
 
@@ -312,18 +312,18 @@ NIDM Concept ID: nidm_22. """ .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#dimensions
+###  http://www.incf.org/ns/nidash/nidm#dimensionsInVoxels
 
 nidm:dimensionsInVoxels rdf:type owl:DatatypeProperty ;
-                
-                prov:definition "Dimensions of some N-dimensional data." ;
-                
-                iao:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
+                        
+                        prov:definition "Dimensions of some N-dimensional data." ;
+                        
+                        iao:IAO_0000112 "[64 64 20]" ;
+                        
+                        iao:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
 NIDM Concept ID: nidm_25. """ ;
-                
-                iao:IAO_0000112 "[64 64 20]" ;
-                
-                rdfs:domain nidm:CoordinateSpace .
+                        
+                        rdfs:domain nidm:CoordinateSpace .
 
 
 
@@ -1112,17 +1112,18 @@ fsl:ZStatisticMap rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ClusterStatistic
+###  http://www.incf.org/ns/nidash/nidm#Cluster
 
 nidm:Cluster rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf prov:Entity ;
-                      
-                      rdfs:seeAlso "Child of \"nidm:Statistic\"" ;
-                      
-                      prov:definition "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. " ;
-                      
-                      iao:IAO_0000112 """entity(niiri:cluster_0001,
+             
+             rdfs:subClassOf prov:Entity ;
+             
+             rdfs:seeAlso "Child of \"nidm:Statistic\"" ;
+             
+             iao:IAO_0000116 """Range: - not found. BIRNLex or 
+NIDM Concept ID: nidm_7. """ ;
+             
+             iao:IAO_0000112 """entity(niiri:cluster_0001,
     [prov:type = 'nidm:Cluster',
     prov:label = \"Cluster Statistic: 0001\" %% xsd:string,
     nidm:clusterSizeInVoxels = \"530\" %% xsd:int,
@@ -1131,9 +1132,8 @@ nidm:Cluster rdf:type owl:Class ;
     nidm:pValueUncorrected = \"9.56276736481136e-52\" %% xsd:float,
     nidm:pValueFWER = \"0\" %% xsd:float,
     nidm:qValueFDR = \"7.65021389184909e-51\" %% xsd:float])""" ;
-                      
-                      iao:IAO_0000116 """Range: - not found. BIRNLex or 
-NIDM Concept ID: nidm_7. """ .
+             
+             prov:definition "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. " .
 
 
 
@@ -1172,9 +1172,8 @@ NIDM Concept ID: nidm_9. """ ;
 
 nidm:ContrastMap rdf:type owl:Class ;
                  
-                 rdfs:subClassOf prov:Entity ;
-
-                 rdfs:subClassOf nidm:Map ;                              
+                 rdfs:subClassOf nidm:Map ,
+                                 prov:Entity ;
                  
                  prov:definition "A map whose value at each location is statistical contrast estimate." ;
                  
@@ -1261,8 +1260,6 @@ nidm:CoordinateSpace rdf:type owl:Class ;
                      iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_21. """ ;
                      
-                     prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." ;
-                     
                      iao:IAO_0000112 """entity(niiri:coordinate_space_id_1,
     [prov:type = 'nidm:CoordinateSpace',
     prov:label = \"Coordinate space 1\" %% xsd:string,
@@ -1271,7 +1268,9 @@ NIDM Concept ID: nidm_21. """ ;
     nidm:voxelSize = \"[3, 3, 3]\" %% xsd:string,
     nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
     nidm:numberOfDimensions = \"3\" %% xsd:int,
-    nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" .
+    nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" ;
+                     
+                     prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." .
 
 
 
@@ -1516,9 +1515,8 @@ NIDM Concept ID: nidm_38. """ .
 
 nidm:MaskMap rdf:type owl:Class ;
              
-             rdfs:subClassOf prov:Entity ;
-
-             rdfs:subClassOf nidm:Map ;             
+             rdfs:subClassOf nidm:Map ,
+                             prov:Entity ;
              
              prov:definition "map or surface on which the associated results are displayed. " ;
              
@@ -1591,18 +1589,18 @@ NIDM Concept ID: nidm_45. """ ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#PeakStatistic
+###  http://www.incf.org/ns/nidash/nidm#Peak
 
 nidm:Peak rdf:type owl:Class ;
-                   
-                   rdfs:subClassOf prov:Entity ;
-                   
-                   prov:definition "Statistic defined at the peak-level in an excursion set." ;
-                   
-                   iao:IAO_0000116 """BIRNLex or 
+          
+          rdfs:subClassOf prov:Entity ;
+          
+          prov:definition "Statistic defined at the peak-level in an excursion set." ;
+          
+          iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_46. """ ;
-                   
-                   iao:IAO_0000112 """entity(niiri:peak_0001,
+          
+          iao:IAO_0000112 """entity(niiri:peak_0001,
     [prov:type = 'nidm:Peak',
     prov:label = \"Peak Statistic: 0001\" %% xsd:string,
     prov:location = 'niiri:coordinate_0001',
@@ -1683,14 +1681,14 @@ NIDM Concept ID: nidm_100. """ ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#StatisticalMap
+###  http://www.incf.org/ns/nidash/nidm#StatisticMap
 
 nidm:StatisticMap rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf nidm:Map ,
-                                    prov:Entity ;
-                    
-                    iao:IAO_0000112 """entity(niiri:statistical_map_id,
+                  
+                  rdfs:subClassOf nidm:Map ,
+                                  prov:Entity ;
+                  
+                  iao:IAO_0000112 """entity(niiri:statistical_map_id,
     [prov:type = 'nidm:StatisticMap',
     prov:location = \"file:///path/to/spmT_0001.img\" %% xsd:anyURI,
     prov:label = \"Statistical Map: listening > rest\" %% xsd:string,
@@ -1700,11 +1698,11 @@ nidm:StatisticMap rdf:type owl:Class ;
     nidm:effectDegreesOfFreedom = \"1\" %% xsd:float,
     nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
-                    
-                    iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_60. """ ;
-                    
-                    prov:definition "A map whose value at each location is a statistic. " .
+                  
+                  prov:definition "A map whose value at each location is a statistic. " ;
+                  
+                  iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_60. """ .
 
 
 
