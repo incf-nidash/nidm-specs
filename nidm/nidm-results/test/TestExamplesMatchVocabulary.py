@@ -70,10 +70,63 @@ class TestExamples(unittest.TestCase):
         my_exception = dict()
         my_range_exception = dict()
         for example_name, example_graph in self.examples.items():
+<<<<<<< HEAD
             exception_msg = check_attributes(example_graph, example_name, 
                 self.attributes, self.ranges)
             my_exception = dict(my_exception.items() + exception_msg[0].items())
             my_range_exception = dict(my_range_exception.items() + exception_msg[1].items())
+=======
+            # Find all attributes
+            for s,p,o in example_graph.triples((None, None, None)):
+                # To be a DataTypeProperty then o must be a literal
+                # if isinstance(o, rdflib.term.Literal):
+                if p not in self.common_attributes:
+                    # *** Check domain
+                    # Get all defined types of current object
+                    found_attributes = False
+                    class_names = ""
+                    for class_name in sorted(example_graph.objects(s, RDF['type'])):
+
+                        attributes = self.attributes.get(class_name)
+
+                        # If the current class was defined in the owl file check if current
+                        # attribute was also defined.
+                        if attributes:
+                            if p in attributes:
+                                found_attributes = True
+
+                        class_names += ", "+example_graph.qname(class_name)
+
+                    # if not found_attributes:
+                        # if attributes:
+                            # if not (p in attributes):
+                    if not found_attributes:
+                        key = example_graph.qname(p)+" in "+class_names[2:]
+                        if not key in my_exception:
+                            my_exception[key] = set([example_name])
+                        else:
+                            my_exception[key].add(example_name)
+
+                    # *** Check range
+                    if isinstance(o, rdflib.term.URIRef):
+                        # An ObjectProperty can point to an instance, then we look for its type:
+                        found_range = set(example_graph.objects(o, RDF['type']))
+                        # An ObjectProperty can point to a term
+                        if not found_range:
+                            found_range = set([o])
+
+                        correct_range = False
+                        if p in self.range:                            
+                            # If none of the class found for current ObjectProperty value is part of the range
+                            # throw an error
+                            if found_range.intersection(self.range[p]):
+                                correct_range = True
+                        if not correct_range:
+                            key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for '+example_graph.qname(p)
+                            if not key in my_range_exception:
+                                my_range_exception[key] = set([example_name])
+                            else:
+                                my_range_exception[key].add(example_name)
 
         # Aggredate errors over examples for conciseness
         error_msg = ""
