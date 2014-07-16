@@ -170,7 +170,7 @@ class TestExamples(unittest.TestCase):
                     # Get all defined types of current object
                     found_attributes = False
                     class_names = ""
-                    for class_name in example_graph.objects(s, RDF['type']):
+                    for class_name in sorted(example_graph.objects(s, RDF['type'])):
 
                         attributes = self.attributes.get(class_name)
 
