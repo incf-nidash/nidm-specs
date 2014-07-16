@@ -47,11 +47,12 @@ class TestExamples(unittest.TestCase):
         self.owl = Graph()
         # This is a workaround to avoid issue with "#" in base prefix as 
         # described in https://github.com/RDFLib/rdflib/issues/379,
-        # When the fix is introduced in rdflib these 2 lines will be replaced by:
+        # When the fix is introduced in rdflib these 3 lines will be replaced by:
         # self.owl.parse(owl_file, format='turtle')
         owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
                         "http://www.w3.org/2002/07/owl")
         self.owl.parse(data=owl_txt, format='turtle')
+        OWL = Namespace('http://www.w3.org/2002/07/owl')
 
         # Retreive all entity/activity/agent sub-classes
         self.sub_types = set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
