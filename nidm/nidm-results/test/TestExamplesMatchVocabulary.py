@@ -58,6 +58,8 @@ class TestExamples(unittest.TestCase):
         self.sub_types = set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
         # For each class find out attribute list as defined by domain in attributes
         self.attributes = dict()
+        # For each ObjectProperty found out corresponding range
+        self.range = dict()
 
         # prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
         # for prov_type in prov_types:
@@ -94,6 +96,12 @@ class TestExamples(unittest.TestCase):
                             self.attributes[child_class].add(data_property)
                         else:
                             self.attributes[child_class] = set([data_property])
+                if o == OWL['ObjectProperty']:
+                    for range_name in self.owl.objects(data_property, RDFS['range']):
+                        if data_property in self.range:
+                            self.range[data_property].add(range_name)
+                        else:
+                            self.range[data_property] = set(range_name)
 
         example_filenames = set([   os.path.join('spm', 'spm_results.provn') , 
                                         os.path.join('spm', 'example001', 'example001_spm_results.provn'),
@@ -161,12 +169,14 @@ class TestExamples(unittest.TestCase):
 
     def test_check_attributes(self):
         my_exception = dict()
+        my_range_exception = dict()
         for example_name, example_graph in self.examples.items():
             # Find all attributes
             for s,p,o in example_graph.triples((None, None, None)):
                 # To be a DataTypeProperty then o must be a literal
                 # if isinstance(o, rdflib.term.Literal):
                 if p not in self.common_attributes:
+                    # *** Check domain
                     # Get all defined types of current object
                     found_attributes = False
                     class_names = ""
@@ -192,12 +202,33 @@ class TestExamples(unittest.TestCase):
                         else:
                             my_exception[key].add(example_name)
 
+                    # *** Check range
+                    if isinstance(o, rdflib.term.URIRef):
+                        # An ObjectProperty can point to an instance, then we look for its type:
+                        found_range = list(example_graph.objects(o, RDF['type']))
+                        # An ObjectProperty can point to a term
+                        if not found_range:
+                            found_range = list([o])
 
+                        if p in self.range:
+                            
+                            for i in (i for i in found_range if i not in self.range[p]):
+                                key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for '+example_graph.qname(p)
+                                if not key in my_range_exception:
+                                    my_range_exception[key] = set([example_name])
+                                else:
+                                    my_range_exception[key].add(example_name)
+
+        error_msg = ""
         if my_exception:
-            error_msg = ""
             for att_name, example_names in my_exception.items():
                 error_msg += "\n Unrecognised attribute: "+str(att_name)+\
                                 " (from "+', '.join(example_names)+")"
+        if my_range_exception:
+            for att_name, example_names in my_range_exception.items():
+                error_msg += "\n Unrecognised range: "+str(att_name)+\
+                                " (from "+', '.join(example_names)+")"
+        if error_msg:
             raise Exception(error_msg)
 
 
