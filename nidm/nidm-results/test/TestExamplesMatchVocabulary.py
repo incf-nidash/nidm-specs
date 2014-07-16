@@ -20,6 +20,7 @@ NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
 SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
 FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
+CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
 OWL = Namespace('http://www.w3.org/2002/07/owl#')
 
 def get_sub_class_names(my_graph):
@@ -61,7 +62,9 @@ class TestExamples(unittest.TestCase):
 
         # For each class find out attribute list as defined by domain in attributes
         self.attributes = dict()
-        common_attributes = set([PROV['atLocation'], RDFS['label'], PROV['value']])
+
+        # Attributes that can be found in all classes
+        common_attributes = set([PROV['atLocation'], RDFS['label'], PROV['value'], CRYPTO['sha512']])
         for data_property in self.owl.subjects(RDF['type'], OWL['DatatypeProperty']):
             for class_name in self.owl.objects(data_property, RDFS['domain']):
                 # Add attribute to current class
@@ -77,13 +80,13 @@ class TestExamples(unittest.TestCase):
                     else:
                         self.attributes[child_class] = common_attributes.union([data_property])
 
-        example_filenames = set([   os.path.join('spm', 'spm_results.provn')])# , 
-                                        # os.path.join('spm', 'example001'),
-                                        # os.path.join('spm', 'example002'),
-                                        # os.path.join('spm', 'example003'),
-                                        # os.path.join('spm', 'example004'),
-                                        # os.path.join('fsl'),
-                                        # os.path.join('fsl', 'example001')])
+        example_filenames = set([   os.path.join('spm', 'spm_results.provn') , 
+                                        os.path.join('spm', 'example001', 'example001_spm_results.provn'),
+                                        os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
+                                        os.path.join('spm', 'example003', 'spm_inference_activities.provn'),
+                                        os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
+                                        os.path.join('fsl', 'fsl_results.provn'),
+                                        os.path.join('fsl', 'example001', 'fsl_nidm.provn')])
 
         self.examples = dict()
         for example_file in example_filenames:
