@@ -59,10 +59,10 @@ class TestExamples(unittest.TestCase):
         # For each class find out attribute list as defined by domain in attributes
         self.attributes = dict()
 
-        prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
-        for prov_type in prov_types:
-            for class_name in self.owl.subjects(RDFS['subClassOf'], prov_type):
-                self.sub_types.add(class_name)
+        # prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
+        # for prov_type in prov_types:
+        for class_name in self.owl.subjects(RDF['type'], OWL['Class']):
+            self.sub_types.add(class_name)
                 # self.attributes[class_name] = common_attributes
 
         # Add PROV sub-types
