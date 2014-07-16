@@ -100,7 +100,7 @@ class TestExamples(unittest.TestCase):
             # If True turtle file will be downloaded from the prov store using the address specified in the README. 
             # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
             # to check as README should be up to date but setting to False can be useful for local testing.
-            ttl_from_readme = True
+            ttl_from_readme = False
 
             if ttl_from_readme:
                 # Get URL of turtle from README file
