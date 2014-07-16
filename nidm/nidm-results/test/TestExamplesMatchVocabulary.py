@@ -101,7 +101,14 @@ class TestExamples(unittest.TestCase):
                         if data_property in self.range:
                             self.range[data_property].add(range_name)
                         else:
-                            self.range[data_property] = set(range_name)
+                            self.range[data_property] = set([range_name])
+                        # Add child_class to range
+                        for child_class in self.owl.subjects(RDFS['subClassOf'], range_name):
+                            # Add attribute to current class
+                            if data_property in self.range:
+                                self.range[data_property].add(child_class)
+                            else:
+                                self.range[data_property] = set([child_class])
 
         example_filenames = set([   os.path.join('spm', 'spm_results.provn') , 
                                         os.path.join('spm', 'example001', 'example001_spm_results.provn'),
@@ -139,7 +146,6 @@ class TestExamples(unittest.TestCase):
                 url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
                 headers = { 'Content-type' : "text/provenance-notation",
                             'Accept' : "text/turtle" }
-                # print urllib.urlencode(data)
                 req = urllib2.Request(url, ex_provn, headers)
                 response = urllib2.urlopen(req)
                 ttl_file_url = response.geturl()
@@ -205,14 +211,16 @@ class TestExamples(unittest.TestCase):
                     # *** Check range
                     if isinstance(o, rdflib.term.URIRef):
                         # An ObjectProperty can point to an instance, then we look for its type:
-                        found_range = list(example_graph.objects(o, RDF['type']))
+                        found_range = set(example_graph.objects(o, RDF['type']))
                         # An ObjectProperty can point to a term
                         if not found_range:
-                            found_range = list([o])
+                            found_range = set([o])
 
                         if p in self.range:
                             
-                            for i in (i for i in found_range if i not in self.range[p]):
+                            # If none of the class found for current ObjectProperty value is part of the range
+                            # throw an error
+                            if not found_range.intersection(self.range[p]):
                                 key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for '+example_graph.qname(p)
                                 if not key in my_range_exception:
                                     my_range_exception[key] = set([example_name])
