@@ -92,16 +92,16 @@ nidm:objectModel rdf:type owl:ObjectProperty ;
 
 nidm:worldCoordinateSystem rdf:type owl:ObjectProperty ;
                            
+                           iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                           
                            iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_22. """ ;
                            
                            prov:definition "Type of coordinate system." ;
                            
-                           iao:IAO_0000112 "nidm:MniCoordinateSystem" ;
-                           
                            rdfs:domain nidm:CoordinateSpace ;
                            
-                           rdfs:range nidm:MniCoordinateSystem .
+                           rdfs:range nidm:WorldCoordinateSystem .
 
 
 
@@ -811,12 +811,12 @@ NIDM Concept ID: nidm_69. """ ;
 
 nidm:worldCoordinateSystem rdf:type owl:DatatypeProperty ;
                            
+                           iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                           
                            iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_22. """ ;
                            
-                           prov:definition "Type of coordinate system." ;
-                           
-                           iao:IAO_0000112 "nidm:MniCoordinateSystem" .
+                           prov:definition "Type of coordinate system." .
 
 
 
@@ -1394,7 +1394,7 @@ NIDM Concept ID: nidm_21. """ ;
     nidm:voxelToWorldMapping = \"[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]\" %% xsd:string,
     nidm:voxelUnits = \"['mm', 'mm', 'mm']\" %% xsd:string,
     nidm:voxelSize = \"[3, 3, 3]\" %% xsd:string,
-    nidm:coordinateSystem = 'nidm:mniCoordinateSystem',
+    nidm:coordinateSystem = 'nidm:MNICoordinateSystem',
     nidm:numberOfDimensions = \"3\" %% xsd:int,
     nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" ;
                      
@@ -1622,6 +1622,21 @@ NIDM Concept ID: nidm_37. """ .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem
+
+nidm:MNICoordinateSystem rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:WorldCoordinateSystem ;
+                         
+                         rdfs:seeAlso "birnlex_2125" ;
+                         
+                         prov:definition "Coordinate system defined with reference to the MNI atlas." ;
+                         
+                         iao:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
+NIDM Concept ID: nidm:nidm_40. """ .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Map
 
 nidm:Map rdf:type owl:Class ;
@@ -1655,21 +1670,6 @@ NIDM Concept ID: nidm_39. """ ;
     nidm:originalFileName = \"mask.img\" %% xsd:string,
     nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#MniCoordinateSystem
-
-nidm:MniCoordinateSystem rdf:type owl:Class ;
-                         
-                         rdfs:subClassOf prov:Entity ;
-                         
-                         iao:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
-NIDM Concept ID: nidm:nidm_40. """ ;
-                         
-                         prov:definition "Coordinate system defined with reference to the MNI atlas." ;
-                         
-                         rdfs:seeAlso "birnlex_2125" .
 
 
 
@@ -1848,6 +1848,16 @@ nidm:SubVolumeMap rdf:type owl:Class ;
                   
                   iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_101. """ .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#WorldCoordinateSystem
+
+nidm:WorldCoordinateSystem rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf prov:Entity ;
+                           
+                           prov:definition "FIXME" .
 
 
 
