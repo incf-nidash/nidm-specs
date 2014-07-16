@@ -71,26 +71,29 @@ class TestExamples(unittest.TestCase):
         self.sub_types.add(PROV['Collection'])      
 
         # Attributes that can be found in all classes
-        self.common_attributes = set([   PROV['atLocation'], 
+        self.common_attributes = set([   
                                     RDFS['label'], 
-                                    PROV['value'], 
-                                    CRYPTO['sha512'],
-                                    PROV['atTime']])  
+                                    RDF['type'],
+                                    PROV['value'], PROV['atTime'], PROV['used'], PROV['wasAssociatedWith'],
+                                    PROV['qualifiedGeneration'], PROV['wasGeneratedBy'], PROV['atLocation'], 
+                                    PROV['wasDerivedFrom'], 
+                                    CRYPTO['sha512']])  
 
-        for data_property in self.owl.subjects(RDF['type'], OWL['DatatypeProperty']):
-            for class_name in self.owl.objects(data_property, RDFS['domain']):
-                # Add attribute to current class
-                if class_name in self.attributes:
-                    self.attributes[class_name].add(data_property)
-                else:
-                    self.attributes[class_name] = set([data_property])
-                # Add attribute to children of current class
-                for child_class in self.owl.subjects(RDFS['subClassOf'], class_name):
+        for data_property,p,o in self.owl.triples((None, RDF['type'], None)):
+            if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
+                for class_name in self.owl.objects(data_property, RDFS['domain']):
                     # Add attribute to current class
-                    if child_class in self.attributes:
-                        self.attributes[child_class].add(data_property)
+                    if class_name in self.attributes:
+                        self.attributes[class_name].add(data_property)
                     else:
-                        self.attributes[child_class] = set([data_property])
+                        self.attributes[class_name] = set([data_property])
+                    # Add attribute to children of current class
+                    for child_class in self.owl.subjects(RDFS['subClassOf'], class_name):
+                        # Add attribute to current class
+                        if child_class in self.attributes:
+                            self.attributes[child_class].add(data_property)
+                        else:
+                            self.attributes[child_class] = set([data_property])
 
         example_filenames = set([   os.path.join('spm', 'spm_results.provn') , 
                                         os.path.join('spm', 'example001', 'example001_spm_results.provn'),
@@ -162,32 +165,32 @@ class TestExamples(unittest.TestCase):
             # Find all attributes
             for s,p,o in example_graph.triples((None, None, None)):
                 # To be a DataTypeProperty then o must be a literal
-                if isinstance(o, rdflib.term.Literal):
-                    if p not in self.common_attributes:
-                        # Get all defined types of current object
-                        found_attributes = False
-                        class_names = ""
-                        for class_name in example_graph.objects(s, RDF['type']):
+                # if isinstance(o, rdflib.term.Literal):
+                if p not in self.common_attributes:
+                    # Get all defined types of current object
+                    found_attributes = False
+                    class_names = ""
+                    for class_name in example_graph.objects(s, RDF['type']):
 
-                            attributes = self.attributes.get(class_name)
+                        attributes = self.attributes.get(class_name)
 
-                            # If the current class was defined in the owl file check if current
-                            # attribute was also defined.
-                            if attributes:
-                                if p in attributes:
-                                    found_attributes = True
+                        # If the current class was defined in the owl file check if current
+                        # attribute was also defined.
+                        if attributes:
+                            if p in attributes:
+                                found_attributes = True
 
-                            class_names += ", "+example_graph.qname(class_name)
+                        class_names += ", "+example_graph.qname(class_name)
 
-                        # if not found_attributes:
-                            # if attributes:
-                                # if not (p in attributes):
-                        if not found_attributes:
-                            key = example_graph.qname(p)+" in "+class_names[2:]
-                            if not key in my_exception:
-                                my_exception[key] = set([example_name])
-                            else:
-                                my_exception[key].add(example_name)
+                    # if not found_attributes:
+                        # if attributes:
+                            # if not (p in attributes):
+                    if not found_attributes:
+                        key = example_graph.qname(p)+" in "+class_names[2:]
+                        if not key in my_exception:
+                            my_exception[key] = set([example_name])
+                        else:
+                            my_exception[key].add(example_name)
 
 
         if my_exception:
