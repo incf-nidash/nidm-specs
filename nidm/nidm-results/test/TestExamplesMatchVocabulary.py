@@ -100,7 +100,7 @@ class TestExamples(unittest.TestCase):
             # If True turtle file will be downloaded from the prov store using the address specified in the README. 
             # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
             # to check as README should be up to date but setting to False can be useful for local testing.
-            ttl_from_readme = False
+            ttl_from_readme = True
 
             if ttl_from_readme:
                 # Get URL of turtle from README file
@@ -111,7 +111,6 @@ class TestExamples(unittest.TestCase):
                 turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
                 extracted_data = turtle_search.search(readme_txt) 
                 ttl_file_url = extracted_data.group('ttl_file');
-                print ttl_file_url
             else:
                 # Find corresponding provn file
                 provn_file = os.path.join(os.path.dirname(os.path.dirname(
