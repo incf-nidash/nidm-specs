@@ -19,7 +19,12 @@ example_filenames = import_test_filenames.union(set([   os.path.join('spm', 'spm
                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
                                 os.path.join('fsl', 'fsl_results.provn')]))
 
-def get_turtle(provn_file, ttl_from_readme):
+# If True turtle file will be downloaded from the prov store using the address specified in the README. 
+# If False the turtle version will be retreived on the fly using the prov translator. By default set to True
+# to check as README should be up to date but setting to False can be useful for local testing.
+ttl_from_readme = True
+
+def get_turtle(provn_file):
     if ttl_from_readme:
         # Get URL of turtle from README file
         readme_file = os.path.join(os.path.dirname(provn_file), 'README')
