@@ -7,22 +7,30 @@
 
 import os
 import re
+import urllib2, urllib
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # Examples used for unit testing
-import_test_filenames = set([   os.path.join('spm', 'example001', 'example001_spm_results.provn'),
-                                os.path.join('fsl', 'example001', 'fsl_nidm.provn')])
-
+import_test_filenames = set([
+                                os.path.join('spm', 'example001', 'example001_spm_results.provn'),
+                                os.path.join('fsl', 'example001', 'fsl_nidm.provn')
+                            ])
 # All examples
-example_filenames = import_test_filenames.union(set([   os.path.join('spm', 'spm_results.provn') , 
+example_filenames = import_test_filenames.union(set([
+                                os.path.join('spm', 'spm_results.provn') , 
                                 os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
                                 os.path.join('spm', 'example003', 'spm_inference_activities.provn'),
                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
-                                os.path.join('fsl', 'fsl_results.provn')]))
+                                os.path.join('fsl', 'fsl_results.provn')
+                            ]))
 
 # If True turtle file will be downloaded from the prov store using the address specified in the README. 
 # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
 # to check as README should be up to date but setting to False can be useful for local testing.
-ttl_from_readme = True
+ttl_from_readme = False
 
 def get_turtle(provn_file):
     if ttl_from_readme:
@@ -45,5 +53,7 @@ def get_turtle(provn_file):
         req = urllib2.Request(url, ex_provn, headers)
         response = urllib2.urlopen(req)
         ttl_file_url = response.geturl()
+
+    logger.info(' Loading turtle file '+ttl_file_url)
 
     return ttl_file_url

@@ -11,10 +11,9 @@ import re
 import rdflib
 
 from rdflib.graph import Graph
-import logging
 from TestCommons import *
 from CheckConsistency import *
-logging.basicConfig()
+
 
 class TestExamples(unittest.TestCase):
 

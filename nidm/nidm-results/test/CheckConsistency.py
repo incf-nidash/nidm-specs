@@ -6,6 +6,7 @@
 '''
 
 from rdflib import Namespace, RDF, term
+from rdflib.graph import Graph
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
@@ -111,6 +112,7 @@ def check_class_names(example_graph, example_name, class_names=None, owl_file=No
             class_names = get_class_names_in_owl(owl_graph)
 
     sub_types = get_sub_class_names(example_graph)
+
     for not_recognised_sub_type in (sub_types - class_names):
         # key = example_graph.qname(not_recognised_sub_type)
         key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
