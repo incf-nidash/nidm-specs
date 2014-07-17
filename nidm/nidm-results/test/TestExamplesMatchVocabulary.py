@@ -11,38 +11,11 @@ import re
 import rdflib
 
 from rdflib.graph import Graph
-import urllib2 #, urllib #jb: not used
 import logging
 from TestCommons import *
 from CheckConsistency import *
 logging.basicConfig()
 
-<<<<<<< HEAD
-PROV = Namespace('http://www.w3.org/ns/prov#')
-NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
-SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
-FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
-RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
-CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
-OWL = Namespace('http://www.w3.org/2002/07/owl#')
-
-RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-def get_sub_class_names(my_graph):
-    sub_types = set()
-
-    prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
-    for prov_type in prov_types:
-        for instance_id in my_graph.subjects(RDF.type, prov_type):
-            for class_name in my_graph.objects(instance_id, RDF.type):
-               if not class_name == prov_type:
-                    sub_types.add(class_name)
-
-    return sub_types
-
-
-=======
->>>>>>> consistency checking in a separate function
 class TestExamples(unittest.TestCase):
 
     def setUp(self):
@@ -67,8 +40,7 @@ class TestExamples(unittest.TestCase):
         # For each ObjectProperty found out corresponding range
         attributes_ranges = get_attributes_from_owl(self.owl)
         self.attributes = attributes_ranges[0]
-        self.range = attributes_ranges[1]
-       
+        self.ranges = attributes_ranges[1]      
 
         self.examples = dict()
         for example_file in example_filenames:
@@ -84,85 +56,33 @@ class TestExamples(unittest.TestCase):
         my_exception = dict()
         for example_name, example_graph in self.examples.items():
             # Check that all entity, activity, agent are defined in the data model
-            sub_types = get_sub_class_names(example_graph)
-            for not_recognised_sub_type in (sub_types - self.sub_types):
-                key = example_graph.qname(not_recognised_sub_type)
-                if key in my_exception:
-                    my_exception[key].add(example_name)
-                else:
-                    my_exception[key] = set([example_name])
+            exception_msg = check_class_names(example_graph, example_name, class_names=self.sub_types)
+            my_exception = dict(my_exception.items() + exception_msg.items())
 
+        # Aggredate errors over examples for conciseness
         if my_exception:
             error_msg = ""
-            for class_name, examples in my_exception.items():
-                error_msg += "\n Unrecognised sub-type: "+str(class_name)+\
-                                " (from "+', '.join(examples)+")"
+            for unrecognised_class_name, examples in my_exception.items():
+                error_msg += unrecognised_class_name+" (from "+', '.join(examples)+")"
             raise Exception(error_msg)
 
     def test_check_attributes(self):
         my_exception = dict()
         my_range_exception = dict()
         for example_name, example_graph in self.examples.items():
-            # Find all attributes
-            for s,p,o in example_graph.triples((None, None, None)):
-                # To be a DataTypeProperty then o must be a literal
-                # if isinstance(o, rdflib.term.Literal):
-                if p not in common_attributes:
-                    # *** Check domain
-                    # Get all defined types of current object
-                    found_attributes = False
-                    class_names = ""
-                    for class_name in sorted(example_graph.objects(s, RDF['type'])):
+            exception_msg = check_attributes(example_graph, example_name, 
+                self.attributes, self.ranges)
+            my_exception = dict(my_exception.items() + exception_msg[0].items())
+            my_range_exception = dict(my_range_exception.items() + exception_msg[1].items())
 
-                        attributes = self.attributes.get(class_name)
-
-                        # If the current class was defined in the owl file check if current
-                        # attribute was also defined.
-                        if attributes:
-                            if p in attributes:
-                                found_attributes = True
-
-                        class_names += ", "+example_graph.qname(class_name)
-
-                    # if not found_attributes:
-                        # if attributes:
-                            # if not (p in attributes):
-                    if not found_attributes:
-                        key = example_graph.qname(p)+" in "+class_names[2:]
-                        if not key in my_exception:
-                            my_exception[key] = set([example_name])
-                        else:
-                            my_exception[key].add(example_name)
-
-                    # *** Check range
-                    if isinstance(o, rdflib.term.URIRef):
-                        # An ObjectProperty can point to an instance, then we look for its type:
-                        found_range = set(example_graph.objects(o, RDF['type']))
-                        # An ObjectProperty can point to a term
-                        if not found_range:
-                            found_range = set([o])
-
-                        if p in self.range:
-                            
-                            # If none of the class found for current ObjectProperty value 
-                            # is part of the range throw  an error
-                            if not found_range.intersection(self.range[p]):
-                                key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for ' \
-                                                + example_graph.qname(p)
-                                if not key in my_range_exception:
-                                    my_range_exception[key] = set([example_name])
-                                else:
-                                    my_range_exception[key].add(example_name)
-
+        # Aggredate errors over examples for conciseness
         error_msg = ""
         if my_exception:
-            for att_name, example_names in my_exception.items():
-                error_msg += "\n Unrecognised attribute: "+str(att_name)+\
-                                " (from "+', '.join(example_names)+")"
+            for unrecognised_attribute, example_names in my_exception.items():
+                error_msg += unrecognised_attribute+" (from "+', '.join(example_names)+")"
         if my_range_exception:
-            for att_name, example_names in my_range_exception.items():
-                error_msg += "\n Unrecognised range: "+str(att_name)+\
-                                " (from "+', '.join(example_names)+")"
+            for unrecognised_range, example_names in my_range_exception.items():
+                error_msg += unrecognised_range+" (from "+', '.join(example_names)+")"
         if error_msg:
             raise Exception(error_msg)
 

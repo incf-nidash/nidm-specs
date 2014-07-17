@@ -5,7 +5,7 @@
 @copyright: University of Warwick 2014
 '''
 
-from rdflib import Namespace, RDF
+from rdflib import Namespace, RDF, term
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
@@ -86,3 +86,104 @@ def get_attributes_from_owl(my_owl_graph):
                             ranges[data_property] = set([child_class])
 
     return list((attributes, ranges))
+
+def get_owl_graph(owl_file):
+    # Read owl (turtle) file
+    owl_graph = Graph()
+    # This is a workaround to avoid issue with "#" in base prefix as 
+    # described in https://github.com/RDFLib/rdflib/issues/379,
+    # When the fix is introduced in rdflib these 2 lines will be replaced by:
+    # self.owl.parse(owl_file, format='turtle')
+    owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
+                    "http://www.w3.org/2002/07/owl")
+    owl_graph.parse(data=owl_txt, format='turtle')
+
+    return owl_graph
+
+
+def check_class_names(example_graph, example_name, class_names=None, owl_file=None):
+    my_exception = dict()
+    if not class_names:
+        if owl_file is None:
+            raise Exception("One of class_names or owl_file must be not None.")
+        else:
+            owl_graph = get_owl_graph(owl_file)
+            class_names = get_class_names_in_owl(owl_graph)
+
+    sub_types = get_sub_class_names(example_graph)
+    for not_recognised_sub_type in (sub_types - class_names):
+        # key = example_graph.qname(not_recognised_sub_type)
+        key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
+        if key in my_exception:
+            my_exception[key].add(example_name)
+        else:
+            my_exception[key] = set([example_name])
+
+    return my_exception
+
+def check_attributes(example_graph, example_name, owl_attributes=None, owl_ranges=None, owl_file=None):
+    my_exception = dict()
+    my_range_exception = dict()
+    if not owl_attributes or not owl_ranges:
+        if owl_file is None:
+            raise Exception("One of class_names or owl_file must be not None.")
+        else:
+            owl_graph = get_owl_graph(owl_file)
+
+            attributes_ranges = get_attributes_from_owl(owl_graph)
+            owl_attributes = attributes_ranges[0]
+            owl_ranges = attributes_ranges[1]   
+
+    # Find all attributes
+    for s,p,o in example_graph.triples((None, None, None)):
+        # To be a DataTypeProperty then o must be a literal
+        # if isinstance(o, rdflib.term.Literal):
+        if p not in common_attributes:
+            # *** Check domain
+            # Get all defined types of current object
+            found_attributes = False
+            class_names = ""
+            for class_name in sorted(example_graph.objects(s, RDF['type'])):
+                attributes = owl_attributes.get(class_name)
+
+                # If the current class was defined in the owl file check if current
+                # attribute was also defined.
+                if attributes:
+                    if p in attributes:
+                        found_attributes = True
+
+                class_names += ", "+example_graph.qname(class_name)
+
+            # if not found_attributes:
+                # if attributes:
+                    # if not (p in attributes):
+            if not found_attributes:
+                key = "\n Unrecognised attribute: "+example_graph.qname(p)+\
+                            " in "+class_names[2:]
+                if not key in my_exception:
+                    my_exception[key] = set([example_name])
+                else:
+                    my_exception[key].add(example_name)
+
+            # *** Check range for ObjectProperties
+            if isinstance(o, term.URIRef):
+                # An ObjectProperty can point to an instance, then we look for its type:
+                found_range = set(example_graph.objects(o, RDF['type']))
+                # An ObjectProperty can point to a term
+                if not found_range:
+                    found_range = set([o])
+
+                if p in owl_ranges:
+                    
+                    # If none of the class found for current ObjectProperty value is part of the range
+                    # throw an error
+                    if not found_range.intersection(owl_ranges[p]):
+                        key = "\n Unrecognised range: "+\
+                                ', '.join(map(example_graph.qname, sorted(found_range)))+\
+                                ' for '+example_graph.qname(p)
+                        if not key in my_range_exception:
+                            my_range_exception[key] = set([example_name])
+                        else:
+                            my_range_exception[key].add(example_name)
+
+    return list((my_exception, my_range_exception))
