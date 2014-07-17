@@ -9,13 +9,15 @@ import os
 # from subprocess import call #jb: call not used 
 import re
 import rdflib
-from rdflib import Namespace, RDF
+
 from rdflib.graph import Graph
 import urllib2 #, urllib #jb: not used
 import logging
 from TestCommons import *
+from CheckConsistency import *
 logging.basicConfig()
 
+<<<<<<< HEAD
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
 SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
@@ -39,6 +41,8 @@ def get_sub_class_names(my_graph):
     return sub_types
 
 
+=======
+>>>>>>> consistency checking in a separate function
 class TestExamples(unittest.TestCase):
 
     def setUp(self):
@@ -51,84 +55,26 @@ class TestExamples(unittest.TestCase):
 
         # This is a workaround to avoid issue with "#" in base prefix as 
         # described in https://github.com/RDFLib/rdflib/issues/379,
-        # When the fix is introduced in rdflib these 3 lines will be replaced by:
+        # When the fix is introduced in rdflib these 2 lines will be replaced by:
         # self.owl.parse(owl_file, format='turtle')
         owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
                         "http://www.w3.org/2002/07/owl")
         self.owl.parse(data=owl_txt, format='turtle')
-        OWL = Namespace('http://www.w3.org/2002/07/owl')
-
-        # Retrieve all entity/activity/agent sub-classes
-        self.sub_types = set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
+        
+        # Retreive all classes defined in the owl file
+        self.sub_types = get_class_names_in_owl(self.owl) #set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
         # For each class find out attribute list as defined by domain in attributes
-        self.attributes = dict()
-        # For each ObjectProperty find out corresponding range
-        self.range = dict()
-
-        # prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
-        # for prov_type in prov_types:
-        for class_name in self.owl.subjects(RDF['type'], OWL['Class']):
-            self.sub_types.add(class_name)
-                # self.attributes[class_name] = common_attributes
-
-        # Add PROV sub-types
-        self.sub_types.add(PROV['Bundle'])
-        self.sub_types.add(PROV['Location'])
-        self.sub_types.add(PROV['Collection'])      
-
-        # Attributes that can be found in all classes
-        self.common_attributes = set([   
-                                    RDFS['label'], 
-                                    RDF['type'],
-                                    PROV['value'], PROV['atTime'],
-                                    PROV['used'], PROV['wasAssociatedWith'],
-                                    PROV['qualifiedGeneration'],
-                                    PROV['wasGeneratedBy'], PROV['atLocation'], 
-                                    PROV['wasDerivedFrom'], 
-                                    CRYPTO['sha512']])  
-
-        for data_property,p,o in self.owl.triples((None, RDF['type'], None)):
-            if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
-                for class_name in self.owl.objects(data_property, RDFS['domain']):
-                    # Add attribute to current class
-                    if class_name in self.attributes:
-                        self.attributes[class_name].add(data_property)
-                    else:
-                        self.attributes[class_name] = set([data_property])
-                    # Add attribute to children of current class
-                    for child_class in self.owl.subjects(RDFS['subClassOf'], class_name):
-                        # Add attribute to current class
-                        if child_class in self.attributes:
-                            self.attributes[child_class].add(data_property)
-                        else:
-                            self.attributes[child_class] = set([data_property])
-                if o == OWL['ObjectProperty']:
-                    for range_name in self.owl.objects(data_property, RDFS['range']):
-                        if data_property in self.range:
-                            self.range[data_property].add(range_name)
-                        else:
-                            self.range[data_property] = set([range_name])
-                        # Add child_class to range
-                        for child_class in self.owl.subjects(RDFS['subClassOf'], range_name):
-                            # Add attribute to current class
-                            if data_property in self.range:
-                                self.range[data_property].add(child_class)
-                            else:
-                                self.range[data_property] = set([child_class])
+        # For each ObjectProperty found out corresponding range
+        attributes_ranges = get_attributes_from_owl(self.owl)
+        self.attributes = attributes_ranges[0]
+        self.range = attributes_ranges[1]
+       
 
         self.examples = dict()
         for example_file in example_filenames:
-
-            # If True turtle file will be downloaded from the prov store using
-            # the address specified in the README.  If False the turtle version
-            # will be retrieved on the fly using the prov translator. By
-            # default set to True to check as README should be up to date but
-            # setting to False can be useful for local testing.
-            ttl_from_readme = True
-
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
-            ttl_file_url = get_turtle(provn_file, ttl_from_readme)
+            ttl_file_url = get_turtle(provn_file)
 
             # Read turtle
             self.examples[example_file] = Graph()
@@ -161,7 +107,7 @@ class TestExamples(unittest.TestCase):
             for s,p,o in example_graph.triples((None, None, None)):
                 # To be a DataTypeProperty then o must be a literal
                 # if isinstance(o, rdflib.term.Literal):
-                if p not in self.common_attributes:
+                if p not in common_attributes:
                     # *** Check domain
                     # Get all defined types of current object
                     found_attributes = False
