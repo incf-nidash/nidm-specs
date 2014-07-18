@@ -1,4 +1,5 @@
 @prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
 @prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -51,6 +52,28 @@ prov:definition rdf:type owl:AnnotationProperty .
 #    Object Properties
 #
 #################################################################
+
+
+
+###  http://purl.org/dc/terms/format
+
+dct:format rdf:type owl:ObjectProperty ;
+           
+           rdfs:range dct:MediaTypeOrExtent ;
+           
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#alternativeHypothesis
+
+nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
+                           
+                           prov:definition "FIXME" ;
+                           
+                           rdfs:domain nidm:Inference .
+
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#atCoordinateSpace
@@ -1275,6 +1298,28 @@ NIDM Concept ID: spm_94. """ ;
 #    Classes
 #
 #################################################################
+
+
+###  http://purl.org/dc/terms/FileFormat
+
+dct:FileFormat rdf:type owl:Class ;
+               
+               rdfs:subClassOf dct:MediaType .
+
+
+
+###  http://purl.org/dc/terms/MediaType
+
+dct:MediaType rdf:type owl:Class ;
+              
+              rdfs:subClassOf dct:MediaTypeOrExtent .
+
+
+
+###  http://purl.org/dc/terms/MediaTypeOrExtent
+
+dct:MediaTypeOrExtent rdf:type owl:Class .
+
 
 
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
