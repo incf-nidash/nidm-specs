@@ -5,8 +5,7 @@ document
   prefix niiri <http://iri.nidash.org/>
   prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>    
   prefix dct <http://purl.org/dc/terms/>
-  prefix localfile <file://local/path/>
-  
+    
   entity(niiri:spm_results_id,
     [prov:type = 'prov:Bundle',
     prov:label = "SPM Results",
@@ -35,7 +34,8 @@ document
     entity(niiri:statistic_map_id,
       [prov:type = 'nidm:StatisticMap',
       nidm:statisticType = 'nidm:TStatistic',
-      prov:location = 'localfile:TStatistic.nii.gz',
+      prov:location = "file:///path/to/TStatistic.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Statistic Map: listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
       nidm:originalFileName = "spmT_0001.img" %% xsd:string,
@@ -43,121 +43,104 @@ document
       nidm:effectDegreesOfFreedom = "1" %% xsd:float,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:TStatistic.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
-      prov:location = 'localfile:Contrast.img',
+      prov:location = "file:///path/to/Contrast.nii.gz" %% xsd:anyURI,
+      nidm:niftiHeader = 'niiri:contrast_map_header_id',
+      dct:format = 'nidm:Nifti-pair',
       prov:label = "Contrast Map: listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
       nidm:originalFileName = "con_0001.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:Contrast.img,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-pair'
-      nidm:niftiHeader = 'localfile:Contrast.hdr'])      
+    entity(niiri:contrast_map_header_id,
+      [ dct:format = 'nidm:niftiHeader',
+        prov:location = "file:///path/to/Contrast.hdr" %% xsd:anyURI,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])      
     entity(niiri:mask_id_2,
       [prov:type = 'nidm:MaskMap',
-      prov:location = 'localfile:Mask.nii.gz',
+      prov:location = "file:///path/to/Mask.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Mask" %% xsd:string,
       nidm:originalFileName = "mask.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:Mask.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     wasGeneratedBy(niiri:mask_id_2, niiri:model_pe_id,-)
     entity(niiri:beta_map_id_1,
       [prov:type = 'nidm:ParameterEstimateMap',
-      prov:location = 'localfile:ParameterEstimate_0001.nii.gz',
+      prov:location = "file:///path/to/ParameterEstimate_0001.nii.gz" %% xsd:anyURI,
       prov:label = "Beta Map 1" %% xsd:string,
       nidm:originalFileName = "beta_0001.img" %% xsd:string,
+      dct:format = 'nidm:Nifti-1-gz',
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:ParameterEstimate_0001.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
     entity(niiri:beta_map_id_2,
       [prov:type = 'nidm:ParameterEstimateMap',
-      prov:location = 'localfile:ParameterEstimate_0002.nii.gz',
+      prov:location = "file:///path/to/ParameterEstimate_0002.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Beta Map 2" %% xsd:string,
       nidm:originalFileName = "beta_0002.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:ParameterEstimate_0002.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
 
     entity(niiri:contrast_standard_error_map_id,
       [prov:type = 'nidm:ContrastStandardErrorMap',
-      prov:location = 'localfile:ContrastStandardError.nii.gz',
+      prov:location = "file:///path/to/ContrastStandardError.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Contrast Standard Error Map" %% xsd:string,
       nidm:originalFileName = "contrastSE.nii" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:ContrastStandardError.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:residual_mean_squares_map_id,
       [prov:type = 'nidm:ResidualMeanSquaresMap',
-      prov:location = 'localfile:ResidualMeanSquares.nii.gz',
+      prov:location = "file:///path/to/ResidualMeanSquares.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Residual Mean Squares Map" %% xsd:string,
       nidm:originalFileName = "ResMS.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:ResidualMeanSquares.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:grand_mean_map_id,
       [prov:type = 'nidm:GrandMeanMap',
-      prov:location = 'localfile:GrandMean.nii.gz',
+      prov:location = "file:///path/to/GrandMean.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Grand Mean Map" %% xsd:string,
       nidm:originalFileName = "GrandMean.img" %% xsd:string,
       nidm:maskedMedian = "115" %% xsd:float,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:GrandMean.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:resels_per_voxel_map_id,
       [prov:type = 'spm:ReselsPerVoxelMap',
-      prov:location = 'localfile:ReselsPerVoxel.nii.gz',
+      prov:location = "file:///path/to/ReselsPerVoxel.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Resels per Voxel Map" %% xsd:string,
       nidm:originalFileName = "RPV.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:ReselsPerVoxel.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
-      prov:location = 'localfile:DesignMatrix.csv',
-      nidm:visualisation = 'localfile:DesignMatrix.png',
+      prov:location = "file:///path/to/DesignMatrix.csv" %% xsd:anyURI,
+      dct:format = "text/csv",
+      nidm:visualisation = 'niiri:design_matrix_png_id',
       prov:label = "Design Matrix" %% xsd:string,
       nidm:originalFileName = "design_matrix.csv" %% xsd:string])
-    entity(localfile:DesignMatrix.csv,
-      [prov:type = 'prov:Location',
-      dct:format = "text/csv"])
-    entity(localfile:DesignMatrix.png,
+    entity(niiri:design_matrix_png_id,
       [prov:type = 'nidm:ImageFile',
+      prov:location = "file:///path/to/DesignMatrix.png" %% xsd:anyURI,
       dct:format = "image/png"])
     entity(niiri:mask_id_1,
       [prov:type = 'nidm:CustomMaskMap',
-      prov:location = 'localfile:CustomMask.nii.gz',
+      prov:location = "file:///path/to/CustomMask.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Custom mask" %% xsd:string,
       nidm:originalFileName = "custom_mask.nii" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:CustomMask.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     used(niiri:model_pe_id, niiri:mask_id_1,-)
     entity(niiri:contrast_id,
       [prov:type = 'nidm:ContrastWeights',
@@ -194,17 +177,16 @@ document
     wasGeneratedBy(niiri:statistic_map_id, niiri:contrast_estimation_id,-)
     entity(niiri:sub_volume_id,
       [prov:type = 'nidm:SubVolumeMap',
-      prov:location = 'localfile:SubVolume.nii.gz'
+      prov:location = "file:///path/to/SubVolume.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Sub-volume Map" %% xsd:string,
       nidm:originalFileName = "mask.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:SubVolume.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
-      prov:location = 'localfile:SearchSpace.nii.gz',
+      prov:location = "file:///path/to/SearchSpace.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Search Space Map" %% xsd:string,
       nidm:originalFileName = "final_mask.nii" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
@@ -217,9 +199,6 @@ document
       spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
       nidm:randomFieldStationarity = "false" %%xsd:boolean,
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(localfile:SearchSpace.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
     entity(niiri:height_threshold_id,
       [prov:type = 'nidm:HeightThreshold',
       prov:label = "Height Threshold: p<0.05 (FWE)" %% xsd:string,
@@ -263,23 +242,23 @@ document
     wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id,-)
     entity(niiri:excursion_set_id,
       [prov:type = 'nidm:ExcursionSet',
-      prov:location = 'localfile:ExcursionSet.nii.gz',
+      prov:location = "file:///path/to/ExcursionSet.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti-1-gz',
       prov:label = "Excursion Set" %% xsd:string,
-      nidm:clusterLabelsMap = 'localfile:ClusterLabels.nii.gz',
-      spm:maximumIntensityProjection = 'localfile:MaximumIntensityProjection.png',
+      nidm:clusterLabelsMap = 'niiri:cluster_label_map_id',
+      spm:maximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
       nidm:originalFileName = "thresh_spmT_0001.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string,
       nidm:numberOfClusters = "8" %% xsd:int,
       nidm:pValue = "8.95949980872501e-14" %% xsd:float])
-    entity(localfile:ExcursionSet.nii.gz,
-      [prov:type = 'prov:Location',
-      dct:format = 'nidm:Nifti-1-gz'])
-    entity(localfile:ClusterLabels.nii.gz,
+    entity(niiri:cluster_label_map_id,
       [prov:type = 'nidm:FIXME',
+      prov:location = "file:///path/to/ClusterLabels.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti-1-gz'])
-    entity(localfile:MaximumIntensityProjection.png,
+    entity(niiri:maximum_intensity_projection_id,
       [prov:type = 'nidm:ImageFile',
+      prov:location = "file:///path/to/MaximumIntensityProjection.png" %% xsd:anyURI,
       dct:format = "image/png"])
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
     entity(niiri:cluster_0001,
