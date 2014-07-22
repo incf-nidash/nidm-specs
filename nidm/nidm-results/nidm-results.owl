@@ -114,8 +114,6 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
                    
                    prov:definition "FIXME" ;
                    
-                   rdfs:range <http://purl.obolibrary.org/obo/STATO_0000039> ;
-                   
                    rdfs:domain nidm:ContrastWeights ,
                                nidm:StatisticMap .
 
@@ -1184,34 +1182,6 @@ NIDM Concept ID: spm_94. """ ;
 #################################################################
 
 
-###  http://purl.obolibrary.org/obo/STATO_0000039
-
-<http://purl.obolibrary.org/obo/STATO_0000039> rdf:type owl:Class ;
-                                               
-                                               rdfs:comment "\"statistic\" term from STATO"^^xsd:anyURI .
-
-
-
-###  http://purl.obolibrary.org/obo/STATO_0000176
-
-<http://purl.obolibrary.org/obo/STATO_0000176> rdf:type owl:Class ;
-                                               
-                                               rdfs:subClassOf <http://purl.obolibrary.org/obo/STATO_0000039> ;
-                                               
-                                               rdfs:comment "\"t-statistic\" term from STATO"^^xsd:anyURI .
-
-
-
-###  http://purl.obolibrary.org/obo/STATO_0000282
-
-<http://purl.obolibrary.org/obo/STATO_0000282> rdf:type owl:Class ;
-                                               
-                                               rdfs:subClassOf <http://purl.obolibrary.org/obo/STATO_0000039> ;
-                                               
-                                               rdfs:comment "\"F-statistic\" term from STATO"^^xsd:anyURI .
-
-
-
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
 fsl:CenterOfGravity rdf:type owl:Class ;
@@ -1565,6 +1535,16 @@ NIDM Concept ID: nidm_57. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#FStatistic
+
+nidm:FStatistic rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:Statistic ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#GrandMeanMap
 
 nidm:GrandMeanMap rdf:type owl:Class ;
@@ -1862,6 +1842,16 @@ NIDM Concept ID: nidm_100. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#Statistic
+
+nidm:Statistic rdf:type owl:Class ;
+               
+               rdfs:subClassOf prov:Entity ;
+               
+               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000039"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#StatisticMap
 
 nidm:StatisticMap rdf:type owl:Class ;
@@ -1908,6 +1898,16 @@ NIDM Concept ID: nidm_101. """ .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#TStatistic
+
+nidm:TStatistic rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:Statistic ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000176"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#TwoTailedTest
 
 nidm:TwoTailedTest rdf:type owl:Class ;
@@ -1934,7 +1934,7 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
 
 nidm:ZStatistic rdf:type owl:Class ;
                 
-                rdfs:subClassOf <http://purl.obolibrary.org/obo/STATO_0000039> .
+                rdfs:subClassOf nidm:Statistic .
 
 
 
