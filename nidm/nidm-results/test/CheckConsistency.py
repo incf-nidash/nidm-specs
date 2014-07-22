@@ -175,17 +175,20 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                 if not found_range:
                     found_range = set([o])
 
+                correct_range = False
                 if p in owl_ranges:
-                    
                     # If none of the class found for current ObjectProperty value is part of the range
                     # throw an error
-                    if not found_range.intersection(owl_ranges[p]):
-                        key = "\n Unrecognised range: "+\
-                                ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                                ' for '+example_graph.qname(p)
-                        if not key in my_range_exception:
-                            my_range_exception[key] = set([example_name])
-                        else:
-                            my_range_exception[key].add(example_name)
+                    if found_range.intersection(self.range[p]):
+                        correct_range = True
+                    
+                if not correct_range:
+                    key = "\n Unrecognised range: "+\
+                            ', '.join(map(example_graph.qname, sorted(found_range)))+\
+                            ' for '+example_graph.qname(p)
+                    if not key in my_range_exception:
+                        my_range_exception[key] = set([example_name])
+                    else:
+                        my_range_exception[key].add(example_name)
 
     return list((my_exception, my_range_exception))

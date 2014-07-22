@@ -44,9 +44,41 @@ class TestExamples(unittest.TestCase):
 
         self.examples = dict()
         for example_file in example_filenames:
+<<<<<<< HEAD
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
             ttl_file_url = get_turtle(provn_file)
+=======
+
+            # If True turtle file will be downloaded from the prov store using
+            # the address specified in the README.  If False the turtle version
+            # will be retrieved on the fly using the prov translator. By
+            # default set to True to check as README should be up to date but
+            # setting to False can be useful for local testing.
+            ttl_from_readme = False
+
+            if ttl_from_readme:
+                # Get URL of turtle from README file
+                readme_file = os.path.join(RELPATH, 
+                                           os.path.dirname(example_file), 'README')
+                with open(readme_file, 'r') as readme_file:
+                    readme_txt = readme_file.read()
+                    turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
+                    extracted_data = turtle_search.search(readme_txt) 
+                    ttl_file_url = extracted_data.group('ttl_file');
+            else:
+                # Find corresponding provn file
+                provn_file = os.path.join(RELPATH, example_file)
+                provn_file = open(provn_file, 'r')
+                ex_provn = provn_file.read()
+
+                url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
+                headers = { 'Content-type' : "text/provenance-notation",
+                            'Accept' : "text/turtle" }
+                req = urllib2.Request(url, ex_provn, headers)
+                response = urllib2.urlopen(req)
+                ttl_file_url = response.geturl()
+>>>>>>> Test based on instant conversion
 
             # Read turtle
             self.examples[example_file] = Graph()
