@@ -6,12 +6,12 @@
 '''
 import unittest
 import os
-from subprocess import call
+# from subprocess import call #jb: call not used 
 import re
 import rdflib
 from rdflib import Namespace, RDF
 from rdflib.graph import Graph
-import urllib2, urllib
+import urllib2 #, urllib #jb: not used
 import logging
 logging.basicConfig()
 
@@ -22,6 +22,8 @@ FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
 OWL = Namespace('http://www.w3.org/2002/07/owl#')
+
+RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_sub_class_names(my_graph):
     sub_types = set()
@@ -40,11 +42,12 @@ class TestExamples(unittest.TestCase):
 
     def setUp(self):
         # Retreive owl file for NIDM-Results
-        owl_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
-            'nidm-results.owl')
-
+        owl_file = os.path.join(RELPATH, 'nidm-results.owl')
+        # check the file exists
+        assert os.path.exists(owl_file)
         # Read owl (turtle) file
         self.owl = Graph()
+
         # This is a workaround to avoid issue with "#" in base prefix as 
         # described in https://github.com/RDFLib/rdflib/issues/379,
         # When the fix is introduced in rdflib these 3 lines will be replaced by:
@@ -54,11 +57,11 @@ class TestExamples(unittest.TestCase):
         self.owl.parse(data=owl_txt, format='turtle')
         OWL = Namespace('http://www.w3.org/2002/07/owl')
 
-        # Retreive all entity/activity/agent sub-classes
+        # Retrieve all entity/activity/agent sub-classes
         self.sub_types = set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
         # For each class find out attribute list as defined by domain in attributes
         self.attributes = dict()
-        # For each ObjectProperty found out corresponding range
+        # For each ObjectProperty find out corresponding range
         self.range = dict()
 
         # prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
@@ -76,8 +79,10 @@ class TestExamples(unittest.TestCase):
         self.common_attributes = set([   
                                     RDFS['label'], 
                                     RDF['type'],
-                                    PROV['value'], PROV['atTime'], PROV['used'], PROV['wasAssociatedWith'],
-                                    PROV['qualifiedGeneration'], PROV['wasGeneratedBy'], PROV['atLocation'], 
+                                    PROV['value'], PROV['atTime'],
+                                    PROV['used'], PROV['wasAssociatedWith'],
+                                    PROV['qualifiedGeneration'],
+                                    PROV['wasGeneratedBy'], PROV['atLocation'], 
                                     PROV['wasDerivedFrom'], 
                                     CRYPTO['sha512']])  
 
@@ -110,38 +115,38 @@ class TestExamples(unittest.TestCase):
                             else:
                                 self.range[data_property] = set([child_class])
 
-        example_filenames = set([   os.path.join('spm', 'spm_results.provn') , 
-                                        os.path.join('spm', 'example001', 'example001_spm_results.provn'),
-                                        os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
-                                        os.path.join('spm', 'example003', 'spm_inference_activities.provn'),
-                                        os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
-                                        os.path.join('fsl', 'fsl_results.provn'),
-                                        os.path.join('fsl', 'example001', 'fsl_nidm.provn')])
+        example_filenames = set([os.path.join('spm', 'spm_results.provn') , 
+                                 os.path.join('spm', 'example001', 'example001_spm_results.provn'),
+                                 os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
+                                 os.path.join('spm', 'example003', 'spm_inference_activities.provn'),
+                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
+                                 os.path.join('fsl', 'fsl_results.provn'),
+                                 os.path.join('fsl', 'example001', 'fsl_nidm.provn')])
 
         self.examples = dict()
         for example_file in example_filenames:
 
-            # If True turtle file will be downloaded from the prov store using the address specified in the README. 
-            # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
-            # to check as README should be up to date but setting to False can be useful for local testing.
+            # If True turtle file will be downloaded from the prov store using
+            # the address specified in the README.  If False the turtle version
+            # will be retrieved on the fly using the prov translator. By
+            # default set to True to check as README should be up to date but
+            # setting to False can be useful for local testing.
             ttl_from_readme = True
 
             if ttl_from_readme:
                 # Get URL of turtle from README file
-                readme_file = os.path.join(os.path.dirname(os.path.dirname(
-                                os.path.abspath(__file__))), os.path.dirname(example_file), 'README')
-                readme_file = open(readme_file, 'r')
-                readme_txt = readme_file.read()
-                turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
-                extracted_data = turtle_search.search(readme_txt) 
-                ttl_file_url = extracted_data.group('ttl_file');
+                readme_file = os.path.join(RELPATH, 
+                                           os.path.dirname(example_file), 'README')
+                with open(readme_file, 'r') as readme_file:
+                    readme_txt = readme_file.read()
+                    turtle_search = re.compile(r'.*turtle: (?P<ttl_file>.*\.ttl).*')
+                    extracted_data = turtle_search.search(readme_txt) 
+                    ttl_file_url = extracted_data.group('ttl_file');
             else:
                 # Find corresponding provn file
-                provn_file = os.path.join(os.path.dirname(os.path.dirname(
-                                os.path.abspath(__file__))), example_file)
+                provn_file = os.path.join(RELPATH, example_file)
                 provn_file = open(provn_file, 'r')
                 ex_provn = provn_file.read()
-
 
                 url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
                 headers = { 'Content-type' : "text/provenance-notation",
@@ -218,10 +223,11 @@ class TestExamples(unittest.TestCase):
 
                         if p in self.range:
                             
-                            # If none of the class found for current ObjectProperty value is part of the range
-                            # throw an error
+                            # If none of the class found for current ObjectProperty value 
+                            # is part of the range throw  an error
                             if not found_range.intersection(self.range[p]):
-                                key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for '+example_graph.qname(p)
+                                key = ', '.join(map(example_graph.qname, sorted(found_range)))+' for ' \
+                                                + example_graph.qname(p)
                                 if not key in my_range_exception:
                                     my_range_exception[key] = set([example_name])
                                 else:
