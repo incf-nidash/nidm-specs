@@ -84,15 +84,6 @@ document
     wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
     wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
   
-    entity(niiri:contrast_variance_map_id,
-        [prov:type = 'fsl:VarCope',
-        prov:location = "file:///path/to/VarCope.nii.gz" %% xsd:anyURI,
-        prov:label = "Contrast Variance Map" %% xsd:string,
-        nidm:originalFileName = "varcope1.nii" %% xsd:string,
-        nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
-        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    wasDerivedFrom(niiri:contrast_standard_error_map_id, niiri:contrast_variance_map_id)
-
     entity(niiri:contrast_standard_error_map_id,
         [prov:type = 'nidm:ContrastStandardErrorMap',
         prov:location = "file:///path/to/ContrastStandardError.nii.gz" %% xsd:anyURI,
@@ -160,7 +151,7 @@ document
     used(niiri:contrast_estimation_id, niiri:residual_mean_squares_map_id,-)
     used(niiri:contrast_estimation_id, niiri:design_matrix_id,-)
     wasGeneratedBy(niiri:contrast_map_id, niiri:contrast_estimation_id,-)
-    wasGeneratedBy(niiri:contrast_variance_map_id, niiri:contrast_estimation_id,-)  
+    wasGeneratedBy(niiri:contrast_standard_error_map_id, niiri:contrast_estimation_id,-)  
     wasGeneratedBy(niiri:statistic_map_id, niiri:contrast_estimation_id,-)
     wasGeneratedBy(niiri:z_statistic_map_id, niiri:contrast_estimation_id,-)
 
