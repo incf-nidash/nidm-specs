@@ -14,6 +14,7 @@ SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
 FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
+DCT = Namespace('http://purl.org/dc/terms/')
 # This is a workaround to avoid issue with "#" in base prefix as 
 # described in https://github.com/RDFLib/rdflib/issues/379,
 # When the fix is introduced in rdflib this line will be replaced by:
@@ -27,7 +28,8 @@ common_attributes = set([
                         PROV['value'], PROV['atTime'], PROV['used'], PROV['wasAssociatedWith'],
                         PROV['qualifiedGeneration'], PROV['wasGeneratedBy'], PROV['atLocation'], 
                         PROV['wasDerivedFrom'], 
-                        CRYPTO['sha512']])  
+                        CRYPTO['sha512'],
+                        DCT['format']])  
 
 def get_sub_class_names(my_graph):
     sub_types = set()
