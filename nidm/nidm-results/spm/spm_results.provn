@@ -38,11 +38,15 @@ document
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Statistic Map: listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
-      nidm:originalFileName = "spmT_0001" %% xsd:string,
       nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
       nidm:effectDegreesOfFreedom = "1" %% xsd:float,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_1,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "spmT_0001.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:statistic_map_id, niiri:map_id_1)
     entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
       prov:location = "file:///path/to/Contrast.img" %% xsd:anyURI,
@@ -50,7 +54,6 @@ document
       dct:format = 'nidm:Nifti1PairImage',
       prov:label = "Contrast Map: listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
-      nidm:originalFileName = "con_0001" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     entity(niiri:contrast_map_header_id,
@@ -59,14 +62,24 @@ document
         prov:location = "file:///path/to/Contrast.hdr" %% xsd:anyURI,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])      
+    entity(niiri:map_id_2,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "con_0001.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:contrast_map_id, niiri:map_id_2)
+
     entity(niiri:mask_id_2,
       [prov:type = 'nidm:MaskMap',
       prov:location = "file:///path/to/Mask.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Mask" %% xsd:string,
-      nidm:originalFileName = "mask" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_3,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "mask.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:mask_id_2, niiri:map_id_3)
     wasGeneratedBy(niiri:mask_id_2, niiri:model_pe_id,-)
     entity(niiri:beta_map_id_1,
       [prov:type = 'nidm:ParameterEstimateMap',
@@ -75,6 +88,11 @@ document
       dct:format = 'nidm:Nifti1Gzip',
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_4,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "beta_0001.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:beta_map_id_1, niiri:map_id_4)
     wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
     entity(niiri:beta_map_id_2,
@@ -82,9 +100,13 @@ document
       prov:location = "file:///path/to/ParameterEstimate_0002.nii" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1',
       prov:label = "Beta Map 2" %% xsd:string,
-      nidm:originalFileName = "beta_0002" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_5,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "beta_0002.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:beta_map_id_2, niiri:map_id_5)
     wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
 
@@ -100,7 +122,6 @@ document
       prov:location = "file:///path/to/ResidualMeanSquares.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Residual Mean Squares Map" %% xsd:string,
-      nidm:originalFileName = "ResMS" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     entity(niiri:grand_mean_map_id,
@@ -116,9 +137,13 @@ document
       prov:location = "file:///path/to/ReselsPerVoxel.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Resels per Voxel Map" %% xsd:string,
-      nidm:originalFileName = "RPV" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_6,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "RPV.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:map_id_6)
     used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
@@ -137,6 +162,11 @@ document
       prov:label = "Custom mask" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_7,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "user_custom_mask.img" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:mask_id_1, niiri:map_id_7)
     used(niiri:model_pe_id, niiri:mask_id_1,-)
     entity(niiri:contrast_id,
       [prov:type = 'nidm:ContrastWeights',
