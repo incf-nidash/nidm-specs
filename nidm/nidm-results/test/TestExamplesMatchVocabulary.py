@@ -14,6 +14,7 @@ from rdflib.graph import Graph
 from TestCommons import *
 from CheckConsistency import *
 
+RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestExamples(unittest.TestCase):
 
