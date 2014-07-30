@@ -19,6 +19,7 @@ CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashF
 # When the fix is introduced in rdflib this line will be replaced by:
 # OWL = Namespace('http://www.w3.org/2002/07/owl#')
 OWL = Namespace('http://www.w3.org/2002/07/owl')
+XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
 common_attributes = set([   
                         RDFS['label'], 
@@ -177,17 +178,24 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
             elif isinstance(o, term.Literal):
                 found_range = set([o.datatype])
 
+            # print XSD['positiveInteger']
+            # print type(XSD['positiveInteger'])
             correct_range = False
             if p in owl_ranges:
                 # If none of the class found for current ObjectProperty value is part of the range
                 # throw an error
                 if found_range.intersection(owl_ranges[p]):
                     correct_range = True
-                # elif owl_ranges[p] == XSD['PositiveInteger']:
+                # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                # in owl_ranges[p]
+                elif XSD['positiveInteger'] == next(iter(owl_ranges[p])):
+                    if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                        correct_range = True
                 else:
                     key = "\n Unrecognised range: "+\
                         ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                        ' for '+example_graph.qname(p)+' should be '+', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+                        ' for '+example_graph.qname(p)+' should be '+\
+                        ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
             else:
                 key = "\n Missing range: "+' for '+example_graph.qname(p)
                 
