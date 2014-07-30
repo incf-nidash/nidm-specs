@@ -72,7 +72,7 @@ def get_attributes_from_owl(my_owl_graph):
                         attributes[child_class].add(data_property)
                     else:
                         attributes[child_class] = set([data_property])
-            if o == OWL['ObjectProperty']:
+                # Find range
                 for range_name in my_owl_graph.objects(data_property, RDFS['range']):
                     if data_property in ranges:
                         ranges[data_property].add(range_name)
@@ -167,31 +167,34 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                 else:
                     my_exception[key].add(example_name)
 
-            # *** Check range for ObjectProperties
+            # *** Check range for ObjectProperties and DataProperties
             if isinstance(o, term.URIRef):
                 # An ObjectProperty can point to an instance, then we look for its type:
                 found_range = set(example_graph.objects(o, RDF['type']))
                 # An ObjectProperty can point to a term
                 if not found_range:
                     found_range = set([o])
+            elif isinstance(o, term.Literal):
+                found_range = set([o.datatype])
 
-                correct_range = False
-                if p in owl_ranges:
-                    # If none of the class found for current ObjectProperty value is part of the range
-                    # throw an error
-                    if found_range.intersection(owl_ranges[p]):
-                        correct_range = True
-                    else:
-                        key = "\n Unrecognised range: "+\
-                            ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                            ' for '+example_graph.qname(p)
+            correct_range = False
+            if p in owl_ranges:
+                # If none of the class found for current ObjectProperty value is part of the range
+                # throw an error
+                if found_range.intersection(owl_ranges[p]):
+                    correct_range = True
                 else:
-                    key = "\n Missing range: "+' for '+example_graph.qname(p)
-                    
-                if not correct_range:
-                    if not key in my_range_exception:
-                        my_range_exception[key] = set([example_name])
-                    else:
-                        my_range_exception[key].add(example_name)
+                    key = "\n Unrecognised range: "+\
+                        ', '.join(map(example_graph.qname, sorted(found_range)))+\
+                        ' for '+example_graph.qname(p)
+            else:
+                key = "\n Missing range: "+' for '+example_graph.qname(p)
+                
+            if not correct_range:
+                if not key in my_range_exception:
+                    my_range_exception[key] = set([example_name])
+                else:
+                    my_range_exception[key].add(example_name)
+
 
     return list((my_exception, my_range_exception))
