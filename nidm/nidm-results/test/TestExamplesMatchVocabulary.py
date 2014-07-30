@@ -41,6 +41,7 @@ class TestExamples(unittest.TestCase):
         attributes_ranges = get_attributes_from_owl(self.owl)
         self.attributes = attributes_ranges[0]
         self.ranges = attributes_ranges[1]      
+        self.type_restrictions = attributes_ranges[2]      
 
         self.examples = dict()
         for example_file in example_filenames:
@@ -69,22 +70,24 @@ class TestExamples(unittest.TestCase):
     def test_check_attributes(self):
         my_exception = dict()
         my_range_exception = dict()
+        my_restriction_exception = dict()
         for example_name, example_graph in self.examples.items():
             exception_msg = check_attributes(example_graph, example_name, 
-                self.attributes, self.ranges)
+                self.attributes, self.ranges, self.type_restrictions)
             
             my_exception = merge_exception_dict(my_exception, exception_msg[0])
             my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
-
+            my_restriction_exception = merge_exception_dict(my_restriction_exception, exception_msg[2])
 
         # Aggregate errors over examples for conciseness
         error_msg = ""
-        if my_exception:
-            for unrecognised_attribute, example_names in my_exception.items():
-                error_msg += unrecognised_attribute+" (from "+', '.join(example_names)+")"
-        if my_range_exception:
-            for unrecognised_range, example_names in my_range_exception.items():
-                error_msg += unrecognised_range+" (from "+', '.join(example_names)+")"
+        for found_exception in list([my_exception, my_range_exception, my_restriction_exception]):
+            if found_exception:
+                for unrecognised_attribute, example_names in found_exception.items():
+                    error_msg += unrecognised_attribute+" (from "+', '.join(example_names)+")"
+        # if my_range_exception:
+        #     for unrecognised_range, example_names in my_range_exception.items():
+        #         error_msg += unrecognised_range+" (from "+', '.join(example_names)+")"
         if error_msg:
             raise Exception(error_msg)
 
