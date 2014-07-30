@@ -45,6 +45,7 @@ def get_turtle(provn_file):
         ttl_file_url = extracted_data.group('ttl_file');
     else:
         # Open corresponding provn file
+        logger.info(' Converting '+provn_file)
         provn_file = open(provn_file, 'r')
         ex_provn = provn_file.read()
 
