@@ -73,19 +73,19 @@ def get_attributes_from_owl(my_owl_graph):
                         attributes[child_class].add(data_property)
                     else:
                         attributes[child_class] = set([data_property])
-                # Find range
-                for range_name in my_owl_graph.objects(data_property, RDFS['range']):
+            # Find range
+            for range_name in my_owl_graph.objects(data_property, RDFS['range']):
+                if data_property in ranges:
+                    ranges[data_property].add(range_name)
+                else:
+                    ranges[data_property] = set([range_name])
+                # Add child_class to range
+                for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
+                    # Add attribute to current class
                     if data_property in ranges:
-                        ranges[data_property].add(range_name)
+                        ranges[data_property].add(child_class)
                     else:
-                        ranges[data_property] = set([range_name])
-                    # Add child_class to range
-                    for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
-                        # Add attribute to current class
-                        if data_property in ranges:
-                            ranges[data_property].add(child_class)
-                        else:
-                            ranges[data_property] = set([child_class])
+                        ranges[data_property] = set([child_class])
 
     return list((attributes, ranges))
 
@@ -177,6 +177,8 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                     found_range = set([o])
             elif isinstance(o, term.Literal):
                 found_range = set([o.datatype])
+            # print example_graph.qname(p)
+            # print owl_ranges[term.URIRef(u'http://www.incf.org/ns/nidash/nidm#pValueFWER')]
 
             # print XSD['positiveInteger']
             # print type(XSD['positiveInteger'])
