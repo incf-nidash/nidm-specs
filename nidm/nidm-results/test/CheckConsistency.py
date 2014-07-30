@@ -188,8 +188,8 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                     correct_range = True
                 # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
                 # in owl_ranges[p]
-                elif XSD['positiveInteger'] == next(iter(owl_ranges[p])):
-                    if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                elif (XSD['positiveInteger'] == next(iter(owl_ranges[p]))) &\
+                     (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
                         correct_range = True
                 else:
                     key = "\n Unrecognised range: "+\
