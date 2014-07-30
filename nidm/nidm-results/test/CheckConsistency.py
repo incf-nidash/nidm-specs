@@ -183,10 +183,11 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                 # throw an error
                 if found_range.intersection(owl_ranges[p]):
                     correct_range = True
+                # elif owl_ranges[p] == XSD['PositiveInteger']:
                 else:
                     key = "\n Unrecognised range: "+\
                         ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                        ' for '+example_graph.qname(p)
+                        ' for '+example_graph.qname(p)+' should be '+', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
             else:
                 key = "\n Missing range: "+' for '+example_graph.qname(p)
                 
