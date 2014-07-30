@@ -433,16 +433,18 @@ NIDM Concept ID: nidm_27. new parent: Peak. """ ;
 
 nidm:errorDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                            
-                           iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: nidm_28. """ ;
-                           
                            iao:IAO_0000112 "72.999999" ;
                            
                            prov:definition "Degrees of freedom of the error." ;
                            
                            rdfs:domain nidm:StatisticMap ;
                            
-                           rdfs:range xsd:float .
+                           rdfs:range [ rdf:type rdfs:Datatype ;
+                                        owl:onDatatype xsd:float ;
+                                        owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                               ]
+                                                             )
+                                      ] .
 
 
 
@@ -874,9 +876,6 @@ NIDM Concept ID: nidm_69. """ ;
 
 spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_70. """ ;
-                        
                         iao:IAO_0000112 "13" ;
                         
                         prov:definition "Number of resels that make up a cluster." ;
@@ -884,7 +883,12 @@ NIDM Concept ID: spm_70. """ ;
                         rdfs:domain nidm:Cluster ,
                                     nidm:ExtentThreshold ;
                         
-                        rdfs:range xsd:float .
+                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                     owl:onDatatype xsd:float ;
+                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                            ]
+                                                          )
+                                   ] .
 
 
 
@@ -894,14 +898,16 @@ spm:expectedNumberOfClusters rdf:type owl:DatatypeProperty ;
                              
                              iao:IAO_0000112 "9.51" ;
                              
-                             iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_71. """ ;
-                             
                              prov:definition "Expected number of clusters in an excursion set." ;
                              
                              rdfs:domain spm:StatisticImageProperties ;
                              
-                             rdfs:range xsd:float .
+                             rdfs:range [ rdf:type rdfs:Datatype ;
+                                          owl:onDatatype xsd:float ;
+                                          owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                                 ]
+                                                               )
+                                        ] .
 
 
 
@@ -918,7 +924,12 @@ NIDM Concept ID: spm_72. """ ;
                                        
                                        rdfs:domain spm:StatisticImageProperties ;
                                        
-                                       rdfs:range xsd:float .
+                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:float ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                                           ]
+                                                                         )
+                                                  ] .
 
 
 
@@ -935,7 +946,12 @@ NIDM Concept ID: spm_73. """ ;
                                      
                                      rdfs:domain spm:StatisticImageProperties ;
                                      
-                                     rdfs:range xsd:float .
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
 
 
 
@@ -1051,16 +1067,18 @@ NIDM Concept ID: spm_80. """ ;
 
 spm:reselSize rdf:type owl:DatatypeProperty ;
               
-              iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_82. """ ;
-              
               prov:definition "Size of one resel in voxels or vertices." ;
               
               iao:IAO_0000112 "22.325" ;
               
               rdfs:domain nidm:SearchSpaceMap ;
               
-              rdfs:range xsd:float .
+              rdfs:range [ rdf:type rdfs:Datatype ;
+                           owl:onDatatype xsd:float ;
+                           owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                  ]
+                                                )
+                         ] .
 
 
 
@@ -1070,14 +1088,16 @@ spm:searchVolumeInProductOfUnits rdf:type owl:DatatypeProperty ;
                                  
                                  prov:definition "Total number of product of coordinate units within the search volume." ;
                                  
-                                 iao:IAO_0000116 """Context: volumeInVoxels nidm_0025. Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_84. """ ;
-                                 
                                  iao:IAO_0000112 "1771011" ;
                                  
                                  rdfs:domain nidm:SearchSpaceMap ;
                                  
-                                 rdfs:range xsd:float .
+                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:float ;
+                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                     ]
+                                                                   )
+                                            ] .
 
 
 
@@ -1091,12 +1111,14 @@ spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
                          
                          rdfs:seeAlso "Synonyms of nidm:volumeInResels" ;
                          
-                         iao:IAO_0000116 """Context: volumeInVoxels nidm_0025. Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_85. """ ;
-                         
                          rdfs:domain nidm:SearchSpaceMap ;
                          
-                         rdfs:range xsd:float .
+                         rdfs:range [ rdf:type rdfs:Datatype ;
+                                      owl:onDatatype xsd:float ;
+                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                             ]
+                                                           )
+                                    ] .
 
 
 
@@ -1108,12 +1130,14 @@ spm:searchVolumeInVertices rdf:type owl:DatatypeProperty ;
                            
                            prov:definition "Total number of vertices within the search volume." ;
                            
-                           iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
-NIDM Concept ID: spm_86. """ ;
-                           
                            rdfs:domain nidm:SearchSpaceMap ;
                            
-                           rdfs:range xsd:float .
+                           rdfs:range [ rdf:type rdfs:Datatype ;
+                                        owl:onDatatype xsd:float ;
+                                        owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                               ]
+                                                             )
+                                      ] .
 
 
 
