@@ -53,16 +53,6 @@ prov:definition rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-###  http://www.incf.org/ns/nidash/nidm#alternativeHypothesis
-
-nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
-                           
-                           prov:definition "FIXME" ;
-                           
-                           rdfs:domain nidm:Inference .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#atCoordinateSpace
 
 nidm:atCoordinateSpace rdf:type owl:ObjectProperty ;
@@ -78,30 +68,59 @@ NIDM Concept ID: nidm_2. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasAlternativeHypothesis
+
+nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
+                              
+                              prov:definition "FIXME" ;
+                              
+                              rdfs:domain nidm:Inference ;
+                              
+                              rdfs:range nidm:OneTailedTest ,
+                                         nidm:TwoTailedTest .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#inWorldCoordinateSystem
+
+nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
+                             
+                             prov:definition "Type of coordinate system." ;
+                             
+                             iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_22. """ ;
+                             
+                             iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                             
+                             rdfs:domain nidm:CoordinateSpace ;
+                             
+                             rdfs:range nidm:WorldCoordinateSystem .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#objectModel
 
 nidm:objectModel rdf:type owl:ObjectProperty ;
                  
                  prov:definition "FIXME" ;
                  
+                 rdfs:range nidm:NIDMObjectModel ;
+                 
                  rdfs:domain prov:Bundle .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#worldCoordinateSystem
+###  http://www.incf.org/ns/nidash/nidm#statisticType
 
-nidm:worldCoordinateSystem rdf:type owl:ObjectProperty ;
-                           
-                           iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
-                           
-                           iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_22. """ ;
-                           
-                           prov:definition "Type of coordinate system." ;
-                           
-                           rdfs:domain nidm:CoordinateSpace ;
-                           
-                           rdfs:range nidm:WorldCoordinateSystem .
+nidm:statisticType rdf:type owl:ObjectProperty ;
+                   
+                   prov:definition "FIXME" ;
+                   
+                   rdfs:domain nidm:ContrastWeights ;
+                   
+                   rdfs:range nidm:Statistic ;
+                   
+                   rdfs:domain nidm:StatisticMap .
 
 
 
@@ -451,6 +470,19 @@ NIDM Concept ID: nidm_96. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#inWorldCoordinateSystem
+
+nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
+                             
+                             prov:definition "Type of coordinate system." ;
+                             
+                             iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_22. """ ;
+                             
+                             iao:IAO_0000112 "nidm:MNICoordinateSystem" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#maskedMedian
 
 nidm:maskedMedian rdf:type owl:DatatypeProperty ;
@@ -676,17 +708,6 @@ NIDM Concept ID: nidm_58. """ .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#statisticType
-
-nidm:statisticType rdf:type owl:DatatypeProperty ;
-                   
-                   prov:definition "FIXME" ;
-                   
-                   rdfs:domain nidm:ContrastWeights ,
-                               nidm:StatisticMap .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#targetIntensity
 
 nidm:targetIntensity rdf:type owl:DatatypeProperty ;
@@ -804,19 +825,6 @@ nidm:voxelUnits rdf:type owl:DatatypeProperty ;
 NIDM Concept ID: nidm_69. """ ;
                 
                 rdfs:domain nidm:CoordinateSpace .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#worldCoordinateSystem
-
-nidm:worldCoordinateSystem rdf:type owl:DatatypeProperty ;
-                           
-                           iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
-                           
-                           iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_22. """ ;
-                           
-                           prov:definition "Type of coordinate system." .
 
 
 
@@ -1532,6 +1540,26 @@ NIDM Concept ID: nidm_57. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#FSLResults
+
+nidm:FSLResults rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:NIDMObjectModel ;
+                
+                prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#FStatistic
+
+nidm:FStatistic rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:Statistic ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#GrandMeanMap
 
 nidm:GrandMeanMap rdf:type owl:Class ;
@@ -1704,6 +1732,28 @@ NIDM Concept ID: nidm_41. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#NIDMObjectModel
+
+nidm:NIDMObjectModel rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Entity ;
+                     
+                     prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#OneTailedTest
+
+nidm:OneTailedTest rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf prov:Entity ;
+                   
+                   owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
+                   
+                   prov:definition "Re-use \"one tailed test\" from STATO." .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ParameterEstimateMap
 
 nidm:ParameterEstimateMap rdf:type owl:Class ;
@@ -1788,6 +1838,16 @@ NIDM Concept ID: nidm_56. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#SPMResults
+
+nidm:SPMResults rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:NIDMObjectModel ;
+                
+                prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#SearchSpaceMap
 
 nidm:SearchSpaceMap rdf:type owl:Class ;
@@ -1814,6 +1874,16 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
 NIDM Concept ID: nidm_100. """ ;
                     
                     prov:definition "mask in which the inference was performed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#Statistic
+
+nidm:Statistic rdf:type owl:Class ;
+               
+               rdfs:subClassOf prov:Entity ;
+               
+               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000039"^^xsd:anyURI .
 
 
 
@@ -1863,6 +1933,28 @@ NIDM Concept ID: nidm_101. """ .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#TStatistic
+
+nidm:TStatistic rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:Statistic ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000176"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#TwoTailedTest
+
+nidm:TwoTailedTest rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf prov:Entity ;
+                   
+                   prov:definition "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
+                   
+                   owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#WorldCoordinateSystem
 
 nidm:WorldCoordinateSystem rdf:type owl:Class ;
@@ -1870,6 +1962,16 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            rdfs:subClassOf prov:Entity ;
                            
                            prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ZStatistic
+
+nidm:ZStatistic rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:Statistic ;
+                
+                prov:definition "FIXME" .
 
 
 
