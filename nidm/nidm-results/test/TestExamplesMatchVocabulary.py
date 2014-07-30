@@ -57,7 +57,7 @@ class TestExamples(unittest.TestCase):
         for example_name, example_graph in self.examples.items():
             # Check that all entity, activity, agent are defined in the data model
             exception_msg = check_class_names(example_graph, example_name, class_names=self.sub_types)
-            my_exception = dict(my_exception.items() + exception_msg.items())
+            my_exception = merge_exception_dict(my_exception, exception_msg)
 
         # Aggredate errors over examples for conciseness
         if my_exception:
@@ -72,10 +72,12 @@ class TestExamples(unittest.TestCase):
         for example_name, example_graph in self.examples.items():
             exception_msg = check_attributes(example_graph, example_name, 
                 self.attributes, self.ranges)
-            my_exception = dict(my_exception.items() + exception_msg[0].items())
-            my_range_exception = dict(my_range_exception.items() + exception_msg[1].items())
+            
+            my_exception = merge_exception_dict(my_exception, exception_msg[0])
+            my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
 
-        # Aggredate errors over examples for conciseness
+
+        # Aggregate errors over examples for conciseness
         error_msg = ""
         if my_exception:
             for unrecognised_attribute, example_names in my_exception.items():
@@ -85,7 +87,6 @@ class TestExamples(unittest.TestCase):
                 error_msg += unrecognised_range+" (from "+', '.join(example_names)+")"
         if error_msg:
             raise Exception(error_msg)
-
 
 if __name__ == '__main__':
     unittest.main()
