@@ -45,27 +45,36 @@ document
     entity(niiri:map_id_1,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "spmT_0001.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:statistic_original_map_header_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:statistic_original_map_header_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "spmT_0001.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])      
     wasDerivedFrom(niiri:statistic_map_id, niiri:map_id_1)
     entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
-      prov:location = "file:///path/to/Contrast.img" %% xsd:anyURI,
-      nidm:hasMapHeader = 'niiri:contrast_map_header_id',
-      dct:format = 'nidm:Nifti1PairImage',
+      prov:location = "file:///path/to/Contrast.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gz',
       prov:label = "Contrast Map: listening > rest" %% xsd:string,
       nidm:contrastName = "listening > rest" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:contrast_map_header_id,
-      [ dct:format = 'nidm:Nifti1PairHeader',
-        prov:type = 'nidm:MapHeader',
-        prov:location = "file:///path/to/Contrast.hdr" %% xsd:anyURI,
-        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
-      ])      
     entity(niiri:map_id_2,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "con_0001.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_contrast_map_header_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:original_contrast_map_header_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "con_0001.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])
     wasDerivedFrom(niiri:contrast_map_id, niiri:map_id_2)
 
     entity(niiri:mask_id_2,
@@ -78,7 +87,16 @@ document
     entity(niiri:map_id_3,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "mask.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_mask_map_header_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+
+    entity(niiri:original_mask_map_header_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "mask.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])
     wasDerivedFrom(niiri:mask_id_2, niiri:map_id_3)
     wasGeneratedBy(niiri:mask_id_2, niiri:model_pe_id,-)
     entity(niiri:beta_map_id_1,
@@ -91,7 +109,15 @@ document
     entity(niiri:map_id_4,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "beta_0001.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_pe_map_header_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:original_pe_map_header_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "beta_0001.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])
     wasDerivedFrom(niiri:beta_map_id_1, niiri:map_id_4)
     wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
@@ -105,7 +131,15 @@ document
     entity(niiri:map_id_5,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "beta_0002.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_pe_map_header_2_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:original_pe_map_header_2_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "beta_0002.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])
     wasDerivedFrom(niiri:beta_map_id_2, niiri:map_id_5)
     wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
@@ -142,7 +176,15 @@ document
     entity(niiri:map_id_6,
       [prov:type = 'nidm:Map',
       nidm:originalFileName = "RPV.img" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_rpv_map_header_id',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:original_rpv_map_header_id,
+      [ dct:format = 'nidm:Nifti1PairHeader',
+        prov:type = 'nidm:MapHeader',
+        nidm:originalFileName = "RPV.hdr" %% xsd:string,
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
+      ])
     wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:map_id_6)
     used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
     entity(niiri:design_matrix_id,
@@ -164,7 +206,8 @@ document
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     entity(niiri:map_id_7,
       [prov:type = 'nidm:Map',
-      nidm:originalFileName = "user_custom_mask.img" %% xsd:string,
+      nidm:originalFileName = "user_custom_mask.nii" %% xsd:string,
+      dct:format = 'nidm:Nifti1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     wasDerivedFrom(niiri:mask_id_1, niiri:map_id_7)
     used(niiri:model_pe_id, niiri:mask_id_1,-)
