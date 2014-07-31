@@ -22,14 +22,14 @@ DCT = Namespace('http://purl.org/dc/terms/')
 OWL = Namespace('http://www.w3.org/2002/07/owl')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
-common_attributes = set([   
+ignored_attributes = set([   
                         RDFS['label'], 
                         RDF['type'],
                         PROV['value'], PROV['atTime'], PROV['used'], PROV['wasAssociatedWith'],
                         PROV['qualifiedGeneration'], PROV['wasGeneratedBy'], PROV['atLocation'], 
                         PROV['wasDerivedFrom'], 
-                        CRYPTO['sha512'],
-                        DCT['format']])  
+                        CRYPTO['sha512']
+                        ])  
 
 def get_sub_class_names(my_graph):
     sub_types = set()
@@ -168,7 +168,7 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
     for s,p,o in example_graph.triples((None, None, None)):
         # To be a DataTypeProperty then o must be a literal
         # if isinstance(o, rdflib.term.Literal):
-        if p not in common_attributes:
+        if p not in ignored_attributes:
             # *** Check domain
             # Get all defined types of current object
             found_attributes = False
@@ -195,65 +195,66 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                 else:
                     my_exception[key].add(example_name)
 
-        # *** Check range for ObjectProperties and DataProperties
-        if isinstance(o, term.URIRef):
-            # An ObjectProperty can point to an instance, then we look for its type:
-            found_range = set(example_graph.objects(o, RDF['type']))
-            # An ObjectProperty can point to a term
-            if not found_range:
-                found_range = set([o])
-        elif isinstance(o, term.Literal):
-            found_range = set([o.datatype])
 
-            correct_range = False
-            if p in owl_ranges:
-                # If none of the class found for current ObjectProperty value is part of the range
-                # throw an error
-                if found_range.intersection(owl_ranges[p]):
-                    correct_range = True
-                else:
-                    for owl_range in owl_ranges[p]:
-                        # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
-                        # in owl_ranges[p]
-                        if (XSD['positiveInteger'] == owl_range) &\
-                             (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
-                                correct_range = True
-                if not correct_range:
-                    key = "\n Unrecognised range: "+\
-                        ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                        ' for '+example_graph.qname(p)+' should be '+\
-                        ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
-            else:
-                key = "\n Missing range: "+' for '+example_graph.qname(p)
+            # *** Check range for ObjectProperties and DataProperties
+            if isinstance(o, term.URIRef):
+                # An ObjectProperty can point to an instance, then we look for its type:
+                found_range = set(example_graph.objects(o, RDF['type']))
+                # An ObjectProperty can point to a term
+                if not found_range:
+                    found_range = set([o])
+            elif isinstance(o, term.Literal):
+                found_range = set([o.datatype])
 
-            if not correct_range:
-                if not key in my_range_exception:
-                    my_range_exception[key] = set([example_name])
-                else:
-                    my_range_exception[key].add(example_name)
-
-            if p in owl_restrictions:
-                restrictions_ok = True
-                if 'minInclusive' in owl_restrictions[p]:
-                    if o.value < owl_restrictions[p]['minInclusive'].value:
-                        restrictions_ok = False
-                if 'minExclusive' in owl_restrictions[p]:
-                    if o.value <= owl_restrictions[p]['minExclusive'].value:
-                        restrictions_ok = False
-                if 'maxInclusive' in owl_restrictions[p]:
-                    if o.value > owl_restrictions[p]['maxInclusive'].value:
-                        restrictions_ok = False
-                if 'maxExclusive' in owl_restrictions[p]:
-                    if o.value >= owl_restrictions[p]['maxExclusive'].value:
-                        restrictions_ok = False
-                if not restrictions_ok:
-                    key = "\n Contraints: value "+str(o.value)+\
-                        ' for '+example_graph.qname(p)+' does not observe contraints '+\
-                        ', '.join(sorted(owl_restrictions[p]))
-                    if not key in my_restriction_exception:
-                        my_restriction_exception[key] = set([example_name])
+                correct_range = False
+                if p in owl_ranges:
+                    # If none of the class found for current ObjectProperty value is part of the range
+                    # throw an error
+                    if found_range.intersection(owl_ranges[p]):
+                        correct_range = True
                     else:
-                        my_restriction_exception[key].add(example_name)
+                        for owl_range in owl_ranges[p]:
+                            # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                            # in owl_ranges[p]
+                            if (XSD['positiveInteger'] == owl_range) &\
+                                 (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                                    correct_range = True
+                    if not correct_range:
+                        key = "\n Unrecognised range: "+\
+                            ', '.join(map(example_graph.qname, sorted(found_range)))+\
+                            ' for '+example_graph.qname(p)+' should be '+\
+                            ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+                else:
+                    key = "\n Missing range: "+' for '+example_graph.qname(p)
+
+                if not correct_range:
+                    if not key in my_range_exception:
+                        my_range_exception[key] = set([example_name])
+                    else:
+                        my_range_exception[key].add(example_name)
+
+                if p in owl_restrictions:
+                    restrictions_ok = True
+                    if 'minInclusive' in owl_restrictions[p]:
+                        if o.value < owl_restrictions[p]['minInclusive'].value:
+                            restrictions_ok = False
+                    if 'minExclusive' in owl_restrictions[p]:
+                        if o.value <= owl_restrictions[p]['minExclusive'].value:
+                            restrictions_ok = False
+                    if 'maxInclusive' in owl_restrictions[p]:
+                        if o.value > owl_restrictions[p]['maxInclusive'].value:
+                            restrictions_ok = False
+                    if 'maxExclusive' in owl_restrictions[p]:
+                        if o.value >= owl_restrictions[p]['maxExclusive'].value:
+                            restrictions_ok = False
+                    if not restrictions_ok:
+                        key = "\n Contraints: value "+str(o.value)+\
+                            ' for '+example_graph.qname(p)+' does not observe contraints '+\
+                            ', '.join(sorted(owl_restrictions[p]))
+                        if not key in my_restriction_exception:
+                            my_restriction_exception[key] = set([example_name])
+                        else:
+                            my_restriction_exception[key].add(example_name)
 
     return list((my_exception, my_range_exception, my_restriction_exception))
 
