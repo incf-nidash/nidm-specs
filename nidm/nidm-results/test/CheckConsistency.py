@@ -195,15 +195,15 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                 else:
                     my_exception[key].add(example_name)
 
-            # *** Check range for ObjectProperties and DataProperties
-            if isinstance(o, term.URIRef):
-                # An ObjectProperty can point to an instance, then we look for its type:
-                found_range = set(example_graph.objects(o, RDF['type']))
-                # An ObjectProperty can point to a term
-                if not found_range:
-                    found_range = set([o])
-            elif isinstance(o, term.Literal):
-                found_range = set([o.datatype])
+        # *** Check range for ObjectProperties and DataProperties
+        if isinstance(o, term.URIRef):
+            # An ObjectProperty can point to an instance, then we look for its type:
+            found_range = set(example_graph.objects(o, RDF['type']))
+            # An ObjectProperty can point to a term
+            if not found_range:
+                found_range = set([o])
+        elif isinstance(o, term.Literal):
+            found_range = set([o.datatype])
 
             correct_range = False
             if p in owl_ranges:
