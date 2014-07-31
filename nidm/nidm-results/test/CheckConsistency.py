@@ -70,6 +70,7 @@ def get_attributes_from_owl(my_owl_graph):
                     attributes[class_name].add(data_property)
                 else:
                     attributes[class_name] = set([data_property])
+                
                 # Add attribute to children of current class
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], class_name):
                     # Add attribute to current class
@@ -77,7 +78,8 @@ def get_attributes_from_owl(my_owl_graph):
                         attributes[child_class].add(data_property)
                     else:
                         attributes[child_class] = set([data_property])
-            
+                    class_name = child_class
+                    
             for range_name in my_owl_graph.objects(data_property, RDFS['range']):
                 # More complex type including restrictions
                 if isinstance(range_name, term.BNode):
@@ -101,6 +103,7 @@ def get_attributes_from_owl(my_owl_graph):
                     ranges[data_property].add(range_name)
                 else:
                     ranges[data_property] = set([range_name])
+                # FIXME: more elegant?
                 # Add child_class to range (for ObjectProperty)
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                     # Add range to current class
@@ -108,6 +111,29 @@ def get_attributes_from_owl(my_owl_graph):
                         ranges[data_property].add(child_class)
                     else:
                         ranges[data_property] = set([child_class])
+                    range_name = child_class
+                    for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
+                        # Add attribute to current class
+                        if data_property in ranges:
+                            ranges[data_property].add(child_class)
+                        else:
+                            ranges[data_property] = set([child_class])
+                        range_name = child_class
+                        for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
+                            # Add attribute to current class
+                            if data_property in ranges:
+                                ranges[data_property].add(child_class)
+                            else:
+                                ranges[data_property] = set([child_class])
+                            range_name = child_class
+                            for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
+                                # Add attribute to current class
+                                if data_property in ranges:
+                                    ranges[data_property].add(child_class)
+                                else:
+                                    ranges[data_property] = set([child_class])
+                                range_name = child_class
+            
                 
 
     return list((attributes, ranges, restrictions))
@@ -225,7 +251,14 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                             ' for '+example_graph.qname(p)+' should be '+\
                             ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
                 else:
-                    key = "\n Missing range: "+' for '+example_graph.qname(p)
+                    for owl_range in owl_ranges[p]:
+                        # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                        # in owl_ranges[p]
+                        if (XSD['positiveInteger'] == owl_range):
+                            if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                                correct_range = True
+                            else:
+                                correct_range = False
 
                 if not correct_range:
                     if not key in my_range_exception:
