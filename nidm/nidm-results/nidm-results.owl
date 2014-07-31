@@ -92,23 +92,6 @@ NIDM Concept ID: nidm_2. """ ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#clusterLabelsMap
-
-nidm:clusterLabelsMap rdf:type owl:ObjectProperty ;
-                      
-                      prov:definition "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
-                      
-                      iao:IAO_0000112 "file:///path/to/cluster_labels.img" ;
-                      
-                      iao:IAO_0000116 """Range: Pathtoaniftiimage not found. BIRNLex or 
-NIDM Concept ID: nidm_4. """ ;
-                      
-                      rdfs:domain nidm:ExcursionSet ;
-                      
-                      rdfs:range nidm:Map .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#hasAlternativeHypothesis
 
 nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
@@ -119,6 +102,23 @@ nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
                               
                               rdfs:range nidm:OneTailedTest ,
                                          nidm:TwoTailedTest .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasClusterLabelsMap
+
+nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
+                         
+                         iao:IAO_0000116 """Range: Pathtoaniftiimage not found. BIRNLex or 
+NIDM Concept ID: nidm_4. """ ;
+                         
+                         prov:definition "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
+                         
+                         iao:IAO_0000112 "file:///path/to/cluster_labels.img" ;
+                         
+                         rdfs:range nidm:ClusterLabelsMap ;
+                         
+                         rdfs:domain nidm:ExcursionSet .
 
 
 
@@ -191,24 +191,24 @@ NIDM Concept ID: nidm_66. """ ;
                    rdfs:domain nidm:DesignMatrix ,
                                nidm:ExcursionSet ;
                    
-                   rdfs:range nidm:ImageFile .
+                   rdfs:range nidm:Image .
 
 
 
-###  http://www.incf.org/ns/nidash/spm#maximumIntensityProjection
+###  http://www.incf.org/ns/nidash/spm#hasMaximumIntensityProjection
 
-spm:maximumIntensityProjection rdf:type owl:ObjectProperty ;
-                               
-                               iao:IAO_0000112 "file:///path/to/MIP.png" ;
-                               
-                               prov:definition "Maximum intensity projection of a map." ;
-                               
-                               iao:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
+spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
+                                  
+                                  prov:definition "Maximum intensity projection of a map." ;
+                                  
+                                  iao:IAO_0000112 "file:///path/to/MIP.png" ;
+                                  
+                                  iao:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
 NIDM Concept ID: spm_77. """ ;
-                               
-                               rdfs:domain nidm:ExcursionSet ;
-                               
-                               rdfs:range nidm:ImageFile .
+                                  
+                                  rdfs:domain nidm:ExcursionSet ;
+                                  
+                                  rdfs:range nidm:Image .
 
 
 
@@ -280,6 +280,14 @@ crypto:sha512 rdf:type owl:DatatypeProperty ;
               rdfs:range xsd:string ;
               
               rdfs:domain prov:Entity .
+
+
+
+###  http://purl.org/dc/terms/format
+
+dct:format rdf:type owl:DatatypeProperty ;
+           
+           rdfs:range xsd:string .
 
 
 
@@ -1483,6 +1491,16 @@ NIDM Concept ID: nidm_7. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ClusterLabelsMap
+
+nidm:ClusterLabelsMap rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf nidm:Map ;
+                      
+                      prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ConjunctionInference
 
 nidm:ConjunctionInference rdf:type owl:Class ;
@@ -1815,15 +1833,15 @@ nidm:IcbmMni152NonLinear6thGenerationSpace rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ImageFile
+###  http://www.incf.org/ns/nidash/nidm#Image
 
-nidm:ImageFile rdf:type owl:Class ;
-               
-               rdfs:subClassOf prov:Entity ;
-               
-               rdfs:comment "Class used to represent png, gif..." ;
-               
-               prov:definition "FIXME" .
+nidm:Image rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Entity ;
+           
+           prov:definition "FIXME" ;
+           
+           rdfs:comment "Class used to represent png, gif..." .
 
 
 

@@ -186,10 +186,18 @@ document
         prov:label = "Excursion Set" %% xsd:string,
         nidm:numberOfClusters = "5" %% xsd:int,
         nidm:pValue = "2.83510681597932e-09" %% xsd:float,
-        nidm:clusterLabelsMap = "file://./ClusterLabels.nii.gz" %% xsd:anyURI,
-        spm:maximumIntensityProjection = "file://./MIP.png" %% xsd:anyURI,
+        nidm:clusterLabelsMap = 'niiri:cluster_label_map_id',
+        spm:hasMaximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha512 = "d96b82761c299a66978893cab6034f3f8aed25d0a135636b0ffe79f4cf11becce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652" %% xsd:string])
+    entity(niiri:cluster_label_map_id,
+      [prov:type = 'nidm:ClusterLabelsMap',
+      prov:location = "file:///path/to/ClusterLabels.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gzip'])
+    entity(niiri:maximum_intensity_projection_id,
+      [prov:type = 'nidm:Image',
+      prov:location = "file:///path/to/MaximumIntensityProjection.png" %% xsd:anyURI,
+      dct:format = "image/png"])
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id, -)
     entity(niiri:cluster_0001,
         [prov:type = 'nidm:Cluster',

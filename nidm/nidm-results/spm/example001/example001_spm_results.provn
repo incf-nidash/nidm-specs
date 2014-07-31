@@ -4,6 +4,7 @@ document
   prefix nidm <http://www.incf.org/ns/nidash/nidm#>
   prefix niiri <http://iri.nidash.org/>
   prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
+  prefix dct <http://purl.org/dc/terms/>
 
   entity(niiri:spm_results_id,
     [prov:type = 'prov:Bundle',
@@ -95,9 +96,13 @@ document
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
       prov:location = "file://./DesignMatrix.csv" %% xsd:anyURI,
-      nidm:visualisation = "file://./DesignMatrix.png" %% xsd:anyURI,
+      nidm:visualisation = 'niiri:design_matrix_png_id',
       prov:label = "Design Matrix" %% xsd:string,
       nidm:originalFileName = "designMatrix.csv" %% xsd:string])
+    entity(niiri:design_matrix_png_id,
+      [prov:type = 'nidm:Image',
+      prov:location = "file:///path/to/DesignMatrix.png" %% xsd:anyURI,
+      dct:format = "image/png"])
 
     entity(niiri:contrast_id,
       [prov:type = 'nidm:ContrastWeights',
@@ -181,14 +186,22 @@ document
       prov:location = "file://./ExcursionSet.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Excursion Set" %% xsd:string,
-      nidm:clusterLabelsMap = "file://./ClusterLabels.nii.gz" %% xsd:anyURI,
-      spm:maximumIntensityProjection = "file://./MaximumIntensityProjection.png" %% xsd:anyURI,
+      nidm:hasClusterLabelsMap = 'niiri:cluster_label_map_id',
+      spm:hasMaximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
       nidm:originalFileName = "thresh_spmT.nii.gz" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "d96b82761c299a66978893cab6034f3f8aed25d0a135636b0ffe79f4cf11becce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652" %% xsd:string,
       nidm:numberOfClusters = "5" %% xsd:int,
       nidm:pValue = "2.83510681598e-09" %% xsd:float])
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
+    entity(niiri:cluster_label_map_id,
+      [prov:type = 'nidm:ClusterLabelsMap',
+      prov:location = "file:///path/to/ClusterLabels.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gzip'])
+    entity(niiri:maximum_intensity_projection_id,
+      [prov:type = 'nidm:Image',
+      prov:location = "file:///path/to/MaximumIntensityProjection.png" %% xsd:anyURI,
+      dct:format = "image/png"])
 entity(niiri:stat_image_properties_id,
   [prov:type = 'spm:StatisticImageProperties',
   prov:label = "Statistical image properties",

@@ -131,7 +131,7 @@ document
       prov:label = "Design Matrix" %% xsd:string,
       nidm:originalFileName = "design_matrix.csv" %% xsd:string])
     entity(niiri:design_matrix_png_id,
-      [prov:type = 'nidm:ImageFile',
+      [prov:type = 'nidm:Image',
       prov:location = "file:///path/to/DesignMatrix.png" %% xsd:anyURI,
       dct:format = "image/png"])
     entity(niiri:mask_id_1,
@@ -246,19 +246,19 @@ document
       prov:location = "file:///path/to/ExcursionSet.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Excursion Set" %% xsd:string,
-      nidm:clusterLabelsMap = 'niiri:cluster_label_map_id',
-      spm:maximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
+      nidm:hasClusterLabelsMap = 'niiri:cluster_label_map_id',
+      spm:hasMaximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
       nidm:originalFileName = "thresh_spmT_0001.img" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string,
       nidm:numberOfClusters = "8" %% xsd:int,
       nidm:pValue = "8.95949980872501e-14" %% xsd:float])
     entity(niiri:cluster_label_map_id,
-      [prov:type = 'nidm:Nifti1Gzip',
+      [prov:type = 'nidm:ClusterLabelsMap',
       prov:location = "file:///path/to/ClusterLabels.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip'])
     entity(niiri:maximum_intensity_projection_id,
-      [prov:type = 'nidm:ImageFile',
+      [prov:type = 'nidm:Image',
       prov:location = "file:///path/to/MaximumIntensityProjection.png" %% xsd:anyURI,
       dct:format = "image/png"])
     wasGeneratedBy(niiri:excursion_set_id, niiri:inference_id,-)
