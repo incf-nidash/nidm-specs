@@ -33,6 +33,8 @@ example_filenames = import_test_filenames.union(set([
 ttl_from_readme = False
 
 def get_turtle(provn_file):
+    logger.info(' provn file '+provn_file)
+
     if ttl_from_readme:
         # Get URL of turtle from README file
         readme_file = os.path.join(os.path.dirname(provn_file), 'README')
