@@ -95,16 +95,20 @@ document
         prov:location = "file:///path/to/ContrastStandardError.nii.gz" %% xsd:anyURI,
         dct:format = 'nidm:Nifti1Gzip',
         prov:label = "Contrast Standard Error Map" %% xsd:string,
-        nidm:originalFileName = "contrastSE.nii" %% xsd:string,
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_1,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "varcope1.nii.gz" %% xsd:string,
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasDerivedFrom(niiri:contrast_standard_error_map_id, niiri:map_id_1)
 
     entity(niiri:grand_mean_map_id,
       [prov:type = 'nidm:GrandMeanMap',
       prov:location = "file:///path/to/GrandMean.nii.gz" %% xsd:anyURI,
       dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Grand Mean Map" %% xsd:string,
-      nidm:originalFileName = "GrandMean.nii.gz" %% xsd:string,
+      nidm:originalFileName = "mean_func.nii.gz" %% xsd:string,
       nidm:maskedMedian = "115" %% xsd:float,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
@@ -114,7 +118,7 @@ document
         prov:location = "file:///path/to/ResidualMeanSquares.nii.gz" %% xsd:anyURI,
         dct:format = 'nidm:Nifti1Gzip',
         prov:label = "Residual Mean Squares Map" %% xsd:string,
-        nidm:originalFileName = "ResMS.img" %% xsd:string,
+        nidm:originalFileName = "sigmasquareds.nii.gz" %% xsd:string,
         nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])    
 
@@ -131,8 +135,7 @@ document
     entity(niiri:design_matrix_id,
         [prov:type = 'nidm:DesignMatrix',
         prov:location = "file:///path/to/DesignMatrix.csv" %% xsd:anyURI,
-        prov:label = "Design Matrix" %% xsd:string,
-        nidm:originalFileName = "design_matrix.csv" %% xsd:string])
+        prov:label = "Design Matrix" %% xsd:string])
     entity(niiri:contrast_id,
         [prov:type = 'nidm:ContrastWeights',
         nidm:statisticType = 'nidm:TStatistic',
