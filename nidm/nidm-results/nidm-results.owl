@@ -1507,6 +1507,22 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#Colin27CoordinateSystem
+
+nidm:Colin27CoordinateSystem rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
+                             
+                             rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres" ;
+                             
+                             rdfs:comment "used in SPM96 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
+                             
+                             prov:definition "Coordinate system defined by the \"stereotaxic average of 27 T1-weighted MRI scans of the same individual\"." ;
+                             
+                             rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ConjunctionInference
 
 nidm:ConjunctionInference rdf:type owl:Class ;
@@ -1641,6 +1657,16 @@ NIDM Concept ID: nidm_21. """ ;
     nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" ;
                      
                      prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#CustomCoordinateSystem
+
+nidm:CustomCoordinateSystem rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
+                            
+                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
 
 
@@ -1827,15 +1853,148 @@ NIDM Concept ID: nidm_34. """ .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear6thGenerationSpace
+###  http://www.incf.org/ns/nidash/nidm#Icbm452AirCoordinateSystem
 
-nidm:IcbmMni152NonLinear6thGenerationSpace rdf:type owl:Class ;
-                                           
-                                           rdfs:subClassOf nidm:WorldCoordinateSystem ;
-                                           
-                                           rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6"^^xsd:anyURI ;
-                                           
-                                           prov:definition "Reference space defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" .
+nidm:Icbm452AirCoordinateSystem rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                
+                                rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                
+                                rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                                
+                                prov:definition "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#Icbm452Warp5CoordinateSystem
+
+nidm:Icbm452Warp5CoordinateSystem rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                  
+                                  rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                                  
+                                  prov:definition "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" \"based on a 5th order polynomial transformation into the atlas space\"" ;
+                                  
+                                  rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152LinearCoordinateSystem
+
+nidm:IcbmMni152LinearCoordinateSystem rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                      
+                                      prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
+                                      
+                                      rdfs:comment "used in SPM99 to SPM8 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach and spm8/spm_templates.man)" ;
+                                      
+                                      rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" ;
+                                      
+                                      rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009aAsymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem rdf:type owl:Class ;
+                                                        
+                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                        
+                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                        
+                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        
+                                                        prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009aSymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem rdf:type owl:Class ;
+                                                       
+                                                       rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                       
+                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                       
+                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                       
+                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009bAsymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009bAsymmetricCoordinateSystem rdf:type owl:Class ;
+                                                        
+                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                        
+                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        
+                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                        
+                                                        prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009bSymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009bSymmetricCoordinateSystem rdf:type owl:Class ;
+                                                       
+                                                       rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                       
+                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                       
+                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                       
+                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009cAsymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem rdf:type owl:Class ;
+                                                        
+                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                        
+                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                        
+                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        
+                                                        prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                        
+                                                        rdfs:comment "Used in DARTEL toolbox in SPM12b (cf. spm12b/spm_templates.man)" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear2009cSymmetricCoordinateSystem
+
+nidm:IcbmMni152NonLinear2009cSymmetricCoordinateSystem rdf:type owl:Class ;
+                                                       
+                                                       rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                       
+                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                       
+                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                       
+                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#IcbmMni152NonLinear6thGenerationCoordinateSystem
+
+nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem rdf:type owl:Class ;
+                                                      
+                                                      rdfs:subClassOf nidm:MNICoordinateSystem ;
+                                                      
+                                                      rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6"^^xsd:anyURI ;
+                                                      
+                                                      prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" ;
+                                                      
+                                                      rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
+                                                                   "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" .
 
 
 
@@ -1908,15 +2067,32 @@ NIDM Concept ID: nidm_37. """ .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#Ixi549Space
+
+nidm:Ixi549Space rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf nidm:MNICoordinateSystem ;
+                 
+                 prov:definition "Coordinate system defined by the average of the \"549 [...] subjects from the IXI dataset\" linearly transformed to ICBM MNI 452." ;
+                 
+                 rdfs:seeAlso "http://biomedic.doc.ic.ac.uk/brain-development/index.php?n=Main.Datasets" ;
+                 
+                 rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
+                              "Used in SPM12b (cf. spm12b/spm_templates.man)" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem
 
 nidm:MNICoordinateSystem rdf:type owl:Class ;
                          
-                         rdfs:subClassOf nidm:WorldCoordinateSystem ;
+                         rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
                          
                          rdfs:seeAlso "birnlex_2125" ;
                          
                          prov:definition "Coordinate system defined with reference to the MNI atlas." ;
+                         
+                         rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                          
                          iao:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
 NIDM Concept ID: nidm:nidm_40. """ .
@@ -1966,6 +2142,20 @@ NIDM Concept ID: nidm_39. """ ;
     nidm:originalFileName = \"mask.img\" %% xsd:string,
     nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#Mni305CoordinateSystem
+
+nidm:Mni305CoordinateSystem rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf nidm:MNICoordinateSystem ;
+                            
+                            rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305" ;
+                            
+                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                            
+                            prov:definition "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." .
 
 
 
@@ -2183,6 +2373,19 @@ nidm:Statistic rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#StandardizedCoordinateSystem
+
+nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf nidm:WorldCoordinateSystem ;
+                                  
+                                  rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
+                                               "This is meant to be used for retrospective export when exact template is unknown." ;
+                                  
+                                  prov:definition "Parent of all reference spaces except \"Subject\"." .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#StatisticMap
 
 nidm:StatisticMap rdf:type owl:Class ;
@@ -2248,6 +2451,32 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    prov:definition "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SubjectCoordinateSystem
+
+nidm:SubjectCoordinateSystem rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:WorldCoordinateSystem ;
+                             
+                             prov:definition "Coordinate system defined by the subject brain (no spatial normalisation applied)." ;
+                             
+                             rdfs:comment "Used in FSL and SPM un-registered data." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#TalairachCoordinateSystem
+
+nidm:TalairachCoordinateSystem rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
+                               
+                               prov:definition "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
+                               
+                               rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                               
+                               rdfs:seeAlso "http://www.talairach.org/" .
 
 
 
