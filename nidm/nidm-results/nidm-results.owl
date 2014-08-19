@@ -1082,26 +1082,6 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://www.incf.org/ns/nidash/spm#searchVolumeInUnits
-
-spm:searchVolumeInUnits rdf:type owl:DatatypeProperty ;
-                                 
-                                 prov:definition "Total number of product of coordinate units within the search volume." ;
-                                 
-                                 iao:IAO_0000112 "1771011" ;
-                                 
-                                 rdfs:domain nidm:SearchSpaceMap ;
-                                 
-                                 rdfs:range [ rdf:type rdfs:Datatype ;
-                                              owl:onDatatype xsd:float ;
-                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
-                                                                     ]
-                                                                   )
-                                            ] .
-
-
-
-
 ###  http://www.incf.org/ns/nidash/spm#searchVolumeInResels
 
 spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
@@ -1127,14 +1107,23 @@ spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
 
 spm:searchVolumeInUnits rdf:type owl:DatatypeProperty ;
                         
-                        prov:definition "The volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm)." ;
-                        
                         iao:IAO_0000116 """Context: volumeInVoxels nidm_0025. Range: Positivefloat not found. BIRNLex or 
 NIDM Concept ID: spm_84. """ ;
                         
+                        prov:definition "The volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm in a three dimensional image, sec.Hz for a time by frequency two dimensional image)." ;
+                        
                         iao:IAO_0000112 "1771011" ;
                         
-                        rdfs:domain nidm:SearchSpaceMap .
+                        prov:definition "Total number of product of coordinate units within the search volume." ;
+                        
+                        rdfs:domain nidm:SearchSpaceMap ;
+                        
+                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                     owl:onDatatype xsd:float ;
+                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                            ]
+                                                          )
+                                   ] .
 
 
 
@@ -1960,6 +1949,9 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
                     
                     rdfs:subClassOf nidm:Map ;
                     
+                    iao:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
+NIDM Concept ID: nidm_100. """ ;
+                    
                     iao:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = \"file:///path/to/final_mask.nii\" %% xsd:anyURI,
@@ -1975,9 +1967,6 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
       spm:noiseFWHMInUnits = \"[8.87643567497404, 8.89885340008753, 7.83541276878791]\" %% xsd:string,
       nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
-                    
-                    iao:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
-NIDM Concept ID: nidm_100. """ ;
                     
                     prov:definition "mask in which the inference was performed." .
 
