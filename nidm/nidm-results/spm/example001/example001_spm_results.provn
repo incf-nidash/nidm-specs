@@ -23,6 +23,23 @@ document
       nidm:inWorldCoordinateSystem = 'nidm:MNICoordinateSystem',
       nidm:numberOfDimensions = "3" %% xsd:int,
       nidm:dimensionsInVoxels = "[53,63,52]" %% xsd:string])
+
+    entity(niiri:mask_id_1,
+      [prov:type = 'nidm:MaskMap',
+      prov:location = "file://./Mask.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gzip',
+      prov:label = "Mask" %% xsd:string,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:map_id_1,
+      [prov:type = 'nidm:Map',
+      nidm:originalFileName = "mask.nii" %% xsd:string,
+      dct:format = 'nidm:Nifti1PairImage',
+      nidm:hasMapHeader = 'niiri:original_mask_map_header_id',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+
+    wasDerivedFrom(niiri:mask_id_1, niiri:map_id_1)
+    wasGeneratedBy(niiri:mask_id_1, niiri:model_pe_id,-)      
     entity(niiri:statistic_map_id,
       [prov:type = 'nidm:StatisticMap',
       nidm:statisticType = 'nidm:TStatistic',
@@ -40,6 +57,7 @@ document
       dct:format = 'nidm:Nifti1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     wasDerivedFrom(niiri:statistic_map_id, niiri:map_id_1)
+    
     entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
       prov:location = "file://./Contrast.nii.gz" %% xsd:anyURI,
