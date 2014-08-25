@@ -239,26 +239,36 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                     if found_range.intersection(owl_ranges[p]):
                         correct_range = True
                     else:
+                        if p in owl_ranges:
+                            for owl_range in owl_ranges[p]:
+                                # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                                # in owl_ranges[p]
+                                if (XSD['positiveInteger'] == owl_range) &\
+                                     (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                                        correct_range = True
+                    if not correct_range:
+                        found_range_line = ""
+                        # FIXME: This should be better handled to be able to do "if found_range"
+                        if not None in found_range:
+                            found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
+                        owl_range_line = ""
+                        if p in owl_ranges:
+                            owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+
+                        key = "\n Unrecognised range: "+\
+                            found_range_line+\
+                            ' for '+example_graph.qname(p)+' should be '+\
+                            owl_range_line
+                else:
+                    if p in owl_ranges:
                         for owl_range in owl_ranges[p]:
                             # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
                             # in owl_ranges[p]
-                            if (XSD['positiveInteger'] == owl_range) &\
-                                 (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                            if (XSD['positiveInteger'] == owl_range):
+                                if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
                                     correct_range = True
-                    if not correct_range:
-                        key = "\n Unrecognised range: "+\
-                            ', '.join(map(example_graph.qname, sorted(found_range)))+\
-                            ' for '+example_graph.qname(p)+' should be '+\
-                            ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
-                else:
-                    for owl_range in owl_ranges[p]:
-                        # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
-                        # in owl_ranges[p]
-                        if (XSD['positiveInteger'] == owl_range):
-                            if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
-                                correct_range = True
-                            else:
-                                correct_range = False
+                                else:
+                                    correct_range = False
 
                 if not correct_range:
                     if not key in my_range_exception:
