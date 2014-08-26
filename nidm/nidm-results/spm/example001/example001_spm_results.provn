@@ -198,6 +198,12 @@ document
       spm:noiseFWHMInVoxels = "[5.41278985910694, 5.43638957240286, 4.51666658877481]" %% xsd:string,
       spm:noiseFWHMInUnits = "[16.2383695773208, 16.3091687172086, 13.5499997663244]" %% xsd:string,
       nidm:randomFieldStationarity = "true" %%xsd:boolean,
+      spm:expectedNumberOfVoxelsPerCluster = "4.02834655908613" %% xsd:float,
+      spm:expectedNumberOfClusters = "0.0512932943875478" %% xsd:float,
+      spm:heightCriticalThresholdFWE05 = "4.85241745689539" %% xsd:float,
+      spm:heightCriticalThresholdFDR05 = "5.7639536857605" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFWE05 = "12" %% xsd:int,
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = "29" %% xsd:int,
       crypto:sha512 = "932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875" %% xsd:string])
     entity(niiri:height_threshold_id,
       [prov:type = 'nidm:HeightThreshold',
@@ -228,7 +234,7 @@ document
       nidm:softwareVersion = "SPM12b" %% xsd:string,
       spm:softwareRevision = "6025" %% xsd:string])
     wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
-    wasGeneratedBy(niiri:stat_image_properties_id, niiri:inference_id,-)
+    
     entity(niiri:excursion_set_id,
       [prov:type = 'nidm:ExcursionSet',
       prov:location = "file://./ExcursionSet.nii.gz" %% xsd:anyURI,
@@ -249,15 +255,6 @@ document
       [prov:type = 'nidm:Image',
       prov:location = "file://./MaximumIntensityProjection.png" %% xsd:anyURI,
       dct:format = "image/png"])
-entity(niiri:stat_image_properties_id,
-  [prov:type = 'spm:StatisticImageProperties',
-  prov:label = "Statistical image properties",
-  spm:expectedNumberOfVoxelsPerCluster = "4.02834655908613" %% xsd:float,
-  spm:expectedNumberOfClusters = "0.0512932943875478" %% xsd:float,
-  spm:heightCriticalThresholdFWE05 = "4.85241745689539" %% xsd:float,
-  spm:heightCriticalThresholdFDR05 = "5.7639536857605" %% xsd:float,
-  spm:smallestSignifClusterSizeInVoxelsFWE05 = "12" %% xsd:int,
-  spm:smallestSignifClusterSizeInVoxelsFDR05 = "29" %% xsd:int])
 entity(niiri:cluster_0001,
   [prov:type = 'nidm:Cluster',
   prov:label = "Cluster: 0001" %% xsd:string,
