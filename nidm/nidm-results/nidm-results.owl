@@ -13,6 +13,9 @@
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
+[ rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/ns/prov-o-20130430>
+] .
 
 
 #################################################################
@@ -37,12 +40,6 @@ iao:IAO_0000116 rdf:type owl:AnnotationProperty .
 ###  http://www.w3.org/2002/07/owl#sameAs
 
 owl:sameAs rdf:type owl:AnnotationProperty .
-
-
-
-###  http://www.w3.org/ns/prov#definition
-
-prov:definition rdf:type owl:AnnotationProperty .
 
 
 
@@ -209,58 +206,6 @@ NIDM Concept ID: spm_77. """ ;
                                   rdfs:domain nidm:ExcursionSet ;
                                   
                                   rdfs:range nidm:Image .
-
-
-
-###  http://www.w3.org/ns/prov#atLocation
-
-prov:atLocation rdf:type owl:ObjectProperty ;
-                
-                rdfs:domain prov:Entity ;
-                
-                rdfs:range prov:Location .
-
-
-
-###  http://www.w3.org/ns/prov#used
-
-prov:used rdf:type owl:ObjectProperty ;
-          
-          rdfs:domain prov:Activity ;
-          
-          rdfs:range prov:Entity .
-
-
-
-###  http://www.w3.org/ns/prov#wasAssociatedWith
-
-prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
-                       
-                       rdfs:subPropertyOf owl:topObjectProperty ;
-                       
-                       rdfs:domain prov:Activity ;
-                       
-                       rdfs:range prov:Agent .
-
-
-
-###  http://www.w3.org/ns/prov#wasDerivedFrom
-
-prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range prov:Entity ;
-                    
-                    rdfs:domain prov:Entity .
-
-
-
-###  http://www.w3.org/ns/prov#wasGeneratedBy
-
-prov:wasGeneratedBy rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range prov:Activity ;
-                    
-                    rdfs:domain prov:Entity .
 
 
 
@@ -2546,7 +2491,7 @@ NIDM Concept ID: spm_83. """ .
 
 ###  http://www.incf.org/ns/nidash/spm#StatisticImageProperties
 
-nidm:SearchSpaceMap rdf:type owl:Class ;
+spm:StatisticImageProperties rdf:type owl:Class ;
                              
                              rdfs:subClassOf prov:Entity ;
                              
@@ -2555,7 +2500,7 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
                              prov:definition "Properties of the underlying statistical process." ;
                              
                              iao:IAO_0000112 """entity(niiri:stat_image_properties_id,
-      [prov:type = 'nidm:SearchSpaceMap',
+      [prov:type = 'spm:StatisticImageProperties',
       prov:label = \"Statistical image properties\",
       spm:expectedNumberOfVoxelsPerCluster = \"0.553331387916112\" %% xsd:float,
       spm:expectedNumberOfClusters = \"0.0889172687960151\" %% xsd:float,
@@ -2594,48 +2539,6 @@ spm:nonStationaryRandomField rdf:type owl:Class ;
                              
                              iao:IAO_0000116 """Range: <thisisanattributevalue> not found. BIRNLex or 
 NIDM Concept ID: spm_81. """ .
-
-
-
-###  http://www.w3.org/ns/prov#Activity
-
-prov:Activity rdf:type owl:Class .
-
-
-
-###  http://www.w3.org/ns/prov#Agent
-
-prov:Agent rdf:type owl:Class .
-
-
-
-###  http://www.w3.org/ns/prov#Bundle
-
-prov:Bundle rdf:type owl:Class ;
-            
-            rdfs:subClassOf prov:Entity .
-
-
-
-###  http://www.w3.org/ns/prov#Entity
-
-prov:Entity rdf:type owl:Class .
-
-
-
-###  http://www.w3.org/ns/prov#Location
-
-prov:Location rdf:type owl:Class ;
-              
-              rdfs:subClassOf prov:Entity .
-
-
-
-###  http://www.w3.org/ns/prov#SoftwareAgent
-
-prov:SoftwareAgent rdf:type owl:Class ;
-                   
-                   rdfs:subClassOf prov:Agent .
 
 
 
