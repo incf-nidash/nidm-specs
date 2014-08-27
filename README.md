@@ -10,5 +10,5 @@ The goals of this repo are to foster collaboration among the standards developer
 
 ### Developer Resources
 
-* [Getting Started with NIDM](https://github.com/incf-nidash/nidm/wiki/Getting-Started-with-NI-DM)
+* [Getting Started with NIDM](https://github.com/incf-nidash/nidm/wiki/Getting-Started-with-NIDM)
 * [Useful SPARQL Queries](https://github.com/incf-nidash/nidm/wiki/Useful-sparql-queries)
