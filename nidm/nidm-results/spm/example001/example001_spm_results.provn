@@ -143,6 +143,7 @@ document
     wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:map_id_5)
     used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
     used(niiri:inference_id, niiri:mask_id_1,-)
+    used(niiri:contrast_estimation_id, niiri:mask_id_1,-)
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
       prov:location = "file://./DesignMatrix.csv" %% xsd:anyURI,
@@ -187,7 +188,8 @@ document
     wasGeneratedBy(niiri:statistic_map_id, niiri:contrast_estimation_id,-)
     entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
-      prov:location = "file://./SearchSpace.nii" %% xsd:anyURI,
+      prov:location = "file://./SearchSpace.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gzip',
       prov:label = "Search Space Map" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       spm:searchVolumeInVoxels = "69306" %% xsd:int,
@@ -232,7 +234,7 @@ document
       prov:type = 'prov:SoftwareAgent',
       prov:label = "SPM" %% xsd:string,
       nidm:softwareVersion = "SPM12b" %% xsd:string,
-      spm:softwareRevision = "6025" %% xsd:string])
+      spm:softwareRevision = "beta" %% xsd:string])
     wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
     
     entity(niiri:excursion_set_id,
