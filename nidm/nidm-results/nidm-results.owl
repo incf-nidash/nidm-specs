@@ -602,6 +602,24 @@ NIDM Concept ID: nidm_31. """ .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#filename
+
+nidm:filename rdf:type owl:DatatypeProperty ;
+              
+              owl:sameAs "http://purl.obolibrary.org/obo/OBIws_0000001"^^xsd:anyURI ;
+              
+              iao:IAO_0000112 "con_0001.img" ;
+              
+              rdfs:domain nidm:DesignMatrix ,
+                          nidm:ExcursionSet ,
+                          nidm:Image ,
+                          nidm:Map ,
+                          nidm:MapHeader ;
+              
+              rdfs:range xsd:string .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#globalNullDegree
 
 nidm:globalNullDegree rdf:type owl:DatatypeProperty ;
@@ -706,26 +724,6 @@ NIDM Concept ID: nidm_43. """ ;
                         rdfs:domain nidm:CoordinateSpace ;
                         
                         rdfs:range xsd:positiveInteger .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#originalFileName
-
-nidm:originalFileName rdf:type owl:DatatypeProperty ;
-                      
-                      iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_44. """ ;
-                      
-                      iao:IAO_0000112 "con_0001.img" ;
-                      
-                      prov:definition "Original name associated with a file (without path) in the context of the analysis software package." ;
-                      
-                      rdfs:domain nidm:DesignMatrix ,
-                                  nidm:ExcursionSet ,
-                                  nidm:Map ,
-                                  nidm:MapHeader ;
-                      
-                      rdfs:range xsd:string .
 
 
 
@@ -2338,10 +2336,27 @@ nidm:SPMResults rdf:type owl:Class ;
 
 nidm:SearchSpaceMap rdf:type owl:Class ;
                     
-                    rdfs:subClassOf nidm:Map ;
+                    rdfs:subClassOf nidm:Map ,
+                                    prov:Entity ;
+                    
+                    prov:definition "Properties of the underlying statistical process." ;
+                    
+                    iao:IAO_0000112 """entity(niiri:stat_image_properties_id,
+      [prov:type = 'nidm:SearchSpaceMap',
+      prov:label = \"Statistical image properties\",
+      spm:expectedNumberOfVoxelsPerCluster = \"0.553331387916112\" %% xsd:float,
+      spm:expectedNumberOfClusters = \"0.0889172687960151\" %% xsd:float,
+      spm:heightCriticalThresholdFWE05 = \"5.23529984739211\" %% xsd:float,
+      spm:heightCriticalThresholdFDR05 = \"6.22537899017334\" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFWE05 = \"1\" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = \"3\" %% xsd:float])""" ;
                     
                     iao:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
-NIDM Concept ID: nidm_100. """ ;
+NIDM Concept ID: nidm_100. """ ,
+                                    """BIRNLex or 
+NIDM Concept ID: spm_95. """ ;
+                    
+                    rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
                     iao:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
