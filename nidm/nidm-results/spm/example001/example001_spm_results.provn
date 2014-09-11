@@ -154,11 +154,14 @@ document
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
       prov:location = "file://./DesignMatrix.csv" %% xsd:anyURI,
+      nidm:filename = "DesignMatrix.csv" %% xsd:string,
+      dct:format = "text/csv" %% xsd:string,
       nidm:visualisation = 'niiri:design_matrix_png_id',
       prov:label = "Design Matrix" %% xsd:string])
     entity(niiri:design_matrix_png_id,
       [prov:type = 'nidm:Image',
       prov:location = "file://./DesignMatrix.png" %% xsd:anyURI,
+      nidm:filename = "DesignMatrix.png",
       dct:format = "image/png"])
 
     entity(niiri:contrast_id,
@@ -197,7 +200,7 @@ document
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = "file://./SearchSpace.nii.gz" %% xsd:anyURI,
       nidm:filename = "SearchSpace.nii.gz" %% xsd:string,
-      dct:format = 'nidm:Nifti1Gzip',
+      dct:format = "image/nifti",
       prov:label = "Search Space Map" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       spm:searchVolumeInVoxels = "69306" %% xsd:int,
@@ -250,6 +253,7 @@ document
       prov:location = "file://./ExcursionSet.nii.gz" %% xsd:anyURI,
       dct:format = "image/nifti",
       prov:label = "Excursion Set" %% xsd:string,
+      nidm:filename = "ExcursionSet.nii.gz",
       nidm:hasClusterLabelsMap = 'niiri:cluster_label_map_id',
       spm:hasMaximumIntensityProjection = 'niiri:maximum_intensity_projection_id',
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
