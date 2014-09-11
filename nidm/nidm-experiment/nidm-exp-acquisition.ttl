@@ -1,0 +1,27 @@
+# Aquisition Element for Questionnaire
+:acquisition-object-questionnaire
+    a prov:Entity, nidm:Acquisition, nidm:AcquisitionQuestionnaire ;
+    # ... repeated attributes
+    :gender     "m" ;
+    :ageMin     30 ;
+    :ageMax     35 ;
+    :handedness "r" ;
+    # ... other items
+    :listen_preference1_genre "Triphop" .
+    dcat:downloadURL <http://openfmri.s3.amazonaws.com/ds113/demographics.csv>
+
+# Aquisition Element for MRI
+
+:anatomy-acquisition-object
+    a prov:Entity, nidm:Acquisition, nidm:MriAnatomicalT1 ;
+    # ... repeated attributes
+    prov:wasGeneratedBy   :mri-acquisition-process ;
+    prov:wasAttributedTo  :sub001-study-agent ;
+    prov:specializationOf :ds000113-study-object ;
+    dcm:Manufacturer      "Philips Medical Systems" ;
+    dcm:ModelName         "Achieva" ;
+    dcm:EchoTime          5.797 ;
+    dcm:SliceThickness    0.7 ;
+    # ... additional DICOM attributes
+    dcm:NumberOfVolumes   1 ;
+    dcat:downloadURL <http://openfmri.../ds113/sub001/anatomy/highres001.nii.gz>

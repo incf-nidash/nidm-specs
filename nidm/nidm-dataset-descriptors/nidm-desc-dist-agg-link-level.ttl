@@ -1,0 +1,21 @@
+# Aggregate Distribution-level description of Study Forrest
+:ds000113-1.0.0-rdf
+    a void:Dataset, dcat:Distribution, prov:Entity, nidm:Aggregate ;
+    # ... repeated attributes
+    dct:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" ;
+    prov:specializationOf :ds000113-1.0.0 ;
+    void:subset :ds000113-1.0.0-rdf-experiment,
+                :ds000113-1.0.0-rdf-workflow,
+                :ds000113-1.0.0-rdf-results ;
+    # Optional Linkset Distribution-level description of Study Forrest
+    void:subset [
+        a void:LinkSet ;
+        void:subjectTarget :ds000113-1.0.0-rdf-workflow ;
+        void:linkPredicate prov:used ;
+        void:objectTarget  :ds000113-1.0.0-rdf-experiment ;
+    ], [
+        a void:LinkSet ;
+        void:subjectTarget :ds000113-1.0.0-rdf-results ;
+        void:linkPredicate prov:used ;
+        void:objectTarget  :ds000113-1.0.0-rdf-workflow ;
+    ] .

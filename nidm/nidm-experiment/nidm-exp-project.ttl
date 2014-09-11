@@ -1,0 +1,38 @@
+@prefix : <http://openfmri.s3.amazonaws.com/ds000113/experiment.ttl#> .
+
+# Project Element of Study Forrest.
+:ds000113-project-object
+    a void:Dataset, prov:Entity, nidm:Project ;
+    dct:title            """A high-resolution 7-Tesla fMRI dataset from complex 
+                            natural stimulation with an audio movie"""@en ;
+    dct:description      """This is a high-resolution functional magnetic 
+                            resonance (fMRI) dataset — 20 participants recorded 
+                            at high field strength (7 Tesla)..."""@en ;
+    dcat:accessURL       <https://openfmri.org/dataset/ds000113> ;
+    dct:license          <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:publisher        <https://openfmri.org> ;
+    pav:version          "1.0.0" ;
+    prov:wasGeneratedBy  :ds000113-project-process ;
+    prov:wasAttributedTo :principle-investigator-project-agent ;
+    dct:hasPart          :sub001-study-object-demographics,         
+                         :sub001-study-object-mri .
+
+:ds000113-project-process
+    a prov:Activity, nidm:ProjectProcess ;
+    prov:wasAssociatedWith :principle-investigator-project-agent ;
+    prov:qualifiedAssociation [
+        a prov:Association ;
+        prov:agent   :principle-investigator-project-agent ;
+        prov:hadRole nidm:PrincipleInvestigator ;
+        prov:hadPlan <http://studyforrest.org/pages/resources.html> ;
+        rdfs:comment """The :principle-investigator-project-agent fulfilled the 
+                        nidm:PrincipleInvestigator role using a plan from the 
+                        Study Forrest website."""@en ;
+    ] .
+
+:principle-investigator-project-agent
+    a foaf:Person, prov:Person .
+
+nidm:PrincipleInvestigator
+    a prov:Role .
+                    

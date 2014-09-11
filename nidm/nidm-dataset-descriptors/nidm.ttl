@@ -1,0 +1,175 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cito: <http://purl.org/spar/cito/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix freq: <http://purl.org/cld/freq/> .
+@prefix idot: <http://identifiers.org/idot/> .
+@prefix lexvo: <http://lexvo.org/ontology#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schemaorg: <http://schema.org/> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix void: <http://www.w3.org/TR/void/> .
+@prefix ofmri: <http://openfmri.s3.amazonaws.com/> .
+@prefix cogat: <http://www.cognitiveatlas.org/rdf/id/> .
+@prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
+@prefix : <#> .
+
+# Summary-level Description of OpenfMRI.
+:this
+    a dctypes:Dataset ;
+    dct:title "OpenfMRI"@en ;
+    dct:identifier "openfmri"@en ;
+    dct:description "OpenfMRI.org is a project dedicated to the free and open sharing of functional magnetic resonance imaging (fMRI) datasets, including raw data."@en ;
+    idot:accessPattern <https://openfmri.org/data-sets>, <openfmri.s3.amazonaws.com>;
+    idot:alternatePrefix "ofmri" ;
+    idot:exampleIdentifier "ds001" ;
+    idot:preferredPrefix "openfmri" ;
+    dct:accrualPeriodicity freq:continuous ;
+    dct:alternative "OpenfMRI"@en ;
+    dct:hasPart :ds001, :ds005 ;
+    dct:language <http://lexvo.org/id/iso639-3/en> ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:publisher <https://openfmri.org> ;
+    dct:rights """Unless otherwise noted, this database and its contents are made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/. We hope that all users will follow the ODC Attribution/Share-Alike Community Norms; in particular, while not legally required, we hope that all users of the data will acknowledge the OpenfMRI project in any publications.
+
+In some cases, it may be necessary to license particular datasets in a more restrictive fashion; the license for each dataset is listed at the bottom of the data page.""" ;
+    dct:source <https://openfmri.org/dataset> ;
+    cito:citesAsAuthority <http://www.ncbi.nlm.nih.gov/pubmed/23847528> ;
+    schemaorg:logo <https://openfmri.org/sites/all/themes/openfmri/logo.png> ;
+    dcat:accessURL <https://openfmri.org/data-sets> ;
+    dcat:theme <http://dbpedia.org/page/Neuroimaging> ;
+    foaf:page <https://openfmri.org/> .
+
+# Summary-level description of OpenfMRI projects.
+:ds001 
+    a dctypes:Dataset ;
+    dct:title "Balloon Analog Risk-taking Task"@en ;
+    dct:identifier "ds001"@en ;
+    dct:description "Subjects perform the Balloon Analog Risk-taking Task in an event-related design."@en ;
+    dcat:accessURL <https://openfmri.org/dataset/ds001> ;
+    pav:hasCurrentVersion :ds001-1.0.0 ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:publisher <https://openfmri.org> ;
+    prov:specializationOf :this ;
+    cogat:task :obart .
+
+:obart 
+    a cogat:trm_4d559bcd67c18 ;
+    void:inDataset ofmri:ds001 .
+
+:ds005 
+    a dctypes:Dataset ;
+    dct:title "Mixed-gambles task"@en ;
+    dct:identifier "ds005"@en ;
+    dct:description "Subjects were presented with mixed (gain/loss) gambles, and decided whether they would accept each gamble.  No outcomes of these gambles were presented during scanning, but after the scan three gambles were selected at random and played for real money."@en ;
+    cito:citesAsAuthority <http://www.ncbi.nlm.nih.gov/pubmed/17255512> ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:publisher <https://openfmri.org> ;
+    dcat:accessURL <https://openfmri.org/dataset/ds005> ;
+    pav:hasCurrentVersion :ds005-1.0.0 ;
+    prov:specializationOf :this ;
+    cogat:task :mixed-gambles-task ;
+    nidm:sampleSize 16 ;
+    nidm:scannerType "3T Siemens AG (Erlangen, Germany) Allegra MRI scanner" .
+
+:mixed-gambles-task
+    a cogat:trm_4cacee4a1d875 ;
+    void:inDataset ofmri:ds005 ;
+    cogat:conditions "002 parametric gain", "003 parametric loss", "004 distance from indifference" .
+    
+# Version-level description of OpenfMRI projects.
+:ds001-1.0.0
+    a dctypes:Dataset ;
+    dct:title "Balloon Analog Risk-taking Task"@en ;
+    dct:description "Subjects perform the Balloon Analog Risk-taking Task in an event-related design."@en ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:creator <https://openfmri.org/> ;
+    dct:publisher <https://openfmri.org/> ;
+    dct:isVersionOf :openfmri ;
+    dct:created "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:language <http://lexvo.org/id/iso639-3/eng> ;
+    pav:previousVersion :ds001-0.1.0 ;
+    pav:version "1.0.0" ;
+    pav:retrievedFrom <https://openfmri.org/dataset/ds001> ;
+    prov:wasDerivedFrom <https://openfmri.org/dataset/ds001> ;
+    dcat:distribution :ds001-1.0.0-rdf ;
+    prov:specializationOf :openfmri .
+
+:ds005-1.0.0
+    a dctypes:Dataset ;
+    dct:title "Mixed-gambles task"@en ;
+    dct:description "Subjects were presented with mixed (gain/loss) gambles, and decided whether they would accept each gamble.  No outcomes of these gambles were presented during scanning, but after the scan three gambles were selected at random and played for real money."@en ;
+    dct:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+    dct:creator <https://openfmri.org/> ;
+    dct:publisher <https://openfmri.org/> ;
+    dct:isVersionOf :openfmri ;
+    dct:created "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:issued "2014-06-01T00:00:00"^^xsd:dateTime ;
+    dct:language <http://lexvo.org/id/iso639-3/eng> ;
+    pav:previousVersion :ds005-0.1.0 ;
+    pav:version "1.0.0" ;
+    pav:retrievedFrom <https://openfmri.org/dataset/ds005> ;
+    prov:wasDerivedFrom <https://openfmri.org/dataset/ds005> ;
+    dcat:distribution :ds005-1.0.0-rdf ;
+    prov:specializationOf :openfmri .
+
+# NI-DM Project Distribution.
+:ds005-1.0.0-rdf 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    prov:specializationOf ofmri:ds005 ;
+    # Link NI-DM components as void:subsets.
+    void:subset [
+        a void:LinkSet ;
+        void:target :ds001experiment, :ds001workflow ;
+        void:linkPredicate prov:used ;
+        void:subjectsTarget [
+            void:class <http://incf.org/ns/nidash/nidm#Workflow> ;
+            void:objectsTarget [
+                void:class <http://incf.org/ns/nidash/nidm#Experiment> ;
+                ]
+        ], [
+        a void:LinkSet ;
+        void:target :ds001workflow, :ds001results ;
+        void:linkPredicate prov:used ;
+        void:subjectsTarget [
+            void:class <http://incf.org/ns/nidash/nidm#Results> ;
+            void:objectsTarget [
+                void:class <http://incf.org/ns/nidash/nidm#Workflow> ;
+                    ]
+                ]
+            ]
+        ] .
+
+# NI-DM Component Distributions.
+:ds005-1.0.0-experiment
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    dct:conformsTo <http://nidm.nidash.org/specs/nidm-experiment.html> ;
+    pav:createdWith :ofmri2nidm ;
+    void:dataDump <http://openfmri.s3.amazonaws.com/ds001/experiment.ttl> ;
+    void:exampleResource <http://openfmri.s3.amazonaws.com/ds001/experiment.ttl#sub001> ;
+    void:uriRegexPattern "http://openfmri.s3.amazonaws.com/ds001/experiment.ttl\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
+
+:ds005-1.0.0-workflow 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    dct:conformsTo <http://nidm.nidash.org/specs/nidm-workflow.html> ;
+    pav:createdWith :ofmri2nidm ;
+    void:dataDump <http://openfmri.s3.amazonaws.com/ds001/workflow.ttl> ;
+    void:exampleResource <http://openfmri.s3.amazonaws.com/ds001/workflow.ttl#node001> ;
+    void:uriRegexPattern "http://openfmri.s3.amazonaws.com/dataset/ds001/workflow.ttl#\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .
+
+:ds005-1.0.0-results 
+    a void:Dataset, dcat:Distribution, dctypes:Dataset ;
+    dct:conformsTo <http://nidm.nidash.org/specs/nidm-results.html> ;
+    pav:createdWith :spm12 ;
+    void:dataDump <http://openfmri.s3.amazonaws.com/ds005/results.ttl> ;
+    void:exampleResource <http://openfmri.s3.amazonaws.com/ds001/results.ttl#map> ;
+    void:uriRegexPattern "http://openfmri.s3.amazonaws.com/dataset/ds001/results.ttl#\\d+" ;
+    dcat:format <http://www.w3.org/ns/formats/Turtle>, "text/turtle" .

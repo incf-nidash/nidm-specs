@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neuroimaging Data Model Primer (NIDM-Primer)</title>
+    <meta charset='utf-8'>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <link href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+    <script class='remove'>
+        var respecConfig = {
+            specStatus: "unofficial",
+            shortName: "nidm-primer",
+            overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
+            editors: [
+                {   name: "B. Nolan Nichols",
+                    company: "University of Washington",
+                    companyURL: "http://www.ibic.washington.edu/" }
+            ],
+            otherLinks: [{
+            key: "Contributors",
+            data: [{
+                    value: "Tibor Auer",
+                }, {
+                    value: "Gully Burns",
+                }, {
+                    value: "Fariba Fana",
+                }, {
+                    value: "Guillaume Flandin",
+                }, {
+                    value: "Satrajit Ghosh",
+                }, {
+                    value: "Krzysztof J. Gorgolewski",
+                },{
+                    value: "Karl Helmer",
+                }, {
+                    value: "David Keator",
+                }, {
+                    value: "Camille Maumet",
+                }, {
+                    value: "B. Nolan Nichols",
+                }, {
+                    value: "Thomas Nichols",
+                }, {
+                    value: "Jean-Baptiste Poline",
+                }, {
+                    value: "Jason Steffener",
+                }, {
+                    value: "Jessica Turner",
+                }
+            ]}],
+            previousMaturity: "FPWD",
+            previousPublishDate: "2013-12-10",
+            wg: "NIDM Working Group",
+            wgURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            wgPublicList: "derived_data@birncommunity.org",
+            wgPatentURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+            afterEnd: function () {
+
+                var currentDate = new Date();
+                var date = currentDate.toString('dddd, MMMM ,yyyy');
+                $("#respecHeader h2").text("NIDM Specification " + date);
+                $("#respecHeader img").attr({ src: "./stylesheet/nidm-text.png", width: 100, height: 50 });
+            },
+            localBiblio: {
+                "KEATORNI13": {
+                    title: "Towards structured sharing of raw and derived neuroimaging data across existing resources",
+                    href: "http://www.sciencedirect.com/science/article/pii/S105381191300596X",
+                    authors: [
+                        "David B. Keator"
+                        , "Karl Helmer"
+                        , "Jason Steffener"
+                        , "Jessica A. Turner"
+                        , "Theodorus G.M. VanErp"
+                        , "Syam Gadde"
+                        , "Naveen Ashish"
+                        , "Gully A. Burns"
+                        , "B. Nolan Nichols"
+                    ], publisher: "	Elsevier"
+                },
+                "nidm-overview": {
+                    title: "NIDM Overview",
+                    href:  "http://nidm.nidash.org/specs/nidm-overview.html"
+                },
+                "nidm-primer": {
+                    title: "NIDM Primer",
+                    href:  "http://nidm.nidash.org/specs/nidm-primer.html"
+                },
+                "nidm-dataset-descriptor": {
+                    title: "NIDM Dataset Descriptor",
+                    href:  "http://nidm.nidash.org/specs/nidm-descriptor.html"
+                },
+                "nidm-experiment": {
+                    title: "NIDM Experiment",
+                    href:  "http://nidm.nidash.org/specs/nidm-experiment.html"
+                },
+                "nidm-results": {
+                    title: "NIDM Results",
+                    href:  "http://nidm.nidash.org/specs/nidm-results.html"
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <section id='abstract'>
+        <p>
+            This document provides an intuitive introduction and guide to the Neuroimaging Data Model (NIDM) for software
+            interoperability. NIDM defines a core vocabulary that extends the PROV Data Model for provenance with terms
+            that capture information about neuroimaging research, from data acquisition to analysis and results. This primer
+            explains the fundamental NIDM concepts and provides examples of its use. The primer is intended as a
+            starting point for neuroimaging scientists or developers interested in using or creating apps with NIDM.
+        </p>
+    </section>
+
+    <section id="sodt">
+        <p>
+
+        </p>
+    </section>
+
+    <section class="introductory">
+        <h2>Overview</h2>
+        This section provides an overview of the NIDM Family of Documents and suggestions to the neuroimaging community
+        for implementing these standards to support data sharing activities, as well as in reporting issues or comments.
+        <section>
+        <h4>NIDM Family of Documents</h4>
+            <p>
+                This document is part of the NIDM Family of Documents, a set of documents defining various aspects of
+                neuroimaging research that are necessary to achieve the vision of inter-operable interchange of information in
+                heterogeneous environments such as the Web, research consortia, and laboratories. A list of current <abbr
+                title="Neuroimaging Data Model">NIDM</abbr> documents and the latest revision of this specification can be
+                found in the <a href="http://nidm.nidash.org/specs"><abbr title="Neuroimgaing Data Model">NIDM </abbr>
+                specification index</a>. These documents are listed below.
+            </p>
+            <ul>
+                <li><a href="http://nidm.nidash.org/specs/nidm-overview.html">NIDM-OVERVIEW</a> (Draft), an overview of the
+                    NIDM Specification Suite [[!nidm-overview]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-primer.html">NIDM-PRIMER</a> (Draft), a primer for the NIDM
+                    (this document);
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-descriptor.html">NIDM-DATASET-DESCRIPTOR</a> (Draft), the
+                    NIDM Dataset Descriptor is a high level description of neuroimaging data modeled using NIDM
+                    [[!nidm-dataset-descriptor]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-experiment.html">NIDM-EXPERIMENT</a> (Draft), a data model for
+                    describing the organization of raw neuroimaging experiment data [[!nidm-experiment]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/Results_NIDM_Spec.html">NIDM-RESULTS</a> (Draft), a data model for
+                    describing the results of neuroimaging analyses.[[!nidm-results]].
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4>Implementations Encouraged</h4>
+            <p>
+                The NIDM Working Group encourages implementation of the specifications overviewed in this document. Work on
+                this document by the NIDM Working Group is ongoing, errors and suggestions may be reported in the <a
+                href="https://github.com/ni-/ni-dm/issues">issue tracker</a> and these may be addressed in future revisions.
+            </p>
+        </section>
+
+        <section>
+            <h4>Please Send Comments</h4>
+            <p>
+                This document was published by the NIDM Working Group as a Working Draft. If you wish to make comments
+                regarding this document, please report using the <a href="https://github.com/ni-/ni-dm/issues">NIDM issue
+                tracker</a>. You can also ask questions at <a href="http://neurostars.org/">Neurostars Q&A.</a> All comments
+                are welcome.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This primer document provides an accessible introduction to the Neuroimaging Data Model (NIDM) for data
+            sharing at Web scale. NIDM is an extensible framework for community driven development of metadata standards
+            that captures a broad spectrum of research information, particularly data provenance. The provenance of a
+            given piece of neuroimaging data represents its origin, which can facilitate reproducible research by capturing
+            a description of how data was processed. The NIDM Family of Documents includes specifications that define
+            recommendations for how to model neuroimaging research information across several stages of the research
+            process, referred to as NIDM Components.
+        </p>
+        <p>
+            As a specification for neuroimaging data exchange, NIDM Components address specific information needs for the
+            neuroimaging community. Different NIDM users or developers may have different perspectives on the types of
+            neuroimaging data they would like to exchange.
+        </p>
+        <ul>
+            <li>
+                One perspective may focus on representing high-level information about a neuroimaging database. For example,
+                an XNAT database provider may want to provide an standard description of the projects it contains that is
+                interoperable with a similar description of a COINS or HID database. This dataset descriptor would allow a
+                service to aggregate dataset descriptions that could then be interrogated at a finer level of detail.
+            </li>
+            <li>
+                A second focus may be to query for low-level details about participant demographics and DICOM metadata (e.g.,
+                TR or slice thickness) stored in an XNAT database. For example, a user may identify a dataset of interest in
+                the previous example and want to retrieve the download links for structural scans from normal controls over
+                18 years of age.
+            </li>
+            <li>
+                A third perspective might be interested in the results of a statistical analysis. For example, an author
+                may have published their dataset with OpenfMRI and included their results from a task-based fMRI experiment.
+                A researcher may be interested in including this dataset in a meta-analysis, and can query its NIDM
+                representation to retrieve all the necessary pieces of information.
+            </li>
+        </ul>
+        <p>
+            This primer document aims to ease the adoption of the NIDM specifications by providing:
+        </p>
+        <ul>
+            <li>
+                A high-level explanation of how NIDM models different types of neuroimaging information.</li>
+            <li>
+                A simple example explaining how information from a neuroimaging database can be modeled as an extension of
+                PROV and include a number of useful vocabularies as annotations on the model.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Intuitive overview of NIDM</h2>
+        <p>
+            This section provides an explanation of the main concepts in NIDM, which are extensions of PROV. As this
+            document is meant as a starting point, refer to PROV and the NIDM specification for a given Component for
+            detailed recommendations.
+        </p>
+        <p>
+            A central theme in NIDM is to view all the information produced during the course of an investigation in the
+            context of provenance, which is accomplished by building NIDM as an extension of the W3C PROV recommendations
+            (Figure 1). PROV defines a core set of high-level structures for capturing provenance information that
+            bolsters trust in how a given piece of information was generated. The PROV specification details three core
+            objects that are used to describe provenance, which are <a href="http://www.w3.org/TR/prov-dm/#term-entity">
+            Entities</a>, <a href="http://www.w3.org/TR/prov-dm/#term-agent">Agents</a>, and
+            <a href="http://www.w3.org/TR/prov-dm/#term-Activity">Activities</a>. These core objects are related to each
+            other with a set of defined relations, as highlighted in the figure below.
+        </p>
+        <figure>
+            <img src="prov-key-concepts.png" width="600">
+            <figcaption>
+                The PROV key concepts. Includes the base classes for:
+                <a href="http://www.w3.org/TR/prov-dm/#term-entity">Entity</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#term-agent">Agent</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#term-Activity">Activity</a>, as well as provenance relations:
+                <a href="http://www.w3.org/TR/prov-dm/#dfn-wasderivedfrom">wasDerivedFrom</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#dfn-wasattributedto">wasAttributedTo</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#dfn-used">used</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#dfn-wasgeneratedby">wasGeneratedBy</a>,
+                <a href="http://www.w3.org/TR/prov-dm/#dfn-wasassociatedwith">wasAssociatedWith</a>.
+            </figcaption>
+        </figure>
+        <p>
+            Entities are used to capture information that tends to persist over time, for example a dataset or spreadsheet
+            file, which can be modified of derived from other entities. For an Entity, like a file, to be created, an
+            Activity is needed that describes how the Entity came into existence, and an Agent is needed to describe who
+            (e.g., a person) or what (e.g., an organization or software) is responsible for generating an Entity. The
+            binding of these three objects provides the structure needed to trust how and who some file, dataset, or
+            analysis was created.
+        </p>
+        <p>
+            A central theme in NIDM is to view all the information produced during the course of an investigation in the
+            context of provenance, which is accomplished by building NIDM as an extension of the W3C PROV recommendations.
+            In addition to PROV, NIDM adopts a number of metadata vocabularies that are actively being used in the broader
+            Web community (e.g., Dublin Core, FOAF, VoID, and DCAT). By adopting existing vocabularies and harmonizing
+            our efforts with similar groups developing biomedical metadata standards (e.g., W3C Health Care and Life
+            Sciences Interest Group, ISA Commons), NIDM is able to maintain a common description of high-level concepts
+            that are shared across biomedical domains (e.g., project descriptions and participant demographics) while
+            providing additional specificity for the neuroimaging domain. This additional specificity is captured in
+            layers by building a NIDM Core vocabulary, based on PROV, that is then extended to model specific types of
+            information, referred to as NIDM Components, and then linked together using a high-level dataset descriptor
+            (Figure 2).
+        </p>
+        <figure>
+            <img src="nidm-overview.png" width="600">
+            <figcaption>
+                The NIDM Component Layer Cake. Each level indicates a set of technologies and/or vocabularies that are
+                “imported” into the next level. (Inspired by the <a href="http://www.w3.org/2007/03/layerCake.png">
+                Semantic Web Layer Cake</a>)
+            </figcaption>
+        </figure>
+        <p>
+
+        </p>
+        <section>
+        <h4>Dataset Descriptor Component</h4>
+            <p>
+                The NIDM Dataset Descriptor Component is modeled after the efforts of the Health Care and Life Sciences
+                (HCLS) Interest Group at the W3C. HCLS aims to provide a generic dataset descriptor recommendation that
+                captures a general set of metadata that is applicable across domains. NIDM adopts the HCLS approach and
+                extends it by providing an additional set of recommendations that are specific to neuroimaging. The HCLS
+                Dataset Descriptors are organized into three levels – Summary, Version, and Distribution (Figure 3). The
+                Summary-level is focused on information that does not change over the course of a project, while the
+                Version-level captures changes that are specific to a given data release. The Distribution-level is
+                intended to inform the consumer with links to where specific datasets can be accessed, which may come in
+                one or more forms (e.g., relational database, tarball, or RDF). In the case of RDF, datasets can be
+                described using the VoiD vocabulary (www.w3.org/TR/void/), which is the recommended approach with NIDM,
+                as it allows each NIDM Component for a given project to be described independently and linked appropriately
+                using URIs.
+            </p>
+            <figure>
+                <img src="nidm-dataset-descriptor.png" width="600">
+                <figcaption>
+                    NIDM Dataset Descriptor. Summary-level descriptions provide information that does not change between
+                    difference versions or releases of a dataset. Version-level descriptions provide information that is
+                    specific to a given version. Distribution-level descriptors captures information that is specific to
+                    a given format or serialization of a dataset. Figure adapted from the <a href="http://htmlpreview.github.io/?https://github.com/joejimbo/HCLSDatasetDescriptions/blob/master/Overview.html#datasetdescriptionlevels">
+                    HCLS Dataset Description Levels</a>.
+                </figcaption>
+            </figure>
+        </section>
+        <section>
+        <h4>Experiment Component</h4>
+            <p>
+
+            </p>
+            <figure>
+                <img src="nidm-experiment-component.png" width="600">
+                <figcaption>
+                    NIDM Experiment Component.
+                </figcaption>
+            </figure>
+            <p>
+
+            </p>
+            <figure>
+            <img src="nidm-experiment-elements.png" width="600">
+                <figcaption>
+                    NIDM Experiment Elements.
+                </figcaption>
+            </figure>
+        </section>
+        <section>
+        <h4>Workflow Component</h4>
+            <p>
+
+            </p>
+        </section>
+        <section>
+        <h4>Results Component</h4>
+            <p>
+
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Examples of NIDM Components</h2>
+        <p>
+
+        </p>
+        <section>
+        <h4>Dataset Descriptor Example</h4>
+            <p>
+
+            </p>
+        </section>
+        <section>
+        <h4>Experiment Example</h4>
+            <p>
+
+            </p>
+        </section>
+        <section>
+        <h4>Results Example</h4>
+            <p>
+
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h4>Summary</h4>
+        <p>
+            TBD
+        </p>
+    </section>
+
+    <section>
+        <h4>Additional Information</h4>
+        <p>
+            We would also like to refer the interested reader to complementary sources of information:
+        </p>
+        <table>
+            <thead>
+            <tr>
+                <th>Audience</th>
+                <th align="center">Link</th>
+                <th>Description and link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Users</td>
+                <td align="center">
+                    <a href="http://incf.org/programs/datasharing/neuroimaging-task-force">NIDASH page</a>
+                </td>
+                <td>
+                    Main INCF page for NIDM Task Force, a child of the INCF Program on Standards for Data Sharing page.
+                </td>
+            </tr>
+            <tr>
+                <td>Developers</td>
+                <td align="center">
+                    <a href="https://github.com/incf-nidash">NIDM on Github</a>
+                </td>
+                <td>Organization hosting various code repositories of NIDM projects, NIDM in particular.</td>
+            </tr>
+            <tr>
+                <td>Developers</td>
+                <td align="center">
+                    <a href="https://groups.google.com/forum/#!forum/incf-datasharing">NIDM Google group</a>
+                </td>
+                <td>Wide distribution list for NIDM activities</td>
+            </tr>
+            <tr>
+                <td>Modellers</td>
+                <td align="center">
+                    <a href="http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force">NIDM wiki</a>
+                </td>
+                <td>Overview of NIDM activities; intended for both internal and external users.</td>
+            </tr>
+            <tr>
+                <td>Modellers</td>
+                <td align="center">
+                    <a href="http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/">
+                        DDWG page
+                    </a>
+                </td>
+                <td>Site that hosts current information on the BIRN Derived Data Working Group (DDWG)</td>
+            </tr>
+            <tr>
+                <td>Modellers</td>
+                <td align="center">
+                    <a href="https://drive.google.com/#folders/0B-BLof5_SOh8bWR3UDE4WTdELXM">NIDASH Google Drive</a>
+                </td>
+                <td>Shared area for the INCF Neuroimaging Data Sharing task force (NIDASH) activities &amp; NIDM
+                    development, including meeting agenda &amp; minutes, specification, etc...
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="appendix">
+        <h4>Acknowledgements</h4>
+        <p>
+            This document has been produced by the NIDM Working Group, and its contents reflect extensive discussion
+            within the Working Group as a whole.
+        </p>
+        <p>
+            Members of the NIDM Working Group at the time of publication of this document were:
+        </p>
+    </section>
+</body>
+</html>
