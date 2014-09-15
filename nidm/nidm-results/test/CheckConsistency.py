@@ -300,11 +300,3 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                             my_restriction_exception[key].add(example_name)
 
     return list((my_exception, my_range_exception, my_restriction_exception))
-
-def merge_exception_dict(excep_dict, other_except_dict):
-    merged_dict = dict(excep_dict.items() + other_except_dict.items())
-    # When key is in both dictionaries, we need to merge the set manually
-    for key in list(set(excep_dict.keys()) & set(other_except_dict.keys())):
-        merged_dict[key] = excep_dict[key].union(other_except_dict[key])
-
-    return merged_dict
