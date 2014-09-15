@@ -75,21 +75,6 @@ nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#atCoordinateSpace
-
-nidm:atCoordinateSpace rdf:type owl:ObjectProperty ;
-                       
-                       iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_2. """ ;
-                       
-                       prov:definition "Attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file." ;
-                       
-                       rdfs:range nidm:CoordinateSpace ;
-                       
-                       rdfs:domain nidm:Map .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#hasAlternativeHypothesis
 
 nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
@@ -129,6 +114,21 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   rdfs:domain nidm:Map ;
                   
                   rdfs:range nidm:MapHeader .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#inCoordinateSpace
+
+nidm:inCoordinateSpace rdf:type owl:ObjectProperty ;
+                       
+                       iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_2. """ ;
+                       
+                       prov:definition "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
+                       
+                       rdfs:range nidm:CoordinateSpace ;
+                       
+                       rdfs:domain nidm:Map .
 
 
 
@@ -1441,7 +1441,7 @@ fsl:ZStatisticMap rdf:type owl:Class ;
         prov:label = \"Z-statistical Map: listening &gt; rest: zstat1\",
         nidm:contrastName = \"listening &gt; rest\" %% xsd:string,
         nidm:originalFileName = \"zstat1.nii.gz\" %% xsd:string,
-        nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+        nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
         crypto:sha = \"400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8\"])
 """ ;
                   
@@ -1549,7 +1549,7 @@ NIDM Concept ID: nidm_10. """ ;
     prov:label = \"Contrast Map: listening > rest\" %% xsd:string,
     nidm:contrastName = \"listening > rest\" %% xsd:string,
     nidm:originalFileName = \"con_0001.img\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
@@ -1570,7 +1570,7 @@ NIDM Concept ID: nidm_12. """ ;
     prov:location = \"file:///path/to/contrastSE.nii\" %% xsd:anyURI,
     prov:label = \"Contrast Standard Error Map\" %% xsd:string,
     nidm:originalFileName = \"contrastSE.nii\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
@@ -1656,7 +1656,7 @@ nidm:CustomMaskMap rdf:type owl:Class ;
       prov:location = \"file:///path/to/custom_mask.nii\" %% xsd:anyURI,
       prov:label = \"Custom mask\" %% xsd:string,
       nidm:originalFileName = \"custom_mask.nii\" %% xsd:string,
-      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                    
                    prov:definition "mask defined by the user to restrain the space in which model fitting is performed." ;
@@ -1729,7 +1729,7 @@ NIDM Concept ID: nidm_29. """ ;
     nidm:clusterLabelsMap = \"file:///path/to/cluster_labels.img\" %% xsd:anyURI,
     spm:maximumIntensityProjection = \"file:///path/to/MIP.png\" %% xsd:anyURI,
     nidm:originalFileName = \"thresh_spmT_0001.img\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
                   prov:definition "Set of map elements surviving a thresholding procedure." .
@@ -2115,7 +2115,7 @@ NIDM Concept ID: nidm_39. """ ;
     prov:location = \"file:///path/to/mask.img\" %% xsd:anyURI,
     prov:label = \"Mask\" %% xsd:string,
     nidm:originalFileName = \"mask.img\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
@@ -2189,7 +2189,7 @@ NIDM Concept ID: nidm_45. """ ;
     prov:location = \"file:///path/to/beta_0001.img\" %% xsd:anyURI,
     prov:label = \"Beta Map 1\" %% xsd:string,
     nidm:originalFileName = \"beta_0001.img\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                           
                           prov:definition "A map whose value at each location is the estimate of a model parameter." .
@@ -2238,7 +2238,7 @@ NIDM Concept ID: nidm_52. """ ;
     prov:location = \"file:///path/to/ResMS.img\" %% xsd:anyURI,
     prov:label = \"Residual Mean Squares Map\" %% xsd:string,
     nidm:originalFileName = \"ResMS.img\" %% xsd:string,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
@@ -2300,7 +2300,7 @@ NIDM Concept ID: spm_95. """ ;
       prov:location = \"file:///path/to/final_mask.nii\" %% xsd:anyURI,
       prov:label = \"Search Space\" %% xsd:string,
       nidm:originalFileName = \"final_mask.nii\" %% xsd:string,
-      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
       spm:searchVolumeInVoxels = \"65593\" %% xsd:int,
       spm:searchVolumeInUnits = \"1771011\" %% xsd:float,
       spm:reselSize = \"22.9229643140043\" %% xsd:float,
@@ -2353,7 +2353,7 @@ nidm:StatisticMap rdf:type owl:Class ;
     nidm:originalFileName = \"spmT_0001.img\" %% xsd:string,
     nidm:errorDegreesOfFreedom = \"72.9999999990787\" %% xsd:float,
     nidm:effectDegreesOfFreedom = \"1\" %% xsd:float,
-    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
                   prov:definition "A map whose value at each location is a statistic. " ;
@@ -2374,7 +2374,7 @@ nidm:SubVolumeMap rdf:type owl:Class ;
       prov:location = \"file:///path/to/svc_mask.nii\" %% xsd:anyURI,
       prov:label = \"Sub-volume\" %% xsd:string,
       nidm:originalFileName = \"mask.img\" %% xsd:string,
-      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
                   prov:definition "mask defined by the user to restrain the space in which inference is performed." ;
@@ -2486,7 +2486,7 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
       prov:location = \"file:///path/to/RPV.img\" %% xsd:anyURI,
       prov:label = \"Resels per Voxel Map\" %% xsd:string,
       nidm:originalFileName = \"RPV.img\" %% xsd:string,
-      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                       
                       prov:definition "A map whose value at each location is the number of resels per voxel. " ;
