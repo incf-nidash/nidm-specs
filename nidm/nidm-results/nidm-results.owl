@@ -1560,18 +1560,18 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:Map ;
                               
-                              prov:definition "A map whose value at each location is the standard error of a given contrast." ;
-                              
-                              iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_12. """ ;
-                              
                               iao:IAO_0000112 """entity(niiri:contrast_standard_error_map_id,
     [prov:type = 'nidm:ContrastStandardErrorMap',
     prov:location = \"file:///path/to/contrastSE.nii\" %% xsd:anyURI,
     prov:label = \"Contrast Standard Error Map\" %% xsd:string,
     nidm:originalFileName = \"contrastSE.nii\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                              
+                              prov:definition "A map whose value at each location is the standard error of a given contrast." ;
+                              
+                              iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_12. """ .
 
 
 
@@ -1719,9 +1719,6 @@ nidm:ExcursionSet rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_29. """ ;
-                  
                   iao:IAO_0000112 """entity(niiri:excursion_set_id,
     [prov:type = 'nidm:ExcursionSet',
     prov:location = \"file:///path/to/thresh_spmT_0001.img\" %% xsd:anyURI,
@@ -1731,6 +1728,9 @@ NIDM Concept ID: nidm_29. """ ;
     nidm:originalFileName = \"thresh_spmT_0001.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                  
+                  iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_29. """ ;
                   
                   prov:definition "Set of map elements surviving a thresholding procedure." .
 
@@ -2080,11 +2080,7 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ;
          
-         prov:definition """
-2D or 3D structured dataset.""" ;
-         
-         iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_38. """ .
+         prov:definition "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." .
 
 
 
@@ -2293,8 +2289,6 @@ NIDM Concept ID: nidm_100. """ ,
                                     """BIRNLex or 
 NIDM Concept ID: spm_95. """ ;
                     
-                    rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
-                    
                     iao:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = \"file:///path/to/final_mask.nii\" %% xsd:anyURI,
@@ -2310,6 +2304,8 @@ NIDM Concept ID: spm_95. """ ;
       spm:noiseFWHMInUnits = \"[8.87643567497404, 8.89885340008753, 7.83541276878791]\" %% xsd:string,
       nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                    
+                    rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
                     prov:definition "mask in which the inference was performed." .
 
@@ -2369,18 +2365,18 @@ nidm:SubVolumeMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
+                  prov:definition "mask defined by the user to restrain the space in which inference is performed." ;
+                  
+                  iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_101. """ ;
+                  
                   iao:IAO_0000112 """entity(niiri:sub_volume_id,
       [prov:type = 'nidm:SubVolumeMap',
       prov:location = \"file:///path/to/svc_mask.nii\" %% xsd:anyURI,
       prov:label = \"Sub-volume\" %% xsd:string,
       nidm:originalFileName = \"mask.img\" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
-      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
-                  
-                  prov:definition "mask defined by the user to restrain the space in which inference is performed." ;
-                  
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_101. """ .
+      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
 
@@ -2481,6 +2477,8 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
+                      prov:definition "A map whose value at each location is the number of resels per voxel. " ;
+                      
                       iao:IAO_0000112 """entity(niiri:resels_per_voxel_map_id,
       [prov:type = 'spm:ReselsPerVoxelMap',
       prov:location = \"file:///path/to/RPV.img\" %% xsd:anyURI,
@@ -2488,8 +2486,6 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
       nidm:originalFileName = \"RPV.img\" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
-                      
-                      prov:definition "A map whose value at each location is the number of resels per voxel. " ;
                       
                       iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_83. """ .
