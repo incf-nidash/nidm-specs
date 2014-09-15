@@ -1,0 +1,15 @@
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix nidm: <http://www.incf.org/ns/nidash/nidm#>
+prefix spm: <http://www.incf.org/ns/nidash/spm#>
+prefix fsl: <http://www.incf.org/ns/nidash/fsl#>
+
+SELECT ?contrastName ?statType ?statFile WHERE {
+ ?cid a nidm:ContrastMap ;
+      nidm:contrastName ?contrastName ;
+      prov:atLocation ?cfile .
+ ?cea a nidm:ContrastEstimation .
+ ?cid prov:wasGeneratedBy ?cea .
+ ?sid a nidm:StatisticMap ;
+      nidm:statisticType ?statType ;
+      prov:atLocation ?statFile .
+}
