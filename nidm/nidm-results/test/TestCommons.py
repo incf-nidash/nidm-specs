@@ -60,3 +60,11 @@ def get_turtle(provn_file):
     logger.info(' Loading turtle file '+ttl_file_url)
 
     return ttl_file_url
+
+def merge_exception_dict(excep_dict, other_except_dict):
+    merged_dict = dict(excep_dict.items() + other_except_dict.items())
+    # When key is in both dictionaries, we need to merge the set manually
+    for key in list(set(excep_dict.keys()) & set(other_except_dict.keys())):
+        merged_dict[key] = excep_dict[key].union(other_except_dict[key])
+
+    return merged_dict
