@@ -88,6 +88,16 @@ NIDM Concept ID: nidm_2. """ ;
                        
                        rdfs:domain nidm:Map .
 
+###  http://www.incf.org/ns/nidash/nidm#dependenceSpatialModel
+
+nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
+                            
+                            prov:definition "FIXME" ;
+                            
+                            rdfs:domain nidm:NoiseModel ;
+                            
+                            rdfs:range nidm:SpatialModel .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#hasAlternativeHypothesis
@@ -132,6 +142,45 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasNoiseDependence
+
+nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
+                        
+                        prov:definition "FIXME" ;
+                        
+                        rdfs:range nidm:NoiseDependence ;
+                        
+                        rdfs:domain nidm:NoiseModel .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasNoiseDistribution
+
+nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:range nidm:NoiseDistribution ;
+                          
+                          rdfs:domain nidm:NoiseModel .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#inCoordinateSpace
+
+nidm:inCoordinateSpace rdf:type owl:ObjectProperty ;
+                       
+                       iao:IAO_0000116 """BIRNLex or 
+NIDM Concept ID: nidm_2. """ ;
+                       
+                       prov:definition "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
+                       
+                       rdfs:range nidm:CoordinateSpace ;
+                       
+                       rdfs:domain nidm:Map .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#inWorldCoordinateSystem
 
 nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
@@ -172,6 +221,18 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
                    rdfs:range nidm:Statistic ;
                    
                    rdfs:domain nidm:StatisticMap .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#varianceSpatialModel
+
+nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:domain nidm:NoiseModel ;
+                          
+                          rdfs:range nidm:SpatialModel .
 
 
 
@@ -691,6 +752,18 @@ nidm:noiseFWHM rdf:type owl:DatatypeProperty ;
                
                iao:IAO_0000116 """Context: Functional. Domain or Attributes: <onlychildofareusedinthedatamodel> not found. BIRNLex or 
 NIDM Concept ID: nidm_42. \"type\": SearchVol. """ .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#noiseVarianceHomogeneous
+
+nidm:noiseVarianceHomogeneous rdf:type owl:DatatypeProperty ;
+                              
+                              prov:definition "FIXME" ;
+                              
+                              rdfs:domain nidm:NoiseModel ;
+                              
+                              rdfs:range xsd:boolean .
 
 
 
@@ -1388,6 +1461,14 @@ NIDM Concept ID: spm_94. """ ;
 #################################################################
 
 
+###  http://www.incf.org/ns/nidash/fsl#BinomialDistribution
+
+fsl:BinomialDistribution rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:NoiseDistribution .
+
+
+
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
 fsl:CenterOfGravity rdf:type owl:Class ;
@@ -1415,6 +1496,16 @@ fsl:ClusterMaximumStatistic rdf:type owl:Class ;
                             rdfs:subClassOf prov:Entity ;
                             
                             prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#NonParametricSymmetricDistribution
+
+fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf nidm:NoiseDistribution ;
+                                       
+                                       prov:definition "FIXME" .
 
 
 
@@ -1446,6 +1537,16 @@ fsl:ZStatisticMap rdf:type owl:Class ;
 """ ;
                   
                   prov:definition "A map whose value at each location is a Z-statistic value. " .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedNoise
+
+nidm:ArbitrarilyCorrelatedNoise rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf nidm:NoiseDependence ;
+                                
+                                prov:definition "FIXME" .
 
 
 
@@ -1497,6 +1598,16 @@ nidm:Colin27CoordinateSystem rdf:type owl:Class ;
                              prov:definition "Coordinate system defined by the \"stereotaxic average of 27 T1-weighted MRI scans of the same individual\"." ;
                              
                              rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#CompoundSymmetricNoise
+
+nidm:CompoundSymmetricNoise rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf nidm:NoiseDependence ;
+                            
+                            prov:definition "FIXME" .
 
 
 
@@ -1794,6 +1905,16 @@ nidm:FStatistic rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#GaussianDistribution
+
+nidm:GaussianDistribution rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:NoiseDistribution ;
+                          
+                          prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#GrandMeanMap
 
 nidm:GrandMeanMap rdf:type owl:Class ;
@@ -1984,6 +2105,16 @@ nidm:Image rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#IndependentNoise
+
+nidm:IndependentNoise rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf nidm:NoiseDependence ;
+                      
+                      prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Inference
 
 nidm:Inference rdf:type owl:Class ;
@@ -2118,6 +2249,44 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#NoiseDependence
+
+nidm:NoiseDependence rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Entity ;
+                     
+                     prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NoiseDistribution
+
+nidm:NoiseDistribution rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf prov:Entity .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NoiseModel
+
+nidm:NoiseModel rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity ;
+                
+                prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NonParametricDistribution
+
+nidm:NonParametricDistribution rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf nidm:NoiseDistribution ;
+                               
+                               prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#OneTailedTest
 
 nidm:OneTailedTest rdf:type owl:Class ;
@@ -2171,6 +2340,14 @@ NIDM Concept ID: nidm_46. """ ;
     nidm:pValueUncorrected = \"4.44089209850063e-16\" %% xsd:float,
     nidm:pValueFWER = \"0\" %% xsd:float,
     nidm:qValueFDR = \"6.3705194444993e-11\" %% xsd:float])""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
+
+nidm:PoissonDistribution rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:NoiseDistribution .
 
 
 
@@ -2267,6 +2444,56 @@ NIDM Concept ID: spm_95. """ ;
                     rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
                     prov:definition "mask in which the inference was performed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedNoise
+
+nidm:SeriallyCorrelatedNoise rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:NoiseDependence ;
+                             
+                             prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatialModel
+
+nidm:SpatialModel rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyGlobalModel
+
+nidm:SpatiallyGlobalModel rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:SpatialModel ;
+                          
+                          prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyLocalModel
+
+nidm:SpatiallyLocalModel rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:SpatialModel ;
+                         
+                         prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyRegularisedModel
+
+nidm:SpatiallyRegularisedModel rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf nidm:SpatialModel ;
+                               
+                               prov:definition "FIXME" .
 
 
 
