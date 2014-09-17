@@ -229,11 +229,22 @@ document
       nidm:contrastName = "listening > rest" %% xsd:string,
       prov:label = "Contrast: Listening > Rest" %% xsd:string,
       prov:value = "[1, 0, 0]" %% xsd:string])
+
+    entity(niiri:noise_model_id,
+      [prov:type = 'nidm:NoiseModel',
+      nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
+      nidm:noiseVarianceHomogeneous = "true" %%xsd:boolean,
+      nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
+      nidm:hasNoiseDependence = 'nidm:IndependentNoise',
+      nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
+    used(niiri:model_pe_id, niiri:noise_model_id,-)
+    
     activity(niiri:model_pe_id,
       [prov:type = 'nidm:ModelParametersEstimation',
       prov:label = "Model parameters estimation"])
     wasAssociatedWith(niiri:model_pe_id, niiri:software_id,-)
     used(niiri:model_pe_id, niiri:design_matrix_id,-)
+    
     entity(niiri:data_id,
       [prov:type = 'nidm:Data',
       prov:type = 'prov:Collection',

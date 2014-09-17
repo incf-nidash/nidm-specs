@@ -263,6 +263,15 @@ document
         prov:label = "Contrast Weights: Generation" %% xsd:string,
         prov:value = "[1, 0, 0, 0]" %% xsd:string])
 
+    entity(niiri:noise_model_id,
+      [prov:type = 'nidm:NoiseModel',
+      nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
+      nidm:noiseVarianceHomogeneous = "true" %%xsd:boolean,
+      nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
+      nidm:hasNoiseDependence = 'nidm:IndependentNoise',
+      nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
+    used(niiri:model_parameters_estimation_id, niiri:noise_model_id,-)
+
     activity(niiri:model_parameters_estimation_id,
         [prov:type = 'nidm:ModelParametersEstimation',
         prov:label = "Model Parameters Estimation"])
