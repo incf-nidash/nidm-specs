@@ -160,6 +160,15 @@ document
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
   wasDerivedFrom(niiri:beta_map_id_3, niiri:map_id_7)
   
+  entity(niiri:noise_model_id,
+      [prov:type = 'nidm:NoiseModel',
+      nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
+      nidm:noiseVarianceHomogeneous = "true" %%xsd:boolean,
+      nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
+      nidm:hasNoiseDependence = 'nidm:IndependentNoise',
+      nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
+    used(niiri:model_fitting_id, niiri:noise_model_id,-)
+  
   activity(niiri:model_fitting_id,
     [prov:type = 'nidm:ModelParametersEstimation',
     prov:label = "Model Parameters Estimation"])
