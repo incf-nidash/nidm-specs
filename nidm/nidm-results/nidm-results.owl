@@ -254,6 +254,18 @@ NIDM Concept ID: nidm_66. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#withEstimationMethod
+
+nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:range nidm:EstimationMethod ;
+                          
+                          rdfs:domain nidm:ModelParametersEstimation .
+
+
+
 ###  http://www.incf.org/ns/nidash/spm#hasMaximumIntensityProjection
 
 spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
@@ -1823,6 +1835,14 @@ NIDM Concept ID: nidm_24. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#EstimationMethod
+
+nidm:EstimationMethod rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf prov:Entity .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ExcursionSet
 
 nidm:ExcursionSet rdf:type owl:Class ;
@@ -1912,6 +1932,18 @@ nidm:GaussianDistribution rdf:type owl:Class ;
                           rdfs:subClassOf nidm:NoiseDistribution ;
                           
                           prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GeneralisedLeastSquares
+
+nidm:GeneralisedLeastSquares rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:EstimationMethod ;
+                             
+                             prov:definition "FIXME" ;
+                             
+                             rdfs:comment "GLS (both heteroscedasticity and dependence accounted for) OLS is a special case of WLS & GLS; WLS is a special case of GLS." .
 
 
 
@@ -2299,6 +2331,18 @@ nidm:OneTailedTest rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#OrdinaryLeastSquares
+
+nidm:OrdinaryLeastSquares rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:EstimationMethod ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:comment "OLS (no heteroscedasticity or dependence accounted for)" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ParameterEstimateMap
 
 nidm:ParameterEstimateMap rdf:type owl:Class ;
@@ -2372,6 +2416,18 @@ NIDM Concept ID: nidm_52. """ ;
     nidm:originalFileName = \"ResMS.img\" %% xsd:string,
     nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#RobustIterativelyReweighedLeastSquares
+
+nidm:RobustIterativelyReweighedLeastSquares rdf:type owl:Class ;
+                                            
+                                            rdfs:subClassOf nidm:EstimationMethod ;
+                                            
+                                            rdfs:comment "used for automatically down-weighting outliers, using some given influence function (e.g. Huber; see [1] for a neuroimaging application)." ;
+                                            
+                                            prov:definition "FIXME" .
 
 
 
@@ -2615,6 +2671,18 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    prov:definition "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#WeightedLeastSquares
+
+nidm:WeightedLeastSquares rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:EstimationMethod ;
+                          
+                          rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" ;
+                          
+                          prov:definition "FIXME" .
 
 
 
