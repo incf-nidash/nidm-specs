@@ -335,6 +335,17 @@ document
         nidm:pValueFWER = "0.05" %% xsd:float,
         nidm:userSpecifiedThresholdType = "p-value FWE"])
 
+    entity(niiri:display_map_id,
+        [prov:type = 'nidm:DisplayMaskMap',
+        nidm:maxNumberOfPeaksPerCluster = 3,
+        nidm:minDistanceBetweenPeaks = "8.0" %%xsd:float,
+        prov:location = "file://./DisplayMask.nii.gz" %% xsd:anyURI,
+        dct:format = 'nidm:Nifti1Gzip',
+        prov:label = "Display Mask Map" %% xsd:string,
+        nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    used(niiri:inference_id_1, niiri:display_map_id,-)
+
     activity(niiri:inference_id_1,
         [prov:type = 'nidm:Inference',
         nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
