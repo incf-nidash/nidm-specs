@@ -22,10 +22,11 @@ import_test_filenames = set([
 example_filenames = import_test_filenames.union(set([
                                 os.path.join('spm', 'spm_results.provn') , 
                                 os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
-                                os.path.join('spm', 'example003', 'spm_inference_activities.provn'),
                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
+                                os.path.join('spm', 'example004', 'spm_inference_activities.provn'),
                                 os.path.join('fsl', 'fsl_results.provn')
                             ]))
+
 
 # If True turtle file will be downloaded from the prov store using the address specified in the README. 
 # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
