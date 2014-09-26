@@ -270,8 +270,6 @@ document
     nidm:pValueFWER = "1" %% xsd:float])
   entity(niiri:display_map_id,
     [prov:type = 'nidm:DisplayMaskMap',
-    nidm:maxNumberOfPeaksPerCluster = 3,
-    nidm:minDistanceBetweenPeaks = "8.0" %%xsd:float,
     prov:location = "file:///path/to/DisplayMask.nii.gz" %% xsd:anyURI,
     dct:format = 'nidm:Nifti1Gzip',
     prov:label = "Display Mask Map" %% xsd:string,
@@ -323,6 +321,14 @@ document
     spm:clusterSizeInResels = "3.3" %% xsd:float,
     nidm:pValueUncorrected = "1" %% xsd:float,
     nidm:pValueFWER = "1" %% xsd:float])
+  entity(niiri:display_map_id_3,
+    [prov:type = 'nidm:DisplayMaskMap',
+    prov:location = "file:///path/to/DisplayMask.nii.gz" %% xsd:anyURI,
+    dct:format = 'nidm:Nifti1Gzip',
+    prov:label = "Display Mask Map" %% xsd:string,
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  used(niiri:inference_id_3, niiri:display_map_id_3,-)
   activity(niiri:inference_id_3,
     [prov:type = 'nidm:ConjunctionInference',
     nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
@@ -363,6 +369,14 @@ document
     spm:clusterSizeInResels = "1.6" %% xsd:float,
     nidm:pValueUncorrected = "1" %% xsd:float,
     nidm:pValueFWER = "1" %% xsd:float])
+  entity(niiri:display_map_id_2,
+    [prov:type = 'nidm:DisplayMaskMap',
+    prov:location = "file:///path/to/DisplayMask.nii.gz" %% xsd:anyURI,
+    dct:format = 'nidm:Nifti1Gzip',
+    prov:label = "Display Mask Map" %% xsd:string,
+    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+  used(niiri:inference_id_2, niiri:display_map_id_2,-)
   activity(niiri:inference_id_2,
     [prov:type = 'nidm:Inference',
     nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
