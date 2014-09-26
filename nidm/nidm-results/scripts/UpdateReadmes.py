@@ -124,8 +124,10 @@ def create_document(doc_json_url, doc_title):
 	response = urllib2.urlopen(req)
 	data = json.load(response)
 
-	doc_url = "https://provenance.ecs.soton.ac.uk"+data['objects'][0]['resource_uri']
+	doc_url = "https://provenance.ecs.soton.ac.uk"+data['resource_uri']
 	logger.info('\tCreated document "'+doc_title+'" at: '+doc_url)
+
+	return doc_url
 
 for example_file in example_filenames:
 
@@ -169,7 +171,7 @@ for example_file in example_filenames:
 		found_difference = True
 
 	if found_difference:
-		create_document(doc_json_url, doc_title)
+		doc_url = create_document(doc_json_url, doc_title)
 	else:
 		doc_url = same_doc_url
 
