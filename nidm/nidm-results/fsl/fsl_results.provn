@@ -110,6 +110,18 @@ document
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
     wasDerivedFrom(niiri:contrast_standard_error_map_id, niiri:map_id_1)
 
+    entity(niiri:mask_id_1,
+      [prov:type = 'nidm:MaskMap',
+      prov:location = "file:///path/to/Mask.nii.gz" %% xsd:anyURI,
+      nidm:filename = "mask.nii.gz" %% xsd:string,
+      dct:format = "image/nifti",
+      prov:label = "Mask" %% xsd:string,
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    wasGeneratedBy(niiri:mask_id_1, niiri:model_pe_id,-)
+    used(niiri:contrast_estimation_id, niiri:mask_id_1,-)
+    used(niiri:inference_id, niiri:mask_id_1,-)
+
     entity(niiri:grand_mean_map_id,
       [prov:type = 'nidm:GrandMeanMap',
       prov:location = "file:///path/to/GrandMean.nii.gz" %% xsd:anyURI,
