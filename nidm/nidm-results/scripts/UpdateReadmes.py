@@ -85,14 +85,17 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2):
 # Update Readme
 def write_readme(readme_file, doc_url):
 	readme_file_open = open(readme_file, 'w')
+
+	doc_url = doc_url.replace("api/v0/", "")
+
 	readme_file_open.write("""
-	Alternative serialisations available at:"""+doc_url+"""
+Prov store: """+doc_url+"""
 	
-	json: """+doc_url[:-1]+""".json
-	turtle: """+doc_url[:-1]+""".ttl
-	svg graph: """+doc_url[:-1]+""".svg
-	PDF graph: """+doc_url[:-1]+""".pdf
-	png graph: """+doc_url[:-1]+""".png
+Alternative serialisations: [json]("""+doc_url[:-1]+""".json), [turtle]("""+doc_url[:-1]+""".ttl), 
+Graph: [svg]("""+doc_url[:-1]+""".svg), [PDF]("""+doc_url[:-1]+""".pdf), [png]("""+doc_url[:-1]+""".png)
+
+![Prov Graph]("""+doc_url[:-1]+""".png)
+
 		""")
 	readme_file_open.close()
 
@@ -175,7 +178,7 @@ for example_file in example_filenames:
 	else:
 		doc_url = same_doc_url
 
-	readme_file = os.path.join(os.path.dirname(os.path.join(NIDMRESULTSPATH, example_file)), 'README')
+	readme_file = os.path.join(os.path.dirname(os.path.join(NIDMRESULTSPATH, example_file)), 'README.md')
 	if not os.path.isfile(readme_file):
 		raise Exception("Missing README file. Please create a README file for "+example_file+".")
 	write_readme(readme_file, doc_url)
