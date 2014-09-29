@@ -43,8 +43,8 @@ document
       nidm:effectDegreesOfFreedom = "1" %% xsd:float,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_1,
-      [prov:type = 'nidm:Map',
+    entity(niiri:statistic_map_id_der,
+      [prov:type = 'nidm:StatisticMap',
       nidm:filename = "spmT_0001.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:statistic_original_map_header_id',
@@ -55,7 +55,7 @@ document
         nidm:filename = "spmT_0001.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])      
-    wasDerivedFrom(niiri:statistic_map_id, niiri:map_id_1)
+    wasDerivedFrom(niiri:statistic_map_id, niiri:statistic_map_id_der)
     entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
       prov:location = "file:///path/to/Contrast.nii.gz" %% xsd:anyURI,
@@ -65,8 +65,8 @@ document
       nidm:contrastName = "listening > rest" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_2,
-      [prov:type = 'nidm:Map',
+    entity(niiri:contrast_map_id_der,
+      [prov:type = 'nidm:ContrastMap',
       nidm:filename = "con_0001.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:original_contrast_map_header_id',
@@ -77,7 +77,7 @@ document
         nidm:filename = "con_0001.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])
-    wasDerivedFrom(niiri:contrast_map_id, niiri:map_id_2)
+    wasDerivedFrom(niiri:contrast_map_id, niiri:contrast_map_id_der)
 
     entity(niiri:mask_id_2,
       [prov:type = 'nidm:MaskMap',
@@ -87,8 +87,8 @@ document
       prov:label = "Mask" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_3,
-      [prov:type = 'nidm:Map',
+    entity(niiri:mask_id_2_der,
+      [prov:type = 'nidm:MaskMap',
       nidm:filename = "mask.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:original_mask_map_header_id',
@@ -100,7 +100,7 @@ document
         nidm:filename = "mask.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])
-    wasDerivedFrom(niiri:mask_id_2, niiri:map_id_3)
+    wasDerivedFrom(niiri:mask_id_2, niiri:mask_id_2_der)
     wasGeneratedBy(niiri:mask_id_2, niiri:model_pe_id,-)
     entity(niiri:beta_map_id_1,
       [prov:type = 'nidm:ParameterEstimateMap',
@@ -110,8 +110,8 @@ document
       dct:format = "image/nifti",
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_4,
-      [prov:type = 'nidm:Map',
+    entity(niiri:beta_map_id_1_der,
+      [prov:type = 'nidm:ParameterEstimateMap',
       nidm:filename = "beta_0001.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:original_pe_map_header_id',
@@ -122,7 +122,7 @@ document
         nidm:filename = "beta_0001.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])
-    wasDerivedFrom(niiri:beta_map_id_1, niiri:map_id_4)
+    wasDerivedFrom(niiri:beta_map_id_1, niiri:beta_map_id_1_der)
     wasGeneratedBy(niiri:beta_map_id_1, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_1,-)
     entity(niiri:beta_map_id_2,
@@ -133,8 +133,8 @@ document
       prov:label = "Beta Map 2" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_5,
-      [prov:type = 'nidm:Map',
+    entity(niiri:beta_map_id_2_der,
+      [prov:type = 'nidm:ParameterEstimateMap',
       nidm:filename = "beta_0002.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:original_pe_map_header_2_id',
@@ -145,7 +145,7 @@ document
         nidm:filename = "beta_0002.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])
-    wasDerivedFrom(niiri:beta_map_id_2, niiri:map_id_5)
+    wasDerivedFrom(niiri:beta_map_id_2, niiri:beta_map_id_2_der)
     wasGeneratedBy(niiri:beta_map_id_2, niiri:model_pe_id,-)
     used(niiri:contrast_estimation_id, niiri:beta_map_id_2,-)
 
@@ -182,8 +182,8 @@ document
       prov:label = "Resels per Voxel Map" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_6,
-      [prov:type = 'nidm:Map',
+    entity(niiri:resels_per_voxel_map_id_der,
+      [prov:type = 'spm:ReselsPerVoxelMap',
       nidm:filename = "RPV.img" %% xsd:string,
       dct:format = "image/nifti",
       nidm:hasMapHeader = 'niiri:original_rpv_map_header_id',
@@ -194,7 +194,7 @@ document
         nidm:filename = "RPV.hdr" %% xsd:string,
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string
       ])
-    wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:map_id_6)
+    wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:resels_per_voxel_map_id_der)
     used(niiri:inference_id, niiri:resels_per_voxel_map_id,-)
     entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
@@ -216,12 +216,12 @@ document
       prov:label = "Custom mask" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    entity(niiri:map_id_7,
-      [prov:type = 'nidm:Map',
+    entity(niiri:mask_id_1_der,
+      [prov:type = 'nidm:CustomMaskMap',
       nidm:filename = "user_custom_mask.nii" %% xsd:string,
       dct:format = "image/nifti",
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-    wasDerivedFrom(niiri:mask_id_1, niiri:map_id_7)
+    wasDerivedFrom(niiri:mask_id_1, niiri:mask_id_1_der)
     used(niiri:model_pe_id, niiri:mask_id_1,-)
     entity(niiri:contrast_id,
       [prov:type = 'nidm:ContrastWeights',
