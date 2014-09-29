@@ -14,14 +14,6 @@ logger = logging.getLogger(__name__)
 
 RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-def print_results(res):
-        for idx, row in enumerate(res.bindings):
-            rowfmt = []
-            print "Item %d" % idx
-            for key, val in sorted(row.items()):
-                rowfmt.append('%s-->%s' % (key, val.decode()))
-            print '\n'.join(rowfmt)
-
 class TestQueries(unittest.TestCase):
 
     def setUp(self):
@@ -36,12 +28,12 @@ class TestQueries(unittest.TestCase):
             self.examples[example_file].parse(ttl_file_url, format='turtle')
 
     def test_get_contrasts(self):
-        self.run_query_and_test("get_contrasts.rq", "Contrast not found")
+        self.run_query_and_test("get_contrasts.rq", "Contrast not found", "Contrast query")
 
     def test_get_mask(self):
-        self.run_query_and_test("get_mask.rq", "Mask not found")        
+        self.run_query_and_test("get_mask.rq", "Mask not found", "Mask query")        
 
-    def run_query_and_test(self, query_file, error_prefix):
+    def run_query_and_test(self, query_file, error_prefix, query_result_prefix):
         my_exception = dict()
 
         file = open(os.path.join(RELPATH, 'query', query_file), 'r')
@@ -61,9 +53,9 @@ class TestQueries(unittest.TestCase):
                     my_exception[key].add(example_name)
 
                 my_exception = merge_exception_dict(my_exception, exception_msg)
-            # else:
-                # for row in sd:
-                    # logger.info(example_name+""":Contrast "%s", %s: %s"""% row)
+            else:
+                for row in sd:
+                    logger.info(example_name+"\t\t"+query_result_prefix+": "+",".join(row))
 
         # Aggregate errors over examples for conciseness
         if my_exception:
