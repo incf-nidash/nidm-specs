@@ -56,34 +56,6 @@ class UpdateExampleReadmes():
 			logger.info('\tLast version of this document in the ProvStore: '+'"'+doc_url+'"')
 		return doc_url
 
-	def compare_ttl_documents(ttl_doc1, ttl_doc2):
-		# Check whether most recent document is identical to current version
-		doc_graph = Graph()
-		doc_graph.parse(ttl_doc1)
-		same_doc_graph = Graph()
-		same_doc_graph.parse(ttl_doc2)
-
-		# Use isomorphic to ignore BNode
-		iso1 = to_isomorphic(same_doc_graph)
-		iso2 = to_isomorphic(doc_graph)
-
-		found_difference = False
-		if iso1 != iso2:
-
-			in_both, in_first, in_second = graph_diff(iso1, iso2)
-
-			diff_graph = (in_first+in_second)
-			for s,p,o in diff_graph.triples((None,None,None)):
-				# workaround to avoid issue with "5853" being a string
-				if iso1.qname(p) != "spm:softwareRevision":
-					if iso1.qname(p) != "fsl:featVersion":
-						found_difference = True
-						logger.info('\tDifference in: s='+diff_graph.qname(s)+\
-							", p="+diff_graph.qname(p)+\
-							", o="+o)
-						break;
-		return found_difference
-
 	# Update Readme
 	def write_readme(readme_file, doc_url):
 		readme_file_open = open(readme_file, 'w')
