@@ -75,6 +75,18 @@ nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#dependenceSpatialModel
+
+nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
+                            
+                            prov:definition "FIXME" ;
+                            
+                            rdfs:domain nidm:NoiseModel ;
+                            
+                            rdfs:range nidm:SpatialModel .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasAlternativeHypothesis
 
 nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
@@ -114,6 +126,30 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   rdfs:domain nidm:Map ;
                   
                   rdfs:range nidm:MapHeader .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasNoiseDependence
+
+nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
+                        
+                        prov:definition "FIXME" ;
+                        
+                        rdfs:range nidm:NoiseDependence ;
+                        
+                        rdfs:domain nidm:NoiseModel .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasNoiseDistribution
+
+nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:range nidm:NoiseDistribution ;
+                          
+                          rdfs:domain nidm:NoiseModel .
 
 
 
@@ -175,6 +211,18 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#varianceSpatialModel
+
+nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:domain nidm:NoiseModel ;
+                          
+                          rdfs:range nidm:SpatialModel .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#visualisation
 
 nidm:visualisation rdf:type owl:ObjectProperty ;
@@ -190,6 +238,18 @@ NIDM Concept ID: nidm_66. """ ;
                                nidm:ExcursionSet ;
                    
                    rdfs:range nidm:Image .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#withEstimationMethod
+
+nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:range nidm:EstimationMethod ;
+                          
+                          rdfs:domain nidm:ModelParametersEstimation .
 
 
 
@@ -691,6 +751,18 @@ nidm:noiseFWHM rdf:type owl:DatatypeProperty ;
                
                iao:IAO_0000116 """Context: Functional. Domain or Attributes: <onlychildofareusedinthedatamodel> not found. BIRNLex or 
 NIDM Concept ID: nidm_42. \"type\": SearchVol. """ .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#noiseVarianceHomogeneous
+
+nidm:noiseVarianceHomogeneous rdf:type owl:DatatypeProperty ;
+                              
+                              prov:definition "FIXME" ;
+                              
+                              rdfs:domain nidm:NoiseModel ;
+                              
+                              rdfs:range xsd:boolean .
 
 
 
@@ -1388,6 +1460,16 @@ NIDM Concept ID: spm_94. """ ;
 #################################################################
 
 
+###  http://www.incf.org/ns/nidash/fsl#BinomialDistribution
+
+fsl:BinomialDistribution rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         
+                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
 fsl:CenterOfGravity rdf:type owl:Class ;
@@ -1415,6 +1497,16 @@ fsl:ClusterMaximumStatistic rdf:type owl:Class ;
                             rdfs:subClassOf prov:Entity ;
                             
                             prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#NonParametricSymmetricDistribution
+
+fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf nidm:NoiseDistribution ;
+                                       
+                                       prov:definition "FIXME" .
 
 
 
@@ -1446,6 +1538,16 @@ fsl:ZStatisticMap rdf:type owl:Class ;
 """ ;
                   
                   prov:definition "A map whose value at each location is a Z-statistic value. " .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedNoise
+
+nidm:ArbitrarilyCorrelatedNoise rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf nidm:NoiseDependence ;
+                                
+                                prov:definition "FIXME" .
 
 
 
@@ -1497,6 +1599,16 @@ nidm:Colin27CoordinateSystem rdf:type owl:Class ;
                              prov:definition "Coordinate system defined by the \"stereotaxic average of 27 T1-weighted MRI scans of the same individual\"." ;
                              
                              rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#CompoundSymmetricNoise
+
+nidm:CompoundSymmetricNoise rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf nidm:NoiseDependence ;
+                            
+                            prov:definition "FIXME" .
 
 
 
@@ -1713,6 +1825,26 @@ NIDM Concept ID: nidm_24. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#EstimationMethod
+
+nidm:EstimationMethod rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf prov:Entity .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ExchangeableNoise
+
+nidm:ExchangeableNoise rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf nidm:NoiseDependence ;
+                       
+                       prov:definition "FIXME" ;
+                       
+                       rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ExcursionSet
 
 nidm:ExcursionSet rdf:type owl:Class ;
@@ -1792,6 +1924,28 @@ nidm:FStatistic rdf:type owl:Class ;
                 rdfs:subClassOf nidm:Statistic ;
                 
                 owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GaussianDistribution
+
+nidm:GaussianDistribution rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:NoiseDistribution ;
+                          
+                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000227"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GeneralizedLeastSquares
+
+nidm:GeneralizedLeastSquares rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:EstimationMethod ;
+                             
+                             rdfs:comment "GLS (both heteroscedasticity and dependence accounted for) OLS is a special case of WLS & GLS; WLS is a special case of GLS." ;
+                             
+                             prov:definition "FIXME" .
 
 
 
@@ -1985,6 +2139,16 @@ nidm:Image rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#IndependentNoise
+
+nidm:IndependentNoise rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf nidm:NoiseDependence ;
+                      
+                      prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Inference
 
 nidm:Inference rdf:type owl:Class ;
@@ -2119,6 +2283,44 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#NoiseDependence
+
+nidm:NoiseDependence rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Entity ;
+                     
+                     prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NoiseDistribution
+
+nidm:NoiseDistribution rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf prov:Entity .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NoiseModel
+
+nidm:NoiseModel rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity ;
+                
+                prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NonParametricDistribution
+
+nidm:NonParametricDistribution rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf nidm:NoiseDistribution ;
+                               
+                               prov:definition "FIXME" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#OneTailedTest
 
 nidm:OneTailedTest rdf:type owl:Class ;
@@ -2128,6 +2330,18 @@ nidm:OneTailedTest rdf:type owl:Class ;
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
                    
                    prov:definition "Re-use \"one tailed test\" from STATO." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#OrdinaryLeastSquares
+
+nidm:OrdinaryLeastSquares rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:EstimationMethod ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          rdfs:comment "OLS (no heteroscedasticity or dependence accounted for)" .
 
 
 
@@ -2175,6 +2389,16 @@ NIDM Concept ID: nidm_46. """ ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
+
+nidm:PoissonDistribution rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         
+                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ResidualMeanSquaresMap
 
 nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
@@ -2196,6 +2420,18 @@ NIDM Concept ID: nidm_52. """ ;
     nidm:originalFileName = \"ResMS.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#RobustIterativelyReweighedLeastSquares
+
+nidm:RobustIterativelyReweighedLeastSquares rdf:type owl:Class ;
+                                            
+                                            rdfs:subClassOf nidm:EstimationMethod ;
+                                            
+                                            rdfs:comment "used for automatically down-weighting outliers, using some given influence function (e.g. Huber; see [1] for a neuroimaging application)." ;
+                                            
+                                            prov:definition "FIXME" .
 
 
 
@@ -2268,6 +2504,56 @@ NIDM Concept ID: spm_95. """ ;
                     rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
                     prov:definition "mask in which the inference was performed." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedNoise
+
+nidm:SeriallyCorrelatedNoise rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:NoiseDependence ;
+                             
+                             prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatialModel
+
+nidm:SpatialModel rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyGlobalModel
+
+nidm:SpatiallyGlobalModel rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:SpatialModel ;
+                          
+                          prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyLocalModel
+
+nidm:SpatiallyLocalModel rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:SpatialModel ;
+                         
+                         prov:definition "FIXME" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SpatiallyRegularizedModel
+
+nidm:SpatiallyRegularizedModel rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf nidm:SpatialModel ;
+                               
+                               prov:definition "FIXME" .
 
 
 
@@ -2385,6 +2671,18 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    prov:definition "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#WeightedLeastSquares
+
+nidm:WeightedLeastSquares rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:EstimationMethod ;
+                          
+                          rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" ;
+                          
+                          prov:definition "FIXME" .
 
 
 
