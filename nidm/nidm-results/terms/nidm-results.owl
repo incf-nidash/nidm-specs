@@ -841,9 +841,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -871,9 +871,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -899,9 +899,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -927,9 +927,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1886,6 +1886,18 @@ nidm:ErrorModel rdf:type owl:Class ;
                 
                 nidm:curationStatus "nidm:ReadyForRelease" .
 
+###  http://www.incf.org/ns/nidash/nidm#DisplayMaskMap
+
+nidm:DisplayMaskMap rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf nidm:Map ;
+                    
+                    nidm:curationStatus "nidm:ReadyForRelease" ;
+                    
+                    rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
+                    
+                    nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/157" .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#EstimationMethod
@@ -1907,16 +1919,6 @@ nidm:ExchangeableError rdf:type owl:Class ;
                        rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
                        
                        nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#DisplayMaskMap
-
-nidm:DisplayMaskMap rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf nidm:Map ;
-                    
-                    rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect voxel-wise corrected p-values." .
 
 
 
@@ -2020,16 +2022,6 @@ nidm:GeneralizedLeastSquares rdf:type owl:Class ;
                              rdfs:comment "GLS (both heteroscedasticity and dependence accounted for) OLS is a special case of WLS & GLS; WLS is a special case of GLS." ;
                              
                              prov:definition "FIXME" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#FilteringMaskMap
-
-nidm:FilteringMaskMap rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:Map ;
-                      
-                      prov:definition "FIXME"^^xsd:string .
 
 
 
