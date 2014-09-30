@@ -98,16 +98,26 @@ class UpdateTermsReadme():
                     else:
                         editors[class_key] = editor                    
 
-        table_txt = "<table>\n<tr><th>Curation Status</th><th>Term</th></tr>"
-
         img_colors = dict()
         img_colors['nidm:PendingFinalVetting'] = "green"
         img_colors['nidm:MetadataIncomplete'] = "orange"
         img_colors['nidm:Uncurated'] = "red"
-        order = "nidm:PendingFinalVetting,nidm:MetadataIncomplete,nidm:Uncurated".split(',')
+        img_colors['nidm:ToBeReplacedByExternalOntologyTerm'] = "yellow"
+        order = "nidm:PendingFinalVetting,nidm:MetadataIncomplete,nidm:Uncurated,nidm:ToBeReplacedByExternalOntologyTerm".split(',')
         # Include missing keys
         order+=(list(set(terms.keys()) - set(order+list(['nidm:ReadyForRelease']))))
         terms_sorted = [(key, terms.get(key)) for key in order]
+
+        curation_legend = "<b>Curation status</b>: "
+        curation_colors_sorted = [(key, img_colors.get(key)) for key in order]
+        for curation_color in curation_colors_sorted:
+            curation_status =  curation_color[0]
+            color =  curation_color[1]
+            if color:
+                curation_legend = curation_legend+'<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>&nbsp;'+\
+                    curation_status.replace("nidm:", "")+";\n"
+
+        table_txt = "\n<table>\n<tr><th>Curation Status</th><th>Term</th></tr>"
 
         for tuple_status_term in terms_sorted:
             curation_status = tuple_status_term[0]
@@ -120,10 +130,10 @@ class UpdateTermsReadme():
             if class_names:
                 for class_name in class_names:
                     table_txt = table_txt+"<tr>"+\
-                            "<td>"+img_color+curation_status+editors[class_name]+"</td>"\
-                            "<td><b>"+class_name+": </b>"+definitions[class_name]+"</td></tr>"
+                            "<td>"+img_color+"</td>"\
+                            "<td><b>"+class_name+": </b>"+definitions[class_name]+editors[class_name]+"</td></tr>"
         table_txt = table_txt+"\n</table>"
-        self.write_readme(readme_file, table_txt)
+        self.write_readme(readme_file, "<h1>NIDM-Results terms curation status</h1>"+curation_legend+"<h2>Classes</h2>"+table_txt)
 
 if __name__ == '__main__':
     # Retreive owl file for NIDM-Results
