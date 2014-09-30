@@ -115,7 +115,7 @@ class UpdateTermsReadme():
 
             img_color=""     
             if curation_status in img_colors:
-                img_color = '<img src="./doc/content/specs/img/'+img_colors[curation_status]+'.png"/>  ' 
+                img_color = '<img src="../../../doc/content/specs/img/'+img_colors[curation_status]+'.png?raw=true"/>  ' 
 
             if class_names:
                 for class_name in class_names:
