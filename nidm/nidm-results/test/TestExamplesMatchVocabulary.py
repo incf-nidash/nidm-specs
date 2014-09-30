@@ -20,7 +20,7 @@ class TestExamples(unittest.TestCase):
 
     def setUp(self):
         # Retreive owl file for NIDM-Results
-        owl_file = os.path.join(RELPATH, 'nidm-results.owl')
+        owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
         # check the file exists
         assert os.path.exists(owl_file)
         # Read owl (turtle) file
