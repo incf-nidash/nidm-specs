@@ -42,6 +42,14 @@ nidm:curationStatus rdf:type owl:AnnotationProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#termEditor
+
+nidm:termEditor rdf:type owl:AnnotationProperty ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000117" .
+
+
+
 ###  http://www.w3.org/2002/07/owl#sameAs
 
 owl:sameAs rdf:type owl:AnnotationProperty .
@@ -1493,8 +1501,7 @@ fsl:CenterOfGravity rdf:type owl:Class ;
         prov:label = \"Center of gravity 1\",
         prov:location = 'niiri:COG_coordinate_0001'])""" ;
                     
-                    iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: fsl_102. """ .
+                    nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -1504,7 +1511,7 @@ fsl:ClusterMaximumStatistic rdf:type owl:Class ;
                             
                             rdfs:subClassOf prov:Entity ;
                             
-                            prov:definition "FIXME" .
+                            nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -1524,7 +1531,7 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
                         
                         rdfs:subClassOf nidm:Map ;
                         
-                        prov:definition "FIXME" .
+                        nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -1545,7 +1552,9 @@ fsl:ZStatisticMap rdf:type owl:Class ;
         crypto:sha = \"400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8\"])
 """ ;
                   
-                  prov:definition "A map whose value at each location is a Z-statistic value. " .
+                  prov:definition "A map whose value at each location is a Z-statistic value. " ;
+                  
+                  nidm:curationStatus "nidm:PendingFinalVetting" .
 
 
 
@@ -1565,10 +1574,7 @@ nidm:Cluster rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ;
              
-             rdfs:seeAlso "Child of \"nidm:Statistic\"" ;
-             
-             iao:IAO_0000116 """Range: - not found. BIRNLex or 
-NIDM Concept ID: nidm_7. """ ;
+             nidm:curationStatus "nidm:MetadataIncomplete" ;
              
              iao:IAO_0000112 """entity(niiri:cluster_0001,
     [prov:type = 'nidm:Cluster',
@@ -1590,7 +1596,7 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      prov:definition "FIXME" .
+                      nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -1599,6 +1605,8 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
 nidm:Colin27CoordinateSystem rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
+                             
+                             nidm:curationStatus "nidm:MetadataIncomplete" ;
                              
                              rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres" ;
                              
@@ -1656,13 +1664,9 @@ nidm:ContrastEstimation rdf:type owl:Class ;
 
 nidm:ContrastMap rdf:type owl:Class ;
                  
-                 rdfs:subClassOf nidm:Map ,
-                                 prov:Entity ;
+                 rdfs:subClassOf nidm:Map ;
                  
                  prov:definition "A map whose value at each location is statistical contrast estimate." ;
-                 
-                 iao:IAO_0000116 """Context: io terms. Parent: nidm:map, Scan Image  not found. Range: - not found. BIRNLex or 
-NIDM Concept ID: nidm_10. """ ;
                  
                  iao:IAO_0000112 """  entity(niiri:contrast_map_id,
     [prov:type = 'nidm:ContrastMap',
@@ -1671,7 +1675,9 @@ NIDM Concept ID: nidm_10. """ ;
     nidm:contrastName = \"listening > rest\" %% xsd:string,
     nidm:originalFileName = \"con_0001.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                 
+                 nidm:curationStatus "nidm:PendingFinalVetting" .
 
 
 
@@ -1691,8 +1697,7 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
                               
                               prov:definition "A map whose value at each location is the standard error of a given contrast." ;
                               
-                              iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_12. """ .
+                              nidm:curationStatus "nidm:PendingFinalVetting" .
 
 
 
@@ -1704,14 +1709,16 @@ nidm:ContrastWeights rdf:type owl:Class ;
                      
                      prov:definition "Vector defining the linear combination associated with a particular contrast. " ;
                      
-                     iao:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
-NIDM Concept ID: nidm_13. """ ;
-                     
                      iao:IAO_0000112 """\"entity(niiri:t_contrast_id,
     [prov:type = 'nidm:TContrastWeights',
     nidm:contrastName = \"\"listening > rest\"\" %% xsd:string,
     prov:label = \"\"Contrast: Listening > Rest\"\" %% xsd:string,
-    prov:value = \"\"[1, 0, 0]\"\" %% xsd:string])\"""" .
+    prov:value = \"\"[1, 0, 0]\"\" %% xsd:string])\"""" ;
+                     
+                     iao:IAO_0000116 "Under discussion at: https://github.com/ISA-tools/stato/issues/23" ,
+                                     "Range: Vector of integers not found." ;
+                     
+                     nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
 
 
 
@@ -1723,13 +1730,11 @@ nidm:Coordinate rdf:type owl:Class ;
                 
                 owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44465"^^xsd:anyURI ;
                 
-                iao:IAO_0000116 """Model: - search for coordinate uri
-- subclasses of coordinate
-- additional properties (e.g. units) 
-. Context: Functional. BIRNLex or 
-NIDM Concept ID: nidm_14. """ ;
+                iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/144 and https://github.com/incf-nidash/nidm/pull/172." ;
                 
-                iao:IAO_0000112 "3D (x,y,x), 2D (x,y), Vertices, etc." .
+                iao:IAO_0000112 "3D (x,y,x), 2D (x,y), Vertices, etc." ;
+                
+                nidm:curationStatus "nidm:ReadyForRelease" .
 
 
 
@@ -1752,7 +1757,9 @@ NIDM Concept ID: nidm_21. """ ;
     nidm:numberOfDimensions = \"3\" %% xsd:int,
     nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" ;
                      
-                     prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." .
+                     prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." ;
+                     
+                     nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -1772,7 +1779,9 @@ nidm:CustomCoordinateSystem rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
                             
-                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                            
+                            nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -1782,6 +1791,8 @@ nidm:CustomMaskMap rdf:type owl:Class ;
                    
                    rdfs:subClassOf nidm:Map ;
                    
+                   nidm:curationStatus "nidm:MetadataIncomplete" ;
+                   
                    iao:IAO_0000112 """entity(niiri:mask_id_1,
       [prov:type = 'nidm:CustomMaskMap',
       prov:location = \"file:///path/to/custom_mask.nii\" %% xsd:anyURI,
@@ -1790,10 +1801,7 @@ nidm:CustomMaskMap rdf:type owl:Class ;
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                    
-                   prov:definition "mask defined by the user to restrain the space in which model fitting is performed." ;
-                   
-                   iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_99. """ .
+                   prov:definition "mask defined by the user to restrain the space in which model fitting is performed." .
 
 
 
@@ -1803,10 +1811,11 @@ nidm:Data rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
           
-          rdfs:seeAlso "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474" ;
+          owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474" ;
           
-          iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_23. """ ;
+          nidm:curationStatus "nidm:PendingFinalVetting" ;
+          
+          iao:IAO_0000116 "This definition is from NCIT. Please update this note if the definition is modified." ;
           
           prov:definition "\"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.\"" ;
           
@@ -1816,9 +1825,7 @@ NIDM Concept ID: nidm_23. """ ;
     prov:label = \"Data\" %% xsd:string,
     nidm:grandMeanScaling = \"true\" %%xsd:boolean,
     nidm:targetIntensity = \"100\" %% xsd:float,
-    nidm:intraMaskMedian = \"115.32\" %% xsd:float])""" ;
-          
-          owl:sameAs "This definition is from NCIT. Please update this note if the definition is modified." .
+    nidm:intraMaskMedian = \"115.32\" %% xsd:float])""" .
 
 
 
@@ -1828,10 +1835,11 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  prov:definition "A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation." ;
+                  nidm:termEditor "Thomas Nichols" ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_24. """ ;
+                  nidm:curationStatus "nidm:PendingFinalVetting" ;
+                  
+                  prov:definition "A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation." ;
                   
                   iao:IAO_0000112 """entity(niiri:design_matrix_id,
     [prov:type = 'nidm:DesignMatrix',
@@ -1880,10 +1888,11 @@ nidm:ExcursionSet rdf:type owl:Class ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_29. """ ;
+                  iao:IAO_0000116 "Discussed in the Neuroimaging terms spreadsheet." ;
                   
-                  prov:definition "Set of map elements surviving a thresholding procedure." .
+                  prov:definition "Set of map elements surviving a thresholding procedure." ;
+                  
+                  nidm:curationStatus "nidm:PendingFinalVetting" .
 
 
 
@@ -1904,9 +1913,7 @@ nidm:ExtentThreshold rdf:type owl:Class ;
     nidm:pValueUncorrected = \"1\" %% xsd:float,
     nidm:pValueFWER = \"1\" %% xsd:float])""" ;
                      
-                     iao:IAO_0000116 """Context: Attribute \"prov:value\" 
-of \"extentThresh\" nidm_0079. BIRNLex or 
-NIDM Concept ID: nidm_30. new parent: Effect. """ .
+                     nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -1930,7 +1937,7 @@ nidm:FSLResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                prov:definition "FIXME" .
+                nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -1940,7 +1947,9 @@ nidm:FStatistic rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:Statistic ;
                 
-                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI .
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI ;
+                
+                nidm:curationStatus "nidm:ReadyForRelease" .
 
 
 
@@ -1972,7 +1981,7 @@ nidm:GrandMeanMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  prov:definition "FIXME" .
+                  nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -1993,9 +2002,7 @@ nidm:HeightThreshold rdf:type owl:Class ;
     nidm:pValueUncorrected = \"7.62276079258051e-07\" %% xsd:float,
     nidm:pValueFWER = \"0.05\" %% xsd:float])""" ;
                      
-                     iao:IAO_0000116 """Context: Attribute \"statistic\" nidm_0049
-of \"StatisticThresh\" nidm_0018. BIRNLex or 
-NIDM Concept ID: nidm_34. """ .
+                     nidm:curationStatus "nidm:PendingFinalVetting" .
 
 
 
@@ -2005,11 +2012,11 @@ nidm:Icbm452AirCoordinateSystem rdf:type owl:Class ;
                                 
                                 rdfs:subClassOf nidm:MNICoordinateSystem ;
                                 
-                                rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
-                                
                                 rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
                                 
-                                prov:definition "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" .
+                                prov:definition "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" ;
+                                
+                                nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -2023,7 +2030,7 @@ nidm:Icbm452Warp5CoordinateSystem rdf:type owl:Class ;
                                   
                                   prov:definition "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" \"based on a 5th order polynomial transformation into the atlas space\"" ;
                                   
-                                  rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+                                  nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -2035,11 +2042,11 @@ nidm:IcbmMni152LinearCoordinateSystem rdf:type owl:Class ;
                                       
                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
                                       
+                                      nidm:curationStatus "nidm:MetadataIncomplete" ;
+                                      
                                       rdfs:comment "used in SPM99 to SPM8 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach and spm8/spm_templates.man)" ;
                                       
-                                      rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" ;
-                                      
-                                      rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
+                                      rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" .
 
 
 
@@ -2051,7 +2058,7 @@ nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
-                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        nidm:curationStatus "nidm:MetadataIncomplete" ;
                                                         
                                                         prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
 
@@ -2063,7 +2070,7 @@ nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
                                                        
-                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                       nidm:curationStatus "nidm:MetadataIncomplete" ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
@@ -2077,7 +2084,7 @@ nidm:IcbmMni152NonLinear2009bAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:subClassOf nidm:MNICoordinateSystem ;
                                                         
-                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        nidm:curationStatus "nidm:MetadataIncomplete" ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
@@ -2091,11 +2098,11 @@ nidm:IcbmMni152NonLinear2009bSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
                                                        
-                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
-                                                       
                                                        prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                        
-                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" .
+                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                                                       
+                                                       nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -2107,7 +2114,7 @@ nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
-                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                        nidm:curationStatus "nidm:MetadataIncomplete" ;
                                                         
                                                         prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                         
@@ -2123,9 +2130,9 @@ nidm:IcbmMni152NonLinear2009cSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
-                                                       rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                        
-                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+                                                       nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -2137,10 +2144,11 @@ nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem rdf:type owl:Class ;
                                                       
                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6"^^xsd:anyURI ;
                                                       
+                                                      nidm:curationStatus "nidm:MetadataIncomplete" ;
+                                                      
                                                       prov:definition "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" ;
                                                       
-                                                      rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
-                                                                   "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" .
+                                                      rdfs:comment "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" .
 
 
 
@@ -2150,9 +2158,9 @@ nidm:Image rdf:type owl:Class ;
            
            rdfs:subClassOf prov:Entity ;
            
-           prov:definition "FIXME" ;
+           rdfs:comment "Class used to represent png, gif..." ;
            
-           rdfs:comment "Class used to represent png, gif..." .
+           nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2188,12 +2196,13 @@ nidm:Ixi549Space rdf:type owl:Class ;
                  
                  rdfs:subClassOf nidm:MNICoordinateSystem ;
                  
+                 nidm:curationStatus "nidm:MetadataIncomplete" ;
+                 
                  prov:definition "Coordinate system defined by the average of the \"549 [...] subjects from the IXI dataset\" linearly transformed to ICBM MNI 452." ;
                  
                  rdfs:seeAlso "http://biomedic.doc.ic.ac.uk/brain-development/index.php?n=Main.Datasets" ;
                  
-                 rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
-                              "Used in SPM12b (cf. spm12b/spm_templates.man)" .
+                 rdfs:comment "Used in SPM12b (cf. spm12b/spm_templates.man)" .
 
 
 
@@ -2205,12 +2214,9 @@ nidm:MNICoordinateSystem rdf:type owl:Class ;
                          
                          rdfs:seeAlso "birnlex_2125" ;
                          
-                         prov:definition "Coordinate system defined with reference to the MNI atlas." ;
+                         nidm:curationStatus "nidm:MetadataIncomplete" ;
                          
-                         rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
-                         
-                         iao:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
-NIDM Concept ID: nidm:nidm_40. """ .
+                         prov:definition "Coordinate system defined with reference to the MNI atlas." .
 
 
 
@@ -2220,7 +2226,11 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ;
          
-         prov:definition "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." .
+         nidm:curationStatus "nidm:ReadyForRelease" ;
+         
+         prov:definition "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." ;
+         
+         iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" .
 
 
 
@@ -2230,7 +2240,7 @@ nidm:MapHeader rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Entity ;
                
-               prov:definition "FIXME" .
+               nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2238,13 +2248,13 @@ nidm:MapHeader rdf:type owl:Class ;
 
 nidm:MaskMap rdf:type owl:Class ;
              
-             rdfs:subClassOf nidm:Map ,
-                             prov:Entity ;
+             rdfs:subClassOf nidm:Map ;
+             
+             nidm:curationStatus "nidm:MetadataIncomplete" ;
+             
+             iao:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/155" ;
              
              prov:definition "map or surface on which the associated results are displayed. " ;
-             
-             iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_39. """ ;
              
              iao:IAO_0000112 """entity(niiri:mask_id_2,
     [prov:type = 'nidm:MaskMap',
@@ -2276,7 +2286,7 @@ nidm:Mni305CoordinateSystem rdf:type owl:Class ;
                             
                             rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305" ;
                             
-                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                            nidm:curationStatus "nidm:MetadataIncomplete" ;
                             
                             prov:definition "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." .
 
@@ -2308,7 +2318,7 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     prov:definition "FIXME" .
+                     nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2358,7 +2368,9 @@ nidm:OneTailedTest rdf:type owl:Class ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
                    
-                   prov:definition "Re-use \"one tailed test\" from STATO." .
+                   nidm:curationStatus "nidm:ReadyForRelease" ;
+                   
+                   iao:IAO_0000116 "Re-use \"one tailed test\" from STATO." .
 
 
 
@@ -2392,8 +2404,9 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:Map ;
                           
-                          iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_45. """ ;
+                          nidm:curationStatus "nidm:metadataIncomplete" ;
+                          
+                          iao:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/141 (see also https://github.com/ISA-tools/stato/issues/18)" ;
                           
                           iao:IAO_0000112 """entity(niiri:parameter_estimate_map_id_1,
     [prov:type = 'nidm:ParameterEstimateMap',
@@ -2413,10 +2426,9 @@ nidm:Peak rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
           
-          prov:definition "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" ;
+          nidm:curationStatus "nidm:MetadataIncomplete" ;
           
-          iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_46. """ ;
+          prov:definition "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" ;
           
           iao:IAO_0000112 """entity(niiri:peak_0001,
     [prov:type = 'nidm:Peak',
@@ -2485,10 +2497,13 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             iao:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_52. """ ;
                             
-                            prov:definition """A map whose value at each location is the residual of the mean squares fit to the data.
-""" ;
-                            
                             rdfs:seeAlso "This is a map of \"residuals\" as defined at http://bioportal.bioontology.org/ontologies/STATO/?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FSTATO_0000234 " ;
+                            
+                            nidm:curationStatus "nidm:PendingFinalVetting" ;
+                            
+                            prov:definition "A map whose value at each location is the residual of the mean squares fit to the data." ;
+                            
+                            nidm:termEditor "Karl Helmer" ;
                             
                             iao:IAO_0000112 """entity(niiri:residual_mean_squares_map_id,
     [prov:type = 'nidm:ResidualMeanSquaresMap',
@@ -2532,7 +2547,7 @@ nidm:SPMResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                prov:definition "FIXME" .
+                nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2540,25 +2555,9 @@ nidm:SPMResults rdf:type owl:Class ;
 
 nidm:SearchSpaceMap rdf:type owl:Class ;
                     
-                    rdfs:subClassOf nidm:Map ,
-                                    prov:Entity ;
+                    rdfs:subClassOf nidm:Map ;
                     
-                    prov:definition "Properties of the underlying statistical process." ;
-                    
-                    iao:IAO_0000112 """entity(niiri:stat_image_properties_id,
-      [prov:type = 'nidm:SearchSpaceMap',
-      prov:label = \"Statistical image properties\",
-      spm:expectedNumberOfVoxelsPerCluster = \"0.553331387916112\" %% xsd:float,
-      spm:expectedNumberOfClusters = \"0.0889172687960151\" %% xsd:float,
-      spm:heightCriticalThresholdFWE05 = \"5.23529984739211\" %% xsd:float,
-      spm:heightCriticalThresholdFDR05 = \"6.22537899017334\" %% xsd:float,
-      spm:smallestSignifClusterSizeInVoxelsFWE05 = \"1\" %% xsd:float,
-      spm:smallestSignifClusterSizeInVoxelsFDR05 = \"3\" %% xsd:float])""" ;
-                    
-                    iao:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
-NIDM Concept ID: nidm_100. """ ,
-                                    """BIRNLex or 
-NIDM Concept ID: spm_95. """ ;
+                    nidm:curationStatus "nidm:MetadataIncomplete" ;
                     
                     iao:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
@@ -2574,6 +2573,12 @@ NIDM Concept ID: spm_95. """ ;
       spm:noiseFWHMInVoxels = \"[2.95881189165801, 2.96628446669584, 2.61180425626264]\" %% xsd:string,
       spm:noiseFWHMInUnits = \"[8.87643567497404, 8.89885340008753, 7.83541276878791]\" %% xsd:string,
       nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
+      spm:expectedNumberOfVoxelsPerCluster = \"0.553331387916112\" %% xsd:float,
+      spm:expectedNumberOfClusters = \"0.0889172687960151\" %% xsd:float,
+      spm:heightCriticalThresholdFWE05 = \"5.23529984739211\" %% xsd:float,
+      spm:heightCriticalThresholdFDR05 = \"6.22537899017334\" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFWE05 = \"1\" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = \"3\" %% xsd:float
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                     
                     rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
@@ -2641,6 +2646,8 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
                                                "This is meant to be used for retrospective export when exact template is unknown." ;
                                   
+                                  nidm:curationStatus "nidm:MetadataIncomplete" ;
+                                  
                                   prov:definition "Parent of all reference spaces except \"Subject\"." .
 
 
@@ -2651,7 +2658,9 @@ nidm:Statistic rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Entity ;
                
-               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000039"^^xsd:anyURI .
+               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000039"^^xsd:anyURI ;
+               
+               nidm:curationStatus "nidm:ReadyForRelease" .
 
 
 
@@ -2659,8 +2668,7 @@ nidm:Statistic rdf:type owl:Class ;
 
 nidm:StatisticMap rdf:type owl:Class ;
                   
-                  rdfs:subClassOf nidm:Map ,
-                                  prov:Entity ;
+                  rdfs:subClassOf nidm:Map ;
                   
                   iao:IAO_0000112 """entity(niiri:statistical_map_id,
     [prov:type = 'nidm:StatisticMap',
@@ -2675,8 +2683,7 @@ nidm:StatisticMap rdf:type owl:Class ;
                   
                   prov:definition "A map whose value at each location is a statistic. " ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_60. """ .
+                  nidm:curationStatus "nidm:metadataIncomplete" .
 
 
 
@@ -2688,8 +2695,7 @@ nidm:SubVolumeMap rdf:type owl:Class ;
                   
                   prov:definition "mask defined by the user to restrain the space in which inference is performed." ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_101. """ ;
+                  nidm:curationStatus "nidm:metadataIncomplete" ;
                   
                   iao:IAO_0000112 """entity(niiri:sub_volume_id,
       [prov:type = 'nidm:SubVolumeMap',
@@ -2707,6 +2713,8 @@ nidm:SubjectCoordinateSystem rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:WorldCoordinateSystem ;
                              
+                             nidm:curationStatus "nidm:MetadataIncomplete" ;
+                             
                              prov:definition "Coordinate system defined by the subject brain (no spatial normalisation applied)." ;
                              
                              rdfs:comment "Used in FSL and SPM un-registered data." .
@@ -2719,7 +2727,9 @@ nidm:TStatistic rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:Statistic ;
                 
-                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000176"^^xsd:anyURI .
+                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000176"^^xsd:anyURI ;
+                
+                nidm:curationStatus "nidm:ReadyForRelease" .
 
 
 
@@ -2731,7 +2741,7 @@ nidm:TalairachCoordinateSystem rdf:type owl:Class ;
                                
                                prov:definition "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
                                
-                               rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                               nidm:curationStatus "nidm:MetadataIncomplete" ;
                                
                                rdfs:seeAlso "http://www.talairach.org/" .
 
@@ -2757,7 +2767,9 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    
                    prov:definition "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
                    
-                   owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
+                   owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI ;
+                   
+                   nidm:curationStatus "nidm:ReadyForRelease" .
 
 
 
@@ -2791,7 +2803,7 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           prov:definition "FIXME" .
+                           nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2801,20 +2813,7 @@ nidm:ZStatistic rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:Statistic ;
                 
-                prov:definition "FIXME" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#stationaryRandomField
-
-nidm:stationaryRandomField rdf:type owl:Class ;
-                           
-                           rdfs:subClassOf prov:Entity ;
-                           
-                           prov:definition "Random-field that is constant across the search volume." ;
-                           
-                           iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: nidm_59. """ .
+                nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2836,6 +2835,8 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
+                      nidm:curationStatus "nidmn:metadataIncomplete" ;
+                      
                       prov:definition "A map whose value at each location is the number of resels per voxel. " ;
                       
                       iao:IAO_0000112 """entity(niiri:resels_per_voxel_map_id,
@@ -2844,25 +2845,7 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
       prov:label = \"Resels per Voxel Map\" %% xsd:string,
       nidm:originalFileName = \"RPV.img\" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
-                      
-                      iao:IAO_0000116 """BIRNLex or 
-NIDM Concept ID: spm_83. """ .
-
-
-
-###  http://www.incf.org/ns/nidash/spm#nonStationaryRandomField
-
-spm:nonStationaryRandomField rdf:type owl:Class ;
-                             
-                             rdfs:subClassOf prov:Entity ;
-                             
-                             iao:IAO_0000112 "<this is an attribute value>" ;
-                             
-                             prov:definition "Random field that is variable across the search volume." ;
-                             
-                             iao:IAO_0000116 """Range: <thisisanattributevalue> not found. BIRNLex or 
-NIDM Concept ID: spm_81. """ .
+      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
 
 
 
