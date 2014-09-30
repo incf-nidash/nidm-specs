@@ -25,7 +25,7 @@ from TestCommons import example_filenames
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-class UpdateReadmes():
+class UpdateExampleReadmes():
 
 	# Define title for all examples
 	doc_titles = dict()
