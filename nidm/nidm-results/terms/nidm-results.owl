@@ -815,9 +815,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
-                                                [ xsd:minInclusive "0.0"^^xsd:float
+                                                [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -845,9 +845,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
-                                                    [ xsd:minInclusive "0.0"^^xsd:float
+                                                    [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -873,9 +873,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
-                                                           [ xsd:minInclusive "0.0"^^xsd:float
+                                                           [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -901,9 +901,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
-                                                   [ xsd:minInclusive "0.0"^^xsd:float
+                                                   [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1041,6 +1041,8 @@ nidm:voxelToWorldMapping rdf:type owl:DatatypeProperty ;
 
 nidm:voxelUnits rdf:type owl:DatatypeProperty ;
                 
+                iao:IAO_0000116 "Range: Vector of strings." ;
+                
                 nidm:curationStatus "nidm:MetadataIncomplete" ;
                 
                 iao:IAO_0000112 "{'mm' 'mm' 's'}" ;
@@ -1048,9 +1050,6 @@ nidm:voxelUnits rdf:type owl:DatatypeProperty ;
                 prov:definition "Units associated with each dimensions of some N-dimensional data." ;
                 
                 nidm:termEditor "Under discussion at https://github.com/incf-nidash/nidm/issues/147" ;
-                
-                iao:IAO_0000116 """Range: Vectorofstrings not found. BIRNLex or 
-NIDM Concept ID: nidm_69. """ ;
                 
                 rdfs:domain nidm:CoordinateSpace ;
                 
@@ -2386,8 +2385,6 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:Map ;
                           
-                          nidm:curationStatus "nidm:metadataIncomplete" ;
-                          
                           iao:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/141 (see also https://github.com/ISA-tools/stato/issues/18)" ;
                           
                           iao:IAO_0000112 """entity(niiri:parameter_estimate_map_id_1,
@@ -2397,6 +2394,8 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
     nidm:originalFileName = \"beta_0001.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                          
+                          nidm:curationStatus "nidm:MetadataIncomplete" ;
                           
                           prov:definition "A map whose value at each location is the estimate of a model parameter." .
 
@@ -2485,15 +2484,15 @@ NIDM Concept ID: nidm_52. """ ;
                             
                             prov:definition "A map whose value at each location is the residual of the mean squares fit to the data." ;
                             
-                            nidm:termEditor "Karl Helmer" ;
-                            
                             iao:IAO_0000112 """entity(niiri:residual_mean_squares_map_id,
     [prov:type = 'nidm:ResidualMeanSquaresMap',
     prov:location = \"file:///path/to/ResMS.img\" %% xsd:anyURI,
     prov:label = \"Residual Mean Squares Map\" %% xsd:string,
     nidm:originalFileName = \"ResMS.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                            
+                            nidm:termEditor "KH" .
 
 
 
@@ -2652,6 +2651,8 @@ nidm:StatisticMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
+                  nidm:curationStatus "nidm:MetadataIncomplete" ;
+                  
                   iao:IAO_0000112 """entity(niiri:statistical_map_id,
     [prov:type = 'nidm:StatisticMap',
     prov:location = \"file:///path/to/spmT_0001.img\" %% xsd:anyURI,
@@ -2663,9 +2664,7 @@ nidm:StatisticMap rdf:type owl:Class ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  prov:definition "A map whose value at each location is a statistic. " ;
-                  
-                  nidm:curationStatus "nidm:metadataIncomplete" .
+                  prov:definition "A map whose value at each location is a statistic. " .
 
 
 
@@ -2677,15 +2676,15 @@ nidm:SubVolumeMap rdf:type owl:Class ;
                   
                   prov:definition "mask defined by the user to restrain the space in which inference is performed." ;
                   
-                  nidm:curationStatus "nidm:metadataIncomplete" ;
-                  
                   iao:IAO_0000112 """entity(niiri:sub_volume_id,
       [prov:type = 'nidm:SubVolumeMap',
       prov:location = \"file:///path/to/svc_mask.nii\" %% xsd:anyURI,
       prov:label = \"Sub-volume\" %% xsd:string,
       nidm:originalFileName = \"mask.img\" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
-      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                  
+                  nidm:curationStatus "nidm:MetadataIncomplete" .
 
 
 
@@ -2817,7 +2816,7 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      nidm:curationStatus "nidmn:metadataIncomplete" ;
+                      nidm:curationStatus "nidm:MetadataIncomplete" ;
                       
                       prov:definition "A map whose value at each location is the number of resels per voxel. " ;
                       
