@@ -47,12 +47,18 @@ def get_class_names_in_owl(my_owl_graph):
     # Add PROV sub-types
     sub_types = set([PROV['Bundle'], PROV['Location'], PROV['Collection']]);
 
-    OWL = Namespace('http://www.w3.org/2002/07/owl')    
-
     for class_name in my_owl_graph.subjects(RDF['type'], OWL['Class']):
         sub_types.add(class_name)
 
     return sub_types
+
+def get_property_names_in_owl(my_owl_graph):
+    properties = set();
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['DatatypeProperty']):
+        properties.add(class_name)
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['ObjectProperty']):
+        properties.add(class_name)
+    return properties
 
 def get_attributes_from_owl(my_owl_graph):
     attributes = dict()
