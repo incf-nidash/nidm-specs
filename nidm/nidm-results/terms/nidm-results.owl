@@ -841,9 +841,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
-                                                [ xsd:minInclusive "0.0"^^xsd:float
+                                                [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -871,9 +871,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
-                                                    [ xsd:minInclusive "0.0"^^xsd:float
+                                                    [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -899,9 +899,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
-                                                           [ xsd:minInclusive "0.0"^^xsd:float
+                                                           [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -927,9 +927,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
-                                                   [ xsd:minInclusive "0.0"^^xsd:float
+                                                   [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1543,29 +1543,6 @@ fsl:VarCope rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/fsl#ZStatisticMap
-
-fsl:ZStatisticMap rdf:type owl:Class ;
-                  
-                  rdfs:subClassOf prov:Entity ;
-                  
-                  iao:IAO_0000112 """entity(niiri:z_statistical_map_id,
-        [prov:type = 'nidm:StatisticMap',
-        prov:type = 'fsl:ZStatisticalMap',
-        prov:location = \"file:///path/to/tstat1.nii.gz\" %% xsd:anyURI,
-        prov:label = \"Z-statistical Map: listening &gt; rest: zstat1\",
-        nidm:contrastName = \"listening &gt; rest\" %% xsd:string,
-        nidm:originalFileName = \"zstat1.nii.gz\" %% xsd:string,
-        nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-        crypto:sha = \"400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8\"])
-""" ;
-                  
-                  prov:definition "A map whose value at each location is a Z-statistic value. " ;
-                  
-                  nidm:curationStatus "nidm:PendingFinalVetting" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedError
 
 nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
@@ -1864,6 +1841,20 @@ nidm:DesignMatrix rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#DisplayMaskMap
+
+nidm:DisplayMaskMap rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf nidm:Map ;
+                    
+                    nidm:curationStatus "nidm:ReadyForRelease" ;
+                    
+                    rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
+                    
+                    nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/157" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ErrorDependence
 
 nidm:ErrorDependence rdf:type owl:Class ;
@@ -1885,18 +1876,6 @@ nidm:ErrorModel rdf:type owl:Class ;
                 prov:definition "Model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations." ;
                 
                 nidm:curationStatus "nidm:ReadyForRelease" .
-
-###  http://www.incf.org/ns/nidash/nidm#DisplayMaskMap
-
-nidm:DisplayMaskMap rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf nidm:Map ;
-                    
-                    nidm:curationStatus "nidm:ReadyForRelease" ;
-                    
-                    rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
-                    
-                    nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/157" .
 
 
 
