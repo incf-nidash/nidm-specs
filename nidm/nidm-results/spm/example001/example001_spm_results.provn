@@ -175,14 +175,14 @@ document
       [prov:type = 'nidm:NoiseModel',
       nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
       nidm:noiseVarianceHomogeneous = "true" %%xsd:boolean,
-      nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
-      nidm:hasNoiseDependence = 'nidm:IndependentNoise',
-      nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
+      nidm:varianceSpatialModel = 'nidm:SpatiallyLocalModel',
+      nidm:hasNoiseDependence = 'nidm:SeriallyCorrelatedNoise',
+      nidm:dependenceSpatialModel = 'nidm:SpatiallyGlobalModel'])
     used(niiri:model_pe_id, niiri:noise_model_id,-)
 
     activity(niiri:model_pe_id,
       [prov:type = 'nidm:ModelParametersEstimation',
-      nidm:withEstimationMethod = 'nidm:OrdinaryLeastSquares',
+      nidm:withEstimationMethod = 'nidm:GeneralizedLeastSquares',
       prov:label = "Model parameters estimation"])
     wasAssociatedWith(niiri:model_pe_id, niiri:software_id,-)
     used(niiri:model_pe_id, niiri:design_matrix_id,-)
@@ -255,8 +255,8 @@ document
       [prov:type = 'nidm:SPM',
       prov:type = 'prov:SoftwareAgent',
       prov:label = "SPM" %% xsd:string,
-      nidm:softwareVersion = "SPM12b" %% xsd:string,
-      spm:softwareRevision = "beta" %% xsd:string])
+      nidm:softwareVersion = "SPM12" %% xsd:string,
+      spm:softwareRevision = "6225" %% xsd:string])
     wasAssociatedWith(niiri:inference_id, niiri:software_id,-)
     
     entity(niiri:excursion_set_id,
