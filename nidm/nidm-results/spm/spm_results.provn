@@ -277,6 +277,14 @@ document
       prov:label = "Sub-volume Map" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    entity(niiri:display_map_id,
+      [prov:type = 'nidm:DisplayMaskMap',
+      prov:location = "file:///path/to/DisplayMask.nii.gz" %% xsd:anyURI,
+      dct:format = 'nidm:Nifti1Gzip',
+      prov:label = "Display Mask Map" %% xsd:string,
+      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+    used(niiri:inference_id, niiri:display_map_id,-)
     entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = "file:///path/to/SearchSpace.nii.gz" %% xsd:anyURI,
@@ -319,6 +327,7 @@ document
       prov:label = "Inference"])
     used(niiri:inference_id, niiri:mask_id_2,-)
     used(niiri:inference_id, niiri:statistic_map_id,-)
+    used(niiri:inference_id, niiri:filtering_volume_id,-)
     used(niiri:inference_id, niiri:sub_volume_id,-)
     wasGeneratedBy(niiri:search_space_id,niiri:inference_id,-)
     used(niiri:inference_id, niiri:height_threshold_id,-)

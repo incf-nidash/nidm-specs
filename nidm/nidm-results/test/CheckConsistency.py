@@ -266,15 +266,10 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
                             ' for '+example_graph.qname(p)+' should be '+\
                             owl_range_line
                 else:
-                    if p in owl_ranges:
-                        for owl_range in owl_ranges[p]:
-                            # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
-                            # in owl_ranges[p]
-                            if (XSD['positiveInteger'] == owl_range):
-                                if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
-                                    correct_range = True
-                                else:
-                                    correct_range = False
+                    # No range found for current attribute
+                    correct_range = False
+                    key = "\n No range defined for: "+\
+                            example_graph.qname(p)
 
                 if not correct_range:
                     if not key in my_range_exception:
