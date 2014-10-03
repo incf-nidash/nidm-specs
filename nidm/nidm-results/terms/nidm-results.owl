@@ -87,7 +87,7 @@ nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
                             
                             prov:definition "FIXME" ;
                             
-                            rdfs:domain nidm:NoiseModel ;
+                            rdfs:domain nidm:ErrorModel ;
                             
                             rdfs:range nidm:SpatialModel .
 
@@ -146,9 +146,9 @@ nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
                         
                         prov:definition "FIXME" ;
                         
-                        rdfs:range nidm:NoiseDependence ;
+                        rdfs:domain nidm:ErrorModel ;
                         
-                        rdfs:domain nidm:NoiseModel .
+                        rdfs:range nidm:NoiseDependence .
 
 
 
@@ -158,9 +158,9 @@ nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
                           
                           prov:definition "FIXME" ;
                           
-                          rdfs:range nidm:NoiseDistribution ;
+                          rdfs:domain nidm:ErrorModel ;
                           
-                          rdfs:domain nidm:NoiseModel .
+                          rdfs:range nidm:NoiseDistribution .
 
 
 
@@ -228,7 +228,7 @@ nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
                           
                           prov:definition "FIXME" ;
                           
-                          rdfs:domain nidm:NoiseModel ;
+                          rdfs:domain nidm:ErrorModel ;
                           
                           rdfs:range nidm:SpatialModel .
 
@@ -761,7 +761,7 @@ nidm:noiseVarianceHomogeneous rdf:type owl:DatatypeProperty ;
                               
                               prov:definition "FIXME" ;
                               
-                              rdfs:domain nidm:NoiseModel ;
+                              rdfs:domain nidm:ErrorModel ;
                               
                               rdfs:range xsd:boolean .
 
@@ -1834,6 +1834,16 @@ nidm:DesignMatrix rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ErrorModel
+
+nidm:ErrorModel rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity ;
+                
+                prov:definition "Model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations." .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#EstimationMethod
 
 nidm:EstimationMethod rdf:type owl:Class ;
@@ -2322,16 +2332,6 @@ nidm:NoiseDistribution rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#NoiseModel
-
-nidm:NoiseModel rdf:type owl:Class ;
-                
-                rdfs:subClassOf prov:Entity ;
-                
-                prov:definition "FIXME" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#NonParametricDistribution
 
 nidm:NonParametricDistribution rdf:type owl:Class ;
@@ -2424,16 +2424,6 @@ nidm:Peak rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
-
-nidm:PoissonDistribution rdf:type owl:Class ;
-                         
-                         rdfs:subClassOf nidm:NoiseDistribution ;
-                         
-                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#PendingFinalVetting
 
 nidm:PendingFinalVetting rdf:type owl:Class ;
@@ -2443,6 +2433,16 @@ nidm:PendingFinalVetting rdf:type owl:Class ;
                          owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000125" ;
                          
                          nidm:curationStatus "nidm:OrganizationalTerm" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
+
+nidm:PoissonDistribution rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         
+                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
 
 
 
@@ -2755,18 +2755,6 @@ nidm:TwoTailedTest rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#WeightedLeastSquares
-
-nidm:WeightedLeastSquares rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf nidm:EstimationMethod ;
-                          
-                          rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" ;
-                          
-                          prov:definition "FIXME" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#Uncurated
 
 nidm:Uncurated rdf:type owl:Class ;
@@ -2776,6 +2764,18 @@ nidm:Uncurated rdf:type owl:Class ;
                nidm:curationStatus "nidm:OrganizationalTerm" ;
                
                owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000124" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#WeightedLeastSquares
+
+nidm:WeightedLeastSquares rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:EstimationMethod ;
+                          
+                          rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" ;
+                          
+                          prov:definition "FIXME" .
 
 
 
