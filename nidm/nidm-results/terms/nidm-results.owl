@@ -128,6 +128,20 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasErrorDependence
+
+nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
+                        
+                        prov:definition "Property that associates an ErrorDependence with an ErrorModel." ;
+                        
+                        nidm:curationStatus "nidm:ReadyForRelease" ;
+                        
+                        rdfs:range nidm:ErrorDependence ;
+                        
+                        rdfs:domain nidm:ErrorModel .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasMapHeader
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
@@ -137,18 +151,6 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   rdfs:domain nidm:Map ;
                   
                   rdfs:range nidm:MapHeader .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasNoiseDependence
-
-nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
-                        
-                        prov:definition "FIXME" ;
-                        
-                        rdfs:domain nidm:ErrorModel ;
-                        
-                        rdfs:range nidm:NoiseDependence .
 
 
 
@@ -1540,13 +1542,15 @@ fsl:ZStatisticMap rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedNoise
+###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedError
 
-nidm:ArbitrarilyCorrelatedNoise rdf:type owl:Class ;
+nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
                                 
-                                rdfs:subClassOf nidm:NoiseDependence ;
+                                rdfs:subClassOf nidm:ErrorDependence ;
                                 
-                                prov:definition "FIXME" .
+                                nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                                
+                                nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
 
 
 
@@ -1600,13 +1604,15 @@ nidm:Colin27CoordinateSystem rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#CompoundSymmetricNoise
+###  http://www.incf.org/ns/nidash/nidm#CompoundSymmetricError
 
-nidm:CompoundSymmetricNoise rdf:type owl:Class ;
+nidm:CompoundSymmetricError rdf:type owl:Class ;
                             
-                            rdfs:subClassOf nidm:NoiseDependence ;
+                            rdfs:subClassOf nidm:ErrorDependence ;
                             
-                            prov:definition "FIXME" .
+                            nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
+                            
+                            nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
 
 
 
@@ -1834,6 +1840,18 @@ nidm:DesignMatrix rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ErrorDependence
+
+nidm:ErrorDependence rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Entity ;
+                     
+                     prov:definition "Dependence structure of the error, used as part of model estimation." ;
+                     
+                     nidm:curationStatus "nidm:ReadyForRelease" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ErrorModel
 
 nidm:ErrorModel rdf:type owl:Class ;
@@ -1854,15 +1872,17 @@ nidm:EstimationMethod rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ExchangeableNoise
+###  http://www.incf.org/ns/nidash/nidm#ExchangeableError
 
-nidm:ExchangeableNoise rdf:type owl:Class ;
+nidm:ExchangeableError rdf:type owl:Class ;
                        
-                       rdfs:subClassOf nidm:NoiseDependence ;
+                       rdfs:subClassOf nidm:ErrorDependence ;
                        
-                       prov:definition "FIXME" ;
+                       nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
                        
-                       rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." .
+                       rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
+                       
+                       nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
 
 
 
@@ -2158,13 +2178,15 @@ nidm:Image rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#IndependentNoise
+###  http://www.incf.org/ns/nidash/nidm#IndependentError
 
-nidm:IndependentNoise rdf:type owl:Class ;
+nidm:IndependentError rdf:type owl:Class ;
                       
-                      rdfs:subClassOf nidm:NoiseDependence ;
+                      rdfs:subClassOf nidm:ErrorDependence ;
                       
-                      prov:definition "FIXME" .
+                      nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                      
+                      nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
 
 
 
@@ -2313,16 +2335,6 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
                      rdfs:subClassOf prov:Entity ;
                      
                      nidm:curationStatus "nidm:Uncurated" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#NoiseDependence
-
-nidm:NoiseDependence rdf:type owl:Class ;
-                     
-                     rdfs:subClassOf prov:Entity ;
-                     
-                     prov:definition "FIXME" .
 
 
 
@@ -2571,13 +2583,15 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedNoise
+###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedError
 
-nidm:SeriallyCorrelatedNoise rdf:type owl:Class ;
+nidm:SeriallyCorrelatedError rdf:type owl:Class ;
                              
-                             rdfs:subClassOf nidm:NoiseDependence ;
+                             rdfs:subClassOf nidm:ErrorDependence ;
                              
-                             prov:definition "FIXME" .
+                             nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
+                             
+                             nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
 
 
 
