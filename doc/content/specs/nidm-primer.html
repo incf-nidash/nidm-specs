@@ -348,6 +348,19 @@
 			two preliminary implementations of provenance using NIDM, one using the Nypipe workflow system and the other the SPM 
 			batch processing system.
             </p>
+			<p>
+			An example of a <a href = http://nipy.sourceforge.net/nipype/>Nipype</a> workflow for extracting the brain from a 			structural MRI scan can be found at <a href = 			https://github.com/nicholsn/nidm/tree/enh/nidm-workflow/nidm/nidm-workflow>BET workflow</a>.   	
+			</p>
+			<p>
+			An preliminary example encoding a batch execution of slice timing correction using the <a 			href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a> software is showing in 	
+			
+	        <figure>
+	            <img src="img/spm_batch_workflow.png" width="600">
+	            <figcaption>
+	                NIDM encoding of a slice timing correction workflow in the SPM software ([[!KEATORNI13]]).
+	            </figcaption>
+	        </figure>
+			</p>
         </section>
         <section>
         <h4>Results Component</h4>
@@ -358,20 +371,63 @@
     </section>
 	<section>
 			<h4>Designing Your NIDM Object Models - A Brief Tutorial</h4>
+			<p>
+			In this section we give a brief tutorial on modeling your data with NIDM.  This will serve as a good starting point
+			and contains further information about choosing vocabularies and documenting your object model.	
+			</p>
 		<section>
 			<h3>Conceptial Model</h3>
+			<p>The first step in modeling your data is to create a conceptual graph of the objects needed to represent the data 			you will instantiate into a NIDM object model. Here well will use a particularly simple example.  We will start with 
+			an Excel spreadsheet containing a time series of maternal heart rate measurements sampled each second for 180 seconds 			during pregnancy. This data was colected at the University of California, Irvine (UCI) as part of the UCI <a 			href=http://contecenter.uci.edu/>Conte Center</a>.  First, let's have a look at a subset of the Excel spreadsheet.
+	        <figure>
+	            <img src="img/heart_rate_excel.png" width="600">
+	            <figcaption>
+	                Maternal heart rate measurements data file.
+	            </figcaption>
+	        </figure>
+			Columns A and B are the subject identifiers for the mother and fetus respectively.  Columns C-H are the heart rate 			measurements over time. 
+			</p>
+			<p>
+			Now we can create a conceptual model of this spreadsheet.  In this step we decide on how to represent this data as a 			graph using the PROV-DM core objects: agents, entities, and activities and what relationships to use that connect the 
+			information.  Here we have created an entity for the heart rate measurements, an activity for the process of measuring the data, and 2 agents, one for the mother whom the heart rate measurements are attributed to and one of the fetus which is associated with the measurements.
+	        <figure>
+	            <img src="img/heart_rate_model.png" width="600">
+	            <figcaption>
+	                Graph describing the heart rate data as entities, agents, and activites.
+	            </figcaption>
+	        </figure>
+			</p>
 		</section>
-		<section>
+		<section id="attributes">
 			<h3>Attributes Sets</h3>
+			<p>
+			Next we decide on the attributes needed to describe the entities, agents, and activities we created in our conceptual model.  Here we can create as many attributes as necessary but we should be parsimonious whenever possible.  Too many attributes can make your NIDM object model overly complex.  In this example we have chosen to add the attributes ncit:heartRate, ncit:timepoint, ncit:heatRateMean, and mhr:heartRateStdDev to the heart rate entity.  The prov:type and prov:label attributes are standard attributes in PROV-DM which are typically added to most entities and agents.  The format of the attributes is described in the section <a href="#terms">Vocabularies and Terms Selections</a> section.  For the agents we have added the ncit:subjectID attribute to capture the data in Columns A and B of the spreadsheet.  Lastly, we have added some associations in the activity to associate the activity with the two agents.	
+			</p>
 		</section>
-		<section>
+		<section id="terms">
 			<h3>Vocabularies and Terms Selections</h3>
+			In order to give our representation semantic meaning we follow the conventions used in the <a href=http://www.w3.org/TR/rdf11-concepts/#section-IRIs>Resource Descripition Framework (RDF)</a> W3C recommendation such that each attribute is formated as a Internation Resource Identifier (IRI).  IRIs, a generalization of Uniform Resource Identifiers (URIs) are dereferencable objects that can be found on the web to give semantic meaning to the attribute.  For example, in the heart rate entity we chose the ncit:heartRate IRI.  This IRI is formed using the NCIT namespace and the heartRate term within that namespace. At the begining of any NIDM serialization of this heart rate model the NCIT namespace IRI is defined and with the term creates a deferencable definition for the attribute <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a>. It is critical to make sure the namespaces and terms you use in your models are available and persistent on the web.  By following this convention instatiations of your object model are self documenting.  Anyone who receives a document can make sense of the attributes and objects defined therein.  In the event a term you need for your model is not defined in an existing terminology you can define you own terms but they should be available on the web.   
 		</section>
 		<section>
 			<h3>Instantiating Your Object Model</h3>
+			<p>
+			Under construction....	
+			
+			<pre class='example highlight'>
+			    [mhr:entity_71759c9cf0c811e3a3c23c07541223b4 a prov:DataItem,
+        		prov:Entity ;
+    			rdfs:label "Heart Rate data for subjectID 30564" ;
+    			ncit:heartRate "[79.3, 75.3, 78.3, 80.6, 78.2, 80.5, 80.3, ...]" ;
+    			ncit:heartRateAvg 8.69e+01 ;
+    			ncit:timepoint "[2, 3, 4, 5, 6, 7, 8, ...]"^^ncit:sec ;
+    			mhr:heartRateStd 3.9e+00 ;
+    			prov:wasAttributedTo mhr:agent_71758f21f0c811e3ab373c07541223b4 ;
+    			prov:wasGeneratedBy mhr:activity_71759561f0c811e39f583c07541223b4 .])</pre>
+			</p>
 		</section>
 		<section>
 			<h3>Documenting Your Object Model</h3>
+			To document your object model we suggest using the <a href=http://www.w3.org/respec/>ReSpec</a> javascript library.  It is a simple way to make well-organized descriptions of your models and has been used for all the NIDM specs.  We have included a <a href=nidm-spec-template.html>template</a> to make the specification writing process easier for you.  The template can be downloaded and edited in any text editing program.  We have included identifiers formatted with the text "[** " to indicate where the NIDM working group suggests you add information relevant to your object model.  We have further added comments ubove these identifiers indexing the section in the ReSpec user manual that describes the intention of this information.
 		</section>
 	</section>
     <section>
