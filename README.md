@@ -10,7 +10,15 @@ by the [INCF](http://www.incf.org) <b>N</b>euro <b>I</b>maging <b>DA</b>ta <b>SH
 
 The goals of this repo are to foster collaboration among the standards developers working on NIDM, and to provide a common location where users of NIDM can find related information and resources.
 
-### Developer Resources
+#### User Resources (for those who wants to use a NIDM document)
+* [NIDASH page](http://incf.org/programs/datasharing/neuroimaging-task-force)
 
-* [Getting Started with NIDM](https://github.com/incf-nidash/nidm/wiki/Getting-Started-with-NIDM)
-* [Useful SPARQL Queries](https://github.com/incf-nidash/nidm/wiki/Useful-sparql-queries)
+#### Developer Resources (for those who wants to build applications using NIDM)
+* [NIDM specifications](http://nidm.nidash.org)
+* [NIDASH Google group](https://groups.google.com/forum/#!forum/incf-datasharing)
+
+#### Modeller Resources  (for those who wants to contribute to NIDM)
+* [NIDM wiki](https://github.com/incf-nidash/nidm/wiki): [Contributing to NIDM](https://github.com/incf-nidash/nidm/wiki/Getting-Started-with-NIDM); [Useful SPARQL Queries](https://github.com/incf-nidash/nidm/wiki/Useful-sparql-queries)
+* [NIDASH wiki](http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force)
+* [DDWG page](http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/)
+* [NIDASH Google Drive](https://drive.google.com/#folders/0B-BLof5_SOh8bWR3UDE4WTdELXM)
