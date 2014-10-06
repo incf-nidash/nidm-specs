@@ -518,6 +518,18 @@ nidm:clusterSizeInVoxels rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#connectivityCriterion
+
+nidm:connectivityCriterion rdf:type owl:DatatypeProperty ;
+                           
+                           nidm:curationStatus "nidm:PendingFinalVetting" ;
+                           
+                           prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." ;
+                           
+                           rdfs:domain nidm:ClusterDefinitionCriteria .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#contrastName
 
 nidm:contrastName rdf:type owl:DatatypeProperty ;
@@ -1579,13 +1591,13 @@ nidm:Cluster rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ClusterConnectivityCriterion
+###  http://www.incf.org/ns/nidash/nidm#ClusterDefinitionCriteria
 
-nidm:ClusterConnectivityCriterion rdf:type owl:Class ;
-                                  
-                                  rdfs:subClassOf prov:Entity ;
-                                  
-                                  prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
+nidm:ClusterDefinitionCriteria rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf prov:Entity ;
+                               
+                               nidm:curationStatus "nidm:Uncurated" .
 
 
 
@@ -2486,6 +2498,14 @@ nidm:Peak rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#PeakDefinitionCriteria
+
+nidm:PeakDefinitionCriteria rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf prov:Entity .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#PendingFinalVetting
 
 nidm:PendingFinalVetting rdf:type owl:Class ;
@@ -2530,11 +2550,6 @@ nidm:RequiresDiscussion rdf:type owl:Class ;
                         
                         owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000428" .
 
-###  http://www.incf.org/ns/nidash/nidm#PeakDefinitionCriteria
-
-nidm:PeakDefinitionCriteria rdf:type owl:Class ;
-                            
-                            rdfs:subClassOf prov:Entity .
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ResidualMeanSquaresMap
