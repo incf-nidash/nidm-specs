@@ -188,7 +188,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:clusterSizeInVoxels: </b>Number of voxels that make up the cluster.</td>
-    <td>nidm:ExtentThreshold nidm:Cluster </td>
+    <td>nidm:Cluster nidm:ExtentThreshold </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
@@ -280,7 +280,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:contrastName: </b>Name of the contrast.</td>
-    <td>nidm:StatisticMap nidm:ContrastWeights nidm:ContrastMap </td>
+    <td>nidm:ContrastMap nidm:ContrastWeights nidm:StatisticMap </td>
     <td>xsd:string </td>
 </tr>
 <tr>
@@ -358,7 +358,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:visualisation: </b>Graphical representation of an entity.</td>
-    <td>nidm:ExcursionSet nidm:DesignMatrix </td>
+    <td>nidm:DesignMatrix nidm:ExcursionSet </td>
     <td>nidm:Image </td>
 </tr>
 <tr>
@@ -376,7 +376,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:clusterSizeInResels: </b>Number of resels that make up a cluster. (editor: Under discussion at: https://github.com/incf-nidash/nidm/issues/127)</td>
-    <td>nidm:ExtentThreshold nidm:Cluster </td>
+    <td>nidm:Cluster nidm:ExtentThreshold </td>
     <td>ub1bL1103C36</td>
 </tr>
 <tr>
@@ -448,19 +448,19 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"</td>
-    <td>nidm:HeightThreshold nidm:Peak nidm:ExtentThreshold nidm:Cluster </td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
     <td>ub1bL874C28</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:pValueUncorrected: </b>A p-value reported without correction for multiple testing.        </td>
-    <td>nidm:Peak nidm:ExtentThreshold nidm:HeightThreshold nidm:Cluster </td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
     <td>ub1bL902C35</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:qValueFDR: </b>P-value adjusted for the multiple testing, controlling for the False Discovery Rate</td>
-    <td>nidm:ExtentThreshold nidm:Peak nidm:HeightThreshold nidm:Cluster </td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
     <td>ub1bL930C27</td>
 </tr>
 </table>
