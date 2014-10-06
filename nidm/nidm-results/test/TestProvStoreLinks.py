@@ -54,7 +54,7 @@ class TestProvStoreLinks(unittest.TestCase):
                 found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file])
 
                 if found_difference:
-                    error_msg = example_file+": Prov store link outdated, please update README.md using UpdateReadmes.py"
+                    error_msg = example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py"
             else:
                 error_msg = example_file+': No document URL found in README.'        
 
