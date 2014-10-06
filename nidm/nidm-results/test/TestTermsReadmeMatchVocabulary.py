@@ -12,6 +12,7 @@ import rdflib
 from rdflib.graph import Graph
 from TestCommons import *
 from CheckConsistency import *
+import difflib
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_RESULTS_PATH = os.path.dirname(RELPATH)
@@ -45,6 +46,11 @@ class TestTermsReadmeMatchVocabulary(unittest.TestCase):
         readme_file_open.close()
 
         if not (updated_readme_txt == original_readme_txt):
+            original_readme_lines = original_readme_txt.splitlines()
+            updated_readme_lines = updated_readme_txt.splitlines()
+            diff = difflib.unified_diff(original_readme_lines, updated_readme_lines)
+            logger.debug('\n'.join(diff))
+
             error_msg = "Term README outdated, please update README.md using nidm/nidm-results/scripts/UpdateTermReadme.py"
             # Write back original text found in README           
             readme_file_open = open(readme_file, 'w')
