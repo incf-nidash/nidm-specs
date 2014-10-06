@@ -18,6 +18,8 @@ RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class TestProvStoreLinks(unittest.TestCase):
 
     def setUp(self):
+        logger.info("Test: TestProvStoreLinks")
+        
         self.provstore_url = dict()
         self.ttl_file_url = dict()
         for example_file in example_filenames:

@@ -19,6 +19,8 @@ RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class TestExamples(unittest.TestCase):
 
     def setUp(self):
+        logger.info("Test: TestExamples")
+        
         # Retreive owl file for NIDM-Results
         owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
         # check the file exists
