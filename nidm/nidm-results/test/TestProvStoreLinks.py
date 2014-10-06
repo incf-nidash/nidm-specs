@@ -51,7 +51,7 @@ class TestProvStoreLinks(unittest.TestCase):
             
             if self.provstore_url[example_file]:
                 logger.info('\tProv store URL: '+self.provstore_url[example_file])
-                found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file])
+                found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file], True)
 
                 if found_difference:
                     error_msg = example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py"
