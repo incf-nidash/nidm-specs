@@ -127,12 +127,15 @@ class Updateclass_termsReadme():
 
         range_domain = ""
         if range_value is not None:
-            range_domain = "<td>"+domain+"</td>"+"<td>"+range_value+"</td>"
+            range_domain = """
+    <td>"""+domain+"""</td>
+    <td>"""+range_value+"""</td>"""
 
-        term_row = "<tr>"+\
-                        "<td>"+img_color+"</td>"\
-                        "<td><b>"+term_name+": </b>"+\
-                        definition+editor+"</td>"+range_domain+"</tr>"
+        term_row = """
+<tr>
+    <td>"""+img_color+"""</td>
+    <td><b>"""+term_name+""": </b>"""+definition+editor+"""</td>"""+range_domain+"""
+</tr>"""
         return term_row
 
     def create_curation_legend(self, order):
