@@ -25,6 +25,8 @@ def print_results(res):
 class TestQueries(unittest.TestCase):
 
     def setUp(self):
+        logger.info("Test: TestQueries")
+
         self.examples = dict()
         for example_file in import_test_filenames:
             provn_file = os.path.join(os.path.dirname(os.path.dirname(

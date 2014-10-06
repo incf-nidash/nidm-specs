@@ -20,119 +20,90 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 
 # Append test directory to path
 sys.path.append(os.path.join(RELPATH, "..", "test"))
-from TestCommons import example_filenames
+from TestCommons import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-class UpdateExampleReadmes():
 
-	# Define title for all examples
-	doc_titles = dict()
-	doc_titles[os.path.join('spm', 'example001', 'example001_spm_results.provn')] = "SPM example 001"
-	doc_titles[os.path.join('fsl', 'example001', 'fsl_nidm.provn')] = "FSL example 001"
-	doc_titles[os.path.join('spm', 'spm_results.provn')] = "SPM"
-	doc_titles[os.path.join('spm', 'example002', 'spm_results_2contrasts.provn')] = "SPM example 002"
-	doc_titles[os.path.join('spm', 'example003', 'spm_results_conjunction.provn')] = "SPM example 003: Conjunction"
-	doc_titles[os.path.join('spm', 'example004', 'spm_inference_activities.provn')] = "SPM example 004: Inference"
-	doc_titles[os.path.join('fsl', 'fsl_results.provn')] = "FSL"
+# Define title for all examples
+doc_titles = dict()
+doc_titles[os.path.join('spm', 'example001', 'example001_spm_results.provn')] = "SPM example 001"
+doc_titles[os.path.join('fsl', 'example001', 'fsl_nidm.provn')] = "FSL example 001"
+doc_titles[os.path.join('spm', 'spm_results.provn')] = "SPM"
+doc_titles[os.path.join('spm', 'example002', 'spm_results_2contrasts.provn')] = "SPM example 002"
+doc_titles[os.path.join('spm', 'example003', 'spm_results_conjunction.provn')] = "SPM example 003: Conjunction"
+doc_titles[os.path.join('spm', 'example004', 'spm_inference_activities.provn')] = "SPM example 004: Inference"
+doc_titles[os.path.join('fsl', 'fsl_results.provn')] = "FSL"
 
-	# Find document with same title in the prov store and return URL to json serialisation
-	def get_doc_from_title(doc_title):
-		doc_url = None
+# Find document with same title in the prov store and return URL to json serialisation
+def get_doc_from_title(doc_title):
+	doc_url = None
 
-		# Retreive most recent document with same title
-		url = "https://provenance.ecs.soton.ac.uk/store/api/v0/documents/?document_name__startswith="+\
-				doc_title+"&document_name__endswith="+doc_title+\
-				"&format=json&order_by=-created_at&limit=1"
-		req = urllib2.Request(url)
+	# Retreive most recent document with same title
+	url = "https://provenance.ecs.soton.ac.uk/store/api/v0/documents/?document_name__startswith="+\
+			doc_title+"&document_name__endswith="+doc_title+\
+			"&format=json&order_by=-created_at&limit=1"
+	req = urllib2.Request(url)
 
-		response = urllib2.urlopen(req)
-		data = json.load(response)
-		if data['meta']['total_count'] == 0:
-			logger.debug('No document entitled: "'+doc_title+'"')
-		else:
-			doc_url = "https://provenance.ecs.soton.ac.uk"+data['objects'][0]['resource_uri']
-			logger.info('\tLast version of this document in the ProvStore: '+'"'+doc_url+'"')
-		return doc_url
+	response = urllib2.urlopen(req)
+	data = json.load(response)
+	if data['meta']['total_count'] == 0:
+		logger.debug('No document entitled: "'+doc_title+'"')
+	else:
+		doc_url = "https://provenance.ecs.soton.ac.uk"+data['objects'][0]['resource_uri']
+		logger.info('\tLast version of this document in the ProvStore: '+'"'+doc_url+'"')
+	return doc_url
 
-	def compare_ttl_documents(ttl_doc1, ttl_doc2):
-		# Check whether most recent document is identical to current version
-		doc_graph = Graph()
-		doc_graph.parse(ttl_doc1)
-		same_doc_graph = Graph()
-		same_doc_graph.parse(ttl_doc2)
+# Update Readme
+def write_readme(readme_file, doc_url):
+	readme_file_open = open(readme_file, 'w')
 
-		# Use isomorphic to ignore BNode
-		iso1 = to_isomorphic(same_doc_graph)
-		iso2 = to_isomorphic(doc_graph)
+	doc_url = doc_url.replace("api/v0/", "")
 
-		found_difference = False
-		if iso1 != iso2:
+	readme_file_open.write("""
+Prov store: """+doc_url+"""
+	
+Alternative serialisations: [json]("""+doc_url[:-1]+""".json), [turtle]("""+doc_url[:-1]+""".ttl), 
+Graph: [svg]("""+doc_url[:-1]+""".svg), [PDF]("""+doc_url[:-1]+""".pdf), [png]("""+doc_url[:-1]+""".png)
 
-			in_both, in_first, in_second = graph_diff(iso1, iso2)
+![Prov Graph]("""+doc_url[:-1]+""".png)
 
-			diff_graph = (in_first+in_second)
-			for s,p,o in diff_graph.triples((None,None,None)):
-				# workaround to avoid issue with "5853" being a string
-				if iso1.qname(p) != "spm:softwareRevision":
-					if iso1.qname(p) != "fsl:featVersion":
-						found_difference = True
-						logger.info('\tDifference in: s='+diff_graph.qname(s)+\
-							", p="+diff_graph.qname(p)+\
-							", o="+o)
-						break;
-		return found_difference
+		""")
+	readme_file_open.close()
 
-	# Update Readme
-	def write_readme(readme_file, doc_url):
-		readme_file_open = open(readme_file, 'w')
+# Create a new document on the ProvStore
+def create_document(doc_json_url, doc_title):
+	# Read json version of current document
+	response = urllib2.urlopen(doc_json_url)
+	# doc_json_url = response.geturl()
+	doc_json = response.read()
 
-		doc_url = doc_url.replace("api/v0/", "")
+	# Retreive ApiKey
+	api_key_file = os.path.join(RELPATH, "store_login_key.txt")
+	if not os.path.isfile(api_key_file):
+		raise Exception("No Api Key. Please specify your ApiKey in store_login_key.txt.")
+	api_key_file = open(api_key_file, 'r')
+	api_key = api_key_file.read()
 
-		readme_file_open.write("""
-	Prov store: """+doc_url+"""
-		
-	Alternative serialisations: [json]("""+doc_url[:-1]+""".json), [turtle]("""+doc_url[:-1]+""".ttl), 
-	Graph: [svg]("""+doc_url[:-1]+""".svg), [PDF]("""+doc_url[:-1]+""".pdf), [png]("""+doc_url[:-1]+""".png)
+	# Create new document on the prov store
+	url = "https://provenance.ecs.soton.ac.uk/store/api/v0/documents/"
+	headers = { 'Content-type' : "application/json",
+				'Authorization' : 'ApiKey '+api_key,
+	            'Accept' : "application/json" }
+	# This is a trick to avoid issue with xsd namespace
+	doc_json = doc_json.replace("http://www.w3.org/2001/XMLSchema", "http://www.w3.org/2001/XMLSchema#")
+	data = ' {"content":'+doc_json+',"public":true,"rec_id":"'+doc_title+'"} '
 
-	![Prov Graph]("""+doc_url[:-1]+""".png)
+	req = urllib2.Request(url, data, headers)
 
-			""")
-		readme_file_open.close()
+	response = urllib2.urlopen(req)
+	data = json.load(response)
 
-	# Create a new document on the ProvStore
-	def create_document(doc_json_url, doc_title):
-		# Read json version of current document
-		response = urllib2.urlopen(doc_json_url)
-		# doc_json_url = response.geturl()
-		doc_json = response.read()
+	doc_url = "https://provenance.ecs.soton.ac.uk"+data['resource_uri']
+	logger.info('\tCreated document "'+doc_title+'" at: '+doc_url)
 
-		# Retreive ApiKey
-		api_key_file = os.path.join(RELPATH, "store_login_key.txt")
-		if not os.path.isfile(api_key_file):
-			raise Exception("No Api Key. Please specify your ApiKey in store_login_key.txt.")
-		api_key_file = open(api_key_file, 'r')
-		api_key = api_key_file.read()
-
-		# Create new document on the prov store
-		url = "https://provenance.ecs.soton.ac.uk/store/api/v0/documents/"
-		headers = { 'Content-type' : "application/json",
-					'Authorization' : 'ApiKey '+api_key,
-		            'Accept' : "application/json" }
-		# This is a trick to avoid issue with xsd namespace
-		doc_json = doc_json.replace("http://www.w3.org/2001/XMLSchema", "http://www.w3.org/2001/XMLSchema#")
-		data = ' {"content":'+doc_json+',"public":true,"rec_id":"'+doc_title+'"} '
-
-		req = urllib2.Request(url, data, headers)
-
-		response = urllib2.urlopen(req)
-		data = json.load(response)
-
-		doc_url = "https://provenance.ecs.soton.ac.uk"+data['resource_uri']
-		logger.info('\tCreated document "'+doc_title+'" at: '+doc_url)
-
-		return doc_url
+	return doc_url
 
 if __name__ == '__main__':
     for example_file in example_filenames:
