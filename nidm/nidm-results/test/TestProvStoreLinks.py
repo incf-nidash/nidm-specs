@@ -17,9 +17,9 @@ RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestProvStoreLinks(unittest.TestCase):
 
-    def setUp(self):
-        logger.info("Test: TestProvStoreLinks")
-        
+    def __init__(self, *args, **kwargs):
+        super(TestProvStoreLinks, self).__init__(*args, **kwargs)
+
         self.provstore_url = dict()
         self.ttl_file_url = dict()
         for example_file in example_filenames:
@@ -42,7 +42,10 @@ class TestProvStoreLinks(unittest.TestCase):
                 provstore_url = None
 
             # Save URL to Prov Store document
-            self.provstore_url[example_file] = provstore_url            
+            self.provstore_url[example_file] = provstore_url        
+
+    def setUp(self):
+        logger.info("Test: TestProvStoreLinks")
 
     def test_provstore_links(self):
         error_msg = ""
