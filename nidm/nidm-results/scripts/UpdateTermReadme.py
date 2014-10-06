@@ -87,17 +87,20 @@ class UpdateTermReadme():
         ranges = list(self.owl.objects(owl_term, RDFS['range']))
 
         range_display = ""
+
         for range_value in ranges:
-            if isinstance(range_value, rdflib.term.URIRef):
-                range_display += str(self.owl.qname(range_value))+" "
-            else:
-                range_display += str(range_value)
+            if not isinstance(range_value, rdflib.term.BNode):
+                if isinstance(range_value, rdflib.term.URIRef):
+                    range_display += str(self.owl.qname(range_value))+" "
+                else:
+                    range_display += str(range_value)
         return range_display
 
     def get_domain(self, owl_term):
         domains = list(self.owl.objects(owl_term, RDFS['domain']))
 
         domain_display = ""
+
         for domain_value in sorted(domains):
             if isinstance(domain_value, rdflib.term.URIRef):
                 domain_display += str(self.owl.qname(domain_value))+" "
