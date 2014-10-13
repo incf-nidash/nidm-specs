@@ -199,6 +199,12 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><b>nidm:hasConnectivityCriterion: </b>The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner).</td>
+    <td>nidm:ClusterDefinitionCriteria </td>
+    <td>nidm:ConnectivityCriterion </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:maskedMedian: </b>Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity. (editor: TN, Naming discussed at: https://github.com/incf-nidash/nidm/issues/70)</td>
     <td>nidm:GrandMeanMap </td>
     <td>xsd:float </td>
