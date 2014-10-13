@@ -230,7 +230,19 @@ document
         prov:label = "Display Mask Map" %% xsd:string,
         nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
         crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-  used(niiri:inference_id, niiri:display_map_id,-)
+    used(niiri:inference_id, niiri:display_map_id,-)
+    entity(niiri:peak_definition_criteria_id,
+      [prov:type = 'nidm:PeakDefinitionCriteria',
+      nidm:maxNumberOfPeaksPerCluster = 3,
+      nidm:minDistanceBetweenPeaks = "8.0" %%xsd:float,
+      prov:label = "Peak Definition Criteria" %% xsd:string)
+    used(niiri:inference_id, niiri:peak_definition_criteria_id,-)
+
+    entity(niiri:cluster_definition_criteria_id,
+      [prov:type = 'nidm:ClusterDefinitionCriteria',
+      nidm:hasConnectivityCriterion = 'nidm:connected18In3D',
+      prov:label = "Cluster Connectivity Criterion: 18" %% xsd:string)
+    used(niiri:inference_id, niiri:cluster_definition_criteria_id,-)    
 
     activity(niiri:inference_id,
         [prov:type = 'nidm:Inference',

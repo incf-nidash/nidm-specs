@@ -128,6 +128,20 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasConnectivityCriterion
+
+nidm:hasConnectivityCriterion rdf:type owl:ObjectProperty ;
+                              
+                              prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." ;
+                              
+                              nidm:curationStatus "nidm:PendingFinalVetting" ;
+                              
+                              rdfs:domain nidm:ClusterDefinitionCriteria ;
+                              
+                              rdfs:range nidm:ConnectivityCriterion .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasErrorDependence
 
 nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
@@ -761,7 +775,7 @@ nidm:maxNumberOfPeaksPerCluster rdf:type owl:DatatypeProperty ;
                                 
                                 prov:definition "Parameter defining the maximum number of peaks to be reported within a cluster." ;
                                 
-                                rdfs:domain nidm:DisplayMaskMap ;
+                                rdfs:domain nidm:PeakDefinitionCriteria ;
                                 
                                 rdfs:range xsd:int .
 
@@ -773,7 +787,7 @@ nidm:minDistanceBetweenPeaks rdf:type owl:DatatypeProperty ;
                              
                              prov:definition "Parameter defining the minimum distance between two peaks reported within a cluster." ;
                              
-                             rdfs:domain nidm:DisplayMaskMap ;
+                             rdfs:domain nidm:PeakDefinitionCriteria ;
                              
                              rdfs:range xsd:float .
 
@@ -1579,6 +1593,16 @@ nidm:Cluster rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ClusterDefinitionCriteria
+
+nidm:ClusterDefinitionCriteria rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf prov:Entity ;
+                               
+                               nidm:curationStatus "nidm:Uncurated" .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ClusterLabelsMap
 
 nidm:ClusterLabelsMap rdf:type owl:Class ;
@@ -1630,6 +1654,51 @@ nidm:ConjunctionInference rdf:type owl:Class ;
                           prov:definition "Statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses." ;
                           
                           nidm:curationStatus "nidm:ReadyForRelease" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion
+
+nidm:ConnectivityCriterion rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf prov:Entity ;
+                           
+                           prov:definition "The order of neighbourhood used to determine whether two voxels (3D) or pixels (2D) are neighbours." .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion2D
+
+nidm:ConnectivityCriterion2D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected4In2D
+                                                               nidm:connected6In2D
+                                                               nidm:connected8In2D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition """The order of neighbourhood used to determine whether two pixels
+ are neighbours in 2D.  Possible values are: 4 (pixels share an edge), 8 (voxels share an edge or a corner).""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion3D
+
+nidm:ConnectivityCriterion3D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected6In3D
+                                                               nidm:connected26In3D
+                                                               nidm:connected18In3D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours in 3D. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
 
 
 
@@ -2476,6 +2545,14 @@ nidm:Peak rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#PeakDefinitionCriteria
+
+nidm:PeakDefinitionCriteria rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf prov:Entity .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#PendingFinalVetting
 
 nidm:PendingFinalVetting rdf:type owl:Class ;
@@ -2904,6 +2981,57 @@ prov:Location rdf:type owl:Class ;
 prov:SoftwareAgent rdf:type owl:Class ;
                    
                    rdfs:subClassOf prov:Agent .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected18In3D
+
+nidm:connected18In3D rdf:type nidm:ConnectivityCriterion3D ,
+                              owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected26In3D
+
+nidm:connected26In3D rdf:type nidm:ConnectivityCriterion3D ,
+                              owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected4In2D
+
+nidm:connected4In2D rdf:type nidm:ConnectivityCriterion2D ,
+                             owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In2D
+
+nidm:connected6In2D rdf:type nidm:ConnectivityCriterion2D ,
+                             owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In3D
+
+nidm:connected6In3D rdf:type nidm:ConnectivityCriterion3D ,
+                             owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected8In2D
+
+nidm:connected8In2D rdf:type nidm:ConnectivityCriterion2D ,
+                             owl:NamedIndividual .
 
 
 
