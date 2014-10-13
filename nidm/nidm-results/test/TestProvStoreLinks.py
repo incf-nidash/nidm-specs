@@ -17,9 +17,9 @@ RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestProvStoreLinks(unittest.TestCase):
 
-    def setUp(self):
-        logger.info("Test: TestProvStoreLinks")
-        
+    def __init__(self, *args, **kwargs):
+        super(TestProvStoreLinks, self).__init__(*args, **kwargs)
+
         self.provstore_url = dict()
         self.ttl_file_url = dict()
         for example_file in example_filenames:
@@ -42,7 +42,10 @@ class TestProvStoreLinks(unittest.TestCase):
                 provstore_url = None
 
             # Save URL to Prov Store document
-            self.provstore_url[example_file] = provstore_url            
+            self.provstore_url[example_file] = provstore_url        
+
+    def setUp(self):
+        logger.info("Test: TestProvStoreLinks")
 
     def test_provstore_links(self):
         error_msg = ""
@@ -51,7 +54,7 @@ class TestProvStoreLinks(unittest.TestCase):
             
             if self.provstore_url[example_file]:
                 logger.info('\tProv store URL: '+self.provstore_url[example_file])
-                found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file])
+                found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file], True)
 
                 if found_difference:
                     error_msg = example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py"

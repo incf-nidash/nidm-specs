@@ -44,7 +44,7 @@ CURATION_COLORS[NIDM_TO_BE_REPLACED] = "yellow"
 
 CURATION_ORDER = list([NIDM_PENDING_FINAL, NIDM_METADATA_INCOMPLETE, NIDM_REQUIRES_DISCUSSION, NIDM_UNCURATED, NIDM_TO_BE_REPLACED])
 
-class Updateclass_termsReadme():
+class UpdateTermReadme():
 
     def __init__(self, owl_file):
         self.data = []
@@ -87,18 +87,21 @@ class Updateclass_termsReadme():
         ranges = list(self.owl.objects(owl_term, RDFS['range']))
 
         range_display = ""
+
         for range_value in ranges:
-            if isinstance(range_value, rdflib.term.URIRef):
-                range_display += str(self.owl.qname(range_value))+" "
-            else:
-                range_display += str(range_value)
+            if not isinstance(range_value, rdflib.term.BNode):
+                if isinstance(range_value, rdflib.term.URIRef):
+                    range_display += str(self.owl.qname(range_value))+" "
+                else:
+                    range_display += str(range_value)
         return range_display
 
     def get_domain(self, owl_term):
         domains = list(self.owl.objects(owl_term, RDFS['domain']))
 
         domain_display = ""
-        for domain_value in domains:
+
+        for domain_value in sorted(domains):
             if isinstance(domain_value, rdflib.term.URIRef):
                 domain_display += str(self.owl.qname(domain_value))+" "
             else:
@@ -224,7 +227,7 @@ if __name__ == '__main__':
     # check the file exists
     assert os.path.exists(owl_file)
 
-    updateReadme = Updateclass_termsReadme(owl_file)
+    updateReadme = UpdateTermReadme(owl_file)
 
     readme_file = os.path.join(class_termsPATH, 'README.md')
     updateReadme.update_readme(readme_file)

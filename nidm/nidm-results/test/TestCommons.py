@@ -36,8 +36,6 @@ example_filenames = import_test_filenames.union(set([
 ttl_from_readme = False
 
 def get_turtle(provn_file):
-    logger.info(' provn file '+provn_file)
-
     if ttl_from_readme:
         # Get URL of turtle from README file
         readme_file = os.path.join(os.path.dirname(provn_file), 'README')
@@ -72,12 +70,17 @@ def merge_exception_dict(excep_dict, other_except_dict):
 
     return merged_dict
 
-def compare_ttl_documents(ttl_doc1, ttl_doc2):
+def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
     # Check whether most recent document is identical to current version
     doc_graph = Graph()
     doc_graph.parse(ttl_doc1)
     same_doc_graph = Graph()
-    same_doc_graph.parse(ttl_doc2)
+
+    # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
+    # if doc_graph.parse(ttl_doc2) is called directly
+    ttl_doc2_req = urllib2.urlopen(ttl_doc2)
+    same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
+   
 
     # Use isomorphic to ignore BNode
     iso1 = to_isomorphic(same_doc_graph)
@@ -89,6 +92,7 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2):
         in_both, in_first, in_second = graph_diff(iso1, iso2)
 
         diff_graph = (in_first+in_second)
+
         for s,p,o in diff_graph.triples((None,None,None)):
             # workaround to avoid issue with "5853" being a string
             if iso1.qname(p) != "spm:softwareRevision":
@@ -97,5 +101,5 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2):
                     logger.info('\tDifference in: s='+diff_graph.qname(s)+\
                         ", p="+diff_graph.qname(p)+\
                         ", o="+o)
-                    break;
+                    # break;
     return found_difference

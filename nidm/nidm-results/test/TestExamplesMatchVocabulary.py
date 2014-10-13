@@ -18,9 +18,8 @@ RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestExamples(unittest.TestCase):
 
-    def setUp(self):
-        logger.info("Test: TestExamples")
-        
+    def __init__(self, *args, **kwargs):
+        super(TestExamples, self).__init__(*args, **kwargs)    
         # Retreive owl file for NIDM-Results
         owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
         # check the file exists
@@ -56,6 +55,7 @@ class TestExamples(unittest.TestCase):
             self.examples[example_file].parse(ttl_file_url, format='turtle')
 
     def test_check_classes(self):
+        logger.info("TestExamples: test_check_classes")
         my_exception = dict()
         for example_name, example_graph in self.examples.items():
             # Check that all entity, activity, agent are defined in the data model
@@ -70,6 +70,7 @@ class TestExamples(unittest.TestCase):
             raise Exception(error_msg)
 
     def test_check_attributes(self):
+        logger.info("TestExamples: test_check_attributes")
         my_exception = dict()
         my_range_exception = dict()
         my_restriction_exception = dict()
