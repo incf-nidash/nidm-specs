@@ -276,14 +276,14 @@ document
         prov:label = "Contrast Weights: Generation" %% xsd:string,
         prov:value = "[1, 0, 0, 0]" %% xsd:string])
 
-    entity(niiri:noise_model_id,
+    entity(niiri:error_model_id,
       [prov:type = 'nidm:ErrorModel',
       nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
       nidm:errorVarianceHomogeneous = "true" %%xsd:boolean,
       nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
       nidm:hasErrorDependence = 'nidm:IndependentError',
       nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
-    used(niiri:model_parameters_estimation_id, niiri:noise_model_id,-)
+    used(niiri:model_parameters_estimation_id, niiri:error_model_id,-)
 
     activity(niiri:model_parameters_estimation_id,
         [prov:type = 'nidm:ModelParametersEstimation',
