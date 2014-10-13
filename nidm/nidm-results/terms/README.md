@@ -1,8 +1,8 @@
-<h1>NIDM-Results Terms curation status</h1><b>Curation status</b>: <img src="../../../doc/content/specs/img/green.png?raw=true"/>&nbsp;PendingFinalVetting;
-<img src="../../../doc/content/specs/img/orange.png?raw=true"/>&nbsp;MetadataIncomplete;
-<img src="../../../doc/content/specs/img/orange.png?raw=true"/>&nbsp;RequiresDiscussion;
+<h1>NIDM-Results Terms curation status</h1><b>Curation status</b>: 
+<img src="../../../doc/content/specs/img/green.png?raw=true"/>&nbsp;Pending final vetting;
+<img src="../../../doc/content/specs/img/orange.png?raw=true"/>&nbsp;Metadata incomplete; Metadata complete; Requires discussion;
 <img src="../../../doc/content/specs/img/red.png?raw=true"/>&nbsp;Uncurated;
-<img src="../../../doc/content/specs/img/yellow.png?raw=true"/>&nbsp;ToBeReplacedByExternalOntologyTerm;
+<img src="../../../doc/content/specs/img/yellow.png?raw=true"/>&nbsp;To be replaced with external ontology term;
 <h2>Classes</h2>
 <table>
 <tr><th>Curation Status</th><th>Term</th></tr>
@@ -42,6 +42,18 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group.</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model.</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:ContrastWeights: </b>Vector defining the linear combination associated with a particular contrast. </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:ModelParametersEstimation: </b>The process of estimating the parameters of a general linear model from the available data.</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -111,18 +123,6 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:ReselsPerVoxelMap: </b>A map whose value at each location is the number of resels per voxel. </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model.</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastWeights: </b>Vector defining the linear combination associated with a particular contrast. </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:ModelParametersEstimation: </b>The process of estimating the parameters of a general linear model from the available data.</td>
 </tr>
 </table><h2>Properties</h2>
 <table>
@@ -206,6 +206,36 @@
 </td>
     <td>nidm:SearchSpaceMap </td>
     <td>xsd:positiveInteger </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><b>nidm:userSpecifiedThresholdType: </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value). (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
+    <td>nidm:ExtentThreshold nidm:HeightThreshold </td>
+    <td>xsd:string </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:searchVolumeInVoxels: </b>Total number of voxels within the search volume.</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td>xsd:positiveInteger </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"</td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:pValueUncorrected: </b>A p-value reported without correction for multiple testing.        </td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:qValueFDR: </b>P-value adjusted for the multiple testing, controlling for the False Discovery Rate</td>
+    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
+    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -386,35 +416,5 @@
     <td><b>spm:softwareRevision: </b>revision number of a piece of software.</td>
     <td>prov:SoftwareAgent </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:userSpecifiedThresholdType: </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value). (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
-    <td>nidm:ExtentThreshold nidm:HeightThreshold </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>spm:searchVolumeInVoxels: </b>Total number of voxels within the search volume.</td>
-    <td>nidm:SearchSpaceMap </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"</td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:pValueUncorrected: </b>A p-value reported without correction for multiple testing.        </td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:qValueFDR: </b>P-value adjusted for the multiple testing, controlling for the False Discovery Rate</td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
-    <td></td>
 </tr>
 </table>
