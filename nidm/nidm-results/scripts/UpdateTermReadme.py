@@ -28,21 +28,32 @@ logger = logging.getLogger(__name__)
 
 class_termsPATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'terms')
 
-NIDM_PENDING_FINAL = 'nidm:PendingFinalVetting'
-NIDM_METADATA_INCOMPLETE = 'nidm:MetadataIncomplete'
-NIDM_REQUIRES_DISCUSSION = 'nidm:RequiresDiscussion'
-NIDM_UNCURATED = 'nidm:Uncurated'
-NIDM_TO_BE_REPLACED = 'nidm:ToBeReplacedByExternalOntologyTerm'
-NIDM_READY = 'nidm:ReadyForRelease'
+OBO = Namespace("http://purl.obolibrary.org/obo/")
+OBO_PENDING_FINAL = OBO['IAO_0000125']
+OBO_METADATA_COMPLETE = OBO['IAO_0000120']
+OBO_METADATA_INCOMPLETE = OBO['IAO_0000123']
+OBO_REQUIRES_DISCUSSION = OBO['IAO_0000428']
+OBO_UNCURATED = OBO['IAO_0000124']
+OBO_TO_BE_REPLACED = OBO['IAO_0000423']
+OBO_READY = OBO['IAO_0000122']
 
 CURATION_COLORS = dict()
-CURATION_COLORS[NIDM_PENDING_FINAL] = "green"
-CURATION_COLORS[NIDM_METADATA_INCOMPLETE] = "orange"
-CURATION_COLORS[NIDM_REQUIRES_DISCUSSION] = "orange"
-CURATION_COLORS[NIDM_UNCURATED] = "red"
-CURATION_COLORS[NIDM_TO_BE_REPLACED] = "yellow"
+CURATION_COLORS[OBO_PENDING_FINAL] = "green"
+CURATION_COLORS[OBO_METADATA_COMPLETE] = "orange"
+CURATION_COLORS[OBO_METADATA_INCOMPLETE] = "orange"
+CURATION_COLORS[OBO_REQUIRES_DISCUSSION] = "orange"
+CURATION_COLORS[OBO_UNCURATED] = "red"
+CURATION_COLORS[OBO_TO_BE_REPLACED] = "yellow"
 
-CURATION_ORDER = list([NIDM_PENDING_FINAL, NIDM_METADATA_INCOMPLETE, NIDM_REQUIRES_DISCUSSION, NIDM_UNCURATED, NIDM_TO_BE_REPLACED])
+CURATION_LEGEND = dict()
+CURATION_LEGEND["green"] = "Pending final vetting"
+CURATION_LEGEND["orange"] = "Metadata incomplete; Metadata complete; Requires discussion"
+CURATION_LEGEND["red"] = "Uncurated"
+CURATION_LEGEND["yellow"] = "To be replaced with external ontology term"
+
+HAS_CURATION_STATUS = OBO['IAO_0000114']
+
+CURATION_ORDER = list([OBO_PENDING_FINAL, OBO_METADATA_INCOMPLETE, OBO_REQUIRES_DISCUSSION, OBO_UNCURATED, OBO_TO_BE_REPLACED])
 
 class UpdateTermReadme():
 
@@ -109,8 +120,8 @@ class UpdateTermReadme():
         return domain_display
 
     def get_curation_status(self, owl_term):
-        curation_status = NIDM['Uncurated']
-        curation_status = list(self.owl.objects(owl_term, NIDM['curationStatus']))
+        curation_status = OBO_UNCURATED
+        curation_status = list(self.owl.objects(owl_term, HAS_CURATION_STATUS))
         if curation_status:
             curation_status = curation_status[0]
         return curation_status
@@ -142,14 +153,20 @@ class UpdateTermReadme():
         return term_row
 
     def create_curation_legend(self, order):
-        curation_legend = "<b>Curation status</b>: "
+        curation_legend = "<b>Curation status</b>: \n"
         curation_colors_sorted = [(key, CURATION_COLORS.get(key)) for key in order]
+
+        covered_colors = list()
         for curation_color in curation_colors_sorted:
-            curation_status =  curation_color[0]
+            # curation_status =  str(self.owl.qname(curation_color[0]))
+            # curation_status_labels = self.owl.objects(curation_color[0], RDFS['label'])
+            # curation_status = ", ".join(list(curation_status_labels))
+
             color =  curation_color[1]
-            if color:
+            if not color in covered_colors:
                 curation_legend = curation_legend+'<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>&nbsp;'+\
-                    curation_status.replace("nidm:", "")+";\n"
+                    CURATION_LEGEND[color]+";\n"
+                covered_colors.append(color)
         return curation_legend
 
     # Get README text according to owl file information
@@ -171,7 +188,7 @@ class UpdateTermReadme():
             
             if definition:
                 if curation_status:
-                    curation_key = str(curation_status)
+                    curation_key = curation_status
                     term_key = self.owl.qname(owl_term)
                     if owl_term in self.owl_classes:
                         class_terms.setdefault(curation_key, list()).append(term_key)
@@ -184,7 +201,7 @@ class UpdateTermReadme():
                     domains[term_key] = domain
 
         # Include missing keys and do not display ready for release terms
-        order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([NIDM_READY]))))
+        order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([OBO_READY]))))
         class_terms_sorted = [(key, class_terms.get(key)) for key in order]
         prpty_terms_sorted = [(key, prpty_terms.get(key)) for key in order]
 
