@@ -176,13 +176,13 @@ document
       nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
       nidm:errorVarianceHomogeneous = "true" %%xsd:boolean,
       nidm:varianceSpatialModel = 'nidm:SpatiallyLocal',
-      nidm:hasErrorDependence = 'nidm:IndependentError',
+      nidm:hasErrorDependence = 'nidm:SeriallyCorrelatedError',
       nidm:dependenceSpatialModel = 'nidm:SpatiallyLocal'])
     used(niiri:model_pe_id, niiri:error_model_id,-)
 
     activity(niiri:model_pe_id,
       [prov:type = 'nidm:ModelParametersEstimation',
-      nidm:withEstimationMethod = 'nidm:OrdinaryLeastSquares',
+      nidm:withEstimationMethod = 'nidm:GeneralizedLeastSquares',
       prov:label = "Model parameters estimation"])
     wasAssociatedWith(niiri:model_pe_id, niiri:software_id,-)
     used(niiri:model_pe_id, niiri:design_matrix_id,-)
