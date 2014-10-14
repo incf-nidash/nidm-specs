@@ -157,13 +157,13 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:maxNumberOfPeaksPerCluster: </b>Pre-defined parameter specifying the maximum number of peaks to be reported after inference within a cluster.</td>
+    <td><b>nidm:maxNumberOfPeaksPerCluster: </b>Maximum number of peaks to be reported after inference within a cluster.</td>
     <td>nidm:PeakDefinitionCriteria </td>
     <td>xsd:int </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:minDistanceBetweenPeaks: </b>Pre-defined parameter specifying the minimum distance between two peaks reported after inference.</td>
+    <td><b>nidm:minDistanceBetweenPeaks: </b>Minimum distance between two peaks reported after inference.</td>
     <td>nidm:PeakDefinitionCriteria </td>
     <td>xsd:float </td>
 </tr>
