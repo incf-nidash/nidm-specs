@@ -90,7 +90,7 @@ def create_document(doc_json_url, doc_title):
 	url = "https://provenance.ecs.soton.ac.uk/store/api/v0/documents/"
 	headers = { 'Content-type' : "application/json",
 				'Authorization' : 'ApiKey '+api_key,
-	            'Accept' : "application/json" }
+				'Accept' : "application/json" }
 	# This is a trick to avoid issue with xsd namespace
 	doc_json = doc_json.replace("http://www.w3.org/2001/XMLSchema", "http://www.w3.org/2001/XMLSchema#")
 	data = ' {"content":'+doc_json+',"public":true,"rec_id":"'+doc_title+'"} '
@@ -106,7 +106,7 @@ def create_document(doc_json_url, doc_title):
 	return doc_url
 
 if __name__ == '__main__':
-    for example_file in example_filenames:
+	for example_file in example_filenames:
 
 		# Get title for current document
 		if example_file not in doc_titles:
@@ -127,14 +127,29 @@ if __name__ == '__main__':
 		# Convert provn to json using Prov Translator APIs
 		url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
 		headers = { 'Content-type' : "text/provenance-notation",
-		            'Accept' : "application/json" }
+					'Accept' : "application/json" }
 		req = urllib2.Request(url, doc_provn, headers)
 		response = urllib2.urlopen(req)
 		doc_json_url = response.geturl()
 		logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
 
 		# Find most recent document with same title on the ProvStore
-		same_doc_url = get_doc_from_title(doc_title)
+		# same_doc_url = get_doc_from_title(doc_title)
+
+		# Find corresponding document on the ProvStore by looking at the README
+		# Read README
+		readme_file = os.path.join(NIDMRESULTSPATH, os.path.dirname(example_file), 'README.md')
+		readme_fid = open(readme_file)
+		readme_txt = readme_fid.read()
+		readme_fid.close()
+
+		provstore_url_index = re.search("https://provenance.ecs.soton.ac.uk/store/documents/[^/]*/", readme_txt)
+		# Get corresponding turtle on Prov Store            
+		if provstore_url_index:
+			same_doc_url = readme_txt[provstore_url_index.start():provstore_url_index.end()]
+		else:
+			same_doc_url = None
+
 		if same_doc_url:
 			same_doc_ttl_url = same_doc_url[:-1]+".ttl"
 			found_difference = compare_ttl_documents(doc_json_url.replace(".json", ".ttl"), same_doc_ttl_url) 
