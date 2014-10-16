@@ -22,20 +22,12 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(RELPATH, "..", "test"))
 from TestCommons import example_filenames
 from CheckConsistency import *
+from OwlReader import OwlReader
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 class_termsPATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'terms')
-
-OBO = Namespace("http://purl.obolibrary.org/obo/")
-OBO_PENDING_FINAL = OBO['IAO_0000125']
-OBO_METADATA_COMPLETE = OBO['IAO_0000120']
-OBO_METADATA_INCOMPLETE = OBO['IAO_0000123']
-OBO_REQUIRES_DISCUSSION = OBO['IAO_0000428']
-OBO_UNCURATED = OBO['IAO_0000124']
-OBO_TO_BE_REPLACED = OBO['IAO_0000423']
-OBO_READY = OBO['IAO_0000122']
 
 CURATION_COLORS = dict()
 CURATION_COLORS[OBO_PENDING_FINAL] = "green"
@@ -51,88 +43,18 @@ CURATION_LEGEND["orange"] = "Metadata incomplete; Metadata complete; Requires di
 CURATION_LEGEND["red"] = "Uncurated"
 CURATION_LEGEND["yellow"] = "To be replaced with external ontology term"
 
-HAS_CURATION_STATUS = OBO['IAO_0000114']
-
 CURATION_ORDER = list([OBO_PENDING_FINAL, OBO_METADATA_INCOMPLETE, OBO_REQUIRES_DISCUSSION, OBO_UNCURATED, OBO_TO_BE_REPLACED])
 
 class UpdateTermReadme():
 
     def __init__(self, owl_file):
-        self.data = []
-        
-        # Read owl (turtle) file
-        self.owl = Graph()
-
-        # This is a workaround to avoid issue with "#" in base prefix as 
-        # described in https://github.com/RDFLib/rdflib/issues/379,
-        # When the fix is introduced in rdflib these 2 lines will be replaced by:
-        # self.owl.parse(owl_file, format='turtle')
-        owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
-                        "http://www.w3.org/2002/07/owl")
-        self.owl.parse(data=owl_txt, format='turtle')
-        
-        # Retreive all classes defined in the owl file
-        self.owl_classes = get_class_names_in_owl(self.owl) #set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
-        self.owl_properties = get_property_names_in_owl(self.owl)
-        # # For each class find out attribute list as defined by domain in attributes
-        # attributes_ranges = get_attributes_from_owl(self.owl)
-        # self.attributes = attributes_ranges[0]
-        # self.ranges = attributes_ranges[1]      
-        # self.type_restrictions = attributes_ranges[2]     
+        self.owl = OwlReader(owl_file)
 
     # Write out Readme
     def write_readme(self, readme_file, readme_txt):
         readme_file_open = open(readme_file, 'w')
         readme_file_open.write(readme_txt)
         readme_file_open.close()
-
-    def get_definition(self, owl_term):
-        definition = list(self.owl.objects(owl_term, PROV['definition']))
-        if definition:
-            definition = str(definition[0])
-        else:
-            definition = ""
-        return definition
-
-    def get_range(self, owl_term):
-        ranges = list(self.owl.objects(owl_term, RDFS['range']))
-
-        range_display = ""
-
-        for range_value in ranges:
-            if not isinstance(range_value, rdflib.term.BNode):
-                if isinstance(range_value, rdflib.term.URIRef):
-                    range_display += str(self.owl.qname(range_value))+" "
-                else:
-                    range_display += str(range_value)
-        return range_display
-
-    def get_domain(self, owl_term):
-        domains = list(self.owl.objects(owl_term, RDFS['domain']))
-
-        domain_display = ""
-
-        for domain_value in sorted(domains):
-            if isinstance(domain_value, rdflib.term.URIRef):
-                domain_display += str(self.owl.qname(domain_value))+" "
-            else:
-                domain_display += str(domain_value)
-        return domain_display
-
-    def get_curation_status(self, owl_term):
-        curation_status = OBO_UNCURATED
-        curation_status = list(self.owl.objects(owl_term, HAS_CURATION_STATUS))
-        if curation_status:
-            curation_status = curation_status[0]
-        return curation_status
-
-    def get_editor(self, owl_term):
-        editor = list(self.owl.objects(owl_term, NIDM['termEditor']))
-        if editor:
-            editor = " (editor: "+editor[0]+")"
-        else:
-            editor = ""
-        return editor
 
     def create_term_row(self, term_name, definition, editor, color, range_value=None, domain=None):
         img_color = ""        
@@ -179,21 +101,21 @@ class UpdateTermReadme():
         ranges = dict()
         domains = dict()
 
-        for owl_term in self.owl_classes.union(self.owl_properties):
-            curation_status = self.get_curation_status(owl_term)
-            definition = self.get_definition(owl_term)
-            editor = self.get_editor(owl_term)
-            range_value = self.get_range(owl_term)
-            domain = self.get_domain(owl_term)
+        for owl_term in self.owl.classes.union(self.owl.properties):
+            curation_status = self.owl.get_curation_status(owl_term)
+            definition = self.owl.get_definition(owl_term)
+            editor = self.owl.get_editor(owl_term)
+            range_value = self.owl.get_range(owl_term)
+            domain = self.owl.get_domain(owl_term)
             
             if definition:
                 if curation_status:
                     curation_key = curation_status
-                    term_key = self.owl.qname(owl_term)
-                    if owl_term in self.owl_classes:
+                    term_key = self.owl.graph.qname(owl_term)
+                    if owl_term in self.owl.classes:
                         class_terms.setdefault(curation_key, list()).append(term_key)
                     else:
-                        if owl_term in self.owl_properties:
+                        if owl_term in self.owl.properties:
                             prpty_terms.setdefault(curation_key, list()).append(term_key)
                     definitions[term_key] = definition
                     editors[term_key] = editor
