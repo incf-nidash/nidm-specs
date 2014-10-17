@@ -15,6 +15,10 @@ OWL = Namespace('http://www.w3.org/2002/07/owl')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
 OBO = Namespace("http://purl.obolibrary.org/obo/")
+IAO = Namespace("http://purl.obolibrary.org/obo/iao.owl#")
+
+IAO_EXAMPLE = IAO['IAO_0000112']
+
 OBO_PENDING_FINAL = OBO['IAO_0000125']
 OBO_METADATA_COMPLETE = OBO['IAO_0000120']
 OBO_METADATA_INCOMPLETE = OBO['IAO_0000123']
