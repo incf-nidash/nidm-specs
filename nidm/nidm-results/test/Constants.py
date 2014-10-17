@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+''' Definition of constants
+
+@author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
+@copyright: University of Warwick 2014
+'''
+
 from rdflib import Namespace
 
 PROV = Namespace('http://www.w3.org/ns/prov#')

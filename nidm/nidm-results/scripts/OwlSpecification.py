@@ -1,4 +1,9 @@
-# Automatically-generates section 2 of a specification document given an owl file
+#!/usr/bin/env python
+''' Automatically-generates NIDM-Results specification based on nidm-results.owl
+
+@author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
+@copyright: University of Warwick 2014
+'''
 
 import urllib2
 import json
