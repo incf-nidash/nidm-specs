@@ -34,6 +34,8 @@ class OwlSpecification(object):
         self.name = spec_name
         self.section_open = 0
 
+        self.attributes_done = set()
+
         self.text = ""
         self.create_specification(components, used_by, generated_by)
 
@@ -101,7 +103,7 @@ class OwlSpecification(object):
                 class_qname = self.owl.graph.qname(class_name)
                 self.text += """
                         <tr>
-                            <td><a title="concept-"""+class_qname+"""">"""+class_qname+"""</a>
+                            <td><a title=\""""+class_qname+"""\">"""+class_qname+"""</a>
                             </td>
                     """
 
@@ -189,11 +191,17 @@ class OwlSpecification(object):
             for att in attributes:
                 att_name = self.owl.graph.qname(att)
 
+                if att not in self.attributes_done:
+                    # First definition of this attribute
+                    att_tag = "dfn" 
+                else:
+                    att_tag = "a" 
+
                 if att_name[0:5] == "nidm:":
                     att_def = self.owl.get_definition(att)
                     self.text += """ 
-                        <li><span class="attribute" id=\""""+class_qname+"""."""+att_name+"""">\
-                        <dfn>"""+att_name+"""</dfn>
+                        <li><span class="attribute" id=\""""+class_qname+"""."""+att_name+"""">
+                        <"""+att_tag+""">"""+att_name+"""</"""+att_tag+""">
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """+\
                         self.format_definition(att_def)
 
@@ -202,6 +210,8 @@ class OwlSpecification(object):
                             self.owl.ranges[att]))+")"
 
                     self.text += "</li>"
+
+                self.attributes_done.add(att)
 
         example = self.owl.get_example(class_name)
         if example:
@@ -243,11 +253,10 @@ if __name__ == '__main__':
     components =  collections.OrderedDict()
     components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
              NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
-             NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
+             NIDM['ContrastEstimation'], NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
              NIDM['ContrastMap'], NIDM['StatisticMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['MaskMap'], NIDM['ExcursionSet'],
-             NIDM['SearchSpaceMap'], NIDM['Cluster'], NIDM['Peak'],
+             NIDM['ExcursionSet'], NIDM['SearchSpaceMap'], NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
@@ -275,7 +284,7 @@ if __name__ == '__main__':
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, generated_by)
 
     INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
-    owlspec.write_specification(os.path.join(DOC_FOLDER, "spec.html"),
+    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
 
