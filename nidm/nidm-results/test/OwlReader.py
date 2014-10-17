@@ -189,7 +189,7 @@ class OwlReader():
         return owl_graph
 
 
-    def get_prov_class(self, owl_term, recursive=0):
+    def get_prov_class(self, owl_term, recursive=3):
         if self.graph.qname(owl_term)[0:5] == "prov:":
             prov_class = owl_term
         else:
