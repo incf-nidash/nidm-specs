@@ -2,6 +2,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
 @prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix spm: <http://www.incf.org/ns/nidash/spm#> .
@@ -13,6 +14,9 @@
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
+[ rdf:type owl:Ontology ;
+  owl:imports <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl>
+] .
 
 
 #################################################################
@@ -31,14 +35,6 @@ iao:IAO_0000112 rdf:type owl:AnnotationProperty .
 ###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000116
 
 iao:IAO_0000116 rdf:type owl:AnnotationProperty .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#curationStatus
-
-nidm:curationStatus rdf:type owl:AnnotationProperty ;
-                    
-                    owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000078" .
 
 
 
@@ -99,9 +95,9 @@ nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
                               
                               iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/81" ;
                               
-                              nidm:curationStatus "nidm:ReadyForRelease" ;
-                              
                               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000208" ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000122 ;
                               
                               rdfs:domain nidm:Inference ;
                               
@@ -116,11 +112,11 @@ nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
 
 nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
                          
-                         nidm:curationStatus "nidm:MetadataIncomplete" ;
-                         
                          prov:definition "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
                          
                          iao:IAO_0000112 "file:///path/to/cluster_labels.img" ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000120 ;
                          
                          rdfs:range nidm:ClusterLabelsMap ;
                          
@@ -134,7 +130,7 @@ nidm:hasConnectivityCriterion rdf:type owl:ObjectProperty ;
                               
                               prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." ;
                               
-                              nidm:curationStatus "nidm:PendingFinalVetting" ;
+                              obo:IAO_0000114 obo:IAO_0000125 ;
                               
                               rdfs:domain nidm:ClusterDefinitionCriteria ;
                               
@@ -148,7 +144,7 @@ nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
                         
                         prov:definition "Property that associates an ErrorDependence with an ErrorModel." ;
                         
-                        nidm:curationStatus "nidm:ReadyForRelease" ;
+                        obo:IAO_0000114 obo:IAO_0000122 ;
                         
                         rdfs:range nidm:ErrorDependence ;
                         
@@ -160,7 +156,7 @@ nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   
-                  nidm:curationStatus "nidm:Uncurated" ;
+                  obo:IAO_0000114 obo:IAO_0000124 ;
                   
                   rdfs:domain nidm:Map ;
                   
@@ -186,9 +182,9 @@ nidm:inCoordinateSpace rdf:type owl:ObjectProperty ;
                        
                        nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/171 by NN JT CM SG KH TN." ;
                        
-                       nidm:curationStatus "nidm:ReadyForRelease" ;
-                       
                        prov:definition "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 ;
                        
                        rdfs:range nidm:CoordinateSpace ;
                        
@@ -200,11 +196,11 @@ nidm:inCoordinateSpace rdf:type owl:ObjectProperty ;
 
 nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
                              
-                             nidm:curationStatus "nidm:MetadataIncomplete" ;
-                             
                              prov:definition "Type of coordinate system." ;
                              
                              iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000120 ;
                              
                              rdfs:domain nidm:CoordinateSpace ;
                              
@@ -216,7 +212,7 @@ nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
 
 nidm:objectModel rdf:type owl:ObjectProperty ;
                  
-                 nidm:curationStatus "nidm:Uncurated" ;
+                 obo:IAO_0000114 obo:IAO_0000124 ;
                  
                  rdfs:range nidm:NIDMObjectModel ;
                  
@@ -228,7 +224,7 @@ nidm:objectModel rdf:type owl:ObjectProperty ;
 
 nidm:statisticType rdf:type owl:ObjectProperty ;
                    
-                   nidm:curationStatus "nidm:Uncurated" ;
+                   obo:IAO_0000114 obo:IAO_0000124 ;
                    
                    rdfs:domain nidm:ContrastWeights ;
                    
@@ -256,11 +252,11 @@ nidm:visualisation rdf:type owl:ObjectProperty ;
                    
                    prov:definition "Graphical representation of an entity." ;
                    
-                   nidm:curationStatus "nidm:MetadataIncomplete" ;
-                   
                    iao:IAO_0000116 "Range: Path to an image (e.g.png) not found." ;
                    
                    iao:IAO_0000112 "file:///path/to/design_matrix.png" ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000120 ;
                    
                    rdfs:domain nidm:DesignMatrix ,
                                nidm:ExcursionSet ;
@@ -289,9 +285,9 @@ spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
                                   
                                   iao:IAO_0000112 "file:///path/to/MIP.png" ;
                                   
-                                  nidm:curationStatus "nidm:MetadataIncomplete" ;
-                                  
                                   iao:IAO_0000116 "Range: Path to an image (e.g.png)." ;
+                                  
+                                  obo:IAO_0000114 obo:IAO_0000120 ;
                                   
                                   rdfs:domain nidm:ExcursionSet ;
                                   
@@ -382,11 +378,11 @@ dct:format rdf:type owl:DatatypeProperty ;
 
 fsl:coordinate1InVoxels rdf:type owl:DatatypeProperty ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         iao:IAO_0000112 "-60" ;
                         
                         prov:definition "Coordinate along the first dimension in voxels." ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -402,7 +398,7 @@ fsl:coordinate2InVoxels rdf:type owl:DatatypeProperty ;
                         
                         iao:IAO_0000112 "-28" ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -416,9 +412,9 @@ fsl:coordinate3InVoxels rdf:type owl:DatatypeProperty ;
                         
                         iao:IAO_0000112 "13" ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         prov:definition "Coordinate along the third dimension in voxels" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -432,7 +428,7 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
         
         rdfs:comment "To be renamed" ;
         
-        nidm:curationStatus "nidm:Uncurated" ;
+        obo:IAO_0000114 obo:IAO_0000124 ;
         
         rdfs:domain nidm:SearchSpaceMap ;
         
@@ -444,7 +440,7 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
 
 fsl:featVersion rdf:type owl:DatatypeProperty ;
                 
-                nidm:curationStatus "nidm:Uncurated" ;
+                obo:IAO_0000114 obo:IAO_0000124 ;
                 
                 rdfs:domain nidm:FSL ;
                 
@@ -456,7 +452,7 @@ fsl:featVersion rdf:type owl:DatatypeProperty ;
 
 fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
                       
-                      nidm:curationStatus "nidm:Uncurated" ;
+                      obo:IAO_0000114 obo:IAO_0000124 ;
                       
                       rdfs:domain nidm:SearchSpaceMap ;
                       
@@ -470,9 +466,9 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
 
 fsl:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
                          
-                         nidm:curationStatus "nidm:Uncurated" ;
-                         
                          rdfs:comment "Check if this can be merged with spm:searchVolumeInVoxels" ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000124 ;
                          
                          rdfs:domain nidm:SearchSpaceMap ;
                          
@@ -488,9 +484,9 @@ nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
                     
                     prov:definition "Integer associated with a particular cluster as specified in the clusterLabelsMap." ;
                     
-                    nidm:curationStatus "nidm:PendingFinalVetting" ;
-                    
                     iao:IAO_0000112 "5" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000125 ;
                     
                     rdfs:domain nidm:Cluster ;
                     
@@ -502,11 +498,11 @@ nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
 
 nidm:clusterSizeInVertices rdf:type owl:DatatypeProperty ;
                            
-                           nidm:curationStatus "nidm:MetadataIncomplete" ;
-                           
                            iao:IAO_0000112 "10" ;
                            
                            prov:definition "Number of vertices that make up the cluster." ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000120 ;
                            
                            rdfs:domain nidm:Cluster ,
                                        nidm:ExtentThreshold ;
@@ -523,7 +519,7 @@ nidm:clusterSizeInVoxels rdf:type owl:DatatypeProperty ;
                          
                          prov:definition "Number of voxels that make up the cluster." ;
                          
-                         nidm:curationStatus "nidm:PendingFinalVetting" ;
+                         obo:IAO_0000114 obo:IAO_0000125 ;
                          
                          rdfs:domain nidm:Cluster ,
                                      nidm:ExtentThreshold ;
@@ -536,11 +532,11 @@ nidm:clusterSizeInVoxels rdf:type owl:DatatypeProperty ;
 
 nidm:contrastName rdf:type owl:DatatypeProperty ;
                   
-                  nidm:curationStatus "nidm:MetadataIncomplete" ;
-                  
                   iao:IAO_0000112 "\"Listening > Rest\"" ;
                   
                   prov:definition "Name of the contrast." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
                   
                   rdfs:domain nidm:ContrastMap ,
                               nidm:ContrastWeights ,
@@ -560,7 +556,7 @@ nidm:coordinate1 rdf:type owl:DatatypeProperty ;
                  
                  iao:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/145" ;
                  
-                 nidm:curationStatus "nidm:MetadataIncomplete" ;
+                 obo:IAO_0000114 obo:IAO_0000120 ;
                  
                  rdfs:domain nidm:Coordinate ;
                  
@@ -576,7 +572,7 @@ nidm:coordinate2 rdf:type owl:DatatypeProperty ;
                  
                  prov:definition "Coordinate along the second dimension in voxel units." ;
                  
-                 nidm:curationStatus "nidm:MetadataIncomplete" ;
+                 obo:IAO_0000114 obo:IAO_0000120 ;
                  
                  rdfs:domain nidm:Coordinate ;
                  
@@ -590,9 +586,9 @@ nidm:coordinate3 rdf:type owl:DatatypeProperty ;
                  
                  prov:definition "Coordinate along the third dimension in voxel units." ;
                  
-                 nidm:curationStatus "nidm:MetadataIncomplete" ;
-                 
                  iao:IAO_0000112 "13" ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000120 ;
                  
                  rdfs:domain nidm:Coordinate ;
                  
@@ -604,14 +600,14 @@ nidm:coordinate3 rdf:type owl:DatatypeProperty ;
 
 nidm:dimensionsInVoxels rdf:type owl:DatatypeProperty ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         prov:definition "Dimensions of some N-dimensional data." ;
                         
                         iao:IAO_0000112 "[64 64 20]" ;
                         
                         iao:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/146" ,
                                         "Range: Vector of integers." ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:CoordinateSpace ;
                         
@@ -625,9 +621,9 @@ nidm:effectDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                             
                             prov:definition "Degrees of freedom of the effect." ;
                             
-                            nidm:curationStatus "nidm:MetadataIncomplete" ;
-                            
                             iao:IAO_0000112 "1" ;
+                            
+                            obo:IAO_0000114 obo:IAO_0000120 ;
                             
                             rdfs:domain nidm:StatisticMap ;
                             
@@ -648,7 +644,7 @@ nidm:equivalentZStatistic rdf:type owl:DatatypeProperty ;
                           
                           iao:IAO_0000112 "3.5" ;
                           
-                          nidm:curationStatus "nidm:MetadataIncomplete" ;
+                          obo:IAO_0000114 obo:IAO_0000120 ;
                           
                           rdfs:domain nidm:Peak ;
                           
@@ -662,9 +658,9 @@ nidm:errorDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                            
                            iao:IAO_0000112 "72.999999" ;
                            
-                           nidm:curationStatus "nidm:MetadataIncomplete" ;
-                           
                            prov:definition "Degrees of freedom of the error." ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000120 ;
                            
                            rdfs:domain nidm:StatisticMap ;
                            
@@ -683,7 +679,7 @@ nidm:errorVarianceHomogeneous rdf:type owl:DatatypeProperty ;
                               
                               prov:definition "A boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance." ;
                               
-                              nidm:curationStatus "nidm:ReadyForRelease" ;
+                              obo:IAO_0000114 obo:IAO_0000122 ;
                               
                               rdfs:domain nidm:ErrorModel ;
                               
@@ -713,7 +709,7 @@ nidm:filename rdf:type owl:DatatypeProperty ;
 
 nidm:globalNullDegree rdf:type owl:DatatypeProperty ;
                       
-                      nidm:curationStatus "nidm:Uncurated" ;
+                      obo:IAO_0000114 obo:IAO_0000124 ;
                       
                       rdfs:domain spm:KConjunctionInference ;
                       
@@ -725,11 +721,11 @@ nidm:globalNullDegree rdf:type owl:DatatypeProperty ;
 
 nidm:grandMeanScaling rdf:type owl:DatatypeProperty ;
                       
-                      nidm:curationStatus "nidm:PendingFinalVetting" ;
-                      
                       prov:definition "Binary flag defining whether the data was scaled. Specifically, \"grand mean scaling\" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses." ;
                       
                       iao:IAO_0000112 "TRUE" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000125 ;
                       
                       rdfs:domain nidm:Data ;
                       
@@ -741,11 +737,11 @@ nidm:grandMeanScaling rdf:type owl:DatatypeProperty ;
 
 nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
                              
-                             nidm:curationStatus "nidm:MetadataIncomplete" ;
-                             
                              prov:definition "Type of coordinate system." ;
                              
-                             iao:IAO_0000112 "nidm:MNICoordinateSystem" .
+                             iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -757,11 +753,11 @@ nidm:maskedMedian rdf:type owl:DatatypeProperty ;
                   
                   iao:IAO_0000112 "155.23" ;
                   
-                  nidm:curationStatus "nidm:PendingFinalVetting" ;
-                  
                   rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0200119" ;
                   
                   prov:definition "Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
                   
                   rdfs:domain nidm:GrandMeanMap ;
                   
@@ -799,13 +795,13 @@ nidm:noiseFWHM rdf:type owl:DatatypeProperty ;
                
                rdfs:seeAlso "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Full_Width_at_Half_Maximum" ;
                
-               nidm:curationStatus "nidm:MetadataIncomplete" ;
-               
                nidm:termEditor "Under discussion at https://github.com/incf-nidash/nidm/issues/173" ;
                
                prov:definition "Estimated Full Width at Half Maximum of the noise distribution." ;
                
-               iao:IAO_0000112 "2.35" .
+               iao:IAO_0000112 "2.35" ;
+               
+               obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -813,7 +809,7 @@ nidm:noiseFWHM rdf:type owl:DatatypeProperty ;
 
 nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
                       
-                      nidm:curationStatus "nidm:Uncurated" ;
+                      obo:IAO_0000114 obo:IAO_0000124 ;
                       
                       rdfs:domain nidm:ExcursionSet ;
                       
@@ -827,11 +823,11 @@ nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
 
 nidm:numberOfDimensions rdf:type owl:DatatypeProperty ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         prov:definition "Number of dimensions of a data matrix." ;
                         
                         iao:IAO_0000112 "3" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:CoordinateSpace ;
                         
@@ -847,11 +843,11 @@ nidm:pValue rdf:type owl:DatatypeProperty ;
             
             iao:IAO_0000112 "8.95E-14" ;
             
-            nidm:curationStatus "nidm:ReadyForRelease" ;
-            
             rdfs:seeAlso """http://purl.obolibrary.org/obo/IAO_0000121
 http://purl.obolibrary.org/obo/OBI_0000175
 http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
+            
+            obo:IAO_0000114 obo:IAO_0000122 ;
             
             rdfs:domain nidm:ExcursionSet ;
             
@@ -878,7 +874,7 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 iao:IAO_0000112 "0.05" ;
                 
-                nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
+                obo:IAO_0000114 obo:IAO_0000423 ;
                 
                 rdfs:domain nidm:Cluster ,
                             nidm:ExtentThreshold ,
@@ -904,9 +900,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        iao:IAO_0000112 "0.0542" ;
                        
-                       nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
-                       
                        prov:definition "A p-value reported without correction for multiple testing.        " ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000423 ;
                        
                        rdfs:domain nidm:Cluster ,
                                    nidm:ExtentThreshold ,
@@ -930,11 +926,11 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                iao:IAO_0000112 "0.000154" ;
                
-               nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
-               
                prov:definition "P-value adjusted for the multiple testing, controlling for the False Discovery Rate" ;
                
                rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0001442" ;
+               
+               obo:IAO_0000114 obo:IAO_0000423 ;
                
                rdfs:domain nidm:Cluster ,
                            nidm:ExtentThreshold ,
@@ -958,9 +954,9 @@ nidm:randomFieldStationarity rdf:type owl:DatatypeProperty ;
                              
                              prov:definition "Is the random field assumed to be stationary across the entire search volume?" ;
                              
-                             nidm:curationStatus "nidm:MetadataIncomplete" ;
-                             
                              nidm:termEditor "Under discussion at https://github.com/incf-nidash/nidm/issues/130" ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000120 ;
                              
                              rdfs:domain nidm:SearchSpaceMap ;
                              
@@ -974,9 +970,9 @@ nidm:softwareVersion rdf:type owl:DatatypeProperty ;
                      
                      iao:IAO_0000112 "SPM99, SPM2, SPM5, SPM8, SPM12b, FSL5.0.0" ;
                      
-                     nidm:curationStatus "nidm:PendingFinalVetting" ;
-                     
                      prov:definition "Name and number that specifies the software version." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000125 ;
                      
                      rdfs:range xsd:string ;
                      
@@ -988,11 +984,11 @@ nidm:softwareVersion rdf:type owl:DatatypeProperty ;
 
 nidm:targetIntensity rdf:type owl:DatatypeProperty ;
                      
-                     nidm:curationStatus "nidm:PendingFinalVetting" ;
-                     
                      prov:definition "Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)." ;
                      
                      iao:IAO_0000112 "100" ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000125 ;
                      
                      rdfs:domain nidm:Data ;
                      
@@ -1009,8 +1005,6 @@ nidm:targetIntensity rdf:type owl:DatatypeProperty ;
 
 nidm:userSpecifiedThresholdType rdf:type owl:DatatypeProperty ;
                                 
-                                nidm:curationStatus "nidm:RequiresDiscussion" ;
-                                
                                 prov:definition "Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value)." ;
                                 
                                 iao:IAO_0000116 "Range is currently string but should be limited to {'nidm:pValueFWER' not found'nidm:pValueFDR' not found'nidm:pValueUncorrected';'nidm:statistic'}?" ;
@@ -1018,6 +1012,8 @@ nidm:userSpecifiedThresholdType rdf:type owl:DatatypeProperty ;
                                 iao:IAO_0000112 "nidm:pValueFWER" ;
                                 
                                 nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/150" ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000428 ;
                                 
                                 rdfs:domain nidm:ExtentThreshold ,
                                             nidm:HeightThreshold ;
@@ -1030,7 +1026,7 @@ nidm:userSpecifiedThresholdType rdf:type owl:DatatypeProperty ;
 
 nidm:version rdf:type owl:DatatypeProperty ;
              
-             nidm:curationStatus "nidm:Uncurated" ;
+             obo:IAO_0000114 obo:IAO_0000124 ;
              
              rdfs:range xsd:string ;
              
@@ -1051,7 +1047,7 @@ nidm:voxelSize rdf:type owl:DatatypeProperty ;
                rdfs:seeAlso """http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C95003 
 """ ;
                
-               nidm:curationStatus "nidm:MetadataIncomplete" ;
+               obo:IAO_0000114 obo:IAO_0000120 ;
                
                rdfs:domain nidm:CoordinateSpace ;
                
@@ -1071,7 +1067,7 @@ nidm:voxelToWorldMapping rdf:type owl:DatatypeProperty ;
                          
                          prov:definition "Homogeneous transformation matrix to map from voxel coordinate system to world coordinate system." ;
                          
-                         nidm:curationStatus "nidm:ReadyForRelease" ;
+                         obo:IAO_0000114 obo:IAO_0000122 ;
                          
                          rdfs:domain nidm:CoordinateSpace ;
                          
@@ -1085,13 +1081,13 @@ nidm:voxelUnits rdf:type owl:DatatypeProperty ;
                 
                 iao:IAO_0000116 "Range: Vector of strings." ;
                 
-                nidm:curationStatus "nidm:MetadataIncomplete" ;
-                
                 iao:IAO_0000112 "{'mm' 'mm' 's'}" ;
                 
                 prov:definition "Units associated with each dimensions of some N-dimensional data." ;
                 
                 nidm:termEditor "Under discussion at https://github.com/incf-nidash/nidm/issues/147" ;
+                
+                obo:IAO_0000114 obo:IAO_0000120 ;
                 
                 rdfs:domain nidm:CoordinateSpace ;
                 
@@ -1103,13 +1099,13 @@ nidm:voxelUnits rdf:type owl:DatatypeProperty ;
 
 spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         nidm:termEditor "Under discussion at: https://github.com/incf-nidash/nidm/issues/127" ;
                         
                         iao:IAO_0000112 "13" ;
                         
                         prov:definition "Number of resels that make up a cluster." ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:Cluster ,
                                     nidm:ExtentThreshold ;
@@ -1129,9 +1125,9 @@ spm:expectedNumberOfClusters rdf:type owl:DatatypeProperty ;
                              
                              iao:IAO_0000112 "9.51" ;
                              
-                             nidm:curationStatus "nidm:PendingFinalVetting" ;
-                             
                              prov:definition "Expected number of clusters in an excursion set." ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000125 ;
                              
                              rdfs:domain nidm:SearchSpaceMap ;
                              
@@ -1150,9 +1146,9 @@ spm:expectedNumberOfVerticesPerCluster rdf:type owl:DatatypeProperty ;
                                        
                                        iao:IAO_0000112 "60.632" ;
                                        
-                                       nidm:curationStatus "nidm:MetadataIncomplete" ;
-                                       
                                        prov:definition "Expected number of vertices in a cluster." ;
+                                       
+                                       obo:IAO_0000114 obo:IAO_0000120 ;
                                        
                                        rdfs:domain nidm:SearchSpaceMap ;
                                        
@@ -1173,7 +1169,7 @@ spm:expectedNumberOfVoxelsPerCluster rdf:type owl:DatatypeProperty ;
                                      
                                      iao:IAO_0000112 "60.632" ;
                                      
-                                     nidm:curationStatus "nidm:MetadataIncomplete" ;
+                                     obo:IAO_0000114 obo:IAO_0000120 ;
                                      
                                      rdfs:domain nidm:SearchSpaceMap ;
                                      
@@ -1192,9 +1188,9 @@ spm:heightCriticalThresholdFDR05 rdf:type owl:DatatypeProperty ;
                                  
                                  iao:IAO_0000112 "5.896" ;
                                  
-                                 nidm:curationStatus "nidm:ReadyForRelease" ;
-                                 
                                  prov:definition "Peak statistic threshold corrected for false discovery rate at a level of alpha = 0.05. " ;
+                                 
+                                 obo:IAO_0000114 obo:IAO_0000122 ;
                                  
                                  rdfs:domain nidm:SearchSpaceMap ;
                                  
@@ -1210,7 +1206,7 @@ spm:heightCriticalThresholdFWE05 rdf:type owl:DatatypeProperty ;
                                  
                                  prov:definition "Peak statistic threshold corrected for family-wise error at a level of alpha = 0.05. " ;
                                  
-                                 nidm:curationStatus "nidm:ReadyForRelease" ;
+                                 obo:IAO_0000114 obo:IAO_0000122 ;
                                  
                                  rdfs:domain nidm:SearchSpaceMap ;
                                  
@@ -1224,11 +1220,11 @@ spm:noiseFWHMInUnits rdf:type owl:DatatypeProperty ;
                      
                      iao:IAO_0000112 "[8.87, 8.89, 7.83]" ;
                      
-                     nidm:curationStatus "nidm:MetadataIncomplete" ;
-                     
                      iao:IAO_0000116 "Range: Vector of positive floats." ;
                      
                      prov:definition "Estimated Full Width at Half Maximum of the noise distribution in world units." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000120 ;
                      
                      rdfs:domain nidm:SearchSpaceMap ;
                      
@@ -1244,11 +1240,11 @@ spm:noiseFWHMInVertices rdf:type owl:DatatypeProperty ;
                         
                         iao:IAO_0000112 "[2.95, 2.96, 2.61]" ;
                         
-                        nidm:curationStatus "nidm:MetadataIncomplete" ;
-                        
                         iao:IAO_0000116 "Range: Vector of positive floats." ;
                         
                         prov:definition "Estimated Full Width at Half Maximum of the noise distribution in world vertices." ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000120 ;
                         
                         rdfs:domain nidm:MaskMap ;
                         
@@ -1266,9 +1262,9 @@ spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
                       
                       iao:IAO_0000112 "[3.7 3.7 3.1]" ;
                       
-                      nidm:curationStatus "nidm:MetadataIncomplete" ;
-                      
                       prov:definition "Estimated Full Width at Half Maximum of the noise distribution in voxels." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000120 ;
                       
                       rdfs:domain nidm:SearchSpaceMap ;
                       
@@ -1282,11 +1278,11 @@ spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
 
 spm:reselSize rdf:type owl:DatatypeProperty ;
               
-              nidm:curationStatus "nidm:MetadataIncomplete" ;
-              
               prov:definition "Size of one resel in voxels or vertices." ;
               
               iao:IAO_0000112 "22.325" ;
+              
+              obo:IAO_0000114 obo:IAO_0000120 ;
               
               rdfs:domain nidm:SearchSpaceMap ;
               
@@ -1333,7 +1329,7 @@ NIDM Concept ID: spm_84. """ ;
                         
                         iao:IAO_0000112 "1771011" ;
                         
-                        nidm:curationStatus "nidm:ReadyForRelease" ;
+                        obo:IAO_0000114 obo:IAO_0000122 ;
                         
                         rdfs:domain nidm:SearchSpaceMap ;
                         
@@ -1354,7 +1350,7 @@ spm:searchVolumeInVertices rdf:type owl:DatatypeProperty ;
                            
                            prov:definition "Total number of vertices within the search volume." ;
                            
-                           nidm:curationStatus "nidm:MetadataIncomplete" ;
+                           obo:IAO_0000114 obo:IAO_0000120 ;
                            
                            rdfs:domain nidm:SearchSpaceMap ;
                            
@@ -1373,13 +1369,13 @@ spm:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
                          
                          iao:IAO_0000116 "Check if this can be merged with fsl:searchVolumeInVoxels" ;
                          
-                         nidm:curationStatus "nidm:Uncurated" ;
-                         
                          iao:IAO_0000112 "68656" ;
                          
                          prov:definition "Total number of voxels within the search volume." ;
                          
                          rdfs:seeAlso "Synonyms of nidm:volumeInVoxels" ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000124 ;
                          
                          rdfs:domain nidm:SearchSpaceMap ;
                          
@@ -1395,11 +1391,11 @@ spm:searchVolumeReselsGeometry rdf:type owl:DatatypeProperty ;
                                
                                prov:definition "Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels." ;
                                
-                               nidm:curationStatus "nidm:PendingFinalVetting" ;
-                               
                                iao:IAO_0000112 "[6 68.8 589.1 1475.5]" ;
                                
                                rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/pubmed/20408186" ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000125 ;
                                
                                rdfs:domain nidm:SearchSpaceMap ;
                                
@@ -1417,7 +1413,7 @@ spm:smallestSignifClusterSizeInVerticesFDR05 rdf:type owl:DatatypeProperty ;
                                              
                                              prov:definition "Smallest cluster size in vertices that are significant at a false discovery rate corrected alpha value of 0.05.  " ;
                                              
-                                             nidm:curationStatus "nidm:PendingFinalVetting" ;
+                                             obo:IAO_0000114 obo:IAO_0000125 ;
                                              
                                              rdfs:domain nidm:SearchSpaceMap ;
                                              
@@ -1432,9 +1428,9 @@ spm:smallestSignifClusterSizeInVerticesFWE05 rdf:type owl:DatatypeProperty ;
                                              prov:definition """Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
 """ ;
                                              
-                                             nidm:curationStatus "nidm:PendingFinalVetting" ;
-                                             
                                              iao:IAO_0000112 "2" ;
+                                             
+                                             obo:IAO_0000114 obo:IAO_0000125 ;
                                              
                                              rdfs:domain nidm:SearchSpaceMap ;
                                              
@@ -1450,7 +1446,7 @@ spm:smallestSignifClusterSizeInVoxelsFDR05 rdf:type owl:DatatypeProperty ;
                                            
                                            prov:definition "Smallest cluster size in voxels significant at false discovery rate corrected alpha value of 0.05.  " ;
                                            
-                                           nidm:curationStatus "nidm:PendingFinalVetting" ;
+                                           obo:IAO_0000114 obo:IAO_0000125 ;
                                            
                                            rdfs:domain nidm:SearchSpaceMap ;
                                            
@@ -1462,12 +1458,12 @@ spm:smallestSignifClusterSizeInVoxelsFDR05 rdf:type owl:DatatypeProperty ;
 
 spm:smallestSignifClusterSizeInVoxelsFWE05 rdf:type owl:DatatypeProperty ;
                                            
-                                           nidm:curationStatus "nidm:PendingFinalVetting" ;
-                                           
                                            iao:IAO_0000112 "1" ;
                                            
                                            prov:definition """Smallest cluster size in voxels significant at family-wise error corrected alpha value of 0.05. 
 """ ;
+                                           
+                                           obo:IAO_0000114 obo:IAO_0000125 ;
                                            
                                            rdfs:domain nidm:SearchSpaceMap ;
                                            
@@ -1481,9 +1477,9 @@ spm:softwareRevision rdf:type owl:DatatypeProperty ;
                      
                      iao:IAO_0000112 "5417" ;
                      
-                     nidm:curationStatus "nidm:MetadataIncomplete" ;
-                     
                      prov:definition "revision number of a piece of software." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000120 ;
                      
                      rdfs:range xsd:string ;
                      
@@ -1525,7 +1521,7 @@ fsl:CenterOfGravity rdf:type owl:Class ;
         prov:label = \"Center of gravity 1\",
         prov:location = 'niiri:COG_coordinate_0001'])""" ;
                     
-                    nidm:curationStatus "nidm:MetadataIncomplete" .
+                    obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -1535,7 +1531,7 @@ fsl:ClusterMaximumStatistic rdf:type owl:Class ;
                             
                             rdfs:subClassOf prov:Entity ;
                             
-                            nidm:curationStatus "nidm:Uncurated" .
+                            obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -1567,7 +1563,7 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
                                 
                                 nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                                 
-                                nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
+                                obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -1576,8 +1572,6 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
 nidm:Cluster rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ;
-             
-             nidm:curationStatus "nidm:MetadataIncomplete" ;
              
              iao:IAO_0000112 """entity(niiri:cluster_0001,
     [prov:type = 'nidm:Cluster',
@@ -1589,7 +1583,9 @@ nidm:Cluster rdf:type owl:Class ;
     nidm:pValueFWER = \"0\" %% xsd:float,
     nidm:qValueFDR = \"7.65021389184909e-51\" %% xsd:float])""" ;
              
-             prov:definition "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)" .
+             prov:definition "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)" ;
+             
+             obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -1599,7 +1595,7 @@ nidm:ClusterDefinitionCriteria rdf:type owl:Class ;
                                
                                rdfs:subClassOf prov:Entity ;
                                
-                               nidm:curationStatus "nidm:Uncurated" .
+                               obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -1609,7 +1605,7 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      nidm:curationStatus "nidm:Uncurated" .
+                      obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -1619,9 +1615,9 @@ nidm:CompoundSymmetricError rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:ErrorDependence ;
                             
-                            nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
+                            nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                             
-                            nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
+                            obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -1635,7 +1631,7 @@ nidm:ConjunctionInference rdf:type owl:Class ;
                           
                           prov:definition "Statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses." ;
                           
-                          nidm:curationStatus "nidm:ReadyForRelease" .
+                          obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1690,15 +1686,15 @@ nidm:ContrastEstimation rdf:type owl:Class ;
                         
                         rdfs:subClassOf prov:Activity ;
                         
-                        nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
-                        
                         prov:definition "The process of estimating a contrast from the estimated parameters of statistical model." ;
                         
                         iao:IAO_0000116 "Under discussion at: https://github.com/ISA-tools/stato/issues/23" ;
                         
                         iao:IAO_0000112 """activity(niiri:contrast_estimation_id,
     [prov:type = 'nidm:ContrastEstimation',
-    prov:label = \"Contrast estimation\"])""" .
+    prov:label = \"Contrast estimation\"])""" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -1719,7 +1715,7 @@ nidm:ContrastMap rdf:type owl:Class ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                  
-                 nidm:curationStatus "nidm:PendingFinalVetting" .
+                 obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1739,7 +1735,7 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
                               
                               prov:definition "A map whose value at each location is the standard error of a given contrast." ;
                               
-                              nidm:curationStatus "nidm:PendingFinalVetting" .
+                              obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1760,7 +1756,7 @@ nidm:ContrastWeights rdf:type owl:Class ;
                      iao:IAO_0000116 "Under discussion at: https://github.com/ISA-tools/stato/issues/23" ,
                                      "Range: Vector of integers not found." ;
                      
-                     nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
+                     obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -1776,7 +1772,7 @@ nidm:Coordinate rdf:type owl:Class ;
                 
                 iao:IAO_0000112 "3D (x,y,x), 2D (x,y), Vertices, etc." ;
                 
-                nidm:curationStatus "nidm:ReadyForRelease" .
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1801,17 +1797,7 @@ NIDM Concept ID: nidm_21. """ ;
                      
                      prov:definition "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." ;
                      
-                     nidm:curationStatus "nidm:MetadataIncomplete" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#CurationStatus
-
-nidm:CurationStatus rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf prov:Entity ;
-                    
-                    nidm:curationStatus "nidm:OrganizationalTerm" .
+                     obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -1823,7 +1809,7 @@ nidm:CustomCoordinateSystem rdf:type owl:Class ;
                             
                             rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                             
-                            nidm:curationStatus "nidm:MetadataIncomplete" .
+                            obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -1833,8 +1819,6 @@ nidm:CustomMaskMap rdf:type owl:Class ;
                    
                    rdfs:subClassOf nidm:Map ;
                    
-                   nidm:curationStatus "nidm:MetadataIncomplete" ;
-                   
                    iao:IAO_0000112 """entity(niiri:mask_id_1,
       [prov:type = 'nidm:CustomMaskMap',
       prov:location = \"file:///path/to/custom_mask.nii\" %% xsd:anyURI,
@@ -1843,7 +1827,9 @@ nidm:CustomMaskMap rdf:type owl:Class ;
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                    
-                   prov:definition "mask defined by the user to restrain the space in which model fitting is performed." .
+                   prov:definition "mask defined by the user to restrain the space in which model fitting is performed." ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -1855,8 +1841,6 @@ nidm:Data rdf:type owl:Class ;
           
           owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474" ;
           
-          nidm:curationStatus "nidm:PendingFinalVetting" ;
-          
           iao:IAO_0000116 "This definition is from NCIT. Please update this note if the definition is modified." ;
           
           prov:definition "\"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.\"" ;
@@ -1867,7 +1851,9 @@ nidm:Data rdf:type owl:Class ;
     prov:label = \"Data\" %% xsd:string,
     nidm:grandMeanScaling = \"true\" %%xsd:boolean,
     nidm:targetIntensity = \"100\" %% xsd:float,
-    nidm:intraMaskMedian = \"115.32\" %% xsd:float])""" .
+    nidm:intraMaskMedian = \"115.32\" %% xsd:float])""" ;
+          
+          obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1876,8 +1862,6 @@ nidm:Data rdf:type owl:Class ;
 nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
-                  
-                  nidm:curationStatus "nidm:PendingFinalVetting" ;
                   
                   prov:definition "A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation." ;
                   
@@ -1890,7 +1874,9 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:seeAlso "stato:design matrix" ;
                   
-                  nidm:termEditor "TN" .
+                  nidm:termEditor "TN" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1900,11 +1886,11 @@ nidm:DisplayMaskMap rdf:type owl:Class ;
                     
                     rdfs:subClassOf nidm:Map ;
                     
-                    nidm:curationStatus "nidm:ReadyForRelease" ;
-                    
                     rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
                     
-                    nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/157" .
+                    nidm:termEditor "Discussed in https://github.com/incf-nidash/nidm/pull/157" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1916,7 +1902,7 @@ nidm:ErrorDependence rdf:type owl:Class ;
                      
                      prov:definition "Dependence structure of the error, used as part of model estimation." ;
                      
-                     nidm:curationStatus "nidm:ReadyForRelease" .
+                     obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1928,7 +1914,7 @@ nidm:ErrorModel rdf:type owl:Class ;
                 
                 prov:definition "Model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations." ;
                 
-                nidm:curationStatus "nidm:ReadyForRelease" .
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1946,11 +1932,11 @@ nidm:ExchangeableError rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:ErrorDependence ;
                        
-                       nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
-                       
                        rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
                        
-                       nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
+                       nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -1974,7 +1960,7 @@ nidm:ExcursionSet rdf:type owl:Class ;
                   
                   prov:definition "Set of map elements surviving a thresholding procedure." ;
                   
-                  nidm:curationStatus "nidm:PendingFinalVetting" .
+                  obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1995,7 +1981,7 @@ nidm:ExtentThreshold rdf:type owl:Class ;
     nidm:pValueUncorrected = \"1\" %% xsd:float,
     nidm:pValueFWER = \"1\" %% xsd:float])""" ;
                      
-                     nidm:curationStatus "nidm:MetadataIncomplete" .
+                     obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2009,7 +1995,7 @@ nidm:FSL rdf:type owl:Class ;
          
          prov:definition "FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB." ;
          
-         nidm:curationStatus "nidm:PendingFinalVetting" .
+         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2019,7 +2005,7 @@ nidm:FSLResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                nidm:curationStatus "nidm:Uncurated" .
+                obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2031,7 +2017,7 @@ nidm:FStatistic rdf:type owl:Class ;
                 
                 owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000282"^^xsd:anyURI ;
                 
-                nidm:curationStatus "nidm:ReadyForRelease" .
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2063,7 +2049,7 @@ nidm:GrandMeanMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  nidm:curationStatus "nidm:Uncurated" .
+                  obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2084,8 +2070,7 @@ nidm:HeightThreshold rdf:type owl:Class ;
     nidm:pValueUncorrected = \"7.62276079258051e-07\" %% xsd:float,
     nidm:pValueFWER = \"0.05\" %% xsd:float])""" ;
                      
-                     nidm:curationStatus "nidm:PendingFinalVetting" .
-
+                     obo:IAO_0000114 obo:IAO_0000125 .
 
 
 ###  http://www.incf.org/ns/nidash/nidm#Image
@@ -2096,7 +2081,7 @@ nidm:Image rdf:type owl:Class ;
            
            rdfs:comment "Class used to represent png, gif..." ;
            
-           nidm:curationStatus "nidm:Uncurated" .
+           obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2108,7 +2093,7 @@ nidm:IndependentError rdf:type owl:Class ;
                       
                       nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                       
-                      nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
+                      obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -2124,7 +2109,7 @@ nidm:Inference rdf:type owl:Class ;
     [prov:type = 'nidm:Inference',
     prov:label = \"Inference\"])""" ;
                
-               nidm:curationStatus "nidm:MetadataIncomplete" .
+               obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2157,9 +2142,9 @@ nidm:MNICoordinateSystem rdf:type owl:Class ;
                          
                          rdfs:seeAlso "birnlex_2125" ;
                          
-                         nidm:curationStatus "nidm:MetadataIncomplete" ;
+                         prov:definition "Coordinate system defined with reference to the MNI atlas." ;
                          
-                         prov:definition "Coordinate system defined with reference to the MNI atlas." .
+                         obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2169,11 +2154,11 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ;
          
-         nidm:curationStatus "nidm:ReadyForRelease" ;
-         
          prov:definition "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." ;
          
-         iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" .
+         iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" ;
+         
+         obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2183,7 +2168,7 @@ nidm:MapHeader rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Entity ;
                
-               nidm:curationStatus "nidm:Uncurated" .
+               obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2192,8 +2177,6 @@ nidm:MapHeader rdf:type owl:Class ;
 nidm:MaskMap rdf:type owl:Class ;
              
              rdfs:subClassOf nidm:Map ;
-             
-             nidm:curationStatus "nidm:MetadataIncomplete" ;
              
              iao:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/155" ;
              
@@ -2205,19 +2188,9 @@ nidm:MaskMap rdf:type owl:Class ;
     prov:label = \"Mask\" %% xsd:string,
     nidm:originalFileName = \"mask.img\" %% xsd:string,
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#MetadataIncomplete
-
-nidm:MetadataIncomplete rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf nidm:CurationStatus ;
-                        
-                        nidm:curationStatus "nidm:OrganizationalTerm" ;
-                        
-                        owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000123" .
+    crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+             
+             obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2237,7 +2210,7 @@ nidm:ModelParametersEstimation rdf:type owl:Class ;
                                
                                prov:definition "The process of estimating the parameters of a general linear model from the available data." ;
                                
-                               nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" .
+                               obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -2247,7 +2220,7 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     nidm:curationStatus "nidm:Uncurated" .
+                     obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2277,9 +2250,9 @@ nidm:OneTailedTest rdf:type owl:Class ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
                    
-                   nidm:curationStatus "nidm:ReadyForRelease" ;
+                   iao:IAO_0000116 "Re-use \"one tailed test\" from STATO." ;
                    
-                   iao:IAO_0000116 "Re-use \"one tailed test\" from STATO." .
+                   obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2292,18 +2265,6 @@ nidm:OrdinaryLeastSquares rdf:type owl:Class ;
                           prov:definition "FIXME" ;
                           
                           rdfs:comment "OLS (no heteroscedasticity or dependence accounted for)" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#OrganizationalTerm
-
-nidm:OrganizationalTerm rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf nidm:CurationStatus ;
-                        
-                        nidm:curationStatus "nidm:OrganizationalTerm" ;
-                        
-                        owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000121" .
 
 
 
@@ -2323,9 +2284,9 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                           
-                          nidm:curationStatus "nidm:MetadataIncomplete" ;
+                          prov:definition "A map whose value at each location is the estimate of a model parameter." ;
                           
-                          prov:definition "A map whose value at each location is the estimate of a model parameter." .
+                          obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2334,8 +2295,6 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
 nidm:Peak rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
-          
-          nidm:curationStatus "nidm:MetadataIncomplete" ;
           
           prov:definition "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" ;
           
@@ -2347,7 +2306,9 @@ nidm:Peak rdf:type owl:Class ;
     nidm:equivalentZStatistic = \"999999999\" %% xsd:float,
     nidm:pValueUncorrected = \"4.44089209850063e-16\" %% xsd:float,
     nidm:pValueFWER = \"0\" %% xsd:float,
-    nidm:qValueFDR = \"6.3705194444993e-11\" %% xsd:float])""" .
+    nidm:qValueFDR = \"6.3705194444993e-11\" %% xsd:float])""" ;
+          
+          obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2359,18 +2320,6 @@ nidm:PeakDefinitionCriteria rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#PendingFinalVetting
-
-nidm:PendingFinalVetting rdf:type owl:Class ;
-                         
-                         rdfs:subClassOf nidm:CurationStatus ;
-                         
-                         owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000125" ;
-                         
-                         nidm:curationStatus "nidm:OrganizationalTerm" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
 
 nidm:PoissonDistribution rdf:type owl:Class ;
@@ -2378,30 +2327,6 @@ nidm:PoissonDistribution rdf:type owl:Class ;
                          rdfs:subClassOf nidm:NoiseDistribution ;
                          
                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#ReadyForRelease
-
-nidm:ReadyForRelease rdf:type owl:Class ;
-                     
-                     rdfs:subClassOf nidm:CurationStatus ;
-                     
-                     nidm:curationStatus "nidm:OrganizationalTerm" ;
-                     
-                     owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000122" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#RequiresDiscussion
-
-nidm:RequiresDiscussion rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf nidm:CurationStatus ;
-                        
-                        nidm:curationStatus "nidm:OrganizationalTerm" ;
-                        
-                        owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000428" .
 
 
 
@@ -2416,8 +2341,6 @@ NIDM Concept ID: nidm_52. """ ;
                             
                             rdfs:seeAlso "This is a map of \"residuals\" as defined at http://bioportal.bioontology.org/ontologies/STATO/?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FSTATO_0000234 " ;
                             
-                            nidm:curationStatus "nidm:PendingFinalVetting" ;
-                            
                             prov:definition "A map whose value at each location is the residual of the mean squares fit to the data." ;
                             
                             iao:IAO_0000112 """entity(niiri:residual_mean_squares_map_id,
@@ -2428,7 +2351,9 @@ NIDM Concept ID: nidm_52. """ ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                             
-                            nidm:termEditor "KH" .
+                            nidm:termEditor "KH" ;
+                            
+                            obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2450,11 +2375,11 @@ nidm:SPM rdf:type owl:Class ;
          
          rdfs:subClassOf prov:SoftwareAgent ;
          
-         nidm:curationStatus "nidm:PendingFinalVetting" ;
-         
          prov:definition "Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group." ;
          
-         rdfs:seeAlso "http://www.fil.ion.ucl.ac.uk/spm/" .
+         rdfs:seeAlso "http://www.fil.ion.ucl.ac.uk/spm/" ;
+         
+         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2464,7 +2389,7 @@ nidm:SPMResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                nidm:curationStatus "nidm:Uncurated" .
+                obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2473,8 +2398,6 @@ nidm:SPMResults rdf:type owl:Class ;
 nidm:SearchSpaceMap rdf:type owl:Class ;
                     
                     rdfs:subClassOf nidm:Map ;
-                    
-                    nidm:curationStatus "nidm:MetadataIncomplete" ;
                     
                     iao:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
@@ -2500,7 +2423,9 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
                     
                     rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
-                    prov:definition "mask in which the inference was performed." .
+                    prov:definition "mask in which the inference was performed." ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2510,9 +2435,9 @@ nidm:SeriallyCorrelatedError rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:ErrorDependence ;
                              
-                             nidm:curationStatus "nidm:ToBeReplacedByExternalOntologyTerm" ;
+                             nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                              
-                             nidm:termEditor "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" .
+                             obo:IAO_0000114 obo:IAO_0000423 .
 
 
 
@@ -2565,9 +2490,9 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ,
                                                "This is meant to be used for retrospective export when exact template is unknown." ;
                                   
-                                  nidm:curationStatus "nidm:MetadataIncomplete" ;
+                                  prov:definition "Parent of all reference spaces except \"Subject\"." ;
                                   
-                                  prov:definition "Parent of all reference spaces except \"Subject\"." .
+                                  obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2579,7 +2504,7 @@ nidm:Statistic rdf:type owl:Class ;
                
                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000039"^^xsd:anyURI ;
                
-               nidm:curationStatus "nidm:ReadyForRelease" .
+               obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2588,8 +2513,6 @@ nidm:Statistic rdf:type owl:Class ;
 nidm:StatisticMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
-                  
-                  nidm:curationStatus "nidm:MetadataIncomplete" ;
                   
                   iao:IAO_0000112 """entity(niiri:statistical_map_id,
     [prov:type = 'nidm:StatisticMap',
@@ -2602,7 +2525,9 @@ nidm:StatisticMap rdf:type owl:Class ;
     nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  prov:definition "A map whose value at each location is a statistic. " .
+                  prov:definition "A map whose value at each location is a statistic. " ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2612,11 +2537,11 @@ nidm:SubjectCoordinateSystem rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:WorldCoordinateSystem ;
                              
-                             nidm:curationStatus "nidm:MetadataIncomplete" ;
-                             
                              prov:definition "Coordinate system defined by the subject brain (no spatial normalisation applied)." ;
                              
-                             rdfs:comment "Used in FSL and SPM un-registered data." .
+                             rdfs:comment "Used in FSL and SPM un-registered data." ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2628,7 +2553,7 @@ nidm:TStatistic rdf:type owl:Class ;
                 
                 owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000176"^^xsd:anyURI ;
                 
-                nidm:curationStatus "nidm:ReadyForRelease" .
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2640,21 +2565,9 @@ nidm:TalairachCoordinateSystem rdf:type owl:Class ;
                                
                                prov:definition "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
                                
-                               nidm:curationStatus "nidm:MetadataIncomplete" ;
+                               rdfs:seeAlso "http://www.talairach.org/" ;
                                
-                               rdfs:seeAlso "http://www.talairach.org/" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#ToBeReplacedByExternalOntologyTerm
-
-nidm:ToBeReplacedByExternalOntologyTerm rdf:type owl:Class ;
-                                        
-                                        rdfs:subClassOf nidm:CurationStatus ;
-                                        
-                                        owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000423" ;
-                                        
-                                        nidm:curationStatus "nidm:OrganizationalTerm" .
+                               obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2668,19 +2581,7 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI ;
                    
-                   nidm:curationStatus "nidm:ReadyForRelease" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#Uncurated
-
-nidm:Uncurated rdf:type owl:Class ;
-               
-               rdfs:subClassOf nidm:CurationStatus ;
-               
-               nidm:curationStatus "nidm:OrganizationalTerm" ;
-               
-               owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000124" .
+                   obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2702,7 +2603,7 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           nidm:curationStatus "nidm:Uncurated" .
+                           obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2712,7 +2613,7 @@ nidm:ZStatistic rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:Statistic ;
                 
-                nidm:curationStatus "nidm:Uncurated" .
+                obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2724,7 +2625,7 @@ spm:KConjunctionInference rdf:type owl:Class ;
                           
                           prov:definition "Inference testing for the joint significance of a subset of the effects." ;
                           
-                          nidm:curationStatus "nidm:MetadataIncomplete" .
+                          obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2734,8 +2635,6 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      nidm:curationStatus "nidm:MetadataIncomplete" ;
-                      
                       prov:definition "A map whose value at each location is the number of resels per voxel. " ;
                       
                       iao:IAO_0000112 """entity(niiri:resels_per_voxel_map_id,
@@ -2744,7 +2643,9 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
       prov:label = \"Resels per Voxel Map\" %% xsd:string,
       nidm:originalFileName = \"RPV.img\" %% xsd:string,
       nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
-      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" .
+      crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000120 .
 
 
 
@@ -2797,7 +2698,6 @@ prov:SoftwareAgent rdf:type owl:Class ;
 #    Individuals
 #
 #################################################################
-
 
 ###  http://www.incf.org/ns/nidash/nidm#Colin27CoordinateSystem
 
