@@ -232,12 +232,6 @@
     <td></td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:qValueFDR: </b>P-value adjusted for the multiple testing, controlling for the False Discovery Rate</td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
-    <td></td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>fsl:coordinate1InVoxels: </b>Coordinate along the first dimension in voxels.</td>
     <td>nidm:Coordinate </td>
