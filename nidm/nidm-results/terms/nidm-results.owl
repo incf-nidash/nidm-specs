@@ -160,6 +160,20 @@ nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasErrorDistribution
+
+nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "FIXME" ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000124 ;
+                          
+                          rdfs:range nidm:ErrorDistribution ;
+                          
+                          rdfs:domain nidm:ErrorModel .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasMapHeader
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
@@ -169,18 +183,6 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   rdfs:domain nidm:Map ;
                   
                   rdfs:range nidm:MapHeader .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasNoiseDistribution
-
-nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
-                          
-                          prov:definition "FIXME" ;
-                          
-                          rdfs:domain nidm:ErrorModel ;
-                          
-                          rdfs:range nidm:NoiseDistribution .
 
 
 
@@ -1517,7 +1519,7 @@ spm:softwareRevision rdf:type owl:DatatypeProperty ;
 
 fsl:BinomialDistribution rdf:type owl:Class ;
                          
-                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         rdfs:subClassOf nidm:ErrorDistribution ;
                          
                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI .
 
@@ -1566,9 +1568,11 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
 
 fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
                                        
-                                       rdfs:subClassOf nidm:NoiseDistribution ;
+                                       rdfs:subClassOf nidm:ErrorDistribution ;
                                        
-                                       prov:definition "FIXME" .
+                                       prov:definition "FIXME" ;
+                                       
+                                       obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -1667,6 +1671,41 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion2D
+
+nidm:ConnectivityCriterion2D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected4In2D
+                                                               nidm:connected6In2D
+                                                               nidm:connected8In2D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition """The order of neighbourhood used to determine whether two pixels
+ are neighbours in 2D.  Possible values are: 4 (pixels share an edge), 8 (voxels share an edge or a corner).""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion3D
+
+nidm:ConnectivityCriterion3D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected6In3D
+                                                               nidm:connected18In3D
+                                                               nidm:connected26In3D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours in 3D. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
+>>>>>>> Noise -> Error
 
 
 
@@ -1896,6 +1935,16 @@ nidm:ErrorDependence rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ErrorDistribution
+
+nidm:ErrorDistribution rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf prov:Entity ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ErrorModel
 
 nidm:ErrorModel rdf:type owl:Class ;
@@ -2015,7 +2064,7 @@ nidm:FStatistic rdf:type owl:Class ;
 
 nidm:GaussianDistribution rdf:type owl:Class ;
                           
-                          rdfs:subClassOf nidm:NoiseDistribution ;
+                          rdfs:subClassOf nidm:ErrorDistribution ;
                           
                           owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000227"^^xsd:anyURI .
 
@@ -2217,21 +2266,15 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#NoiseDistribution
-
-nidm:NoiseDistribution rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf prov:Entity .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#NonParametricDistribution
 
 nidm:NonParametricDistribution rdf:type owl:Class ;
                                
-                               rdfs:subClassOf nidm:NoiseDistribution ;
+                               rdfs:subClassOf nidm:ErrorDistribution ;
                                
-                               prov:definition "FIXME" .
+                               prov:definition "FIXME" ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2337,7 +2380,7 @@ nidm:PixelConnectivityCriterion rdf:type owl:Class ;
 
 nidm:PoissonDistribution rdf:type owl:Class ;
                          
-                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         rdfs:subClassOf nidm:ErrorDistribution ;
                          
                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
 
