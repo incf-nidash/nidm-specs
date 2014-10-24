@@ -37,6 +37,10 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><b>nidm:Inference: </b>Statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO).</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data. (editor: KH)</td>
 </tr>
 <tr>
@@ -75,10 +79,6 @@
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:ExtentThreshold: </b>A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:Inference: </b>The process of inferring the excursion set from a statistical map.</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
