@@ -171,6 +171,12 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><b>spm:clusterSizeInResels: </b>Size of cluster measured in resels. (editor: Under discussion at: https://github.com/incf-nidash/nidm/issues/127)</td>
+    <td>nidm:Cluster nidm:ExtentThreshold </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:expectedNumberOfClusters: </b>Expected number of clusters in an excursion set.</td>
     <td>nidm:SearchSpaceMap </td>
     <td></td>
@@ -350,12 +356,6 @@
     <td><b>nidm:voxelUnits: </b>Units associated with each dimensions of some N-dimensional data. (editor: Under discussion at https://github.com/incf-nidash/nidm/issues/147)</td>
     <td>nidm:CoordinateSpace </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>spm:clusterSizeInResels: </b>Number of resels that make up a cluster. (editor: Under discussion at: https://github.com/incf-nidash/nidm/issues/127)</td>
-    <td>nidm:Cluster nidm:ExtentThreshold </td>
-    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

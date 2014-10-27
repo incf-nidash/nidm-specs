@@ -853,9 +853,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -883,9 +883,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -911,9 +911,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -939,9 +939,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1099,13 +1099,13 @@ nidm:voxelUnits rdf:type owl:DatatypeProperty ;
 
 spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
                         
+                        prov:definition "Size of cluster measured in resels." ;
+                        
                         nidm:termEditor "Under discussion at: https://github.com/incf-nidash/nidm/issues/127" ;
                         
                         iao:IAO_0000112 "13" ;
                         
-                        prov:definition "Number of resels that make up a cluster." ;
-                        
-                        obo:IAO_0000114 obo:IAO_0000120 ;
+                        obo:IAO_0000114 obo:IAO_0000125 ;
                         
                         rdfs:domain nidm:Cluster ,
                                     nidm:ExtentThreshold ;
@@ -1669,8 +1669,8 @@ nidm:ConnectivityCriterion3D rdf:type owl:Class ;
                              
                              owl:equivalentClass [ rdf:type owl:Class ;
                                                    owl:oneOf ( nidm:connected6In3D
-                                                               nidm:connected26In3D
                                                                nidm:connected18In3D
+                                                               nidm:connected26In3D
                                                              )
                                                  ] ;
                              
