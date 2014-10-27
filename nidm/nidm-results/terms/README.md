@@ -8,7 +8,7 @@
 <tr><th>Curation Status</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>fsl:NonParametricSymmetricDistribution: </b>Probability distribution defined empirically on the data assuming a symmetric probability distribution. Non-parametric distribution are usually defined using permutation of the class labels or sign-flipping.</td>
+    <td><b>fsl:NonParametricSymmetricDistribution: </b>Probability distribution estimated empirically on the data assuming a symmetric probability distribution. Non-parametric distribution are usually estimated using permutation of the class labels or sign-flipping.</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -41,7 +41,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:NonParametricDistribution: </b>Probability distribution defined empirically on the data without assumption on the shape of the probability distribution. Non-parametric distribution are usually defined using permutation of the class labels or sign-flipping.</td>
+    <td><b>nidm:NonParametricDistribution: </b>Probability distribution estimated empirically on the data without assumption on the shape of the probability distribution. Non-parametric distribution are usually estimated using permutation of the class labels or sign-flipping.</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
