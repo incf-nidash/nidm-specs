@@ -37,10 +37,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:Inference: </b>Statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO).</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data. (editor: KH)</td>
 </tr>
 <tr>
