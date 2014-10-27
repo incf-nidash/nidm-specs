@@ -37,10 +37,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:PeakDefinitionCriteria: </b>Set of criterion specified a priori to define the peaks reported after inference (e.g. maximum number of peaks within a cluster, minimum distance between peaks). (editor: CM)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data. (editor: KH)</td>
 </tr>
 <tr>
@@ -153,18 +149,6 @@
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:maskedMedian: </b>Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity. (editor: TN, Naming discussed at: https://github.com/incf-nidash/nidm/issues/70)</td>
     <td>nidm:GrandMeanMap </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:maxNumberOfPeaksPerCluster: </b>Maximum number of peaks to be reported after inference within a cluster.</td>
-    <td>nidm:PeakDefinitionCriteria </td>
-    <td>xsd:int </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:minDistanceBetweenPeaks: </b>Minimum distance between two peaks reported after inference.</td>
-    <td>nidm:PeakDefinitionCriteria </td>
     <td>xsd:float </td>
 </tr>
 <tr>
