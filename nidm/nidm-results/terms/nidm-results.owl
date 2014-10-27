@@ -200,6 +200,8 @@ nidm:hasPixelWiseEstimation rdf:type owl:ObjectProperty ;
 
 nidm:hasVoxelWiseEstimation rdf:type owl:ObjectProperty ;
                             
+                            obo:IAO_0000115 "" ;
+                            
                             obo:IAO_0000114 obo:IAO_0000124 ;
                             
                             rdfs:range nidm:ElementWiseEstimation ;
@@ -2160,20 +2162,6 @@ NIDM Concept ID: nidm_101. """ ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#LocalMultivariate
-
-nidm:LocalMultivariate rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf nidm:ElementWiseEstimation ;
-                       
-                       obo:IAO_0000115 "Multivariate model fit on a neighborhood surrounding each voxel; e.g. “searchlight analyses." ;
-                       
-                       obo:IAO_0000117 "TN" ;
-                       
-                       obo:IAO_0000114 obo:IAO_0000124 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem
 
 nidm:MNICoordinateSystem rdf:type owl:Class ;
@@ -2234,34 +2222,6 @@ nidm:MaskMap rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#MassMultivariate
-
-nidm:MassMultivariate rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:ElementWiseEstimation ;
-                      
-                      obo:IAO_0000117 "TN" ;
-                      
-                      obo:IAO_0000115 "Multivariate model fit independently at each voxel; e.g. tensoral analyses - do tensors differ between groups" ;
-                      
-                      obo:IAO_0000114 obo:IAO_0000124 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#MassUnivariate
-
-nidm:MassUnivariate rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf nidm:ElementWiseEstimation ;
-                    
-                    obo:IAO_0000115 "Univariate model fit independently at each voxel." ;
-                    
-                    obo:IAO_0000117 "TN" ;
-                    
-                    obo:IAO_0000114 obo:IAO_0000124 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ModelParametersEstimation
 
 nidm:ModelParametersEstimation rdf:type owl:Class ;
@@ -2279,20 +2239,6 @@ nidm:ModelParametersEstimation rdf:type owl:Class ;
                                prov:definition "The process of estimating the parameters of a general linear model from the available data." ;
                                
                                obo:IAO_0000114 obo:IAO_0000423 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#Multivariate
-
-nidm:Multivariate rdf:type owl:Class ;
-                  
-                  rdfs:subClassOf nidm:ElementWiseEstimation ;
-                  
-                  obo:IAO_0000117 "TN" ;
-                  
-                  obo:IAO_0000115 "Multivariate model fit to entire brain, e.g. MLM (Multivariate Linear Model), CCA (Canonical Correlation Analysis), PLS (Partial Least Squares)." ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2983,6 +2929,45 @@ nidm:Ixi549CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#LocalMultivariate
+
+nidm:LocalMultivariate rdf:type nidm:ElementWiseEstimation ,
+                                owl:NamedIndividual ;
+                       
+                       obo:IAO_0000115 "Multivariate model fit on a neighborhood surrounding each voxel; e.g. “searchlight analyses." ;
+                       
+                       obo:IAO_0000117 "TN" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#MassMultivariate
+
+nidm:MassMultivariate rdf:type nidm:ElementWiseEstimation ,
+                               owl:NamedIndividual ;
+                      
+                      obo:IAO_0000117 "TN" ;
+                      
+                      obo:IAO_0000115 "Multivariate model fit independently at each voxel; e.g. tensoral analyses - do tensors differ between groups" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#MassUnivariate
+
+nidm:MassUnivariate rdf:type nidm:ElementWiseEstimation ,
+                             owl:NamedIndividual ;
+                    
+                    obo:IAO_0000115 "Univariate model fit independently at each voxel." ;
+                    
+                    obo:IAO_0000117 "TN" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Mni305CoordinateSystem
 
 nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
@@ -2996,7 +2981,31 @@ nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
 
 
 
+<<<<<<< HEAD
 ###  http://www.incf.org/ns/nidash/nidm#pixel4connected
+=======
+###  http://www.incf.org/ns/nidash/nidm#Multivariate
+
+nidm:Multivariate rdf:type nidm:ElementWiseEstimation ,
+                           owl:NamedIndividual ;
+                  
+                  obo:IAO_0000117 "TN" ;
+                  
+                  obo:IAO_0000115 "Multivariate model fit to entire brain, e.g. MLM (Multivariate Linear Model), CCA (Canonical Correlation Analysis), PLS (Partial Least Squares)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected18In3D
+
+nidm:connected18In3D rdf:type nidm:ConnectivityCriterion3D ,
+                              owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected26In3D
+>>>>>>> Map-wise estimation methods as individuals
 
 nidm:pixel4connected rdf:type nidm:PixelConnectivityCriterion ,
                               owl:NamedIndividual ;
