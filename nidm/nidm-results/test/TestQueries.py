@@ -22,11 +22,12 @@ class TestQueries(unittest.TestCase):
         for example_file in import_test_filenames:
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
-            ttl_file_url = get_turtle(provn_file)
+            # ttl_file_url = get_turtle(provn_file)
+            ttl_file = provn_file.replace(".provn", ".ttl")
 
             # Read turtle
             self.examples[example_file] = Graph()
-            self.examples[example_file].parse(ttl_file_url, format='turtle')
+            self.examples[example_file].parse(ttl_file, format='turtle')
 
     def test_get_contrasts(self):
         logger.info("TestQueries: test_get_contrasts")
