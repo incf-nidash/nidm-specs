@@ -21,13 +21,15 @@ class TestProvStoreLinks(unittest.TestCase):
         super(TestProvStoreLinks, self).__init__(*args, **kwargs)
 
         self.provstore_url = dict()
-        self.ttl_file_url = dict()
+        self.ttl_from_provn_file_url = dict()
+        self.ttl_file = dict()
         for example_file in example_filenames:
             # Read provn
             provn_file = os.path.join(RELPATH, example_file)
             # Get corresponding turtle            
-            ttl_file_url = get_turtle(provn_file)
-            self.ttl_file_url[example_file] = ttl_file_url
+            ttl_from_provn_file_url = get_turtle(provn_file)
+            self.ttl_from_provn_file_url[example_file] = ttl_from_provn_file_url
+            self.ttl_file[example_file] = provn_file.replace(".provn", ".ttl")
 
             # Read README
             readme_file = os.path.join(RELPATH, os.path.dirname(example_file), 'README.md')
@@ -48,22 +50,33 @@ class TestProvStoreLinks(unittest.TestCase):
         logger.info("Test: TestProvStoreLinks")
 
     def test_provstore_links(self):
-        error_msg = ""
+        error_msg = list()
 
         for example_file in example_filenames:
             
             if self.provstore_url[example_file]:
                 logger.info('\tProv store URL: '+self.provstore_url[example_file])
-                found_difference = compare_ttl_documents(self.ttl_file_url[example_file], self.provstore_url[example_file], True)
+                found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.provstore_url[example_file], True)
 
                 if found_difference:
-                    error_msg = example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py"
+                    error_msg.append(example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py")
             else:
-                error_msg = example_file+': No document URL found in README.'        
+                error_msg.append(example_file+': No document URL found in README.')
+
+            if self.ttl_file[example_file]:
+                if os.path.isfile(self.ttl_file[example_file]):
+                    found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.ttl_file[example_file], True)
+
+                    if found_difference:
+                        error_msg.append(example_file+": Turtle file outdated, please update using nidm/nidm-results/scripts/UpdateExampleReadmes.py")
+                else:
+                    error_msg.append(example_file+": No turtle file.")
+            else:
+                error_msg.append(example_file+': No turle file.')
 
         # Raise errors
         if error_msg:
-            raise Exception(error_msg)
+            raise Exception("\n".join(error_msg))
 
 if __name__ == '__main__':
     unittest.main()
