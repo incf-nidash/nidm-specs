@@ -120,6 +120,7 @@ if __name__ == '__main__':
 
 		# Get provn of current document
 		doc_provn_file = os.path.join(NIDMRESULTSPATH, example_file)
+		doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
 		doc_provn_file_open = open(doc_provn_file, 'r')
 		doc_provn = doc_provn_file_open.read()
 		doc_provn_file_open.close()
@@ -164,6 +165,12 @@ if __name__ == '__main__':
 
 		if found_difference:
 			doc_url = create_document(doc_json_url, doc_title)
+
+			ttl_fid = open(doc_ttl_file, 'w')
+			response = urllib2.urlopen(same_doc_ttl_url)
+			doc_ttl = response.read()
+			ttl_fid.write(doc_ttl)
+			ttl_fid.close()
 		else:
 			doc_url = same_doc_url
 
