@@ -38,6 +38,12 @@ iao:IAO_0000116 rdf:type owl:AnnotationProperty .
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#curationStatus
+
+nidm:curationStatus rdf:type owl:AnnotationProperty .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#termEditor
 
 nidm:termEditor rdf:type owl:AnnotationProperty ;
@@ -128,9 +134,11 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
 
 nidm:hasConnectivityCriterion rdf:type owl:ObjectProperty ;
                               
-                              prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." ;
+                              prov:definition "Property that associates a ConnectivityCriterion with a ClusterDefinitionCriteria." ;
                               
-                              obo:IAO_0000114 obo:IAO_0000125 ;
+                              obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000122 ;
                               
                               rdfs:domain nidm:ClusterDefinitionCriteria ;
                               
@@ -1595,6 +1603,8 @@ nidm:ClusterDefinitionCriteria rdf:type owl:Class ;
                                
                                rdfs:subClassOf prov:Entity ;
                                
+                               prov:definition "Set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion)." ;
+                               
                                obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1641,42 +1651,13 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           prov:definition "The order of neighbourhood used to determine whether two voxels (3D) or pixels (2D) are neighbours." .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion2D
-
-nidm:ConnectivityCriterion2D rdf:type owl:Class ;
-                             
-                             owl:equivalentClass [ rdf:type owl:Class ;
-                                                   owl:oneOf ( nidm:connected4In2D
-                                                               nidm:connected6In2D
-                                                               nidm:connected8In2D
-                                                             )
-                                                 ] ;
-                             
-                             rdfs:subClassOf nidm:ConnectivityCriterion ;
-                             
-                             prov:definition """The order of neighbourhood used to determine whether two pixels
- are neighbours in 2D.  Possible values are: 4 (pixels share an edge), 8 (voxels share an edge or a corner).""" .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion3D
-
-nidm:ConnectivityCriterion3D rdf:type owl:Class ;
-                             
-                             owl:equivalentClass [ rdf:type owl:Class ;
-                                                   owl:oneOf ( nidm:connected6In3D
-                                                               nidm:connected26In3D
-                                                               nidm:connected18In3D
-                                                             )
-                                                 ] ;
-                             
-                             rdfs:subClassOf nidm:ConnectivityCriterion ;
-                             
-                             prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours in 3D. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
+                           nidm:termEditor "TN, KH" ;
+                           
+                           prov:definition "The criterion used to characterize two voxels, pixels or vertices as 'connected'." ;
+                           
+                           obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2323,6 +2304,20 @@ nidm:PeakDefinitionCriteria rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#PixelConnectivityCriterion
+
+nidm:PixelConnectivityCriterion rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf nidm:ConnectivityCriterion ;
+                                
+                                obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                                
+                                prov:definition "The criterion used to characterize two pixels as 'connected'. In two dimensions voxels that are connected can share an edge (4-connected) or, edge or corner (8-connected)." ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#PoissonDistribution
 
 nidm:PoissonDistribution rdf:type owl:Class ;
@@ -2585,6 +2580,20 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI ;
                    
                    obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#VoxelConnectivityCriterion
+
+nidm:VoxelConnectivityCriterion rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf nidm:ConnectivityCriterion ;
+                                
+                                prov:definition "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;
+                                
+                                obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2883,46 +2892,68 @@ nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                             obo:IAO_0000114 obo:IAO_0000120 .
 
 
+###  http://www.incf.org/ns/nidash/nidm#pixel4connected
 
-###  http://www.incf.org/ns/nidash/nidm#connected18In3D
-
-nidm:connected18In3D rdf:type nidm:ConnectivityCriterion3D ,
-                              owl:NamedIndividual .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#connected26In3D
-
-nidm:connected26In3D rdf:type nidm:ConnectivityCriterion3D ,
-                              owl:NamedIndividual .
+nidm:pixel4connected rdf:type nidm:PixelConnectivityCriterion ,
+                              owl:NamedIndividual ;
+                     
+                     prov:definition "A pair of pixels are 4-Connected if they share an edge." ;
+                     
+                     obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#connected4In2D
+###  http://www.incf.org/ns/nidash/nidm#pixel8connected
 
-nidm:connected4In2D rdf:type nidm:ConnectivityCriterion2D ,
-                             owl:NamedIndividual .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#connected6In2D
-
-nidm:connected6In2D rdf:type nidm:ConnectivityCriterion2D ,
-                             owl:NamedIndividual .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#connected6In3D
-
-nidm:connected6In3D rdf:type nidm:ConnectivityCriterion3D ,
-                             owl:NamedIndividual .
+nidm:pixel8connected rdf:type nidm:PixelConnectivityCriterion ,
+                              owl:NamedIndividual ;
+                     
+                     obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                     
+                     prov:definition "A pair of pixels are 8-Connected if they share an edge or corner." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#connected8In2D
+###  http://www.incf.org/ns/nidash/nidm#voxel18connected
 
-nidm:connected8In2D rdf:type nidm:ConnectivityCriterion2D ,
-                             owl:NamedIndividual .
+nidm:voxel18connected rdf:type nidm:VoxelConnectivityCriterion ,
+                               owl:NamedIndividual ;
+                      
+                      obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                      
+                      prov:definition "A pair of voxels are 18-Connected if they share a face or edge." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#voxel26connected
+
+nidm:voxel26connected rdf:type nidm:VoxelConnectivityCriterion ,
+                               owl:NamedIndividual ;
+                      
+                      prov:definition "A pair of voxels are 26-Connected if they share a face, edge or corner." ;
+                      
+                      obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#voxel6connected
+
+nidm:voxel6connected rdf:type nidm:VoxelConnectivityCriterion ,
+                              owl:NamedIndividual ;
+                     
+                     obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
+                     
+                     prov:definition "A pair of voxels are 6-Connected if they share a face." ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000122 .
 
 
 

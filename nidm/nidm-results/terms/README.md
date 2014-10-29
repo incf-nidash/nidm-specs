@@ -44,6 +44,10 @@
     <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group.</td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:ClusterDefinitionCriteria: </b>Set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion).</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model.</td>
 </tr>
@@ -140,12 +144,6 @@
     <td><b>nidm:grandMeanScaling: </b>Binary flag defining whether the data was scaled. Specifically, "grand mean scaling" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses.</td>
     <td>nidm:Data </td>
     <td>xsd:boolean </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:hasConnectivityCriterion: </b>The order of neighbourhood used to determine whether two voxels are neighbours. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner).</td>
-    <td>nidm:ClusterDefinitionCriteria </td>
-    <td>nidm:ConnectivityCriterion </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
