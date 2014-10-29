@@ -853,9 +853,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -883,9 +883,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -911,9 +911,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -939,9 +939,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -2104,13 +2104,15 @@ nidm:Inference rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Activity ;
                
-               prov:definition "The process of inferring the excursion set from a statistical map." ;
+               prov:definition "Statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO)." ;
                
                iao:IAO_0000112 """activity(niiri:inference_id,
     [prov:type = 'nidm:Inference',
     prov:label = \"Inference\"])""" ;
                
-               obo:IAO_0000114 obo:IAO_0000120 .
+               owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000299" ;
+               
+               obo:IAO_0000114 obo:IAO_0000122 .
 
 
 

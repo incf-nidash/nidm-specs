@@ -78,10 +78,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:Inference: </b>The process of inferring the excursion set from a statistical map.</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:MNICoordinateSystem: </b>Coordinate system defined with reference to the MNI atlas.</td>
 </tr>
 <tr>
