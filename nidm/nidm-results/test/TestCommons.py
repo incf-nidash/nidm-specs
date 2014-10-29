@@ -78,6 +78,7 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
 
     # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
     # if doc_graph.parse(ttl_doc2) is called directly
+    logger.info(' Opening '+ttl_doc2)
     ttl_doc2_req = urllib2.urlopen(ttl_doc2)
     same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
    
@@ -98,8 +99,8 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
             if iso1.qname(p) != "spm:softwareRevision":
                 if iso1.qname(p) != "fsl:featVersion":
                     found_difference = True
-                    logger.info('\tDifference in: s='+diff_graph.qname(s)+\
-                        ", p="+diff_graph.qname(p)+\
+                    logger.info('\tDifference in: s='+str(s)+\
+                        ", p="+str(p)+\
                         ", o="+o)
                     # break;
     return found_difference
