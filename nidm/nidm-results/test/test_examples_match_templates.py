@@ -15,30 +15,25 @@ SCRIPT_DIR = os.path.join(NIDM_RESULTS_DIR, "scripts")
 import sys
 sys.path.append(SCRIPT_DIR)
 import create_spm_examples
+import create_spm_example_001
 from TestCommons import *
 
 
 class TestExamplesMatchTemplates(unittest.TestCase):    
+    def _parse_graph(self, ex_file):
+        ex_fid = open(ex_file, "r")
+        ex = ex_fid.read()
+        ex_fid.close()
+        my_graph = Graph()
+        try:
+            my_graph.parse(data=ex, format="turtle")
+        except BadSyntax:
+            my_graph=None
+        return list([my_graph, ex])
 
-    def test_spm_results(self):
-        # test_examples_match_templates()
-        spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", "spm_results.ttl")
-
-        spm_ex_fid = open(spm_example_file, "r")
-        spm_current = spm_ex_fid.read()
-        spm_ex_fid.close()
-        current_graph = Graph()
-        current_graph.parse(data=spm_current, format="turtle")
-
-        create_spm_examples.main()
-        spm_ex_fid = open(spm_example_file, "r")
-        spm_updated = spm_ex_fid.read()
-        spm_ex_fid.close()
-        updated_graph = Graph()
-        updated_graph.parse(data=spm_updated, format="turtle")
-
-        iso1 = to_isomorphic(current_graph)
-        iso2 = to_isomorphic(updated_graph)
+    def _compare_graphs(self, graph1, graph2):
+        iso1 = to_isomorphic(graph1)
+        iso2 = to_isomorphic(graph2)
 
         found_difference = False
         if iso1 != iso2:
@@ -49,15 +44,47 @@ class TestExamplesMatchTemplates(unittest.TestCase):
             found_difference_2 = display_graph(in_second, "\t In second: ")
             found_difference = found_difference_1 or found_difference_2
 
+        return found_difference
+
+    def test_spm_results(self):
+        spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", "spm_results.ttl")
+
+        current_graph, spm_current = self._parse_graph(spm_example_file)
+        create_spm_examples.main()
+        updated_graph, unused = self._parse_graph(spm_example_file)
+
         # Write back current version of the example (the purpose of this 
         # function is just testing not updating the example).
         spm_ex_fid = open(spm_example_file, "w")
-        spm_current = spm_ex_fid.write(spm_current)
+        spm_ex_fid.write(spm_current)
         spm_ex_fid.close()
+
+        found_difference = self._compare_graphs(current_graph, updated_graph)
+
 
         if found_difference:
             raise Exception("spm_results.ttl is not up to date with templates. \
                 Please use nidm/nidm-results/scripts/create_spm_examples.py.")
+
+    def test_spm_ex001(self):
+        spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", \
+            "example001", 'example001_spm_results.ttl')
+
+        current_graph, spm_current = self._parse_graph(spm_example_file)
+        create_spm_example_001.main()
+        updated_graph, unused = self._parse_graph(spm_example_file)
+
+        # Write back current version of the example (the purpose of this 
+        # function is just testing not updating the example).
+        spm_ex_fid = open(spm_example_file, "w")
+        spm_ex_fid.write(spm_current)
+        spm_ex_fid.close()
+
+        found_difference = self._compare_graphs(current_graph, updated_graph)
+
+        if found_difference:
+            raise Exception("example001_spm_results.ttl is not up to date with \
+                templates. Please use nidm/nidm-results/scripts/create_spm_examples.py.")
 
 
 if __name__ == '__main__':
