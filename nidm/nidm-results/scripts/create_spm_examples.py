@@ -8,13 +8,12 @@ templates available in nidm/nidm-results/terms/templates
 import os
 from create_example_from_templates import ExampleFromTemplate
 
-import sys
-NIDM_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path.append(os.path.join(NIDM_DIR, "test"))
-from TestCommons import *
+# import sys
+# NIDM_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# sys.path.append(os.path.join(NIDM_DIR, "test"))
+# from TestCommons import *
 
-if __name__ == '__main__':
-	
+def main():
 	nidm_classes = {
 		"DesignMatrix": dict(
 			design_matrix_id='niiri:design_matrix_id', 
@@ -572,10 +571,9 @@ if __name__ == '__main__':
 			)
 		}
 
-	NIDM_TERMS_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'terms')
-	ttl_file = os.path.join(NIDM_TERMS_DIR, 'examples', 'spm_example.ttl')
+	NIDM_SPM_DIR = os.path.join(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))), 'spm')
+	ttl_file = os.path.join(NIDM_SPM_DIR, 'spm_results.ttl')
 	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
+	# compare_ttl_documents(ttl_file, os.path.join(os.path.dirname(NIDM_TERMS_DIR), "spm", "spm_results.ttl"))
 	example.create_example()
-
-	compare_ttl_documents(ttl_file, os.path.join(os.path.dirname(NIDM_TERMS_DIR), "spm", "spm_results.ttl"))
