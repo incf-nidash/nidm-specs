@@ -71,7 +71,7 @@ def merge_exception_dict(excep_dict, other_except_dict):
 
     return merged_dict
 
-def _display_graph(diff_graph, prefix_msg="Difference in:"):
+def display_graph(diff_graph, prefix_msg="Difference in:"):
     found_difference = False
     for s,p,o in diff_graph.triples((None,None,None)):
             # workaround to avoid issue with "5853" being a string
@@ -124,8 +124,8 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
         in_both, in_first, in_second = graph_diff(iso1, iso2)
 
         # diff_graph = (in_first+in_second)
-        found_difference_1 = _display_graph(in_first, "\t In first: ")
-        found_difference_2 = _display_graph(in_second, "\t In second: ")
+        found_difference_1 = display_graph(in_first, "\t In first: ")
+        found_difference_2 = display_graph(in_second, "\t In second: ")
         found_difference = found_difference_1 or found_difference_2
         
                     # break;
