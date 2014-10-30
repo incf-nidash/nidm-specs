@@ -7,7 +7,7 @@
 
 import os
 import re
-import urllib2, urllib
+import urllib2
 import rdflib
 from rdflib.graph import Graph
 from rdflib.compare import *
@@ -84,15 +84,21 @@ def display_graph(diff_graph, prefix_msg="Difference in:"):
                     if isinstance(s, rdflib.term.URIRef) \
                         and not isinstance(s, rdflib.term.BNode):
                         s_str = diff_graph.qname(s)
+                    elif isinstance(s, rdflib.term.Literal):
+                        s_str = s_str+" ("+str(s.datatype)+")"
                     p_str = str(p)
                     if isinstance(p, rdflib.term.URIRef) \
                         and not isinstance(p, rdflib.term.BNode):
                         p_str = diff_graph.qname(p)
+                    elif isinstance(p, rdflib.term.Literal):
+                        p_str = p_str+" ("+str(p.datatype)+")"                        
                     o_str = str(o)
                     if isinstance(o, rdflib.term.URIRef) \
                         and not isinstance(o, rdflib.term.BNode):
                         o_str = diff_graph.qname(o)
-
+                    elif isinstance(o, rdflib.term.Literal):
+                        o_str = o_str+" ("+str(o.datatype)+")"    
+                                                
                     logger.info("\t"+prefix_msg+' s='+s_str+\
                             ", p="+p_str+\
                             ", o="+o_str)

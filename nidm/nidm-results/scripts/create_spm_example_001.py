@@ -84,7 +84,7 @@ def main():
 			param_est_id="niiri:model_pe_id"),
 		"DerivedMap-RMSMap": dict(
 			derived_from_map_id="niiri:residual_mean_squares_map_id_der",
-			derived_map_type="spm:ResidualMeanSquaresMap",
+			derived_map_type="nidm:ResidualMeanSquaresMap",
 			filename="ResMS.nii",
 			format="image/nifti",
 			sha="1635e0ae420cac1b5989fbc753b95f504dd957ff2986367fc4cd13ff35c44b4ee60994a9cdcab93a7d247fc5a8decb7578fa4c553b0ac905af8c7041db9b4acd",
@@ -109,7 +109,7 @@ def main():
 			),
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id",
-			label="Contrast: Listening > Rest",
+			label="Contrast: passive listening > rest",
 			value="[1, 0]",
 			statistic_type="nidm:TStatistic",
 			contrast_name="passive listening > rest"
@@ -155,7 +155,7 @@ def main():
 			filename="TStatistic.nii.gz",
 			statistic_type="nidm:TStatistic",
 			contrast_name="passive listening > rest",
-			error_dof="72.9999999990787",
+			error_dof="84.0",
 			effect_dof="1",
 			sha="799e9bbf8c15b35c0098bca468846bf2cd895a3366382b5ceaa953f1e9e576955341a7c86e13e6fe9359da4ff1496a609f55ce9ecff8da2e461365372f2506d6",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -165,7 +165,7 @@ def main():
 			derived_map_type="nidm:StatisticMap",
 			filename="spmT_0001.nii",
 			format="image/nifti",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="55951f31f0ede7e88eca5cd4793df3f630aba21bc90fb81e3695db060c7d4c0b0ccf0b51fd8958c32ea3253d3122e9b31a54262bf910f8b5b646054ceb9a5825",
 			map_id="niiri:statistic_map_id"
 			),
 		"HeightThreshold": dict(
@@ -233,7 +233,7 @@ def main():
 			),
 		"Cluster-1": dict(
 			cluster_id="niiri:cluster_0001",
-			label="cluster: 0001",
+			label="Cluster: 0001",
 			cluster_size_in_voxels="839",
 			cluster_label_id="1",
 			cluster_size_in_resels="6.31265696809113",
@@ -244,7 +244,7 @@ def main():
 			),
 		"Cluster-2": dict(
 			cluster_id="niiri:cluster_0002",
-			label="cluster: 0002",
+			label="Cluster: 0002",
 			cluster_size_in_voxels="695",
 			cluster_label_id="2",
 			cluster_size_in_resels="5.22919736927692",
@@ -255,7 +255,7 @@ def main():
 			),
 		"Cluster-3": dict(
 			cluster_id="niiri:cluster_0003",
-			label="cluster: 0003",
+			label="Cluster: 0003",
 			cluster_size_in_voxels="37",
 			cluster_label_id="3",
 			cluster_size_in_resels="0.278388924695318",
@@ -266,7 +266,7 @@ def main():
 			),
 		"Cluster-4": dict(
 			cluster_id="niiri:cluster_0004",
-			label="cluster: 0004",
+			label="Cluster: 0004",
 			cluster_size_in_voxels="29",
 			cluster_label_id="4",
 			cluster_size_in_resels="0.218196724761195",
@@ -277,7 +277,7 @@ def main():
 			),
 		"Cluster-5": dict(
 			cluster_id="niiri:cluster_0005",
-			label="cluster: 0005",
+			label="Cluster: 0005",
 			cluster_size_in_voxels="12",
 			cluster_label_id="5",
 			cluster_size_in_resels="0.0902882999011843",
@@ -308,17 +308,17 @@ def main():
 			peak_id="niiri:peak_0002",
 			label="Peak: 0002",
 			location="niiri:coordinate_0002",
-			value="11.3457498550415",
+			value="13.0321407318",
 			equiv_z="INF",
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="0",
-			p_value_fdr="3.12855975726156e-10",
+			p_value_fdr="1.19156591714e-11",
 			cluster_id="niiri:cluster_0001"
 			),
 		"Coordinate-2": dict(
 			coordinate_id="niiri:coordinate_0002",
 			label="Coordinate: 0002",
-			coord_1="42",
+			coord_1="-42",
 			coord_2="-31",
 			coord_3="11"
 			),
@@ -487,14 +487,6 @@ def main():
 			format="image/nifti",
 			sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
 			map_id="niiri:beta_map_id_2"
-			),
-		"DerivedMap-3": dict(
-			derived_from_map_id="niiri:statistic_map_id_der",
-			derived_map_type="nidm:StatisticMap",
-			filename="spmT_0001.img",
-			format="image/nifti",
-			sha="55951f31f0ede7e88eca5cd4793df3f630aba21bc90fb81e3695db060c7d4c0b0ccf0b51fd8958c32ea3253d3122e9b31a54262bf910f8b5b646054ceb9a5825",
-			map_id="niiri:statistic_map_id"
 			),
 		"NIDMBundle": dict(
 			bundle_id="niiri:spm_results_id",
