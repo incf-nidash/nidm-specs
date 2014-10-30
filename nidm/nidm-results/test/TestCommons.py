@@ -75,8 +75,9 @@ def _display_graph(diff_graph, prefix_msg="Difference in:"):
     found_difference = False
     for s,p,o in diff_graph.triples((None,None,None)):
             # workaround to avoid issue with "5853" being a string
-            if diff_graph.qname(p) != "spm:softwareRevision":
-                if diff_graph.qname(p) != "fsl:featVersion":
+            prefix, namespace, name = diff_graph.compute_qname(p)
+            if name != "softwareRevision":
+                if name != "featVersion":
                     found_difference = True
 
                     s_str = str(s)
