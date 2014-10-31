@@ -84,8 +84,9 @@ class TestExamplesMatchTemplates(unittest.TestCase):
         found_difference = self._compare_graphs(current_graph, updated_graph)
 
         if found_difference:
-            raise Exception("example001_spm_results.ttl is not up to date with \
-                templates. Please use nidm/nidm-results/scripts/create_spm_examples.py.")
+            raise Exception("example001_spm_results.ttl is not up to date  \
+                with templates. Please use \
+                nidm/nidm-results/scripts/create_spm_example_001.py.")
 
     def test_spm_ex002(self):
         spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", \
@@ -98,9 +99,9 @@ class TestExamplesMatchTemplates(unittest.TestCase):
         found_difference = self._compare_graphs(current_graph, updated_graph)
 
         if found_difference:
-            raise Exception("example002/spm_results_2contrasts.ttl is not up to date with \
-                templates. Please use nidm/nidm-results/scripts/create_spm_examples.py.")
-
+            raise Exception("example002/spm_results_2contrasts.ttl is not up \
+                to date with templates. Please use \
+                nidm/nidm-results/scripts/create_spm_example_002.py.")
 
 if __name__ == '__main__':
     unittest.main()

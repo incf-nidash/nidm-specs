@@ -130,14 +130,6 @@ if __name__ == '__main__':
 		doc_provn = doc_provn_file_open.read()
 		doc_provn_file_open.close()
 
-		# # Convert provn to json using Prov Translator APIs
-		# url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
-		# headers = { 'Content-type' : "text/provenance-notation",
-		# 			'Accept' : "application/json" }
-		# req = urllib2.Request(url, doc_provn, headers)
-		# response = urllib2.urlopen(req)
-		# doc_json_url = response.geturl()
-		# logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
 
 		# response = urllib2.urlopen(same_doc_ttl_url)
 		# doc_ttl = response.read()
@@ -173,6 +165,14 @@ if __name__ == '__main__':
 			found_difference = True
 
 		if found_difference:
+			# Convert provn to json using Prov Translator APIs
+			url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
+			headers = { 'Content-type' : "text/provenance-notation",
+						'Accept' : "application/json" }
+			req = urllib2.Request(url, doc_provn, headers)
+			response = urllib2.urlopen(req)
+			doc_json_url = response.geturl()
+			logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
 			doc_url = create_document(doc_json_url, doc_title)
 		else:
 			doc_url = same_doc_url
