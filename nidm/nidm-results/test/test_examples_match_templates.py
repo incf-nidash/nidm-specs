@@ -17,6 +17,7 @@ sys.path.append(SCRIPT_DIR)
 import create_spm_example
 import create_spm_example_001
 import create_spm_example_002
+import create_spm_example_003
 from TestCommons import *
 
 
@@ -36,10 +37,7 @@ class TestExamplesMatchTemplates(unittest.TestCase):
             spm_ex_fid.write(replace_by)
             spm_ex_fid.close()
 
-        try:
-            my_graph.parse(data=ex, format="turtle")
-        except BadSyntax:
-            my_graph=None
+        my_graph.parse(data=ex, format="turtle")
 
         return list([my_graph, ex])
 
@@ -102,6 +100,21 @@ class TestExamplesMatchTemplates(unittest.TestCase):
             raise Exception("example002/spm_results_2contrasts.ttl is not up \
                 to date with templates. Please use \
                 nidm/nidm-results/scripts/create_spm_example_002.py.")
+
+    def test_spm_ex003(self):
+        spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", \
+            "example003", 'spm_results_conjunction.ttl')
+
+        current_graph, spm_current = self._parse_graph(spm_example_file)
+        create_spm_example_003.main()
+        updated_graph, unused = self._parse_graph(spm_example_file, spm_current)
+
+        found_difference = self._compare_graphs(current_graph, updated_graph)
+
+        if found_difference:
+            raise Exception("example003/spm_results_conjunction.ttl is not up \
+                to date with templates. Please use \
+                nidm/nidm-results/scripts/create_spm_example_003.py.")            
 
 if __name__ == '__main__':
     unittest.main()
