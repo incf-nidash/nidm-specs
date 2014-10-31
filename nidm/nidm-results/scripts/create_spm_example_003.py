@@ -274,6 +274,7 @@ def main():
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
 			location="file:///path/to/DisplayMask.nii.gz",
+			filename="DisplayMask.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a..."
