@@ -14,6 +14,7 @@ import rdflib
 from rdflib.graph import Graph
 from rdflib.compare import *
 import sys
+from subprocess import call
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -132,6 +133,13 @@ if __name__ == '__main__':
 		response = urllib2.urlopen(req)
 		doc_json_url = response.geturl()
 		logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
+
+		# Update turtle file from provn
+		doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
+		call("provconvert -infile "+doc_provn_file+" -outfile "+doc_ttl_file, shell=True)
+		# response = urllib2.urlopen(same_doc_ttl_url)
+		# doc_ttl = response.read()
+		# ttl_fid.write(doc_ttl)
 
 		# Find most recent document with same title on the ProvStore
 		# same_doc_url = get_doc_from_title(doc_title)
