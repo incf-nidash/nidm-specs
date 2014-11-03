@@ -16,7 +16,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:Data: </b>"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn."</td>
+    <td><b>nidm:Data: </b>"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn."(same as: <a href=http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474</a>)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -211,7 +211,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"</td>
+    <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"(same as: <a href=This definition is from OBI. Please update this note if the definition is modified.>This definition is from OBI. Please update this note if the definition is modified.</a>)</td>
     <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
     <td></td>
 </tr>
