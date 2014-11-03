@@ -224,6 +224,14 @@ class OwlReader():
             definition = ""
         return definition
 
+    def get_same_as(self, owl_term):
+        same_as = list(self.graph.objects(owl_term, OWL['sameAs']))
+        if same_as:
+            same_as = ", ".join(same_as)
+        else:
+            same_as = ""
+        return same_as
+
     def get_used_by(self, owl_term):
         used_by = list(self.graph.objects(owl_term, PROV['used']))
         return used_by
