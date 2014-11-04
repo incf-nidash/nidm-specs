@@ -786,7 +786,7 @@ def main():
 			search_vol_voxels="45203",
 			resel_size="12.0418",
 			dlh="0.384676",
-			random_field_station="false",
+			random_field_station="true",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
 			inference_id="niiri:inference_id_1"
 			),
@@ -801,8 +801,8 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nidm:FSL",
 			label="FSL",
-			version="FSLTODO",
-			feat_version="6.0"
+			version="fsl-5_0_x",
+			feat_version="6.00"
 			),
 		"FSL_GrandMeanMap": dict(
 			grand_mean_map_id="niiri:grand_mean_map_id",
