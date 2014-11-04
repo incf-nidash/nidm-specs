@@ -208,6 +208,7 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
 	dct:format "text/csv"^^xsd:string ;
 	nidm:filename "DesignMatrix.csv"^^xsd:string ;
+	nidm:dependenceSpatialModel nidm:SpatiallyGlobalModel ;
 	nidm:visualisation niiri:design_matrix_png_id .
 
 niiri:design_matrix_png_id a prov:Entity , nidm:Image ;
@@ -249,6 +250,7 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm:ModelParametersEstimation ;
 	rdfs:label "Model parameters estimation" ;
 	nidm:withEstimationMethod nidm:OrdinaryLeastSquares ;
+	nidm:hasVoxelWiseEstimation nidm:MassUnivariate ;
 	prov:wasAssociatedWith niiri:software_id ;
 	prov:used niiri:design_matrix_id .
 
