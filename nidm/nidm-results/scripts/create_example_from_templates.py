@@ -44,8 +44,6 @@ class ExampleFromTemplate(object):
             #     print nidm_class
 
             if self.one_file_per_class:
-                class_example = namespaces+"\n\n"+class_example
-
                 example_file = os.path.join(self.dir, nidm_class+".txt")
                 example_fid = open(example_file, 'w')
                 example_fid.write(str(class_example))

@@ -8,8 +8,7 @@ by using the class templates available in nidm/nidm-results/terms/templates
 import os
 from create_example_from_templates import ExampleFromTemplate
 
-if __name__ == '__main__':
-	
+def main():
 	nidm_classes = {
 		"DesignMatrix": dict(
 			design_matrix_id='niiri:design_matrix_id', 
@@ -18,6 +17,12 @@ if __name__ == '__main__':
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id"),
+		"Image-DesignMatrix": dict(
+			image_id="niiri:design_matrix_png_id",
+			location="file://./DesignMatrix.png",
+			filename="DesignMatrix.png",
+			format="image/png"
+			),
 		"Data": dict(
 			data_id='niiri:data_id',
 			label="Data",
@@ -135,6 +140,7 @@ if __name__ == '__main__':
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
 			location="file:///path/to/DisplayMask.nii.gz",
+			filename="DisplayMask.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			sha="e43b6e01b0463fe7d40782137867a..."
@@ -168,6 +174,8 @@ if __name__ == '__main__':
 			extent_thresh_id="niiri:extent_threshold_id", 
 			inference_mask_id="niiri:sub_volume_id", 
 			display_mask_id="niiri:display_map_id", 
+			mask_id="niiri:mask_id", 
+			software_id="niiri:software_id",
 			peak_def_id="niiri:peak_definition_criteria_id", 
 			cluster_def_id="niiri:cluster_definition_criteria_id"
 			),
@@ -240,9 +248,11 @@ if __name__ == '__main__':
 			)
 		}
 
-
 	NIDM_TERMS_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'terms')
 	EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 	example = ExampleFromTemplate(nidm_classes, EX_DIR, True)
 	example.create_example()
+
+if __name__ == '__main__':
+	main()
