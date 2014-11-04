@@ -23,6 +23,12 @@ class ExampleFromTemplate(object):
             self.dir = example_file
 
     def create_example(self):
+        # To make a complete document, we need to add namespaces at 
+        # the beginning
+        fid = open(os.path.join(TPL_DIR, "Namespaces.txt"), 'r')
+        namespaces = fid.read()
+        fid.close()
+
         example = ""
         for nidm_class, substitutes in sorted(self.nidm_classes.items()):
 
@@ -38,6 +44,8 @@ class ExampleFromTemplate(object):
             #     print nidm_class
 
             if self.one_file_per_class:
+                class_example = namespaces+"\n\n"+class_example
+
                 example_file = os.path.join(self.dir, nidm_class+".txt")
                 example_fid = open(example_file, 'w')
                 example_fid.write(str(class_example))
@@ -45,13 +53,7 @@ class ExampleFromTemplate(object):
             else:
                 example += class_example+"\n\n"
 
-        if not self.one_file_per_class:
-                # This is a complete document, we need to add namespaces at 
-                # the beginning
-                fid = open(os.path.join(TPL_DIR, "Namespaces.txt"), 'r')
-                namespaces = fid.read()
-                fid.close()
-
+        if not self.one_file_per_class:              
                 example = namespaces+"\n\n"+example
 
                 example_fid = open(self.file, 'w')
