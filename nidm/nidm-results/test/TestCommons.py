@@ -110,7 +110,25 @@ def display_graph(diff_graph, prefix_msg="Difference in:"):
 
     return found_difference
 
-def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
+def compare_graphs(graph_doc1, graph_doc2):
+    # Use isomorphic to ignore BNode
+    iso1 = to_isomorphic(graph_doc1)
+    iso2 = to_isomorphic(graph_doc2)
+
+    found_difference = False
+    if iso1 != iso2:
+
+        in_both, in_first, in_second = graph_diff(iso1, iso2)
+
+        # diff_graph = (in_first+in_second)
+        found_difference_1 = display_graph(in_first, "\t In first: ")
+        found_difference_2 = display_graph(in_second, "\t In second: ")
+        found_difference = found_difference_1 or found_difference_2
+        
+                    # break;
+    return found_difference
+
+def compare_ttl_documents(ttl_doc1, ttl_doc2):
     # Check whether most recent document is identical to current version
     doc_graph = Graph()
     doc_graph.parse(ttl_doc1, format='turtle')
@@ -125,19 +143,21 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
     except ValueError:
         same_doc_graph.parse(ttl_doc2, format='turtle')
 
-    # Use isomorphic to ignore BNode
-    iso1 = to_isomorphic(same_doc_graph)
-    iso2 = to_isomorphic(doc_graph)
+    found_difference = compare_graphs(same_doc_graph, doc_graph)
 
-    found_difference = False
-    if iso1 != iso2:
+    # # Use isomorphic to ignore BNode
+    # iso1 = to_isomorphic(same_doc_graph)
+    # iso2 = to_isomorphic(doc_graph)
 
-        in_both, in_first, in_second = graph_diff(iso1, iso2)
+    # found_difference = False
+    # if iso1 != iso2:
 
-        # diff_graph = (in_first+in_second)
-        found_difference_1 = display_graph(in_first, "\t In first: ")
-        found_difference_2 = display_graph(in_second, "\t In second: ")
-        found_difference = found_difference_1 or found_difference_2
+    #     in_both, in_first, in_second = graph_diff(iso1, iso2)
+
+    #     # diff_graph = (in_first+in_second)
+    #     found_difference_1 = display_graph(in_first, "\t In first: ")
+    #     found_difference_2 = display_graph(in_second, "\t In second: ")
+    #     found_difference = found_difference_1 or found_difference_2
         
-                    # break;
+    #                 # break;
     return found_difference
