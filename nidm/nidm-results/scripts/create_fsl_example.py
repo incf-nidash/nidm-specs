@@ -445,3 +445,6 @@ def main():
 	ttl_file = os.path.join(NIDM_FSL_DIR, 'fsl_results.ttl')
 	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
 	example.create_example()
+	
+if __name__ == '__main__':
+	main()

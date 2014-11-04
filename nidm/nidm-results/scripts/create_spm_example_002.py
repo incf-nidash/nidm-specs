@@ -472,3 +472,6 @@ def main():
 	ttl_file = os.path.join(NIDM_SPM_DIR, 'spm_results_2contrasts.ttl')
 	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
 	example.create_example()
+	
+if __name__ == '__main__':
+	main()

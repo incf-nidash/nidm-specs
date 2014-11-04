@@ -555,3 +555,6 @@ def main():
 	ttl_file = os.path.join(NIDM_SPM_DIR, 'example001_spm_results.ttl')
 	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
 	example.create_example()
+
+if __name__ == '__main__':
+	main()
