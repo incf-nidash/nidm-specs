@@ -89,7 +89,8 @@ nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
                             
                             prov:definition "FIXME" ;
                             
-                            rdfs:domain nidm:ErrorModel ;
+                            rdfs:domain nidm:DesignMatrix ,
+                                        nidm:ErrorModel ;
                             
                             rdfs:range nidm:SpatialModel .
 
@@ -181,6 +182,32 @@ nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
                           rdfs:domain nidm:ErrorModel ;
                           
                           rdfs:range nidm:NoiseDistribution .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasPixelWiseEstimation
+
+nidm:hasPixelWiseEstimation rdf:type owl:ObjectProperty ;
+                            
+                            obo:IAO_0000114 obo:IAO_0000124 ;
+                            
+                            rdfs:range nidm:ElementWiseEstimation ;
+                            
+                            rdfs:domain nidm:ModelParametersEstimation .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasVoxelWiseEstimation
+
+nidm:hasVoxelWiseEstimation rdf:type owl:ObjectProperty ;
+                            
+                            obo:IAO_0000115 "" ;
+                            
+                            obo:IAO_0000114 obo:IAO_0000124 ;
+                            
+                            rdfs:range nidm:ElementWiseEstimation ;
+                            
+                            rdfs:domain nidm:ModelParametersEstimation .
 
 
 
@@ -1668,8 +1695,6 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
 
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ContrastEstimation
 
 nidm:ContrastEstimation rdf:type owl:Class ;
@@ -1881,6 +1906,16 @@ nidm:DisplayMaskMap rdf:type owl:Class ;
                     rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
                     
                     obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ElementWiseEstimation
+
+nidm:ElementWiseEstimation rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf prov:Entity ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2103,7 +2138,6 @@ nidm:Inference rdf:type owl:Class ;
                owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000299" ;
                
                obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#InferenceMaskMap
@@ -2894,6 +2928,45 @@ nidm:Ixi549CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#LocalMultivariate
+
+nidm:LocalMultivariate rdf:type nidm:ElementWiseEstimation ,
+                                owl:NamedIndividual ;
+                       
+                       obo:IAO_0000115 "Multivariate model fit on a neighborhood surrounding each voxel; e.g. “searchlight analyses." ;
+                       
+                       obo:IAO_0000117 "TN" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#MassMultivariate
+
+nidm:MassMultivariate rdf:type nidm:ElementWiseEstimation ,
+                               owl:NamedIndividual ;
+                      
+                      obo:IAO_0000115 "Multivariate model fit independently at each voxel; e.g. tensoral analyses - do tensors differ between groups" ;
+                      
+                      obo:IAO_0000117 "TN" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#MassUnivariate
+
+nidm:MassUnivariate rdf:type nidm:ElementWiseEstimation ,
+                             owl:NamedIndividual ;
+                    
+                    obo:IAO_0000115 "Univariate model fit independently at each voxel." ;
+                    
+                    obo:IAO_0000117 "TN" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Mni305CoordinateSystem
 
 nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
@@ -2905,6 +2978,18 @@ nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                             
                             obo:IAO_0000114 obo:IAO_0000120 .
 
+
+
+###  http://www.incf.org/ns/nidash/nidm#Multivariate
+
+nidm:Multivariate rdf:type nidm:ElementWiseEstimation ,
+                           owl:NamedIndividual ;
+                  
+                  obo:IAO_0000115 "Multivariate model fit to entire brain, e.g. MLM (Multivariate Linear Model), CCA (Canonical Correlation Analysis), PLS (Partial Least Squares)." ;
+                  
+                  obo:IAO_0000117 "TN" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
 
 
 ###  http://www.incf.org/ns/nidash/nidm#pixel4connected

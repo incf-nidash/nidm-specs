@@ -201,6 +201,7 @@ document
       prov:location = "file:///path/to/DesignMatrix.csv" %% xsd:anyURI,
       dct:format = "text/csv",
       nidm:filename = "DesignMatrix.csv",
+      nidm:dependenceSpatialModel = 'nidm:SpatiallyGlobalModel',
       nidm:visualisation = 'niiri:design_matrix_png_id',
       prov:label = "Design Matrix" %% xsd:string])
     entity(niiri:design_matrix_png_id,
@@ -242,7 +243,8 @@ document
     activity(niiri:model_pe_id,
       [prov:type = 'nidm:ModelParametersEstimation',
       prov:label = "Model parameters estimation",
-      nidm:withEstimationMethod = 'nidm:OrdinaryLeastSquares'
+      nidm:withEstimationMethod = 'nidm:OrdinaryLeastSquares',
+      nidm:hasVoxelWiseEstimation = 'nidm:MassUnivariate'
       ])
     wasAssociatedWith(niiri:model_pe_id, niiri:software_id,-)
     used(niiri:model_pe_id, niiri:design_matrix_id,-)

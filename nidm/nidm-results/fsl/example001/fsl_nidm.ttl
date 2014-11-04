@@ -268,7 +268,8 @@ niiri:model_parameters_estimation_id prov:used niiri:data_id .
 
 niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	rdfs:label "Design Matrix" ;
-	prov:atLocation "file://./DesignMatrix.csv"^^xsd:anyURI .
+	prov:atLocation "file://./DesignMatrix.csv"^^xsd:anyURI ;
+	nidm:dependenceSpatialModel nidm:SpatiallyGlobalModel .
 
 niiri:contrast_id_1 a prov:Entity , nidm:ContrastWeights ;
 	rdfs:label "Contrast Weights: Generation" ;
@@ -286,7 +287,8 @@ niiri:error_model_id a prov:Entity , nidm:ErrorModel ;
 niiri:model_parameters_estimation_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm:ModelParametersEstimation ;
 	rdfs:label "Model Parameters Estimation" ;
-	nidm:withEstimationMethod nidm:GeneralizedLeastSquares .
+	nidm:withEstimationMethod nidm:GeneralizedLeastSquares ;
+	nidm:hasVoxelWiseEstimation nidm:MassUnivariate .
 
 niiri:contrast_estimation_id_1 a prov:Activity , nidm:ContrastEstimation ;
 	rdfs:label "Contrast estimation: Generation" .
