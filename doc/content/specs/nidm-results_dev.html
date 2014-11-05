@@ -552,18 +552,18 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ErrorModel.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ErrorModel.</li>
                      
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:errorVarianceHomogeneous">
-                        <dfn>nidm:errorVarianceHomogeneous</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance. (range xsd:boolean)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasErrorDependence">
-                        <dfn>nidm:hasErrorDependence</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an ErrorDependence with an ErrorModel. (range nidm:ExchangeableError, nidm:IndependentError, nidm:ErrorDependence, nidm:ArbitrarilyCorrelatedError, nidm:SeriallyCorrelatedError, nidm:CompoundSymmetricError)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasNoiseDistribution">
-                        <dfn>nidm:hasNoiseDistribution</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range fsl:NonParametricSymmetricDistribution, nidm:GaussianDistribution, nidm:NoiseDistribution, nidm:PoissonDistribution, fsl:BinomialDistribution, nidm:NonParametricDistribution)</li> 
                         <li><span class="attribute" id="nidm:ErrorModel.nidm:dependenceSpatialModel">
                         <dfn>nidm:dependenceSpatialModel</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li> 
+                        <li><span class="attribute" id="nidm:ErrorModel.nidm:errorVarianceHomogeneous">
+                        <dfn>nidm:errorVarianceHomogeneous</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance. (range xsd:boolean)</li> 
+                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasNoiseDistribution">
+                        <dfn>nidm:hasNoiseDistribution</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range fsl:NonParametricSymmetricDistribution, nidm:GaussianDistribution, nidm:NoiseDistribution, nidm:PoissonDistribution, fsl:BinomialDistribution, nidm:NonParametricDistribution)</li> 
+                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasErrorDependence">
+                        <dfn>nidm:hasErrorDependence</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an ErrorDependence with an ErrorModel. (range nidm:ExchangeableError, nidm:IndependentError, nidm:ErrorDependence, nidm:ArbitrarilyCorrelatedError, nidm:SeriallyCorrelatedError, nidm:CompoundSymmetricError)</li> 
                         <li><span class="attribute" id="nidm:ErrorModel.nidm:varianceSpatialModel">
                         <dfn>nidm:varianceSpatialModel</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li>  
@@ -820,15 +820,15 @@
                         <li><span class="attribute" id="nidm:Cluster.nidm:pValueUncorrected">
                         <dfn>nidm:pValueUncorrected</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
-                        <dfn>nidm:pValueFWER</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
+                        <dfn>nidm:clusterSizeInVoxels</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
                         <dfn>nidm:clusterLabelId</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range xsd:int)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
-                        <dfn>nidm:clusterSizeInVoxels</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li>        
+                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
+                        <dfn>nidm:pValueFWER</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:cluster_0001,
@@ -933,12 +933,12 @@
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueFWER">
                         <a>nidm:pValueFWER</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
-                        <a>nidm:qValueFDR</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442). (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVoxels">
                         <a>nidm:clusterSizeInVoxels</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
+                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
+                        <a>nidm:qValueFDR</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442). (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:extent_threshold_id,
@@ -1066,7 +1066,12 @@
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
-        <section><h1>SPM-specific Concepts</h1>
+        <section><h1>SPM-specific Concepts</h1>            SPM-specific structures are outlined in <a href="#fig-nidmresults-core-uml-spm"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to SPM-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional SPM-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-spm">
+              <img src="img/nidm-results-core-uml-spm.png" width=900px/>
+              <figcaption>SPM-specific Structures. </figcaption>
+            </figure> 
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
                 <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results SPM-specific Concepts Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
@@ -1122,7 +1127,12 @@
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
-        <section><h1>FSL-specific Concepts</h1>
+        <section><h1>FSL-specific Concepts</h1>            FSL-specific structures are outlined in <a href="#fig-nidmresults-core-uml-fsl"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to FSL-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional FSL-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-fsl">
+              <img src="img/nidm-results_010/nidm-results-core-uml-fsl.png" width=900px/>
+              <figcaption>FSL-specific Structures. </figcaption>
+            </figure> 
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
                 <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results FSL-specific Concepts Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->

@@ -25,7 +25,9 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
-DOC_FOLDER = os.path.join(os.path.dirname(os.path.dirname(NIDMRESULTSPATH)), 'doc', 'content', 'specs')
+DOC_FOLDER = os.path.join(os.path.dirname(os.path.dirname(NIDMRESULTSPATH)), \
+    'doc', 'content', 'specs')
+INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
@@ -72,6 +74,14 @@ class OwlSpecification(object):
         if component_name:
             self.text += """
         <section><h1>"""+component_name+"""</h1>"""
+            # Check if there is a header file to include here
+            fname = os.path.join(INCLUDE_FOLDER, \
+                "nidm-results_"+component_name.split(" ")[0].lower()+".html")
+            if os.path.isfile(fname):
+                fid = open(fname, "r")
+                self.text += fid.read()
+                fid.close()
+
         else:
             component_name = ""
 
@@ -304,7 +314,6 @@ if __name__ == '__main__':
 
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, generated_by)
 
-    INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
     owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results_dev.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
