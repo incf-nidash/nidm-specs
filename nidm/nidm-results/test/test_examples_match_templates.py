@@ -12,8 +12,10 @@ from rdflib.compare import *
 
 NIDM_RESULTS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT_DIR = os.path.join(NIDM_RESULTS_DIR, "scripts")
+EX_TERMS_DIR = os.path.join(NIDM_RESULTS_DIR, "terms", "examples")
 import sys
 sys.path.append(SCRIPT_DIR)
+import create_term_examples
 import create_spm_example
 import create_spm_example_001
 import create_spm_example_002
@@ -58,6 +60,49 @@ class TestExamplesMatchTemplates(unittest.TestCase):
             found_difference = found_difference_1 or found_difference_2
 
         return found_difference
+
+    def test_unit_examples(self):
+        # unit_examples = ["Cluster", "ClusterDefinitionCriteria", \
+        # "ContrastEstimation", "ContrastMap", "ContrastStandardErrorMap",
+        # "ContrastWeights", "Coordinate", "Data", "De" "DesignMatrix"]
+        exception_msg = ""
+        found_difference = False
+
+        current = dict()
+        updated = dict()
+
+        for ex_file in os.listdir(EX_TERMS_DIR):
+            if ex_file.endswith(".txt"):
+                example_file = os.path.join(EX_TERMS_DIR, ex_file)
+
+                example_fid = open(example_file, "r")
+                current[ex_file] = example_fid.read()
+                example_fid.close()
+
+        create_term_examples.main()
+
+        for ex_file in current.keys():
+            example_file = os.path.join(EX_TERMS_DIR, ex_file)
+            
+            example_fid = open(example_file, "r")
+            updated[ex_file] = example_fid.read()
+            example_fid.close()
+
+            example_fid = open(example_file, "w")
+            example_fid.write(current[ex_file])
+            example_fid.close()
+
+        for ex_file in os.listdir(EX_TERMS_DIR):
+            if ex_file.endswith(".txt"):
+                found_difference = not (current[ex_file] == updated[ex_file])
+
+                if found_difference:
+                    exception_msg = exception_msg+"\n"+\
+                        ex_file+" is not up to date with templates. \
+Please use nidm/nidm-results/scripts/create_term_examples.py."
+
+        if exception_msg:
+            raise Exception(exception_msg)
 
     def test_spm_results(self):
         example_file = os.path.join(NIDM_RESULTS_DIR, "spm", "spm_results.ttl")
