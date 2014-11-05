@@ -1,7 +1,7 @@
 			<!DOCTYPE html>
 			<html>
 			<head>
-				<title>NIDM-Results 0.1.0</title>
+				<title>NIDM-Results 0.2.0</title>
 				<meta charset='utf-8'>
 				<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
 				async class='remove'></script>
@@ -21,7 +21,8 @@
 						company:    "INCF",
 						companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
 						],
-						otherLinks: [{
+						otherLinks: [
+						{
 			            key: "Contributors",
 			            data: [{
 			                    value: "Tibor Auer",
@@ -52,7 +53,27 @@
 			                }, {
 			                    value: "Jessica Turner",
 			                }
-			            ]}],
+			            ]
+			        	}, {
+						key: "This version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results_020.html",
+						      href: "./nidm-results_020.html"
+						 	  }]
+						}, {
+						key: "Latest published version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results.html",
+						      href: "./nidm-results.html"
+						 	  }]
+						}, {
+						key: "Previous version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results_010.html",
+						      href: "./nidm-results_010.html"
+						 	  }]							
+						}
+			        	],
 						logos: [
 						   {
 						      src: 'stylesheet/nidm-text.png',
@@ -115,7 +136,7 @@
 						<p>
 							NIDM-Results is a part of NIDM as depicted in <a href="#fig-nidmresults-in-nidm"></a>.
 							<figure id="fig-nidmresults-in-nidm">
-							<img src="img/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
+							<img src="img/nidm-results_020/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
 								<figcaption>NIDM-Results as part of NIDM.</figcaption>
 							</figure>
 						<!--If the overview is ready then add here:<p>
@@ -138,7 +159,7 @@
 						<section>
 							<h4 id="please-send-comments">Please Send Comments</h4>
 							<!-- FIXME: Is this the right e-mail address to receive comments? -->
-							This document was published by the NIDASH NIDM Working Group as a Candidate Release. If you wish to 							make comments regarding this document, please report using the <a 							href="https://github.com/incf-nidash/nidm/issues/">NIDM issue tracker</a>. please send them to <a 							href="mailto:incf-nidash-nidm@googlegroups.com">incf-nidash-nidm@googlegroups.com</a>. All comments 							are welcome.
+							This document was published by the NIDASH NIDM Working Group as a Candidate Release. If you wish to make comments regarding this document, please report using the <a href="https://github.com/incf-nidash/nidm/issues/">NIDM issue tracker</a> or send them to <a href="mailto:incf-nidash-nidm@googlegroups.com">incf-nidash-nidm@googlegroups.com</a>. All comments are welcome.
 						</section>			
 						</section>	
 						
@@ -220,7 +241,7 @@
 				NIDM-Results is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NIDM-Results data model is represented in <a href="#fig-nidmresults-domain"></a>.
 
 				<figure id="fig-nidmresults-domain">
-					<img src="img/nidm-results-domain-overview.png" width=600px/>
+					<img src="img/nidm-results_020/nidm-results-domain-overview.png" width=600px/>
 					<figcaption>Domain overview</figcaption>
 				</figure>
 				</p>
@@ -235,7 +256,7 @@
 						<h3>Overview</h3>
 						The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). NIDM-Results is divided in two elements: "Model fitting" and "Inference", the structures and relations belonging to each element are presented in details in <a href="#modelfitting"></a> and <a href="#inference"></a>.
 						<figure id="fig-nidmresults-core-uml">
-							<img alt="Core structures" src="img/nidm-results-core-uml.png" width=900px/>
+							<img alt="Core structures" src="img/nidm-results_020/nidm-results-core-uml.png" width=900px/>
 							<figcaption>Core structures overview</figcaption>
 						</figure>
 					</section>
@@ -334,17 +355,17 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:ErrorModel">nidm:ErrorModel</a>
-                            </td>
-                    
-                                <td><a>nidm:ErrorModel</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:MaskMap">nidm:MaskMap</a>
                             </td>
                     
                                 <td><a>nidm:MaskMap</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:NoiseModel">nidm:NoiseModel</a>
+                            </td>
+                    
+                                <td><a>nidm:NoiseModel</a></td>
                             </tr>
                 
                         <tr>
@@ -401,7 +422,7 @@
                      
                         <li><span class="attribute" id="nidm:ModelParametersEstimation.nidm:withEstimationMethod">
                         <dfn>nidm:withEstimationMethod</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:WeightedLeastSquares, nidm:OrdinaryLeastSquares, nidm:RobustIterativelyReweighedLeastSquares, nidm:EstimationMethod, nidm:GeneralizedLeastSquares)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:WeightedLeastSquares, nidm:OrdinaryLeastSquares, nidm:GeneralizedLeastSquares, nidm:EstimationMethod, nidm:RobustIterativelyReweighedLeastSquares)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>activity(niiri:model_pe_id,
@@ -419,18 +440,21 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ContrastMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastMap.</li>
                      
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:hasMapHeader">
+                        <dfn>nidm:hasMapHeader</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:ContrastMap.nidm:inCoordinateSpace">
                         <dfn>nidm:inCoordinateSpace</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:ContrastMap.nidm:contrastName">
                         <dfn>nidm:contrastName</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:hasMapHeader">
-                        <dfn>nidm:hasMapHeader</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:ContrastMap.nidm:filename">
                         <dfn>nidm:filename</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:atCoordinateSpace">
+                        <dfn>nidm:atCoordinateSpace</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>  entity(niiri:contrast_map_id,
@@ -439,7 +463,7 @@
     prov:label = "Contrast Map: listening > rest" %% xsd:string,
     nidm:contrastName = "listening > rest" %% xsd:string,
     nidm:originalFileName = "con_0001.img" %% xsd:string,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             <!-- nidm:ContrastWeights -->
@@ -458,7 +482,7 @@
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ContrastWeights.nidm:statisticType">
                         <dfn>nidm:statisticType</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:ZStatistic, nidm:Statistic, nidm:FStatistic, nidm:TStatistic)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:ZStatistic, nidm:Statistic, nidm:FStatistic, nidm:TStatistic)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>"entity(niiri:t_contrast_id,
@@ -520,33 +544,6 @@
     prov:label = "Design Matrix" %% xsd:string,
     nidm:originalFileName = "design_matrix.csv" %% xsd:string])</pre>  
             </section>
-            <!-- nidm:ErrorModel -->
-            <section id="section-nidm:ErrorModel"> 
-                <h1 label="nidm:ErrorModel">nidm:ErrorModel</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ErrorModel</dfn>                    <sup><a title="nidm:ErrorModel">                    <span class="diamond">&#9826;</span></a></sup> is model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations. <a>nidm:ErrorModel</a> is a prov:Entity used by <a>nidm:ModelParametersEstimation</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ErrorModel"> A <a>nidm:ErrorModel</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ErrorModel.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ErrorModel.</li>
-                     
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:dependenceSpatialModel">
-                        <dfn>nidm:dependenceSpatialModel</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasNoiseDistribution">
-                        <dfn>nidm:hasNoiseDistribution</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range fsl:NonParametricSymmetricDistribution, nidm:GaussianDistribution, nidm:NoiseDistribution, nidm:PoissonDistribution, fsl:BinomialDistribution, nidm:NonParametricDistribution)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:hasErrorDependence">
-                        <dfn>nidm:hasErrorDependence</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an ErrorDependence with an ErrorModel. (range nidm:ExchangeableError, nidm:IndependentError, nidm:ErrorDependence, nidm:ArbitrarilyCorrelatedError, nidm:SeriallyCorrelatedError, nidm:CompoundSymmetricError)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:errorVarianceHomogeneous">
-                        <dfn>nidm:errorVarianceHomogeneous</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance. (range xsd:boolean)</li> 
-                        <li><span class="attribute" id="nidm:ErrorModel.nidm:varianceSpatialModel">
-                        <dfn>nidm:varianceSpatialModel</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li>  
-            </section>
             <!-- nidm:MaskMap -->
             <section id="section-nidm:MaskMap"> 
                 <h1 label="nidm:MaskMap">nidm:MaskMap</h1>
@@ -558,15 +555,18 @@
                 <ul>
                     <li><span class="attribute" id="nidm:MaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:MaskMap.</li>
                      
+                        <li><span class="attribute" id="nidm:MaskMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:MaskMap.nidm:inCoordinateSpace">
                         <a>nidm:inCoordinateSpace</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
-                        <li><span class="attribute" id="nidm:MaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:MaskMap.nidm:filename">
                         <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:MaskMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:mask_id_2,
@@ -574,8 +574,35 @@
     prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
     prov:label = "Mask" %% xsd:string,
     nidm:originalFileName = "mask.img" %% xsd:string,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
+            </section>
+            <!-- nidm:NoiseModel -->
+            <section id="section-nidm:NoiseModel"> 
+                <h1 label="nidm:NoiseModel">nidm:NoiseModel</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:NoiseModel</dfn>                    <sup><a title="nidm:NoiseModel">                    <span class="diamond">&#9826;</span></a></sup> is fIXME. <a>nidm:NoiseModel</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:NoiseModel"> A <a>nidm:NoiseModel</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:NoiseModel.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:NoiseModel.</li>
+                     
+                        <li><span class="attribute" id="nidm:NoiseModel.nidm:dependenceSpatialModel">
+                        <dfn>nidm:dependenceSpatialModel</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li> 
+                        <li><span class="attribute" id="nidm:NoiseModel.nidm:hasNoiseDistribution">
+                        <dfn>nidm:hasNoiseDistribution</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range fsl:NonParametricSymmetricDistribution, nidm:GaussianDistribution, nidm:NoiseDistribution, nidm:PoissonDistribution, fsl:BinomialDistribution, nidm:NonParametricDistribution)</li> 
+                        <li><span class="attribute" id="nidm:NoiseModel.nidm:hasNoiseDependence">
+                        <dfn>nidm:hasNoiseDependence</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:ExchangeableNoise, nidm:ArbitrarilyCorrelatedNoise, nidm:SeriallyCorrelatedNoise, nidm:CompoundSymmetricNoise, nidm:IndependentNoise, nidm:NoiseDependence)</li> 
+                        <li><span class="attribute" id="nidm:NoiseModel.nidm:noiseVarianceHomogeneous">
+                        <dfn>nidm:noiseVarianceHomogeneous</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range xsd:boolean)</li> 
+                        <li><span class="attribute" id="nidm:NoiseModel.nidm:varianceSpatialModel">
+                        <dfn>nidm:varianceSpatialModel</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:SpatiallyLocalModel, nidm:SpatialModel, nidm:SpatiallyRegularizedModel, nidm:SpatiallyGlobalModel)</li>  
             </section>
             <!-- nidm:ParameterEstimateMap -->
             <section id="section-nidm:ParameterEstimateMap"> 
@@ -591,9 +618,12 @@
                         <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:inCoordinateSpace">
                         <a>nidm:inCoordinateSpace</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
+                        <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
@@ -604,14 +634,15 @@
     prov:location = "file:///path/to/beta_0001.img" %% xsd:anyURI,
     prov:label = "Beta Map 1" %% xsd:string,
     nidm:originalFileName = "beta_0001.img" %% xsd:string,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             <!-- nidm:ResidualMeanSquaresMap -->
             <section id="section-nidm:ResidualMeanSquaresMap"> 
                 <h1 label="nidm:ResidualMeanSquaresMap">nidm:ResidualMeanSquaresMap</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:ResidualMeanSquaresMap</dfn>                    <sup><a title="nidm:ResidualMeanSquaresMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the residual of the mean squares fit to the data. <a>nidm:ResidualMeanSquaresMap</a> is a prov:Entity used by <a>nidm:ContrastEstimation</a> and  generated by <a>nidm:ModelParametersEstimation</a>. 
+                    A <dfn>nidm:ResidualMeanSquaresMap</dfn>                    <sup><a title="nidm:ResidualMeanSquaresMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the residual of the mean squares fit to the data.
+. <a>nidm:ResidualMeanSquaresMap</a> is a prov:Entity used by <a>nidm:ContrastEstimation</a> and  generated by <a>nidm:ModelParametersEstimation</a>. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:ResidualMeanSquaresMap"> A <a>nidm:ResidualMeanSquaresMap</a> has attributes:
@@ -621,9 +652,12 @@
                         <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:inCoordinateSpace">
                         <a>nidm:inCoordinateSpace</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
+                        <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
@@ -634,7 +668,7 @@
     prov:location = "file:///path/to/ResMS.img" %% xsd:anyURI,
     prov:label = "Residual Mean Squares Map" %% xsd:string,
     nidm:originalFileName = "ResMS.img" %% xsd:string,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             <!-- nidm:StatisticMap -->
@@ -650,7 +684,7 @@
                      
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:errorDegreesOfFreedom">
                         <dfn>nidm:errorDegreesOfFreedom</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the error. (range xsd:float)</li> 
@@ -663,12 +697,15 @@
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:StatisticMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:effectDegreesOfFreedom">
                         <dfn>nidm:effectDegreesOfFreedom</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the effect. (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:statisticType">
                         <a>nidm:statisticType</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:ZStatistic, nidm:Statistic, nidm:FStatistic, nidm:TStatistic)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:ZStatistic, nidm:Statistic, nidm:FStatistic, nidm:TStatistic)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:statistical_map_id,
@@ -679,7 +716,7 @@
     nidm:originalFileName = "spmT_0001.img" %% xsd:string,
     nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
     nidm:effectDegreesOfFreedom = "1" %% xsd:float,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
@@ -770,9 +807,12 @@
                 <ul>
                     <li><span class="attribute" id="nidm:Inference.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Inference.</li>
                      
+                        <li><span class="attribute" id="nidm:Inference.nidm:alternativeHypothesis">
+                        <dfn>nidm:alternativeHypothesis</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME.</li> 
                         <li><span class="attribute" id="nidm:Inference.nidm:hasAlternativeHypothesis">
                         <dfn>nidm:hasAlternativeHypothesis</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:TwoTailedTest, nidm:OneTailedTest)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:TwoTailedTest, nidm:OneTailedTest)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>activity(niiri:inference_id,
@@ -790,24 +830,24 @@
                 <ul>
                     <li><span class="attribute" id="nidm:Cluster.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Cluster.</li>
                      
-                        <li><span class="attribute" id="nidm:Cluster.nidm:qValueFDR">
-                        <dfn>nidm:qValueFDR</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
                         <dfn>nidm:clusterSizeInVoxels</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
+                        <dfn>nidm:clusterLabelId</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range xsd:int)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:pValueUncorrected">
                         <dfn>nidm:pValueUncorrected</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
-                        <dfn>nidm:pValueFWER</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVertices">
                         <dfn>nidm:clusterSizeInVertices</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
-                        <dfn>nidm:clusterLabelId</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range xsd:int)</li>        
+                        <li><span class="attribute" id="nidm:Cluster.nidm:qValueFDR">
+                        <dfn>nidm:qValueFDR</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
+                        <dfn>nidm:pValueFWER</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:cluster_0001,
@@ -857,10 +897,10 @@
                      
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:visualisation">
-                        <a>nidm:visualisation</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity. (range nidm:Image)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:underlayFile">
+                        <dfn>nidm:underlayFile</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> map or surface on which the associated results are displayed. .</li> 
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:pValue">
                         <dfn>nidm:pValue</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:float)</li> 
@@ -870,9 +910,15 @@
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:numberOfClusters">
                         <dfn>nidm:numberOfClusters</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:int)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range xsd:int)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:visualisation">
+                        <a>nidm:visualisation</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity. (range nidm:Image)</li> 
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:hasClusterLabelsMap">
                         <dfn>nidm:hasClusterLabelsMap</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer. (range nidm:ClusterLabelsMap)</li>        
@@ -885,7 +931,7 @@
     nidm:clusterLabelsMap = "file:///path/to/cluster_labels.img" %% xsd:anyURI,
     spm:maximumIntensityProjection = "file:///path/to/MIP.png" %% xsd:anyURI,
     nidm:originalFileName = "thresh_spmT_0001.img" %% xsd:string,
-    nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
     crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             <!-- nidm:ExtentThreshold -->
@@ -900,9 +946,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ExtentThreshold.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ExtentThreshold.</li>
                      
-                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
-                        <a>nidm:qValueFDR</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVoxels">
                         <a>nidm:clusterSizeInVoxels</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
@@ -912,12 +955,15 @@
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueUncorrected">
                         <a>nidm:pValueUncorrected</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueFWER">
-                        <a>nidm:pValueFWER</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVertices">
                         <a>nidm:clusterSizeInVertices</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li> 
+                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
+                        <a>nidm:qValueFDR</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueFWER">
+                        <a>nidm:pValueFWER</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:extent_threshold_id,
@@ -946,12 +992,12 @@
                         <li><span class="attribute" id="nidm:HeightThreshold.nidm:pValueUncorrected">
                         <a>nidm:pValueUncorrected</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:HeightThreshold.nidm:pValueFWER">
-                        <a>nidm:pValueFWER</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:HeightThreshold.nidm:qValueFDR">
                         <a>nidm:qValueFDR</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:HeightThreshold.nidm:pValueFWER">
+                        <a>nidm:pValueFWER</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:height_threshold_id,
@@ -979,12 +1025,12 @@
                         <li><span class="attribute" id="nidm:Peak.nidm:pValueUncorrected">
                         <a>nidm:pValueUncorrected</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:Peak.nidm:pValueFWER">
-                        <a>nidm:pValueFWER</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:Peak.nidm:qValueFDR">
                         <a>nidm:qValueFDR</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Peak.nidm:pValueFWER">
+                        <a>nidm:pValueFWER</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:peak_0001,
@@ -1010,39 +1056,30 @@
                      
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:inCoordinateSpace">
                         <a>nidm:inCoordinateSpace</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:randomFieldStationarity">
                         <dfn>nidm:randomFieldStationarity</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?. (range xsd:boolean)</li>        
                 </ul>
                 </div>
-                <pre class='example highlight'>entity(niiri:search_space_id,
+                <pre class='example highlight'>entity(niiri:stat_image_properties_id,
       [prov:type = 'nidm:SearchSpaceMap',
-      prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
-      prov:label = "Search Space" %% xsd:string,
-      nidm:originalFileName = "final_mask.nii" %% xsd:string,
-      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_2',
-      spm:searchVolumeInVoxels = "65593" %% xsd:int,
-      spm:searchVolumeInUnits = "1771011" %% xsd:float,
-      spm:reselSize = "22.9229643140043" %% xsd:float,
-      spm:searchVolumeInResels = "2552.68032521656" %% xsd:float,
-      spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string,
-      spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
-      spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
-      nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
+      prov:label = "Statistical image properties",
       spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
       spm:expectedNumberOfClusters = "0.0889172687960151" %% xsd:float,
       spm:heightCriticalThresholdFWE05 = "5.23529984739211" %% xsd:float,
       spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
       spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
-      spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float
-      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])</pre>  
             </section>
             </section>
         <section><h1>SPM-specific Concepts</h1>
@@ -1084,9 +1121,12 @@
                         <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:inCoordinateSpace">
                         <a>nidm:inCoordinateSpace</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
+                        <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
                         <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:filename">
                         <a>nidm:filename</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
@@ -1097,7 +1137,7 @@
       prov:location = "file:///path/to/RPV.img" %% xsd:anyURI,
       prov:label = "Resels per Voxel Map" %% xsd:string,
       nidm:originalFileName = "RPV.img" %% xsd:string,
-      nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1',
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
