@@ -5,12 +5,8 @@
 @copyright: University of Warwick 2014
 '''
 
-import urllib2
-import json
 import logging
 import os
-import rdflib
-from rdflib.graph import Graph
 from rdflib.compare import *
 import sys
 import codecs
@@ -22,7 +18,6 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 
 # Append test directory to path
 sys.path.append(os.path.join(RELPATH, "..", "test"))
-from TestCommons import example_filenames
 from CheckConsistency import *
 from OwlReader import OwlReader
 
@@ -310,7 +305,7 @@ if __name__ == '__main__':
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, generated_by)
 
     INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
-    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results.html"),
+    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results-dev.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
 
