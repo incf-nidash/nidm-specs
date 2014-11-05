@@ -305,7 +305,7 @@ if __name__ == '__main__':
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, generated_by)
 
     INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
-    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results-dev.html"),
+    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results_dev.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
 
