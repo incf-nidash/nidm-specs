@@ -136,7 +136,7 @@
 						<p>
 							NIDM-Results is a part of NIDM as depicted in <a href="#fig-nidmresults-in-nidm"></a>.
 							<figure id="fig-nidmresults-in-nidm">
-							<img src="img/nidm-results_020/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
+							<img src="img/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
 								<figcaption>NIDM-Results as part of NIDM.</figcaption>
 							</figure>
 						<!--If the overview is ready then add here:<p>
@@ -241,7 +241,7 @@
 				NIDM-Results is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NIDM-Results data model is represented in <a href="#fig-nidmresults-domain"></a>.
 
 				<figure id="fig-nidmresults-domain">
-					<img src="img/nidm-results_020/nidm-results-domain-overview.png" width=600px/>
+					<img src="img/nidm-results-domain-overview.png" width=600px/>
 					<figcaption>Domain overview</figcaption>
 				</figure>
 				</p>
@@ -256,7 +256,7 @@
 						<h3>Overview</h3>
 						The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). NIDM-Results is divided in two elements: "Model fitting" and "Inference", the structures and relations belonging to each element are presented in details in <a href="#modelfitting"></a> and <a href="#inference"></a>.
 						<figure id="fig-nidmresults-core-uml">
-							<img alt="Core structures" src="img/nidm-results_020/nidm-results-core-uml.png" width=900px/>
+							<img src="img/nidm-results_020/nidm-results-core-uml.svg" onerror="this.src='img/nidm-results_020/nidm-results-core-uml.png'" width="600px" />
 							<figcaption>Core structures overview</figcaption>
 						</figure>
 					</section>
@@ -596,7 +596,7 @@
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range fsl:NonParametricSymmetricDistribution, nidm:GaussianDistribution, nidm:NoiseDistribution, nidm:PoissonDistribution, fsl:BinomialDistribution, nidm:NonParametricDistribution)</li> 
                         <li><span class="attribute" id="nidm:NoiseModel.nidm:hasNoiseDependence">
                         <dfn>nidm:hasNoiseDependence</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:ExchangeableNoise, nidm:ArbitrarilyCorrelatedNoise, nidm:SeriallyCorrelatedNoise, nidm:CompoundSymmetricNoise, nidm:IndependentNoise, nidm:NoiseDependence)</li> 
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:ArbitrarilyCorrelatedNoise, nidm:ExchangeableNoise, nidm:SeriallyCorrelatedNoise, nidm:CompoundSymmetricNoise, nidm:IndependentNoise, nidm:NoiseDependence)</li> 
                         <li><span class="attribute" id="nidm:NoiseModel.nidm:noiseVarianceHomogeneous">
                         <dfn>nidm:noiseVarianceHomogeneous</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range xsd:boolean)</li> 
@@ -830,24 +830,24 @@
                 <ul>
                     <li><span class="attribute" id="nidm:Cluster.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Cluster.</li>
                      
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
-                        <dfn>nidm:clusterSizeInVoxels</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
-                        <dfn>nidm:clusterLabelId</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range xsd:int)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueUncorrected">
-                        <dfn>nidm:pValueUncorrected</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVertices">
-                        <dfn>nidm:clusterSizeInVertices</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:qValueFDR">
                         <dfn>nidm:qValueFDR</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVertices">
+                        <dfn>nidm:clusterSizeInVertices</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueUncorrected">
+                        <dfn>nidm:pValueUncorrected</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
+                        <dfn>nidm:clusterLabelId</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range xsd:int)</li> 
                         <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
                         <dfn>nidm:pValueFWER</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
+                        <dfn>nidm:clusterSizeInVoxels</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:cluster_0001,
@@ -898,27 +898,27 @@
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:underlayFile">
-                        <dfn>nidm:underlayFile</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> map or surface on which the associated results are displayed. .</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:pValue">
-                        <dfn>nidm:pValue</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:atCoordinateSpace">
-                        <a>nidm:atCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:numberOfClusters">
-                        <dfn>nidm:numberOfClusters</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range xsd:int)</li> 
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:visualisation">
                         <a>nidm:visualisation</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity. (range nidm:Image)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:pValue">
+                        <dfn>nidm:pValue</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:atCoordinateSpace">
+                        <a>nidm:atCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file. (range nidm:CoordinateSpace)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:numberOfClusters">
+                        <dfn>nidm:numberOfClusters</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME. (range xsd:int)</li> 
+                        <li><span class="attribute" id="nidm:ExcursionSet.nidm:underlayFile">
+                        <dfn>nidm:underlayFile</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> map or surface on which the associated results are displayed. .</li> 
                         <li><span class="attribute" id="nidm:ExcursionSet.nidm:hasClusterLabelsMap">
                         <dfn>nidm:hasClusterLabelsMap</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer. (range nidm:ClusterLabelsMap)</li>        
@@ -946,24 +946,24 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ExtentThreshold.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ExtentThreshold.</li>
                      
-                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVoxels">
-                        <a>nidm:clusterSizeInVoxels</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:userSpecifiedThresholdType">
                         <dfn>nidm:userSpecifiedThresholdType</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value). (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueUncorrected">
-                        <a>nidm:pValueUncorrected</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVertices">
                         <a>nidm:clusterSizeInVertices</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range xsd:positiveInteger)</li> 
+                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueUncorrected">
+                        <a>nidm:pValueUncorrected</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
                         <a>nidm:qValueFDR</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate. (range xsd:float)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueFWER">
                         <a>nidm:pValueFWER</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range xsd:float)</li> 
+                        <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVoxels">
+                        <a>nidm:clusterSizeInVoxels</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range xsd:positiveInteger)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:extent_threshold_id,
@@ -1071,18 +1071,29 @@
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?. (range xsd:boolean)</li>        
                 </ul>
                 </div>
-                <pre class='example highlight'>entity(niiri:stat_image_properties_id,
+                <pre class='example highlight'>entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
-      prov:label = "Statistical image properties",
-      spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
-      spm:expectedNumberOfClusters = "0.0889172687960151" %% xsd:float,
-      spm:heightCriticalThresholdFWE05 = "5.23529984739211" %% xsd:float,
-      spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
-      spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
-      spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])</pre>  
+      prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
+      prov:label = "Search Space" %% xsd:string,
+      nidm:originalFileName = "final_mask.nii" %% xsd:string,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+      spm:searchVolumeInVoxels = "65593" %% xsd:int,
+      spm:searchVolumeInUnits = "1771011" %% xsd:float,
+      spm:reselSize = "22.9229643140043" %% xsd:float,
+      spm:searchVolumeInResels = "2552.68032521656" %% xsd:float,
+      spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string,
+      spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
+      spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
+      nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
-        <section><h1>SPM-specific Concepts</h1>
+        <section><h1>SPM-specific Concepts</h1>            SPM-specific structures are outlined in <a href="#fig-nidmresults-core-uml-spm"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to SPM-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), ligth-colors indicate generic classes having additional SPM-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-spm">
+              <img src="img/nidm-results-core-uml-spm.svg" onerror="this.src='img/nidm-results-core-uml-spm.png'" width="600px" />
+              <figcaption>SPM-specific Structures. </figcaption>
+            </figure> 
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
                 <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results SPM-specific Concepts Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
@@ -1141,7 +1152,12 @@
       crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
             </section>
             </section>
-        <section><h1>FSL-specific Concepts</h1>
+        <section><h1>FSL-specific Concepts</h1>            FSL-specific structures are outlined in <a href="#fig-nidmresults-core-uml-fsl"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to FSL-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), ligth-colors indicate to generic classes having additional FSL-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-fsl">
+              <img src="img/nidm-results-core-uml-fsl.svg" onerror="this.src='img/nidm-results-core-uml-fsl.png'" width="600px" />
+              <figcaption>FSL-specific Structures. </figcaption>
+            </figure> 
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
                 <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results FSL-specific Concepts Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
