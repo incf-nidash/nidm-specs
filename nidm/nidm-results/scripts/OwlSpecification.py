@@ -284,10 +284,12 @@ if __name__ == '__main__':
     components =  collections.OrderedDict()
     components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
              NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
+             NIDM['GrandMeanMap'],
              NIDM['ContrastEstimation'], NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
              NIDM['ContrastMap'], NIDM['StatisticMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSet'], NIDM['SearchSpaceMap'], NIDM['Cluster'], NIDM['Peak'],
+             NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
