@@ -44,10 +44,6 @@
     <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group.</td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>nidm:ClusterDefinitionCriteria: </b>Set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion).</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model.</td>
 </tr>
