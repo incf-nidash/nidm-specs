@@ -151,7 +151,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:hasErrorDistribution: </b>Property that associates a NoiseDistribution with a NoiseModel.</td>
+    <td><b>nidm:hasErrorDistribution: </b>Property that associates an ErrorDistribution with an ErrorModel.</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:ErrorDistribution </td>
 </tr>
