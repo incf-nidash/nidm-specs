@@ -32,7 +32,10 @@ class ExampleFromTemplate(object):
             nidm_tpm = Template(fid.read())
             fid.close()
 
+            # try:
             class_example = nidm_tpm.substitute(**substitutes)
+            # except KeyError:
+            #     print nidm_class
 
             if self.one_file_per_class:
                 example_file = os.path.join(self.dir, nidm_class+".txt")
