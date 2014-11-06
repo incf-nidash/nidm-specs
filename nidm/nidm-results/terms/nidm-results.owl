@@ -164,7 +164,7 @@ nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
 
 nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
                           
-                          prov:definition "Property that associates a NoiseDistribution with a NoiseModel." ;
+                          prov:definition "Property that associates an ErrorDistribution with an ErrorModel." ;
                           
                           obo:IAO_0000114 obo:IAO_0000125 ;
                           
@@ -1673,14 +1673,15 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            obo:IAO_0000114 obo:IAO_0000122 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion2D
 
 nidm:ConnectivityCriterion2D rdf:type owl:Class ;
                              
                              owl:equivalentClass [ rdf:type owl:Class ;
                                                    owl:oneOf ( nidm:connected4In2D
-                                                               nidm:connected6In2D
                                                                nidm:connected8In2D
+                                                               nidm:connected6In2D
                                                              )
                                                  ] ;
                              
@@ -1696,15 +1697,16 @@ nidm:ConnectivityCriterion2D rdf:type owl:Class ;
 nidm:ConnectivityCriterion3D rdf:type owl:Class ;
                              
                              owl:equivalentClass [ rdf:type owl:Class ;
-                                                   owl:oneOf ( nidm:connected6In3D
+                                                   owl:oneOf ( nidm:connected18In3D
+                                                               nidm:connected6In3D
                                                                nidm:connected26In3D
-                                                               nidm:connected18In3D
                                                              )
                                                  ] ;
                              
                              rdfs:subClassOf nidm:ConnectivityCriterion ;
                              
                              prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours in 3D. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ContrastEstimation
@@ -1939,7 +1941,7 @@ nidm:ErrorDistribution rdf:type owl:Class ;
                        
                        rdfs:subClassOf prov:Entity ;
                        
-                       obo:IAO_0000115 "Probability distribution used to model the noise." ;
+                       obo:IAO_0000115 "Probability distribution used to model the error." ;
                        
                        obo:IAO_0000114 obo:IAO_0000125 .
 
@@ -2947,6 +2949,42 @@ nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                             prov:definition "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
                             
                             obo:IAO_0000114 obo:IAO_0000120 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected18In3D
+
+nidm:connected18In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected26In3D
+
+nidm:connected26In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected4In2D
+
+nidm:connected4In2D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In2D
+
+nidm:connected6In2D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In3D
+
+nidm:connected6In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected8In2D
+
+nidm:connected8In2D rdf:type owl:NamedIndividual .
 
 
 
