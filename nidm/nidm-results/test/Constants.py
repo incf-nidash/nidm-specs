@@ -9,6 +9,7 @@ from rdflib import Namespace
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
+NIIRI = Namespace('http://iri.nidash.org/')
 SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
 FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
