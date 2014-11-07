@@ -219,7 +219,7 @@ class OwlReader():
     def get_definition(self, owl_term):
         definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))
         if definition:
-            definition = str(definition[0])
+            definition = unicode(definition[0])
         else:
             definition = ""
         return definition
