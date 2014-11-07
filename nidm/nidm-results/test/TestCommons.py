@@ -134,12 +134,14 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2):
     doc_graph.parse(ttl_doc1, format='turtle')
     same_doc_graph = Graph()
 
-    # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
-    # if doc_graph.parse(ttl_doc2) is called directly
     try:
+        # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
+        # if doc_graph.parse(ttl_doc2) is called directly
         logger.info(' Opening '+ttl_doc2)
         ttl_doc2_req = urllib2.urlopen(ttl_doc2)
         same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
+    except urllib2.HTTPError:
+        return False
     except ValueError:
         same_doc_graph.parse(ttl_doc2, format='turtle')
 

@@ -160,6 +160,20 @@ nidm:hasErrorDependence rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasErrorDistribution
+
+nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
+                          
+                          prov:definition "Property that associates an ErrorDistribution with an ErrorModel." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000122 ;
+                          
+                          rdfs:range nidm:ErrorDistribution ;
+                          
+                          rdfs:domain nidm:ErrorModel .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasMapHeader
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
@@ -169,18 +183,6 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   rdfs:domain nidm:Map ;
                   
                   rdfs:range nidm:MapHeader .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasNoiseDistribution
-
-nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
-                          
-                          prov:definition "FIXME" ;
-                          
-                          rdfs:domain nidm:ErrorModel ;
-                          
-                          rdfs:range nidm:NoiseDistribution .
 
 
 
@@ -870,9 +872,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -900,9 +902,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -928,9 +930,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -956,9 +958,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1517,9 +1519,13 @@ spm:softwareRevision rdf:type owl:DatatypeProperty ;
 
 fsl:BinomialDistribution rdf:type owl:Class ;
                          
-                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         rdfs:subClassOf nidm:ErrorDistribution ;
                          
-                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI .
+                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI ;
+                         
+                         rdfs:isDefinedBy "The binomial distribution is a discrete probability distribution which describes the probability of k successes in n draws with replacement from a finite population of size N. The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N. The binomial distribution gives the discrete probability distribution of obtaining exactly n successes out of N Bernoulli trials (where the result of each Bernoulli trial is true with probability p and false with probability q=1-p ) notation: B(n,p) The mean is N*p The variance is N*p*q. (Definition from STATO)." ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1566,9 +1572,11 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
 
 fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
                                        
-                                       rdfs:subClassOf nidm:NoiseDistribution ;
+                                       rdfs:subClassOf nidm:ErrorDistribution ;
                                        
-                                       prov:definition "FIXME" .
+                                       prov:definition "Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution." ;
+                                       
+                                       obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1667,6 +1675,41 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201." ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion2D
+
+nidm:ConnectivityCriterion2D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected4In2D
+                                                               nidm:connected8In2D
+                                                               nidm:connected6In2D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition """The order of neighbourhood used to determine whether two pixels
+ are neighbours in 2D.  Possible values are: 4 (pixels share an edge), 8 (voxels share an edge or a corner).""" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ConnectivityCriterion3D
+
+nidm:ConnectivityCriterion3D rdf:type owl:Class ;
+                             
+                             owl:equivalentClass [ rdf:type owl:Class ;
+                                                   owl:oneOf ( nidm:connected18In3D
+                                                               nidm:connected6In3D
+                                                               nidm:connected26In3D
+                                                             )
+                                                 ] ;
+                             
+                             rdfs:subClassOf nidm:ConnectivityCriterion ;
+                             
+                             prov:definition "The order of neighbourhood used to determine whether two voxels are neighbours in 3D. Possible values are: 6 (voxels share a face), 18 (voxels share a face or edge), 26 (voxels share a face, edge or corner)." .
 
 
 
@@ -1885,6 +1928,18 @@ nidm:ErrorDependence rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#ErrorDistribution
+
+nidm:ErrorDistribution rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf prov:Entity ;
+                       
+                       obo:IAO_0000115 "Probability distribution used to model the error." ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#ErrorModel
 
 nidm:ErrorModel rdf:type owl:Class ;
@@ -2004,9 +2059,13 @@ nidm:FStatistic rdf:type owl:Class ;
 
 nidm:GaussianDistribution rdf:type owl:Class ;
                           
-                          rdfs:subClassOf nidm:NoiseDistribution ;
+                          rdfs:subClassOf nidm:ErrorDistribution ;
                           
-                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000227"^^xsd:anyURI .
+                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000227"^^xsd:anyURI ;
+                          
+                          rdfs:isDefinedBy "A normal distribution is a continuous probability distribution described by a probability distribution function described here: http://mathworld.wolfram.com/NormalDistribution.html (Definition from STATO)." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2206,21 +2265,15 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#NoiseDistribution
-
-nidm:NoiseDistribution rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf prov:Entity .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#NonParametricDistribution
 
 nidm:NonParametricDistribution rdf:type owl:Class ;
                                
-                               rdfs:subClassOf nidm:NoiseDistribution ;
+                               rdfs:subClassOf nidm:ErrorDistribution ;
                                
-                               prov:definition "FIXME" .
+                               prov:definition "Probability distribution estimated empirically on the data without assumptions on the shape of the probability distribution." ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2326,9 +2379,13 @@ nidm:PixelConnectivityCriterion rdf:type owl:Class ;
 
 nidm:PoissonDistribution rdf:type owl:Class ;
                          
-                         rdfs:subClassOf nidm:NoiseDistribution ;
+                         rdfs:subClassOf nidm:ErrorDistribution ;
                          
-                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI .
+                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI ;
+                         
+                         rdfs:isDefinedBy "Poisson distribution is a probability distribution used to model the number of events occurring within a given time interval. It is defined by a real number (λ) and an integer k representing the number of events and a function. The expected value of a Poisson-distributed random variable is equal to λ and so is its variance. (Definition from STATO)." ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2893,6 +2950,42 @@ nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                             prov:definition "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
                             
                             obo:IAO_0000114 obo:IAO_0000120 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected18In3D
+
+nidm:connected18In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected26In3D
+
+nidm:connected26In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected4In2D
+
+nidm:connected4In2D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In2D
+
+nidm:connected6In2D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected6In3D
+
+nidm:connected6In3D rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#connected8In2D
+
+nidm:connected8In2D rdf:type owl:NamedIndividual .
 
 
 
