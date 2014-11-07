@@ -292,7 +292,7 @@ def main():
 			sha="b6286d36e678c23622b5b0486f0efb5b274f9a5e2a3ee6aceb6a0338f7745fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527",
 			coordinate_space_id="niiri:coordinate_space_id_11",
 			contrast_est_id="niiri:contrast_estimation_id_1"),
-		"FSL_ZStatisticMap": dict(
+		"FSL_StatisticMap-Z": dict(
 			statistic_map_id="niiri:z_statistic_map_id_1",
 			label="Z-Statistic Map: Generation",
 			location="file://./ZStatistic.nii.gz",
@@ -302,6 +302,7 @@ def main():
 			statistic_type="nidm:ZStatistic",
 			contrast_name="Generation",
 			effect_dof="1",
+			error_dof="INF",
 			sha="3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03",
 			coordinate_space_id="niiri:coordinate_space_id_12",
 			contrast_est_id="niiri:contrast_estimation_id_1"),
@@ -327,10 +328,9 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_14",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"
 			),
-		"PeakDefinitionCriteria": dict(
+		"PeakDefinitionCriteria_NoMaxPeaks": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id_1",
 			label="Peak Definition Criteria",
-			max_num_peaks="3",
 			min_dist_peaks="0.0"
 			),
 		"ClusterDefinitionCriteria": dict(
@@ -472,6 +472,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-4-1": dict(
 			peak_id="niiri:peak_0004_1",
 			label="Peak 0004_1",
+			p_uncorr="3.51932e-09",
 			location="niiri:coordinate_0004_1",
 			equiv_z="5.79",
 			cluster_id="niiri:cluster_0004"
@@ -489,6 +490,7 @@ def main():
 		"Peak_NoP-4-2": dict(
 			peak_id="niiri:peak_0004_2",
 			label="Peak 0004_2",
+			p_uncorr="9.01048e-09",
 			location="niiri:coordinate_0004_2",
 			equiv_z="5.63",
 			cluster_id="niiri:cluster_0004"
@@ -506,6 +508,7 @@ def main():
 		"Peak_NoP-4-3": dict(
 			peak_id="niiri:peak_0004_3",
 			label="Peak 0004_3",
+			p_uncorr="9.54787e-09",
 			location="niiri:coordinate_0004_3",
 			equiv_z="5.62",
 			cluster_id="niiri:cluster_0004"
@@ -523,6 +526,7 @@ def main():
 		"Peak_NoP-4-4": dict(
 			peak_id="niiri:peak_0004_4",
 			label="Peak 0004_4",
+			p_uncorr="1.01163e-08",
 			location="niiri:coordinate_0004_4",
 			equiv_z="5.61",
 			cluster_id="niiri:cluster_0004"
@@ -540,6 +544,7 @@ def main():
 		"Peak_NoP-4-5": dict(
 			peak_id="niiri:peak_0004_5",
 			label="Peak 0004_5",
+			p_uncorr="1.07176e-08",
 			location="niiri:coordinate_0004_5",
 			equiv_z="5.6",
 			cluster_id="niiri:cluster_0004"
@@ -557,6 +562,7 @@ def main():
 		"Peak_NoP-4-6": dict(
 			peak_id="niiri:peak_0004_6",
 			label="Peak 0004_6",
+			p_uncorr="1.34887e-08",
 			location="niiri:coordinate_0004_6",
 			equiv_z="5.56",
 			cluster_id="niiri:cluster_0004"
@@ -574,6 +580,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-3-1": dict(
 			peak_id="niiri:peak_0003_1",
 			label="Peak 0003_1",
+			p_uncorr="1.01163e-08",
 			location="niiri:coordinate_0003_1",
 			equiv_z="5.61",
 			cluster_id="niiri:cluster_0003"
@@ -591,6 +598,7 @@ def main():
 		"Peak_NoP-3-2": dict(
 			peak_id="niiri:peak_0003_2",
 			label="Peak 0003_2",
+			p_uncorr="1.52768e-07",
 			location="niiri:coordinate_0003_2",
 			equiv_z="5.12",
 			cluster_id="niiri:cluster_0003"
@@ -608,6 +616,7 @@ def main():
 		"Peak_NoP-3-3": dict(
 			peak_id="niiri:peak_0003_3",
 			label="Peak 0003_3",
+			p_uncorr="1.82833e-06",
 			location="niiri:coordinate_0003_3",
 			equiv_z="4.63",
 			cluster_id="niiri:cluster_0003"
@@ -625,6 +634,7 @@ def main():
 		"Peak_NoP-3-4": dict(
 			peak_id="niiri:peak_0003_4",
 			label="Peak 0003_4",
+			p_uncorr="9.77365e-06",
 			location="niiri:coordinate_0003_4",
 			equiv_z="4.27",
 			cluster_id="niiri:cluster_0003"
@@ -642,6 +652,7 @@ def main():
 		"Peak_NoP-3-5": dict(
 			peak_id="niiri:peak_0003_5",
 			label="Peak 0003_5",
+			p_uncorr="1.22151e-05",
 			location="niiri:coordinate_0003_5",
 			equiv_z="4.22",
 			cluster_id="niiri:cluster_0003"
@@ -659,6 +670,7 @@ def main():
 		"Peak_NoP-3-6": dict(
 			peak_id="niiri:peak_0003_6",
 			label="Peak 0003_6",
+			p_uncorr="1.89436e-05",
 			location="niiri:coordinate_0003_6",
 			equiv_z="4.12",
 			cluster_id="niiri:cluster_0003"
@@ -676,6 +688,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-2-1": dict(
 			peak_id="niiri:peak_0002_1",
 			label="Peak 0002_1",
+			p_uncorr="1.74205e-06",
 			location="niiri:coordinate_0002_1",
 			equiv_z="4.64",
 			cluster_id="niiri:cluster_0002"
@@ -693,6 +706,7 @@ def main():
 		"Peak_NoP-2-2": dict(
 			peak_id="niiri:peak_0002_2",
 			label="Peak 0002_2",
+			p_uncorr="4.71165e-06",
 			location="niiri:coordinate_0002_2",
 			equiv_z="4.43",
 			cluster_id="niiri:cluster_0002"
@@ -710,6 +724,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-1-1": dict(
 			peak_id="niiri:peak_0001_1",
 			label="Peak 0001_1",
+			p_uncorr="2.01334e-06",
 			location="niiri:coordinate_0001_1",
 			equiv_z="4.61",
 			cluster_id="niiri:cluster_0001"
@@ -727,6 +742,7 @@ def main():
 		"Peak_NoP-1-2": dict(
 			peak_id="niiri:peak_0001_2",
 			label="Peak 0001_2",
+			p_uncorr="0.000788846",
 			location="niiri:coordinate_0001_2",
 			equiv_z="3.16",
 			cluster_id="niiri:cluster_0001"
@@ -744,6 +760,7 @@ def main():
 		"Peak_NoP-1-3": dict(
 			peak_id="niiri:peak_0001_3",
 			label="Peak 0001_3",
+			p_uncorr="0.00122277",
 			location="niiri:coordinate_0001_3",
 			equiv_z="3.03",
 			cluster_id="niiri:cluster_0001"
@@ -761,6 +778,7 @@ def main():
 		"Peak_NoP-1-4": dict(
 			peak_id="niiri:peak_0001_4",
 			label="Peak 0001_4",
+			p_uncorr="0.00554262",
 			location="niiri:coordinate_0001_4",
 			equiv_z="2.54",
 			cluster_id="niiri:cluster_0001"

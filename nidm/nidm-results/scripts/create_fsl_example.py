@@ -168,7 +168,7 @@ def main():
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"FSL_ZStatisticMap": dict(
+		"FSL_StatisticMap-Z": dict(
 			statistic_map_id="niiri:z_statistic_map_id",
 			label="Z-Statistic Map: listening > rest",
 			location="file://path/to/ZStatistic_0001.nii.gz",
@@ -177,6 +177,7 @@ def main():
 			filename_2="zstat1.nii.gz",
 			statistic_type="nidm:ZStatistic",
 			contrast_name="listening > rest",
+			error_dof="INF",
 			effect_dof="1",
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -298,6 +299,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-1": dict(
 			peak_id="niiri:peak_0001",
 			label="Peak 1",
+			p_uncorr="4.126074e-10",
 			location="niiri:coordinate_0001",
 			equiv_z="6.14",
 			cluster_id="niiri:cluster_0001"
@@ -315,6 +317,7 @@ def main():
 		"Peak_NoP-2": dict(
 			peak_id="niiri:peak_0002",
 			label="Peak 2",
+			p_uncorr="7.705712e-10",
 			location="niiri:coordinate_0002",
 			equiv_z="6.04",
 			cluster_id="niiri:cluster_0001"
@@ -332,6 +335,7 @@ def main():
 		"Peak_NoP-3": dict(
 			peak_id="niiri:peak_0003",
 			label="Peak 3",
+			p_uncorr="4.462172e-09",
 			location="niiri:coordinate_0003",
 			equiv_z="5.75",
 			cluster_id="niiri:cluster_0001"
@@ -349,6 +353,7 @@ def main():
 		"Peak_NoP-4": dict(
 			peak_id="niiri:peak_0004",
 			label="Peak 4",
+			p_uncorr="4.462172e-09",
 			location="niiri:coordinate_0004",
 			equiv_z="5.75",
 			cluster_id="niiri:cluster_0001"
@@ -366,6 +371,7 @@ def main():
 		"FSL_Peak_NoP_MaxCluster-5": dict(
 			peak_id="niiri:peak_0005",
 			label="Peak 5",
+			p_uncorr="2.178976e-09",
 			location="niiri:coordinate_0005",
 			equiv_z="5.87",
 			cluster_id="niiri:cluster_0002"
@@ -383,6 +389,7 @@ def main():
 		"Peak_NoP-6": dict(
 			peak_id="niiri:peak_0006",
 			label="Peak 6",
+			p_uncorr="8.022392e-09",
 			location="niiri:coordinate_0006",
 			equiv_z="5.65",
 			cluster_id="niiri:cluster_0002"
