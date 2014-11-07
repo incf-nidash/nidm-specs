@@ -8,10 +8,6 @@
 <tr><th>Curation Status</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>fsl:NonParametricSymmetricDistribution: </b>Probability distribution estimated empirically on the data assuming a symmetric probability distribution. Non-parametric distribution are usually estimated using permutation of the class labels or sign-flipping.</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:ContrastMap: </b>A map whose value at each location is statistical contrast estimate.</td>
 </tr>
 <tr>
@@ -38,10 +34,6 @@
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:HeightThreshold: </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:NonParametricDistribution: </b>Probability distribution estimated empirically on the data without assumption on the shape of the probability distribution. Non-parametric distribution are usually estimated using permutation of the class labels or sign-flipping.</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -148,12 +140,6 @@
     <td><b>nidm:grandMeanScaling: </b>Binary flag defining whether the data was scaled. Specifically, "grand mean scaling" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses.</td>
     <td>nidm:Data </td>
     <td>xsd:boolean </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:hasErrorDistribution: </b>Property that associates an ErrorDistribution with an ErrorModel.</td>
-    <td>nidm:ErrorModel </td>
-    <td>nidm:ErrorDistribution </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
