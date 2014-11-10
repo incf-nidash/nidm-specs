@@ -56,7 +56,7 @@ class TestProvStoreLinks(unittest.TestCase):
             
             if self.provstore_url[example_file]:
                 logger.info('\tProv store URL: '+self.provstore_url[example_file])
-                found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.provstore_url[example_file], True)
+                found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.provstore_url[example_file])
 
                 if found_difference:
                     error_msg.append(example_file+": Prov store link outdated, please update README.md using nidm/nidm-results/scripts/UpdateExampleReadmes.py")
@@ -65,10 +65,10 @@ class TestProvStoreLinks(unittest.TestCase):
 
             if self.ttl_file[example_file]:
                 if os.path.isfile(self.ttl_file[example_file]):
-                    found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.ttl_file[example_file], True)
+                    found_difference = compare_ttl_documents(self.ttl_from_provn_file_url[example_file], self.ttl_file[example_file])
 
                     if found_difference:
-                        error_msg.append(example_file+": Turtle file outdated, please update using nidm/nidm-results/scripts/UpdateExampleReadmes.py")
+                        error_msg.append(example_file+": Provn file outdated, please update using nidm/nidm-results/scripts/UpdateExampleReadmes.py")
                 else:
                     error_msg.append(example_file+": No turtle file.")
             else:

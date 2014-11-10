@@ -217,12 +217,20 @@ class OwlReader():
         return prov_class
 
     def get_definition(self, owl_term):
-        definition = list(self.graph.objects(owl_term, PROV['definition']))
+        definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))
         if definition:
-            definition = str(definition[0])
+            definition = unicode(definition[0])
         else:
             definition = ""
         return definition
+
+    def get_same_as(self, owl_term):
+        same_as = list(self.graph.objects(owl_term, OWL['sameAs']))
+        if same_as:
+            same_as = ", ".join(same_as)
+        else:
+            same_as = ""
+        return same_as
 
     def get_used_by(self, owl_term):
         used_by = list(self.graph.objects(owl_term, PROV['used']))
@@ -232,10 +240,16 @@ class OwlReader():
         generated_by = list(self.graph.objects(owl_term, PROV['wasGeneratedBy']))
         return generated_by
 
-    def get_example(self, owl_term):
+    def get_example(self, owl_term, base_repository=None):
         example = list(self.graph.objects(owl_term, IAO_EXAMPLE))
         if example:
             example = str(example[0])
+            if base_repository is not None:
+                if example.startswith(base_repository):
+                    local_path = example.replace(base_repository, "./")
+                    fid_ex = open(local_path)
+                    example = fid_ex.read()
+                    fid_ex.close()
         else:
             example = ""
         return example

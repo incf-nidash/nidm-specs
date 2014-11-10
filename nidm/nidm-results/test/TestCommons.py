@@ -7,7 +7,8 @@
 
 import os
 import re
-import urllib2, urllib
+import urllib2
+import rdflib
 from rdflib.graph import Graph
 from rdflib.compare import *
 import logging
@@ -70,39 +71,95 @@ def merge_exception_dict(excep_dict, other_except_dict):
 
     return merged_dict
 
-def compare_ttl_documents(ttl_doc1, ttl_doc2, prefix_uri_from_first=False):
-    # Check whether most recent document is identical to current version
-    doc_graph = Graph()
-    doc_graph.parse(ttl_doc1)
-    same_doc_graph = Graph()
+def display_graph(diff_graph, prefix_msg="Difference in:"):
+    found_difference = False
+    for s,p,o in diff_graph.triples((None,None,None)):
+            # workaround to avoid issue with "5853" being a string
+            prefix, namespace, name = diff_graph.compute_qname(p)
+            if name != "softwareRevision":
+                if name != "featVersion":
+                    o_name = ""
+                    if isinstance(o, rdflib.URIRef):
+                        unused, unused, o_name = diff_graph.compute_qname(o)
+                    # Ignore prov:Location not specified explicitely
+                    if o_name != 'Location':
+                        found_difference = True
 
-    # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
-    # if doc_graph.parse(ttl_doc2) is called directly
-    try:
-        logger.info(' Opening '+ttl_doc2)
-        ttl_doc2_req = urllib2.urlopen(ttl_doc2)
-        same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
-    except ValueError:
-        same_doc_graph.parse(ttl_doc2, format='turtle')
+                        s_str = str(s)
+                        if isinstance(s, rdflib.term.URIRef) \
+                            and not isinstance(s, rdflib.term.BNode):
+                            s_str = diff_graph.qname(s)
+                        elif isinstance(s, rdflib.term.Literal):
+                            s_str = s_str+" ("+str(s.datatype)+")"
+                        p_str = str(p)
+                        if isinstance(p, rdflib.term.URIRef) \
+                            and not isinstance(p, rdflib.term.BNode):
+                            p_str = diff_graph.qname(p)
+                        elif isinstance(p, rdflib.term.Literal):
+                            p_str = p_str+" ("+str(p.datatype)+")"                        
+                        o_str = str(o)
+                        if isinstance(o, rdflib.term.URIRef) \
+                            and not isinstance(o, rdflib.term.BNode):
+                            o_str = diff_graph.qname(o)
+                        elif isinstance(o, rdflib.term.Literal):
+                            o_str = o_str+" ("+str(o.datatype)+")"    
+                                                    
+                        logger.info("\t"+prefix_msg+' s='+s_str+\
+                                ", p="+p_str+\
+                                ", o="+o_str)
 
+    return found_difference
+
+def compare_graphs(graph_doc1, graph_doc2):
     # Use isomorphic to ignore BNode
-    iso1 = to_isomorphic(same_doc_graph)
-    iso2 = to_isomorphic(doc_graph)
+    iso1 = to_isomorphic(graph_doc1)
+    iso2 = to_isomorphic(graph_doc2)
 
     found_difference = False
     if iso1 != iso2:
 
         in_both, in_first, in_second = graph_diff(iso1, iso2)
 
-        diff_graph = (in_first+in_second)
-
-        for s,p,o in diff_graph.triples((None,None,None)):
-            # workaround to avoid issue with "5853" being a string
-            if iso1.qname(p) != "spm:softwareRevision":
-                if iso1.qname(p) != "fsl:featVersion":
-                    found_difference = True
-                    logger.info('\tDifference in: s='+str(s)+\
-                        ", p="+str(p)+\
-                        ", o="+o)
+        # diff_graph = (in_first+in_second)
+        found_difference_1 = display_graph(in_first, "\t In first: ")
+        found_difference_2 = display_graph(in_second, "\t In second: ")
+        found_difference = found_difference_1 or found_difference_2
+        
                     # break;
+    return found_difference
+
+def compare_ttl_documents(ttl_doc1, ttl_doc2):
+    # Check whether most recent document is identical to current version
+    doc_graph = Graph()
+    doc_graph.parse(ttl_doc1, format='turtle')
+    same_doc_graph = Graph()
+
+    try:
+        # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
+        # if doc_graph.parse(ttl_doc2) is called directly
+        logger.info(' Opening '+ttl_doc2)
+        ttl_doc2_req = urllib2.urlopen(ttl_doc2)
+        same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
+    except urllib2.HTTPError:
+        return False
+    except ValueError:
+        same_doc_graph.parse(ttl_doc2, format='turtle')
+
+    found_difference = compare_graphs(same_doc_graph, doc_graph)
+
+    # # Use isomorphic to ignore BNode
+    # iso1 = to_isomorphic(same_doc_graph)
+    # iso2 = to_isomorphic(doc_graph)
+
+    # found_difference = False
+    # if iso1 != iso2:
+
+    #     in_both, in_first, in_second = graph_diff(iso1, iso2)
+
+    #     # diff_graph = (in_first+in_second)
+    #     found_difference_1 = display_graph(in_first, "\t In first: ")
+    #     found_difference_2 = display_graph(in_second, "\t In second: ")
+    #     found_difference = found_difference_1 or found_difference_2
+        
+    #                 # break;
     return found_difference
