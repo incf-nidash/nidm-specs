@@ -205,7 +205,7 @@ class OwlReader():
             if not prov_class:
                 if recursive > 0:
                     parent_classes_super = parent_classes
-                    for parent_class_super in parent_class:
+                    for parent_class_super in parent_classes_super:
                         prov_class = self.get_prov_class(parent_class, recursive=recursive-1)
 
         # Get mor generic PROV types
