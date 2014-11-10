@@ -217,12 +217,20 @@ class OwlReader():
         return prov_class
 
     def get_definition(self, owl_term):
-        definition = list(self.graph.objects(owl_term, PROV['definition']))
+        definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))
         if definition:
-            definition = str(definition[0])
+            definition = unicode(definition[0])
         else:
             definition = ""
         return definition
+
+    def get_same_as(self, owl_term):
+        same_as = list(self.graph.objects(owl_term, OWL['sameAs']))
+        if same_as:
+            same_as = ", ".join(same_as)
+        else:
+            same_as = ""
+        return same_as
 
     def get_used_by(self, owl_term):
         used_by = list(self.graph.objects(owl_term, PROV['used']))
