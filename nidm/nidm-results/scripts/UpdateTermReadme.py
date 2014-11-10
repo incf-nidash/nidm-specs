@@ -56,10 +56,14 @@ class UpdateTermReadme():
         readme_file_open.write(readme_txt)
         readme_file_open.close()
 
-    def create_term_row(self, term_name, definition, editor, color, range_value=None, domain=None):
+    def create_term_row(self, term_name, definition, same_as, editor, color, 
+        range_value=None, domain=None):
         img_color = ""        
         if color:
             img_color = '<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>  ' 
+
+        if same_as:
+            same_as = "(same as: <a href="+same_as+">"+same_as+"</a>)"
 
         range_domain = ""
         if range_value is not None:
@@ -70,7 +74,7 @@ class UpdateTermReadme():
         term_row = """
 <tr>
     <td>"""+img_color+"""</td>
-    <td><b>"""+term_name+""": </b>"""+definition+editor+"""</td>"""+range_domain+"""
+    <td><b>"""+term_name+""": </b>"""+definition+same_as+editor+"""</td>"""+range_domain+"""
 </tr>"""
         return term_row
 
@@ -95,11 +99,11 @@ class UpdateTermReadme():
     def update_readme(self, readme_file): 
         class_terms = dict()
         prpty_terms = dict()
-        attribute_terms = dict()
         definitions = dict()
         editors = dict()
         ranges = dict()
         domains = dict()
+        sameas = dict()
 
         for owl_term in self.owl.classes.union(self.owl.properties):
             curation_status = self.owl.get_curation_status(owl_term)
@@ -107,6 +111,7 @@ class UpdateTermReadme():
             editor = self.owl.get_editor(owl_term)
             range_value = self.owl.get_range(owl_term)
             domain = self.owl.get_domain(owl_term)
+            same = self.owl.get_same_as(owl_term)
             
             if definition:
                 if curation_status:
@@ -121,6 +126,8 @@ class UpdateTermReadme():
                     editors[term_key] = editor
                     ranges[term_key] = range_value
                     domains[term_key] = domain
+                    sameas[term_key] = same
+
 
         # Include missing keys and do not display ready for release terms
         order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([OBO_READY]))))
@@ -136,6 +143,7 @@ class UpdateTermReadme():
                 for class_name in sorted(class_names):
                     class_table_txt += self.create_term_row(class_name, \
                         definitions[class_name], \
+                        sameas[class_name], \
                         editors[class_name], \
                         CURATION_COLORS.setdefault(curation_status, ""))
         class_table_txt = class_table_txt+"\n</table>"
@@ -149,6 +157,7 @@ class UpdateTermReadme():
                 for term_name in sorted(term_names):
                     prpty_table_txt += self.create_term_row(term_name, \
                         definitions[term_name], \
+                        sameas[term_name], \
                         editors[term_name], \
                         CURATION_COLORS.setdefault(curation_status, ""), \
                         ranges[term_name], \
