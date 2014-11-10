@@ -1,24 +1,40 @@
 document
-  prefix neurolex <http://neurolex.org/wiki/>
-  prefix spm <http://www.incf.org/ns/nidash/spm#>
-  prefix nidm <http://www.incf.org/ns/nidash/nidm#>
-  prefix niiri <http://iri.nidash.org/>
-  prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
-
-  activity(niiri:inference_id_3,
-    [prov:label = "Inference",
-    nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
-    prov:type = 'nidm:Inference'])
-   
-  activity(niiri:conjunction_id_1,
-    [prov:label = "Conjunction Inference)",
-    nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
-    prov:type = 'nidm:ConjunctionInference'])
-  
-  activity(niiri:conjunction_id_2,
-    [prov:label = "k-Conjunction Inference",
-    nidm:globalNullDegree = 1,
-    nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
-    prov:type = 'spm:KConjunctionInference'])
-
+prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
+prefix neurolex <http://neurolex.org/wiki/>
+prefix spm <http://www.incf.org/ns/nidash/spm#>
+prefix pre_0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs <http://www.w3.org/2000/01/rdf-schema#>
+prefix nidm <http://www.incf.org/ns/nidash/nidm#>
+prefix niiri <http://iri.nidash.org/>
+prefix xsd <http://www.w3.org/2001/XMLSchema>
+prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+activity(niiri:inference_id_1,-,-,[prov:type = 'nidm:Inference', prov:label = "Inference", nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
+activity(niiri:conjunction_id_2,-,-,[prov:type = 'spm:KConjunctionInference', prov:label = "k-Conjunction Inference", nidm:globalNullDegree = "1" %% xsd:int, nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
+activity(niiri:conjunction_id_1,-,-,[prov:type = 'nidm:ConjunctionInference', prov:label = "Conjunction Inference", nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
+used(niiri:inference_id_1,niiri:statistic_map_id,-)
+used(niiri:inference_id_1,niiri:height_threshold_id,-)
+used(niiri:inference_id_1,niiri:extent_threshold_id,-)
+used(niiri:inference_id_1,niiri:display_map_id,-)
+used(niiri:inference_id_1,niiri:peak_definition_criteria_id,-)
+used(niiri:inference_id_1,niiri:cluster_definition_criteria_id,-)
+used(niiri:inference_id_1,niiri:mask_id_1,-)
+wasAssociatedWith(niiri:inference_id_1,niiri:software_id,-)
+used(niiri:conjunction_id_2,niiri:statistic_map_id_1,-)
+used(niiri:conjunction_id_2,niiri:statistic_map_id_2,-)
+used(niiri:conjunction_id_2,niiri:height_threshold_id,-)
+used(niiri:conjunction_id_2,niiri:extent_threshold_id,-)
+used(niiri:conjunction_id_2,niiri:display_map_id,-)
+used(niiri:conjunction_id_2,niiri:peak_definition_criteria_id,-)
+used(niiri:conjunction_id_2,niiri:cluster_definition_criteria_id,-)
+used(niiri:conjunction_id_2,niiri:mask_id_1,-)
+wasAssociatedWith(niiri:conjunction_id_2,niiri:software_id,-)
+used(niiri:conjunction_id_1,niiri:statistic_map_id_1,-)
+used(niiri:conjunction_id_1,niiri:statistic_map_id_2,-)
+used(niiri:conjunction_id_1,niiri:height_threshold_id,-)
+used(niiri:conjunction_id_1,niiri:extent_threshold_id,-)
+used(niiri:conjunction_id_1,niiri:display_map_id,-)
+used(niiri:conjunction_id_1,niiri:peak_definition_criteria_id,-)
+used(niiri:conjunction_id_1,niiri:cluster_definition_criteria_id,-)
+used(niiri:conjunction_id_1,niiri:mask_id_1,-)
+wasAssociatedWith(niiri:conjunction_id_1,niiri:software_id,-)
 endDocument

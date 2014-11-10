@@ -119,24 +119,18 @@ if __name__ == '__main__':
 		doc_title="NIDM-Results: "+doc_title
 		logger.info('Document entitled: '+'"'+doc_title+'"')
 
-		# Get provn of current document
 		doc_provn_file = os.path.join(NIDMRESULTSPATH, example_file)
+
+		# Update provn file from ttl
+		doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
+		call("provconvert -infile "+doc_ttl_file+" -outfile "+doc_provn_file, shell=True)
+
+		# Get provn of current document
 		doc_provn_file_open = open(doc_provn_file, 'r')
 		doc_provn = doc_provn_file_open.read()
 		doc_provn_file_open.close()
 
-		# Convert provn to json using Prov Translator APIs
-		url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
-		headers = { 'Content-type' : "text/provenance-notation",
-					'Accept' : "application/json" }
-		req = urllib2.Request(url, doc_provn, headers)
-		response = urllib2.urlopen(req)
-		doc_json_url = response.geturl()
-		logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
 
-		# Update turtle file from provn
-		doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
-		call("provconvert -infile "+doc_provn_file+" -outfile "+doc_ttl_file, shell=True)
 		# response = urllib2.urlopen(same_doc_ttl_url)
 		# doc_ttl = response.read()
 		# ttl_fid.write(doc_ttl)
@@ -160,7 +154,7 @@ if __name__ == '__main__':
 
 		if same_doc_url:
 			same_doc_ttl_url = same_doc_url[:-1]+".ttl"
-			found_difference = compare_ttl_documents(doc_json_url.replace(".json", ".ttl"), same_doc_ttl_url) 
+			found_difference = compare_ttl_documents(doc_ttl_file, same_doc_ttl_url) 
 			
 			if found_difference:
 				logger.info('\tDifferent from last version.')
@@ -171,6 +165,14 @@ if __name__ == '__main__':
 			found_difference = True
 
 		if found_difference:
+			# Convert provn to json using Prov Translator APIs
+			url = "https://provenance.ecs.soton.ac.uk/validator/provapi/documents/"
+			headers = { 'Content-type' : "text/provenance-notation",
+						'Accept' : "application/json" }
+			req = urllib2.Request(url, doc_provn, headers)
+			response = urllib2.urlopen(req)
+			doc_json_url = response.geturl()
+			logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
 			doc_url = create_document(doc_json_url, doc_title)
 		else:
 			doc_url = same_doc_url
