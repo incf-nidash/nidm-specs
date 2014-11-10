@@ -239,12 +239,13 @@ class OwlSpecification(object):
 
                 self.attributes_done.add(att)
 
-        example = self.owl.get_example(class_name)
+        BASE_REPOSITORY = "https://raw.githubusercontent.com/incf-nidash/nidm/master/"
+        example = self.owl.get_example(class_name, BASE_REPOSITORY)
         if example:
             self.text += """        
                 </ul>
                 </div>
-                <pre class='example highlight'>"""+self.owl.get_example(class_name)+"""</pre>"""
+                <pre class='example highlight'>"""+example+"""</pre>"""
 
         self.text += """  
             </section>"""
