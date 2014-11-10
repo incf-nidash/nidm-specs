@@ -98,6 +98,15 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			contrast_est_id="niiri:contrast_estimation_id"),
+		"CustomMaskMap": dict(
+			custom_mask_id="niiri:mask_id_1",
+			label="Custom mask",
+			location="file:///path/to/CustomMask.nii.gz",
+			filename="CustomMask.nii.gz",
+			format="image/nifti",
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			sha="e43b6e01b0463fe7d40782137867a..."
+			),
 		"ContrastStandardErrorMap": dict(
 			contrast_standard_error_map_id="niiri:contrast_standard_error_map_id",
 			label="Contrast Standard Error Map",
@@ -135,6 +144,22 @@ def main():
 			cluster_size_resels="0",
 			p_unc="1",
 			p_fwe="1"
+			),
+		"SPM_ReselsPerVoxelMap": dict(
+			resels_per_voxel_map_id="niiri:resels_per_voxel_map_id",
+			label="Resels per Voxel Map",
+			location="file:///path/to/ReselsPerVoxel.nii.gz",
+			filename="ReselsPerVoxel.nii.gz",
+			format="image/nifti",
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			sha="e43b6e01b0463fe7d40782137867a...",
+			model_pe_id="niiri:model_pe_id"
+			),
+		"ClusterLabelsMap": dict(
+			cluster_label_map_id="niiri:cluster_label_map_id",
+			location="file:///path/to/ClusterLabels.nii.gz",
+			filename="ClusterLabels.nii.gz",
+			format="image/nifti"
 			),
 		"DisplayMaskMap": dict(
 			display_map_id="niiri:display_map_id",
@@ -245,6 +270,46 @@ def main():
 			random_field_station="false",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			inference_id="niiri:inference_id"
+			),
+		"FSL_CenterOfGravity": dict(
+			center_of_gravity_id="niiri:center_of_gravity_1",
+			location="niiri:coordinate_0001",
+			label="Center of gravity",
+			cluster_id="niiri:cluster_0001",
+			),
+		"FSL_ClusterMaximumStatistic": dict(
+			peak_id="niiri:cluster_max_statistic_0001",
+			label="Cluster Maximum Statistic",
+			location="niiri:coordinate_0001",
+			p_uncorr="0.00085796235",
+			equiv_z="3.135447",
+			cluster_id="niiri:cluster_0001"
+			),
+		"CoordinateSpace": dict(
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			label="Coordinate space 1",
+			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]",
+			voxel_units="['mm', 'mm', 'mm']",
+			voxel_size="[3, 3, 3]",
+			coord_system="nidm:MNICoordinateSystem",
+			number_of_dim="3",
+			dimensions="[53,63,46]"),
+		"Image": dict(
+			image_id="niiri:maximum_intensity_projection_id",
+			location="file:///path/to/MaximumIntensityProjection.png",
+			filename="MaximumIntensityProjection.png",
+			format="image/png"
+			),
+		"GrandMeanMap": dict(
+			grand_mean_map_id="niiri:grand_mean_map_id",
+			label="Grand Mean Map",
+			location="file:///path/to/GrandMean.nii.gz",
+			filename="GrandMean.nii.gz",
+			format="image/nifti",
+			masked_median="115",
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			sha="e43b6e01b0463fe7d40782137867a...",
+			model_pe_id="niiri:model_pe_id"
 			)
 		}
 
