@@ -31,11 +31,17 @@ class TestQueries(unittest.TestCase):
 
     def test_get_contrasts(self):
         logger.info("TestQueries: test_get_contrasts")
-        self.run_query_and_test("get_contrasts.rq", "Contrast not found", "Contrast query")
+        self.run_query_and_test("get_contrasts.rq", \
+            "Contrast not found", "Contrast query")
 
     def test_get_mask(self):
         logger.info("TestQueries: test_get_mask")
         self.run_query_and_test("get_mask.rq", "Mask not found", "Mask query")        
+
+    def test_get_cluster_peaks(self):
+        logger.info("TestQueries: test_get_cluster_peaks")
+        self.run_query_and_test("cluster_peaks.rq", \
+            "Clusters and peaks not found", "Clusters and peaks query")        
 
     def run_query_and_test(self, query_file, error_prefix, query_result_prefix):
         my_exception = dict()
