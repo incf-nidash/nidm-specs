@@ -68,7 +68,8 @@ class TestQueries(unittest.TestCase):
                 my_exception = merge_exception_dict(my_exception, exception_msg)
             else:
                 for row in sd:
-                    logger.info(example_name+"\t\t"+query_result_prefix+": "+",".join(row))
+                    logger.info(example_name+"\t\t"+query_result_prefix+":")
+                    logger.info(row)
 
         # Aggregate errors over examples for conciseness
         if my_exception:

@@ -9,12 +9,12 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 #cluster data query
 
-SELECT DISTINCT ?cluster ?label ?sizeVx ?sizeRz ?pvalcor ?pvalunc WHERE 
+SELECT DISTINCT * WHERE 
 { ?cluster a nidm:Cluster . 
   ?cluster nidm:clusterLabelId ?label .
   ?cluster nidm:clusterSizeInVoxels ?sizeVx .
-  ?cluster spm:clusterSizeInResels ?sizeRz .
-  ?cluster nidm:pValueFWER ?pvalcor .
-  ?cluster nidm:pValueUncorrected ?pvalunc .
+  OPTIONAL { ?cluster spm:clusterSizeInResels ?sizeRz } .
+  OPTIONAL { ?cluster nidm:pValueFWER ?pvalcor }.
+  OPTIONAL { ?cluster nidm:pValueUncorrected ?pvalunc }.
 }
 ORDER BY ?cluster
