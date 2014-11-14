@@ -1,3 +1,5 @@
+
+
 prov = rdflib.URIRef('http://www.w3.org/ns/prov#')
 xsd = rdflib.URIRef('http://www.w3.org/2001/XMLSchema#')
 neurolex = rdflib.URIRef('http://neurolex.org/wiki/')
@@ -7,6 +9,9 @@ niiri = rdflib.URIRef('http://iri.nidash.org/')
 crypto = rdflib.URIRef('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
 dct = rdflib.URIRef('http://purl.org/dc/terms/')
 rdfs = rdflib.URIRef('http://www.w3.org/2000/01/rdf-schema#')
+####################
+#Peaks Data Query
+####################
 
 SELECT DISTINCT ?cluster ?peak ?x ?y ?z ?value ?pval ?stat WHERE 
 { ?peak a nidm:Peak . 
@@ -22,3 +27,21 @@ SELECT DISTINCT ?cluster ?peak ?x ?y ?z ?value ?pval ?stat WHERE
   ?statmap nidm:statisticType ?stat .
 }
 ORDER BY ?cluster ?peak
+
+#####################
+#Cluster Data Query
+#####################
+
+#cluster data query
+
+query="""
+SELECT DISTINCT ?cluster ?label ?sizeVx ?sizeRz ?pvalcor ?pvalunc WHERE 
+{ ?cluster a nidm:Cluster . 
+  ?cluster nidm:clusterLabelId ?label .
+  ?cluster nidm:clusterSizeInVoxels ?sizeVx .
+  ?cluster spm:clusterSizeInResels ?sizeRz .
+  ?cluster nidm:pValueFWER ?pvalcor .
+  ?cluster nidm:pValueUncorrected ?pvalunc .
+}
+ORDER BY ?cluster
+"""
