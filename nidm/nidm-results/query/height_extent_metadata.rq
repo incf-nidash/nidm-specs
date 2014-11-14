@@ -1,0 +1,28 @@
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix spm: <http://www.incf.org/ns/nidash/spm#>
+prefix nidm: <http://www.incf.org/ns/nidash/nidm#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#####################
+#thresholds query
+#####################
+SELECT DISTINCT *
+WHERE 
+{ ?inference a nidm:Inference .
+  ?height a nidm:HeightThreshold .
+  ?extent a nidm:ExtentThreshold .
+  ?height rdfs:label ?heightLabel .
+  ?height nidm:userSpecifiedThresholdType ?heightType .
+  ?height prov:value ?heightThr .
+  ?inference prov:used ?statmap .
+  ?statmap a nidm:StatisticMap . 
+  ?statmap nidm:statisticType ?statType .
+  OPTIONAL {?height nidm:pValueUncorrected  ?heightPunc} .
+  OPTIONAL {?height nidm:pValueFWER ?heightPcor} .
+  ?extent rdfs:label ?extentLabel .
+  OPTIONAL {?extent nidm:clusterSizeInVoxels ?extentThrVox }.
+  OPTIONAL {?extent spm:clusterSizeInResels ?extentThrRes }.
+  OPTIONAL {?extent nidm:pValueUncorrected ?extentPunc }.
+  ?extent nidm:pValueFWER ?extentPcor .
+}
+

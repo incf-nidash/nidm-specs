@@ -1,0 +1,30 @@
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix spm: <http://www.incf.org/ns/nidash/spm#>
+prefix nidm: <http://www.incf.org/ns/nidash/nidm#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+####################
+#Peaks Data Query
+####################
+
+
+
+SELECT DISTINCT *
+WHERE 
+{ ?peak a nidm:Peak . 
+  ?cluster a nidm:Cluster . 
+  ?peak prov:wasDerivedFrom ?cluster .
+  ?peak prov:atLocation ?coordinate .
+  ?coordinate nidm:coordinate1 ?x .
+  ?coordinate nidm:coordinate2 ?y .
+  ?coordinate nidm:coordinate3 ?z .
+  OPTIONAL { ?peak prov:value ?value }.
+  ?peak nidm:equivalentZStatistic ?zstat .
+  OPTIONAL { ?peak nidm:pValueFWER ?pvalcor }.
+  ?peak nidm:pValueUncorrected ?pvalunc .
+  ?cluster prov:wasDerivedFrom/prov:wasGeneratedBy/prov:used ?statmap .
+  ?statmap a nidm:StatisticMap . 
+  ?statmap nidm:statisticType ?stat .
+}
+ORDER BY ?cluster ?peak
+

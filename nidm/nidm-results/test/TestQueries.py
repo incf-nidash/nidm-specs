@@ -32,7 +32,16 @@ class TestQueries(unittest.TestCase):
     def test_get_contrasts(self):
         logger.info("TestQueries: test_get_contrasts")
         self.run_query_and_test("get_contrasts.rq", "Contrast not found", "Contrast query")
+        
+    def test_get_height_extent_metadata(self):
+        self.run_query_and_test("height_extent_metadata.rq", "Height/Extent metatdata not found", "Height/Extent query")
 
+    def test_peaks(self):
+        self.run_query_and_test("peak.rq","Peaks not found","Peaks query")
+        
+    def test_clusters(self):
+        self.run_query_and_test("cluster.rq","Clusters not found","Clusters query")
+            
     def test_get_mask(self):
         logger.info("TestQueries: test_get_mask")
         self.run_query_and_test("get_mask.rq", "Mask not found", "Mask query")        
@@ -59,7 +68,8 @@ class TestQueries(unittest.TestCase):
                 my_exception = merge_exception_dict(my_exception, exception_msg)
             else:
                 for row in sd:
-                    logger.info(example_name+"\t\t"+query_result_prefix+": "+",".join(row))
+                    logger.info(example_name+"\t\t"+query_result_prefix+":")
+                    logger.info(row)
 
         # Aggregate errors over examples for conciseness
         if my_exception:
