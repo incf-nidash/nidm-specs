@@ -17,8 +17,8 @@ WHERE
   ?inference prov:used ?statmap .
   ?statmap a nidm:StatisticMap . 
   ?statmap nidm:statisticType ?statType .
-  ?height nidm:pValueUncorrected  ?heightPunc .
-  ?height nidm:pValueFWER ?heightPcor .
+  OPTIONAL {?height nidm:pValueUncorrected  ?heightPunc} .
+  OPTIONAL {?height nidm:pValueFWER ?heightPcor} .
   ?extent rdfs:label ?extentLabel .
   OPTIONAL {?extent nidm:clusterSizeInVoxels ?extentThrVox }.
   OPTIONAL {?extent spm:clusterSizeInResels ?extentThrRes }.
