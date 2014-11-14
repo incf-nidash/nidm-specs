@@ -7,7 +7,8 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 #####################
 #thresholds query
 #####################
-SELECT DISTINCT ?heightLabel ?heightType ?heightThr ?statType ?heightPunc ?heightPcor ?extentLabel ?extentThrVox ?extentThrRes ?extentPunc ?extentPcor WHERE 
+SELECT DISTINCT *
+WHERE 
 { ?inference a nidm:Inference .
   ?height a nidm:HeightThreshold .
   ?extent a nidm:ExtentThreshold .
@@ -20,9 +21,9 @@ SELECT DISTINCT ?heightLabel ?heightType ?heightThr ?statType ?heightPunc ?heigh
   ?height nidm:pValueUncorrected  ?heightPunc .
   ?height nidm:pValueFWER ?heightPcor .
   ?extent rdfs:label ?extentLabel .
-  ?extent nidm:clusterSizeInVoxels ?extentThrVox .
-  ?extent spm:clusterSizeInResels ?extentThrRes .
-  ?extent nidm:pValueUncorrected ?extentPunc .
+  OPTIONAL {?extent nidm:clusterSizeInVoxels ?extentThrVox }.
+  OPTIONAL {?extent spm:clusterSizeInResels ?extentThrRes }.
+  OPTIONAL {?extent nidm:pValueUncorrected ?extentPunc }.
   ?extent nidm:pValueFWER ?extentPcor .
 }
 
