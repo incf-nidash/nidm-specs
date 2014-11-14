@@ -84,7 +84,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-2": dict(
@@ -93,7 +93,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-3": dict(
@@ -102,7 +102,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-4": dict(
@@ -111,7 +111,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-5": dict(
@@ -120,7 +120,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-6": dict(
@@ -129,7 +129,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-7": dict(
@@ -138,7 +138,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-8": dict(
@@ -147,7 +147,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-9": dict(
@@ -156,7 +156,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-10": dict(
@@ -165,7 +165,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-11": dict(
@@ -174,7 +174,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-12": dict(
@@ -183,7 +183,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-13": dict(
@@ -192,7 +192,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-14": dict(
@@ -201,7 +201,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"CoordinateSpace-15": dict(
@@ -210,7 +210,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:SubjectSpace",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"FSL_ResidualMeanSquaresMap": dict(
