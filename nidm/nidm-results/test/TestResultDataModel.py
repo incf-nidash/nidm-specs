@@ -5,14 +5,11 @@ The software-specific test classes must inherit from this class.
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>, Satrajit Ghosh
 @copyright: University of Warwick 2014
 '''
-import unittest
-import os, inspect
-from subprocess import call
-import re
+import os
 import rdflib
-from rdflib.graph import Graph
 
 import logging
+from Constants import *
 
 logger = logging.getLogger(__name__)
 
@@ -20,17 +17,14 @@ logger = logging.getLogger(__name__)
 def get_readable_name(graph, item):
     if isinstance(item, rdflib.term.Literal):
         if item.datatype:
-            typePrefix, typeNamespace, typeName = graph.compute_qname(item.datatype)
-            typeStr = typePrefix+":"+typeName
+            typeStr = graph.qname(item.datatype)
         else:
             typeStr = '(None)'
         name = typeStr+" '"+item+"'"
     elif isinstance(item, rdflib.term.URIRef):
         # Look for label
         # name = graph.label(item)
-        prefix, namespace, name = graph.compute_qname(item)
-
-        name = prefix+":"+name
+        name = graph.qname(item)
     else:
         name = "unsupported type: "+item
     return name
@@ -63,14 +57,11 @@ class TestResultDataModel(object):
 
         self.my_execption = ""
 
-        # Display log messages in console
-        logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
         # # Current script directory is test directory (containing test data)
         # self.test_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
-    '''Print the results query 'res' to the console'''
     def print_results(self, res):
+        '''Print the results query 'res' to the console'''
         for idx, row in enumerate(res.bindings):
             rowfmt = []
             print "Item %d" % idx
@@ -78,13 +69,12 @@ class TestResultDataModel(object):
                 rowfmt.append('%s-->%s' % (key, val.decode()))
             print '\n'.join(rowfmt)
 
-    '''Check if the results query 'res' contains a value for each field'''
     def successful_retreive(self, res, info_str=""):
+        '''Check if the results query 'res' contains a value for each field'''
         if not res.bindings:
             self.my_execption = info_str+""": Empty query results"""
             return False
         for idx, row in enumerate(res.bindings):
-            rowfmt = []
             for key, val in sorted(row.items()):
                 logging.debug('%s-->%s' % (key, val.decode()))
                 if not val.decode():
@@ -95,9 +85,55 @@ class TestResultDataModel(object):
         # if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
         #     raise Exception(self.my_execption)
 
+    def _reconcile_graphs(self, graph1, graph2, recursive=10):
+        """Reconcile: if two entities have exactly the same attributes: they
+        are considered to be the same (set the same id for both)
+        """
+        reconciled = set()
+        for r in range(0, recursive):
+            subs = set(graph1.subjects())-reconciled
+            for s in subs:
+                gt_subjects = None
+                for p, o in graph1.predicate_objects(s):
+                    if gt_subjects is None:
+                        gt_subjects = set(graph2.subjects(p, o))
+                    else:
+                        gt_subjects = gt_subjects.intersection(\
+                            set(graph2.subjects(p, o)))
 
-    ''' Compare gt_graph and other_graph '''
+                if gt_subjects:
+                    # We found an URI in gt with the same predicates and objects
+                    for gt_s in gt_subjects:
+                        identical = True
+                        # Check that all (predicate, object) pairs are in s
+                        for p, o in graph2.predicate_objects(s):
+                            if not (s,p,o) in graph1:
+                                identical = False
+                                break;
+
+                        if identical:
+                            break;
+
+                    if identical:
+                        reconciled.add(gt_s)
+                        if not s==gt_s:
+                            logging.debug(str(s)+" identical to "+str(gt_s))
+                            for p, o in graph1.predicate_objects(s):
+                                graph1.remove((s,p,o))
+                                graph1.add((gt_s,p,o))
+                            o=s
+                            for s,p in graph1.subject_predicates(o):
+                                graph1.remove((s,p,o))
+                                graph1.add((s,p,gt_s))                                
+                            
+        return graph1
+
+
     def compare_full_graphs(self, gt_graph, other_graph):
+        ''' Compare gt_graph and other_graph '''
+
+        other_graph = self._reconcile_graphs(other_graph, gt_graph)
+
         # Check for predicates which are not in common to both graphs (XOR)
         diff_graph =  gt_graph ^ other_graph
 
@@ -141,9 +177,9 @@ class TestResultDataModel(object):
                 # If predicate and object found in gt_graph, then subject is wrong
                 elif (None,  p, o) in gt_graph:
                     if not (s, None, None) in gt_graph:
-                        if not s in exlude_s:
+                        if not s in exlude:
                             exc_added += "\nAdded:\t'%s'"%(s)
-                            exlude_s.append(s)
+                            exlude.append(s)
                     else:
                         exc_wrong += "\nWrong s:\ts('%s') p('%s') o('%s') not in gold std (should be s: '%s'?)"%(get_readable_name(other_graph, s),get_readable_name(other_graph, p),get_readable_name(other_graph, o),get_alternatives(gt_graph,p=p,o=o))
                         # exc_wrong += "\nWrong s:\t'%s' \tto '%s' \tis '%s' (instead of %s)."%(os.path.basename(p),get_readable_name(other_graph, o),os.path.basename(s),found_subject)
