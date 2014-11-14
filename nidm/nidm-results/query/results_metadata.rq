@@ -1,0 +1,24 @@
+#####################
+#thresholds query
+#####################
+query="""
+SELECT DISTINCT ?heightLabel ?heightType ?heightThr ?statType ?heightPunc ?heightPcor ?extentLabel ?extentThrVox ?extentThrRes ?extentPunc ?extentPcor WHERE 
+{ ?inference a nidm:Inference .
+  ?height a nidm:HeightThreshold .
+  ?extent a nidm:ExtentThreshold .
+  ?height rdfs:label ?heightLabel .
+  ?height nidm:userSpecifiedThresholdType ?heightType .
+  ?height prov:value ?heightThr .
+  ?inference prov:used ?statmap .
+  ?statmap a nidm:StatisticMap . 
+  ?statmap nidm:statisticType ?statType .
+  ?height nidm:pValueUncorrected  ?heightPunc .
+  ?height nidm:pValueFWER ?heightPcor .
+  ?extent rdfs:label ?extentLabel .
+  ?extent nidm:clusterSizeInVoxels ?extentThrVox .
+  ?extent spm:clusterSizeInResels ?extentThrRes .
+  ?extent nidm:pValueUncorrected ?extentPunc .
+  ?extent nidm:pValueFWER ?extentPcor .
+}
+"""
+
