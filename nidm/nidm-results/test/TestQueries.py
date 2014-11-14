@@ -32,6 +32,9 @@ class TestQueries(unittest.TestCase):
     def test_get_contrasts(self):
         logger.info("TestQueries: test_get_contrasts")
         self.run_query_and_test("get_contrasts.rq", "Contrast not found", "Contrast query")
+        
+    def test_get_height_extent_metadata(self):
+        self.run_query_and_test("height_extent_metadata.rq", "Height/Extent metatdata not found", "Height/Extent query")
 
     def test_get_mask(self):
         logger.info("TestQueries: test_get_mask")
