@@ -9,7 +9,8 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 
 
-SELECT DISTINCT ?cluster ?peak ?x ?y ?z ?value ?zstat ?pvalcor ?pvalunc ?stat WHERE 
+SELECT DISTINCT *
+WHERE 
 { ?peak a nidm:Peak . 
   ?cluster a nidm:Cluster . 
   ?peak prov:wasDerivedFrom ?cluster .
@@ -17,9 +18,9 @@ SELECT DISTINCT ?cluster ?peak ?x ?y ?z ?value ?zstat ?pvalcor ?pvalunc ?stat WH
   ?coordinate nidm:coordinate1 ?x .
   ?coordinate nidm:coordinate2 ?y .
   ?coordinate nidm:coordinate3 ?z .
-  ?peak prov:value ?value .
+  OPTIONAL { ?peak prov:value ?value }.
   ?peak nidm:equivalentZStatistic ?zstat .
-  ?peak nidm:pValueFWER ?pvalcor .
+  OPTIONAL { ?peak nidm:pValueFWER ?pvalcor }.
   ?peak nidm:pValueUncorrected ?pvalunc .
   ?cluster prov:wasDerivedFrom/prov:wasGeneratedBy/prov:used ?statmap .
   ?statmap a nidm:StatisticMap . 
