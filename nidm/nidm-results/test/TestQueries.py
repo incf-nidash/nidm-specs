@@ -36,6 +36,12 @@ class TestQueries(unittest.TestCase):
     def test_get_height_extent_metadata(self):
         self.run_query_and_test("height_extent_metadata.rq", "Height/Extent metatdata not found", "Height/Extent query")
 
+    def test_peaks(self):
+        self.run_query_and_test("peak.rq","Peaks not found","Peaks query")
+        
+    def test_clusters(self):
+        self.run_query_and_test("cluster.rq","Clusters not found","Clusters query")
+            
     def test_get_mask(self):
         logger.info("TestQueries: test_get_mask")
         self.run_query_and_test("get_mask.rq", "Mask not found", "Mask query")        

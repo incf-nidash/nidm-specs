@@ -1,0 +1,22 @@
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix spm: <http://www.incf.org/ns/nidash/spm#>
+prefix nidm: <http://www.incf.org/ns/nidash/nidm#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#####################
+#Cluster Data Query
+#####################
+
+#cluster data query
+
+query="""
+SELECT DISTINCT ?cluster ?label ?sizeVx ?sizeRz ?pvalcor ?pvalunc WHERE 
+{ ?cluster a nidm:Cluster . 
+  ?cluster nidm:clusterLabelId ?label .
+  ?cluster nidm:clusterSizeInVoxels ?sizeVx .
+  ?cluster spm:clusterSizeInResels ?sizeRz .
+  ?cluster nidm:pValueFWER ?pvalcor .
+  ?cluster nidm:pValueUncorrected ?pvalunc .
+}
+ORDER BY ?cluster
+"""
