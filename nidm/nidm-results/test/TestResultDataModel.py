@@ -10,6 +10,7 @@ import rdflib
 
 import logging
 from Constants import *
+from rdflib.namespace import RDF
 
 logger = logging.getLogger(__name__)
 
@@ -95,24 +96,34 @@ class TestResultDataModel(object):
             for s in subs:
                 gt_subjects = None
                 for p, o in graph1.predicate_objects(s):
-                    if gt_subjects is None:
-                        gt_subjects = set(graph2.subjects(p, o))
+                    # For entities reconcile base on data properties only 
+                    # (otherwise) a single mismatch in one attribute can 
+                    # compromise all linked entities reconciliation
+                    if ( s, RDF.type, PROV['Activity'] ) in graph1:
+                        is_activity = True
                     else:
-                        gt_subjects = gt_subjects.intersection(\
-                            set(graph2.subjects(p, o)))
+                        is_activity = False
+                    if is_activity or isinstance(o, rdflib.term.Literal):
+                        if gt_subjects is None:
+                            gt_subjects = set(graph2.subjects(p, o))
+                        else:
+                            gt_subjects = gt_subjects.intersection(\
+                                set(graph2.subjects(p, o)))
 
                 if gt_subjects:
-                    # We found an URI in gt with the same predicates and objects
-                    for gt_s in gt_subjects:
-                        identical = True
-                        # Check that all (predicate, object) pairs are in s
-                        for p, o in graph2.predicate_objects(s):
-                            if not (s,p,o) in graph1:
-                                identical = False
-                                break;
+                    # # We found an URI in gt with the same predicates and objects
+                    # for gt_s in gt_subjects:
+                    #     identical = True
+                    #     # Check that all (predicate, object) pairs are in s
+                    #     for p, o in graph2.predicate_objects(s):
+                    #         if not (s,p,o) in graph1:
+                    #             identical = False
+                    #             break;
 
-                        if identical:
-                            break;
+                    #     if identical:
+                    #         break;
+                    identical = True
+                    gt_s = next(iter(gt_subjects))
 
                     if identical:
                         reconciled.add(gt_s)
