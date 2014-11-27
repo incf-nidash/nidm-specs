@@ -171,7 +171,7 @@ class TestResultDataModel(object):
             # Check for predicates which are not in common to both graphs (XOR)
             diff_graph =  gt_graph ^ other_graph
         else:
-            diff_graph =  gt_graph - other_graph
+            diff_graph =  gt_graph - other_graph          
 
         # FIXME: There is probably something better than using os.path.basename to remove namespaces
         exlude = list()
@@ -230,7 +230,23 @@ class TestResultDataModel(object):
                 
             # If subject and predicate are found in gt_graph 
             elif (s,  p, o) in gt_graph:
-                # This has already been taken into account as "Wrong o" or "Wrong literal o"
+                if include and (s,  p, None) in other_graph:
+                    if isinstance(o, rdflib.term.Literal):
+                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of\
+                         s('%s') is o(%s) but should be o(%s)."%(\
+                            get_readable_name(other_graph, p),\
+                            get_readable_name(other_graph, s),\
+                            get_alternatives(other_graph,s=s,p=p),\
+                            get_readable_name(gt_graph, o))
+                    elif not isinstance(o, rdflib.term.BNode):
+                        exc_wrong += "\nWrong o:\ts('%s') p('%s') o('%s') not\
+                        in gold std, o should be o(%s)?)"%(\
+                            get_readable_name(other_graph, p),\
+                            get_readable_name(other_graph, s),\
+                            get_alternatives(other_graph,s=s,p=p),\
+                            get_readable_name(gt_graph, o))
+                                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)  
+
                 if not (s,  p, None) in other_graph:
                 #     if isinstance(o, rdflib.term.Literal):
                 #         if (not exc_wrong_literal):
