@@ -188,7 +188,7 @@ def main():
 			),
 		"FSL_ExtentThreshold": dict(
 			extent_threshold_id="niiri:extent_threshold_id",
-			label="Extent Threshold: p<0.05 corr.",
+			label="Extent Threshold: p<0.05 (FWE)",
 			thresh_type="p-value FWE",
 			p_fwe="0.05"
 			),

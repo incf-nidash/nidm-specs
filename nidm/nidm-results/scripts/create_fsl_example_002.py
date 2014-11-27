@@ -19,7 +19,7 @@ def main():
 			),
 		"FSL_ExtentThreshold_NoType": dict(
 			extent_threshold_id="niiri:extent_threshold_id",
-			label="Cluster Threshold",
+			label="Extent Threshold: k>=0",
 			p_fwe="1.0"
 			),
 		"Inference_Used_Thresh": dict(
