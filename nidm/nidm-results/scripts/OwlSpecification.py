@@ -201,7 +201,7 @@ class OwlSpecification(object):
 
             if class_name in generated_by.values():
                 generated_entities = list()
-                for generated_entity, generated_act in used_by.items():
+                for generated_entity, generated_act in generated_by.items():
                     if generated_act == class_name:
                         generated_entities.append(generated_entity)
 
