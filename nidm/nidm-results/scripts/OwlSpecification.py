@@ -328,8 +328,8 @@ if __name__ == '__main__':
              NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
-    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
-    components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
+    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
+    components["FSL-specific Concepts"] = [FSL['CenterOfGravity'], NIDM['FSL']]
 
     # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
