@@ -176,19 +176,28 @@ class OwlSpecification(object):
         found_used_by = False
         if used_by:
             if class_name in used_by:
-                self.text += """ used by <a>"""+\
-                        self.owl.graph.qname(used_by[class_name])+"""</a>"""
+
+                if len(used_by[class_name]) >= 2:
+                    self.text += \
+                        " used by <a>"+"</a>, <a>".join(map(self.owl.graph.qname, \
+                        sorted(used_by[class_name])[:-1]))+"</a> and <a>"+\
+                        self.owl.graph.qname(sorted(used_by[class_name])[-1])+\
+                        "</a>"
+                else:
+                    self.text += \
+                        " used by <a>"+self.owl.graph.qname(used_by[class_name][0])+\
+                        "</a>"
                 found_used_by = True
-            if class_name in used_by.values():
-                used_entities = list()
-                for used_entity, used_act in used_by.items():
+            used_entities = list()
+            for used_entity, used_activities in used_by.items():
+                for used_act in used_activities:
                     if used_act == class_name:
                         used_entities.append(used_entity)
-                if used_entities:
-                    self.text += " that uses <a>"+"</a>, <a>".join(map(self.owl.graph.qname, \
-                            sorted(used_entities)[:-1]))+"</a> and <a>"+\
-                            self.owl.graph.qname(sorted(used_entities)[-1])+\
-                            "</a> entities"
+            if used_entities:
+                self.text += " that uses <a>"+"</a>, <a>".join(map(self.owl.graph.qname, \
+                        sorted(used_entities)[:-1]))+"</a> and <a>"+\
+                        self.owl.graph.qname(sorted(used_entities)[-1])+\
+                        "</a> entities"
         found_generated_by = False
         if generated_by:
             if class_name in generated_by:
@@ -206,7 +215,7 @@ class OwlSpecification(object):
                         generated_entities.append(generated_entity)
 
                 if generated_entities:
-                    self.text += ". The activity generates <a>"+\
+                    self.text += ". This activity generates <a>"+\
                     "</a>, <a>".join(map(self.owl.graph.qname, \
                     sorted(generated_entities)[:-1]))+\
                     "</a> and <a>"+self.owl.graph.qname(sorted(generated_entities)[-1])+\
@@ -322,17 +331,18 @@ if __name__ == '__main__':
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
 
-        # Add manually used and wasDerivedFrom because these are not stored in the owl file
+    # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
-                NIDM['Data']: NIDM['ModelParametersEstimation'],
-                NIDM['ErrorModel']: NIDM['ModelParametersEstimation'],
-                NIDM['DesignMatrix']: NIDM['ModelParametersEstimation'],
-                NIDM['ParameterEstimateMap']: NIDM['ContrastEstimation'],
-                NIDM['ResidualMeanSquaresMap']: NIDM['ContrastEstimation'],
-                NIDM['MaskMap']: NIDM['ContrastEstimation'],
-                NIDM['ContrastWeights']: NIDM['ContrastEstimation'],
-                NIDM['ContrastMap']: NIDM['Inference'], 
-                NIDM['StatisticMap']: NIDM['Inference'], 
+                NIDM['Data']: [NIDM['ModelParametersEstimation']],
+                NIDM['ErrorModel']: [NIDM['ModelParametersEstimation']],
+                NIDM['DesignMatrix']: [NIDM['ModelParametersEstimation'],
+                                       NIDM['ContrastEstimation']],
+                NIDM['ParameterEstimateMap']: [NIDM['ContrastEstimation']],
+                NIDM['ResidualMeanSquaresMap']: [NIDM['ContrastEstimation']],
+                NIDM['MaskMap']: [NIDM['ContrastEstimation']],
+                NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
+                NIDM['ContrastMap']: [NIDM['Inference']], 
+                NIDM['StatisticMap']: [NIDM['Inference']], 
     }
     generated_by = { 
                 NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
@@ -350,7 +360,7 @@ if __name__ == '__main__':
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
         components["Model fitting"][1] = NIDM['NoiseModel']
         used_by.pop(NIDM['ErrorModel'], None)
-        used_by[NIDM['NoiseModel']] = NIDM['ModelParametersEstimation']
+        used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
         # No "InferenceMaskMap"
         components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
