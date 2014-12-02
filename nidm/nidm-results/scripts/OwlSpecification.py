@@ -236,7 +236,7 @@ class OwlSpecification(object):
                     """
 
         if attributes:
-            for att in attributes:
+            for att in sorted(attributes):
                 att_name = self.owl.graph.qname(att)
 
                 if att not in self.attributes_done:
