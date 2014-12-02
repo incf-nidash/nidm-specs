@@ -262,8 +262,8 @@ class OwlSpecification(object):
                 self.attributes_done.add(att)
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/incf-nidash/nidm/master/"
-        example = self.owl.get_example(class_name, BASE_REPOSITORY)
-        if example:
+        examples = self.owl.get_example(class_name, BASE_REPOSITORY)
+        for example in sorted(examples):
             self.text += """        
                 </ul>
                 </div>

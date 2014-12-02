@@ -964,6 +964,18 @@
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:coordinate_0001,
+        [prov:type = 'prov:Location',
+        prov:type = 'nidm:Coordinate',
+        prov:label = "Coordinate 1" %% xsd:string,
+        fsl:coordinate1InVoxels = "45" %% xsd:float,
+        fsl:coordinate2InVoxels = "15" %% xsd:float,
+        fsl:coordinate3InVoxels = "14" %% xsd:float,
+        nidm:coordinate1 = "-48.1" %% xsd:float,
+        nidm:coordinate2 = "-73.7" %% xsd:float,
+        nidm:coordinate3 = "-9.24" %% xsd:float])</pre>        
+                </ul>
+                </div>
+                <pre class='example highlight'>entity(niiri:coordinate_0001,
       [prov:type = 'prov:Location',
       prov:type = 'nidm:Coordinate',
       prov:label = "Coordinate: 0001" %% xsd:string,
@@ -1134,7 +1146,7 @@
             <section id="section-nidm:SearchSpaceMap"> 
                 <h1 label="nidm:SearchSpaceMap">nidm:SearchSpaceMap</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:SearchSpaceMap</dfn>                    <sup><a title="nidm:SearchSpaceMap">                    <span class="diamond">&#9826;</span></a></sup> is mask in which the inference was performed.. <a>nidm:SearchSpaceMap</a> is a prov:Entity. 
+                    A <dfn>nidm:SearchSpaceMap</dfn>                    <sup><a title="nidm:SearchSpaceMap">                    <span class="diamond">&#9826;</span></a></sup> is properties of the underlying statistical process.. <a>nidm:SearchSpaceMap</a> is a prov:Entity. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:SearchSpaceMap"> A <a>nidm:SearchSpaceMap</a> has attributes:
@@ -1153,6 +1165,19 @@
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:randomFieldStationarity">
                         <dfn>nidm:randomFieldStationarity</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?. (range xsd:boolean)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>entity(niiri:search_space_id,
+        [prov:type = 'nidm:SearchSpaceMap',
+        prov:location = "file:///path/to/SearchSpace.nii.gz" %% xsd:anyURI,
+        dct:format = "image/nifti",
+        crypto:sha512 = "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
+        nidm:filename = "mask.nii.gz" %% xsd:string,
+        nidm:filename = "SearchSpace.nii.gz" %% xsd:string,
+        nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+        prov:label = "Search Space Map" %% xsd:string,
+        fsl:searchVolumeInVoxels = "45359" %% xsd:int,
+        fsl:reselSizeInVoxels = "12.2251" %%xsd:float])</pre>        
                 </ul>
                 </div>
                 <pre class='example highlight'>entity(niiri:search_space_id,
@@ -1176,7 +1201,18 @@
       spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
       spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
       nidm:randomFieldStationarity = "false" %%xsd:boolean,
-      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>  
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre>        
+                </ul>
+                </div>
+                <pre class='example highlight'>entity(niiri:stat_image_properties_id,
+      [prov:type = 'nidm:SearchSpaceMap',
+      prov:label = "Statistical image properties",
+      spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
+      spm:expectedNumberOfClusters = "0.0889172687960151" %% xsd:float,
+      spm:heightCriticalThresholdFWE05 = "5.23529984739211" %% xsd:float,
+      spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])</pre>  
             </section>
             </section>
         <section><h1>SPM-specific Concepts</h1>            SPM-specific structures are outlined in <a href="#fig-nidmresults-core-uml-spm"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to SPM-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), ligth-colors indicate generic classes having additional SPM-specific attributes.
