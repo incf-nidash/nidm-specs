@@ -13,11 +13,11 @@ def main():
 		"StatisticMap_PseudoT": dict(
 			var_smoothing="[6 6 6]",
 			statistic_map_id="niiri:statistic_map_id",
-			label="Pseudo T-Statistic Map: passive listening > rest",
-			location="file://./PseudoTStatistic.nii.gz",
+			label="Smoothed Variance T-Statistic Map: passive listening > rest",
+			location="file://./SmoothedVarianceTStatistic.nii.gz",
 			format="image/nifti",
-			filename="PseudoTStatistic.nii.gz",
-			statistic_type="nidm:PseudoTStatistic",
+			filename="SmoothedVarianceTStatistic.nii.gz",
+			statistic_type="nidm:SmoothedVarianceTStatistic",
 			contrast_name="passive listening > rest",
 			effect_dof="1",
 			sha="799e9bbf8c15b35c0098bca4",
@@ -29,12 +29,12 @@ def main():
 			label="Inference",
 			alternative_hyp="nidm:OneTailedTest",
 			is_parametric="false",
-			non_param_dist_id="niiri:non_parametric_dististribution_id",
+			non_param_dist_id="niiri:non_parametric_null_dististribution_id",
 			statistic_map_id="niiri:statistic_map_id"
 			),
 		"NonParametricDistribution": dict(
-			non_param_dist_id="niiri:non_parametric_dististribution_id",
-			label="Non-Parametric Distribution",
+			non_param_dist_id="niiri:non_parametric_null_dististribution_id",
+			label="Non-Parametric Null Distribution",
 			n_perms="5000",
 			exchangeability_blocks="4"
 			)
