@@ -14,7 +14,7 @@ def main():
 			inference_id="niiri:inference_id_1",
 			label="Inference",
 			alternative_hyp="nidm:OneTailedTest",
-			parametric_test="false",
+			is_parametric="false",
 			non_param_dist_id="niiri:non_parametric_dististribution_id"
 			),
 		"NonParametricDistribution": dict(
