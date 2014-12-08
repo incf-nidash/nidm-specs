@@ -193,7 +193,7 @@ def main():
 			sha="3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			contrast_est_id="niiri:contrast_estimation_id_1"),
-		"HeightThreshold_NoP": dict(
+		"HeightThreshold_Value": dict(
 			height_threshold_id="niiri:height_threshold_id",
 			label="Height Threshold: Z>2.3",
 			value="2.3",
@@ -215,7 +215,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"
 			),
-		"PeakDefinitionCriteria_NoMaxPeaks": dict(
+		"PeakDefinitionCriteria": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id_1",
 			label="Peak Definition Criteria",
 			min_dist_peaks="0.0"
@@ -374,7 +374,7 @@ def main():
 			coord_2_in_vox="17",
 			coord_3_in_vox="13",
 			),
-		"Peak_NoP-4-2": dict(
+		"Peak-4-2": dict(
 			peak_id="niiri:peak_0004_2",
 			label="Peak 0004_2",
 			p_uncorr="9.01048e-09",
@@ -392,7 +392,7 @@ def main():
 			coord_2_in_vox="21",
 			coord_3_in_vox="12",
 			),
-		"Peak_NoP-4-3": dict(
+		"Peak-4-3": dict(
 			peak_id="niiri:peak_0004_3",
 			label="Peak 0004_3",
 			p_uncorr="9.54787e-09",
@@ -410,7 +410,7 @@ def main():
 			coord_2_in_vox="7",
 			coord_3_in_vox="16",
 			),
-		"Peak_NoP-4-4": dict(
+		"Peak-4-4": dict(
 			peak_id="niiri:peak_0004_4",
 			label="Peak 0004_4",
 			p_uncorr="1.01163e-08",
@@ -428,7 +428,7 @@ def main():
 			coord_2_in_vox="15",
 			coord_3_in_vox="14"
 			),
-		"Peak_NoP-4-5": dict(
+		"Peak-4-5": dict(
 			peak_id="niiri:peak_0004_5",
 			label="Peak 0004_5",
 			p_uncorr="1.07176e-08",
@@ -446,7 +446,7 @@ def main():
 			coord_2_in_vox="13",
 			coord_3_in_vox="12"
 			),
-		"Peak_NoP-4-6": dict(
+		"Peak-4-6": dict(
 			peak_id="niiri:peak_0004_6",
 			label="Peak 0004_6",
 			p_uncorr="1.34887e-08",
@@ -482,7 +482,7 @@ def main():
 			coord_2_in_vox="41",
 			coord_3_in_vox="25"
 			),
-		"Peak_NoP-3-2": dict(
+		"Peak-3-2": dict(
 			peak_id="niiri:peak_0003_2",
 			label="Peak 0003_2",
 			p_uncorr="1.52768e-07",
@@ -500,7 +500,7 @@ def main():
 			coord_2_in_vox="41",
 			coord_3_in_vox="20"
 			),
-		"Peak_NoP-3-3": dict(
+		"Peak-3-3": dict(
 			peak_id="niiri:peak_0003_3",
 			label="Peak 0003_3",
 			p_uncorr="1.82833e-06",
@@ -518,7 +518,7 @@ def main():
 			coord_2_in_vox="37",
 			coord_3_in_vox="21"
 			),
-		"Peak_NoP-3-4": dict(
+		"Peak-3-4": dict(
 			peak_id="niiri:peak_0003_4",
 			label="Peak 0003_4",
 			p_uncorr="9.77365e-06",
@@ -536,7 +536,7 @@ def main():
 			coord_2_in_vox="45",
 			coord_3_in_vox="22"
 			),
-		"Peak_NoP-3-5": dict(
+		"Peak-3-5": dict(
 			peak_id="niiri:peak_0003_5",
 			label="Peak 0003_5",
 			p_uncorr="1.22151e-05",
@@ -554,7 +554,7 @@ def main():
 			coord_2_in_vox="37",
 			coord_3_in_vox="28"
 			),
-		"Peak_NoP-3-6": dict(
+		"Peak-3-6": dict(
 			peak_id="niiri:peak_0003_6",
 			label="Peak 0003_6",
 			p_uncorr="1.89436e-05",
@@ -590,7 +590,7 @@ def main():
 			coord_2_in_vox="18",
 			coord_3_in_vox="18"
 			),
-		"Peak_NoP-2-2": dict(
+		"Peak-2-2": dict(
 			peak_id="niiri:peak_0002_2",
 			label="Peak 0002_2",
 			p_uncorr="4.71165e-06",
@@ -626,7 +626,7 @@ def main():
 			coord_2_in_vox="38",
 			coord_3_in_vox="31"
 			),
-		"Peak_NoP-1-2": dict(
+		"Peak-1-2": dict(
 			peak_id="niiri:peak_0001_2",
 			label="Peak 0001_2",
 			p_uncorr="0.000788846",
@@ -644,7 +644,7 @@ def main():
 			coord_2_in_vox="43",
 			coord_3_in_vox="28"
 			),
-		"Peak_NoP-1-3": dict(
+		"Peak-1-3": dict(
 			peak_id="niiri:peak_0001_3",
 			label="Peak 0001_3",
 			p_uncorr="0.00122277",
@@ -662,7 +662,7 @@ def main():
 			coord_2_in_vox="39",
 			coord_3_in_vox="30"
 			),
-		"Peak_NoP-1-4": dict(
+		"Peak-1-4": dict(
 			peak_id="niiri:peak_0001_4",
 			label="Peak 0001_4",
 			p_uncorr="0.00554262",

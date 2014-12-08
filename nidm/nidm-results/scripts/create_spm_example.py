@@ -77,7 +77,7 @@ def main():
 			error_model_id="niiri:error_model_id",
 			software_id="niiri:software_id"
 			),
-		"ParameterEstimateMap-1": dict(
+		"ParameterEstimateMap_Location-1": dict(
 			beta_map_id="niiri:beta_map_id_1",
 			label="Beta Map 1",
 			location="file:///path/to/ParameterEstimate_0001.nii.gz",
@@ -98,7 +98,7 @@ def main():
 			sha_header="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:beta_map_id_1"
 			),
-		"ParameterEstimateMap-2": dict(
+		"ParameterEstimateMap_Location-2": dict(
 			beta_map_id="niiri:beta_map_id_2",
 			label="Beta Map 2",
 			location="file:///path/to/ParameterEstimate_0002.nii",
@@ -187,7 +187,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"StatisticMap": dict(
+		"StatisticMap_T": dict(
 			statistic_map_id="niiri:statistic_map_id",
 			label="Statistic Map: listening > rest",
 			location="file:///path/to/TStatistic.nii.gz",
@@ -213,7 +213,7 @@ def main():
 			sha_header="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:statistic_map_id"
 			),
-		"HeightThreshold": dict(
+		"HeightThreshold_P": dict(
 			height_threshold_id="niiri:height_threshold_id",
 			label="Height Threshold: p<0.05 (FWE)",
 			value="5.23529984739211",
@@ -238,7 +238,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			sha="e43b6e01b0463fe7d40782137867a..."
 			),
-		"PeakDefinitionCriteria": dict(
+		"PeakDefinitionCriteria_MaxPeaks": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id",
 			label="Peak Definition Criteria",
 			max_num_peaks="3",
@@ -331,13 +331,13 @@ def main():
 			p_value_fdr="4.17580378738993e-09",
 			excursion_set_id="niiri:excursion_set_map_id"
 			),
-		"Peak-1": dict(
+		"Peak_ValueP-1": dict(
 			peak_id="niiri:peak_0001",
 			label="Peak 0001",
 			location="niiri:coordinate_0001",
 			value="13.9346199035645",
 			equiv_z="INF",
-			p_value_unc="4.44089209850063e-16",
+			p_uncorr="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="6.3705194444993e-11",
 			cluster_id="niiri:significant_cluster_0001"
@@ -349,13 +349,13 @@ def main():
 			coord_2="-28",
 			coord_3="13"
 			),
-		"Peak-2": dict(
+		"Peak_ValueP-2": dict(
 			peak_id="niiri:peak_0002",
 			label="Peak 0002",
 			location="niiri:coordinate_0002",
 			value="11.3457498550415",
 			equiv_z="INF",
-			p_value_unc="4.44089209850063e-16",
+			p_uncorr="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="3.12855975726156e-10",
 			cluster_id="niiri:significant_cluster_0001"
@@ -367,13 +367,13 @@ def main():
 			coord_2="-13",
 			coord_3="4"
 			),
-		"Peak-3": dict(
+		"Peak_ValueP-3": dict(
 			peak_id="niiri:peak_0003",
 			label="Peak 0003",
 			location="niiri:coordinate_0003",
 			value="9.82185649871826",
 			equiv_z="7.80404869241187",
-			p_value_unc="2.99760216648792e-15",
+			p_uncorr="2.99760216648792e-15",
 			p_value_fwe="1.82057147135595e-10",
 			p_value_fdr="9.95383070867767e-08",
 			cluster_id="niiri:significant_cluster_0001"
@@ -385,13 +385,13 @@ def main():
 			coord_2="-7",
 			coord_3="-2"
 			),
-		"Peak-4": dict(
+		"Peak_ValueP-4": dict(
 			peak_id="niiri:peak_0004",
 			label="Peak 0004",
 			location="niiri:coordinate_0004",
 			value="13.7208814620972",
 			equiv_z="INF",
-			p_value_unc="4.44089209850063e-16",
+			p_uncorr="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="6.3705194444993e-11",
 			cluster_id="niiri:significant_cluster_0002"
@@ -403,13 +403,13 @@ def main():
 			coord_2="-22",
 			coord_3="13"
 			),
-		"Peak-5": dict(
+		"Peak_ValueP-5": dict(
 			peak_id="niiri:peak_0005",
 			label="Peak 0005",
 			location="niiri:coordinate_0005",
 			value="12.322901725769",
 			equiv_z="INF",
-			p_value_unc="4.44089209850063e-16",
+			p_uncorr="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="6.3705194444993e-11",
 			cluster_id="niiri:significant_cluster_0002"
@@ -421,13 +421,13 @@ def main():
 			coord_2="-13",
 			coord_3="-2"
 			),
-		"Peak-6": dict(
+		"Peak_ValueP-6": dict(
 			peak_id="niiri:peak_0006",
 			label="Peak 0006",
 			location="niiri:coordinate_0006",
 			value="9.62070846557617",
 			equiv_z="7.7026943536333",
-			p_value_unc="6.66133814775094e-15",
+			p_uncorr="6.66133814775094e-15",
 			p_value_fwe="4.2237258135458e-10",
 			p_value_fdr="1.58195372181651e-07",
 			cluster_id="niiri:significant_cluster_0002"
@@ -439,13 +439,13 @@ def main():
 			coord_2="-40",
 			coord_3="7"
 			),
-		"Peak-7": dict(
+		"Peak_ValueP-7": dict(
 			peak_id="niiri:peak_0007",
 			label="Peak 0007",
 			location="niiri:coordinate_0007",
 			value="7.49709033966064",
 			equiv_z="6.43494304364426",
-			p_value_unc="6.17598194807556e-11",
+			p_uncorr="6.17598194807556e-11",
 			p_value_fwe="4.05099727462943e-06",
 			p_value_fdr="0.000463130517859672",
 			cluster_id="niiri:significant_cluster_0003"

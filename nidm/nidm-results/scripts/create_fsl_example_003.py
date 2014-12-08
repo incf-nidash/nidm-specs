@@ -11,7 +11,7 @@ from create_example_from_templates import ExampleFromTemplate
 
 def main():
 	nidm_classes = {
-		"HeightThreshold_P_Unc": dict(
+		"HeightThreshold_PUnc": dict(
 			height_threshold_id="niiri:height_threshold_id",
 			label="Height Threshold: p<0.05 (uncorrected)",
 			p_unc="0.050000",
@@ -22,7 +22,7 @@ def main():
 			label="Extent Threshold: k>=0",
 			p_fwe="1.0"
 			),
-		"Inference_Used_Thresh": dict(
+		"InferenceUsedThresh": dict(
 			inference_id="niiri:inference_id",
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
