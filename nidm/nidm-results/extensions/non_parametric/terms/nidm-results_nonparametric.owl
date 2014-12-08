@@ -1,0 +1,124 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
+@prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spm: <http://www.incf.org/ns/nidash/spm#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology ;
+  owl:imports <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl>
+] .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000112
+
+iao:IAO_0000112 rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000116
+
+iao:IAO_0000116 rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#curationStatus
+
+nidm:curationStatus rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#termEditor
+
+nidm:termEditor rdf:type owl:AnnotationProperty ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000117" .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.incf.org/ns/nidash/nidm#exchangeabilityBlockSize
+
+nidm:exchangeabilityBlockSize rdf:type owl:DatatypeProperty ;
+                              
+                              rdfs:isDefinedBy "Size of exchangeability blocks used to define a non-parametric null distribution." ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000124 ;
+                              
+                              rdfs:domain nidm:NonParametricNullDistribution ;
+                              
+                              rdfs:range xsd:int .
+
+
+###  http://www.incf.org/ns/nidash/nidm#isParametricTest
+
+nidm:isParametricTest rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:isDefinedBy "True if inference is done using a parametric test, false for a non-parametric test." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000124 ;
+                      
+                      rdfs:domain nidm:Inference ;
+                      
+                      rdfs:range xsd:boolean .
+
+
+###  http://www.incf.org/ns/nidash/nidm#numberOfPermutations
+
+nidm:numberOfPermutations rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:isDefinedBy "Number of permutations used to define a non-parametric null distribution." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000124 ;
+                          
+                          rdfs:domain nidm:NonParametricNullDistribution ;
+                          
+                          rdfs:range xsd:int .
+
+
+###  http://www.incf.org/ns/nidash/nidm#NonParametricNullDistribution
+
+nidm:NonParametricNullDistribution rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf prov:Entity ;
+                                   
+                                   rdfs:isDefinedBy "Non-parametric null distribution used by inference." ;
+                                   
+                                   obo:IAO_0000114 obo:IAO_0000124 .
+
