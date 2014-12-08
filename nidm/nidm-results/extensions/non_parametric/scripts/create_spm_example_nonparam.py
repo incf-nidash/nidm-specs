@@ -10,12 +10,28 @@ from create_example_from_templates import ExampleFromTemplate
 
 def main():
 	nidm_classes = {
+		"StatisticMap_PseudoT": dict(
+			var_smoothing="[6 6 6]",
+			statistic_map_id="niiri:statistic_map_id",
+			label="Pseudo T-Statistic Map: passive listening > rest",
+			location="file://./TStatistic.nii.gz",
+			format="image/nifti",
+			filename="TStatistic.nii.gz",
+			statistic_type="nidm:TStatistic",
+			contrast_name="passive listening > rest",
+			error_dof="84.0",
+			effect_dof="1",
+			sha="799e9bbf8c15b35c0098bca468846bf2cd895a3366382b5ceaa953f1e9e576955341a7c86e13e6fe9359da4ff1496a609f55ce9ecff8da2e461365372f2506d6",
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			contrast_est_id="niiri:contrast_estimation_id"
+			),
 		"InferenceUsedNonParam": dict(
 			inference_id="niiri:inference_id_1",
 			label="Inference",
 			alternative_hyp="nidm:OneTailedTest",
 			is_parametric="false",
-			non_param_dist_id="niiri:non_parametric_dististribution_id"
+			non_param_dist_id="niiri:non_parametric_dististribution_id",
+			statistic_map_id="niiri:statistic_map_id"
 			),
 		"NonParametricDistribution": dict(
 			non_param_dist_id="niiri:non_parametric_dististribution_id",
