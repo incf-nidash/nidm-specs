@@ -236,7 +236,7 @@ class OwlSpecification(object):
                     """
 
         if attributes:
-            for att in attributes:
+            for att in sorted(attributes):
                 att_name = self.owl.graph.qname(att)
 
                 if att not in self.attributes_done:
@@ -262,8 +262,8 @@ class OwlSpecification(object):
                 self.attributes_done.add(att)
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/incf-nidash/nidm/master/"
-        example = self.owl.get_example(class_name, BASE_REPOSITORY)
-        if example:
+        examples = self.owl.get_example(class_name, BASE_REPOSITORY)
+        for example in sorted(examples):
             self.text += """        
                 </ul>
                 </div>
@@ -277,27 +277,37 @@ class OwlSpecification(object):
             self.text += "\t"*x+"</section>\n"
 
     # Write out specification
-    def write_specification(self, spec_file, prev_file=None, follow_file=None):
+    def write_specification(self, spec_file):
         spec_open = codecs.open(spec_file, 'w', "utf-8")
+        spec_open.write(self.text)
+        spec_open.close()
+
+    def _header_footer(self, prev_file=None, follow_file=None):
         if prev_file:
-            prev_file_open = open(prev_file, 'r')
-            self.text = prev_file_open.read().decode('utf-8')+self.text
-            prev_file_open.close()
+                prev_file_open = open(prev_file, 'r')
+                self.text = prev_file_open.read().decode('utf-8')+self.text
+                prev_file_open.close()
         if follow_file:
             follow_file_open = open(follow_file, 'r')
             self.text = self.text+follow_file_open.read()
             follow_file_open.close()
 
-        spec_open.write(self.text)
-        spec_open.close()
-
-
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        nidm_original_version = sys.argv[1]
+        nidm_version = nidm_original_version.replace(".", "")
+    else:
+        nidm_version = 'dev'
+
     # Retreive owl file for NIDM-Results
-    owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
+    if nidm_version == "dev":
+        owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
+    else:
+        owl_file = os.path.join(INCLUDE_FOLDER, 'nidm-results_'+nidm_version+'.owl')
 
     # check the file exists
     assert os.path.exists(owl_file)
+
 
     components =  collections.OrderedDict()
     components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
@@ -312,7 +322,7 @@ if __name__ == '__main__':
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
 
-    # Add manually used and wasDerivedFrom because these are not stored in the owl file
+        # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
                 NIDM['Data']: NIDM['ModelParametersEstimation'],
                 NIDM['ErrorModel']: NIDM['ModelParametersEstimation'],
@@ -336,11 +346,31 @@ if __name__ == '__main__':
                 NIDM['Peak']: NIDM['Cluster'],                
     }
 
+    if nidm_version == "020":
+        # In version 0.2.0 "ErrorModel" was called "NoiseModel"
+        components["Model fitting"][1] = NIDM['NoiseModel']
+        used_by.pop(NIDM['ErrorModel'], None)
+        used_by[NIDM['NoiseModel']] = NIDM['ModelParametersEstimation']
+        # No "InferenceMaskMap"
+        components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
+             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['Cluster'], NIDM['Peak'],
+             NIDM['Coordinate']]
+
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, 
         generated_by, derived_from)
 
-    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results_dev.html"),
-        os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
-        os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
+    owlspec._header_footer(os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
+         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
+
+    if not nidm_version == "dev":
+        if nidm_version == "020":
+            # Previous version
+            owlspec.text = owlspec.text.replace("nidm-results_020.html", "nidm-results_010.html")
+        owlspec.text = owlspec.text.replace("(version under development)", nidm_original_version)
+        owlspec.text = owlspec.text.replace("nidm-results_dev.html", "nidm-results_"+nidm_version+".html")
+        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
+
+    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results_"+nidm_version+".html"))
 
 

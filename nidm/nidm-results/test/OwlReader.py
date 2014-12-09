@@ -241,18 +241,20 @@ class OwlReader():
         return generated_by
 
     def get_example(self, owl_term, base_repository=None):
-        example = list(self.graph.objects(owl_term, IAO_EXAMPLE))
-        if example:
-            example = str(example[0])
+        example_list = list()
+
+        examples = list(self.graph.objects(owl_term, IAO_EXAMPLE))
+
+        for example in examples:
             if base_repository is not None:
                 if example.startswith(base_repository):
                     local_path = example.replace(base_repository, "./")
                     fid_ex = open(local_path)
                     example = fid_ex.read()
                     fid_ex.close()
-        else:
-            example = ""
-        return example
+            example_list.append(example)
+            
+        return example_list 
 
     def get_range(self, owl_term):
         ranges = list(self.graph.objects(owl_term, RDFS['range']))
