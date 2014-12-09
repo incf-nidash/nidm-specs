@@ -23,6 +23,8 @@ import create_spm_example_003
 import create_spm_example_004
 import create_fsl_example
 import create_fsl_example_001
+import create_fsl_example_002
+import create_fsl_example_003
 from TestCommons import *
 
 
@@ -193,6 +195,32 @@ Please use nidm/nidm-results/scripts/create_term_examples.py."
         if found_difference:
             raise Exception("example001/fsl_nidm.ttl is not up to date with templates. \
                 Please use nidm/nidm-results/scripts/create_fsl_example001.py.")
+
+    def test_fsl_ex002(self):
+        example_file = os.path.join(NIDM_RESULTS_DIR, "fsl", "example002", "fsl_nidm.ttl")
+
+        current_graph, fsl_current = self._parse_graph(example_file)
+        create_fsl_example_002.main()
+        updated_graph, unused = self._parse_graph(example_file, fsl_current)
+
+        found_difference = self._compare_graphs(current_graph, updated_graph)
+
+        if found_difference:
+            raise Exception("example002/fsl_nidm.ttl is not up to date with templates. \
+                Please use nidm/nidm-results/scripts/create_fsl_example002.py.")
+
+    def test_fsl_ex003(self):
+        example_file = os.path.join(NIDM_RESULTS_DIR, "fsl", "example003", "fsl_nidm.ttl")
+
+        current_graph, fsl_current = self._parse_graph(example_file)
+        create_fsl_example_003.main()
+        updated_graph, unused = self._parse_graph(example_file, fsl_current)
+
+        found_difference = self._compare_graphs(current_graph, updated_graph)
+
+        if found_difference:
+            raise Exception("example003/fsl_nidm.ttl is not up to date with templates. \
+                Please use nidm/nidm-results/scripts/create_fsl_example003.py.")
 
 
     def test_fsl_results(self):

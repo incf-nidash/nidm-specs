@@ -10,6 +10,7 @@ import rdflib
 
 import logging
 from Constants import *
+from rdflib.namespace import RDF
 
 logger = logging.getLogger(__name__)
 
@@ -85,57 +86,92 @@ class TestResultDataModel(object):
         # if not self.successful_retreive(self.spmexport.query(query), 'ContrastMap and ContrastStandardErrorMap'):
         #     raise Exception(self.my_execption)
 
+    def _replace_match(self, graph1, graph2, rdf_type):
+        """
+
+        """
+        g1_terms = set(graph1.subjects(RDF.type, rdf_type))
+        g2_terms = set(graph2.subjects(RDF.type, rdf_type))
+
+        activity = False
+        if rdf_type == PROV['Activity']:
+            activity = True
+        elif rdf_type == PROV['Entity']:
+            g1_terms = g1_terms.union(set(graph1.subjects(RDF.type, PROV['Bundles'])))
+            g1_terms = g1_terms.union(set(graph1.subjects(RDF.type, PROV['Coordinate'])))
+            g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Bundles'])))
+            g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Coordinate'])))
+
+        for g1_term in g1_terms:
+            g2_match = dict.fromkeys(g2_terms, 0)
+            for p, o in graph1.predicate_objects(g1_term):
+                if (not activity) or \
+                 (isinstance(o, rdflib.term.Literal) or p==RDF.type):
+                    for g2_term in graph2.subjects(p, o):
+                        g2_match[g2_term] += 1
+
+            for g2_term, match_index in g2_match.items():
+                if max(g2_match.values()) > 1:
+                    if match_index == max(g2_match.values()):
+                        # Found matching term
+                        if not g1_term == g2_term:
+                            g2_name = graph2.qname(g2_term).split(":")[-1]
+                            new_id = g1_term+'_'+g2_name 
+                            logging.debug(graph1.qname(g1_term)+" is matched to "+\
+                                graph2.qname(g2_term)+" and replaced by "+\
+                                graph2.qname(new_id))
+
+                            for p, o in graph1.predicate_objects(g1_term):
+                                graph1.remove((g1_term,p,o))
+                                graph1.add((new_id,p,o))
+                            for p, o in graph2.predicate_objects(g2_term):
+                                graph2.remove((g2_term,p,o))
+                                graph2.add((new_id,p,o))
+                            for s,p in graph1.subject_predicates(g1_term):
+                                graph1.remove((s,p,g1_term))
+                                graph1.add((s,p,new_id))
+                            for s,p in graph2.subject_predicates(g2_term):
+                                graph2.remove((s,p,g2_term))
+                                graph2.add((s,p,new_id))
+
+                            g2_terms.remove(g2_term)
+                            g2_terms.add(new_id)
+
+        return list([graph1, graph2])
+
+
     def _reconcile_graphs(self, graph1, graph2, recursive=10):
-        """Reconcile: if two entities have exactly the same attributes: they
+        """
+        Reconcile: if two entities have exactly the same attributes: they
         are considered to be the same (set the same id for both)
         """
-        reconciled = set()
-        for r in range(0, recursive):
-            subs = set(graph1.subjects())-reconciled
-            for s in subs:
-                gt_subjects = None
-                for p, o in graph1.predicate_objects(s):
-                    if gt_subjects is None:
-                        gt_subjects = set(graph2.subjects(p, o))
-                    else:
-                        gt_subjects = gt_subjects.intersection(\
-                            set(graph2.subjects(p, o)))
 
-                if gt_subjects:
-                    # We found an URI in gt with the same predicates and objects
-                    for gt_s in gt_subjects:
-                        identical = True
-                        # Check that all (predicate, object) pairs are in s
-                        for p, o in graph2.predicate_objects(s):
-                            if not (s,p,o) in graph1:
-                                identical = False
-                                break;
+        # FIXME: reconcile entities+agents first (ignoring non attributes)
+        # then reconcile activities based on everything
+        # for each item select the closest match in the other graph (instead of perfect match)
+        # this is needed to get sensible error messages when comparing graph
+        # do not do recursive anymore
 
-                        if identical:
-                            break;
-
-                    if identical:
-                        reconciled.add(gt_s)
-                        if not s==gt_s:
-                            logging.debug(str(s)+" identical to "+str(gt_s))
-                            for p, o in graph1.predicate_objects(s):
-                                graph1.remove((s,p,o))
-                                graph1.add((gt_s,p,o))
-                            o=s
-                            for s,p in graph1.subject_predicates(o):
-                                graph1.remove((s,p,o))
-                                graph1.add((s,p,gt_s))                                
+        # We reconcile first entities and agents (based on data properties) and 
+        # then activities (based on all relations)
+        graph1, graph2 = self._replace_match(graph1, graph2, PROV['Entity'])
+        graph1, graph2 = self._replace_match(graph1, graph2, PROV['Agent'])
+        graph1, graph2 = self._replace_match(graph1, graph2, PROV['Activity'])
                             
-        return graph1
+        return list([graph1, graph2])
 
 
-    def compare_full_graphs(self, gt_graph, other_graph):
+    def compare_full_graphs(self, gt_graph, other_graph, include=False):
         ''' Compare gt_graph and other_graph '''
 
-        other_graph = self._reconcile_graphs(other_graph, gt_graph)
+        # We reconcile gt_graph with other_graph
+        gt_graph, other_graph = self._reconcile_graphs(gt_graph, other_graph)
 
-        # Check for predicates which are not in common to both graphs (XOR)
-        diff_graph =  gt_graph ^ other_graph
+        if not include:
+            # Check for predicates which are not in common to both graphs (XOR)
+            diff_graph =  gt_graph ^ other_graph
+        else:
+            diff_graph =  gt_graph - other_graph          
 
         # FIXME: There is probably something better than using os.path.basename to remove namespaces
         exlude = list()
@@ -194,7 +230,23 @@ class TestResultDataModel(object):
                 
             # If subject and predicate are found in gt_graph 
             elif (s,  p, o) in gt_graph:
-                # This has already been taken into account as "Wrong o" or "Wrong literal o"
+                if include and (s,  p, None) in other_graph:
+                    if isinstance(o, rdflib.term.Literal):
+                        exc_wrong_literal += "\nWrong literal o:\t p('%s') of\
+                         s('%s') is o(%s) but should be o(%s)."%(\
+                            get_readable_name(other_graph, p),\
+                            get_readable_name(other_graph, s),\
+                            get_alternatives(other_graph,s=s,p=p),\
+                            get_readable_name(gt_graph, o))
+                    elif not isinstance(o, rdflib.term.BNode):
+                        exc_wrong += "\nWrong o:\ts('%s') p('%s') o('%s') not\
+                        in gold std, o should be o(%s)?)"%(\
+                            get_readable_name(other_graph, p),\
+                            get_readable_name(other_graph, s),\
+                            get_alternatives(other_graph,s=s,p=p),\
+                            get_readable_name(gt_graph, o))
+                                # If object o is *not* found in gt_graph (and o is a URI, i.e. not the value of an attribute)  
+
                 if not (s,  p, None) in other_graph:
                 #     if isinstance(o, rdflib.term.Literal):
                 #         if (not exc_wrong_literal):
