@@ -1,6 +1,7 @@
 @prefix : <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl#> .
 @prefix ro: <http://www.obofoundry.org/ro/ro.owl#> .
 @prefix bfo: <http://www.ifomis.org/bfo/1.1#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -650,6 +651,12 @@ prov:wasRevisionOf rdf:type owl:AnnotationProperty ;
 #    Object Properties
 #
 #################################################################
+
+
+###  http://purl.org/dc/terms/hasPart
+
+dct:hasPart rdf:type owl:ObjectProperty .
+
 
 
 ###  http://www.w3.org/ns/prov#actedOnBehalfOf
@@ -2002,6 +2009,26 @@ prov:wasStartedBy rdf:type owl:ObjectProperty ;
 #    Data properties
 #
 #################################################################
+
+
+###  http://purl.org/dc/terms/description
+
+dct:description rdf:type owl:DatatypeProperty ;
+                
+                rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/dc/terms/license
+
+dct:license rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/dc/terms/title
+
+dct:title rdf:type owl:DatatypeProperty .
+
 
 
 ###  http://www.w3.org/ns/prov#atTime
@@ -3525,10 +3552,6 @@ prov:EmptyCollection rdf:type owl:NamedIndividual .
                       )
 ] .
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( obo:IAO_0000224
-                      )
-] .
-[ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( obo:IAO_0000120
                         obo:IAO_0000121
                         obo:IAO_0000122
@@ -3537,6 +3560,10 @@ prov:EmptyCollection rdf:type owl:NamedIndividual .
                         obo:IAO_0000125
                         obo:IAO_0000423
                         obo:IAO_0000428
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( obo:IAO_0000224
                       )
 ] .
 
