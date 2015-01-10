@@ -665,17 +665,17 @@ prov:actedOnBehalfOf rdf:type owl:ObjectProperty ;
                      
                      rdfs:label "actedOnBehalfOf" ;
                      
+                     prov:inverse "hadDelegate" ;
+                     
+                     prov:component "agents-responsibility" ;
+                     
                      rdfs:comment "An object property to express the accountability of an agent towards another agent. The subordinate agent acted on behalf of the responsible agent in an actual activity. "@en ;
                      
                      prov:category "starting-point" ;
                      
-                     prov:component "agents-responsibility" ;
-                     
-                     prov:inverse "hadDelegate" ;
+                     rdfs:range prov:Agent ;
                      
                      rdfs:domain prov:Agent ;
-                     
-                     rdfs:range prov:Agent ;
                      
                      prov:qualifiedForm prov:Delegation ,
                                         prov:qualifiedDelegation ;
@@ -2323,7 +2323,12 @@ obo:IAO_0000409 rdf:type owl:Class ;
                    
                    rdfs:label "Acquisition Object"^^xsd:string ;
                    
-                   rdfs:subClassOf prov:Entity ;
+                   rdfs:subClassOf prov:Entity ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty prov:specializationOf ;
+                                     owl:onClass :StudyObject ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                   ] ;
                    
                    obo:IAO_0000115 "An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings."^^xsd:string ;
                    
@@ -2403,7 +2408,11 @@ obo:IAO_0000409 rdf:type owl:Class ;
                
                rdfs:label "Project Object"^^xsd:string ;
                
-               rdfs:subClassOf prov:Entity ;
+               rdfs:subClassOf prov:Entity ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty dct:hasPart ;
+                                 owl:someValuesFrom :StudyObject
+                               ] ;
                
                obo:IAO_0000115 "A project object is an entity that represents administrative information about one or more studies."^^xsd:string ;
                
@@ -2435,7 +2444,16 @@ obo:IAO_0000409 rdf:type owl:Class ;
              
              rdfs:label "Study Object"^^xsd:string ;
              
-             rdfs:subClassOf prov:Entity ;
+             rdfs:subClassOf prov:Entity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:hasPart ;
+                               owl:someValuesFrom :AcquisitionObject
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty prov:specializationOf ;
+                               owl:onClass :ProjectObject ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
              
              obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
              
@@ -3552,6 +3570,10 @@ prov:EmptyCollection rdf:type owl:NamedIndividual .
                       )
 ] .
 [ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( obo:IAO_0000224
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( obo:IAO_0000120
                         obo:IAO_0000121
                         obo:IAO_0000122
@@ -3560,10 +3582,6 @@ prov:EmptyCollection rdf:type owl:NamedIndividual .
                         obo:IAO_0000125
                         obo:IAO_0000423
                         obo:IAO_0000428
-                      )
-] .
-[ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( obo:IAO_0000224
                       )
 ] .
 
