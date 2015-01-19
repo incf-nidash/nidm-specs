@@ -1,7 +1,12 @@
-
+import os
 import codecs
 from OwlReader import OwlReader
 from Constants import *
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDM_ROOT = os.path.dirname(RELPATH)
+DOC_FOLDER = os.path.join(NIDM_ROOT, 'doc', 'content', 'specs')
+INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
@@ -260,16 +265,23 @@ class OwlSpecification(object):
             self.text += "\t"*x+"</section>\n"
 
     # Write out specification
-    def write_specification(self, spec_file):
+    def write_specification(self, spec_file=None, component=None, version=None):
+        if component and version:
+            spec_file = os.path.join(DOC_FOLDER, component+"_"+version+".html")
+
         spec_open = codecs.open(spec_file, 'w', "utf-8")
         spec_open.write(self.text)
         spec_open.close()
 
-    def _header_footer(self, prev_file=None, follow_file=None):
+    def _header_footer(self, prev_file=None, follow_file=None, component=None):
+        if component:
+            prev_file = os.path.join(INCLUDE_FOLDER, component+"_head.html")
+            follow_file = os.path.join(INCLUDE_FOLDER, component+"_foot.html")
+
         if prev_file:
-                prev_file_open = open(prev_file, 'r')
-                self.text = prev_file_open.read().decode('utf-8')+self.text
-                prev_file_open.close()
+            prev_file_open = open(prev_file, 'r')
+            self.text = prev_file_open.read().decode('utf-8')+self.text
+            prev_file_open.close()
         if follow_file:
             follow_file_open = open(follow_file, 'r')
             self.text = self.text+follow_file_open.read()
