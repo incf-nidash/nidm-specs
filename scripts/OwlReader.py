@@ -252,8 +252,9 @@ class OwlReader():
             definition = ""
 
         # Remove final dot if present
-        if definition[-1] == ".":
-            definition = definition[:-1]
+        if definition:
+            if definition[-1] == ".":
+                definition = definition[:-1]
 
         return definition
 
