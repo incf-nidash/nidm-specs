@@ -5,10 +5,15 @@ The software-specific test classes must inherit from this class.
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>, Satrajit Ghosh
 @copyright: University of Warwick 2014
 '''
-import os
+import os, sys
 import rdflib
 
 import logging
+
+# Append parent script directory to path
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join( 
+    os.path.dirname(os.path.dirname(os.path.dirname(RELPATH))), "scripts"))
 from Constants import *
 from rdflib.namespace import RDF
 
