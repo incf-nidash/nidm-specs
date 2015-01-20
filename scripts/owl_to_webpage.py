@@ -10,35 +10,38 @@ INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
-    def __init__(self, owl_file, spec_name, components=None, used_by=None, 
-        generated_by=None, derived_from=None):
+    def __init__(self, owl_file, spec_name, subcomponents=None, used_by=None, 
+        generated_by=None, derived_from=None, prefix=None):
         self.owl = OwlReader(owl_file)
         self.name = spec_name
+        self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
 
         self.attributes_done = set()
-
         self.text = ""
-        self.create_specification(components, used_by, generated_by, 
-            derived_from)
+        self.create_specification(subcomponents, used_by, generated_by, 
+            derived_from, prefix)
 
-    def create_specification(self, components, used_by, generated_by,
-        derived_from):
+    def create_specification(self, subcomponents, used_by, generated_by,
+        derived_from, prefix):
         self.create_title(self.name+": Types and relations")
 
-        # If no components are defined diplay all classes
-        if not components:
-            components = dict([(None, self.owl.classes)])
+        # If no subcomponents are defined display all classes
+        if not subcomponents:
+            subcomponents = dict([(None, self.owl.classes)])
 
-        for component_name, classes in components.items():
+        already_defined_classes = list()
+        for subcomponent_name, classes in subcomponents.items():
+            classes_by_types = self.owl.get_class_names_by_prov_type(classes, \
+                prefix=prefix, but=already_defined_classes)
+            already_defined_classes += classes
 
-            classes_by_types = self.owl.get_class_names_by_prov_type(classes)
-
-            self.create_component_table(classes_by_types, component_name)
-
+            self.create_subcomponent_table(classes_by_types, subcomponent_name)
             all_classes = sorted(classes_by_types[PROV['Agent']])+\
                           sorted(classes_by_types[PROV['Activity']])+\
-                          sorted(classes_by_types[PROV['Entity']])
+                          sorted(classes_by_types[PROV['Entity']])+\
+                          sorted(classes_by_types[None])
+                          
             for class_name in all_classes:
                 self.create_class_section(
                     class_name, 
@@ -46,26 +49,26 @@ class OwlSpecification(object):
                     self.owl.attributes.setdefault(class_name, None),
                     used_by, generated_by, derived_from)
 
-            if component_name:
+            if subcomponent_name:
                 self.text += """
             </section>"""
 
         self.close_sections()
 
-    def create_component_table(self, classes, component_name=None):
-        if component_name:
+    def create_subcomponent_table(self, classes, subcomponent_name=None):
+        if subcomponent_name:
             self.text += """
-        <section><h1>"""+component_name+"""</h1>"""
+        <section><h1>"""+subcomponent_name+"""</h1>"""
             # Check if there is a header file to include here
-            fname = os.path.join(INCLUDE_FOLDER, \
-                "nidm-results_"+component_name.split(" ")[0].lower()+".html")
+            fname = os.path.join(INCLUDE_FOLDER, self.component+"_"+\
+                subcomponent_name.split(" ")[0].lower()+".html")
             if os.path.isfile(fname):
                 fid = open(fname, "r")
                 self.text += fid.read()
                 fid.close()
 
         else:
-            component_name = ""
+            subcomponent_name = ""
 
         self.text += """
         <div style="text-align: left;">
@@ -73,12 +76,12 @@ class OwlSpecification(object):
                 <caption id="overview-types-and-relations"><span>Table 2<sup>\
                 <a class="internalDFN" href="#overview-types-and-relations">\
                 <span class="diamond"> &#9826;:</span></a></sup> </span>\
-                Mapping of """+self.name+""" """+component_name+""" Core Concepts to types and relations \
+                Mapping of """+self.name+""" """+subcomponent_name+""" Core Concepts to types and relations \
                 and PROV core concepts</caption> \
                 <!-- Table 2 -->
                 <tbody>
                     <tr>
-                        <td><b>NIDM-Results Concepts</b></td>
+                        <td><b>"""+self.name+""" Concepts</b></td>
                         <td><b>Types or Relation (PROV concepts)</b></td>
                         <td><b>Name</b></td>
                     </tr>
@@ -102,7 +105,8 @@ class OwlSpecification(object):
                 # First iteration
                 if class_name is sorted_classes[0]:
                     self.text += """
-                                <td rowspan=\""""+str(len(sorted_classes))+"""\" style="text-align: center;">NIDM-Results Types<br/> \
+                                <td rowspan=\""""+str(len(sorted_classes))+\
+                                """\" style="text-align: center;">"""+self.name+""" Types<br/> \
                                 (PROV """+self.owl.graph.qname(prov_class).replace('prov:', '')+""")</td>
                         """
 
@@ -149,8 +153,10 @@ class OwlSpecification(object):
                     <sup><a title=\""""+class_qname+"""\">\
                     <span class="diamond">&#9826;</span></a></sup> is """+definition
 
-        self.text += " <a>"+class_qname+"</a> is a "+\
-                    self.owl.graph.qname(self.owl.get_prov_class(class_name))
+        self.text += " <a>"+class_qname+"</a> is"
+        prov_class = self.owl.get_prov_class(class_name)
+        if prov_class:
+            self.text += " a "+self.owl.graph.qname(prov_class)
 
         found_used_by = False
         if used_by:

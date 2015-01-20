@@ -5,10 +5,11 @@
 @copyright: University of Warwick 2014
 '''
 
-from rdflib import Namespace, RDF, term
+from rdflib import RDF, term
 from rdflib.graph import Graph
 from Constants import *
 import urllib
+import warnings
 
 class OwlReader():
 
@@ -36,27 +37,39 @@ class OwlReader():
 
         return sub_types
 
-    def get_class_names_by_prov_type(self, classes=None):
+    def get_class_names_by_prov_type(self, classes=None, prefix=None, but=None):
         class_names = dict()
+        # We at least want to have an output for Entity, Activity and Agent
         class_names[PROV['Entity']] = list()
         class_names[PROV['Activity']] = list()
         class_names[PROV['Agent']] = list()
+        
+        class_names[None] = list()
 
         if not classes:
             classes = self.graph.subjects(RDF['type'], OWL['Class'])
+            # FIXME: Is there a more efficient way?
+            if prefix:
+                original_classes = classes
+                classes = list()
+                for class_name in original_classes:
+                    if class_name.startswith(prefix):
+                        classes.append(class_name)
+            if but:
+                classes = list(set(classes) - set(but))
 
         for class_name in classes:
             if not isinstance(class_name, term.BNode):
                 prov_type = self.get_prov_class(class_name)
                 if prov_type:
-                    class_names[prov_type].append(class_name)
+                    class_names.setdefault(prov_type, list()).append(class_name)
                 else:
                     prov_type_found = False
                     parent_classes = list(self.graph.objects(class_name, RDFS['subClassOf']))
                     for parent_class in parent_classes:
                         prov_type = self.get_prov_class(parent_class, recursive=3)
                         if prov_type:
-                            class_names[prov_type].append(class_name)
+                            class_names.setdefault(prov_type, list()).append(class_name)
                             prov_type_found = True
                         # else:
                         #     parent_classes_2 = list(self.graph.objects(parent_class, RDFS['subClassOf']))
@@ -74,7 +87,9 @@ class OwlReader():
                         #                     prov_type_found = True
 
                     if not prov_type_found:
-                        raise Exception('No PROV type for class: '+self.graph.qname(class_name))
+                        warnings.warn('No PROV type for class: '+self.graph.qname(class_name))
+                        class_names.setdefault(None, list()).append(class_name)
+                        
         return class_names
 
     def get_property_names(self):
@@ -173,7 +188,6 @@ class OwlReader():
         # Read owl (turtle) file
         owl_graph = Graph()
         if self.file[0:4] == "http":
-            print "url open:"+self.file
             owl_txt = urllib.urlopen(self.file).read()
         else:
             owl_txt = open(self.file, 'r').read()
@@ -190,17 +204,18 @@ class OwlReader():
 
 
     def get_prov_class(self, owl_term, recursive=3):
-        if self.graph.qname(owl_term)[0:5] == "prov:":
+        if not isinstance(owl_term, term.BNode) and \
+            self.graph.qname(owl_term).startswith("prov:"):
             prov_class = owl_term
         else:
             parent_classes = list(self.graph.objects(owl_term, RDFS['subClassOf']))
 
             prov_class = ""
             for parent_class in parent_classes:
-                # FIXME: get namespace instead?
-                if self.graph.qname(parent_class)[0:5] == "prov:":
-                    prov_class = parent_class
-                    break;
+                if not isinstance(parent_class, term.BNode):
+                    if self.graph.qname(parent_class).startswith("prov:"):
+                        prov_class = parent_class
+                        break;
 
             if not prov_class:
                 if recursive > 0:
@@ -209,19 +224,37 @@ class OwlReader():
                         prov_class = self.get_prov_class(parent_class, recursive=recursive-1)
 
         # Get mor generic PROV types
-        if prov_class == PROV['SoftwareAgent']:
-                prov_class = PROV['Agent']
-        if prov_class in set([PROV['Collection'], PROV['Location'], PROV['Bundle']]):
-                prov_class = PROV['Entity']
+        if prov_class in set([PROV['SoftwareAgent'], PROV['Organization'], \
+            PROV['Person']]):
+            prov_class = PROV['Agent']
+        if prov_class in set([PROV['Collection'], PROV['Location'], \
+            PROV['Bundle'], PROV['Plan'], PROV['EmptyCollection']]):
+            prov_class = PROV['Entity']
+        if prov_class in set([PROV['Usage'], PROV['AgentInfluence'], \
+                    PROV['Derivation'], PROV['PrimarySource'], \
+                    PROV['ActivityInfluence'], PROV['Delegation'], 
+                    PROV['Start'], PROV['EntityInfluence'], PROV['Quotation'],\
+                    PROV['End'], PROV['Attribution'], PROV['Association'], \
+                    PROV['Revision'], PROV['Communication'], \
+                    PROV['Generation']]):
+            prov_class = PROV['Influence']
+        if prov_class == PROV['Invalidation']:
+            prov_class = PROV['InstantaneousEvent']
 
         return prov_class
 
     def get_definition(self, owl_term):
-        definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))
+        definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))+\
+            list(self.graph.objects(owl_term, OBO_DEFINITION))
         if definition:
             definition = unicode(definition[0])
         else:
             definition = ""
+
+        # Remove final dot if present
+        if definition[-1] == ".":
+            definition = definition[:-1]
+
         return definition
 
     def get_same_as(self, owl_term):
