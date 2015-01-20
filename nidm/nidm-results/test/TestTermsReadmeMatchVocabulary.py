@@ -7,9 +7,6 @@
 import unittest
 import os
 import sys
-import rdflib
-
-from rdflib.graph import Graph
 from TestCommons import *
 from CheckConsistency import *
 import difflib
