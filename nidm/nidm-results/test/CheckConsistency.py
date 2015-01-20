@@ -5,8 +5,14 @@
 @copyright: University of Warwick 2014
 '''
 
-from rdflib import Namespace, RDF, term
+from rdflib import RDF, term
 from rdflib.graph import Graph
+import sys, os
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+
+# Append parent script directory to path
+sys.path.append(os.path.join(RELPATH, "..", "..", "..", "scripts"))
 from Constants import *
 
 ignored_attributes = set([   
