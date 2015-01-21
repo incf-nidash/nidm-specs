@@ -1,65 +1,47 @@
-#!/usr/bin/env python
-''' Automatically-generates NIDM-Results specification based on nidm-results.owl
-
-@author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
-@copyright: University of Warwick 2014
-'''
-
-import logging
 import os
-from rdflib.compare import *
-import sys
 import codecs
-import collections
-
+from OwlReader import OwlReader
+from Constants import *
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
-NIDMRESULTSPATH = os.path.dirname(RELPATH)
-
-# Append test directory to path
-sys.path.append(os.path.join(RELPATH, "..", "test"))
-from CheckConsistency import *
-from OwlReader import OwlReader
-
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
-
-TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
-DOC_FOLDER = os.path.join(os.path.dirname(os.path.dirname(NIDMRESULTSPATH)), \
-    'doc', 'content', 'specs')
+NIDM_ROOT = os.path.dirname(RELPATH)
+DOC_FOLDER = os.path.join(NIDM_ROOT, 'doc', 'content', 'specs')
 INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
-    def __init__(self, owl_file, spec_name, components=None, used_by=None, 
-        generated_by=None, derived_from=None):
+    def __init__(self, owl_file, spec_name, subcomponents=None, used_by=None, 
+        generated_by=None, derived_from=None, prefix=None):
         self.owl = OwlReader(owl_file)
         self.name = spec_name
+        self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
 
         self.attributes_done = set()
-
         self.text = ""
-        self.create_specification(components, used_by, generated_by, 
-            derived_from)
+        self.create_specification(subcomponents, used_by, generated_by, 
+            derived_from, prefix)
 
-    def create_specification(self, components, used_by, generated_by,
-        derived_from):
+    def create_specification(self, subcomponents, used_by, generated_by,
+        derived_from, prefix):
         self.create_title(self.name+": Types and relations")
 
-        # If no components are defined diplay all classes
-        if not components:
-            components = dict([(None, self.owl.classes)])
+        # If no subcomponents are defined display all classes
+        if not subcomponents:
+            subcomponents = dict([(None, self.owl.classes)])
 
-        for component_name, classes in components.items():
+        already_defined_classes = list()
+        for subcomponent_name, classes in subcomponents.items():
+            classes_by_types = self.owl.get_class_names_by_prov_type(classes, \
+                prefix=prefix, but=already_defined_classes)
+            already_defined_classes += classes
 
-            classes_by_types = self.owl.get_class_names_by_prov_type(classes)
-
-            self.create_component_table(classes_by_types, component_name)
-
+            self.create_subcomponent_table(classes_by_types, subcomponent_name)
             all_classes = sorted(classes_by_types[PROV['Agent']])+\
                           sorted(classes_by_types[PROV['Activity']])+\
-                          sorted(classes_by_types[PROV['Entity']])
+                          sorted(classes_by_types[PROV['Entity']])+\
+                          sorted(classes_by_types[None])
+                          
             for class_name in all_classes:
                 self.create_class_section(
                     class_name, 
@@ -67,26 +49,26 @@ class OwlSpecification(object):
                     self.owl.attributes.setdefault(class_name, None),
                     used_by, generated_by, derived_from)
 
-            if component_name:
+            if subcomponent_name:
                 self.text += """
             </section>"""
 
         self.close_sections()
 
-    def create_component_table(self, classes, component_name=None):
-        if component_name:
+    def create_subcomponent_table(self, classes, subcomponent_name=None):
+        if subcomponent_name:
             self.text += """
-        <section><h1>"""+component_name+"""</h1>"""
+        <section><h1>"""+subcomponent_name+"""</h1>"""
             # Check if there is a header file to include here
-            fname = os.path.join(INCLUDE_FOLDER, \
-                "nidm-results_"+component_name.split(" ")[0].lower()+".html")
+            fname = os.path.join(INCLUDE_FOLDER, self.component+"_"+\
+                subcomponent_name.split(" ")[0].lower()+".html")
             if os.path.isfile(fname):
                 fid = open(fname, "r")
                 self.text += fid.read()
                 fid.close()
 
         else:
-            component_name = ""
+            subcomponent_name = ""
 
         self.text += """
         <div style="text-align: left;">
@@ -94,12 +76,12 @@ class OwlSpecification(object):
                 <caption id="overview-types-and-relations"><span>Table 2<sup>\
                 <a class="internalDFN" href="#overview-types-and-relations">\
                 <span class="diamond"> &#9826;:</span></a></sup> </span>\
-                Mapping of """+self.name+""" """+component_name+""" Core Concepts to types and relations \
+                Mapping of """+self.name+""" """+subcomponent_name+""" Core Concepts to types and relations \
                 and PROV core concepts</caption> \
                 <!-- Table 2 -->
                 <tbody>
                     <tr>
-                        <td><b>NIDM-Results Concepts</b></td>
+                        <td><b>"""+self.name+""" Concepts</b></td>
                         <td><b>Types or Relation (PROV concepts)</b></td>
                         <td><b>Name</b></td>
                     </tr>
@@ -123,7 +105,8 @@ class OwlSpecification(object):
                 # First iteration
                 if class_name is sorted_classes[0]:
                     self.text += """
-                                <td rowspan=\""""+str(len(sorted_classes))+"""\" style="text-align: center;">NIDM-Results Types<br/> \
+                                <td rowspan=\""""+str(len(sorted_classes))+\
+                                """\" style="text-align: center;">"""+self.name+""" Types<br/> \
                                 (PROV """+self.owl.graph.qname(prov_class).replace('prov:', '')+""")</td>
                         """
 
@@ -170,8 +153,10 @@ class OwlSpecification(object):
                     <sup><a title=\""""+class_qname+"""\">\
                     <span class="diamond">&#9826;</span></a></sup> is """+definition
 
-        self.text += " <a>"+class_qname+"</a> is a "+\
-                    self.owl.graph.qname(self.owl.get_prov_class(class_name))
+        self.text += " <a>"+class_qname+"</a> is"
+        prov_class = self.owl.get_prov_class(class_name)
+        if prov_class:
+            self.text += " a "+self.owl.graph.qname(prov_class)
 
         found_used_by = False
         if used_by:
@@ -286,101 +271,24 @@ class OwlSpecification(object):
             self.text += "\t"*x+"</section>\n"
 
     # Write out specification
-    def write_specification(self, spec_file):
+    def write_specification(self, spec_file=None, component=None, version=None):
+        if component and version:
+            spec_file = os.path.join(DOC_FOLDER, component+"_"+version+".html")
+
         spec_open = codecs.open(spec_file, 'w', "utf-8")
         spec_open.write(self.text)
         spec_open.close()
 
-    def _header_footer(self, prev_file=None, follow_file=None):
+    def _header_footer(self, prev_file=None, follow_file=None, component=None):
+        if component:
+            prev_file = os.path.join(INCLUDE_FOLDER, component+"_head.html")
+            follow_file = os.path.join(INCLUDE_FOLDER, component+"_foot.html")
+
         if prev_file:
-                prev_file_open = open(prev_file, 'r')
-                self.text = prev_file_open.read().decode('utf-8')+self.text
-                prev_file_open.close()
+            prev_file_open = open(prev_file, 'r')
+            self.text = prev_file_open.read().decode('utf-8')+self.text
+            prev_file_open.close()
         if follow_file:
             follow_file_open = open(follow_file, 'r')
             self.text = self.text+follow_file_open.read()
             follow_file_open.close()
-
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        nidm_original_version = sys.argv[1]
-        nidm_version = nidm_original_version.replace(".", "")
-    else:
-        nidm_version = 'dev'
-
-    # Retreive owl file for NIDM-Results
-    if nidm_version == "dev":
-        owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
-    else:
-        owl_file = os.path.join(INCLUDE_FOLDER, 'nidm-results_'+nidm_version+'.owl')
-
-    # check the file exists
-    assert os.path.exists(owl_file)
-
-
-    components =  collections.OrderedDict()
-    components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
-             NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
-             NIDM['GrandMeanMap'],
-             NIDM['ContrastEstimation'], NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
-             NIDM['ContrastMap'], NIDM['StatisticMap']]
-    components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'],
-             NIDM['Coordinate']]
-    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
-    components["FSL-specific Concepts"] = [FSL['CenterOfGravity'], NIDM['FSL']]
-
-    # Add manually used and wasDerivedFrom because these are not stored in the owl file
-    used_by = { 
-                NIDM['Data']: [NIDM['ModelParametersEstimation']],
-                NIDM['ErrorModel']: [NIDM['ModelParametersEstimation']],
-                NIDM['DesignMatrix']: [NIDM['ModelParametersEstimation'],
-                                       NIDM['ContrastEstimation']],
-                NIDM['ParameterEstimateMap']: [NIDM['ContrastEstimation']],
-                NIDM['ResidualMeanSquaresMap']: [NIDM['ContrastEstimation']],
-                NIDM['MaskMap']: [NIDM['ContrastEstimation']],
-                NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
-                NIDM['ContrastMap']: [NIDM['Inference']], 
-                NIDM['StatisticMap']: [NIDM['Inference']], 
-    }
-    generated_by = { 
-                NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ResidualMeanSquaresMap']: NIDM['ModelParametersEstimation'],
-                NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ContrastMap']: NIDM['ContrastEstimation'], 
-                NIDM['StatisticMap']: NIDM['ContrastEstimation'], 
-    }
-    derived_from = {
-                NIDM['Cluster']: NIDM['ExcursionSet'],
-                NIDM['Peak']: NIDM['Cluster'],                
-    }
-
-    if nidm_version == "020":
-        # In version 0.2.0 "ErrorModel" was called "NoiseModel"
-        components["Model fitting"][1] = NIDM['NoiseModel']
-        used_by.pop(NIDM['ErrorModel'], None)
-        used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
-        # No "InferenceMaskMap"
-        components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'],
-             NIDM['Coordinate']]
-
-    owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, 
-        generated_by, derived_from)
-
-    owlspec._header_footer(os.path.join(INCLUDE_FOLDER, "nidm-results_head.html"),
-         os.path.join(INCLUDE_FOLDER, "nidm-results_foot.html"))
-
-    if not nidm_version == "dev":
-        if nidm_version == "020":
-            # Previous version
-            owlspec.text = owlspec.text.replace("nidm-results_020.html", "nidm-results_010.html")
-        owlspec.text = owlspec.text.replace("(version under development)", nidm_original_version)
-        owlspec.text = owlspec.text.replace("nidm-results_dev.html", "nidm-results_"+nidm_version+".html")
-        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
-
-    owlspec.write_specification(os.path.join(DOC_FOLDER, "nidm-results_"+nidm_version+".html"))
-
-

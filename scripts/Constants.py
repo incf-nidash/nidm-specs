@@ -9,6 +9,9 @@ from rdflib import Namespace
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
+
+NIDM_EXPERIMENT = Namespace('http://purl.org/nidash/nidm/experiment#')
+
 NIIRI = Namespace('http://iri.nidash.org/')
 SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
 FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
@@ -34,5 +37,6 @@ OBO_REQUIRES_DISCUSSION = OBO['IAO_0000428']
 OBO_UNCURATED = OBO['IAO_0000124']
 OBO_TO_BE_REPLACED = OBO['IAO_0000423']
 OBO_READY = OBO['IAO_0000122']
+OBO_DEFINITION = OBO['IAO_0000115']
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
