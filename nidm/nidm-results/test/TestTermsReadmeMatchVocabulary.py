@@ -14,6 +14,12 @@ import difflib
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_RESULTS_PATH = os.path.dirname(RELPATH)
 
+# Append parent script directory to path
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
+from Constants import *
+
+
 # Add scripts folder
 path = os.path.join(NIDM_RESULTS_PATH, "scripts")
 sys.path.append(path)

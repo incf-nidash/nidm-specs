@@ -12,7 +12,7 @@ import sys, os
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 
 # Append parent script directory to path
-sys.path.append(os.path.join(RELPATH, "..", "..", "..", "scripts"))
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
 from Constants import *
 
 ignored_attributes = set([   
