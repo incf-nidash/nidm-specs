@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) > 1:
         nidm_original_version = sys.argv[1]
         nidm_version = nidm_original_version.replace(".", "")
@@ -112,4 +112,6 @@ if __name__ == '__main__':
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
 
+if __name__ == '__main__':
+    main()
 
