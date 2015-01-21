@@ -62,6 +62,10 @@ if __name__ == '__main__':
     owlspec = OwlSpecification(owl_file, "NIDM-Experiment", subcomponents, \
         used_by, generated_by, derived_from, prefix=str(NIDM_EXPERIMENT))
 
+    if not nidm_version == "dev":
+        owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)
+        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
+
     component_name = "nidm-experiment"
     owlspec._header_footer(component=component_name)
     owlspec.write_specification(component=component_name, version=nidm_version)
