@@ -48,7 +48,7 @@ def main():
     subcomponents["Project"] = [NIDM_EXPERIMENT['ProjectObject']]
     subcomponents["Study"] = [NIDM_EXPERIMENT['StudyObject']]
     subcomponents["Acquisition"] = [NIDM_EXPERIMENT['AcquisitionObject']]
-    subcomponents["Other entities"] = []
+    subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the 
     # owl file (no relations yet!)
