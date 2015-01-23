@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDM_EXPE_PATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) > 1:
         nidm_original_version = sys.argv[1]
         nidm_version = nidm_original_version.replace(".", "")
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     subcomponents["Project"] = [NIDM_EXPERIMENT['ProjectObject']]
     subcomponents["Study"] = [NIDM_EXPERIMENT['StudyObject']]
     subcomponents["Acquisition"] = [NIDM_EXPERIMENT['AcquisitionObject']]
-    subcomponents["Other entities"] = []
+    subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the 
     # owl file (no relations yet!)
@@ -62,8 +62,14 @@ if __name__ == '__main__':
     owlspec = OwlSpecification(owl_file, "NIDM-Experiment", subcomponents, \
         used_by, generated_by, derived_from, prefix=str(NIDM_EXPERIMENT))
 
+    if not nidm_version == "dev":
+        owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)
+        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
+
     component_name = "nidm-experiment"
     owlspec._header_footer(component=component_name)
     owlspec.write_specification(component=component_name, version=nidm_version)
 
 
+if __name__ == '__main__':
+    main()

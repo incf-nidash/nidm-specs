@@ -14,13 +14,10 @@ import collections
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 
-# Append test directory to path
-sys.path.append(os.path.join(RELPATH, "..", "test"))
-from CheckConsistency import *
-
 # Append parent script directory to path
-sys.path.append(os.path.join(RELPATH, "..", "..", "..", "scripts"))
+sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from owl_to_webpage import OwlSpecification
+from Constants import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -28,7 +25,7 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) > 1:
         nidm_original_version = sys.argv[1]
         nidm_version = nidm_original_version.replace(".", "")
@@ -58,6 +55,11 @@ if __name__ == '__main__':
              NIDM['Coordinate']]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity'], NIDM['FSL']]
+
+    if nidm_version == 'dev':
+        # For the developement version only list all terms that were not 
+        # referred to in other components
+        components["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
@@ -96,7 +98,7 @@ if __name__ == '__main__':
              NIDM['Coordinate']]
 
     owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, 
-        generated_by, derived_from)
+        generated_by, derived_from, prefix=str(NIDM))
 
     owlspec._header_footer(component="nidm-results")
 
@@ -104,10 +106,12 @@ if __name__ == '__main__':
         if nidm_version == "020":
             # Previous version
             owlspec.text = owlspec.text.replace("nidm-results_020.html", "nidm-results_010.html")
-        owlspec.text = owlspec.text.replace("(version under development)", nidm_original_version)
-        owlspec.text = owlspec.text.replace("nidm-results_dev.html", "nidm-results_"+nidm_version+".html")
+        owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)
+        owlspec.text = owlspec.text.replace("nidm-results_dev.html", "nidm-results_"+nidm_version+".html", 1)
         owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
 
+if __name__ == '__main__':
+    main()
 
