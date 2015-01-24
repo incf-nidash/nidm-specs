@@ -277,7 +277,7 @@ class OwlReader():
     def get_example(self, owl_term, base_repository=None):
         example_list = list()
 
-        examples = list(self.graph.objects(owl_term, IAO_EXAMPLE))
+        examples = list(self.graph.objects(owl_term, OBO_EXAMPLE))
 
         for example in examples:
             if base_repository is not None:
@@ -323,7 +323,7 @@ class OwlReader():
         return curation_status
 
     def get_editor(self, owl_term):
-        editor = list(self.graph.objects(owl_term, NIDM['termEditor']))
+        editor = list(self.graph.objects(owl_term, OBO_TERM_EDITOR))
         if editor:
             editor = " (editor: "+editor[0]+")"
         else:
