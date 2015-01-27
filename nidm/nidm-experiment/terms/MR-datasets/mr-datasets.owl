@@ -1,0 +1,734 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11> .
+
+<http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11> rdf:type :Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#hasSpecifiedOutput
+
+:hasSpecifiedOutput rdf:type :ObjectProperty ;
+                    
+                    :inverseOf :hasSpecifiedOutput .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#isAbout
+
+:isAbout rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#isQualityMeasurementOf
+
+:isQualityMeasurementOf rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#isSpecifiedOutputOf
+
+:isSpecifiedOutputOf rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#simultaneousWith
+
+:simultaneousWith rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#usedToGenerate
+
+:usedToGenerate rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#wasGeneratedUsing
+
+:wasGeneratedUsing rdf:type :ObjectProperty ;
+                   
+                   :inverseOf :usedToGenerate .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#DICOM_parameter_set
+
+:DICOM_parameter_set rdf:type :Class ;
+                     
+                     rdfs:subClassOf :NMR_instrument_parameter_set .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#EEG_dataset
+
+:EEG_dataset rdf:type :Class ;
+             
+             rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MEG_dataset
+
+:MEG_dataset rdf:type :Class ;
+             
+             rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MEG_metadata
+
+:MEG_metadata rdf:type :Class ;
+              
+              rdfs:subClassOf :metadata .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MRI_data_acquisition_paradigm
+
+:MRI_data_acquisition_paradigm rdf:type :Class ;
+                               
+                               rdfs:subClassOf :processual_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MRI_dataset
+
+:MRI_dataset rdf:type :Class ;
+             
+             :equivalentClass [ rdf:type :Restriction ;
+                                :onProperty :isSpecifiedOutputOf ;
+                                :someValuesFrom :MRI_data_acquisition_paradigm
+                              ] ;
+             
+             rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MRI_metadata
+
+:MRI_metadata rdf:type :Class ;
+              
+              :equivalentClass [ rdf:type :Restriction ;
+                                 :onProperty :isAbout ;
+                                 :someValuesFrom :MRI_dataset
+                               ] ;
+              
+              rdfs:subClassOf :metadata .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#MRI_protocol
+
+:MRI_protocol rdf:type :Class ;
+              
+              rdfs:subClassOf :imaging_acquisition_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#NMR_instrument_parameter_set
+
+:NMR_instrument_parameter_set rdf:type :Class ;
+                              
+                              rdfs:subClassOf :dataset_specification_parameter_set .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#PAR_REC_parameter_set
+
+:PAR_REC_parameter_set rdf:type :Class ;
+                       
+                       rdfs:subClassOf :NMR_instrument_parameter_set .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#PET_dataset
+
+:PET_dataset rdf:type :Class ;
+             
+             rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#PET_imaging_protocol
+
+:PET_imaging_protocol rdf:type :Class ;
+                      
+                      rdfs:subClassOf :nuclear_medicine_imaging_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#PET_metadata
+
+:PET_metadata rdf:type :Class ;
+              
+              rdfs:subClassOf :metadata .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#P_file_parameter_set
+
+:P_file_parameter_set rdf:type :Class ;
+                      
+                      rdfs:subClassOf :NMR_instrument_parameter_set .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#SPECT_dataset
+
+:SPECT_dataset rdf:type :Class ;
+               
+               rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#SPECT_imaging_protocol
+
+:SPECT_imaging_protocol rdf:type :Class ;
+                        
+                        rdfs:subClassOf :nuclear_medicine_imaging_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#SPECT_metadata
+
+:SPECT_metadata rdf:type :Class ;
+                
+                rdfs:subClassOf :metadata .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T1-weighted_MRI_protocol
+
+:T1-weighted_MRI_protocol rdf:type :Class ;
+                          
+                          rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T1_weighted_MRI_dataset
+
+:T1_weighted_MRI_dataset rdf:type :Class ;
+                         
+                         :equivalentClass [ rdf:type :Restriction ;
+                                            :onProperty :wasGeneratedUsing ;
+                                            :someValuesFrom :T1-weighted_MRI_protocol
+                                          ] ;
+                         
+                         rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T2-weighted_MRI_protocol
+
+:T2-weighted_MRI_protocol rdf:type :Class ;
+                          
+                          rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T2_weighted_MRI_dataset
+
+:T2_weighted_MRI_dataset rdf:type :Class ;
+                         
+                         :equivalentClass [ rdf:type :Restriction ;
+                                            :onProperty :wasGeneratedUsing ;
+                                            :someValuesFrom :T2-weighted_MRI_protocol
+                                          ] ;
+                         
+                         rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T2star_weighted_MRI_dataset
+
+:T2star_weighted_MRI_dataset rdf:type :Class ;
+                             
+                             rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#X_ray_imaging_protocol
+
+:X_ray_imaging_protocol rdf:type :Class ;
+                        
+                        rdfs:subClassOf :imaging_acquisition_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#arterial-spin-labelled_MRI_dataset
+
+:arterial-spin-labelled_MRI_dataset rdf:type :Class ;
+                                    
+                                    :equivalentClass [ rdf:type :Restriction ;
+                                                       :onProperty :wasGeneratedUsing ;
+                                                       :someValuesFrom :arterial-spin-labelled_MRI_protocol
+                                                     ] ;
+                                    
+                                    rdfs:subClassOf :flow_weighted_MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#arterial-spin-labelled_MRI_protocol
+
+:arterial-spin-labelled_MRI_protocol rdf:type :Class ;
+                                     
+                                     rdfs:subClassOf :flow-weighted_MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#behavioral_experimental_paradigm
+
+:behavioral_experimental_paradigm rdf:type :Class ;
+                                  
+                                  rdfs:subClassOf :processual_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#block_design_functional_MRI_dataset
+
+:block_design_functional_MRI_dataset rdf:type :Class ;
+                                     
+                                     rdfs:subClassOf :task_based_functional_MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#clinical_assessment_acquisition_protocol
+
+:clinical_assessment_acquisition_protocol rdf:type :Class ;
+                                          
+                                          rdfs:subClassOf :protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#continuant
+
+:continuant rdf:type :Class .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#dataset
+
+:dataset rdf:type :Class ;
+         
+         rdfs:subClassOf :information_content_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#dataset_specification_entity
+
+:dataset_specification_entity rdf:type :Class ;
+                              
+                              rdfs:subClassOf :realizable_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#dataset_specification_parameter_set
+
+:dataset_specification_parameter_set rdf:type :Class ;
+                                     
+                                     rdfs:subClassOf :dataset_specification_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#design_specification
+
+:design_specification rdf:type :Class ;
+                      
+                      rdfs:subClassOf :realizable_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#diffusion-weighted_MRI_protocol
+
+:diffusion-weighted_MRI_protocol rdf:type :Class ;
+                                 
+                                 rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#diffusion_tensor_imaging_dataset
+
+:diffusion_tensor_imaging_dataset rdf:type :Class ;
+                                  
+                                  rdfs:subClassOf :processed_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#diffusion_weighted_MRI_dataset
+
+:diffusion_weighted_MRI_dataset rdf:type :Class ;
+                                
+                                rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#electrophysiology_dataset
+
+:electrophysiology_dataset rdf:type :Class ;
+                           
+                           rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#electrophysiology_metadata
+
+:electrophysiology_metadata rdf:type :Class ;
+                            
+                            rdfs:subClassOf :metadata .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#event_related_functional_MRI_dataset
+
+:event_related_functional_MRI_dataset rdf:type :Class ;
+                                      
+                                      rdfs:subClassOf :task_based_functional_MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#field-mapping_MRI_protocol
+
+:field-mapping_MRI_protocol rdf:type :Class ;
+                            
+                            rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#field_mapping_MRI_dataset
+
+:field_mapping_MRI_dataset rdf:type :Class ;
+                           
+                           rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#flow-weighted_MRI_protocol
+
+:flow-weighted_MRI_protocol rdf:type :Class ;
+                            
+                            rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#flow_weighted_MRI_dataset
+
+:flow_weighted_MRI_dataset rdf:type :Class ;
+                           
+                           rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#function
+
+:function rdf:type :Class ;
+          
+          rdfs:subClassOf :quality .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#functional_MRI_data_acquisition
+
+:functional_MRI_data_acquisition rdf:type :Class ;
+                                 
+                                 :equivalentClass [ rdf:type :Restriction ;
+                                                    :onProperty :simultaneousWith ;
+                                                    :someValuesFrom :behavioral_experimental_paradigm
+                                                  ] ;
+                                 
+                                 rdfs:subClassOf :MRI_data_acquisition_paradigm .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#functional_MRI_dataset
+
+:functional_MRI_dataset rdf:type :Class ;
+                        
+                        :equivalentClass [ rdf:type :Class ;
+                                           :intersectionOf ( [ rdf:type :Class ;
+                                                               :unionOf ( :T2_weighted_MRI_dataset
+                                                                          :T2star_weighted_MRI_dataset
+                                                                          :flow_weighted_MRI_dataset
+                                                                        )
+                                                             ]
+                                                             [ rdf:type :Restriction ;
+                                                               :onProperty :isQualityMeasurementOf ;
+                                                               :someValuesFrom :function
+                                                             ]
+                                                           )
+                                         ] ;
+                        
+                        rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#imaging_acquisition_protocol
+
+:imaging_acquisition_protocol rdf:type :Class ;
+                              
+                              rdfs:subClassOf :protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#information_content_entity
+
+:information_content_entity rdf:type :Class ;
+                            
+                            rdfs:subClassOf :continuant .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#metadata
+
+:metadata rdf:type :Class ;
+          
+          rdfs:subClassOf :information_content_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#model
+
+:model rdf:type :Class ;
+       
+       rdfs:subClassOf :information_content_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#multiple_subject_dataset
+
+:multiple_subject_dataset rdf:type :Class ;
+                          
+                          rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#nuclear_medicine_imaging_protocol
+
+:nuclear_medicine_imaging_protocol rdf:type :Class ;
+                                   
+                                   rdfs:subClassOf :imaging_acquisition_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#occurrent
+
+:occurrent rdf:type :Class .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#optical_imaging_dataset
+
+:optical_imaging_dataset rdf:type :Class ;
+                         
+                         rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#optical_imaging_protocol
+
+:optical_imaging_protocol rdf:type :Class ;
+                          
+                          rdfs:subClassOf :imaging_acquisition_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#performed_acquisition_MRI_protocol
+
+:performed_acquisition_MRI_protocol rdf:type :Class ;
+                                    
+                                    rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#planned_acquisition_MRI_protocol
+
+:planned_acquisition_MRI_protocol rdf:type :Class ;
+                                  
+                                  rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#processed_dataset
+
+:processed_dataset rdf:type :Class ;
+                   
+                   rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#processual_entity
+
+:processual_entity rdf:type :Class ;
+                   
+                   rdfs:subClassOf :occurrent .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#protocol
+
+:protocol rdf:type :Class ;
+          
+          rdfs:subClassOf :model .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#quality
+
+:quality rdf:type :Class ;
+         
+         rdfs:subClassOf :realizable_entity .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#raw_dataset
+
+:raw_dataset rdf:type :Class ;
+             
+             rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#realizable_entity
+
+:realizable_entity rdf:type :Class ;
+                   
+                   rdfs:subClassOf :continuant .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#resting_state_functional_MRI_dataset
+
+:resting_state_functional_MRI_dataset rdf:type :Class ;
+                                      
+                                      rdfs:subClassOf :functional_MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#single_subject_dataset
+
+:single_subject_dataset rdf:type :Class ;
+                        
+                        rdfs:subClassOf :dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#spectroscopic-imaging_MRI_protocol
+
+:spectroscopic-imaging_MRI_protocol rdf:type :Class ;
+                                    
+                                    rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#spectroscopic_MRI_dataset
+
+:spectroscopic_MRI_dataset rdf:type :Class ;
+                           
+                           rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#spectroscopic_imaging_MRI_dataset
+
+:spectroscopic_imaging_MRI_dataset rdf:type :Class ;
+                                   
+                                   rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#spectroscopy_MRI_protocol
+
+:spectroscopy_MRI_protocol rdf:type :Class ;
+                           
+                           rdfs:subClassOf :MRI_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#structural_MRI_dataset
+
+:structural_MRI_dataset rdf:type :Class ;
+                        
+                        :equivalentClass [ rdf:type :Class ;
+                                           :intersectionOf ( [ rdf:type :Class ;
+                                                               :unionOf ( :T1_weighted_MRI_dataset
+                                                                          :T2_weighted_MRI_dataset
+                                                                        )
+                                                             ]
+                                                             [ rdf:type :Restriction ;
+                                                               :onProperty :isQualityMeasurementOf ;
+                                                               :someValuesFrom :structure
+                                                             ]
+                                                           )
+                                         ] ;
+                        
+                        rdfs:subClassOf :MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#structure
+
+:structure rdf:type :Class ;
+           
+           rdfs:subClassOf :quality .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#susceptibility_weighted_imaging_dataset
+
+:susceptibility_weighted_imaging_dataset rdf:type :Class ;
+                                         
+                                         rdfs:subClassOf :processed_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#task_based_functional_MRI_dataset
+
+:task_based_functional_MRI_dataset rdf:type :Class ;
+                                   
+                                   :equivalentClass [ rdf:type :Restriction ;
+                                                      :onProperty :isSpecifiedOutputOf ;
+                                                      :someValuesFrom :functional_MRI_data_acquisition
+                                                    ] ;
+                                   
+                                   rdfs:subClassOf :functional_MRI_dataset .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#ultrasonographic_imaging_protocol
+
+:ultrasonographic_imaging_protocol rdf:type :Class ;
+                                   
+                                   rdfs:subClassOf :imaging_acquisition_protocol .
+
+
+
+###  http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T2*-weighted_MRI_protocol
+
+<http://www.semanticweb.org/karl/ontologies/2014/10/untitled-ontology-11#T2*-weighted_MRI_protocol> rdf:type :Class ;
+                                                                                                    
+                                                                                                    rdfs:subClassOf :MRI_protocol .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
