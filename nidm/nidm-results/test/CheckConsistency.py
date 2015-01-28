@@ -163,12 +163,14 @@ def check_class_names(example_graph, example_name, class_names=None, owl_file=No
     sub_types = get_sub_class_names(example_graph)
 
     for not_recognised_sub_type in (sub_types - class_names):
-        # key = example_graph.qname(not_recognised_sub_type)
-        key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
-        if key in my_exception:
-            my_exception[key].add(example_name)
-        else:
-            my_exception[key] = set([example_name])
+
+        if not not_recognised_sub_type.startswith(str(PROV)):
+            # key = example_graph.qname(not_recognised_sub_type)
+            key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
+            if key in my_exception:
+                my_exception[key].add(example_name)
+            else:
+                my_exception[key] = set([example_name])
 
     return my_exception
 
