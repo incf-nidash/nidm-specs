@@ -44,8 +44,10 @@ def main():
 
 
     components =  collections.OrderedDict()
-    components["Parameters estimtaion"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
-             NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
+    components["General"] = [NIDM['Map']]
+    components["Parameters estimation"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
+             NIDM['ModelParametersEstimation'],  
+             NIDM['ParameterEstimateMap'],
              NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
              NIDM['MaskMap'], NIDM['CustomMaskMap']]    
     components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
