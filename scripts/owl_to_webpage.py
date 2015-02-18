@@ -16,6 +16,7 @@ class OwlSpecification(object):
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
+        self.already_defined_classes = list()
 
         self.attributes_done = set()
         self.text = ""
@@ -30,11 +31,10 @@ class OwlSpecification(object):
         if not subcomponents:
             subcomponents = dict([(None, self.owl.classes)])
 
-        already_defined_classes = list()
         for subcomponent_name, classes in subcomponents.items():
             classes_by_types = self.owl.get_class_names_by_prov_type(classes, \
-                prefix=prefix, but=already_defined_classes)
-            already_defined_classes += classes
+                prefix=prefix, but=self.already_defined_classes)
+            self.already_defined_classes += classes
 
             self.create_subcomponent_table(classes_by_types, subcomponent_name)
             all_classes = sorted(classes_by_types[PROV['Agent']])+\
@@ -138,8 +138,8 @@ class OwlSpecification(object):
 
         return definition
 
-    def create_class_section(self, class_name, definition, attributes, used_by, 
-        generated_by, derived_from):
+    def create_class_section(self, class_name, definition, attributes, 
+        used_by=None, generated_by=None, derived_from=None):
         class_qname = self.owl.graph.qname(class_name)
 
         definition = self.format_definition(definition)
@@ -229,6 +229,7 @@ class OwlSpecification(object):
                     of the """+class_qname+""".</li>
                     """
 
+        range_classes = list()
         if attributes:
             for att in sorted(attributes):
                 att_name = self.owl.graph.qname(att)
@@ -248,8 +249,15 @@ class OwlSpecification(object):
                         self.format_definition(att_def)
 
                     if att in self.owl.ranges:
-                        self.text += " (range "+", ".join(map(self.owl.graph.qname, \
-                            sorted(self.owl.ranges[att])))+")"
+                        range_names = map(self.owl.graph.qname, \
+                            sorted(self.owl.ranges[att]))
+
+                        # print map(startswith('nidm'), map(self.owl.graph.qname, sorted(self.owl.ranges[att])))
+                        self.text += " (range "+", ".join(range_names)+")"
+
+                        for range_class in sorted(self.owl.ranges[att]):
+                            if self.owl.graph.qname(range_class).startswith('nidm'):
+                                range_classes.append(range_class)                              
 
                     self.text += "</li>"
 
@@ -262,6 +270,14 @@ class OwlSpecification(object):
                 </ul>
                 </div>
                 <pre class='example highlight'>"""+example+"""</pre>"""
+
+        for range_name in range_classes:
+            if not range_name in self.already_defined_classes:
+                self.create_class_section(
+                        range_name, 
+                        self.owl.get_definition(range_name), 
+                        self.owl.attributes.setdefault(range_name, None))
+                self.already_defined_classes.append(range_name)
 
         self.text += """  
             </section>"""
