@@ -224,7 +224,7 @@ class OwlSpecification(object):
                 """<a>"""+class_qname+"""</a> has attributes:
                 <ul>
                     <li><span class="attribute" id=\""""+\
-                    class_qname+""".label">prov:label</span>: an \
+                    class_qname+""".label">rdfs:label</span>: an \
                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description \
                     of the """+class_qname+""".</li>
                     """
