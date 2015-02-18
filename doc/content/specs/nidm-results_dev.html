@@ -301,10 +301,10 @@
         <section>
             <h1>NIDM-Results: Types and relations</h1>
         
-        <section><h1>Model fitting</h1>
+        <section><h1>Parameters estimtaion</h1>
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
-                <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results Model fitting Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
+                <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results Parameters estimtaion Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
                 <tbody>
                     <tr>
                         <td><b>NIDM-Results Concepts</b></td>
@@ -315,48 +315,20 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
-                            <td><a title="nidm:ContrastEstimation">nidm:ContrastEstimation</a>
-                            </td>
-                    
-                                <td rowspan="2" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
-                        
-                                <td><a>nidm:ContrastEstimation</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:ModelParametersEstimation">nidm:ModelParametersEstimation</a>
                             </td>
                     
-                                <td><a>nidm:ModelParametersEstimation</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:ContrastMap">nidm:ContrastMap</a>
-                            </td>
-                    
-                                <td rowspan="12" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="1" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
                         
-                                <td><a>nidm:ContrastMap</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</a>
-                            </td>
-                    
-                                <td><a>nidm:ContrastStandardErrorMap</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:ContrastWeights">nidm:ContrastWeights</a>
-                            </td>
-                    
-                                <td><a>nidm:ContrastWeights</a></td>
+                                <td><a>nidm:ModelParametersEstimation</a></td>
                             </tr>
                 
                         <tr>
                             <td><a title="nidm:CustomMaskMap">nidm:CustomMaskMap</a>
                             </td>
                     
+                                <td rowspan="8" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                        
                                 <td><a>nidm:CustomMaskMap</a></td>
                             </tr>
                 
@@ -409,34 +381,9 @@
                                 <td><a>nidm:ResidualMeanSquaresMap</a></td>
                             </tr>
                 
-                        <tr>
-                            <td><a title="nidm:StatisticMap">nidm:StatisticMap</a>
-                            </td>
-                    
-                                <td><a>nidm:StatisticMap</a></td>
-                            </tr>
-                
                 </tbody>
                 </table>
             </div>
-            <!-- nidm:ContrastEstimation -->
-            <section id="section-nidm:ContrastEstimation"> 
-                <h1 label="nidm:ContrastEstimation">nidm:ContrastEstimation</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ContrastEstimation</dfn>                    <sup><a title="nidm:ContrastEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:ContrastEstimation</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a>, <a>nidm:ContrastStandardErrorMap</a> and <a>nidm:StatisticMap</a> entities. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ContrastEstimation"> A <a>nidm:ContrastEstimation</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ContrastEstimation.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastEstimation.</li>
-                            
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:contrast_estimation_id a prov:Activity , nidm:ContrastEstimation ;
-	rdfs:label "Contrast estimation" ;
-	prov:used niiri:mask_id_2 , niiri:residual_mean_squares_map_id , niiri:design_matrix_id , niiri:contrast_id, niiri:beta_map_id_1 ;
-    prov:wasAssociatedWith niiri:software_id .</pre>  
-            </section>
             <!-- nidm:ModelParametersEstimation -->
             <section id="section-nidm:ModelParametersEstimation"> 
                 <h1 label="nidm:ModelParametersEstimation">nidm:ModelParametersEstimation</h1>
@@ -462,98 +409,6 @@
     prov:used niiri:error_model_id ;
     prov:wasAssociatedWith niiri:software_id .</pre>  
             </section>
-            <!-- nidm:ContrastMap -->
-            <section id="section-nidm:ContrastMap"> 
-                <h1 label="nidm:ContrastMap">nidm:ContrastMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ContrastMap</dfn>                    <sup><a title="nidm:ContrastMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is statistical contrast estimate. <a>nidm:ContrastMap</a> is a prov:Entity used by <a>nidm:Inference</a> and  generated by <a>nidm:ContrastEstimation</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ContrastMap"> A <a>nidm:ContrastMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ContrastMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:contrastName">
-                        <dfn>nidm:contrastName</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:filename">
-                        <dfn>nidm:filename</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:hasMapHeader">
-                        <dfn>nidm:hasMapHeader</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:inCoordinateSpace">
-                        <dfn>nidm:inCoordinateSpace</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:contrast_map_id a prov:Entity , nidm:ContrastMap ;
-	rdfs:label "Contrast Map: listening > rest" ;
-	prov:atLocation "file:///path/to/Contrast.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:filename "Contrast.nii.gz"^^xsd:string ;
-	nidm:contrastName "listening > rest"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
-    prov:wasGeneratedBy niiri:contrast_estimation_id .
-</pre>  
-            </section>
-            <!-- nidm:ContrastStandardErrorMap -->
-            <section id="section-nidm:ContrastStandardErrorMap"> 
-                <h1 label="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ContrastStandardErrorMap</dfn>                    <sup><a title="nidm:ContrastStandardErrorMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the standard error of a given contrast. <a>nidm:ContrastStandardErrorMap</a> is a prov:Entity generated by <a>nidm:ContrastEstimation</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ContrastStandardErrorMap"> A <a>nidm:ContrastStandardErrorMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ContrastStandardErrorMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastStandardErrorMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
-	rdfs:label "Contrast Standard Error Map" ;
-	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
-    prov:wasGeneratedBy niiri:contrast_estimation_id .</pre>  
-            </section>
-            <!-- nidm:ContrastWeights -->
-            <section id="section-nidm:ContrastWeights"> 
-                <h1 label="nidm:ContrastWeights">nidm:ContrastWeights</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ContrastWeights</dfn>                    <sup><a title="nidm:ContrastWeights">                    <span class="diamond">&#9826;</span></a></sup> is vector defining the linear combination associated with a particular contrast. . <a>nidm:ContrastWeights</a> is a prov:Entity used by <a>nidm:ContrastEstimation</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ContrastWeights"> A <a>nidm:ContrastWeights</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ContrastWeights.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastWeights.</li>
-                     
-                        <li><span class="attribute" id="nidm:ContrastWeights.nidm:contrastName">
-                        <a>nidm:contrastName</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastWeights.nidm:statisticType">
-                        <dfn>nidm:statisticType</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:FStatistic, nidm:Statistic, nidm:TStatistic, nidm:ZStatistic)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:contrast_id a prov:Entity , nidm:ContrastWeights ;
-	rdfs:label "Contrast: Listening > Rest" ;
-	prov:value "[1, 0, 0]"^^xsd:string ;
-	nidm:statisticType nidm:TStatistic ;
-	nidm:contrastName "listening > rest"^^xsd:string .</pre>  
-            </section>
             <!-- nidm:CustomMaskMap -->
             <section id="section-nidm:CustomMaskMap"> 
                 <h1 label="nidm:CustomMaskMap">nidm:CustomMaskMap</h1>
@@ -566,13 +421,13 @@
                     <li><span class="attribute" id="nidm:CustomMaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomMaskMap.</li>
                      
                         <li><span class="attribute" id="nidm:CustomMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
+                        <dfn>nidm:filename</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:CustomMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
+                        <dfn>nidm:hasMapHeader</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
                         <li><span class="attribute" id="nidm:CustomMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
+                        <dfn>nidm:inCoordinateSpace</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
                 </ul>
                 </div>
@@ -796,6 +651,172 @@
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .</pre>  
+            </section>
+            </section>
+        <section><h1>Contrast estimation</h1>
+        <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+                <caption id="overview-types-and-relations"><span>Table 2<sup>                <a class="internalDFN" href="#overview-types-and-relations">                <span class="diamond"> &#9826;:</span></a></sup> </span>                Mapping of NIDM-Results Contrast estimation Core Concepts to types and relations                 and PROV core concepts</caption>                 <!-- Table 2 -->
+                <tbody>
+                    <tr>
+                        <td><b>NIDM-Results Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="nidm:ContrastEstimation">nidm:ContrastEstimation</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
+                        
+                                <td><a>nidm:ContrastEstimation</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:ContrastMap">nidm:ContrastMap</a>
+                            </td>
+                    
+                                <td rowspan="4" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a>nidm:ContrastMap</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</a>
+                            </td>
+                    
+                                <td><a>nidm:ContrastStandardErrorMap</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:ContrastWeights">nidm:ContrastWeights</a>
+                            </td>
+                    
+                                <td><a>nidm:ContrastWeights</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:StatisticMap">nidm:StatisticMap</a>
+                            </td>
+                    
+                                <td><a>nidm:StatisticMap</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:ContrastEstimation -->
+            <section id="section-nidm:ContrastEstimation"> 
+                <h1 label="nidm:ContrastEstimation">nidm:ContrastEstimation</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ContrastEstimation</dfn>                    <sup><a title="nidm:ContrastEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:ContrastEstimation</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a>, <a>nidm:ContrastStandardErrorMap</a> and <a>nidm:StatisticMap</a> entities. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ContrastEstimation"> A <a>nidm:ContrastEstimation</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ContrastEstimation.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastEstimation.</li>
+                            
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:contrast_estimation_id a prov:Activity , nidm:ContrastEstimation ;
+	rdfs:label "Contrast estimation" ;
+	prov:used niiri:mask_id_2 , niiri:residual_mean_squares_map_id , niiri:design_matrix_id , niiri:contrast_id, niiri:beta_map_id_1 ;
+    prov:wasAssociatedWith niiri:software_id .</pre>  
+            </section>
+            <!-- nidm:ContrastMap -->
+            <section id="section-nidm:ContrastMap"> 
+                <h1 label="nidm:ContrastMap">nidm:ContrastMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ContrastMap</dfn>                    <sup><a title="nidm:ContrastMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is statistical contrast estimate. <a>nidm:ContrastMap</a> is a prov:Entity used by <a>nidm:Inference</a> and  generated by <a>nidm:ContrastEstimation</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ContrastMap"> A <a>nidm:ContrastMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ContrastMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:contrastName">
+                        <dfn>nidm:contrastName</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:ContrastMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:contrast_map_id a prov:Entity , nidm:ContrastMap ;
+	rdfs:label "Contrast Map: listening > rest" ;
+	prov:atLocation "file:///path/to/Contrast.nii.gz"^^xsd:anyURI ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:filename "Contrast.nii.gz"^^xsd:string ;
+	nidm:contrastName "listening > rest"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
+    prov:wasGeneratedBy niiri:contrast_estimation_id .
+</pre>  
+            </section>
+            <!-- nidm:ContrastStandardErrorMap -->
+            <section id="section-nidm:ContrastStandardErrorMap"> 
+                <h1 label="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ContrastStandardErrorMap</dfn>                    <sup><a title="nidm:ContrastStandardErrorMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the standard error of a given contrast. <a>nidm:ContrastStandardErrorMap</a> is a prov:Entity generated by <a>nidm:ContrastEstimation</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ContrastStandardErrorMap"> A <a>nidm:ContrastStandardErrorMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ContrastStandardErrorMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastStandardErrorMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
+	rdfs:label "Contrast Standard Error Map" ;
+	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
+	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
+    prov:wasGeneratedBy niiri:contrast_estimation_id .</pre>  
+            </section>
+            <!-- nidm:ContrastWeights -->
+            <section id="section-nidm:ContrastWeights"> 
+                <h1 label="nidm:ContrastWeights">nidm:ContrastWeights</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ContrastWeights</dfn>                    <sup><a title="nidm:ContrastWeights">                    <span class="diamond">&#9826;</span></a></sup> is vector defining the linear combination associated with a particular contrast. . <a>nidm:ContrastWeights</a> is a prov:Entity used by <a>nidm:ContrastEstimation</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ContrastWeights"> A <a>nidm:ContrastWeights</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ContrastWeights.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastWeights.</li>
+                     
+                        <li><span class="attribute" id="nidm:ContrastWeights.nidm:contrastName">
+                        <a>nidm:contrastName</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastWeights.nidm:statisticType">
+                        <dfn>nidm:statisticType</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:FStatistic, nidm:Statistic, nidm:TStatistic, nidm:ZStatistic)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:contrast_id a prov:Entity , nidm:ContrastWeights ;
+	rdfs:label "Contrast: Listening > Rest" ;
+	prov:value "[1, 0, 0]"^^xsd:string ;
+	nidm:statisticType nidm:TStatistic ;
+	nidm:contrastName "listening > rest"^^xsd:string .</pre>  
             </section>
             <!-- nidm:StatisticMap -->
             <section id="section-nidm:StatisticMap"> 

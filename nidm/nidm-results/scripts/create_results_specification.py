@@ -44,12 +44,13 @@ def main():
 
 
     components =  collections.OrderedDict()
-    components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
+    components["Parameters estimtaion"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
              NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
-             NIDM['GrandMeanMap'],
-             NIDM['ContrastEstimation'], NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
-             NIDM['ContrastMap'], NIDM['StatisticMap'], 
-             NIDM['ContrastStandardErrorMap'], NIDM['CustomMaskMap']]
+             NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
+             NIDM['MaskMap'], NIDM['CustomMaskMap']]    
+    components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
+             NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
+             NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'], NIDM['Coordinate'], 
