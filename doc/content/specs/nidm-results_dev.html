@@ -334,9 +334,16 @@
                             <td><a title="nidm:ContrastMap">nidm:ContrastMap</a>
                             </td>
                     
-                                <td rowspan="10" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="12" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
                                 <td><a>nidm:ContrastMap</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</a>
+                            </td>
+                    
+                                <td><a>nidm:ContrastStandardErrorMap</a></td>
                             </tr>
                 
                         <tr>
@@ -344,6 +351,13 @@
                             </td>
                     
                                 <td><a>nidm:ContrastWeights</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:CustomMaskMap">nidm:CustomMaskMap</a>
+                            </td>
+                    
+                                <td><a>nidm:CustomMaskMap</a></td>
                             </tr>
                 
                         <tr>
@@ -409,7 +423,7 @@
             <section id="section-nidm:ContrastEstimation"> 
                 <h1 label="nidm:ContrastEstimation">nidm:ContrastEstimation</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:ContrastEstimation</dfn>                    <sup><a title="nidm:ContrastEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:ContrastEstimation</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a> and <a>nidm:StatisticMap</a> entities. 
+                    A <dfn>nidm:ContrastEstimation</dfn>                    <sup><a title="nidm:ContrastEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:ContrastEstimation</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a>, <a>nidm:ContrastStandardErrorMap</a> and <a>nidm:StatisticMap</a> entities. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:ContrastEstimation"> A <a>nidm:ContrastEstimation</a> has attributes:
@@ -427,7 +441,7 @@
             <section id="section-nidm:ModelParametersEstimation"> 
                 <h1 label="nidm:ModelParametersEstimation">nidm:ModelParametersEstimation</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:ModelParametersEstimation</dfn>                    <sup><a title="nidm:ModelParametersEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating the parameters of a general linear model from the available data. <a>nidm:ModelParametersEstimation</a> is a prov:Activity that uses <a>nidm:Data</a>, <a>nidm:DesignMatrix</a> and <a>nidm:ErrorModel</a> entities. This activity generates <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. 
+                    A <dfn>nidm:ModelParametersEstimation</dfn>                    <sup><a title="nidm:ModelParametersEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating the parameters of a general linear model from the available data. <a>nidm:ModelParametersEstimation</a> is a prov:Activity that uses <a>nidm:CustomMaskMap</a>, <a>nidm:Data</a>, <a>nidm:DesignMatrix</a> and <a>nidm:ErrorModel</a> entities. This activity generates <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:ModelParametersEstimation"> A <a>nidm:ModelParametersEstimation</a> has attributes:
@@ -484,6 +498,37 @@
     prov:wasGeneratedBy niiri:contrast_estimation_id .
 </pre>  
             </section>
+            <!-- nidm:ContrastStandardErrorMap -->
+            <section id="section-nidm:ContrastStandardErrorMap"> 
+                <h1 label="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ContrastStandardErrorMap</dfn>                    <sup><a title="nidm:ContrastStandardErrorMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the standard error of a given contrast. <a>nidm:ContrastStandardErrorMap</a> is a prov:Entity generated by <a>nidm:ContrastEstimation</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ContrastStandardErrorMap"> A <a>nidm:ContrastStandardErrorMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ContrastStandardErrorMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastStandardErrorMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
+	rdfs:label "Contrast Standard Error Map" ;
+	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
+	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
+    prov:wasGeneratedBy niiri:contrast_estimation_id .</pre>  
+            </section>
             <!-- nidm:ContrastWeights -->
             <section id="section-nidm:ContrastWeights"> 
                 <h1 label="nidm:ContrastWeights">nidm:ContrastWeights</h1>
@@ -508,6 +553,36 @@
 	prov:value "[1, 0, 0]"^^xsd:string ;
 	nidm:statisticType nidm:TStatistic ;
 	nidm:contrastName "listening > rest"^^xsd:string .</pre>  
+            </section>
+            <!-- nidm:CustomMaskMap -->
+            <section id="section-nidm:CustomMaskMap"> 
+                <h1 label="nidm:CustomMaskMap">nidm:CustomMaskMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:CustomMaskMap</dfn>                    <sup><a title="nidm:CustomMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is mask defined by the user to restrain the space in which model fitting is performed. <a>nidm:CustomMaskMap</a> is a prov:Entity used by <a>nidm:ModelParametersEstimation</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:CustomMaskMap"> A <a>nidm:CustomMaskMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:CustomMaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomMaskMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:mask_id_1 a prov:Entity , nidm:CustomMaskMap ;
+	rdfs:label "Custom mask" ;
+	prov:atLocation "file:///path/to/CustomMask.nii.gz"^^xsd:anyURI ;
+	nidm:filename "CustomMask.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
             <!-- nidm:Data -->
             <section id="section-nidm:Data"> 
@@ -784,11 +859,18 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
+                            <td><a title="nidm:ConjunctionInference">nidm:ConjunctionInference</a>
+                            </td>
+                    
+                                <td rowspan="2" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
+                        
+                                <td><a>nidm:ConjunctionInference</a></td>
+                            </tr>
+                
+                        <tr>
                             <td><a title="nidm:Inference">nidm:Inference</a>
                             </td>
                     
-                                <td rowspan="1" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
-                        
                                 <td><a>nidm:Inference</a></td>
                             </tr>
                 
@@ -796,9 +878,16 @@
                             <td><a title="nidm:Cluster">nidm:Cluster</a>
                             </td>
                     
-                                <td rowspan="9" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="12" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
                                 <td><a>nidm:Cluster</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</a>
+                            </td>
+                    
+                                <td><a>nidm:ClusterDefinitionCriteria</a></td>
                             </tr>
                 
                         <tr>
@@ -813,6 +902,13 @@
                             </td>
                     
                                 <td><a>nidm:Coordinate</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="nidm:DisplayMaskMap">nidm:DisplayMaskMap</a>
+                            </td>
+                    
+                                <td><a>nidm:DisplayMaskMap</a></td>
                             </tr>
                 
                         <tr>
@@ -851,6 +947,13 @@
                             </tr>
                 
                         <tr>
+                            <td><a title="nidm:PeakDefinitionCriteria">nidm:PeakDefinitionCriteria</a>
+                            </td>
+                    
+                                <td><a>nidm:PeakDefinitionCriteria</a></td>
+                            </tr>
+                
+                        <tr>
                             <td><a title="nidm:SearchSpaceMap">nidm:SearchSpaceMap</a>
                             </td>
                     
@@ -860,11 +963,26 @@
                 </tbody>
                 </table>
             </div>
+            <!-- nidm:ConjunctionInference -->
+            <section id="section-nidm:ConjunctionInference"> 
+                <h1 label="nidm:ConjunctionInference">nidm:ConjunctionInference</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ConjunctionInference</dfn>                    <sup><a title="nidm:ConjunctionInference">                    <span class="diamond">&#9826;</span></a></sup> is statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses. <a>nidm:ConjunctionInference</a> is a prov:Activity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ConjunctionInference"> A <a>nidm:ConjunctionInference</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ConjunctionInference.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ConjunctionInference.</li>
+                     
+                        <li><span class="attribute" id="nidm:ConjunctionInference.nidm:hasAlternativeHypothesis">
+                        <dfn>nidm:hasAlternativeHypothesis</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:OneTailedTest, nidm:TwoTailedTest)</li>  
+            </section>
             <!-- nidm:Inference -->
             <section id="section-nidm:Inference"> 
                 <h1 label="nidm:Inference">nidm:Inference</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:Inference</dfn>                    <sup><a title="nidm:Inference">                    <span class="diamond">&#9826;</span></a></sup> is statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO). <a>nidm:Inference</a> is a prov:Activity that uses <a>nidm:ContrastMap</a> and <a>nidm:StatisticMap</a> entities. 
+                    A <dfn>nidm:Inference</dfn>                    <sup><a title="nidm:Inference">                    <span class="diamond">&#9826;</span></a></sup> is statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO). <a>nidm:Inference</a> is a prov:Activity that uses <a>nidm:ClusterDefinitionCriteria</a>, <a>nidm:ContrastMap</a>, <a>nidm:DisplayMaskMap</a>, <a>nidm:PeakDefinitionCriteria</a> and <a>nidm:StatisticMap</a> entities. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:Inference"> A <a>nidm:Inference</a> has attributes:
@@ -872,7 +990,7 @@
                     <li><span class="attribute" id="nidm:Inference.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Inference.</li>
                      
                         <li><span class="attribute" id="nidm:Inference.nidm:hasAlternativeHypothesis">
-                        <dfn>nidm:hasAlternativeHypothesis</dfn>
+                        <a>nidm:hasAlternativeHypothesis</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:OneTailedTest, nidm:TwoTailedTest)</li>        
                 </ul>
                 </div>
@@ -922,6 +1040,26 @@
 	nidm:pValueFWER "0"^^xsd:float ;
 	nidm:qValueFDR "7.65021389184909e-51"^^xsd:float ;
 	prov:wasDerivedFrom niiri:excursion_set_id .</pre>  
+            </section>
+            <!-- nidm:ClusterDefinitionCriteria -->
+            <section id="section-nidm:ClusterDefinitionCriteria"> 
+                <h1 label="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:ClusterDefinitionCriteria</dfn>                    <sup><a title="nidm:ClusterDefinitionCriteria">                    <span class="diamond">&#9826;</span></a></sup> is set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion). <a>nidm:ClusterDefinitionCriteria</a> is a prov:Entity used by <a>nidm:Inference</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:ClusterDefinitionCriteria"> A <a>nidm:ClusterDefinitionCriteria</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:ClusterDefinitionCriteria.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ClusterDefinitionCriteria.</li>
+                     
+                        <li><span class="attribute" id="nidm:ClusterDefinitionCriteria.nidm:hasConnectivityCriterion">
+                        <dfn>nidm:hasConnectivityCriterion</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates a ConnectivityCriterion with a ClusterDefinitionCriteria. (range nidm:ConnectivityCriterion, nidm:PixelConnectivityCriterion, nidm:VoxelConnectivityCriterion)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:cluster_definition_criteria_id a prov:Entity , nidm:ClusterDefinitionCriteria ;
+	rdfs:label "Cluster Connectivity Criterion: 18" ;
+	nidm:hasConnectivityCriterion nidm:voxel18Connected .</pre>  
             </section>
             <!-- nidm:ClusterLabelsMap -->
             <section id="section-nidm:ClusterLabelsMap"> 
@@ -977,6 +1115,36 @@
 	nidm:coordinate1 "-60"^^xsd:float ;
 	nidm:coordinate2 "-28"^^xsd:float ;
 	nidm:coordinate3 "13"^^xsd:float .</pre>  
+            </section>
+            <!-- nidm:DisplayMaskMap -->
+            <section id="section-nidm:DisplayMaskMap"> 
+                <h1 label="nidm:DisplayMaskMap">nidm:DisplayMaskMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:DisplayMaskMap</dfn>                    <sup><a title="nidm:DisplayMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is . <a>nidm:DisplayMaskMap</a> is a prov:Entity used by <a>nidm:Inference</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:DisplayMaskMap"> A <a>nidm:DisplayMaskMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:DisplayMaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DisplayMaskMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:filename">
+                        <a>nidm:filename</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
+                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
+                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
+	rdfs:label "Display Mask Map" ;
+	prov:atLocation "file:///path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
+	dct:format "image/nifti"^^xsd:string ;
+    nidm:filename "DisplayMask.nii.gz"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
             <!-- nidm:ExcursionSet -->
             <section id="section-nidm:ExcursionSet"> 
@@ -1161,6 +1329,30 @@
 	nidm:pValueFWER "0"^^xsd:float ;
 	nidm:qValueFDR "6.3705194444993e-11"^^xsd:float ;
     prov:wasDerivedFrom niiri:cluster_0001 .</pre>  
+            </section>
+            <!-- nidm:PeakDefinitionCriteria -->
+            <section id="section-nidm:PeakDefinitionCriteria"> 
+                <h1 label="nidm:PeakDefinitionCriteria">nidm:PeakDefinitionCriteria</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:PeakDefinitionCriteria</dfn>                    <sup><a title="nidm:PeakDefinitionCriteria">                    <span class="diamond">&#9826;</span></a></sup> is set of criterion specified a priori to define the peaks reported after inference (e.g. maximum number of peaks within a cluster, minimum distance between peaks). <a>nidm:PeakDefinitionCriteria</a> is a prov:Entity used by <a>nidm:Inference</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:PeakDefinitionCriteria"> A <a>nidm:PeakDefinitionCriteria</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:PeakDefinitionCriteria.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:PeakDefinitionCriteria.</li>
+                     
+                        <li><span class="attribute" id="nidm:PeakDefinitionCriteria.nidm:maxNumberOfPeaksPerCluster">
+                        <dfn>nidm:maxNumberOfPeaksPerCluster</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> maximum number of peaks to be reported after inference within a cluster. (range xsd:int)</li> 
+                        <li><span class="attribute" id="nidm:PeakDefinitionCriteria.nidm:minDistanceBetweenPeaks">
+                        <dfn>nidm:minDistanceBetweenPeaks</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> minimum distance between two peaks to be reported after inference. (range xsd:float)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:peak_definition_criteria_id a prov:Entity , nidm:PeakDefinitionCriteria ;
+	rdfs:label "Peak Definition Criteria" ;
+	nidm:maxNumberOfPeaksPerCluster "3"^^xsd:int ;
+	nidm:minDistanceBetweenPeaks "8.0"^^xsd:float .</pre>  
             </section>
             <!-- nidm:SearchSpaceMap -->
             <section id="section-nidm:SearchSpaceMap"> 
@@ -1374,28 +1566,12 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
-                            <td><a title="nidm:ConjunctionInference">nidm:ConjunctionInference</a>
-                            </td>
-                    
-                                <td rowspan="1" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Activity)</td>
-                        
-                                <td><a>nidm:ConjunctionInference</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:ArbitrarilyCorrelatedError">nidm:ArbitrarilyCorrelatedError</a>
                             </td>
                     
-                                <td rowspan="46" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="41" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
                                 <td><a>nidm:ArbitrarilyCorrelatedError</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</a>
-                            </td>
-                    
-                                <td><a>nidm:ClusterDefinitionCriteria</a></td>
                             </tr>
                 
                         <tr>
@@ -1413,13 +1589,6 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</a>
-                            </td>
-                    
-                                <td><a>nidm:ContrastStandardErrorMap</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:CoordinateSpace">nidm:CoordinateSpace</a>
                             </td>
                     
@@ -1431,20 +1600,6 @@
                             </td>
                     
                                 <td><a>nidm:CustomCoordinateSystem</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:CustomMaskMap">nidm:CustomMaskMap</a>
-                            </td>
-                    
-                                <td><a>nidm:CustomMaskMap</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:DisplayMaskMap">nidm:DisplayMaskMap</a>
-                            </td>
-                    
-                                <td><a>nidm:DisplayMaskMap</a></td>
                             </tr>
                 
                         <tr>
@@ -1564,13 +1719,6 @@
                             </td>
                     
                                 <td><a>nidm:OrdinaryLeastSquares</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:PeakDefinitionCriteria">nidm:PeakDefinitionCriteria</a>
-                            </td>
-                    
-                                <td><a>nidm:PeakDefinitionCriteria</a></td>
                             </tr>
                 
                         <tr>
@@ -1709,21 +1857,6 @@
                 </tbody>
                 </table>
             </div>
-            <!-- nidm:ConjunctionInference -->
-            <section id="section-nidm:ConjunctionInference"> 
-                <h1 label="nidm:ConjunctionInference">nidm:ConjunctionInference</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ConjunctionInference</dfn>                    <sup><a title="nidm:ConjunctionInference">                    <span class="diamond">&#9826;</span></a></sup> is statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses. <a>nidm:ConjunctionInference</a> is a prov:Activity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ConjunctionInference"> A <a>nidm:ConjunctionInference</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ConjunctionInference.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ConjunctionInference.</li>
-                     
-                        <li><span class="attribute" id="nidm:ConjunctionInference.nidm:hasAlternativeHypothesis">
-                        <a>nidm:hasAlternativeHypothesis</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:OneTailedTest, nidm:TwoTailedTest)</li>  
-            </section>
             <!-- nidm:ArbitrarilyCorrelatedError -->
             <section id="section-nidm:ArbitrarilyCorrelatedError"> 
                 <h1 label="nidm:ArbitrarilyCorrelatedError">nidm:ArbitrarilyCorrelatedError</h1>
@@ -1735,26 +1868,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ArbitrarilyCorrelatedError.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ArbitrarilyCorrelatedError.</li>
                       
-            </section>
-            <!-- nidm:ClusterDefinitionCriteria -->
-            <section id="section-nidm:ClusterDefinitionCriteria"> 
-                <h1 label="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ClusterDefinitionCriteria</dfn>                    <sup><a title="nidm:ClusterDefinitionCriteria">                    <span class="diamond">&#9826;</span></a></sup> is set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion). <a>nidm:ClusterDefinitionCriteria</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ClusterDefinitionCriteria"> A <a>nidm:ClusterDefinitionCriteria</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ClusterDefinitionCriteria.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ClusterDefinitionCriteria.</li>
-                     
-                        <li><span class="attribute" id="nidm:ClusterDefinitionCriteria.nidm:hasConnectivityCriterion">
-                        <dfn>nidm:hasConnectivityCriterion</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates a ConnectivityCriterion with a ClusterDefinitionCriteria. (range nidm:ConnectivityCriterion, nidm:PixelConnectivityCriterion, nidm:VoxelConnectivityCriterion)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:cluster_definition_criteria_id a prov:Entity , nidm:ClusterDefinitionCriteria ;
-	rdfs:label "Cluster Connectivity Criterion: 18" ;
-	nidm:hasConnectivityCriterion nidm:voxel18Connected .</pre>  
             </section>
             <!-- nidm:CompoundSymmetricError -->
             <section id="section-nidm:CompoundSymmetricError"> 
@@ -1779,37 +1892,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ConnectivityCriterion.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ConnectivityCriterion.</li>
                       
-            </section>
-            <!-- nidm:ContrastStandardErrorMap -->
-            <section id="section-nidm:ContrastStandardErrorMap"> 
-                <h1 label="nidm:ContrastStandardErrorMap">nidm:ContrastStandardErrorMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:ContrastStandardErrorMap</dfn>                    <sup><a title="nidm:ContrastStandardErrorMap">                    <span class="diamond">&#9826;</span></a></sup> is a map whose value at each location is the standard error of a given contrast. <a>nidm:ContrastStandardErrorMap</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:ContrastStandardErrorMap"> A <a>nidm:ContrastStandardErrorMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:ContrastStandardErrorMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastStandardErrorMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
-	rdfs:label "Contrast Standard Error Map" ;
-	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
-    prov:wasGeneratedBy niiri:contrast_estimation_id .</pre>  
             </section>
             <!-- nidm:CoordinateSpace -->
             <section id="section-nidm:CoordinateSpace"> 
@@ -1862,66 +1944,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:CustomCoordinateSystem.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomCoordinateSystem.</li>
                       
-            </section>
-            <!-- nidm:CustomMaskMap -->
-            <section id="section-nidm:CustomMaskMap"> 
-                <h1 label="nidm:CustomMaskMap">nidm:CustomMaskMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:CustomMaskMap</dfn>                    <sup><a title="nidm:CustomMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is mask defined by the user to restrain the space in which model fitting is performed. <a>nidm:CustomMaskMap</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:CustomMaskMap"> A <a>nidm:CustomMaskMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:CustomMaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomMaskMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:mask_id_1 a prov:Entity , nidm:CustomMaskMap ;
-	rdfs:label "Custom mask" ;
-	prov:atLocation "file:///path/to/CustomMask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "CustomMask.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
-            </section>
-            <!-- nidm:DisplayMaskMap -->
-            <section id="section-nidm:DisplayMaskMap"> 
-                <h1 label="nidm:DisplayMaskMap">nidm:DisplayMaskMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:DisplayMaskMap</dfn>                    <sup><a title="nidm:DisplayMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is . <a>nidm:DisplayMaskMap</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:DisplayMaskMap"> A <a>nidm:DisplayMaskMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:DisplayMaskMap.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DisplayMaskMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range nidm:CoordinateSpace)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
-	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file:///path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "DisplayMask.nii.gz"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
             <!-- nidm:ErrorDependence -->
             <section id="section-nidm:ErrorDependence"> 
@@ -2147,30 +2169,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:OrdinaryLeastSquares.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:OrdinaryLeastSquares.</li>
                       
-            </section>
-            <!-- nidm:PeakDefinitionCriteria -->
-            <section id="section-nidm:PeakDefinitionCriteria"> 
-                <h1 label="nidm:PeakDefinitionCriteria">nidm:PeakDefinitionCriteria</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:PeakDefinitionCriteria</dfn>                    <sup><a title="nidm:PeakDefinitionCriteria">                    <span class="diamond">&#9826;</span></a></sup> is set of criterion specified a priori to define the peaks reported after inference (e.g. maximum number of peaks within a cluster, minimum distance between peaks). <a>nidm:PeakDefinitionCriteria</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:PeakDefinitionCriteria"> A <a>nidm:PeakDefinitionCriteria</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:PeakDefinitionCriteria.label">prov:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:PeakDefinitionCriteria.</li>
-                     
-                        <li><span class="attribute" id="nidm:PeakDefinitionCriteria.nidm:maxNumberOfPeaksPerCluster">
-                        <dfn>nidm:maxNumberOfPeaksPerCluster</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> maximum number of peaks to be reported after inference within a cluster. (range xsd:int)</li> 
-                        <li><span class="attribute" id="nidm:PeakDefinitionCriteria.nidm:minDistanceBetweenPeaks">
-                        <dfn>nidm:minDistanceBetweenPeaks</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> minimum distance between two peaks to be reported after inference. (range xsd:float)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:peak_definition_criteria_id a prov:Entity , nidm:PeakDefinitionCriteria ;
-	rdfs:label "Peak Definition Criteria" ;
-	nidm:maxNumberOfPeaksPerCluster "3"^^xsd:int ;
-	nidm:minDistanceBetweenPeaks "8.0"^^xsd:float .</pre>  
             </section>
             <!-- nidm:PixelConnectivityCriterion -->
             <section id="section-nidm:PixelConnectivityCriterion"> 
