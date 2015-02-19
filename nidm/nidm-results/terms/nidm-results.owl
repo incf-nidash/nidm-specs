@@ -144,6 +144,42 @@ nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunction
+
+nidm:hasHemodynamicResponseFunction rdf:type owl:ObjectProperty ;
+                                    
+                                    obo:IAO_0000114 obo:IAO_0000124 ;
+                                    
+                                    rdfs:domain nidm:DesignMatrix ;
+                                    
+                                    rdfs:range nidm:HemodynamicResponseFunction .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunctionBasis
+
+nidm:hasHemodynamicResponseFunctionBasis rdf:type owl:ObjectProperty ;
+                                         
+                                         obo:IAO_0000114 obo:IAO_0000124 ;
+                                         
+                                         rdfs:domain nidm:DesignMatrix ;
+                                         
+                                         rdfs:range nidm:HemodynamicResponseBasis .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunctionDerivative
+
+nidm:hasHemodynamicResponseFunctionDerivative rdf:type owl:ObjectProperty ;
+                                              
+                                              obo:IAO_0000114 obo:IAO_0000124 ;
+                                              
+                                              rdfs:domain nidm:DesignMatrix ;
+                                              
+                                              rdfs:range nidm:HemodynamicResponseFunctionDerivative .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasMapHeader
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
@@ -391,7 +427,7 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
 nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
                     
                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/271" ;
-                    
+
                     obo:IAO_0000112 "5" ;
                     
                     obo:IAO_0000115 "Integer associated with a particular cluster as specified in the clusterLabelsMap." ;
@@ -460,7 +496,7 @@ nidm:contrastName rdf:type owl:DatatypeProperty ;
 
 nidm:coordinate1 rdf:type owl:DatatypeProperty ;
                  
-                 obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270 and https://github.com/incf-nidash/nidm/issues/145." ;
+                 obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270 and https://github.com/incf-nidash/nidm/issues/145" ;
                  
                  obo:IAO_0000115 "Coordinate along the first dimension in voxel units." ;
                  
@@ -514,8 +550,7 @@ nidm:coordinate3 rdf:type owl:DatatypeProperty ;
 
 nidm:dimensionsInVoxels rdf:type owl:DatatypeProperty ;
                         
-                        obo:IAO_0000116 """Under discussion at: https://github.com/incf-nidash/nidm/issues/146
-Range: Vector of integers.""" ;
+                        obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/146" ;
                         
                         obo:IAO_0000112 "[64 64 20]" ;
                         
@@ -638,7 +673,6 @@ nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
                              obo:IAO_0000112 "nidm:MNICoordinateSystem" ;
                              
                              obo:IAO_0000114 obo:IAO_0000120 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#isUserDefined
@@ -986,7 +1020,7 @@ nidm:voxelSize rdf:type owl:DatatypeProperty ;
                obo:IAO_0000115 "3D size of a voxel measured in voxelUnits." ;
                
                obo:IAO_0000116 "Range: Vector of floats." ;
-               
+
                obo:IAO_0000114 obo:IAO_0000120 ;
                
                rdfs:domain nidm:CoordinateSpace ;
@@ -1242,7 +1276,7 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
 spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
                          
                          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
-                         
+                        
                          obo:IAO_0000115 "Total number of resels within the search volume." ;
                          
                          obo:IAO_0000112 "151.3" ;
@@ -1350,8 +1384,7 @@ spm:smallestSignifClusterSizeInVerticesFWE05 rdf:type owl:DatatypeProperty ;
                                              
                                              obo:IAO_0000112 "2" ;
                                              
-                                             obo:IAO_0000115 """Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
-""" ;
+                                             obo:IAO_0000115 """Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05.""" ;
                                              
                                              obo:IAO_0000114 obo:IAO_0000125 ;
                                              
@@ -1457,7 +1490,7 @@ fsl:CenterOfGravity rdf:type owl:Class ;
                     obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_CenterOfGravity.txt" ;
                     
                     obo:IAO_0000115 "Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)" ;
-                    
+                   
                     rdfs:seeAlso "http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster" ;
                     
                     obo:IAO_0000114 obo:IAO_0000120 .
@@ -1483,6 +1516,93 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
                         rdfs:subClassOf nidm:Map ;
                         
                         obo:IAO_0000114 obo:IAO_0000124 .
+
+
+###  http://www.incf.org/ns/nidash/fsl#CustomHRB
+
+fsl:CustomHRB rdf:type owl:Class ;
+              
+              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+              
+              obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#FiniteImpulseResponseHRB
+
+fsl:FiniteImpulseResponseHRB rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:FiniteImpulseResponseHRB ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#GammaDifferenceHRF
+
+fsl:GammaDifferenceHRF rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf nidm:GammaDifferenceHRF ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#GammaHRB
+
+fsl:GammaHRB rdf:type owl:Class ;
+             
+             rdfs:subClassOf nidm:GammaHRB .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#GammaHRF
+
+fsl:GammaHRF rdf:type owl:Class ;
+             
+             rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+             
+             obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#GaussianHRF
+
+fsl:GaussianHRF rdf:type owl:Class ;
+                
+                rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+                
+                obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#NoHRF
+
+fsl:NoHRF rdf:type owl:Class ;
+          
+          rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+          
+          obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#SineHRB
+
+fsl:SineHRB rdf:type owl:Class ;
+            
+            rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+            
+            obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/fsl#TemporalDerivative
+
+fsl:TemporalDerivative rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -1537,7 +1657,6 @@ nidm:Cluster rdf:type owl:Class ;
              prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
              
              obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ClusterDefinitionCriteria
@@ -1600,7 +1719,7 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            
                            obo:IAO_0000117 "TN, KH, CM" ,
                                            "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
-                           
+                          
                            obo:IAO_0000115 "The criterion used to characterize two voxels, pixels or vertices as 'connected'." ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
@@ -1638,7 +1757,6 @@ nidm:ContrastMap rdf:type owl:Class ;
                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255" ;
                  
                  obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ContrastStandardErrorMap
@@ -1857,7 +1975,6 @@ nidm:ExcursionSetMap rdf:type owl:Class ;
                      obo:IAO_0000114 obo:IAO_0000122 .
 
 
-
 ###  http://www.incf.org/ns/nidash/nidm#ExtentThreshold
 
 nidm:ExtentThreshold rdf:type owl:Class ;
@@ -1900,6 +2017,36 @@ nidm:FSLResults rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#FiniteImpulseResponseHRB
+
+nidm:FiniteImpulseResponseHRB rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GammaDifferenceHRF
+
+nidm:GammaDifferenceHRF rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GammaHRB
+
+nidm:GammaHRB rdf:type owl:Class ;
+              
+              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+              
+              obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#GaussianDistribution
 
 nidm:GaussianDistribution rdf:type owl:Class ;
@@ -1911,7 +2058,6 @@ nidm:GaussianDistribution rdf:type owl:Class ;
                           obo:IAO_0000115 "A normal distribution is a continuous probability distribution described by a probability distribution function described here: http://mathworld.wolfram.com/NormalDistribution.html (Definition from STATO)." ;
                           
                           obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#GrandMeanMap
@@ -1938,6 +2084,36 @@ nidm:HeightThreshold rdf:type owl:Class ;
 """ ;
                      
                      obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseBasis
+
+nidm:HemodynamicResponseBasis rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf prov:Entity ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunction
+
+nidm:HemodynamicResponseFunction rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf prov:Entity ;
+                                 
+                                 obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunctionDerivative
+
+nidm:HemodynamicResponseFunctionDerivative rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf prov:Entity ;
+                                           
+                                           obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2040,7 +2216,6 @@ nidm:MaskMap rdf:type owl:Class ;
              obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/MaskMap.txt" ;
              
              obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ModelParametersEstimation
@@ -2190,10 +2365,13 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255." ;
                             
                             obo:IAO_0000115 "A map whose value at each element is a [residual mean square](http://purl.obolibrary.org/obo/STATO_0000375)." ;
-                            
+                          
                             obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ResidualMeanSquaresMap.txt" ;
                             
                             obo:IAO_0000114 obo:IAO_0000122 .
+
+
+>>>>>>> new terms for HRF modelling
 
 
 
@@ -2236,7 +2414,6 @@ nidm:SearchSpaceMaskMap rdf:type owl:Class ;
                         obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258" ;
                         
                         obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedError
@@ -2321,7 +2498,6 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   obo:IAO_0000114 obo:IAO_0000120 .
 
 
-
 ###  http://www.incf.org/ns/nidash/nidm#StatisticMap
 
 nidm:StatisticMap rdf:type owl:Class ;
@@ -2403,6 +2579,56 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            obo:IAO_0000114 obo:IAO_0000124 .
 
 
+###  http://www.incf.org/ns/nidash/spm#DispersionDerivative
+
+spm:DispersionDerivative rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/spm#FiniteImpulseResponseHRB
+
+spm:FiniteImpulseResponseHRB rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf nidm:FiniteImpulseResponseHRB ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/spm#FourierHRB
+
+spm:FourierHRB rdf:type owl:Class ;
+               
+               rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+               
+               obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/spm#GammaDifferenceHRF
+
+spm:GammaDifferenceHRF rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf nidm:GammaDifferenceHRF ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/spm#GammaHRB
+
+spm:GammaHRB rdf:type owl:Class ;
+             
+             rdfs:subClassOf nidm:GammaHRB ;
+             
+             obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 
 ###  http://www.incf.org/ns/nidash/spm#KConjunctionInference
 
@@ -2429,6 +2655,15 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       obo:IAO_0000114 obo:IAO_0000120 .
 
 
+
+
+###  http://www.incf.org/ns/nidash/spm#TemporalDerivative
+
+spm:TemporalDerivative rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
