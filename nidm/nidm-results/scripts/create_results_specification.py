@@ -44,15 +44,20 @@ def main():
 
 
     components =  collections.OrderedDict()
-    components["Model fitting"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
-             NIDM['ModelParametersEstimation'], NIDM['ParameterEstimateMap'],
-             NIDM['GrandMeanMap'],
-             NIDM['ContrastEstimation'], NIDM['ResidualMeanSquaresMap'], NIDM['MaskMap'], NIDM['ContrastWeights'],
-             NIDM['ContrastMap'], NIDM['StatisticMap']]
+    components["General"] = [NIDM['Map']]
+    components["Parameters estimation"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
+             NIDM['ModelParametersEstimation'],  
+             NIDM['ParameterEstimateMap'],
+             NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
+             NIDM['MaskMap'], NIDM['CustomMaskMap']]    
+    components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
+             NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
+             NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'],
-             NIDM['Coordinate']]
+             NIDM['Cluster'], NIDM['Peak'], NIDM['Coordinate'], 
+             NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
+             NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
     components["FSL-specific Concepts"] = [FSL['CenterOfGravity'], NIDM['FSL']]
 
@@ -72,7 +77,11 @@ def main():
                 NIDM['MaskMap']: [NIDM['ContrastEstimation']],
                 NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
                 NIDM['ContrastMap']: [NIDM['Inference']], 
-                NIDM['StatisticMap']: [NIDM['Inference']], 
+                NIDM['StatisticMap']: [NIDM['Inference']],
+                NIDM['CustomMaskMap']: [NIDM['ModelParametersEstimation']],
+                NIDM['ClusterDefinitionCriteria']: [NIDM['Inference']], 
+                NIDM['DisplayMaskMap']: [NIDM['Inference']], 
+                NIDM['PeakDefinitionCriteria']: [NIDM['Inference']], 
     }
     generated_by = { 
                 NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
@@ -80,6 +89,7 @@ def main():
                 NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
                 NIDM['ContrastMap']: NIDM['ContrastEstimation'], 
                 NIDM['StatisticMap']: NIDM['ContrastEstimation'], 
+                NIDM['ContrastStandardErrorMap']: NIDM['ContrastEstimation'], 
     }
     derived_from = {
                 NIDM['Cluster']: NIDM['ExcursionSet'],
