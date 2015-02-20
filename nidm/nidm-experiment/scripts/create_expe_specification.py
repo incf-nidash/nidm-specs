@@ -45,6 +45,17 @@ def main():
     assert os.path.exists(owl_file)
 
     subcomponents =  collections.OrderedDict()
+    
+    subcomponents["Investigation"] = [NIDM_EXPERIMENT['InvestigationCollection'],
+        NIDM_EXPERIMENT['InvestigationProcess'],NIDM_EXPERIMENT['Model'], 
+        NIDM_EXPERIMENT['ModelSpecification'],NIDM_EXPERIMENT['Group'],
+        NIDM_EXPERIMENT['Contrast'], NIDM_EXPERIMENT['Task'],NIDM_EXPERIMENT['Condition']]
+    subcomponents["Session"] = [NIDM_EXPERIMENT['DataCollection'],NIDM_EXPERIMENT['SessionAcquisition']]
+    subcomponents["Serie"] = [NIDM_EXPERIMENT['AnatomyImagingAcquisition'],
+        NIDM_EXPERIMENT['TaskBasedImagingAcquisition'], NIDM_EXPERIMENT['AnatomicalScan'],
+        NIDM_EXPERIMENT['FunctionalScan'], NIDM_EXPERIMENT['BehaviorAndConsitionOnsets'],
+        NIDM_EXPERIMENT['MRScanner'], NIDM_EXPERIMENT['PresentationSoftware']]
+
     subcomponents["Project"] = [NIDM_EXPERIMENT['ProjectObject']]
     subcomponents["Study"] = [NIDM_EXPERIMENT['StudyObject']]
     subcomponents["Acquisition"] = [NIDM_EXPERIMENT['AcquisitionObject']]
