@@ -9,6 +9,7 @@
 @prefix spm: <http://www.incf.org/ns/nidash/spm#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix afni: <http://www.incf.org/ns/nidash/afni#> .
 @prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -144,6 +145,18 @@ nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#hasHRFBasis
+
+nidm:hasHRFBasis rdf:type owl:ObjectProperty ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000124 ;
+                 
+                 rdfs:domain nidm:DesignMatrix ;
+                 
+                 rdfs:range nidm:HemodynamicResponseFunctionBasis .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunction
 
 nidm:hasHemodynamicResponseFunction rdf:type owl:ObjectProperty ;
@@ -153,18 +166,6 @@ nidm:hasHemodynamicResponseFunction rdf:type owl:ObjectProperty ;
                                     rdfs:domain nidm:DesignMatrix ;
                                     
                                     rdfs:range nidm:HemodynamicResponseFunction .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunctionBasis
-
-nidm:hasHemodynamicResponseFunctionBasis rdf:type owl:ObjectProperty ;
-                                         
-                                         obo:IAO_0000114 obo:IAO_0000124 ;
-                                         
-                                         rdfs:domain nidm:DesignMatrix ;
-                                         
-                                         rdfs:range nidm:HemodynamicResponseBasis .
 
 
 
@@ -1462,6 +1463,13 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 #################################################################
 
 
+###  http://www.incf.org/ns/nidash/afni#GammaHRF
+
+afni:GammaHRF rdf:type owl:Class ;
+              
+              rdfs:subClassOf nidm:GammaHRF .
+
+
 ###  http://purl.org/dc/dcmitype/Image
 
 dctype:Image rdf:type owl:Class ;
@@ -1522,7 +1530,7 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
 
 fsl:CustomHRB rdf:type owl:Class ;
               
-              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+              rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
               
               obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1560,7 +1568,7 @@ fsl:GammaHRB rdf:type owl:Class ;
 
 fsl:GammaHRF rdf:type owl:Class ;
              
-             rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+             rdfs:subClassOf nidm:GammaHRF ;
              
              obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1590,7 +1598,7 @@ fsl:NoHRF rdf:type owl:Class ;
 
 fsl:SineHRB rdf:type owl:Class ;
             
-            rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+            rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
             
             obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2021,7 +2029,7 @@ nidm:FSLResults rdf:type owl:Class ;
 
 nidm:FiniteImpulseResponseHRB rdf:type owl:Class ;
                               
-                              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+                              rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                               
                               obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2041,9 +2049,17 @@ nidm:GammaDifferenceHRF rdf:type owl:Class ;
 
 nidm:GammaHRB rdf:type owl:Class ;
               
-              rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+              rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
               
               obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#GammaHRF
+
+nidm:GammaHRF rdf:type owl:Class ;
+              
+              rdfs:subClassOf nidm:HemodynamicResponseFunction .
 
 
 
@@ -2087,23 +2103,23 @@ nidm:HeightThreshold rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseBasis
-
-nidm:HemodynamicResponseBasis rdf:type owl:Class ;
-                              
-                              rdfs:subClassOf prov:Entity ;
-                              
-                              obo:IAO_0000114 obo:IAO_0000124 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunction
 
 nidm:HemodynamicResponseFunction rdf:type owl:Class ;
                                  
-                                 rdfs:subClassOf prov:Entity ;
+                                 rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                                  
                                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunctionBasis
+
+nidm:HemodynamicResponseFunctionBasis rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf prov:Entity ;
+                                      
+                                      obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2111,7 +2127,7 @@ nidm:HemodynamicResponseFunction rdf:type owl:Class ;
 
 nidm:HemodynamicResponseFunctionDerivative rdf:type owl:Class ;
                                            
-                                           rdfs:subClassOf prov:Entity ;
+                                           rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                                            
                                            obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2371,8 +2387,6 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             obo:IAO_0000114 obo:IAO_0000122 .
 
 
->>>>>>> new terms for HRF modelling
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#SPM
@@ -2603,7 +2617,7 @@ spm:FiniteImpulseResponseHRB rdf:type owl:Class ;
 
 spm:FourierHRB rdf:type owl:Class ;
                
-               rdfs:subClassOf nidm:HemodynamicResponseBasis ;
+               rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                
                obo:IAO_0000114 obo:IAO_0000124 .
 
