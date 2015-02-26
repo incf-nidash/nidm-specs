@@ -214,7 +214,7 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",

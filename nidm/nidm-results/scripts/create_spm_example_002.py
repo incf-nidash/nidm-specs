@@ -350,17 +350,17 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"ClusterDefinitionCriteria-2": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id_2",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"ClusterDefinitionCriteria-3": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id_3",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
