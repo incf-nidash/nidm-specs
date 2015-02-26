@@ -25,7 +25,8 @@ DCT = Namespace('http://purl.org/dc/terms/')
 OWL = Namespace('http://www.w3.org/2002/07/owl')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
-OBO = Namespace("http://purl.obolibrary.org/obo/")
+OBO_URL = "http://purl.obolibrary.org/obo/"
+OBO = Namespace(OBO_URL)
 
 OBO_EXAMPLE = OBO['IAO_0000112']
 OBO_TERM_EDITOR = OBO['IAO_0000117']
@@ -40,3 +41,8 @@ OBO_READY = OBO['IAO_0000122']
 OBO_DEFINITION = OBO['IAO_0000115']
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
+
+STATO_OLS = OBO['ordinary_least_squares_estimation']
+STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "stato:")
+STATO_GLS = OBO['STATO_0000372']
+STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "stato:")
