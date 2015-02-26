@@ -35,7 +35,7 @@ def main():
 			variance_homo="true",
 			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyRegularized"
+			dependence_spatial="nidm:SpatiallyRegularizedModel"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_parameters_estimation_id",
