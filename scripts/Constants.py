@@ -42,7 +42,7 @@ OBO_DEFINITION = OBO['IAO_0000115']
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
 
-STATO_OLS = OBO['ordinary_least_squares_estimation']
+STATO_OLS = OBO['STATO_0000370']
 STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "stato:")
 STATO_GLS = OBO['STATO_0000372']
 STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "stato:")
