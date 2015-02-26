@@ -175,7 +175,7 @@ def check_class_names(example_graph, example_name, class_names=None, owl_file=No
     return my_exception
 
 def check_attributes(example_graph, example_name, owl_attributes=None, owl_ranges=None, 
-    owl_restrictions=None, owl_file=None):
+    owl_restrictions=None, owl_graph=None, owl_file=None):
     my_exception = dict()
     my_range_exception = dict()
     my_restriction_exception = dict()
@@ -227,9 +227,15 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
             if isinstance(o, term.URIRef):
                 # An ObjectProperty can point to an instance, then we look for its type:
                 found_range = set(example_graph.objects(o, RDF['type']))
+
                 # An ObjectProperty can point to a term
                 if not found_range:
                     found_range = set([o])
+
+                    # If the term is an individual, look for its type
+                    if OWL['NamedIndividual'] in \
+                        set(owl_graph.objects(o, RDF['type'])):
+                        found_range = set(owl_graph.objects(o, RDF['type']))
 
             elif isinstance(o, term.Literal):
                 found_range = set([o.datatype])

@@ -6,9 +6,6 @@
 '''
 import unittest
 import os
-# from subprocess import call #jb: call not used 
-import re
-import rdflib
 
 from rdflib.graph import Graph
 from TestCommons import *
@@ -77,7 +74,7 @@ class TestExamples(unittest.TestCase):
         my_restriction_exception = dict()
         for example_name, example_graph in self.examples.items():
             exception_msg = check_attributes(example_graph, example_name, 
-                self.attributes, self.ranges, self.type_restrictions)
+                self.attributes, self.ranges, self.type_restrictions, self.owl)
             
             my_exception = merge_exception_dict(my_exception, exception_msg[0])
             my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
