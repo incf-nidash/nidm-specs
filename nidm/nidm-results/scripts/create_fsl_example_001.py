@@ -33,7 +33,7 @@ def main():
 			error_model_id="niiri:error_model_id",
 			noise_distribution="nidm:GaussianDistribution",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocal",
+			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:SeriallyCorrelatedError",
 			dependence_spatial="nidm:SpatiallyRegularized"
 			),

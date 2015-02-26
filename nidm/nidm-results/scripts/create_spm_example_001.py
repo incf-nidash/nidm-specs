@@ -33,9 +33,9 @@ def main():
 			error_model_id="niiri:error_model_id",
 			noise_distribution="nidm:GaussianDistribution",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocal",
+			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyLocal"
+			dependence_spatial="nidm:SpatiallyLocalModel"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_pe_id",
