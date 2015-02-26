@@ -20,6 +20,7 @@
   owl:imports <http://purl.obolibrary.org/nidm/iao_import.owl> ,
               <http://purl.org/nidash/nidm/dc_import.owl> ,
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
+              <http://purl.org/nidash/nidm/stato_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
 ] .
 
@@ -237,7 +238,7 @@ nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
                           
                           rdfs:isDefinedBy "FIXME" ;
                           
-                          rdfs:range nidm:EstimationMethod ;
+                          rdfs:range iao:STATO_0000119 ;
                           
                           rdfs:domain nidm:ModelParametersEstimation .
 
@@ -1819,14 +1820,6 @@ nidm:ErrorModel rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#EstimationMethod
-
-nidm:EstimationMethod rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf prov:Entity .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ExchangeableError
 
 nidm:ExchangeableError rdf:type owl:Class ;
@@ -1924,18 +1917,6 @@ nidm:GaussianDistribution rdf:type owl:Class ;
                           rdfs:isDefinedBy "A normal distribution is a continuous probability distribution described by a probability distribution function described here: http://mathworld.wolfram.com/NormalDistribution.html (Definition from STATO)." ;
                           
                           iao:IAO_0000114 iao:IAO_0000122 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#GeneralizedLeastSquares
-
-nidm:GeneralizedLeastSquares rdf:type owl:Class ;
-                             
-                             rdfs:subClassOf nidm:EstimationMethod ;
-                             
-                             rdfs:isDefinedBy "FIXME" ;
-                             
-                             rdfs:comment "GLS (both heteroscedasticity and dependence accounted for) OLS is a special case of WLS & GLS; WLS is a special case of GLS." .
 
 
 
@@ -2135,18 +2116,6 @@ nidm:OneTailedTest rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#OrdinaryLeastSquares
-
-nidm:OrdinaryLeastSquares rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf nidm:EstimationMethod ;
-                          
-                          rdfs:comment "OLS (no heteroscedasticity or dependence accounted for)" ;
-                          
-                          rdfs:isDefinedBy "FIXME" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ParameterEstimateMap
 
 nidm:ParameterEstimateMap rdf:type owl:Class ;
@@ -2239,18 +2208,6 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
 NIDM Concept ID: nidm_52. """ ;
                             
                             iao:IAO_0000114 iao:IAO_0000125 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#RobustIterativelyReweighedLeastSquares
-
-nidm:RobustIterativelyReweighedLeastSquares rdf:type owl:Class ;
-                                            
-                                            rdfs:subClassOf nidm:EstimationMethod ;
-                                            
-                                            rdfs:isDefinedBy "FIXME" ;
-                                            
-                                            rdfs:comment "used for automatically down-weighting outliers, using some given influence function (e.g. Huber; see [1] for a neuroimaging application)." .
 
 
 
@@ -2452,18 +2409,6 @@ nidm:VoxelConnectivityCriterion rdf:type owl:Class ;
                                 rdfs:isDefinedBy "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;
                                 
                                 iao:IAO_0000114 iao:IAO_0000122 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#WeightedLeastSquares
-
-nidm:WeightedLeastSquares rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf nidm:EstimationMethod ;
-                          
-                          rdfs:isDefinedBy "FIXME" ;
-                          
-                          rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" .
 
 
 
