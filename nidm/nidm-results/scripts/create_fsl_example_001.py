@@ -84,7 +84,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:SubjectSpace",
+			coord_system="nidm:SubjectCoordinateSystem",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"FSL_ResidualMeanSquaresMap": dict(
