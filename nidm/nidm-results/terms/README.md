@@ -37,11 +37,59 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>afni:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>afni:GammaHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>fsl:ClusterMaximumStatistic: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>fsl:ContrastVarianceMap: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:CustomHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:GammaHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:GammaHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:GaussianHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:NoHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:SineHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:TemporalDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -53,7 +101,35 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:GammaHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:GammaHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:GrandMeanMap: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:HemodynamicResponseFunction: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:HemodynamicResponseFunctionBasis: </b>&lt;undefined&gt; (editor: @jbpoline)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:HemodynamicResponseFunctionDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -86,6 +162,30 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:WorldCoordinateSystem: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:DispersionDerivative: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:FourierHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:GammaHRB: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:TemporalDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
@@ -215,8 +315,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>spm:smallestSignifClusterSizeInVerticesFWE05: </b>Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
-</td>
+    <td><b>spm:smallestSignifClusterSizeInVerticesFWE05: </b>Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05</td>
     <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
@@ -268,6 +367,24 @@ Range: Vector of integers not found.)</td>
     <td><b>nidm:globalNullDegree: </b>&lt;undefined&gt;</td>
     <td>spm:KConjunctionInference </td>
     <td>xsd:int </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:hasHRFBasis: </b>&lt;undefined&gt;</td>
+    <td>nidm:DesignMatrix </td>
+    <td>nidm:HemodynamicResponseFunctionBasis </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:hasHemodynamicResponseFunction: </b>&lt;undefined&gt;</td>
+    <td>nidm:DesignMatrix </td>
+    <td>nidm:HemodynamicResponseFunction </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:hasHemodynamicResponseFunctionDerivative: </b>&lt;undefined&gt;</td>
+    <td>nidm:DesignMatrix </td>
+    <td>nidm:HemodynamicResponseFunctionDerivative </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -367,7 +484,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:coordinate1: </b>Coordinate along the first dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270 and https://github.com/incf-nidash/nidm/issues/145.)</td>
+    <td><b>nidm:coordinate1: </b>Coordinate along the first dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270 and https://github.com/incf-nidash/nidm/issues/145)</td>
     <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
@@ -385,8 +502,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:dimensionsInVoxels: </b>Dimensions of some N-dimensional data (Under discussion at: https://github.com/incf-nidash/nidm/issues/146
-Range: Vector of integers.)</td>
+    <td><b>nidm:dimensionsInVoxels: </b>Dimensions of some N-dimensional data (Under discussion at: https://github.com/incf-nidash/nidm/issues/146)</td>
     <td>nidm:CoordinateSpace </td>
     <td>xsd:string </td>
 </tr>
