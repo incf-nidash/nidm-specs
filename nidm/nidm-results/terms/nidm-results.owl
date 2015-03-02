@@ -1463,11 +1463,37 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 #################################################################
 
 
+###  http://www.incf.org/ns/nidash/afni#BLOCK
+
+afni:BLOCK rdf:type owl:Class ;
+           
+           rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
+           
+           prov:editorialNote "We will have to determine if afni:BLOCK is child of a more specific nidm HRFBasis sub-class."^^xsd:string ;
+           
+           obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/afni#FiniteImpulseResponseHRB
+
+afni:FiniteImpulseResponseHRB rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf nidm:FiniteImpulseResponseHRB ;
+                              
+                              rdfs:comment "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: in AFNI, FIR is supported via the TENT basis function set."^^xsd:string ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://www.incf.org/ns/nidash/afni#GammaHRF
 
 afni:GammaHRF rdf:type owl:Class ;
               
-              rdfs:subClassOf nidm:GammaHRF .
+              rdfs:subClassOf nidm:GammaHRF ;
+              
+              prov:editorialNote "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: supported via GAM."^^xsd:string .
 
 
 ###  http://purl.org/dc/dcmitype/Image
@@ -2119,8 +2145,12 @@ nidm:HemodynamicResponseFunctionBasis rdf:type owl:Class ;
                                       
                                       rdfs:subClassOf prov:Entity ;
                                       
+                                      obo:IAO_0000114 obo:IAO_0000124 ;
+                                      obo:IAO_0000117 "@jbpoline"^^xsd:string ;
+                                      
+                                      rdfs:isDefinedBy "The set of functions to convolve anticipated neural responses to obtain anticipated hemodynamic responses."^^xsd:string ;
+                                      
                                       obo:IAO_0000114 obo:IAO_0000124 .
-
 
 
 ###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunctionDerivative
