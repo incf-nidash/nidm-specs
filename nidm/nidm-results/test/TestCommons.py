@@ -12,6 +12,9 @@ import rdflib
 from rdflib.graph import Graph
 from rdflib.compare import *
 import logging
+# import threading
+import signal
+import socket
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -56,7 +59,23 @@ def get_turtle(provn_file):
         headers = { 'Content-type' : "text/provenance-notation",
                     'Accept' : "text/turtle" }
         req = urllib2.Request(url, ex_provn, headers)
-        response = urllib2.urlopen(req)
+
+        MAX_RETRY = 15
+        retry = 0
+        while retry <= MAX_RETRY:
+            try:
+                logger.info(' urllib2 open ')
+                response = urllib2.urlopen(req, timeout=10)
+            except (socket.timeout, urllib2.URLError):
+                # On timeout retry
+                retry = retry + 1 
+                logger.info('retry: '+str(retry))
+                continue
+            break
+
+        if retry > MAX_RETRY:
+            raise Exception("Too many retry ("+str(retry)+")")
+
         ttl_file_url = response.geturl()
 
     logger.info(' Loading turtle file '+ttl_file_url)
@@ -128,24 +147,73 @@ def compare_graphs(graph_doc1, graph_doc2):
                     # break;
     return found_difference
 
+class TimeoutError(Exception):
+    """Base class for timeout exceptions in this module."""
+    pass
+
+def _get_ttl_doc_content(doc):
+    logger.info(' Opening '+doc)
+
+    def _raise_timeout(*args):
+        raise TimeoutError("end of time")
+
+    if doc.startswith("http"):      
+        # Number of retry
+        MAX_RETRY = 15
+        # Timeout after 5s
+        TIMEOUT = 5
+
+        retry = 0
+        while retry <= MAX_RETRY:
+            try:
+                logger.info(' urllib2 open ')
+                ttl_doc_req = urllib2.urlopen(doc, timeout=TIMEOUT)
+
+                # Signal handler
+                signal.signal(signal.SIGALRM, _raise_timeout)
+                # There is no mechanism to handle timeout on read() in urllib2, 
+                # so we need to use a timer
+                # t = threading.Timer(TIMEOUT, _re_run_on_timeout)
+                signal.alarm(TIMEOUT)
+                # t.start() 
+                logger.info(' urllib2 read ')
+                doc_content = ttl_doc_req.read()
+                # t.cancel()
+                signal.alarm(0)
+
+            except (socket.timeout, TimeoutError, urllib2.URLError):
+                # On timeout retry
+                retry = retry + 1 
+                logger.info('retry: '+str(retry))
+                continue
+            break
+
+        if retry > MAX_RETRY:
+            raise Exception("Too many retry ("+str(retry)+")")
+
+    else:
+        # Document locally on disk
+        logger.info(' file read ')
+        fid = open(doc)
+        doc_content = fid.read()
+
+    logger.info('*** ------- > read')
+    return doc_content
+
+
 def compare_ttl_documents(ttl_doc1, ttl_doc2):
     # Check whether most recent document is identical to current version
     doc_graph = Graph()
-    doc_graph.parse(ttl_doc1, format='turtle')
+    doc1 = _get_ttl_doc_content(ttl_doc1)
+    doc_graph.parse(data=doc1, format='turtle')
+    
     same_doc_graph = Graph()
+    doc2 = _get_ttl_doc_content(ttl_doc2)
+    same_doc_graph.parse(data=doc2, format='turtle')
 
-    try:
-        # This is a fix as sometimes prefixes URIs are lost on the Prov Store 
-        # if doc_graph.parse(ttl_doc2) is called directly
-        logger.info(' Opening '+ttl_doc2)
-        ttl_doc2_req = urllib2.urlopen(ttl_doc2)
-        same_doc_graph.parse(data=ttl_doc2_req.read(), format='turtle')
-    except urllib2.HTTPError:
-        return False
-    except ValueError:
-        same_doc_graph.parse(ttl_doc2, format='turtle')
-
+    logger.info('start comparison')
     found_difference = compare_graphs(same_doc_graph, doc_graph)
+    logger.info('DIFF = '+str(found_difference))
 
     # # Use isomorphic to ignore BNode
     # iso1 = to_isomorphic(same_doc_graph)
