@@ -16,8 +16,10 @@ import logging
 import signal
 import socket
 
-logging.basicConfig(level=logging.DEBUG)
+# Save debug info in a log file (debug.log)
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
+logger.info(' ---------- Debug log ----------')
 
 # Examples used for unit testing
 import_test_filenames = set([
@@ -69,7 +71,7 @@ def get_turtle(provn_file):
             except (socket.timeout, urllib2.URLError):
                 # On timeout retry
                 retry = retry + 1 
-                logger.info('retry: '+str(retry))
+                logger.info('Retry #'+str(retry))
                 continue
             break
 
@@ -184,7 +186,7 @@ def _get_ttl_doc_content(doc):
             except (socket.timeout, TimeoutError, urllib2.URLError):
                 # On timeout retry
                 retry = retry + 1 
-                logger.info('retry: '+str(retry))
+                logger.info(' Retry #'+str(retry))
                 continue
             break
 
@@ -211,9 +213,7 @@ def compare_ttl_documents(ttl_doc1, ttl_doc2):
     doc2 = _get_ttl_doc_content(ttl_doc2)
     same_doc_graph.parse(data=doc2, format='turtle')
 
-    logger.info('start comparison')
     found_difference = compare_graphs(same_doc_graph, doc_graph)
-    logger.info('DIFF = '+str(found_difference))
 
     # # Use isomorphic to ignore BNode
     # iso1 = to_isomorphic(same_doc_graph)
