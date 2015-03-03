@@ -33,9 +33,9 @@ def main():
 			error_model_id="niiri:error_model_id",
 			noise_distribution="nidm:GaussianDistribution",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocal",
+			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:IndependentError",
-			dependence_spatial="nidm:SpatiallyLocal"
+			dependence_spatial="nidm:SpatiallyLocalModel"
 			),
 		"CustomMaskMap": dict(
 			custom_mask_id="niiri:mask_id_1",
@@ -235,7 +235,7 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"InferenceMaskMap": dict(
 			inference_mask_id="niiri:sub_volume_id",

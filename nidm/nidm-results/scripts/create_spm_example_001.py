@@ -33,9 +33,9 @@ def main():
 			error_model_id="niiri:error_model_id",
 			noise_distribution="nidm:GaussianDistribution",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocal",
+			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyLocal"
+			dependence_spatial="nidm:SpatiallyLocalModel"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_pe_id",
@@ -202,7 +202,7 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18Connected"
+			connectivity="nidm:voxel18connected"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
@@ -292,7 +292,7 @@ def main():
 			label="Peak: 0001",
 			location="niiri:coordinate_0001",
 			value="17.5207633972168",
-			equiv_z="Inf",
+			equiv_z="INF",
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="1.19156591713838e-11",
@@ -328,7 +328,7 @@ def main():
 			label="Peak: 0003",
 			location="niiri:coordinate_0003",
 			value="10.2856016159058",
-			equiv_z="Inf",
+			equiv_z="INF",
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="7.69451169446711e-12",
 			p_value_fdr="6.84121260274992e-10",
@@ -346,7 +346,7 @@ def main():
 			label="Peak: 0004",
 			location="niiri:coordinate_0004",
 			value="13.5425577163696",
-			equiv_z="Inf",
+			equiv_z="INF",
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="1.19156591713838e-11",
@@ -364,7 +364,7 @@ def main():
 			label="Peak: 0005",
 			location="niiri:coordinate_0005",
 			value="12.4728717803955",
-			equiv_z="Inf",
+			equiv_z="INF",
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="1.19156591713838e-11",
@@ -382,7 +382,7 @@ def main():
 			label="Peak: 0006",
 			location="niiri:coordinate_0006",
 			value="9.72103404998779",
-			equiv_z="Inf",
+			equiv_z="INF",
 			p_value_unc="1.22124532708767e-15",
 			p_value_fwe="6.9250605250204e-11",
 			p_value_fdr="6.52169693024352e-09",

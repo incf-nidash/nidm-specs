@@ -175,7 +175,7 @@ def check_class_names(example_graph, example_name, class_names=None, owl_file=No
     return my_exception
 
 def check_attributes(example_graph, example_name, owl_attributes=None, owl_ranges=None, 
-    owl_restrictions=None, owl_file=None):
+    owl_restrictions=None, owl_graph=None, owl_file=None):
     my_exception = dict()
     my_range_exception = dict()
     my_restriction_exception = dict()
@@ -227,72 +227,83 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
             if isinstance(o, term.URIRef):
                 # An ObjectProperty can point to an instance, then we look for its type:
                 found_range = set(example_graph.objects(o, RDF['type']))
+
                 # An ObjectProperty can point to a term
                 if not found_range:
                     found_range = set([o])
+
+                    # If the term is an individual, look for its type
+                    if OWL['NamedIndividual'] in \
+                        set(owl_graph.objects(o, RDF['type'])):
+                        found_range = set(owl_graph.objects(o, RDF['type']))
+
             elif isinstance(o, term.Literal):
                 found_range = set([o.datatype])
 
-                correct_range = False
-                if p in owl_ranges:
-                    # If none of the class found for current ObjectProperty value is part of the range
-                    # throw an error
-                    if found_range.intersection(owl_ranges[p]):
-                        correct_range = True
-                    else:
-                        if p in owl_ranges:
-                            for owl_range in owl_ranges[p]:
-                                # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
-                                # in owl_ranges[p]
-                                if (XSD['positiveInteger'] == owl_range) &\
-                                     (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
-                                        correct_range = True
-                    if not correct_range:
-                        found_range_line = ""
-                        # FIXME: This should be better handled to be able to do "if found_range"
-                        if not None in found_range:
-                            found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
-                        owl_range_line = ""
-                        if p in owl_ranges:
-                            owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+            correct_range = False
+            if p in owl_ranges:
+                # If none of the class found for current ObjectProperty value is part of the range
+                # throw an error
 
-                        key = "\n Unrecognised range: "+\
-                            found_range_line+\
-                            ' for '+example_graph.qname(p)+' should be '+\
-                            owl_range_line
+                # If the type of current value is within the authorised ranges
+                if found_range.intersection(owl_ranges[p]):
+                    correct_range = True
                 else:
-                    # No range found for current attribute
-                    correct_range = False
-                    key = "\n No range defined for: "+\
-                            example_graph.qname(p)
-
+                    if p in owl_ranges:
+                        # A bit more complicated to deal with "positiveInteger"
+                        for owl_range in owl_ranges[p]:
+                            # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                            # in owl_ranges[p]
+                            if (XSD['positiveInteger'] == owl_range) and\
+                                 (next(iter(found_range)) == XSD['int']) and\
+                                  (o.value >= 0):
+                                    correct_range = True
                 if not correct_range:
-                    if not key in my_range_exception:
-                        my_range_exception[key] = set([example_name])
-                    else:
-                        my_range_exception[key].add(example_name)
+                    found_range_line = ""
+                    # FIXME: This should be better handled to be able to do "if found_range"
+                    if not None in found_range:
+                        found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
+                    owl_range_line = ""
+                    if p in owl_ranges:
+                        owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
 
-                if p in owl_restrictions:
-                    restrictions_ok = True
-                    if 'minInclusive' in owl_restrictions[p]:
-                        if o.value < owl_restrictions[p]['minInclusive'].value:
-                            restrictions_ok = False
-                    if 'minExclusive' in owl_restrictions[p]:
-                        if o.value <= owl_restrictions[p]['minExclusive'].value:
-                            restrictions_ok = False
-                    if 'maxInclusive' in owl_restrictions[p]:
-                        if o.value > owl_restrictions[p]['maxInclusive'].value:
-                            restrictions_ok = False
-                    if 'maxExclusive' in owl_restrictions[p]:
-                        if o.value >= owl_restrictions[p]['maxExclusive'].value:
-                            restrictions_ok = False
-                    if not restrictions_ok:
-                        key = "\n Contraints: value "+str(o.value)+\
-                            ' for '+example_graph.qname(p)+' does not observe contraints '+\
-                            ', '.join(sorted(owl_restrictions[p]))
-                        if not key in my_restriction_exception:
-                            my_restriction_exception[key] = set([example_name])
-                        else:
-                            my_restriction_exception[key].add(example_name)
+                    key = "\n Unrecognised range: "+\
+                        found_range_line+\
+                        ' for '+example_graph.qname(p)+' should be '+\
+                        owl_range_line
+            else:
+                # No range found for current attribute
+                correct_range = False
+                key = "\n No range defined for: "+\
+                        example_graph.qname(p)
+
+            if not correct_range:
+                if not key in my_range_exception:
+                    my_range_exception[key] = set([example_name])
+                else:
+                    my_range_exception[key].add(example_name)
+
+            if p in owl_restrictions:
+                restrictions_ok = True
+                if 'minInclusive' in owl_restrictions[p]:
+                    if o.value < owl_restrictions[p]['minInclusive'].value:
+                        restrictions_ok = False
+                if 'minExclusive' in owl_restrictions[p]:
+                    if o.value <= owl_restrictions[p]['minExclusive'].value:
+                        restrictions_ok = False
+                if 'maxInclusive' in owl_restrictions[p]:
+                    if o.value > owl_restrictions[p]['maxInclusive'].value:
+                        restrictions_ok = False
+                if 'maxExclusive' in owl_restrictions[p]:
+                    if o.value >= owl_restrictions[p]['maxExclusive'].value:
+                        restrictions_ok = False
+                if not restrictions_ok:
+                    key = "\n Contraints: value "+str(o.value)+\
+                        ' for '+example_graph.qname(p)+' does not observe contraints '+\
+                        ', '.join(sorted(owl_restrictions[p]))
+                    if not key in my_restriction_exception:
+                        my_restriction_exception[key] = set([example_name])
+                    else:
+                        my_restriction_exception[key].add(example_name)
 
     return list((my_exception, my_range_exception, my_restriction_exception))

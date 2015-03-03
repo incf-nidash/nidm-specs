@@ -33,9 +33,9 @@ def main():
 			error_model_id="niiri:error_model_id",
 			noise_distribution="nidm:GaussianDistribution",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocal",
+			variance_spatial="nidm:SpatiallyLocalModel",
 			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyRegularized"
+			dependence_spatial="nidm:SpatiallyRegularizedModel"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_parameters_estimation_id",
@@ -84,7 +84,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:SubjectSpace",
+			coord_system="nidm:SubjectCoordinateSystem",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"FSL_ResidualMeanSquaresMap": dict(
@@ -210,7 +210,7 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id_1",
 			label="Cluster Connectivity Criterion: 26",
-			connectivity="nidm:voxel26Connected"
+			connectivity="nidm:voxel26connected"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id_1",
