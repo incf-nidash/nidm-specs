@@ -12,7 +12,6 @@ import rdflib
 from rdflib.graph import Graph
 from rdflib.compare import *
 import logging
-# import threading
 import signal
 import socket
 
@@ -171,16 +170,12 @@ def _get_ttl_doc_content(doc):
                 logger.info(' urllib2 open ')
                 ttl_doc_req = urllib2.urlopen(doc, timeout=TIMEOUT)
 
-                # Signal handler
-                signal.signal(signal.SIGALRM, _raise_timeout)
                 # There is no mechanism to handle timeout on read() in urllib2, 
                 # so we need to use a timer
-                # t = threading.Timer(TIMEOUT, _re_run_on_timeout)
+                signal.signal(signal.SIGALRM, _raise_timeout)                
                 signal.alarm(TIMEOUT)
-                # t.start() 
                 logger.info(' urllib2 read ')
                 doc_content = ttl_doc_req.read()
-                # t.cancel()
                 signal.alarm(0)
 
             except (socket.timeout, TimeoutError, urllib2.URLError):
