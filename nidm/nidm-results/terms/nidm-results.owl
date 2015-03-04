@@ -403,7 +403,7 @@ nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
                     
                     obo:IAO_0000114 obo:IAO_0000125 ;
                     
-                    rdfs:domain nidm:Cluster ;
+                    rdfs:domain nidm:SignificantCluster ;
                     
                     rdfs:range xsd:int .
 
@@ -419,8 +419,8 @@ nidm:clusterSizeInVertices rdf:type owl:DatatypeProperty ;
                            
                            obo:IAO_0000114 obo:IAO_0000120 ;
                            
-                           rdfs:domain nidm:Cluster ,
-                                       nidm:ExtentThreshold ;
+                           rdfs:domain nidm:ExtentThreshold ,
+                                       nidm:SignificantCluster ;
                            
                            rdfs:range xsd:positiveInteger .
 
@@ -436,8 +436,8 @@ nidm:clusterSizeInVoxels rdf:type owl:DatatypeProperty ;
                          
                          obo:IAO_0000114 obo:IAO_0000125 ;
                          
-                         rdfs:domain nidm:Cluster ,
-                                     nidm:ExtentThreshold ;
+                         rdfs:domain nidm:ExtentThreshold ,
+                                     nidm:SignificantCluster ;
                          
                          rdfs:range xsd:positiveInteger .
 
@@ -782,10 +782,10 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 obo:IAO_0000114 obo:IAO_0000423 ;
                 
-                rdfs:domain nidm:Cluster ,
-                            nidm:ExtentThreshold ,
+                rdfs:domain nidm:ExtentThreshold ,
                             nidm:HeightThreshold ,
-                            nidm:Peak ;
+                            nidm:Peak ,
+                            nidm:SignificantCluster ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
@@ -810,10 +810,10 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        obo:IAO_0000114 obo:IAO_0000423 ;
                        
-                       rdfs:domain nidm:Cluster ,
-                                   nidm:ExtentThreshold ,
+                       rdfs:domain nidm:ExtentThreshold ,
                                    nidm:HeightThreshold ,
-                                   nidm:Peak ;
+                                   nidm:Peak ,
+                                   nidm:SignificantCluster ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
@@ -838,10 +838,10 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                obo:IAO_0000114 obo:IAO_0000122 ;
                
-               rdfs:domain nidm:Cluster ,
-                           nidm:ExtentThreshold ,
+               rdfs:domain nidm:ExtentThreshold ,
                            nidm:HeightThreshold ,
-                           nidm:Peak ;
+                           nidm:Peak ,
+                           nidm:SignificantCluster ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
@@ -1013,8 +1013,8 @@ spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
                         
                         obo:IAO_0000114 obo:IAO_0000122 ;
                         
-                        rdfs:domain nidm:Cluster ,
-                                    nidm:ExtentThreshold ;
+                        rdfs:domain nidm:ExtentThreshold ,
+                                    nidm:SignificantCluster ;
                         
                         rdfs:range [ rdf:type rdfs:Datatype ;
                                      owl:onDatatype xsd:float ;
@@ -1510,12 +1510,12 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
 nidm:Cluster rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ;
+                          
+             obo:IAO_0000115 "A collection of elements related by one or more criteria."^^xsd:string ;
              
-             obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Cluster.txt" ;
+             prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
              
-             obo:IAO_0000115 "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)" ;
-             
-             obo:IAO_0000114 obo:IAO_0000120 .
+             obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2255,6 +2255,22 @@ nidm:SeriallyCorrelatedError rdf:type owl:Class ;
                              obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                              
                              obo:IAO_0000114 obo:IAO_0000423 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SignificantCluster
+
+nidm:SignificantCluster rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf nidm:Cluster ;
+                        
+                        rdfs:isDefinedBy "Cluster of map elements (e.g., pixels, voxels, vertices, and faces) that were selected by the inference activity and are contiguous according to the cluster connectivity criteria."^^xsd:string ;
+                        
+                        prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
+                        
+                        obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Cluster.txt" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
