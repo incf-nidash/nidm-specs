@@ -1250,18 +1250,11 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:Cluster">nidm:Cluster</a>
+                            <td><a title="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</a>
                             </td>
                     
                                 <td rowspan="12" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
-                                <td><a>nidm:Cluster</a></td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</a>
-                            </td>
-                    
                                 <td><a>nidm:ClusterDefinitionCriteria</a></td>
                             </tr>
                 
@@ -1335,6 +1328,13 @@
                                 <td><a>nidm:SearchSpaceMap</a></td>
                             </tr>
                 
+                        <tr>
+                            <td><a title="nidm:SignificantCluster">nidm:SignificantCluster</a>
+                            </td>
+                    
+                                <td><a>nidm:SignificantCluster</a></td>
+                            </tr>
+                
                 </tbody>
                 </table>
             </div>
@@ -1398,47 +1398,6 @@
 	nidm:hasAlternativeHypothesis nidm:OneTailedTest ;
     prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:display_map_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id ;
     prov:wasAssociatedWith niiri:software_id .</pre>  
-            </section>
-            <!-- nidm:Cluster -->
-            <section id="section-nidm:Cluster"> 
-                <h1 label="nidm:Cluster">nidm:Cluster</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:Cluster</dfn>                    <sup><a title="nidm:Cluster">                    <span class="diamond">&#9826;</span></a></sup> is statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic). <a>nidm:Cluster</a> is a prov:Entity derived from <a>nidm:ExcursionSetMap</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:Cluster"> A <a>nidm:Cluster</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:Cluster.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Cluster.</li>
-                     
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterLabelId">
-                        <dfn>nidm:clusterLabelId</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range <a title="xsd:int" href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVertices">
-                        <dfn>nidm:clusterSizeInVertices</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:clusterSizeInVoxels">
-                        <dfn>nidm:clusterSizeInVoxels</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueFWER">
-                        <dfn>nidm:pValueFWER</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:pValueUncorrected">
-                        <dfn>nidm:pValueUncorrected</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
-                        <li><span class="attribute" id="nidm:Cluster.nidm:qValueFDR">
-                        <dfn>nidm:qValueFDR</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442). (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:cluster_0001 a prov:Entity , nidm:Cluster ;
-	rdfs:label "Cluster 0001" ;
-	nidm:clusterSizeInVoxels "530"^^xsd:int ;
-	nidm:clusterLabelId "1"^^xsd:int ;
-	spm:clusterSizeInResels "23.1209189500945"^^xsd:float ;
-	nidm:pValueUncorrected "9.56276736481136e-52"^^xsd:float ;
-	nidm:pValueFWER "0"^^xsd:float ;
-	nidm:qValueFDR "7.65021389184909e-51"^^xsd:float ;
-	prov:wasDerivedFrom niiri:excursion_set_map_id .</pre>  
             </section>
             <!-- nidm:ClusterDefinitionCriteria -->
             <section id="section-nidm:ClusterDefinitionCriteria"> 
@@ -1629,19 +1588,19 @@
                     <li><span class="attribute" id="nidm:ExtentThreshold.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ExtentThreshold.</li>
                      
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVertices">
-                        <a>nidm:clusterSizeInVertices</a>
+                        <dfn>nidm:clusterSizeInVertices</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:clusterSizeInVoxels">
-                        <a>nidm:clusterSizeInVoxels</a>
+                        <dfn>nidm:clusterSizeInVoxels</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueFWER">
-                        <a>nidm:pValueFWER</a>
+                        <dfn>nidm:pValueFWER</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:pValueUncorrected">
-                        <a>nidm:pValueUncorrected</a>
+                        <dfn>nidm:pValueUncorrected</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:qValueFDR">
-                        <a>nidm:qValueFDR</a>
+                        <dfn>nidm:qValueFDR</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442). (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
                         <li><span class="attribute" id="nidm:ExtentThreshold.nidm:userSpecifiedThresholdType">
                         <dfn>nidm:userSpecifiedThresholdType</dfn>
@@ -1719,7 +1678,7 @@
             <section id="section-nidm:Peak"> 
                 <h1 label="nidm:Peak">nidm:Peak</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:Peak</dfn>                    <sup><a title="nidm:Peak">                    <span class="diamond">&#9826;</span></a></sup> is statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic). <a>nidm:Peak</a> is a prov:Entity derived from <a>nidm:Cluster</a>. 
+                    A <dfn>nidm:Peak</dfn>                    <sup><a title="nidm:Peak">                    <span class="diamond">&#9826;</span></a></sup> is statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic). <a>nidm:Peak</a> is a prov:Entity derived from <a>nidm:SignificantCluster</a>. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:Peak"> A <a>nidm:Peak</a> has attributes:
@@ -1748,7 +1707,7 @@
 	nidm:pValueUncorrected "4.44089209850063e-16"^^xsd:float ;
 	nidm:pValueFWER "0"^^xsd:float ;
 	nidm:qValueFDR "6.3705194444993e-11"^^xsd:float ;
-    prov:wasDerivedFrom niiri:cluster_0001 .</pre>  
+    prov:wasDerivedFrom niiri:significant_cluster_0001 .</pre>  
             </section>
             <!-- nidm:PeakDefinitionCriteria -->
             <section id="section-nidm:PeakDefinitionCriteria"> 
@@ -1818,6 +1777,47 @@
 	nidm:randomFieldStationarity "false"^^xsd:boolean ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id .</pre>  
+            </section>
+            <!-- nidm:SignificantCluster -->
+            <section id="section-nidm:SignificantCluster"> 
+                <h1 label="nidm:SignificantCluster">nidm:SignificantCluster</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:SignificantCluster</dfn>                    <sup><a title="nidm:SignificantCluster">                    <span class="diamond">&#9826;</span></a></sup> is . <a>nidm:SignificantCluster</a> is a prov:Entity derived from <a>nidm:ExcursionSetMap</a>. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:SignificantCluster"> A <a>nidm:SignificantCluster</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:SignificantCluster.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:SignificantCluster.</li>
+                     
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:clusterLabelId">
+                        <dfn>nidm:clusterLabelId</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap. (range <a title="xsd:int" href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>)</li> 
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:clusterSizeInVertices">
+                        <a>nidm:clusterSizeInVertices</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of vertices that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:clusterSizeInVoxels">
+                        <a>nidm:clusterSizeInVoxels</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:pValueFWER">
+                        <a>nidm:pValueFWER</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests". (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:pValueUncorrected">
+                        <a>nidm:pValueUncorrected</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        . (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
+                        <li><span class="attribute" id="nidm:SignificantCluster.nidm:qValueFDR">
+                        <a>nidm:qValueFDR</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442). (range <a title="xsd:float" href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:significant_cluster_0001 a prov:Entity , nidm:SignificantCluster ;
+	rdfs:label "Significant Cluster 0001" ;
+	nidm:clusterSizeInVoxels "530"^^xsd:int ;
+	nidm:clusterLabelId "1"^^xsd:int ;
+	spm:clusterSizeInResels "23.1209189500945"^^xsd:float ;
+	nidm:pValueUncorrected "9.56276736481136e-52"^^xsd:float ;
+	nidm:pValueFWER "0"^^xsd:float ;
+	nidm:qValueFDR "7.65021389184909e-51"^^xsd:float ;
+	prov:wasDerivedFrom niiri:excursion_set_map_id .</pre>  
             </section>
             </section>
         <section><h1>SPM-specific Concepts</h1>
@@ -1963,7 +1963,7 @@
                 <pre class='example highlight'>niiri:center_of_gravity_1 a prov:Entity , fsl:CenterOfGravity ;
 	rdfs:label "Center of gravity" ;
 	prov:atLocation niiri:coordinate_0001 ;
-	prov:wasDerivedFrom niiri:cluster_0001 .</pre>  
+	prov:wasDerivedFrom niiri:significant_cluster_0001 .</pre>  
             </section>
             </section>
         <section><h1>Other</h1>
@@ -1980,11 +1980,18 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
+                            <td><a title="nidm:Cluster">nidm:Cluster</a>
+                            </td>
+                    
+                                <td rowspan="4" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a>nidm:Cluster</a></td>
+                            </tr>
+                
+                        <tr>
                             <td><a title="nidm:FSLResults">nidm:FSLResults</a>
                             </td>
                     
-                                <td rowspan="3" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
-                        
                                 <td><a>nidm:FSLResults</a></td>
                             </tr>
                 
@@ -2005,6 +2012,18 @@
                 </tbody>
                 </table>
             </div>
+            <!-- nidm:Cluster -->
+            <section id="section-nidm:Cluster"> 
+                <h1 label="nidm:Cluster">nidm:Cluster</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:Cluster</dfn>                    <sup><a title="nidm:Cluster">                    <span class="diamond">&#9826;</span></a></sup> is a collection of elements related by one or more criteria. <a>nidm:Cluster</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:Cluster"> A <a>nidm:Cluster</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:Cluster.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Cluster.</li>
+                      
+            </section>
             <!-- nidm:FSLResults -->
             <section id="section-nidm:FSLResults"> 
                 <h1 label="nidm:FSLResults">nidm:FSLResults</h1>

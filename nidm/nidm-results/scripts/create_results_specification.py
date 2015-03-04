@@ -61,7 +61,7 @@ def main():
              NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['InferenceMaskMap'], NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'], NIDM['Coordinate'], 
+             NIDM['SignificantCluster'], NIDM['Peak'], NIDM['Coordinate'], 
              NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
              NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
@@ -98,8 +98,8 @@ def main():
                 NIDM['ContrastStandardErrorMap']: NIDM['ContrastEstimation'], 
     }
     derived_from = {
-                NIDM['Cluster']: NIDM['ExcursionSetMap'],
-                NIDM['Peak']: NIDM['Cluster'],                
+                NIDM['SignificantCluster']: NIDM['ExcursionSetMap'],
+                NIDM['Peak']: NIDM['SignificantCluster'],                
     }
 
     if nidm_version == "020":
@@ -112,6 +112,10 @@ def main():
              NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
+        # In version 0.2.0 "SignificantCluster" was called "Cluster"
+        derived_from.pop(NIDM['SignificantCluster'], None)
+        derived_from[NIDM['Cluster']] = NIDM['ExcursionSet']
+        derived_from[NIDM['Peak']] = NIDM['Cluster']
 
     owlspec = OwlSpecification(owl_file, import_files, "NIDM-Results", 
         components, used_by, generated_by, derived_from, prefix=str(NIDM))
