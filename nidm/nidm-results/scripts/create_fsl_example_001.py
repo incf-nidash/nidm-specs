@@ -253,9 +253,9 @@ def main():
 			filename="rendered_thresh_zstat1.png",
 			format="image/png"
 			),
-		"FSL_Cluster-1": dict(
-			cluster_id="niiri:cluster_0001",
-			label="Cluster 0001",
+		"FSL_SignificantCluster-1": dict(
+			cluster_id="niiri:significant_cluster_0001",
+			label="Significant Cluster 0001",
 			cluster_size_in_voxels="81",
 			cluster_label_id="1",
 			cluster_size_in_resels="23.1209189500945",
@@ -266,7 +266,7 @@ def main():
 			center_of_gravity_id="niiri:center_of_gravity_1",
 			label="Center of gravity 1",
 			location="niiri:COG_coordinate_0001",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"FSL_Coordinate-COG1": dict(
 			coordinate_id="niiri:COG_coordinate_0001",
@@ -278,9 +278,9 @@ def main():
 			coord_2_in_vox="39.2",
 			coord_3_in_vox="31",
 			),
-		"FSL_Cluster-2": dict(
-			cluster_id="niiri:cluster_0002",
-			label="Cluster 0002",
+		"FSL_SignificantCluster-2": dict(
+			cluster_id="niiri:significant_cluster_0002",
+			label="Significant Cluster 0002",
 			cluster_size_in_voxels="117",
 			cluster_label_id="2",
 			cluster_size_in_resels="19.4128470430038",
@@ -291,7 +291,7 @@ def main():
 			center_of_gravity_id="niiri:center_of_gravity_2",
 			label="Center of gravity 2",
 			location="niiri:COG_coordinate_0002",
-			cluster_id="niiri:cluster_0002"
+			cluster_id="niiri:significant_cluster_0002"
 			),
 		"FSL_Coordinate-COG2": dict(
 			coordinate_id="niiri:COG_coordinate_0002",
@@ -303,9 +303,9 @@ def main():
 			coord_2_in_vox="19.2",
 			coord_3_in_vox="19.7",
 			),
-		"FSL_Cluster-3 ": dict(
-			cluster_id="niiri:cluster_0003 ",
-			label="Cluster 0003",
+		"FSL_SignificantCluster-3": dict(
+			cluster_id="niiri:significant_cluster_0003 ",
+			label="Significant Cluster 0003",
 			cluster_size_in_voxels="499",
 			cluster_label_id="3",
 			cluster_size_in_resels="19.4128470430038",
@@ -316,7 +316,7 @@ def main():
 			center_of_gravity_id="niiri:center_of_gravity_3 ",
 			label="Center of gravity 3",
 			location="niiri:COG_coordinate_0003 ",
-			cluster_id="niiri:cluster_0003 "
+			cluster_id="niiri:significant_cluster_0003 "
 			),
 		"FSL_Coordinate-COG3 ": dict(
 			coordinate_id="niiri:COG_coordinate_0003 ",
@@ -328,9 +328,9 @@ def main():
 			coord_2_in_vox="40.3",
 			coord_3_in_vox="23.9",
 			),
-		"FSL_Cluster-4 ": dict(
-			cluster_id="niiri:cluster_0004 ",
-			label="Cluster 0004",
+		"FSL_SignificantCluster-4": dict(
+			cluster_id="niiri:significant_cluster_0004 ",
+			label="Significant Cluster 0004",
 			cluster_size_in_voxels="1203",
 			cluster_label_id="4",
 			p_value_fwe="8.02e-24",
@@ -340,7 +340,7 @@ def main():
 			center_of_gravity_id="niiri:center_of_gravity_4",
 			label="Center of gravity 4",
 			location="niiri:COG_coordinate_0004  ",
-			cluster_id="niiri:cluster_0004  "
+			cluster_id="niiri:significant_cluster_0004  "
 			),
 		"FSL_Coordinate-COG4  ": dict(
 			coordinate_id="niiri:COG_coordinate_0004  ",
@@ -358,7 +358,7 @@ def main():
 			p_uncorr="3.51932e-09",
 			location="niiri:coordinate_0004_1",
 			equiv_z="5.79",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-1": dict(
 			coordinate_id="niiri:coordinate_0004_1",
@@ -376,7 +376,7 @@ def main():
 			p_uncorr="9.01048e-09",
 			location="niiri:coordinate_0004_2",
 			equiv_z="5.63",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-2": dict(
 			coordinate_id="niiri:coordinate_0004_2",
@@ -394,7 +394,7 @@ def main():
 			p_uncorr="9.54787e-09",
 			location="niiri:coordinate_0004_3",
 			equiv_z="5.62",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-3": dict(
 			coordinate_id="niiri:coordinate_0004_3",
@@ -412,7 +412,7 @@ def main():
 			p_uncorr="1.01163e-08",
 			location="niiri:coordinate_0004_4",
 			equiv_z="5.61",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-4": dict(
 			coordinate_id="niiri:coordinate_0004_4",
@@ -430,7 +430,7 @@ def main():
 			p_uncorr="1.07176e-08",
 			location="niiri:coordinate_0004_5",
 			equiv_z="5.6",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-5": dict(
 			coordinate_id="niiri:coordinate_0004_5",
@@ -448,7 +448,7 @@ def main():
 			p_uncorr="1.34887e-08",
 			location="niiri:coordinate_0004_6",
 			equiv_z="5.56",
-			cluster_id="niiri:cluster_0004"
+			cluster_id="niiri:significant_cluster_0004"
 			),
 		"FSL_Coordinate-4-6": dict(
 			coordinate_id="niiri:coordinate_0004_6",
@@ -466,7 +466,7 @@ def main():
 			p_uncorr="1.01163e-08",
 			location="niiri:coordinate_0003_1",
 			equiv_z="5.61",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-1": dict(
 			coordinate_id="niiri:coordinate_0003_1",
@@ -484,7 +484,7 @@ def main():
 			p_uncorr="1.52768e-07",
 			location="niiri:coordinate_0003_2",
 			equiv_z="5.12",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-2": dict(
 			coordinate_id="niiri:coordinate_0003_2",
@@ -502,7 +502,7 @@ def main():
 			p_uncorr="1.82833e-06",
 			location="niiri:coordinate_0003_3",
 			equiv_z="4.63",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-3": dict(
 			coordinate_id="niiri:coordinate_0003_3",
@@ -520,7 +520,7 @@ def main():
 			p_uncorr="9.77365e-06",
 			location="niiri:coordinate_0003_4",
 			equiv_z="4.27",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-4": dict(
 			coordinate_id="niiri:coordinate_0003_4",
@@ -538,7 +538,7 @@ def main():
 			p_uncorr="1.22151e-05",
 			location="niiri:coordinate_0003_5",
 			equiv_z="4.22",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-5": dict(
 			coordinate_id="niiri:coordinate_0003_5",
@@ -556,7 +556,7 @@ def main():
 			p_uncorr="1.89436e-05",
 			location="niiri:coordinate_0003_6",
 			equiv_z="4.12",
-			cluster_id="niiri:cluster_0003"
+			cluster_id="niiri:significant_cluster_0003"
 			),
 		"FSL_Coordinate-3-6": dict(
 			coordinate_id="niiri:coordinate_0003_6",
@@ -574,7 +574,7 @@ def main():
 			p_uncorr="1.74205e-06",
 			location="niiri:coordinate_0002_1",
 			equiv_z="4.64",
-			cluster_id="niiri:cluster_0002"
+			cluster_id="niiri:significant_cluster_0002"
 			),
 		"FSL_Coordinate-2-1": dict(
 			coordinate_id="niiri:coordinate_0002_1",
@@ -592,7 +592,7 @@ def main():
 			p_uncorr="4.71165e-06",
 			location="niiri:coordinate_0002_2",
 			equiv_z="4.43",
-			cluster_id="niiri:cluster_0002"
+			cluster_id="niiri:significant_cluster_0002"
 			),
 		"FSL_Coordinate-2-2": dict(
 			coordinate_id="niiri:coordinate_0002_2",
@@ -610,7 +610,7 @@ def main():
 			p_uncorr="2.01334e-06",
 			location="niiri:coordinate_0001_1",
 			equiv_z="4.61",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"FSL_Coordinate-1-1": dict(
 			coordinate_id="niiri:coordinate_0001_1",
@@ -628,7 +628,7 @@ def main():
 			p_uncorr="0.000788846",
 			location="niiri:coordinate_0001_2",
 			equiv_z="3.16",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"FSL_Coordinate-1-2": dict(
 			coordinate_id="niiri:coordinate_0001_2",
@@ -646,7 +646,7 @@ def main():
 			p_uncorr="0.00122277",
 			location="niiri:coordinate_0001_3",
 			equiv_z="3.03",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"FSL_Coordinate-1-3": dict(
 			coordinate_id="niiri:coordinate_0001_3",
@@ -664,7 +664,7 @@ def main():
 			p_uncorr="0.00554262",
 			location="niiri:coordinate_0001_4",
 			equiv_z="2.54",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"FSL_Coordinate-1-4": dict(
 			coordinate_id="niiri:coordinate_0001_4",
