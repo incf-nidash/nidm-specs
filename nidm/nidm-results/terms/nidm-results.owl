@@ -25,6 +25,7 @@
 #
 #################################################################
 
+
 ###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
 
 rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
@@ -275,6 +276,7 @@ spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
                                   rdfs:domain nidm:ExcursionSet ;
                                   
                                   rdfs:range nidm:Image .
+
 
 
 
@@ -792,9 +794,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -822,9 +824,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -850,9 +852,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -878,9 +880,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1596,6 +1598,8 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
 ###  http://www.incf.org/ns/nidash/nidm#ContrastEstimation
 
 nidm:ContrastEstimation rdf:type owl:Class ;
+                        
+                        rdfs:label "Contrast Estimation" ;
                         
                         rdfs:subClassOf prov:Activity ;
                         
@@ -2486,6 +2490,8 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       rdfs:isDefinedBy "A map whose value at each location is the number of resels per voxel. " ;
                       
                       iao:IAO_0000114 iao:IAO_0000120 .
+
+
 
 
 
