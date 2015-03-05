@@ -11,9 +11,11 @@ import os
 from rdflib.compare import *
 import sys
 import collections
+import glob
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_EXPE_PATH = os.path.dirname(RELPATH)
+NIDMPATH = os.path.join(NIDM_EXPE_PATH, os.pardir)
 
 # Append parent script directory to path
 sys.path.append(os.path.join( os.path.dirname(os.path.dirname(\
@@ -37,9 +39,12 @@ def main():
     # Retreive owl file for NIDM-Results
     if nidm_version == "dev":
         owl_file = os.path.join(TERMS_FOLDER, 'nidm-experiment.owl')
+        import_files = glob.glob(os.path.join(NIDMPATH, "imports", '*.ttl'))
     else:
         owl_file = os.path.join(RELEASED_TERMS_FOLDER, \
             'nidm-experiment_'+nidm_version+'.owl')
+        # For released version of the ontology imports are embedded
+        import_files = None
 
     # check the file exists
     assert os.path.exists(owl_file)
@@ -70,8 +75,9 @@ def main():
     derived_from = {       
     }
 
-    owlspec = OwlSpecification(owl_file, "NIDM-Experiment", subcomponents, \
-        used_by, generated_by, derived_from, prefix=str(NIDM_EXPERIMENT))
+    owlspec = OwlSpecification(owl_file, import_files, "NIDM-Experiment", 
+        subcomponents, used_by, generated_by, derived_from, 
+        prefix=str(NIDM_EXPERIMENT))
 
     if not nidm_version == "dev":
         owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)

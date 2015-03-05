@@ -10,9 +10,9 @@ INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
-    def __init__(self, owl_file, spec_name, subcomponents=None, used_by=None, 
-        generated_by=None, derived_from=None, prefix=None):
-        self.owl = OwlReader(owl_file)
+    def __init__(self, owl_file, import_files, spec_name, subcomponents=None, 
+        used_by=None, generated_by=None, derived_from=None, prefix=None):
+        self.owl = OwlReader(owl_file, import_files)
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
