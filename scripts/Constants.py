@@ -49,3 +49,8 @@ STATO_OLS_LABEL = "obo:'ordinary least squares estimation'"
 STATO_GLS = OBO['STATO_0000372']
 STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "obo:")
 STATO_GLS_LABEL = "obo:'generalized least squares estimation'"
+STATO_TSTATISTIC = OBO['STATO_0000176']
+STATO_TSTATISTIC_STR = str(STATO_TSTATISTIC).replace(OBO_URL, "obo:")
+STATO_ZSTATISTIC = OBO['STATO_0000376']
+STATO_ZSTATISTIC_STR = str(STATO_ZSTATISTIC).replace(OBO_URL, "obo:")
+

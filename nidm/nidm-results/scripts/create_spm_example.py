@@ -14,7 +14,7 @@ RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from Constants import STATO_OLS_STR, STATO_OLS_LABEL
+from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR
 
 def main():
 	nidm_classes = {
@@ -149,7 +149,7 @@ def main():
 			contrast_id="niiri:contrast_id",
 			label="Contrast: Listening > Rest",
 			value="[1, 0, 0]",
-			statistic_type="nidm:TStatistic",
+			statistic_type=STATO_TSTATISTIC_STR,
 			contrast_name="listening > rest"
 			),
 		"ContrastEstimation": dict(
@@ -191,7 +191,7 @@ def main():
 			location="file:///path/to/TStatistic.nii.gz",
 			format="image/nifti",
 			filename="TStatistic.nii.gz",
-			statistic_type="nidm:TStatistic",
+			statistic_type=STATO_TSTATISTIC_STR,
 			contrast_name="listening > rest",
 			error_dof="72.9999999990787",
 			effect_dof="1",
