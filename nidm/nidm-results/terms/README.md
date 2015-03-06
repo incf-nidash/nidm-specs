@@ -48,10 +48,6 @@
     <td><b>nidm:ContrastWeights: </b>Vector defining the linear combination associated with a particular contrast. </td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><b>nidm:ModelParametersEstimation: </b>The process of estimating the parameters of a general linear model from the available data</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>fsl:CenterOfGravity: </b>Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)</td>
 </tr>
