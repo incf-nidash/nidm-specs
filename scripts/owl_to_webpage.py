@@ -284,7 +284,8 @@ class OwlSpecification(object):
                         else:
                             self.text += " (range "
                             for range_uri in sorted(self.owl.ranges[att]):
-                                self.text += '<a href="'+str(range_uri)+'">'+\
+                                self.text += '<a title="'+self.owl.graph.qname(range_uri)+\
+                                '" href="'+str(range_uri)+'">'+\
                                 self._get_name(range_uri)+'</a>, '
                             self.text = self.text[:-2]
                             self.text += ")"
