@@ -54,7 +54,7 @@ def main():
              NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
              NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['InferenceMaskMap'], NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['InferenceMaskMap'], NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'], NIDM['Coordinate'], 
              NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
              NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
@@ -92,7 +92,7 @@ def main():
                 NIDM['ContrastStandardErrorMap']: NIDM['ContrastEstimation'], 
     }
     derived_from = {
-                NIDM['Cluster']: NIDM['ExcursionSet'],
+                NIDM['Cluster']: NIDM['ExcursionSetMap'],
                 NIDM['Peak']: NIDM['Cluster'],                
     }
 
@@ -103,7 +103,7 @@ def main():
         used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
         # No "InferenceMaskMap"
         components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
 

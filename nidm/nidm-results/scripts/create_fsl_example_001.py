@@ -225,12 +225,12 @@ def main():
 			mask_id="niiri:mask_id_1",
 			software_id="niiri:software_id"
 			),
-		"FSL_ExcursionSet": dict(
-			excursion_set_id="niiri:excursion_set_id_1",
-			label="Excursion Set",
-			location="file://./ExcursionSet.nii.gz",
+		"FSL_ExcursionSetMap": dict(
+			id="niiri:excursion_set_map_id_1",
+			label="Excursion Set Map",
+			location="file://./ExcursionSetMap.nii.gz",
 			format="image/nifti",
-			filename_1="ExcursionSet.nii.gz",
+			filename_1="ExcursionSetMap.nii.gz",
 			filename_2="thresh_zstat1.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			png_id="niiri:excursion_set_png_id_1",
@@ -251,7 +251,7 @@ def main():
 			cluster_label_id="1",
 			cluster_size_in_resels="23.1209189500945",
 			p_value_fwe="0.00894",
-			excursion_set_id="niiri:excursion_set_id_1"
+			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
 		"FSL_CenterOfGravity-1": dict(
 			center_of_gravity_id="niiri:center_of_gravity_1",
@@ -276,7 +276,7 @@ def main():
 			cluster_label_id="2",
 			cluster_size_in_resels="19.4128470430038",
 			p_value_fwe="0.000621",
-			excursion_set_id="niiri:excursion_set_id_1"
+			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
 		"FSL_CenterOfGravity-2": dict(
 			center_of_gravity_id="niiri:center_of_gravity_2",
@@ -301,7 +301,7 @@ def main():
 			cluster_label_id="3",
 			cluster_size_in_resels="19.4128470430038",
 			p_value_fwe="1.26e-12",
-			excursion_set_id="niiri:excursion_set_id_1"
+			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
 		"FSL_CenterOfGravity-3 ": dict(
 			center_of_gravity_id="niiri:center_of_gravity_3 ",
@@ -325,7 +325,7 @@ def main():
 			cluster_size_in_voxels="1203",
 			cluster_label_id="4",
 			p_value_fwe="8.02e-24",
-			excursion_set_id="niiri:excursion_set_id_1"
+			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
 		"FSL_CenterOfGravity-4  ": dict(
 			center_of_gravity_id="niiri:center_of_gravity_4",

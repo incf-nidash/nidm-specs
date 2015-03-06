@@ -100,7 +100,7 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
                          
                          rdfs:range nidm:ClusterLabelsMap ;
                          
-                         rdfs:domain nidm:ExcursionSet .
+                         rdfs:domain nidm:ExcursionSetMap .
 
 
 
@@ -243,7 +243,7 @@ nidm:visualisation rdf:type owl:ObjectProperty ;
                    iao:IAO_0000114 iao:IAO_0000120 ;
                    
                    rdfs:domain nidm:DesignMatrix ,
-                               nidm:ExcursionSet ;
+                               nidm:ExcursionSetMap ;
                    
                    rdfs:range nidm:Image .
 
@@ -273,7 +273,7 @@ spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
                                   
                                   iao:IAO_0000114 iao:IAO_0000120 ;
                                   
-                                  rdfs:domain nidm:ExcursionSet ;
+                                  rdfs:domain nidm:ExcursionSetMap ;
                                   
                                   rdfs:range nidm:Image .
 
@@ -629,7 +629,7 @@ nidm:filename rdf:type owl:DatatypeProperty ;
               iao:IAO_0000112 "con_0001.img" ;
               
               rdfs:domain nidm:DesignMatrix ,
-                          nidm:ExcursionSet ,
+                          nidm:ExcursionSetMap ,
                           nidm:Image ,
                           nidm:Map ,
                           nidm:MapHeader ;
@@ -752,7 +752,7 @@ nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
                       
                       iao:IAO_0000114 iao:IAO_0000124 ;
                       
-                      rdfs:domain nidm:ExcursionSet ;
+                      rdfs:domain nidm:ExcursionSetMap ;
                       
                       rdfs:range xsd:int ;
                       
@@ -790,13 +790,13 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             iao:IAO_0000114 iao:IAO_0000122 ;
             
-            rdfs:domain nidm:ExcursionSet ;
+            rdfs:domain nidm:ExcursionSetMap ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
-                                                [ xsd:minInclusive "0.0"^^xsd:float
+                                                [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -824,9 +824,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
-                                                    [ xsd:minInclusive "0.0"^^xsd:float
+                                                    [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -852,9 +852,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
-                                                           [ xsd:minInclusive "0.0"^^xsd:float
+                                                           [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -880,9 +880,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
-                                                   [ xsd:minInclusive "0.0"^^xsd:float
+                                                   [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1830,19 +1830,19 @@ nidm:ExchangeableError rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#ExcursionSet
+###  http://www.incf.org/ns/nidash/nidm#ExcursionSetMap
 
-nidm:ExcursionSet rdf:type owl:Class ;
-                  
-                  rdfs:subClassOf nidm:Map ;
-                  
-                  iao:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExcursionSet.txt" ;
-                  
-                  rdfs:isDefinedBy "Set of map elements surviving a thresholding procedure." ;
-                  
-                  iao:IAO_0000116 "Discussed in the Neuroimaging terms spreadsheet." ;
-                  
-                  iao:IAO_0000114 iao:IAO_0000125 .
+nidm:ExcursionSetMap rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf nidm:Map ;
+                     
+                     iao:IAO_0000116 "Discussed in the Neuroimaging terms spreadsheet and in https://github.com/incf-nidash/nidm/issues/256." ;
+                     
+                     rdfs:isDefinedBy "A map in which the set of elements not selected by the inference activity is set to zero or NaN" ;
+                     
+                     iao:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExcursionSetMap.txt" ;
+                     
+                     iao:IAO_0000114 iao:IAO_0000122 .
 
 
 

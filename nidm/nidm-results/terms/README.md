@@ -24,10 +24,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ExcursionSet: </b>Set of map elements surviving a thresholding procedure</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:FSL: </b>FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB</td>
 </tr>
 <tr>
@@ -296,7 +292,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:hasClusterLabelsMap: </b>A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer</td>
-    <td>nidm:ExcursionSet </td>
+    <td>nidm:ExcursionSetMap </td>
     <td>nidm:ClusterLabelsMap </td>
 </tr>
 <tr>
@@ -326,7 +322,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:visualisation: </b>Graphical representation of an entity</td>
-    <td>nidm:DesignMatrix nidm:ExcursionSet </td>
+    <td>nidm:DesignMatrix nidm:ExcursionSetMap </td>
     <td>nidm:Image </td>
 </tr>
 <tr>
@@ -356,7 +352,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:hasMaximumIntensityProjection: </b>Maximum intensity projection of a map</td>
-    <td>nidm:ExcursionSet </td>
+    <td>nidm:ExcursionSetMap </td>
     <td>nidm:Image </td>
 </tr>
 <tr>
