@@ -218,12 +218,12 @@ def main():
 			mask_id="niiri:mask_id_1",
 			software_id="niiri:software_id"
 			),
-		"ExcursionSet": dict(
-			excursion_set_id="niiri:excursion_set_id",
-			label="Excursion Set",
-			location="file://./ExcursionSet.nii.gz",
+		"ExcursionSetMap": dict(
+			id="niiri:excursion_set_map_id",
+			label="Excursion Set Map",
+			location="file://./ExcursionSetMap.nii.gz",
 			format="image/nifti",
-			filename="ExcursionSet.nii.gz",
+			filename="ExcursionSetMap.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			max_intensity_projection_id="niiri:maximum_intensity_projection_id",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -241,7 +241,7 @@ def main():
 			p_value_unc="3.55896824480477e-19",
 			p_value_fwe="0",
 			p_value_fdr="1.77948412240239e-18",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Cluster-2": dict(
 			cluster_id="niiri:cluster_0002",
@@ -252,7 +252,7 @@ def main():
 			p_value_unc="5.34280282632073e-17",
 			p_value_fwe="0",
 			p_value_fdr="1.33570070658018e-16",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Cluster-3": dict(
 			cluster_id="niiri:cluster_0003",
@@ -263,7 +263,7 @@ def main():
 			p_value_unc="0.00497953247554004",
 			p_value_fwe="0.000255384009130943",
 			p_value_fdr="0.00829922079256674",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Cluster-4": dict(
 			cluster_id="niiri:cluster_0004",
@@ -274,7 +274,7 @@ def main():
 			p_value_unc="0.0110257032104773",
 			p_value_fwe="0.000565384750377596",
 			p_value_fdr="0.0137821290130967",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Cluster-5": dict(
 			cluster_id="niiri:cluster_0005",
@@ -285,7 +285,7 @@ def main():
 			p_value_unc="0.0818393184514307",
 			p_value_fwe="0.00418900977248904",
 			p_value_fdr="0.0818393184514307",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Peak-1": dict(
 			peak_id="niiri:peak_0001",

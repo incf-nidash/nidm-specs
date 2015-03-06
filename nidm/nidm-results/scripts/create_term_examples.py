@@ -204,12 +204,12 @@ def main():
 			peak_def_id="niiri:peak_definition_criteria_id", 
 			cluster_def_id="niiri:cluster_definition_criteria_id"
 			),
-		"ExcursionSet": dict(
-			excursion_set_id="niiri:excursion_set_id",
-			label="Excursion Set",
-			location="file:///path/to/ExcursionSet.nii.gz",
+		"ExcursionSetMap": dict(
+			id="niiri:excursion_set_map_id",
+			label="Excursion Set Map",
+			location="file:///path/to/ExcursionSetMap.nii.gz",
 			format="image/nifti",
-			filename="ExcursionSet.nii.gz",
+			filename="ExcursionSetMap.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			max_intensity_projection_id="niiri:maximum_intensity_projection_id",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -227,7 +227,7 @@ def main():
 			p_value_unc="9.56276736481136e-52",
 			p_value_fwe="0",
 			p_value_fdr="7.65021389184909e-51",
-			excursion_set_id="niiri:excursion_set_id"
+			excursion_set_id="niiri:excursion_set_map_id"
 			),
 		"Peak": dict(
 			peak_id="niiri:peak_0001",
