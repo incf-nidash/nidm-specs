@@ -43,6 +43,9 @@ OBO_DEFINITION = OBO['IAO_0000115']
 HAS_CURATION_STATUS = OBO['IAO_0000114']
 
 STATO_OLS = OBO['STATO_0000370']
-STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "stato:")
+STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "obo:")
+# TODO: labels should be grabbed automatically from the corresponding owl file
+STATO_OLS_LABEL = "obo:'ordinary least squares estimation'"
 STATO_GLS = OBO['STATO_0000372']
-STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "stato:")
+STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "obo:")
+STATO_GLS_LABEL = "obo:'generalized least squares estimation'"
