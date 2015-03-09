@@ -60,26 +60,37 @@ def get_attributes_from_owl(my_owl_graph):
 
     restrictions = dict()
 
+    # Check owl restrictions on classes
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['Class']):
+        for class_restr in my_owl_graph.objects(class_name, RDFS['subClassOf']):
+            if isinstance(class_restr, term.BNode):
+                for prop in my_owl_graph.objects(class_restr,OWL['onProperty']):
+                    attributes.setdefault(class_name, set([prop])).add(prop)
+                    for child_class in my_owl_graph.subjects(RDFS['subClassOf'], class_name): 
+                        attributes.setdefault(child_class, set([prop])).add(prop)
+
     # Attributes that can be found in all classes
-    for data_property,p,o in my_owl_graph.triples((None, RDF['type'], None)):
+    for prop,p,o in my_owl_graph.triples((None, RDF['type'], None)):
         if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
-            for class_name in my_owl_graph.objects(data_property, RDFS['domain']):
+
+            # Check property domain
+            for class_name in my_owl_graph.objects(prop, RDFS['domain']):
                 # Add attribute to current class
                 if class_name in attributes:
-                    attributes[class_name].add(data_property)
+                    attributes[class_name].add(prop)
                 else:
-                    attributes[class_name] = set([data_property])
+                    attributes[class_name] = set([prop])
                 
                 # Add attribute to children of current class
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], class_name):
                     # Add attribute to current class
                     if child_class in attributes:
-                        attributes[child_class].add(data_property)
+                        attributes[child_class].add(prop)
                     else:
-                        attributes[child_class] = set([data_property])
+                        attributes[child_class] = set([prop])
                     class_name = child_class
-                    
-            for range_name in my_owl_graph.objects(data_property, RDFS['range']):
+
+            for range_name in my_owl_graph.objects(prop, RDFS['range']):
                 # More complex type including restrictions
                 if isinstance(range_name, term.BNode):
                     for restriction_node in my_owl_graph.objects(range_name, OWL['withRestrictions']):
@@ -87,54 +98,52 @@ def get_attributes_from_owl(my_owl_graph):
                             xsd_restrictions = set(['minInclusive', 'minExclusive', 'maxInclusive', 'maxExclusive'])
                             for xsd_restriction in xsd_restrictions:
                                 for min_incl in my_owl_graph.objects(first_restriction, XSD[xsd_restriction]):
-                                    if (data_property in restrictions):
-                                        if (xsd_restriction in restrictions[data_property]):
-                                            restrictions[data_property] = max(restrictions[data_property][xsd_restriction], min_incl)
+                                    if (prop in restrictions):
+                                        if (xsd_restriction in restrictions[prop]):
+                                            restrictions[prop] = max(restrictions[prop][xsd_restriction], min_incl)
                                         else:
-                                            restrictions[data_property] = { xsd_restriction: min_incl}
+                                            restrictions[prop] = { xsd_restriction: min_incl}
                                     else:
-                                        restrictions[data_property] = { xsd_restriction: min_incl}
+                                        restrictions[prop] = { xsd_restriction: min_incl}
 
                     for sub_range_name in my_owl_graph.objects(range_name, OWL['onDatatype']):
                         range_name = sub_range_name
 
-                if data_property in ranges:
-                    ranges[data_property].add(range_name)
+                if prop in ranges:
+                    ranges[prop].add(range_name)
                 else:
-                    ranges[data_property] = set([range_name])
+                    ranges[prop] = set([range_name])
                 # FIXME: more elegant?
                 # Add child_class to range (for ObjectProperty)
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                     # Add range to current class
-                    if data_property in ranges:
-                        ranges[data_property].add(child_class)
+                    if prop in ranges:
+                        ranges[prop].add(child_class)
                     else:
-                        ranges[data_property] = set([child_class])
+                        ranges[prop] = set([child_class])
                     range_name = child_class
                     for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                         # Add attribute to current class
-                        if data_property in ranges:
-                            ranges[data_property].add(child_class)
+                        if prop in ranges:
+                            ranges[prop].add(child_class)
                         else:
-                            ranges[data_property] = set([child_class])
+                            ranges[prop] = set([child_class])
                         range_name = child_class
                         for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                             # Add attribute to current class
-                            if data_property in ranges:
-                                ranges[data_property].add(child_class)
+                            if prop in ranges:
+                                ranges[prop].add(child_class)
                             else:
-                                ranges[data_property] = set([child_class])
+                                ranges[prop] = set([child_class])
                             range_name = child_class
                             for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                                 # Add attribute to current class
-                                if data_property in ranges:
-                                    ranges[data_property].add(child_class)
+                                if prop in ranges:
+                                    ranges[prop].add(child_class)
                                 else:
-                                    ranges[data_property] = set([child_class])
+                                    ranges[prop] = set([child_class])
                                 range_name = child_class
             
-                
-
     return list((attributes, ranges, restrictions))
 
 def get_owl_graph(owl_file):
@@ -151,7 +160,8 @@ def get_owl_graph(owl_file):
     return owl_graph
 
 
-def check_class_names(example_graph, example_name, class_names=None, owl_file=None):
+def check_class_names(example_graph, example_name, class_names=None, 
+    owl_file=None, owl_imports=None):
     my_exception = dict()
     if not class_names:
         if owl_file is None:

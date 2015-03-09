@@ -1,7 +1,9 @@
 @prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
 @prefix iao: <http://purl.obolibrary.org/obo/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix spm: <http://www.incf.org/ns/nidash/spm#> .
@@ -11,10 +13,13 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
   owl:imports <http://purl.obolibrary.org/nidm/iao_import.owl> ,
+              <http://purl.org/nidash/nidm/dc_import.owl> ,
+              <http://purl.org/nidash/nidm/nfo_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
 ] .
 
@@ -47,13 +52,9 @@ owl:sameAs rdf:type owl:AnnotationProperty .
 #################################################################
 
 
-###  http://purl.org/dc/terms/format
+###  http://purl.org/dc/elements/1.1/description
 
-dct:format rdf:type owl:ObjectProperty ;
-           
-           rdfs:subPropertyOf owl:topObjectProperty ;
-           
-           rdfs:domain prov:Entity .
+dc:description rdfs:range dctype:Image .
 
 
 
@@ -230,25 +231,6 @@ nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#visualisation
-
-nidm:visualisation rdf:type owl:ObjectProperty ;
-                   
-                   iao:IAO_0000112 "file:///path/to/design_matrix.png" ;
-                   
-                   rdfs:isDefinedBy "Graphical representation of an entity." ;
-                   
-                   iao:IAO_0000116 "Range: Path to an image (e.g.png) not found." ;
-                   
-                   iao:IAO_0000114 iao:IAO_0000120 ;
-                   
-                   rdfs:domain nidm:DesignMatrix ,
-                               nidm:ExcursionSetMap ;
-                   
-                   rdfs:range nidm:Image .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#withEstimationMethod
 
 nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
@@ -273,9 +255,9 @@ spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
                                   
                                   iao:IAO_0000114 iao:IAO_0000120 ;
                                   
-                                  rdfs:domain nidm:ExcursionSetMap ;
+                                  rdfs:range dctype:Image ;
                                   
-                                  rdfs:range nidm:Image .
+                                  rdfs:domain nidm:ExcursionSetMap .
 
 
 
@@ -295,6 +277,12 @@ crypto:sha512 rdf:type owl:DatatypeProperty ;
               rdfs:range xsd:string ;
               
               rdfs:domain prov:Entity .
+
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdf:type owl:DatatypeProperty .
 
 
 
@@ -617,24 +605,6 @@ nidm:errorVarianceHomogeneous rdf:type owl:DatatypeProperty ;
                               rdfs:domain nidm:ErrorModel ;
                               
                               rdfs:range xsd:boolean .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#filename
-
-nidm:filename rdf:type owl:DatatypeProperty ;
-              
-              owl:sameAs "http://purl.obolibrary.org/obo/OBIws_0000001"^^xsd:anyURI ;
-              
-              iao:IAO_0000112 "con_0001.img" ;
-              
-              rdfs:domain nidm:DesignMatrix ,
-                          nidm:ExcursionSetMap ,
-                          nidm:Image ,
-                          nidm:Map ,
-                          nidm:MapHeader ;
-              
-              rdfs:range xsd:string .
 
 
 
@@ -1428,6 +1398,16 @@ spm:softwareRevision rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName
+
+nfo:fileName rdf:type owl:DatatypeProperty ;
+             
+             iao:IAO_0000112 "con_0001.img" ;
+             
+             rdfs:range xsd:string .
+
+
+
 
 
 #################################################################
@@ -1435,6 +1415,22 @@ spm:softwareRevision rdf:type owl:DatatypeProperty ;
 #    Classes
 #
 #################################################################
+
+
+###  http://purl.org/dc/dcmitype/Image
+
+dctype:Image rdf:type owl:Class ;
+             
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty nfo:fileName ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:format ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] .
 
 
 ###  http://www.incf.org/ns/nidash/fsl#BinomialDistribution
@@ -1740,7 +1736,22 @@ nidm:Data rdf:type owl:Class ;
 
 nidm:DesignMatrix rdf:type owl:Class ;
                   
-                  rdfs:subClassOf prov:Entity ;
+                  rdfs:subClassOf prov:Entity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
                   
                   iao:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
                   
@@ -1834,7 +1845,12 @@ nidm:ExchangeableError rdf:type owl:Class ;
 
 nidm:ExcursionSetMap rdf:type owl:Class ;
                      
-                     rdfs:subClassOf nidm:Map ;
+                     rdfs:subClassOf nidm:Map ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty dc:description ;
+                                       owl:onClass dctype:Image ;
+                                       owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                     ] ;
                      
                      iao:IAO_0000116 "Discussed in the Neuroimaging terms spreadsheet and in https://github.com/incf-nidash/nidm/issues/256." ;
                      
@@ -1950,20 +1966,6 @@ nidm:HeightThreshold rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#Image
-
-nidm:Image rdf:type owl:Class ;
-           
-           rdfs:subClassOf prov:Entity ;
-           
-           iao:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Image.txt"^^xsd:anyURI ;
-           
-           rdfs:comment "Class used to represent png, gif..." ;
-           
-           iao:IAO_0000114 iao:IAO_0000124 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#IndependentError
 
 nidm:IndependentError rdf:type owl:Class ;
@@ -2025,7 +2027,17 @@ nidm:MNICoordinateSystem rdf:type owl:Class ;
 
 nidm:Map rdf:type owl:Class ;
          
-         rdfs:subClassOf prov:Entity ;
+         rdfs:subClassOf prov:Entity ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dct:format ;
+                           owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty nfo:fileName ;
+                           owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ;
          
          iao:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" ;
          
@@ -2039,7 +2051,17 @@ nidm:Map rdf:type owl:Class ;
 
 nidm:MapHeader rdf:type owl:Class ;
                
-               rdfs:subClassOf prov:Entity ;
+               rdfs:subClassOf prov:Entity ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty nfo:fileName ;
+                                 owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty dct:format ;
+                                 owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ;
                
                iao:IAO_0000114 iao:IAO_0000124 .
 

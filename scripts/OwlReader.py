@@ -221,7 +221,11 @@ class OwlReader():
                 if recursive > 0:
                     parent_classes_super = parent_classes
                     for parent_class_super in parent_classes_super:
-                        prov_class = self.get_prov_class(parent_class, recursive=recursive-1)
+                        if not isinstance(parent_class_super, term.BNode):
+                            prov_class = self.get_prov_class(parent_class, recursive=recursive-1)
+                            if prov_class is not None:
+                                break
+
 
         # Get mor generic PROV types
         if prov_class in set([PROV['SoftwareAgent'], PROV['Organization'], \
