@@ -317,12 +317,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:visualisation: </b>Graphical representation of an entity</td>
-    <td>nidm:DesignMatrix nidm:ExcursionSetMap </td>
-    <td>nidm:Image </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:voxelSize: </b>3D size of a voxel measured in voxelUnits</td>
     <td>nidm:CoordinateSpace </td>
     <td>xsd:string </td>
@@ -349,7 +343,7 @@
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:hasMaximumIntensityProjection: </b>Maximum intensity projection of a map</td>
     <td>nidm:ExcursionSetMap </td>
-    <td>nidm:Image </td>
+    <td>dctype:Image </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
