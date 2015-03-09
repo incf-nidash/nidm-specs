@@ -1,12 +1,15 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
 @prefix neurolex: <http://neurolex.org/wiki/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
 @prefix spm: <http://www.incf.org/ns/nidash/spm#> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
 @prefix niiri: <http://iri.nidash.org/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 niiri:cluster_0001 a prov:Entity , nidm:Cluster ;
@@ -45,7 +48,7 @@ niiri:cluster_definition_criteria_id a prov:Entity , nidm:ClusterDefinitionCrite
 
 niiri:cluster_label_map_id a prov:Entity , nidm:ClusterLabelsMap ;
 	prov:atLocation "file:///path/to/ClusterLabels.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ClusterLabels.nii.gz"^^xsd:string ;
+	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string .
 
 niiri:contrast_estimation_id prov:used niiri:beta_map_id_2 .
@@ -59,7 +62,7 @@ niiri:contrast_map_id a prov:Entity , nidm:ContrastMap ;
 	rdfs:label "Contrast Map: listening > rest" ;
 	prov:atLocation "file:///path/to/Contrast.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-	nidm:filename "Contrast.nii.gz"^^xsd:string ;
+	nfo:fileName "Contrast.nii.gz"^^xsd:string ;
 	nidm:contrastName "listening > rest"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -69,7 +72,7 @@ niiri:contrast_map_id a prov:Entity , nidm:ContrastMap ;
 niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
 	rdfs:label "Contrast Standard Error Map" ;
 	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
+	nfo:fileName "ContrastStandardError.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -144,7 +147,7 @@ niiri:coordinate_space_id_2 a prov:Entity , nidm:CoordinateSpace ;
 niiri:mask_id_1 a prov:Entity , nidm:CustomMaskMap ;
 	rdfs:label "Custom mask" ;
 	prov:atLocation "file:///path/to/CustomMask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "CustomMask.nii.gz"^^xsd:string ;
+	nfo:fileName "CustomMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
@@ -155,99 +158,99 @@ niiri:data_id a prov:Entity , nidm:Data , prov:Collection ;
     nidm:targetIntensity "100"^^xsd:float .
 
 niiri:mask_id_1_der a prov:Entity , nidm:CustomMaskMap ;
-    nidm:filename "user_custom_mask.nii"^^xsd:string ;
+    nfo:fileName "user_custom_mask.nii"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:mask_id_1 prov:wasDerivedFrom niiri:mask_id_1_der .
 
 niiri:contrast_map_id_der a prov:Entity , nidm:ContrastMap ;
-    nidm:filename "con_0001.img"^^xsd:string ;
+    nfo:fileName "con_0001.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:original_contrast_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:original_contrast_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "con_0001.hdr"^^xsd:string ;
+    nfo:fileName "con_0001.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:contrast_map_id prov:wasDerivedFrom niiri:contrast_map_id_der .
 
 niiri:beta_map_id_2_der a prov:Entity , nidm:ParameterEstimateMap ;
-    nidm:filename "beta_0002.img"^^xsd:string ;
+    nfo:fileName "beta_0002.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:original_pe_map_header_2_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:original_pe_map_header_2_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "beta_0002.hdr"^^xsd:string ;
+    nfo:fileName "beta_0002.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:beta_map_id_2 prov:wasDerivedFrom niiri:beta_map_id_2_der .
 
 niiri:statistic_map_id_der a prov:Entity , nidm:StatisticMap ;
-    nidm:filename "spmT_0001.img"^^xsd:string ;
+    nfo:fileName "spmT_0001.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:statistic_original_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:statistic_original_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "spmT_0001.hdr"^^xsd:string ;
+    nfo:fileName "spmT_0001.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:statistic_map_id prov:wasDerivedFrom niiri:statistic_map_id_der .
 
 niiri:resels_per_voxel_map_id_der a prov:Entity , spm:ReselsPerVoxelMap ;
-    nidm:filename "RPV.img"^^xsd:string ;
+    nfo:fileName "RPV.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:original_rpv_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:original_rpv_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "RPV.hdr"^^xsd:string ;
+    nfo:fileName "RPV.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:resels_per_voxel_map_id prov:wasDerivedFrom niiri:resels_per_voxel_map_id_der .
 
 niiri:mask_id_2_der a prov:Entity , nidm:MaskMap ;
-    nidm:filename "mask.img"^^xsd:string ;
+    nfo:fileName "mask.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:original_mask_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:original_mask_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "mask.hdr"^^xsd:string ;
+    nfo:fileName "mask.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:mask_id_2 prov:wasDerivedFrom niiri:mask_id_2_der .
 
 niiri:beta_map_id_1_der a prov:Entity , nidm:ParameterEstimateMap ;
-    nidm:filename "beta_0001.img"^^xsd:string ;
+    nfo:fileName "beta_0001.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:original_pe_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:original_pe_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "beta_0001.hdr"^^xsd:string ;
+    nfo:fileName "beta_0001.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:beta_map_id_1 prov:wasDerivedFrom niiri:beta_map_id_1_der .
 
 niiri:statistic_map_id_der a prov:Entity , nidm:StatisticMap ;
-    nidm:filename "spmT_0001.img"^^xsd:string ;
+    nfo:fileName "spmT_0001.img"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:hasMapHeader niiri:statistic_original_map_header_id ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:statistic_original_map_header_id a prov:Entity , nidm:MapHeader ;
     dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "spmT_0001.hdr"^^xsd:string ;
+    nfo:fileName "spmT_0001.hdr"^^xsd:string ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
 niiri:statistic_map_id prov:wasDerivedFrom niiri:statistic_map_id_der .
@@ -256,14 +259,14 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	rdfs:label "Design Matrix" ;
 	prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
 	dct:format "text/csv"^^xsd:string ;
-	nidm:filename "DesignMatrix.csv"^^xsd:string ;
-	nidm:visualisation niiri:design_matrix_png_id .
+	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+	dc:description niiri:design_matrix_png_id .
 
 niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
 	rdfs:label "Display Mask Map" ;
 	prov:atLocation "file:///path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "DisplayMask.nii.gz"^^xsd:string ;
+    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
 
@@ -278,7 +281,7 @@ niiri:excursion_set_map_id a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;
 	prov:atLocation "file:///path/to/ExcursionSetMap.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-	nidm:filename "ExcursionSetMap.nii.gz"^^xsd:string ;
+	nfo:fileName "ExcursionSetMap.nii.gz"^^xsd:string ;
 	nidm:hasClusterLabelsMap niiri:cluster_label_map_id ;
 	spm:hasMaximumIntensityProjection niiri:maximum_intensity_projection_id ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
@@ -297,7 +300,7 @@ niiri:extent_threshold_id a prov:Entity , nidm:ExtentThreshold ;
 niiri:grand_mean_map_id a prov:Entity , nidm:GrandMeanMap ;
 	rdfs:label "Grand Mean Map" ;
 	prov:atLocation "file:///path/to/GrandMean.nii.gz"^^xsd:anyURI ;
-	nidm:filename "GrandMean.nii.gz"^^xsd:string ;
+	nfo:fileName "GrandMean.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:maskedMedian "115"^^xsd:float ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
@@ -311,14 +314,14 @@ niiri:height_threshold_id a prov:Entity , nidm:HeightThreshold ;
 	nidm:pValueUncorrected "7.62276079258051e-07"^^xsd:float ;
 	nidm:pValueFWER "0.05"^^xsd:float .
 
-niiri:maximum_intensity_projection_id a prov:Entity , nidm:Image ;
+niiri:maximum_intensity_projection_id a prov:Entity , dctype:Image ;
 	prov:atLocation "file:///path/to/MaximumIntensityProjection.png"^^xsd:anyURI ;
-	nidm:filename "MaximumIntensityProjection.png"^^xsd:string ;
+	nfo:fileName "MaximumIntensityProjection.png"^^xsd:string ;
 	dct:format "image/png"^^xsd:string .
 
-niiri:design_matrix_png_id a prov:Entity , nidm:Image ;
+niiri:design_matrix_png_id a prov:Entity , dctype:Image ;
 	prov:atLocation "file:///path/to/DesignMatrix.png"^^xsd:anyURI ;
-	nidm:filename "DesignMatrix.png"^^xsd:string ;
+	nfo:fileName "DesignMatrix.png"^^xsd:string ;
 	dct:format "image/png"^^xsd:string .
 
 niiri:inference_id a prov:Activity , nidm:Inference ;
@@ -330,7 +333,7 @@ niiri:inference_id a prov:Activity , nidm:Inference ;
 niiri:sub_volume_id a prov:Entity , nidm:InferenceMaskMap ;
 	rdfs:label "Inference Mask Map" ;
 	prov:atLocation "file:///path/to/InferenceMask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "InferenceMask.nii.gz"^^xsd:string ;
+	nfo:fileName "InferenceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
@@ -340,7 +343,7 @@ niiri:inference_id prov:used niiri:sub_volume_id .
 niiri:mask_id_2 a prov:Entity , nidm:MaskMap ;
 	rdfs:label "Mask" ;
 	prov:atLocation "file:///path/to/Mask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "Mask.nii.gz"^^xsd:string ;
+	nfo:fileName "Mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -371,7 +374,7 @@ _:blank1 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
 niiri:beta_map_id_1 a prov:Entity , nidm:ParameterEstimateMap ;
     rdfs:label "Beta Map 1" ;
     prov:atLocation "file:///path/to/ParameterEstimate_0001.nii.gz"^^xsd:anyURI ;
-    nidm:filename "ParameterEstimate_0001.nii.gz"^^xsd:string ;
+    nfo:fileName "ParameterEstimate_0001.nii.gz"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -380,7 +383,7 @@ niiri:beta_map_id_1 a prov:Entity , nidm:ParameterEstimateMap ;
 niiri:beta_map_id_2 a prov:Entity , nidm:ParameterEstimateMap ;
     rdfs:label "Beta Map 2" ;
     prov:atLocation "file:///path/to/ParameterEstimate_0002.nii"^^xsd:anyURI ;
-    nidm:filename "ParameterEstimate_0002.nii.gz"^^xsd:string ;
+    nfo:fileName "ParameterEstimate_0002.nii.gz"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -464,7 +467,7 @@ niiri:peak_definition_criteria_id a prov:Entity , nidm:PeakDefinitionCriteria ;
 niiri:residual_mean_squares_map_id a prov:Entity , nidm:ResidualMeanSquaresMap ;
 	rdfs:label "Residual Mean Squares Map" ;
 	prov:atLocation "file:///path/to/ResidualMeanSquares.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ResidualMeanSquares.nii.gz"^^xsd:string ;
+	nfo:fileName "ResidualMeanSquares.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -475,7 +478,7 @@ niiri:inference_id prov:used niiri:resels_per_voxel_map_id .
 niiri:resels_per_voxel_map_id a prov:Entity , spm:ReselsPerVoxelMap ;
 	rdfs:label "Resels per Voxel Map" ;
 	prov:atLocation "file:///path/to/ReselsPerVoxel.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ReselsPerVoxel.nii.gz"^^xsd:string ;
+	nfo:fileName "ReselsPerVoxel.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -489,7 +492,7 @@ niiri:software_id a prov:Agent , nidm:SPM , prov:SoftwareAgent ;
 niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	rdfs:label "Search Space Map" ;
 	prov:atLocation "file:///path/to/SearchSpace.nii.gz"^^xsd:anyURI ;
-	nidm:filename "SearchSpace.nii.gz"^^xsd:string ;
+	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	spm:expectedNumberOfVoxelsPerCluster "0.553331387916112"^^xsd:float ;
@@ -513,7 +516,7 @@ niiri:statistic_map_id a prov:Entity , nidm:StatisticMap ;
 	rdfs:label "Statistic Map: listening > rest" ;
 	prov:atLocation "file:///path/to/TStatistic.nii.gz"^^xsd:anyURI ;
 	nidm:statisticType nidm:TStatistic ;
-	nidm:filename "TStatistic.nii.gz"^^xsd:string ;
+	nfo:fileName "TStatistic.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:contrastName "listening > rest"^^xsd:string ;
 	nidm:errorDegreesOfFreedom "72.9999999990787"^^xsd:float ;
