@@ -337,9 +337,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:Map.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Map.</li>
                      
-                        <li><span class="attribute" id="nidm:Map.nidm:filename">
-                        <dfn>nidm:filename</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:Map.nidm:hasMapHeader">
                         <dfn>nidm:hasMapHeader</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -356,10 +353,7 @@
                 <div class="attributes" id="attributes-nidm:MapHeader"> A <a>nidm:MapHeader</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:MapHeader.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:MapHeader.</li>
-                     
-                        <li><span class="attribute" id="nidm:MapHeader.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>  
+                      
             </section>
             <!-- nidm:CoordinateSpace -->
             <section id="section-nidm:CoordinateSpace"> 
@@ -654,9 +648,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:CustomMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomMaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:CustomMaskMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -668,7 +659,7 @@
                 <pre class='example highlight'>niiri:mask_id_1 a prov:Entity , nidm:CustomMaskMap ;
 	rdfs:label "Custom mask" ;
 	prov:atLocation "file:///path/to/CustomMask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "CustomMask.nii.gz"^^xsd:string ;
+	nfo:fileName "CustomMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
@@ -707,42 +698,15 @@
                 <div class="attributes" id="attributes-nidm:DesignMatrix"> A <a>nidm:DesignMatrix</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:DesignMatrix.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DesignMatrix.</li>
-                     
-                        <li><span class="attribute" id="nidm:DesignMatrix.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:DesignMatrix.nidm:visualisation">
-                        <dfn>nidm:visualisation</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity. (range nidm:Image)</li>        
+                            
                 </ul>
                 </div>
                 <pre class='example highlight'>niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	rdfs:label "Design Matrix" ;
 	prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
 	dct:format "text/csv"^^xsd:string ;
-	nidm:filename "DesignMatrix.csv"^^xsd:string ;
-	nidm:visualisation niiri:design_matrix_png_id .</pre>
-            <!-- nidm:Image -->
-            <section id="section-nidm:Image"> 
-                <h1 label="nidm:Image">nidm:Image</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:Image</dfn>                    <sup><a title="nidm:Image">                    <span class="diamond">&#9826;</span></a></sup> is . <a>nidm:Image</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:Image"> A <a>nidm:Image</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:Image.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:Image.</li>
-                     
-                        <li><span class="attribute" id="nidm:Image.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:maximum_intensity_projection_id a prov:Entity , nidm:Image ;
-	prov:atLocation "file:///path/to/MaximumIntensityProjection.png"^^xsd:anyURI ;
-	nidm:filename "MaximumIntensityProjection.png"^^xsd:string ;
-	dct:format "image/png"^^xsd:string .</pre>  
-            </section>  
+	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+	dc:description niiri:design_matrix_png_id .</pre>  
             </section>
             <!-- nidm:ErrorModel -->
             <section id="section-nidm:ErrorModel"> 
@@ -958,9 +922,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:GrandMeanMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:GrandMeanMap.</li>
                      
-                        <li><span class="attribute" id="nidm:GrandMeanMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:GrandMeanMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -975,7 +936,7 @@
                 <pre class='example highlight'>niiri:grand_mean_map_id a prov:Entity , nidm:GrandMeanMap ;
 	rdfs:label "Grand Mean Map" ;
 	prov:atLocation "file:///path/to/GrandMean.nii.gz"^^xsd:anyURI ;
-	nidm:filename "GrandMean.nii.gz"^^xsd:string ;
+	nfo:fileName "GrandMean.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:maskedMedian "115"^^xsd:float ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
@@ -993,9 +954,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:MaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:MaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:MaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:MaskMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1007,7 +965,7 @@
                 <pre class='example highlight'>niiri:mask_id_2 a prov:Entity , nidm:MaskMap ;
 	rdfs:label "Mask" ;
 	prov:atLocation "file:///path/to/Mask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "Mask.nii.gz"^^xsd:string ;
+	nfo:fileName "Mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -1024,9 +982,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ParameterEstimateMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ParameterEstimateMap.</li>
                      
-                        <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ParameterEstimateMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1038,7 +993,7 @@
                 <pre class='example highlight'>niiri:beta_map_id_1 a prov:Entity , nidm:ParameterEstimateMap ;
     rdfs:label "Beta Map 1" ;
     prov:atLocation "file:///path/to/ParameterEstimate_0001.nii.gz"^^xsd:anyURI ;
-    nidm:filename "ParameterEstimate_0001.nii.gz"^^xsd:string ;
+    nfo:fileName "ParameterEstimate_0001.nii.gz"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
     crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -1055,9 +1010,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ResidualMeanSquaresMap.</li>
                      
-                        <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ResidualMeanSquaresMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1069,7 +1021,7 @@
                 <pre class='example highlight'>niiri:residual_mean_squares_map_id a prov:Entity , nidm:ResidualMeanSquaresMap ;
 	rdfs:label "Residual Mean Squares Map" ;
 	prov:atLocation "file:///path/to/ResidualMeanSquares.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ResidualMeanSquares.nii.gz"^^xsd:string ;
+	nfo:fileName "ResidualMeanSquares.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -1163,9 +1115,6 @@
                         <li><span class="attribute" id="nidm:ContrastMap.nidm:contrastName">
                         <dfn>nidm:contrastName</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast. (range xsd:string)</li> 
-                        <li><span class="attribute" id="nidm:ContrastMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ContrastMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1178,7 +1127,7 @@
 	rdfs:label "Contrast Map: listening > rest" ;
 	prov:atLocation "file:///path/to/Contrast.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-	nidm:filename "Contrast.nii.gz"^^xsd:string ;
+	nfo:fileName "Contrast.nii.gz"^^xsd:string ;
 	nidm:contrastName "listening > rest"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -1196,9 +1145,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ContrastStandardErrorMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ContrastStandardErrorMap.</li>
                      
-                        <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ContrastStandardErrorMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1210,7 +1156,7 @@
                 <pre class='example highlight'>niiri:contrast_standard_error_map_id a prov:Entity , nidm:ContrastStandardErrorMap ;
 	rdfs:label "Contrast Standard Error Map" ;
 	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ContrastStandardError.nii.gz"^^xsd:string ;
+	nfo:fileName "ContrastStandardError.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
@@ -1309,9 +1255,6 @@
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:errorDegreesOfFreedom">
                         <dfn>nidm:errorDegreesOfFreedom</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the error. (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:StatisticMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:StatisticMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1327,7 +1270,7 @@
 	rdfs:label "Statistic Map: listening > rest" ;
 	prov:atLocation "file:///path/to/TStatistic.nii.gz"^^xsd:anyURI ;
 	nidm:statisticType nidm:TStatistic ;
-	nidm:filename "TStatistic.nii.gz"^^xsd:string ;
+	nfo:fileName "TStatistic.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:contrastName "listening > rest"^^xsd:string ;
 	nidm:errorDegreesOfFreedom "72.9999999990787"^^xsd:float ;
@@ -1624,9 +1567,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ClusterLabelsMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ClusterLabelsMap.</li>
                      
-                        <li><span class="attribute" id="nidm:ClusterLabelsMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ClusterLabelsMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1637,7 +1577,7 @@
                 </div>
                 <pre class='example highlight'>niiri:cluster_label_map_id a prov:Entity , nidm:ClusterLabelsMap ;
 	prov:atLocation "file:///path/to/ClusterLabels.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ClusterLabels.nii.gz"^^xsd:string ;
+	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string .</pre>  
             </section>
             <!-- nidm:Coordinate -->
@@ -1679,9 +1619,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:DisplayMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DisplayMaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1694,7 +1631,7 @@
 	rdfs:label "Display Mask Map" ;
 	prov:atLocation "file:///path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-    nidm:filename "DisplayMask.nii.gz"^^xsd:string ;
+    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
@@ -1709,9 +1646,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:ExcursionSetMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:ExcursionSetMap.</li>
                      
-                        <li><span class="attribute" id="nidm:ExcursionSetMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:ExcursionSetMap.nidm:hasClusterLabelsMap">
                         <dfn>nidm:hasClusterLabelsMap</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer. (range nidm:ClusterLabelsMap)</li> 
@@ -1726,17 +1660,14 @@
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:int)</li> 
                         <li><span class="attribute" id="nidm:ExcursionSetMap.nidm:pValue">
                         <dfn>nidm:pValue</dfn>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:float)</li> 
-                        <li><span class="attribute" id="nidm:ExcursionSetMap.nidm:visualisation">
-                        <a>nidm:visualisation</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity. (range nidm:Image)</li>        
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:float)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>niiri:excursion_set_map_id a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;
 	prov:atLocation "file:///path/to/ExcursionSetMap.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-	nidm:filename "ExcursionSetMap.nii.gz"^^xsd:string ;
+	nfo:fileName "ExcursionSetMap.nii.gz"^^xsd:string ;
 	nidm:hasClusterLabelsMap niiri:cluster_label_map_id ;
 	spm:hasMaximumIntensityProjection niiri:maximum_intensity_projection_id ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
@@ -1828,9 +1759,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:InferenceMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:InferenceMaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:InferenceMaskMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:InferenceMaskMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1842,7 +1770,7 @@
                 <pre class='example highlight'>niiri:sub_volume_id a prov:Entity , nidm:InferenceMaskMap ;
 	rdfs:label "Inference Mask Map" ;
 	prov:atLocation "file:///path/to/InferenceMask.nii.gz"^^xsd:anyURI ;
-	nidm:filename "InferenceMask.nii.gz"^^xsd:string ;
+	nfo:fileName "InferenceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
@@ -1917,9 +1845,6 @@
                 <ul>
                     <li><span class="attribute" id="nidm:SearchSpaceMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:SearchSpaceMap.</li>
                      
-                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -1934,7 +1859,7 @@
                 <pre class='example highlight'>niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	rdfs:label "Search Space Map" ;
 	prov:atLocation "file:///path/to/SearchSpace.nii.gz"^^xsd:anyURI ;
-	nidm:filename "SearchSpace.nii.gz"^^xsd:string ;
+	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	spm:expectedNumberOfVoxelsPerCluster "0.553331387916112"^^xsd:float ;
@@ -2015,9 +1940,6 @@
                 <ul>
                     <li><span class="attribute" id="spm:ReselsPerVoxelMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the spm:ReselsPerVoxelMap.</li>
                      
-                        <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:filename">
-                        <a>nidm:filename</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range xsd:string)</li> 
                         <li><span class="attribute" id="spm:ReselsPerVoxelMap.nidm:hasMapHeader">
                         <a>nidm:hasMapHeader</a>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range nidm:MapHeader)</li> 
@@ -2029,7 +1951,7 @@
                 <pre class='example highlight'>niiri:resels_per_voxel_map_id a prov:Entity , spm:ReselsPerVoxelMap ;
 	rdfs:label "Resels per Voxel Map" ;
 	prov:atLocation "file:///path/to/ReselsPerVoxel.nii.gz"^^xsd:anyURI ;
-	nidm:filename "ReselsPerVoxel.nii.gz"^^xsd:string ;
+	nfo:fileName "ReselsPerVoxel.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
