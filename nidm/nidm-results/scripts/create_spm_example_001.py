@@ -8,14 +8,6 @@ class templates available in nidm/nidm-results/terms/templates
 import os
 from create_example_from_templates import ExampleFromTemplate
 
-import sys
-
-RELPATH = os.path.dirname(os.path.abspath(__file__))
-NIDMRESULTSPATH = os.path.dirname(RELPATH)
-# Append parent script directory to path
-sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from Constants import STATO_GLS_STR, STATO_GLS_LABEL
-
 def main():
 	nidm_classes = {
 		"DesignMatrix": dict(
@@ -48,8 +40,7 @@ def main():
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_pe_id",
 			label="Model parameters estimation",
-			est_method=STATO_GLS_STR,
-			est_method_comment=STATO_GLS_LABEL,
+			est_method="nidm:GeneralizedLeastSquares",
 			design_matrix_id="niiri:design_matrix_id",
 			data_matrix_id="niiri:data_id",
 			error_model_id="niiri:error_model_id",

@@ -25,8 +25,7 @@ DCT = Namespace('http://purl.org/dc/terms/')
 OWL = Namespace('http://www.w3.org/2002/07/owl')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
-OBO_URL = "http://purl.obolibrary.org/obo/"
-OBO = Namespace(OBO_URL)
+OBO = Namespace("http://purl.obolibrary.org/obo/")
 
 OBO_EXAMPLE = OBO['IAO_0000112']
 OBO_TERM_EDITOR = OBO['IAO_0000117']
@@ -41,11 +40,3 @@ OBO_READY = OBO['IAO_0000122']
 OBO_DEFINITION = OBO['IAO_0000115']
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
-
-STATO_OLS = OBO['STATO_0000370']
-STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "obo:")
-# TODO: labels should be grabbed automatically from the corresponding owl file
-STATO_OLS_LABEL = "obo:'ordinary least squares estimation'"
-STATO_GLS = OBO['STATO_0000372']
-STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "obo:")
-STATO_GLS_LABEL = "obo:'generalized least squares estimation'"

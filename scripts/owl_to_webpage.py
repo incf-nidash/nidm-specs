@@ -10,9 +10,9 @@ INCLUDE_FOLDER = os.path.join(DOC_FOLDER, "include")
 
 class OwlSpecification(object):
 
-    def __init__(self, owl_file, import_files, spec_name, subcomponents=None, 
-        used_by=None, generated_by=None, derived_from=None, prefix=None):
-        self.owl = OwlReader(owl_file, import_files)
+    def __init__(self, owl_file, spec_name, subcomponents=None, used_by=None, 
+        generated_by=None, derived_from=None, prefix=None):
+        self.owl = OwlReader(owl_file)
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
@@ -261,40 +261,11 @@ class OwlSpecification(object):
                         self.format_definition(att_def)
 
                     if att in self.owl.ranges:
-                        # range_names = map(self._get_name, \
-                            # sorted(self.owl.ranges[att]))
-
-                        nidm_namespace = False
-                        if self._get_name(list(self.owl.ranges[att])[0]).startswith("nidm") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("fsl") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("spm"):
-                            nidm_namespace = True
-                            
-
-                        if nidm_namespace:
-                            if len(self.owl.ranges[att]) >= 2:
-                                self.text += " (range <a>"+"</a>, <a>".join(map(self._get_name, \
-                                    sorted(self.owl.ranges[att])[:-1]))+"</a> and <a>"+\
-                                    self._get_name(sorted(self.owl.ranges[att])[-1])+\
-                                    "</a>)"
-                            else:
-                                self.text += \
-                                    " (range <a>"+self._get_name(list(self.owl.ranges[att])[0])+\
-                                    "</a>)"
-                        else:
-                            self.text += " (range "
-                            for range_uri in sorted(self.owl.ranges[att]):
-                                self.text += '<a title="'+self.owl.graph.qname(range_uri)+\
-                                '" href="'+str(range_uri)+'">'+\
-                                self._get_name(range_uri)+'</a>, '
-                            self.text = self.text[:-2]
-                            self.text += ")"
-
-
+                        range_names = map(self._get_name, \
+                            sorted(self.owl.ranges[att]))
 
                         # print map(startswith('nidm'), map(self.owl.graph.qname, sorted(self.owl.ranges[att])))
-                        # self.text += " (range "+", ".join(range_names)+")"
-                        
+                        self.text += " (range "+", ".join(range_names)+")"
 
                         for range_class in sorted(self.owl.ranges[att]):
                             if self._get_name(range_class).startswith('nidm'):

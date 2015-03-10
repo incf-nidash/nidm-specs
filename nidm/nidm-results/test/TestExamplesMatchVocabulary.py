@@ -10,7 +10,6 @@ import os
 from rdflib.graph import Graph
 from TestCommons import *
 from CheckConsistency import *
-import glob
 
 RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,10 +22,16 @@ class TestExamples(unittest.TestCase):
         # check the file exists
         assert os.path.exists(owl_file)
         # Read owl (turtle) file
-        import_files = glob.glob(os.path.join(os.path.dirname(owl_file), os.pardir, os.pardir, "imports", '*.ttl'))
-        self.owl = get_owl_graph(owl_file, import_files)
+        self.owl = Graph()
 
-       
+        # This is a workaround to avoid issue with "#" in base prefix as 
+        # described in https://github.com/RDFLib/rdflib/issues/379,
+        # When the fix is introduced in rdflib these 2 lines will be replaced by:
+        # self.owl.parse(owl_file, format='turtle')
+        owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
+                        "http://www.w3.org/2002/07/owl")
+        self.owl.parse(data=owl_txt, format='turtle')
+        
         # Retreive all classes defined in the owl file
         self.sub_types = get_class_names_in_owl(self.owl) #set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
         # For each class find out attribute list as defined by domain in attributes

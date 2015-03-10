@@ -10,11 +10,9 @@ import os
 from rdflib.compare import *
 import sys
 import collections
-import glob
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
-NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
 
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
@@ -37,13 +35,9 @@ def main():
     # Retreive owl file for NIDM-Results
     if nidm_version == "dev":
         owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
-        import_files = glob.glob(os.path.join(NIDMPATH, "imports", '*.ttl'))
-
     else:
         owl_file = os.path.join(RELEASED_TERMS_FOLDER, \
             'nidm-results_'+nidm_version+'.owl')
-        # For released version of the ontology imports are embedded
-        import_files = None
 
     # check the file exists
     assert os.path.exists(owl_file)
@@ -113,8 +107,8 @@ def main():
              NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
 
-    owlspec = OwlSpecification(owl_file, import_files, "NIDM-Results", 
-        components, used_by, generated_by, derived_from, prefix=str(NIDM))
+    owlspec = OwlSpecification(owl_file, "NIDM-Results", components, used_by, 
+        generated_by, derived_from, prefix=str(NIDM))
 
     owlspec._header_footer(component="nidm-results")
 
