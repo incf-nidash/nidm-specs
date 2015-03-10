@@ -13,6 +13,7 @@ class OwlSpecification(object):
     def __init__(self, owl_file, import_files, spec_name, subcomponents=None, 
         used_by=None, generated_by=None, derived_from=None, prefix=None):
         self.owl = OwlReader(owl_file, import_files)
+        self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm/experiment#')
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
