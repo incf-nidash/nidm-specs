@@ -230,7 +230,7 @@ class OwlReader():
         else:
             parent_classes = list(self.graph.objects(owl_term, RDFS['subClassOf']))
 
-            prov_class = ""
+            prov_class = None
             for parent_class in parent_classes:
                 if not isinstance(parent_class, term.BNode):
                     if self.graph.qname(parent_class).startswith("prov:"):
@@ -242,7 +242,7 @@ class OwlReader():
                     parent_classes_super = parent_classes
                     for parent_class_super in parent_classes_super:
                         if not isinstance(parent_class_super, term.BNode):
-                            prov_class = self.get_prov_class(parent_class, recursive=recursive-1)
+                            prov_class = self.get_prov_class(parent_class_super, recursive=recursive-1)
                             if prov_class is not None:
                                 break
 
