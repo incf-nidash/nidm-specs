@@ -14,7 +14,8 @@ RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR
+from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
+	STATO_TSTATISTIC_LABEL
 
 def main():
 	nidm_classes = {
@@ -138,6 +139,7 @@ def main():
 			label="Contrast: listening > reading",
 			value="[1, -1, 0, 0]",
 			statistic_type=STATO_TSTATISTIC_STR,
+			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="listening > reading"
 			),
 		"ContrastWeights-2": dict(
@@ -145,6 +147,7 @@ def main():
 			label="Contrast: motor",
 			value="[0, 0, 1]",
 			statistic_type=STATO_TSTATISTIC_STR,
+			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="motor"
 			),
 		"ContrastEstimation": dict(
@@ -228,6 +231,7 @@ def main():
 			format="image/nifti",
 			filename="TStatistic_0001.nii.gz",
 			statistic_type=STATO_TSTATISTIC_STR,
+			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="listening > reading",
 			error_dof="72.9999999990787",
 			effect_dof="1",
@@ -249,6 +253,7 @@ def main():
 			format="image/nifti",
 			filename="TStatistic_0002.nii.gz",
 			statistic_type=STATO_TSTATISTIC_STR,
+			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="motor",
 			error_dof="72.9999999990787",
 			effect_dof="1",
