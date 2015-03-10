@@ -13,7 +13,7 @@ from rdflib.graph import Graph
 from rdflib.compare import *
 import logging
 import signal
-import socket
+import socket, ssl
 
 # Save debug info in a log file (debug.log)
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
@@ -67,7 +67,7 @@ def get_turtle(provn_file):
             try:
                 logger.info(' urllib2 open ')
                 response = urllib2.urlopen(req, timeout=10)
-            except (socket.timeout, urllib2.URLError):
+            except (socket.timeout, urllib2.URLError, ssl.SSLError):
                 # On timeout retry
                 retry = retry + 1 
                 logger.info('Retry #'+str(retry))
