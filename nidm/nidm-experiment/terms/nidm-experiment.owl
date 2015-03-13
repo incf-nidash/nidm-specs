@@ -10,7 +10,7 @@
 @prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
 @prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
 @prefix meta: <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl#> .
-@prefix nidme: <http://purl.org/nidash/nidm/experiment#> .
+@prefix nidm: <http://purl.org/nidash/nidm/experiment#> .
 @prefix owl2: <http://www.w3.org/2006/12/owl2#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -111,6 +111,12 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 
 
+###  http://www.w3.org/ns/prov#definition
+
+prov:definition rdf:type owl:AnnotationProperty .
+
+
+
 
 
 #################################################################
@@ -164,216 +170,23 @@ dct:title rdf:type owl:DatatypeProperty .
 #################################################################
 
 
+###  http://purl.org/nidash/nidm/experiment#AFNI
+
+:AFNI rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Software .
+
+
+
 ###  http://purl.org/nidash/nidm/experiment#AcquisitionObject
 
-nidme:AcquisitionObject rdf:type owl:Class ;
-                       
-                       rdfs:label "Acquisition Object"^^xsd:string ;
-                       
-                       rdfs:subClassOf prov:Entity ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty prov:specializationOf ;
-                                         owl:onClass nidme:StudyObject ;
-                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
-                                       ] ;
-                       
-                       obo:IAO_0000115 "An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings."^^xsd:string ;
-                       
-                       obo:IAO_0000114 obo:IAO_0000428 ;
-                       
-                       obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#AnatomicalScan
-
-nidme:AnatomicalScan rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#AnatomyImagingAcquisition
-
-nidme:AnatomyImagingAcquisition rdf:type owl:Class ;
-                               
-                               rdfs:subClassOf prov:Activity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#BaselineProtocol
-
-nidme:BaselineProtocol rdf:type owl:Class ;
-                      
-                      rdfs:label "Baseline Protocol"^^xsd:string ;
-                      
-                      rdfs:subClassOf prov:Plan ;
-                      
-                      obo:IAO_0000115 "A baseline protocol is a plan that represents the study design for a given project."^^xsd:string ;
-                      
-                      obo:IAO_0000114 obo:IAO_0000428 ;
-                      
-                      obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#BehaviorAndConsitionOnsets
-
-nidme:BehaviorAndConsitionOnsets rdf:type owl:Class ;
-                                
-                                rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#Condition
-
-nidme:Condition rdf:type owl:Class ;
-               
-               rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#Contrast
-
-nidme:Contrast rdf:type owl:Class ;
-              
-              rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#DataCollection
-
-nidme:DataCollection rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf prov:Collection .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#DemographicsAcquisitionObject
-
-nidme:DemographicsAcquisitionObject rdf:type owl:Class ;
-                                   
-                                   rdfs:label "Demographics Acquisition Object"^^xsd:string ;
-                                   
-                                   rdfs:subClassOf nidme:AcquisitionObject ;
-                                   
-                                   obo:IAO_0000115 "A demographics acquisition object is an entity that represents the demographics information acquired from a person in the participant role."^^xsd:string ;
-                                   
-                                   obo:IAO_0000114 obo:IAO_0000428 ;
-                                   
-                                   obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#FunctionalScan
-
-nidme:FunctionalScan rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#Group
-
-nidme:Group rdf:type owl:Class ;
-           
-           rdfs:subClassOf prov:Collection .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#InvestigationCollection
-
-nidme:InvestigationCollection rdf:type owl:Class ;
-                             
-                             rdfs:subClassOf prov:Collection .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#InvestigationProcess
-
-nidme:InvestigationProcess rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf prov:Activity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#MRIAcquisitionObject
-
-nidme:MRIAcquisitionObject rdf:type owl:Class ;
-                          
-                          rdfs:label "MRI Acquisition Object"^^xsd:string ;
-                          
-                          rdfs:subClassOf nidme:AcquisitionObject ;
-                          
-                          obo:IAO_0000115 "An MRI acquisition object represents a specific series or scan during an MRI study."^^xsd:string ;
-                          
-                          obo:IAO_0000114 obo:IAO_0000428 ;
-                          
-                          obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#MRScanner
-
-nidme:MRScanner rdf:type owl:Class ;
-               
-               rdfs:subClassOf prov:Agent .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#Model
-
-nidme:Model rdf:type owl:Class ;
-           
-           rdfs:subClassOf prov:Entity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#ModelSpecification
-
-nidme:ModelSpecification rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf prov:Activity .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#PresentationSoftware
-
-nidme:PresentationSoftware rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf prov:SoftwareAgent .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#PrincipalInvestigator
-
-nidme:PrincipalInvestigator rdf:type owl:Class ;
-                           
-                           rdfs:label "Principal Investigator"^^xsd:string ;
-                           
-                           rdfs:subClassOf prov:Role ;
-                           
-                           obo:IAO_0000115 "A principal investigator is a role for a person that take responsibility for a project activity."^^xsd:string ;
-                           
-                           obo:IAO_0000114 obo:IAO_0000428 ;
-                           
-                           obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
-
-###  http://purl.org/nidash/nidm/experiment#ProjectObject
-
-nidme:ProjectObject rdf:type owl:Class ;
+:AcquisitionObject rdf:type owl:Class ;
                    
-                   rdfs:label "Project Object"^^xsd:string ;
+                   rdfs:label "Acquisition Object"^^xsd:string ;
                    
-                   rdfs:subClassOf prov:Entity ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty dct:hasPart ;
-                                     owl:someValuesFrom nidme:StudyObject
-                                   ] ;
+                   rdfs:subClassOf :Object ;
                    
-                   obo:IAO_0000115 "A project object is an entity that represents administrative information about one or more studies."^^xsd:string ;
+                   obo:IAO_0000115 "An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings."^^xsd:string ;
                    
                    obo:IAO_0000114 obo:IAO_0000428 ;
                    
@@ -381,64 +194,459 @@ nidme:ProjectObject rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm/experiment#ResearchAssistant
+###  http://purl.org/nidash/nidm/experiment#Acquisition_Parameter_Collection
 
-nidme:ResearchAssistant rdf:type owl:Class ;
-                       
-                       rdfs:label "Research Assistant"^^xsd:string ;
-                       
-                       rdfs:subClassOf prov:Role ;
-                       
-                       obo:IAO_0000114 "A research assistant is a role for a person that participates in an experiment activity that generates study or acquisition data."^^xsd:string ;
-                       
-                       obo:IAO_0000115 obo:IAO_0000428 ;
-                       
-                       obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+:Acquisition_Parameter_Collection rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Acquisition Parameter Collection" ;
+                                  
+                                  rdfs:subClassOf prov:Collection .
 
 
 
-###  http://purl.org/nidash/nidm/experiment#SessionAcquisition
+###  http://purl.org/nidash/nidm/experiment#AnatomicalImageAcquisition
 
-nidme:SessionAcquisition rdf:type owl:Class ;
+:AnatomicalImageAcquisition rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :MRI_Acquisition .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#AnatomicalScan
+
+:AnatomicalScan rdf:type owl:Class ;
+                
+                rdfs:subClassOf :AcquisitionObject .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Attribute
+
+:Attribute rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#BaselineProtocol
+
+:BaselineProtocol rdf:type owl:Class ;
+                  
+                  rdfs:label "Baseline Protocol"^^xsd:string ;
+                  
+                  rdfs:subClassOf prov:Plan ;
+                  
+                  obo:IAO_0000115 "A baseline protocol is a plan that represents the study design for a given project."^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+                  obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#BehaviorAndConditionOnsets
+
+:BehaviorAndConditionOnsets rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Behavioral_File_Format
+
+:Behavioral_File_Format rdf:type owl:Class ;
                         
-                        rdfs:subClassOf prov:Activity .
+                        rdfs:label "Behavioral File Format" ;
+                        
+                        rdfs:subClassOf :File_Format .
 
 
 
-###  http://purl.org/nidash/nidm/experiment#StudyObject
+###  http://purl.org/nidash/nidm/experiment#Cartesian_Imaging_Acquisition
 
-nidme:StudyObject rdf:type owl:Class ;
-                 
-                 rdfs:label "Study Object"^^xsd:string ;
-                 
-                 rdfs:subClassOf prov:Entity ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty dct:hasPart ;
-                                   owl:someValuesFrom nidme:AcquisitionObject
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty prov:specializationOf ;
-                                   owl:onClass nidme:ProjectObject ;
-                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
-                                 ] ;
-                 
-                 obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000428 ;
-                 
-                 obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+:Cartesian_Imaging_Acquisition rdf:type owl:Class ;
+                               
+                               rdfs:label "Cartesian Imaging Acquisition" ;
+                               
+                               rdfs:subClassOf :Image_Acquisition_Method ;
+                               
+                               obo:IAO_0000115 "A method of acquiring data in which k-space is traversed in a rectilinear fashion with one line of s-space acquired for each repetition of the MR scanner pulse sequence." .
 
 
 
-###  http://purl.org/nidash/nidm/experiment#StudyParticipant
+###  http://purl.org/nidash/nidm/experiment#Computational_Entity
 
-nidme:StudyParticipant rdf:type owl:Class ;
+:Computational_Entity rdf:type owl:Class ;
                       
-                      rdfs:label "Study Participant"^^xsd:string ;
+                      rdfs:label "Computational Entity" ;
                       
-                      rdfs:subClassOf prov:Role ;
+                      rdfs:subClassOf :Information_Content_Entity ;
                       
-                      obo:IAO_0000115 "A study participant is a role for a person that has data collected from them during a study and is enrolled in a project."^^xsd:string ;
+                      obo:IAO_0000115 "A computational entity is an information content entity operated on using some computational system. [SIO]" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Condition
+
+:Condition rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Contrast
+
+:Contrast rdf:type owl:Class ;
+          
+          rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Created
+
+:Created rdf:type owl:Class ;
+         
+         rdfs:subClassOf prov:Activity ;
+         
+         obo:IAO_0000119 "dct:created" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Creator
+
+:Creator rdf:type owl:Class ;
+         
+         rdfs:subClassOf prov:Role ;
+         
+         obo:IAO_0000119 "dct:creator" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#DICOM
+
+:DICOM rdf:type owl:Class ;
+       
+       rdfs:subClassOf :MRI_File_Format .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#DataCollection
+
+:DataCollection rdf:type owl:Class ;
+                
+                rdfs:label "Data Collection" ;
+                
+                rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Data_Acquisition
+
+:Data_Acquisition rdf:type owl:Class ;
+                  
+                  rdfs:label "Data Acquisition" ;
+                  
+                  rdfs:subClassOf :Information_Processing_Activity ;
+                  
+                  obo:IAO_0000115 "Data acquisition is the process of collecting information." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Data_Analysis
+
+:Data_Analysis rdf:type owl:Class ;
+               
+               rdfs:label "Data Analysis" ;
+               
+               rdfs:subClassOf :Information_Processing_Activity ;
+               
+               obo:IAO_0000119 "SIO" ;
+               
+               obo:IAO_0000115 "Data analysis is a process of inspecting, cleaning, transforming, and modeling data with the goal of highlighting useful information, suggesting conclusions, and supporting decision making." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Data_Reconstruction
+
+:Data_Reconstruction rdf:type owl:Class ;
+                     
+                     rdfs:label "Data Reconstruction" ;
+                     
+                     rdfs:subClassOf :Information_Processing_Activity ;
+                     
+                     obo:IAO_0000115 "Data reconstruction is the activity by which raw data is transformed into a form more easily analyzed, for example in MRI k-space data is transformed into an image that can be viewed or a raw free-induction decay signal transformed into a frequency spectrum with peaks representing various species.." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#DemographicsAcquisitionObject
+
+:DemographicsAcquisitionObject rdf:type owl:Class ;
+                               
+                               rdfs:label "Demographics Acquisition Object"^^xsd:string ;
+                               
+                               rdfs:subClassOf :AcquisitionObject ;
+                               
+                               obo:IAO_0000115 "A demographics acquisition object is an entity that represents the demographics information acquired from a person in the participant role."^^xsd:string ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000428 ;
+                               
+                               obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Diffusion_Weighting
+
+:Diffusion_Weighting rdf:type owl:Class ;
+                     
+                     rdfs:label "Diffusion Weighting" ;
+                     
+                     rdfs:subClassOf :Image_Contrast_Weighting ;
+                     
+                     obo:IAO_0000115 "A contrast weighting in which the source of the image contrast is based on the mobility of the species of interest within the sample." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Echo-Planar_Imaging_Acquisition
+
+:Echo-Planar_Imaging_Acquisition rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Echo-Planar Imaging Acquisition" ;
+                                 
+                                 rdfs:subClassOf :Image_Acquisition_Method ;
+                                 
+                                 obo:IAO_0000115 "A method of acquiring data in which the entire sampling of k-space is traversed in a continuous trajectory in a single acquisition." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Event-Related_Image_Acquisition
+
+:Event-Related_Image_Acquisition rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Event-Related Image Acquisition" ;
+                                 
+                                 rdfs:subClassOf <http://www.incf.org/ns/nidash/nidm#FunctionalImageAcquisition> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#FSL
+
+:FSL rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Software .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#File
+
+:File rdf:type owl:Class ;
+      
+      rdfs:label "File" ;
+      
+      rdfs:subClassOf :Computational_Entity ;
+      
+      obo:IAO_0000115 "A file is an information-bearing object that contains a physical embodiment of some information using a particular character encoding. [SIO]" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#File_Attribute
+
+:File_Attribute rdf:type owl:Class ;
+                
+                rdfs:label "File Attribute" ;
+                
+                rdfs:subClassOf :Attribute .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#File_Format
+
+:File_Format rdf:type owl:Class ;
+             
+             rdfs:label "File Format" ;
+             
+             rdfs:subClassOf :File_Attribute ;
+             
+             obo:IAO_0000119 "dct:format" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#File_Name
+
+:File_Name rdf:type owl:Class ;
+           
+           rdfs:label "File Name" ;
+           
+           rdfs:subClassOf :File_Attribute .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#File_Size
+
+:File_Size rdf:type owl:Class ;
+           
+           rdfs:label "File Size" ;
+           
+           rdfs:subClassOf :File_Attribute .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Flow_Weighting
+
+:Flow_Weighting rdf:type owl:Class ;
+                
+                rdfs:label "Flow Weighting" ;
+                
+                rdfs:subClassOf :Image_Contrast_Weighting ;
+                
+                obo:IAO_0000115 "A contrast weighting in which the source of the image contrast is based on the degree to which the species of interest is able to flow within the sample." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Freesurfer
+
+:Freesurfer rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Software .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#FunctionalScan
+
+:FunctionalScan rdf:type owl:Class ;
+                
+                rdfs:subClassOf :AcquisitionObject .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Functional_Image
+
+:Functional_Image rdf:type owl:Class ;
+                  
+                  rdfs:label "Functional Image" ;
+                  
+                  rdfs:subClassOf :Image_Type .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Group
+
+:Group rdf:type owl:Class ;
+       
+       rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Image
+
+:Image rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Representation .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#ImageAcquisition
+
+:ImageAcquisition rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf prov:Activity ;
+                  
+                  prov:definition "The activity of collecting data that will be reconstructed into a visual representation of an object or process." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Image_Acquisition_Method
+
+:Image_Acquisition_Method rdf:type owl:Class ;
+                          
+                          rdfs:label "Image Acquisition Method" ;
+                          
+                          rdfs:subClassOf :Image_Attribute ;
+                          
+                          obo:IAO_0000115 "The data readout method by which an image was acquired." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Image_Attribute
+
+:Image_Attribute rdf:type owl:Class ;
+                 
+                 rdfs:label "Image Attribute" ;
+                 
+                 rdfs:subClassOf :Attribute .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Image_Contrast_Weighting
+
+:Image_Contrast_Weighting rdf:type owl:Class ;
+                          
+                          rdfs:label "Image Contrast Weighting" ;
+                          
+                          rdfs:subClassOf :Image_Attribute ;
+                          
+                          obo:IAO_0000115 "The result of the manipulation of acquisition parameters in order to highlight certain aspects of physiology or anatomy on an image." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Image_Type
+
+:Image_Type rdf:type owl:Class ;
+            
+            rdfs:label "Image Type" ;
+            
+            rdfs:subClassOf :Image_Attribute ;
+            
+            obo:IAO_0000115 "The image type is a general description of the content or eventual use of an image attributes, including \"functional\", \"structural\", \"diffusion\", \"spectroscopic\"." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Information_Content_Entity
+
+:Information_Content_Entity rdf:type owl:Class ;
+                            
+                            rdfs:label "Information Content Entity" ;
+                            
+                            rdfs:subClassOf :Object ;
+                            
+                            obo:IAO_0000115 "An information content entity is an object that requires some background knowledge or procedure to correctly interpret. [SIO]" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Information_Processing_Activity
+
+:Information_Processing_Activity rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#InvestigationCollection
+
+:InvestigationCollection rdf:type owl:Class ;
+                         
+                         rdfs:label "Investigation Collection" ;
+                         
+                         rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#InvestigationProcess
+
+:InvestigationProcess rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#MRIAcquisitionObject
+
+:MRIAcquisitionObject rdf:type owl:Class ;
+                      
+                      rdfs:label "MRI Acquisition Object"^^xsd:string ;
+                      
+                      rdfs:subClassOf :AcquisitionObject ;
+                      
+                      obo:IAO_0000115 "An MRI acquisition object represents a specific series or scan during an MRI study."^^xsd:string ;
                       
                       obo:IAO_0000114 obo:IAO_0000428 ;
                       
@@ -446,22 +654,414 @@ nidme:StudyParticipant rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm/experiment#MRI_Acquisition
+
+:MRI_Acquisition rdf:type owl:Class ;
+                 
+                 rdfs:label "MRI Acquisition" ;
+                 
+                 rdfs:subClassOf :ImageAcquisition .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#MRI_File_Format
+
+:MRI_File_Format rdf:type owl:Class ;
+                 
+                 rdfs:label "MRI File Format" ;
+                 
+                 rdfs:subClassOf :File_Format ;
+                 
+                 obo:IAO_0000115 "A specification for the arrangement of data and information in a computer file that arises from a magnetic resonance imaging (MRI) experiment." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#MagneticResonanceScanner
+
+:MagneticResonanceScanner rdf:type owl:Class ;
+                          
+                          rdfs:label "Magnetic Resonance Scanner" ;
+                          
+                          rdfs:subClassOf prov:Agent ;
+                          
+                          obo:IAO_0000115 "A machine that uses radio frequency energy and magnetic fields to create an image or spectrum." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Model
+
+:Model rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Representation .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#ModelSpecification
+
+:ModelSpecification rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#NIfTI
+
+:NIfTI rdf:type owl:Class ;
+       
+       rdfs:subClassOf :MRI_File_Format .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Nipype
+
+:Nipype rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Software .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Object
+
+:Object rdf:type owl:Class ;
+        
+        rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#PAR_REC
+
+:PAR_REC rdf:type owl:Class ;
+         
+         rdfs:label "PAR REC" ;
+         
+         rdfs:subClassOf :MRI_File_Format .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#P_FIle
+
+:P_FIle rdf:type owl:Class ;
+        
+        rdfs:label "P File" ;
+        
+        rdfs:subClassOf :MRI_File_Format .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Parallel_Imaging_Acquisition
+
+:Parallel_Imaging_Acquisition rdf:type owl:Class ;
+                              
+                              rdfs:label "Parallel Imaging Acquisition" ;
+                              
+                              rdfs:subClassOf :Image_Acquisition_Method ;
+                              
+                              obo:IAO_0000115 "An image acquisition method that uses signals from multiple detectors, collected during the same time period." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#PrincipalInvestigator
+
+:PrincipalInvestigator rdf:type owl:Class ;
+                       
+                       rdfs:label "Principal Investigator"^^xsd:string ;
+                       
+                       rdfs:subClassOf prov:Role ;
+                       
+                       obo:IAO_0000115 "A principal investigator is a role for a person that take responsibility for a project activity."^^xsd:string ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000428 ;
+                       
+                       obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Processing_Pipeline
+
+:Processing_Pipeline rdf:type owl:Class ;
+                     
+                     rdfs:label "Processing Pipeline" ;
+                     
+                     rdfs:subClassOf prov:Agent .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#ProjectObject
+
+:ProjectObject rdf:type owl:Class ;
+               
+               rdfs:label "Project Object"^^xsd:string ;
+               
+               rdfs:subClassOf :Object ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty dct:hasPart ;
+                                 owl:someValuesFrom :StudyObject
+                               ] ;
+               
+               obo:IAO_0000115 "A project object is an entity that represents administrative information about one or more studies."^^xsd:string ;
+               
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Publisher
+
+:Publisher rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Role ;
+           
+           obo:IAO_0000119 "dct:publisher" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Representation
+
+:Representation rdf:type owl:Class ;
+                
+                rdfs:label "Representation" ;
+                
+                rdfs:subClassOf :Information_Content_Entity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#ResearchAssistant
+
+:ResearchAssistant rdf:type owl:Class ;
+                   
+                   rdfs:label "Research Assistant"^^xsd:string ;
+                   
+                   rdfs:subClassOf prov:Role ;
+                   
+                   obo:IAO_0000114 "A research assistant is a role for a person that participates in an experiment activity that generates study or acquisition data."^^xsd:string ;
+                   
+                   obo:IAO_0000115 obo:IAO_0000428 ;
+                   
+                   obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Resting-State_Image_Acquisition
+
+:Resting-State_Image_Acquisition rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Resting-State Image Acquisition" ;
+                                 
+                                 rdfs:subClassOf <http://www.incf.org/ns/nidash/nidm#FunctionalImageAcquisition> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#SPM
+
+:SPM rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Software .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#SessionAcquisition
+
+:SessionAcquisition rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Software
+
+:Software rdf:type owl:Class ;
+          
+          rdfs:subClassOf prov:Agent .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Software_Execution
+
+:Software_Execution rdf:type owl:Class ;
+                    
+                    rdfs:label "Software Execution" ;
+                    
+                    rdfs:subClassOf :Information_Processing_Activity ;
+                    
+                    prov:definition "Software execution is the process of executing software on a computing device." ;
+                    
+                    obo:IAO_0000119 "SIO" .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Spiral_Imaging_Acquisition
+
+:Spiral_Imaging_Acquisition rdf:type owl:Class ;
+                            
+                            rdfs:label "Spiral Imaging Acquisition" ;
+                            
+                            rdfs:subClassOf :Image_Acquisition_Method ;
+                            
+                            obo:IAO_0000115 "A method of acquiring data in which k-space is traversed in a spiral trajectory." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Structural_Image
+
+:Structural_Image rdf:type owl:Class ;
+                  
+                  rdfs:label "Structural Image" ;
+                  
+                  rdfs:subClassOf :Image_Type .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#StudyObject
+
+:StudyObject rdf:type owl:Class ;
+             
+             rdfs:label "Study Object"^^xsd:string ;
+             
+             rdfs:subClassOf :Object ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:hasPart ;
+                               owl:someValuesFrom :AcquisitionObject
+                             ] ;
+             
+             obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
+             
+             obo:IAO_0000114 obo:IAO_0000428 ;
+             
+             obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#StudyParticipant
+
+:StudyParticipant rdf:type owl:Class ;
+                  
+                  rdfs:label "Study Participant"^^xsd:string ;
+                  
+                  rdfs:subClassOf prov:Role ;
+                  
+                  obo:IAO_0000115 "A study participant is a role for a person that has data collected from them during a study and is enrolled in a project."^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+                  obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#T1_weighting
+
+:T1_weighting rdf:type owl:Class ;
+              
+              rdfs:label "T1 Weighting" ;
+              
+              rdfs:subClassOf :Image_Contrast_Weighting ;
+              
+              obo:IAO_0000115 "A contrast weighting in which the source of the contrast is based on the spin-lattice relaxation time of the sample." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#T2*_Weighting
+
+<http://purl.org/nidash/nidm/experiment#T2*_Weighting> rdf:type owl:Class ;
+                                                       
+                                                       rdfs:label "T2* Weighting" ;
+                                                       
+                                                       rdfs:subClassOf :Image_Contrast_Weighting ;
+                                                       
+                                                       obo:IAO_0000115 "A contrast weighting in which the source of the contrast is based on the spin-spin relaxation time and the magnetic susceptibility of the sample as well as the magnetic field inhomogeneity across the sample." .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#T2_Weighting
+
+:T2_Weighting rdf:type owl:Class ;
+              
+              rdfs:label "T2 Weighting" ;
+              
+              rdfs:subClassOf :Image_Contrast_Weighting ;
+              
+              obo:IAO_0000115 "A contrast weighting in which the source of the contrast is based on the spin-spin relaxation time of the sample." .
+
+
+
 ###  http://purl.org/nidash/nidm/experiment#Task
 
-nidme:Task rdf:type owl:Class ;
+:Task rdf:type owl:Class ;
+      
+      rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Task-Based_Image_Acquisition
+
+:Task-Based_Image_Acquisition rdf:type owl:Class ;
+                              
+                              rdfs:label "Task-Based Image Acquisition" ;
+                              
+                              rdfs:subClassOf <http://www.incf.org/ns/nidash/nidm#FunctionalImageAcquisition> .
+
+
+
+###  http://purl.org/nidash/nidm/experiment#Version_Identifier
+
+:Version_Identifier rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Attribute ;
+                    
+                    obo:IAO_0000119 "pav:version; dataset descriptions HCLS" .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#FunctionalImageAcquisition
+
+<http://www.incf.org/ns/nidash/nidm#FunctionalImageAcquisition> rdf:type owl:Class ;
+                                                                
+                                                                rdfs:subClassOf :MRI_Acquisition .
+
+
+
+###  http://www.w3.org/ns/prov#Activity
+
+prov:Activity rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/prov#Agent
+
+prov:Agent rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/prov#Collection
+
+prov:Collection rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity .
+
+
+
+###  http://www.w3.org/ns/prov#Entity
+
+prov:Entity rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/ns/prov#Plan
+
+prov:Plan rdf:type owl:Class ;
           
-          rdfs:subClassOf prov:Collection .
+          rdfs:subClassOf prov:Entity .
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#TaskBasedImagingAcquisition
+###  http://www.w3.org/ns/prov#Role
 
-<http://www.incf.org/ns/nidash/nidm#TaskBasedImagingAcquisition> rdf:type owl:Class ;
-                                                                 
-                                                                 rdfs:subClassOf prov:Activity .
-
-
+prov:Role rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Attribute .
 
 
-###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
 
