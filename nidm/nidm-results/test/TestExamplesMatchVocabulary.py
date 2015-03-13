@@ -6,34 +6,27 @@
 '''
 import unittest
 import os
-# from subprocess import call #jb: call not used 
-import re
-import rdflib
 
 from rdflib.graph import Graph
 from TestCommons import *
 from CheckConsistency import *
+import glob
 
 RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class TestExamples(unittest.TestCase):
 
-    def setUp(self):
+    def __init__(self, *args, **kwargs):
+        super(TestExamples, self).__init__(*args, **kwargs)    
         # Retreive owl file for NIDM-Results
-        owl_file = os.path.join(RELPATH, 'nidm-results.owl')
+        owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
         # check the file exists
         assert os.path.exists(owl_file)
         # Read owl (turtle) file
-        self.owl = Graph()
+        import_files = glob.glob(os.path.join(os.path.dirname(owl_file), os.pardir, os.pardir, "imports", '*.ttl'))
+        self.owl = get_owl_graph(owl_file, import_files)
 
-        # This is a workaround to avoid issue with "#" in base prefix as 
-        # described in https://github.com/RDFLib/rdflib/issues/379,
-        # When the fix is introduced in rdflib these 2 lines will be replaced by:
-        # self.owl.parse(owl_file, format='turtle')
-        owl_txt = open(owl_file, 'r').read().replace("http://www.w3.org/2002/07/owl#", 
-                        "http://www.w3.org/2002/07/owl")
-        self.owl.parse(data=owl_txt, format='turtle')
-        
+       
         # Retreive all classes defined in the owl file
         self.sub_types = get_class_names_in_owl(self.owl) #set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
         # For each class find out attribute list as defined by domain in attributes
@@ -47,13 +40,15 @@ class TestExamples(unittest.TestCase):
         for example_file in example_filenames:
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
-            ttl_file_url = get_turtle(provn_file)
+            # ttl_file_url = get_turtle(provn_file)
+            ttl_file = provn_file.replace(".provn", ".ttl")
 
             # Read turtle
             self.examples[example_file] = Graph()
-            self.examples[example_file].parse(ttl_file_url, format='turtle')
+            self.examples[example_file].parse(ttl_file, format='turtle')
 
     def test_check_classes(self):
+        logger.info("TestExamples: test_check_classes")
         my_exception = dict()
         for example_name, example_graph in self.examples.items():
             # Check that all entity, activity, agent are defined in the data model
@@ -68,12 +63,13 @@ class TestExamples(unittest.TestCase):
             raise Exception(error_msg)
 
     def test_check_attributes(self):
+        logger.info("TestExamples: test_check_attributes")
         my_exception = dict()
         my_range_exception = dict()
         my_restriction_exception = dict()
         for example_name, example_graph in self.examples.items():
             exception_msg = check_attributes(example_graph, example_name, 
-                self.attributes, self.ranges, self.type_restrictions)
+                self.attributes, self.ranges, self.type_restrictions, self.owl)
             
             my_exception = merge_exception_dict(my_exception, exception_msg[0])
             my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])

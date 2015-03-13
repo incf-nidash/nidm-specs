@@ -9,11 +9,15 @@
         var respecConfig = {
             specStatus: "unofficial",
             shortName: "nidm-primer",
-            overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
+            overrideCopyright: "<p class=copyright>NIDM is licensed to the public under the Creative Commons CC0 1.0 Universal (CC0 1.0) license.</p>",
             editors: [
                 {   name: "B. Nolan Nichols",
                     company: "University of Washington",
-                    companyURL: "http://www.ibic.washington.edu/" }
+                    companyURL: "http://www.ibic.washington.edu/" },
+					
+				{	name: "David B. Keator",
+					company: "University of California, Irvine",
+					companyURL: "http://www.uci.edu/"	}
             ],
             otherLinks: [{
             key: "Contributors",
@@ -47,12 +51,22 @@
                     value: "Jessica Turner",
                 }
             ]}],
+			logos: [
+			   {
+			      src: 'stylesheet/nidm-text.png',
+			      url: "http://nidm.nidash.org",
+			      alt: "NIDM",
+			      width: 100,
+			      height: 50,
+			      id: 'logo-NIDM-WD'
+			   }
+			],
             previousMaturity: "FPWD",
             previousPublishDate: "2013-12-10",
             wg: "NIDM Working Group",
-            wgURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
-            wgPublicList: "derived_data@birncommunity.org",
-            wgPatentURI: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force",
+			wgURI:        "http://nidm.nidash.org",
+			wgPublicList: "incf-nidash-nidm@googlegroups.com",
+			wgPatentURI:  "http://nidm.nidash.org",
             afterEnd: function () {
 
                 var currentDate = new Date();
@@ -238,7 +252,7 @@
             other with a set of defined relations, as highlighted in the figure below.
         </p>
         <figure>
-            <img src="prov-key-concepts.png" width="600">
+            <img src="img/prov-key-concepts.png" width="600">
             <figcaption>
                 The PROV key concepts. Includes the base classes for:
                 <a href="http://www.w3.org/TR/prov-dm/#term-entity">Entity</a>,
@@ -273,7 +287,7 @@
             (Figure 2).
         </p>
         <figure>
-            <img src="nidm-overview.png" width="600">
+            <img src="img/nidm-layer-cake.png" width="600">
             <figcaption>
                 The NIDM Component Layer Cake. Each level indicates a set of technologies and/or vocabularies that are
                 “imported” into the next level. (Inspired by the <a href="http://www.w3.org/2007/03/layerCake.png">
@@ -300,7 +314,7 @@
                 using URIs.
             </p>
             <figure>
-                <img src="nidm-dataset-descriptor.png" width="600">
+                <img src="img/nidm-dataset-descriptor.png" width="600">
                 <figcaption>
                     NIDM Dataset Descriptor. Summary-level descriptions provide information that does not change between
                     difference versions or releases of a dataset. Version-level descriptions provide information that is
@@ -316,7 +330,7 @@
 
             </p>
             <figure>
-                <img src="nidm-experiment-component.png" width="600">
+                <img src="img/nidm-experiment-component.png" width="600">
                 <figcaption>
                     NIDM Experiment Component.
                 </figcaption>
@@ -325,7 +339,7 @@
 
             </p>
             <figure>
-            <img src="nidm-experiment-elements.png" width="600">
+            <img src="img/nidm-experiment-elements.png" width="600">
                 <figcaption>
                     NIDM Experiment Elements.
                 </figcaption>
@@ -334,8 +348,22 @@
         <section>
         <h4>Workflow Component</h4>
             <p>
-
+			The NIDM Workflow Component focus group is just beginning to work on an object model for capturing workflow 			provenance.  We encourage those interested in participating to contact the <a 			href="mailto:incf-nidash-nidm@googlegroups.com">NIDM google group</a> for further information. There has been work
+			on two preliminary implementations of provenance using NIDM, one using the <a href="http://nipy.sourceforge.net/nipype/">Nypipe </a> workflow system and the other the <a href="http://www.fil.ion.ucl.ac.uk/spm/">SPM </a> batch processing system.
             </p>
+			<p>
+			An example of a <a href = http://nipy.sourceforge.net/nipype/>Nipype</a> workflow for extracting the brain from a 			structural MRI scan can be found at <a href = 			https://github.com/nicholsn/nidm/tree/enh/nidm-workflow/nidm/nidm-workflow>BET workflow</a>.   	
+			</p>
+			<p>
+			An preliminary example encoding a batch execution of slice timing correction using the <a 			href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a> software is showing in the figure 6.   	
+			
+	        <figure id="spm_batch">
+	            <img src="img/spm_batch_workflow.png" width="600">
+	            <figcaption>
+	                NIDM encoding of a slice timing correction workflow in the SPM software ([[!KEATORNI13]]).
+	            </figcaption>
+	        </figure>
+			</p>
         </section>
         <section>
         <h4>Results Component</h4>
@@ -344,38 +372,69 @@
             </p>
         </section>
     </section>
-
-    <section>
-        <h2>Examples of NIDM Components</h2>
-        <p>
-
-        </p>
-        <section>
-        <h4>Dataset Descriptor Example</h4>
-            <p>
-
-            </p>
-        </section>
-        <section>
-        <h4>Experiment Example</h4>
-            <p>
-
-            </p>
-        </section>
-        <section>
-        <h4>Results Example</h4>
-            <p>
-
-            </p>
-        </section>
-    </section>
-
-    <section>
-        <h4>Summary</h4>
-        <p>
-            TBD
-        </p>
-    </section>
+	<section>
+			<h4>Designing Your NIDM Object Models - A Brief Tutorial</h4>
+			<p>
+			In this section we give a brief tutorial on modeling your data with NIDM.  This will serve as a good starting point
+			and contains further information about choosing vocabularies and documenting your object models.	
+			</p>
+		<section>
+			<h3>Conceptial Model</h3>
+			<p>The first step in modeling your data is to create a conceptual graph of the objects needed to represent the data 			you will instantiate into a NIDM object model. Here we will use a particularly simple example.  We will start with 
+			an Excel spreadsheet containing a time series of maternal heart rate measurements sampled each second for 180 seconds 			during pregnancy. This data was colected at the University of California, Irvine (UCI) as part of the UCI <a 			href=http://contecenter.uci.edu/>Conte Center</a>.  First, let's have a look at a subset of the Excel spreadsheet.
+	        <figure>
+	            <img src="img/heart_rate_excel.png" width="600">
+	            <figcaption>
+	                Maternal heart rate measurements data file.
+	            </figcaption>
+	        </figure>
+			Columns A and B are the subject identifiers for the mother and fetus respectively.  Columns C-H are the heart rate 			measurements over time. Note, the columns have been truncated to only show the last 6 seconds of the 180 second acquisition.
+			</p>
+			<p>
+			Now we can create a conceptual model of this spreadsheet.  In this step we decide on how to represent the data as a 			graph using the PROV-DM core objects: agents, entities, and activities and what relationships needed to connect the 
+			information.  We create an entity for the heart rate measurements, an activity for the process of measuring the data, and 2 agents, one for the mother whom the heart rate measurements are <a href=http://www.w3.org/TR/prov-o/#wasAttributedTo>prov:wasAttributedTo</a> and one of the fetus which the heart rate measurements are <a href="http://www.w3.org/TR/prov-o/#wasAssociatedWith">prov:wasAssociatedWith</a>.
+	        <figure>
+	            <img src="img/heart_rate_model.png" width="600">
+	            <figcaption>
+	                Graph describing the heart rate data as entities, agents, and activites.
+	            </figcaption>
+	        </figure>
+			</p>
+		</section>
+		<section id="attributes">
+			<h3>Attributes Sets</h3>
+			<p>
+			Next, we decide on the attributes needed to describe the entities, agents, and activities we created in our conceptual model.  Here we can create as many attributes as necessary but we should be parsimonious whenever possible.  Too many attributes can make your NIDM object model overly complex.  In this example we have chosen to add the attributes <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810">ncit:heartRate</a>, <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0439547">ncit:timepoint</a>, <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C1881634">ncit:heatRateMean</a>, and mhr:heartRateStdDev to the heart rate entity.  The <a href="https://dvcs.w3.org/hg/prov/raw-file/default/model/prov-dm.html#term-attribute-type">prov:type</a> and <a href="https://dvcs.w3.org/hg/prov/raw-file/default/model/prov-dm.html#term-attribute-label">prov:label</a> attributes are standard attributes in PROV-DM which are typically added to most entities and agents.  The format of the attributes is described in the section <a href="#terms">Vocabularies and Terms Selections</a> section.  For the agents we have added the <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C2826694">ncit:subjectID</a> attribute to capture the data in Columns A and B of the spreadsheet.  Lastly, we have added some associations in the activity to associate the activity with the two agents.	
+			</p>
+		</section>
+		<section id="terms">
+			<h3>Vocabularies and Terms Selections</h3>
+			In order to give our representation semantic meaning we follow the conventions used in the <a href=http://www.w3.org/TR/rdf11-concepts/#section-IRIs>Resource Descripition Framework (RDF)</a> W3C recommendation such that each attribute is formated as a Internation Resource Identifier (IRI).  IRIs, a generalization of Uniform Resource Identifiers (URIs) are dereferencable objects that can be found on the web to give semantic meaning to the attribute.  For example, in the heart rate entity we chose the <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a> IRI.  This IRI is formed using the NCIT namespace and the heartRate term within that namespace. At the begining of any NIDM serialization of this heart rate model the NCIT namespace IRI is defined and with the term creates a deferencable definition for the attribute <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a>. It is critical to make sure the namespaces and terms you use in your models are available and persistent on the web.  By following this convention instatiations of your object model are self documenting.  Anyone who receives a document can make sense of the attributes and objects defined therein.  In the event a term you need for your model is not defined in an existing terminology you can define you own terms but they should be available on the web.   
+		</section>
+		<section>
+			<h3>Instantiating Your Object Model</h3>
+			<p>
+			Once you've defined your object model by specifying the objects, relationships, and attributes, it's time to apply your object model to your data.  Typically one writes a parser to reformat the input data into a NIDM serialization.  Typical serialization formats include <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> (the provenance notation),<a href="http://www.w3.org/TR/turtle/">Turtle</a> (Terse RDF Triple Language), <a href="http://json-ld.org/">JSON-LD</a> (Java Serial Object Notation for Linked Data), and <a href="http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/">RDF-XML</a> (Resource Description Framework XML Syntax).  In Example 1 we show the Turtle syntax of the heart rate data entity for <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C2826694">ncit:subjectID</a> 30564.  
+			
+			<pre class='example highlight'>
+			    [mhr:entity_71759c9cf0c811e3a3c23c07541223b4 a prov:DataItem,
+        		prov:Entity ;
+    			rdfs:label "Heart Rate data for subjectID 30564" ;
+    			ncit:heartRate "[79.3, 75.3, 78.3, 80.6, 78.2, 80.5, 80.3, ...]" ;
+    			ncit:heartRateAvg 8.69e+01 ;
+    			ncit:timepoint "[2, 3, 4, 5, 6, 7, 8, ...]"^^ncit:sec ;
+    			mhr:heartRateStd 3.9e+00 ;
+    			prov:wasAttributedTo mhr:agent_71758f21f0c811e3ab373c07541223b4 ;
+    			prov:wasGeneratedBy mhr:activity_71759561f0c811e39f583c07541223b4 .])</pre>
+			To make writing NIDM files easier the working group has been using the <a href="https://github.com/lucmoreau/ProvToolbox/">ProvToolbox</a> Java library from Luc Moreau or the <a href="https://github.com/trungdong/prov">PROV</a> Python library from Trung Dong.  The <a href="https://code.google.com/p/rdflib/">RDFLib</a> has also been used by the group for efficiently working with NIDM documents in Python.  
+			</p>
+		</section>
+		<section>
+			<h3>Documenting Your Object Model</h3>
+			<p>To document your object model we suggest using the <a href=http://www.w3.org/respec/>ReSpec</a> javascript library.  It is a simple way to make well-organized descriptions of your models and has been used for all the NIDM specs.  We have included a <a href=nidm-spec-template.html>template</a> to make the specification writing process easier for you.  The template can be downloaded and edited in any text editing program.  We have included identifiers formatted with the text "[** " to indicate where the NIDM working group suggests you add information relevant to your object model.  We have further added comments ubove these identifiers indexing the section in the ReSpec <a href="http://www.w3.org/respec/guide.html">user manual</a> that describes the intention of this information.  The ReSpec <a href="http://www.w3.org/respec/guide.html">user manual</a> is an excellent reference for writing specifications.
+			</p>
+		</section>
+	</section>
 
     <section>
         <h4>Additional Information</h4>
@@ -397,46 +456,54 @@
                     <a href="http://incf.org/programs/datasharing/neuroimaging-task-force">NIDASH page</a>
                 </td>
                 <td>
-                    Main INCF page for NIDM Task Force, a child of the INCF Program on Standards for Data Sharing page.
+                    Main INCF page for NIDASH Task Force, a child of the INCF Program on Standards for Data Sharing page.
                 </td>
             </tr>
             <tr>
                 <td>Developers</td>
                 <td align="center">
-                    <a href="https://github.com/incf-nidash">NIDM on Github</a>
+                    <a href="https://github.com/incf-nidash">NIDASH on Github</a>
                 </td>
-                <td>Organization hosting various code repositories of NIDM projects, NIDM in particular.</td>
+                <td>Organization hosting various code repositories of NIDASH projects, NIDM in particular.</td>
             </tr>
             <tr>
                 <td>Developers</td>
                 <td align="center">
-                    <a href="https://groups.google.com/forum/#!forum/incf-datasharing">NIDM Google group</a>
+                    <a href="https://groups.google.com/forum/#!forum/incf-datasharing">NIDASH Google group</a>
                 </td>
-                <td>Wide distribution list for NIDM activities</td>
+                <td>Wide distribution list for NIDASH activities</td>
             </tr>
             <tr>
                 <td>Modellers</td>
                 <td align="center">
-                    <a href="http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force">NIDM wiki</a>
+                    <a href="http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force">NIDASH wiki</a>
                 </td>
-                <td>Overview of NIDM activities; intended for both internal and external users.</td>
+                <td>Overview of NIDASH activities; intended for both internal and external users.</td>
             </tr>
             <tr>
                 <td>Modellers</td>
                 <td align="center">
-                    <a href="http://www.birncommunity.org/working-with-birn/working-groups/derived-data-working-group/">
-                        DDWG page
+                    <a href="http://www.nidm.nidash.org">
+                        NIDM working group website
                     </a>
                 </td>
-                <td>Site that hosts current information on the BIRN Derived Data Working Group (DDWG)</td>
+                <td>Site that hosts current information on the NIDM data model</td>
             </tr>
             <tr>
                 <td>Modellers</td>
                 <td align="center">
                     <a href="https://drive.google.com/#folders/0B-BLof5_SOh8bWR3UDE4WTdELXM">NIDASH Google Drive</a>
                 </td>
-                <td>Shared area for the INCF Neuroimaging Data Sharing task force (NIDASH) activities &amp; NIDM
-                    development, including meeting agenda &amp; minutes, specification, etc...
+                <td>Shared area for the INCF Neuroimaging task force (NIDASH) activities &amp; NIDM development,
+                    including meeting agenda &amp; minutes, specification, etc...
+                </td>
+            </tr>
+            <tr>
+                <td>All</td>
+                <td align="center">
+                    <a href="mailto:incf-nidash-nidm@googlegroups.com">incf-nidash-nidm@googlegroups.com</a>
+                </td>
+                <td>NIDM mailing list
                 </td>
             </tr>
             </tbody>

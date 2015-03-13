@@ -5,22 +5,15 @@
 @copyright: University of Warwick 2014
 '''
 
-from rdflib import Namespace, RDF, term
+from rdflib import RDF, term
 from rdflib.graph import Graph
+import sys, os
 
-PROV = Namespace('http://www.w3.org/ns/prov#')
-NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
-SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
-FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
-RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
-CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
-DCT = Namespace('http://purl.org/dc/terms/')
-# This is a workaround to avoid issue with "#" in base prefix as 
-# described in https://github.com/RDFLib/rdflib/issues/379,
-# When the fix is introduced in rdflib this line will be replaced by:
-# OWL = Namespace('http://www.w3.org/2002/07/owl#')
-OWL = Namespace('http://www.w3.org/2002/07/owl')
-XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+
+# Append parent script directory to path
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
+from Constants import *
 
 ignored_attributes = set([   
                         RDFS['label'], 
@@ -47,12 +40,18 @@ def get_class_names_in_owl(my_owl_graph):
     # Add PROV sub-types
     sub_types = set([PROV['Bundle'], PROV['Location'], PROV['Collection']]);
 
-    OWL = Namespace('http://www.w3.org/2002/07/owl')    
-
     for class_name in my_owl_graph.subjects(RDF['type'], OWL['Class']):
         sub_types.add(class_name)
 
     return sub_types
+
+def get_property_names_in_owl(my_owl_graph):
+    properties = set();
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['DatatypeProperty']):
+        properties.add(class_name)
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['ObjectProperty']):
+        properties.add(class_name)
+    return properties
 
 def get_attributes_from_owl(my_owl_graph):
     attributes = dict()
@@ -61,26 +60,37 @@ def get_attributes_from_owl(my_owl_graph):
 
     restrictions = dict()
 
+    # Check owl restrictions on classes
+    for class_name in my_owl_graph.subjects(RDF['type'], OWL['Class']):
+        for class_restr in my_owl_graph.objects(class_name, RDFS['subClassOf']):
+            if isinstance(class_restr, term.BNode):
+                for prop in my_owl_graph.objects(class_restr,OWL['onProperty']):
+                    attributes.setdefault(class_name, set([prop])).add(prop)
+                    for child_class in my_owl_graph.subjects(RDFS['subClassOf'], class_name): 
+                        attributes.setdefault(child_class, set([prop])).add(prop)
+
     # Attributes that can be found in all classes
-    for data_property,p,o in my_owl_graph.triples((None, RDF['type'], None)):
+    for prop,p,o in my_owl_graph.triples((None, RDF['type'], None)):
         if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
-            for class_name in my_owl_graph.objects(data_property, RDFS['domain']):
+
+            # Check property domain
+            for class_name in my_owl_graph.objects(prop, RDFS['domain']):
                 # Add attribute to current class
                 if class_name in attributes:
-                    attributes[class_name].add(data_property)
+                    attributes[class_name].add(prop)
                 else:
-                    attributes[class_name] = set([data_property])
+                    attributes[class_name] = set([prop])
                 
                 # Add attribute to children of current class
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], class_name):
                     # Add attribute to current class
                     if child_class in attributes:
-                        attributes[child_class].add(data_property)
+                        attributes[child_class].add(prop)
                     else:
-                        attributes[child_class] = set([data_property])
+                        attributes[child_class] = set([prop])
                     class_name = child_class
-                    
-            for range_name in my_owl_graph.objects(data_property, RDFS['range']):
+
+            for range_name in my_owl_graph.objects(prop, RDFS['range']):
                 # More complex type including restrictions
                 if isinstance(range_name, term.BNode):
                     for restriction_node in my_owl_graph.objects(range_name, OWL['withRestrictions']):
@@ -88,57 +98,55 @@ def get_attributes_from_owl(my_owl_graph):
                             xsd_restrictions = set(['minInclusive', 'minExclusive', 'maxInclusive', 'maxExclusive'])
                             for xsd_restriction in xsd_restrictions:
                                 for min_incl in my_owl_graph.objects(first_restriction, XSD[xsd_restriction]):
-                                    if (data_property in restrictions):
-                                        if (xsd_restriction in restrictions[data_property]):
-                                            restrictions[data_property] = max(restrictions[data_property][xsd_restriction], min_incl)
+                                    if (prop in restrictions):
+                                        if (xsd_restriction in restrictions[prop]):
+                                            restrictions[prop] = max(restrictions[prop][xsd_restriction], min_incl)
                                         else:
-                                            restrictions[data_property] = { xsd_restriction: min_incl}
+                                            restrictions[prop] = { xsd_restriction: min_incl}
                                     else:
-                                        restrictions[data_property] = { xsd_restriction: min_incl}
+                                        restrictions[prop] = { xsd_restriction: min_incl}
 
                     for sub_range_name in my_owl_graph.objects(range_name, OWL['onDatatype']):
                         range_name = sub_range_name
 
-                if data_property in ranges:
-                    ranges[data_property].add(range_name)
+                if prop in ranges:
+                    ranges[prop].add(range_name)
                 else:
-                    ranges[data_property] = set([range_name])
+                    ranges[prop] = set([range_name])
                 # FIXME: more elegant?
                 # Add child_class to range (for ObjectProperty)
                 for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                     # Add range to current class
-                    if data_property in ranges:
-                        ranges[data_property].add(child_class)
+                    if prop in ranges:
+                        ranges[prop].add(child_class)
                     else:
-                        ranges[data_property] = set([child_class])
+                        ranges[prop] = set([child_class])
                     range_name = child_class
                     for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                         # Add attribute to current class
-                        if data_property in ranges:
-                            ranges[data_property].add(child_class)
+                        if prop in ranges:
+                            ranges[prop].add(child_class)
                         else:
-                            ranges[data_property] = set([child_class])
+                            ranges[prop] = set([child_class])
                         range_name = child_class
                         for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                             # Add attribute to current class
-                            if data_property in ranges:
-                                ranges[data_property].add(child_class)
+                            if prop in ranges:
+                                ranges[prop].add(child_class)
                             else:
-                                ranges[data_property] = set([child_class])
+                                ranges[prop] = set([child_class])
                             range_name = child_class
                             for child_class in my_owl_graph.subjects(RDFS['subClassOf'], range_name):
                                 # Add attribute to current class
-                                if data_property in ranges:
-                                    ranges[data_property].add(child_class)
+                                if prop in ranges:
+                                    ranges[prop].add(child_class)
                                 else:
-                                    ranges[data_property] = set([child_class])
+                                    ranges[prop] = set([child_class])
                                 range_name = child_class
             
-                
-
     return list((attributes, ranges, restrictions))
 
-def get_owl_graph(owl_file):
+def get_owl_graph(owl_file, import_files=None):
     # Read owl (turtle) file
     owl_graph = Graph()
     # This is a workaround to avoid issue with "#" in base prefix as 
@@ -149,10 +157,27 @@ def get_owl_graph(owl_file):
                     "http://www.w3.org/2002/07/owl")
     owl_graph.parse(data=owl_txt, format='turtle')
 
+    if import_files is not None:
+        for import_file in import_files:
+            # Read owl (turtle) file
+            import_graph = Graph()
+            import_txt = open(import_file, 'r').read()
+
+            # This is a workaround to avoid issue with "#" in base prefix as 
+            # described in https://github.com/RDFLib/rdflib/issues/379,
+            # When the fix is introduced in rdflib these 2 lines will be replaced by:
+            # self.owl.parse(owl_file, format='turtle')
+            import_txt = import_txt.replace("http://www.w3.org/2002/07/owl#", 
+                            "http://www.w3.org/2002/07/owl")
+            import_graph.parse(data=import_txt, format='turtle')
+
+            owl_graph = owl_graph + import_graph
+
     return owl_graph
 
 
-def check_class_names(example_graph, example_name, class_names=None, owl_file=None):
+def check_class_names(example_graph, example_name, class_names=None, 
+    owl_file=None, owl_imports=None):
     my_exception = dict()
     if not class_names:
         if owl_file is None:
@@ -164,17 +189,19 @@ def check_class_names(example_graph, example_name, class_names=None, owl_file=No
     sub_types = get_sub_class_names(example_graph)
 
     for not_recognised_sub_type in (sub_types - class_names):
-        # key = example_graph.qname(not_recognised_sub_type)
-        key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
-        if key in my_exception:
-            my_exception[key].add(example_name)
-        else:
-            my_exception[key] = set([example_name])
+
+        if not not_recognised_sub_type.startswith(str(PROV)):
+            # key = example_graph.qname(not_recognised_sub_type)
+            key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
+            if key in my_exception:
+                my_exception[key].add(example_name)
+            else:
+                my_exception[key] = set([example_name])
 
     return my_exception
 
 def check_attributes(example_graph, example_name, owl_attributes=None, owl_ranges=None, 
-    owl_restrictions=None, owl_file=None):
+    owl_restrictions=None, owl_graph=None, owl_file=None):
     my_exception = dict()
     my_range_exception = dict()
     my_restriction_exception = dict()
@@ -226,85 +253,83 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
             if isinstance(o, term.URIRef):
                 # An ObjectProperty can point to an instance, then we look for its type:
                 found_range = set(example_graph.objects(o, RDF['type']))
+
                 # An ObjectProperty can point to a term
                 if not found_range:
                     found_range = set([o])
+
+                    # If the term is an individual, look for its type
+                    if OWL['NamedIndividual'] in \
+                        set(owl_graph.objects(o, RDF['type'])):
+                        found_range = set(owl_graph.objects(o, RDF['type']))
+
             elif isinstance(o, term.Literal):
                 found_range = set([o.datatype])
 
-                correct_range = False
-                if p in owl_ranges:
-                    # If none of the class found for current ObjectProperty value is part of the range
-                    # throw an error
-                    if found_range.intersection(owl_ranges[p]):
-                        correct_range = True
-                    else:
-                        if p in owl_ranges:
-                            for owl_range in owl_ranges[p]:
-                                # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
-                                # in owl_ranges[p]
-                                if (XSD['positiveInteger'] == owl_range) &\
-                                     (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
-                                        correct_range = True
-                    if not correct_range:
-                        found_range_line = ""
-                        # FIXME: This should be better handled to be able to do "if found_range"
-                        if not None in found_range:
-                            found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
-                        owl_range_line = ""
-                        if p in owl_ranges:
-                            owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+            correct_range = False
+            if p in owl_ranges:
+                # If none of the class found for current ObjectProperty value is part of the range
+                # throw an error
 
-                        key = "\n Unrecognised range: "+\
-                            found_range_line+\
-                            ' for '+example_graph.qname(p)+' should be '+\
-                            owl_range_line
+                # If the type of current value is within the authorised ranges
+                if found_range.intersection(owl_ranges[p]):
+                    correct_range = True
                 else:
                     if p in owl_ranges:
+                        # A bit more complicated to deal with "positiveInteger"
                         for owl_range in owl_ranges[p]:
                             # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
                             # in owl_ranges[p]
-                            if (XSD['positiveInteger'] == owl_range):
-                                if (next(iter(found_range)) == XSD['int']) & (o.value >= 0):
+                            if (XSD['positiveInteger'] == owl_range) and\
+                                 (next(iter(found_range)) == XSD['int']) and\
+                                  (o.value >= 0):
                                     correct_range = True
-                                else:
-                                    correct_range = False
-
                 if not correct_range:
-                    if not key in my_range_exception:
-                        my_range_exception[key] = set([example_name])
-                    else:
-                        my_range_exception[key].add(example_name)
+                    found_range_line = ""
+                    # FIXME: This should be better handled to be able to do "if found_range"
+                    if not None in found_range:
+                        found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
+                    owl_range_line = ""
+                    if p in owl_ranges:
+                        owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
 
-                if p in owl_restrictions:
-                    restrictions_ok = True
-                    if 'minInclusive' in owl_restrictions[p]:
-                        if o.value < owl_restrictions[p]['minInclusive'].value:
-                            restrictions_ok = False
-                    if 'minExclusive' in owl_restrictions[p]:
-                        if o.value <= owl_restrictions[p]['minExclusive'].value:
-                            restrictions_ok = False
-                    if 'maxInclusive' in owl_restrictions[p]:
-                        if o.value > owl_restrictions[p]['maxInclusive'].value:
-                            restrictions_ok = False
-                    if 'maxExclusive' in owl_restrictions[p]:
-                        if o.value >= owl_restrictions[p]['maxExclusive'].value:
-                            restrictions_ok = False
-                    if not restrictions_ok:
-                        key = "\n Contraints: value "+str(o.value)+\
-                            ' for '+example_graph.qname(p)+' does not observe contraints '+\
-                            ', '.join(sorted(owl_restrictions[p]))
-                        if not key in my_restriction_exception:
-                            my_restriction_exception[key] = set([example_name])
-                        else:
-                            my_restriction_exception[key].add(example_name)
+                    key = "\n Unrecognised range: "+\
+                        found_range_line+\
+                        ' for '+example_graph.qname(p)+' should be '+\
+                        owl_range_line
+            else:
+                # No range found for current attribute
+                correct_range = False
+                key = "\n No range defined for: "+\
+                        example_graph.qname(p)
+
+            if not correct_range:
+                if not key in my_range_exception:
+                    my_range_exception[key] = set([example_name])
+                else:
+                    my_range_exception[key].add(example_name)
+
+            if p in owl_restrictions:
+                restrictions_ok = True
+                if 'minInclusive' in owl_restrictions[p]:
+                    if o.value < owl_restrictions[p]['minInclusive'].value:
+                        restrictions_ok = False
+                if 'minExclusive' in owl_restrictions[p]:
+                    if o.value <= owl_restrictions[p]['minExclusive'].value:
+                        restrictions_ok = False
+                if 'maxInclusive' in owl_restrictions[p]:
+                    if o.value > owl_restrictions[p]['maxInclusive'].value:
+                        restrictions_ok = False
+                if 'maxExclusive' in owl_restrictions[p]:
+                    if o.value >= owl_restrictions[p]['maxExclusive'].value:
+                        restrictions_ok = False
+                if not restrictions_ok:
+                    key = "\n Contraints: value "+str(o.value)+\
+                        ' for '+example_graph.qname(p)+' does not observe contraints '+\
+                        ', '.join(sorted(owl_restrictions[p]))
+                    if not key in my_restriction_exception:
+                        my_restriction_exception[key] = set([example_name])
+                    else:
+                        my_restriction_exception[key].add(example_name)
 
     return list((my_exception, my_range_exception, my_restriction_exception))
-
-def merge_exception_dict(excep_dict, other_except_dict):
-    merged_dict = dict(excep_dict.items() + other_except_dict.items())
-    # When key is in both dictionaries, we need to merge the set manually
-    for key in list(set(excep_dict.keys()) & set(other_except_dict.keys())):
-        merged_dict[key] = excep_dict[key].union(other_except_dict[key])
-
-    return merged_dict

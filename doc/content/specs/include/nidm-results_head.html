@@ -1,0 +1,300 @@
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>NIDM-Results (under development)</title>
+				<meta charset='utf-8'>
+				<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+				async class='remove'></script>
+
+				<LINK href="stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+
+					<script class='remove'>
+					var respecConfig = {
+						specStatus: "base",
+						shortName:  "SPMResults",
+						overrideCopyright: "<p class=copyright>NIDM is licensed to the public under the Creative Commons CC0 1.0 Universal (CC0 1.0) license.</p>",
+						editors: [
+						{   name:       "David Keator",                   
+						company:    "INCF",
+						companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" },
+						{   name:       "Camille Maumet",                   
+						company:    "INCF",
+						companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
+						],
+						otherLinks: [
+						{
+			            key: "Contributors",
+			            data: [{
+			                    value: "Tibor Auer",
+			                }, {
+			                	value: "Gully Burns",
+			                }, {
+			                	value: "Fariba Fana",
+			                }, {
+								value: "Guillaume Flandin",
+			                }, {
+			                	value: "Satrajit Ghosh",
+			                }, {
+			                    value: "Krzysztof J. Gorgolewski",
+			                },{
+			                	value: "Karl Helmer",
+			                }, {
+			                	value: "David Keator",
+			                }, {
+			                    value: "Camille Maumet",
+			                }, {
+			                    value: "B. Nolan Nichols",
+			                }, {
+			                    value: "Thomas Nichols",
+			                }, {
+			                    value: "Jean-Baptiste Poline",
+			                }, {
+			                    value: "Jason Steffener",
+			                }, {
+			                    value: "Jessica Turner",
+			                }
+			            ]
+			        	}, {
+						key: "This version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results_dev.html",
+						      href: "./nidm-results_dev.html"
+						 	  }]
+						}, {
+						key: "Latest published version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results.html",
+						      href: "./nidm-results.html"
+						 	  }]
+						}, {
+		                key: "Latest development version",
+		                data: [{
+		                      value: "http://nidm.nidash.org/specs/nidm-results_dev.html",
+		                      href: "./nidm-results_dev.html"
+		                      }]
+		                }, {
+						key: "Previous version",
+						data: [{
+						      value: "http://nidm.nidash.org/specs/nidm-results_020.html",
+						      href: "./nidm-results_020.html"
+						 	  }]							
+						}
+			        	],
+						logos: [
+						   {
+						      src: 'stylesheet/nidm-text.png',
+						      url: "http://nidm.nidash.org",
+						      alt: "NIDM",
+						      width: 100,
+						      height: 50,
+						      id: 'logo-NIDM-WD'
+						   }
+						],
+						previousMaturity: "FPWD",
+						previousPublishDate:  "2013-12-10",
+						wg:           "NIDASH Working Group",
+						wgURI:        "http://nidm.nidash.org",
+						wgPublicList: "incf-nidash-nidm@googlegroups.com",
+						wgPatentURI:  "http://nidm.nidash.org",
+						afterEnd: function () {
+
+							var currentDate = new Date()
+							var date = currentDate.toString('dddd, MMMM ,yyyy')
+							$("#respecHeader h2").text("NIDM Specification " + date);
+							/*$("#respecHeader img").attr({ src: "stylesheet/nidm-text.png", width: 100, height:50 });*/
+						},
+						localBiblio:  {
+							"KEATORNI13": {
+								title:    "Towards structured sharing of raw and derived neuroimaging data across existing resources"
+								,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
+								,   authors:  [
+								"David B. Keator"
+								,   "Karl Helmer"
+								,	"Jason Steffener"
+								,	"Jessica A. Turner"
+								,	"Theodorus G.M. VanErp"
+								,	"Syam Gadde"
+								,	"Naveen Ashish"
+								,	"Gully A. Burns"
+								,	"Nolan B. Nichols"
+								]
+								,   publisher:  "	Elsevier"
+							},
+						}
+					};
+					</script>
+					<!-- FIXME: PROV-N should be automatically retreive and not manually included in biblio-->
+				</head>
+				<body>
+<!-- FIXME: Software entity is missing-->
+
+
+					<section id='abstract'>
+						<p>
+							In neuroimaging the typical analysis approach is a “mass univariate”, where a univariate model is independently fit to each voxel (volume element) in parallel. This approach can be applied to a large range of datasets including: functional MRI, anatomical MRI (with Voxel-Based Morphometry), PET, EEG and MEG data.
+						</p>
+						<p>
+							The three major software analysis package for neuroimaging: SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) and AFNI (<a href="http://afni.nimh.nih.gov/afni/">AFNI</a>) provide implementations of mass univariate analyses. While there are many commonalities across software packages, there are also software-specific outputs that can be of interest for the end-user.
+						</p>
+						<p>
+							This document describes the encoding of results of a mass univariate neuroimaging analysis using the NIDM data model ([[!KEATORNI13]]). The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
+						</p>
+						<p>
+							NIDM-Results is a part of NIDM as depicted in <a href="#fig-nidmresults-in-nidm"></a>.
+							<figure id="fig-nidmresults-in-nidm">
+							<img src="img/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
+								<figcaption>NIDM-Results as part of NIDM.</figcaption>
+							</figure>
+						<!--If the overview is ready then add here:<p>
+							The NIDM Document Overview describes the overall state of NIDM.
+						</p>-->
+					</section>
+
+					<section id='sotd'>
+						<p>
+							<!--FIXME: Status of this document-->
+						</p>
+
+						<!-- Douplicate section tag to have h4 titles as in PROV specification-->
+						<section>
+						<section>
+							<h4 id="nidm-family-of-documents">NIDM Family of Documents</h4>
+							This document is part of the NIDM family of documents.
+						</section>				
+
+						<section>
+							<h4 id="please-send-comments">Please Send Comments</h4>
+							<!-- FIXME: Is this the right e-mail address to receive comments? -->
+							This document was published by the NIDASH NIDM Working Group as a Candidate Release. If you wish to make comments regarding this document, please report using the <a href="https://github.com/incf-nidash/nidm/issues/">NIDM issue tracker</a> or send them to <a href="mailto:incf-nidash-nidm@googlegroups.com">incf-nidash-nidm@googlegroups.com</a>. All comments are welcome.
+						</section>			
+						</section>	
+						
+
+		
+
+					</section>
+
+					<section class='informative'>
+						<h2>Introduction</h2>
+						<p>
+							NIDM-Results is 
+							a <a href="nidm.html">
+							NIDM</a> compliant structured representation of the results of a massively univariate neuroimaging study.  
+						</p>
+						<p>
+							NIDM-Results specification formally describes the encoding of the massively univariate neuroimaging results into a NIDM representation. Extensions are provided to describe software-specific objects for SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) analysis software.
+						</p>
+
+
+			    <!-- FIXME:<section id='conformance'>
+			      <p>
+			         The single conformance class described in this specification is 
+			        the <dfn>SPM Results Object Model</dfn>, a class of NIDM formatted objects for describing
+			        a neuroimaging analysis result created with the <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
+			        SPM</a> software.
+			      </p>
+			  </section>-->
+				<section class="informative" id="structure-of-this-document"> 
+				<h3>Structure of this Document</h3>
+
+				<p><a href="#section-nidmresults-overview">Section 2</a> provides an overview of NIDM-Results, distinguishing a core set of types and  relations, commonly found in provenance, from extended structures catering for more specific uses. It also introduces a modular organization of the data model in components. </p>
+
+				<p><a href="#nidmresults-dm-example">Section 3</a> illustrates how NIDM-Results can be used to express the results of a neuroimaging study in SPM and FSL.</p>
+
+				<p><a href="#data-model-components">Section 4</a> provides the definitions (and examples) of NIDM-Results concepts, structured according to three components.</p>
+
+
+				</section>
+
+				<section>
+				<h3>Notational Conventions</h3>
+				<p>The key word<!--s "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL
+			      NOT">SHALL
+			      NOT</em>", "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>",  "<em class="rfc2119" title="MAY">MAY</em>", and-->
+			      "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document <!--are--> is to be interpreted as described in
+			      [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+			      <p> 
+	  Examples throughout this document use the PROV-N Provenance
+	  Notation, specified in a separate document [[prov-n]].</p>
+	  			</section>
+
+	  		<section class="informative" id="namespaces">
+			  	<h3>Namespaces</h3>
+			  	<p>
+			  		The following namespaces prefixes are used throughout this document.
+			  	</p><div style="text-align: left;">
+			  	<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+			  		<caption id="namespace-table"><span>Table 1<sup><a class="internalDFN" href="#namespace-table"><span class="diamond"> ◊:</span></a></sup> </span>Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
+			  		<tbody><tr><td><b>prefix</b></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
+			  			<tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NIDM namespace</td>
+			  			</tr>
+			  			<tr><td>prov</td><td>http://www.w3.org/ns/prov#</td><td>The PROV namespace [[prov-dm]]</td></tr>
+			  			<tr><td>xsd</td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [[XMLSCHEMA11-2]]</td></tr>
+			  			<tr><td>(others)</td><td>(various)</td><td>All other namespace prefixes are used in examples only. <br> In particular, IRIs starting with "http://example.com" represent<br> some application-dependent IRI [[RFC3987]]</td></tr>
+			  		</tbody></table>
+			  	</div>
+			  </section>
+			</section>
+
+			<section>
+				<h2>Overview</h2>
+
+				<p>This section introduces neuroimaging results concepts with informal explanations and illustrative examples (e.g. see <a href="#illustration-SPM">SPM results</a>). NIDM-Results distinguishes software-agnostic structures, forming the essence of the results, from software-specific structures catering for more specific uses of results by different analysis software. Core and extended structures are respectively presented in Section 2.1 and Section 2.2. </p>
+				
+				<section>
+				<h1>Domain covered by NIDM-Results</h1>
+				<p>
+				NIDM-Results is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NIDM-Results data model is represented in <a href="#fig-nidmresults-domain"></a>.
+
+				<figure id="fig-nidmresults-domain">
+					<img src="img/nidm-results-domain-overview.png" width=600px/>
+					<figcaption>Domain overview</figcaption>
+				</figure>
+				</p>
+				</section>
+					
+				<section>
+					<h3>NIDM-Results Core Structures</h3>
+					<p>The concepts found in the core of NIDM-Results are introduced in the rest of this section. 
+					</p>
+
+					<section>
+						<h3>Overview</h3>
+						The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). NIDM-Results is divided in two elements: "Model fitting" and "Inference", the structures and relations belonging to each element are presented in details in <a href="#modelfitting"></a> and <a href="#inference"></a>.
+						<figure id="fig-nidmresults-core-uml">
+							<img src="img/nidm-results-core-uml.svg" onerror="this.src='img/nidm-results-core-uml.png'" width="600px" />
+							<figcaption>Core structures overview</figcaption>
+						</figure>
+					</section>
+
+					<section id="sec-reuse-prov">
+					<h3>Re-use of PROV-DM Structures</h3>
+					<p>
+						PROV relations used in NIDM-Results are summarized in  <a href="#overview-types-and-relations">Table 2</a>.
+					</p>
+					<div style="text-align: left;">
+						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>PROV relations in use in NIDM-Results</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+								<!-- ------------- Beginning of PROV Relations ------------- -->
+								<tr>
+									<td><a href="#concept-generation" class="internalDFN">Generation</a>
+									</td>
+									<td rowspan="3" style="text-align: center;">PROV Relations<br/> 
+									</td>
+									<td><a title="wasGeneratedBy" href="#dfn-wasgeneratedby" class="internalDFN">WasGeneratedBy</a>
+									</td>
+									<td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasgeneratedby"><span>PROV-DM wasGeneratedBy</span></a>
+									</td>
+								</tr>
+								<tr>
+									<td><a href="#concept-usage" class="internalDFN">Usage</a></td><td><a title="used" href="#dfn-used" class="internalDFN">Used</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-used"><span>PROV-DM used</span></a></td>
+								</tr>
+								<tr>
+									<td><a href="#concept-derivation" class="internalDFN">Derivation</a></td><td><a title="wasDerivedFrom" href="#dfn-wasderivedfrom" class="internalDFN">WasDerivedFrom</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasderivedfrom"><span>PROV-DM wasDerivedFrom</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</section>
+				</section>

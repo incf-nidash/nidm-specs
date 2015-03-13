@@ -1,0 +1,1686 @@
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>NIDM-Results 0.1.0</title>
+        <meta charset='utf-8'>
+        <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+        async class='remove'></script>
+
+        <LINK href="stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+
+          <script class='remove'>
+          var respecConfig = {
+            specStatus: "base",
+            shortName:  "SPMResults",
+            overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
+            editors: [
+            {   name:       "David Keator",                   
+            company:    "INCF",
+            companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" },
+            {   name:       "Camille Maumet",                   
+            company:    "INCF",
+            companyURL: "http://wiki.incf.org/mediawiki/index.php/Neuroimaging_Task_Force" }
+            ],
+            otherLinks: [{
+                  key: "Contributors",
+                  data: [{
+                          value: "Tibor Auer",
+                      }, {
+                        value: "Gully Burns",
+                      }, {
+                        value: "Fariba Fana",
+                      }, {
+                value: "Guillaume Flandin",
+                      }, {
+                        value: "Satrajit Ghosh",
+                      }, {
+                          value: "Krzysztof J. Gorgolewski",
+                      },{
+                        value: "Karl Helmer",
+                      }, {
+                        value: "David Keator",
+                      }, {
+                          value: "Camille Maumet",
+                      }, {
+                          value: "B. Nolan Nichols",
+                      }, {
+                          value: "Thomas Nichols",
+                      }, {
+                          value: "Jean-Baptiste Poline",
+                      }, {
+                          value: "Jason Steffener",
+                      }, {
+                          value: "Jessica Turner",
+                      }
+                  ]}, {
+            key: "This version",
+            data: [{
+                  value: "http://nidm.nidash.org/specs/nidm-results_010.html",
+                  href: "./nidm-results_010.html"
+                }]
+            }, {
+            key: "Latest published version",
+            data: [{
+                  value: "http://nidm.nidash.org/specs/nidm-results.html",
+                  href: "./nidm-results.html"
+                }]
+            }, {
+            key: "Latest development version",
+            data: [{
+                  value: "http://nidm.nidash.org/specs/nidm-results_dev.html",
+                  href: "./nidm-results_dev.html"
+                  }]
+            }
+            ],
+            logos: [
+               {
+                  src: 'stylesheet/nidm-text.png',
+                  url: "http://nidm.nidash.org",
+                  alt: "NIDM",
+                  width: 100,
+                  height: 50,
+                  id: 'logo-NIDM-WD'
+               }
+            ],
+            previousMaturity: "FPWD",
+            previousPublishDate:  "2013-12-10",
+            wg:           "NIDASH Working Group",
+            wgURI:        "http://nidm.nidash.org",
+            wgPublicList: "incf-nidash-nidm@googlegroups.com",
+            wgPatentURI:  "http://nidm.nidash.org",
+            afterEnd: function () {
+
+              var currentDate = new Date()
+              var date = currentDate.toString('dddd, MMMM ,yyyy')
+              $("#respecHeader h2").text("NIDM Specification " + date);
+              /*$("#respecHeader img").attr({ src: "stylesheet/nidm-text.png", width: 100, height:50 });*/
+            },
+            localBiblio:  {
+              "KEATORNI13": {
+                title:    "Towards structured sharing of raw and derived neuroimaging data across existing resources"
+                ,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
+                ,   authors:  [
+                "David B. Keator"
+                ,   "Karl Helmer"
+                , "Jason Steffener"
+                , "Jessica A. Turner"
+                , "Theodorus G.M. VanErp"
+                , "Syam Gadde"
+                , "Naveen Ashish"
+                , "Gully A. Burns"
+                , "Nolan B. Nichols"
+                ]
+                ,   publisher:  " Elsevier"
+              },
+            }
+          };
+          </script>
+          <!-- FIXME: PROV-N should be automatically retreive and not manually included in biblio-->
+        </head>
+        <body>
+<!-- FIXME: Software entity is missing-->
+
+
+          <section id='abstract'>
+            <p>
+              In neuroimaging the typical analysis approach is a “mass univariate”, where a univariate model is independently fit to each voxel (volume element) in parallel. This approach can be applied to a large range of datasets including: functional MRI, anatomical MRI (with Voxel-Based Morphometry), PET, EEG and MEG data.
+            </p>
+            <p>
+              The three major software analysis package for neuroimaging: SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) and AFNI (<a href="http://afni.nimh.nih.gov/afni/">AFNI</a>) provide implementations of mass univariate analyses. While there are many commonalities across software packages, there are also software-specific outputs that can be of interest for the end-user.
+            </p>
+            <p>
+              This document describes the encoding of results of a mass univariate neuroimaging analysis using the NIDM data model ([[!KEATORNI13]]). The goal of this specification is to provide a unified representation of neuroimaging results across analysis software. When a piece of information is only available in a specific software, software-specific extensions are provided.
+            </p>
+            <p>
+              NIDM-Results is a part of NIDM as depicted in <a href="#fig-nidmresults-in-nidm"></a>.
+              <figure id="fig-nidmresults-in-nidm">
+              <img src="img/nidm-results_010/nidm-layer-cake-nidmresults.png" alt="NIDM-Results as part of NIDM" width=600px/>
+                <figcaption>NIDM-Results as part of NIDM.</figcaption>
+              </figure>
+            <!--If the overview is ready then add here:<p>
+              The NIDM Document Overview describes the overall state of NIDM.
+            </p>-->
+          </section>
+
+          <section id='sotd'>
+            <p>
+              <!--FIXME: Status of this document-->
+            </p>
+
+            <!-- Douplicate section tag to have h4 titles as in PROV specification-->
+            <section>
+            <section>
+              <h4 id="nidm-family-of-documents">NIDM Family of Documents</h4>
+              This document is part of the NIDM family of documents.
+            </section>        
+
+            <section>
+              <h4 id="please-send-comments">Please Send Comments</h4>
+              <!-- FIXME: Is this the right e-mail address to receive comments? -->
+              This document was published by the NIDASH NIDM Working Group as a Candidate Release. If you wish to               make comments regarding this document, please report using the <a               href="https://github.com/incf-nidash/nidm/issues/">NIDM issue tracker</a>. please send them to <a               href="mailto:incf-nidash-nidm@googlegroups.com">incf-nidash-nidm@googlegroups.com</a>. All comments               are welcome.
+            </section>      
+            </section>  
+            
+
+    
+
+          </section>
+
+          <section class='informative'>
+            <h2>Introduction</h2>
+            <p>
+              NIDM-Results is 
+              a <a href="nidm.html">
+              NIDM</a> compliant structured representation of the results of a massively univariate neuroimaging study.  
+            </p>
+            <p>
+              NIDM-Results specification formally describes the encoding of the massively univariate neuroimaging results into a NIDM representation. Extensions are provided to describe software-specific objects for SPM (<a href="http://www.fil.ion.ucl.ac.uk/spm/software/">Statistical Parametric Mapping</a>) and FSL (<a href="http://fsl.fmrib.ox.ac.uk/fsl/">FMRIB Software Library</a>) analysis software.
+            </p>
+
+
+          <!-- FIXME:<section id='conformance'>
+            <p>
+               The single conformance class described in this specification is 
+              the <dfn>SPM Results Object Model</dfn>, a class of NIDM formatted objects for describing
+              a neuroimaging analysis result created with the <a href="http://www.fil.ion.ucl.ac.uk/spm/software/">
+              SPM</a> software.
+            </p>
+        </section>-->
+        <section class="informative" id="structure-of-this-document"> 
+        <h3>Structure of this Document</h3>
+
+        <p><a href="#section-nidmresults-overview">Section 2</a> provides an overview of NIDM-Results, distinguishing a core set of types and  relations, commonly found in provenance, from extended structures catering for more specific uses. It also introduces a modular organization of the data model in components. </p>
+
+        <p><a href="#nidmresults-dm-example">Section 3</a> illustrates how NIDM-Results can be used to express the results of a neuroimaging study in SPM and FSL.</p>
+
+        <p><a href="#data-model-components">Section 4</a> provides the definitions (and examples) of NIDM-Results concepts, structured according to three components.</p>
+
+
+        </section>
+
+        <section>
+        <h3>Notational Conventions</h3>
+        <p>The key word<!--s "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL
+            NOT">SHALL
+            NOT</em>", "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>",  "<em class="rfc2119" title="MAY">MAY</em>", and-->
+            "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document <!--are--> is to be interpreted as described in
+            [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+            <p> 
+    Examples throughout this document use the PROV-N Provenance
+    Notation, specified in a separate document [[prov-n]].</p>
+          </section>
+
+        <section class="informative" id="namespaces">
+          <h3>Namespaces</h3>
+          <p>
+            The following namespaces prefixes are used throughout this document.
+          </p><div style="text-align: left;">
+          <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+            <caption id="namespace-table"><span>Table 1<sup><a class="internalDFN" href="#namespace-table"><span class="diamond"> ◊:</span></a></sup> </span>Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
+            <tbody><tr><td><b>prefix</b></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
+              <tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NIDM namespace</td>
+              </tr>
+              <tr><td>prov</td><td>http://www.w3.org/ns/prov#</td><td>The PROV namespace [[prov-dm]]</td></tr>
+              <tr><td>xsd</td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [[XMLSCHEMA11-2]]</td></tr>
+              <tr><td>(others)</td><td>(various)</td><td>All other namespace prefixes are used in examples only. <br> In particular, IRIs starting with "http://example.com" represent<br> some application-dependent IRI [[RFC3987]]</td></tr>
+            </tbody></table>
+          </div>
+        </section>
+      </section>
+
+      <section>
+        <h2>Overview</h2>
+
+        <p>This section introduces neuroimaging results concepts with informal explanations and illustrative examples (e.g. see <a href="#illustration-SPM">SPM results</a>). NIDM-Results distinguishes software-agnostic structures, forming the essence of the results, from software-specific structures catering for more specific uses of results by different analysis software. Core and extended structures are respectively presented in Section 2.1 and Section 2.2. </p>
+        
+        <section>
+        <h1>Domain covered by NIDM-Results</h1>
+        <p>
+        NIDM-Results is concerned with the modelling of model fitting and inference in the context of massively univariate analyses. A typical example is the analysis of functional MRI data but studies involving other modalities (such as PET) and sequences (e.g. anatomical MRI through VBM) can also be modelled. The domain covered by NIDM-Results data model is represented in <a href="#fig-nidmresults-domain"></a>.
+
+        <figure id="fig-nidmresults-domain">
+          <img src="img/nidm-results_010/nidm-results-domain-overview.png" width=600px/>
+          <figcaption>Domain overview</figcaption>
+        </figure>
+        </p>
+        </section>
+          
+        <section>
+          <h3>NIDM-Results Core Structures</h3>
+          <p>The concepts found in the core of NIDM-Results are introduced in the rest of this section. 
+          </p>
+
+          <section>
+            <h3>Overview</h3>
+            The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). NIDM-Results is divided in two elements: "Model fitting" and "Inference", the structures and relations belonging to each element are presented in details in <a href="#modelfitting"></a> and <a href="#inference"></a>.
+            <figure id="fig-nidmresults-core-uml">
+              <img alt="Core structures" src="img/nidm-results_010/nidm-results-core-uml.png" width=900px/>
+              <figcaption>Core structures overview</figcaption>
+            </figure>
+          </section>
+
+          <section id="sec-reuse-prov">
+          <h3>Re-use of PROV-DM Structures</h3>
+          <p>
+            PROV relations used in NIDM-Results are summarized in  <a href="#overview-types-and-relations">Table 2</a>.
+          </p>
+          <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+              <caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>PROV relations in use in NIDM-Results</caption> <!-- Table 2 -->
+              <tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+                <!-- ------------- Beginning of PROV Relations ------------- -->
+                <tr>
+                  <td><a href="#concept-generation" class="internalDFN">Generation</a>
+                  </td>
+                  <td rowspan="3" style="text-align: center;">PROV Relations<br/> 
+                  </td>
+                  <td><a title="wasGeneratedBy" href="#dfn-wasgeneratedby" class="internalDFN">WasGeneratedBy</a>
+                  </td>
+                  <td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasgeneratedby"><span>PROV-DM wasGeneratedBy</span></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#concept-usage" class="internalDFN">Usage</a></td><td><a title="used" href="#dfn-used" class="internalDFN">Used</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-used"><span>PROV-DM used</span></a></td>
+                </tr>
+                <tr>
+                  <td><a href="#concept-derivation" class="internalDFN">Derivation</a></td><td><a title="wasDerivedFrom" href="#dfn-wasderivedfrom" class="internalDFN">WasDerivedFrom</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasderivedfrom"><span>PROV-DM wasDerivedFrom</span></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </section>
+          
+
+          <section id="modelfitting">
+            <h1>Model fitting</h1>
+            <!--<figure id="fig-nidmresults-model-fitting">
+              <img src="img/nidm-results_010/nidm-results-model-fitting.png" width=750px/>
+              <figcaption>Core Model Fitting Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
+            </figure> -->
+            <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+              <caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NIDM-Results Model Fitting Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+              <tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+                <!-- ------------- Beginning of PROV Entities ------------- -->
+                <tr>
+                  <td><a title="concept-Data">Data</a>
+                  </td>
+                  <td rowspan="9" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
+                  <td><a>Data</a>
+                  </td>
+                  <td><a href="#overview-Data"></a></td>
+                </tr>
+                <tr>
+                  <td><a title="concept-DesignMatrix">DesignMatrix</a>
+                  </td>
+                  <td><a>DesignMatrix</a>
+                  </td>
+                  <td><a href="#overview-DesignMatrix"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ParameterEstimateMap">ParameterEstimateMap</a>
+                  </td>
+                  <td><a>ParameterEstimateMap</a>
+                  </td>
+                  <td><a href="#overview-ParameterEstimateMap"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ResidualMeanSquaresMap">ResidualMeanSquaresMap</a>
+                  </td>
+                  <td><a>ResidualMeanSquaresMap</a>
+                  </td>
+                  <td><a href="#overview-ResidualMeanSquaresMap"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ContrastWeights">ContrastWeights</a>
+                  </td>
+                  <td><a>ContrastWeights</a>
+                  </td>
+                  <td><a href="#overview-ContrastWeights"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-MaskMap">MaskMap</a>
+                  </td>
+                  <td><a>MaskMap</a>
+                  </td>
+                  <td><a href="#overview-MaskMap"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ContrastMap">ContrastMap</a>
+                  </td>
+                  <td><a>ContrastMap</a>
+                  </td>
+                  <td><a href="#overview-ContrastMap"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ContrastStandardErrorMap">ContrastStandardErrorMap</a>
+                  </td>
+                  <td><a>ContrastStandardErrorMap</a>
+                  </td>
+                  <td><a href="#overview-ContrastStandardErrorMap"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-StatisticMap">StatisticMap</a>
+                  </td>
+                  <td><a>StatisticMap</a>
+                  </td>
+                  <td><a href="#overview-StatisticMap"></a>
+                  </td>
+                </tr>
+                <!-- ------------- End of PROV Entities ------------- -->
+                <!-- ------------- Beginning of PROV Activities ------------- -->
+                <tr>
+                  <td><a title="concept-ModelParametersEstimation">ModelParametersEstimation</a>
+                  </td>
+                  <td rowspan="2" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
+                  <td><a>ModelParametersEstimation</a>
+                  </td>
+                  <td><a href="#overview-ModelParametersEstimation"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ContrastEstimation">ContrastEstimation</a>
+                  </td>
+                  <td><a>ContrastEstimation</a>
+                  </td>
+                  <td><a href="#overview-ContrastEstimation"></a>
+                  </td>
+                </tr>
+                <!-- ------------- End of PROV Activities ------------- -->
+              </tbody>
+            </table>
+          </div>
+            
+          <section id="overview-Data">
+            <h4>Data</h4>
+            The Data entity used by the <a href="#overview-ParameterEstimateMap">Model Parameters Estimation</a> entity represents the data used in model fitting.  The optional attribute 
+            <dfn>nidm:grandMeanScaling</dfn> of type <a href="http://www.w3.org/TR/xmlschema-2/#boolean">xsd:boolean</a> indicating the presence or absence of grand mean data scaling.  If 
+            nidm:grandMeanScaling = "true" then the target intensity can be indicated using the attribute <dfn>nidm:targetIntensity</dfn> with type <a href="http://www.w3.org/TR/xmlschema-2/#float">xsd:float</a>. 
+            Due to inaccuracies in the mask used to compute the mean intensity prior to scaling, the in-brain mean intensity in the scaled data may not equal the nidm:targetIntensity exactly. 
+            The median intensity of the Data can be used as a diagnostic to see if the typical brain intensity has been scaled to approximately the targetIntensity this can be encoded using the 
+            attribute <dfn>nidm:medianIntensity</dfn> of type <a href="http://www.w3.org/TR/xmlschema-2/#float">xsd:float</a>. See <a href="#attributes-Data">Data</a>
+            for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+          </section>
+          <section id="overview-DesignMatrix">
+            <h4>Design matrix</h4>
+            The Design matrix entity used by the <a href="#overview-ParameterEstimateMap">Model Parameters Estimation</a> entity represents the design matrix used in model fitting.  The optional 
+            attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file encoding the design matrix.  Alternatively the 
+            relative (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:visualization</dfn> can be used to link to a graphics file representation of the design matrix (e.g. 
+            similar to the design matrix image in Pthe SPM software package).  Again this path would ideally be a dereferencable URL but could alternatively be a relative or absolute path to the graphics file.
+            See <a href="#attributes-DesignMatrix">Design Matrix</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+      
+          </section>
+          <section id="overview-ParameterEstimateMap">
+            <h4>Parameter Estimate Map</h4>
+            The Parameter Estimate Map entity is used to represent the calculated parameter array (e.g. "betamap" in a typical voxelwise GLM analysis).  The entity is associated with the 
+            <a href="#overview-ModelParametersEstimation">Model Parameters Estimation</a> activity and used by the <a href="#overview-ContrastEstimation">Contrast Estimation</a> activity. The optional 
+            attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the parameter array.  Alternatively 
+            the relative (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software
+            package that created it in case the prov:location was set to a URL.  This feature was added to account for the way, for example, the SPM software names the parameter array images "beta_XXXX.img" 
+            and its correspondence to particular model parameters.  The optional attribute <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see 
+            <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute <dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">
+            sha-512</a> hash of the file pointed to by the prov:location attribute. See <a href="#attributes-ParameterEstimateMap">ParameterEstimateMap</a> for an example in 
+            <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-ResidualMeanSquaresMap">
+            <h4>Residual Mean Squares Map</h4>
+            The Residual Mean Squares Map entity is used to represent the differences between an observed value and the estimated function value where the function estimates are modeled using the 
+            <a href="#overview-ParameterEstimateMap">ParameterEstimateMap</a> entity.  The entity is associated with the <a href="#overview-ModelParametersEstimation">Model 
+            Parameters Estimation</a> activity and used by the <a href="#overview-ContrastEstimation">Contrast Estimation</a> activity. The optional attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the residuals array (e.g. in the case of 
+            voxelwise fMRI analyses this would be an image with voxel values equal to the residuals).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
+            <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
+            <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute <dfn>crypto:sha512</dfn> 
+            provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-ResidualMeanSquaresMap">ResidualMeanSquaresMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-ContrastWeights">
+            <h4>Contrast Weights</h4>
+            The Contrast Weights entity is used to represent the linear combinations of parameter estimates with respect to the <a href="#overview-DesignMatrix">Design Matrix</a> and used in creating the 
+            <a href="#overview-ContrastMap">ContrastMap</a> array.  The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-value">prov:value</a> specifies the contrast vector.  The 
+            attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">prov:type</a> identifies the type of contrast weight.  For example, prov:type=<dfn>nidm:TContrastWeight</dfn> 
+            identifies the contrast vector as a contrast on a t-statistic.  The optional attribute  <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a location 
+            for a human-readable, descriptive label for the contrast vector.  The optional attribute <dfn>nidm:contrastName</dfn> corresponds to the contrast vector name in the generating software (i.e. 
+            SPM, FSL, AFNI, etc..). See <a href="#attributes-ContrastWeights">ContrastWeights</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+          </section>
+          <section id="overview-MaskMap">
+            <h4>Mask Map</h4>
+            The Mask Map entity is used to represent a map of the array values used in computing a <a href="#overview-ContrastMap">ContrastMap</a> array.  In the case of voxelwise fMRI analyses this is 
+            typically an in-brain mask.  The entity is derived from the <a href="#overview-ModelParametersEstimation">Model Parameters Estimation</a> activity and used by
+            the <a href="#overview-ContrastEstimation">Contrast Estimation</a> activity. The optional attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location">
+            prov:location</a> specifies a deferenceable URL to a file representing the mask array.  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
+            <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
+            <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute <dfn>crypto:sha512</dfn> 
+            provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-MaskMap">MaskMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+    
+          </section>
+          <section id="overview-ContrastMap">
+            <h4>Contrast Map</h4>
+            The Contrast Map entity is used to represent a map of selected parameters from the  <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a> consistent with a set of 
+            <a href="#overview-ContrastWeights">ContrastWeights</a>. The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location">
+            prov:location</a> specifies a deferenceable URL to a file representing the selected parameter estimates (e.g. in the case of voxelwise fMRI analyses this would be an image with voxel values 
+            equal to the parameter estimates).  Alternatively the relative (or absolute) path to a file could be used.  The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">
+            prov:type</a> identifies the map as of type <dfn>nidm:ContrastMap</dfn> giving semantic meaning to the map.  The optional attribute <dfn>nidm:originalFileName</dfn> 
+            is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute <dfn>nidm:coordinateSpace</dfn>
+            is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).   The optional attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the contrast map.  The optional attribute <dfn>crypto:sha512</dfn> 
+            provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-ContrastMap">ContrastMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          
+          </section>
+          <section id="overview-ContrastStandardErrorMap">
+            <h4>Contrast Standard Error Map</h4>
+            The Contrast Standard Error Map entity is used to represent the standard errors for the contrast estimates represented in the <a href="#overview-ContrastMap">Contrast Map</a> entity and generated 
+            by the <a href="#overview-ContrastEstimation">Contrast Estimation</a> activity. 
+            The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location">
+            prov:location</a> specifies a deferenceable URL to a file representing the contrast standard errors array (e.g. in the case of voxelwise fMRI analyses this would be an image with voxel values 
+            equal to the standard errors).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:originalFileName</dfn> 
+            is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute <dfn>nidm:coordinateSpace</dfn>
+            is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the contrast standard error map. The optional attribute 
+            <dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-ContrastStandardErrorMap">ContrastStandardErrorMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          
+          </section>
+          <section id="overview-StatisticMap">
+            <h4>Statistic Map</h4>
+            The Statistic Map entity is used to represent a map of statistics derived from selected parameters from the  <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a> consistent with a 
+            set of <a href="#overview-ContrastWeights">ContrastWeights</a>. The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">
+            prov:type</a> identifies the type of statistic in the map (e.g. <dfn>nidm:TStatisticMap</dfn>) giving semantic meaning to the map.The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the Statistic Map (e.g. in the case of voxelwise 
+            fMRI analyses this would be an image with voxel values equal to the statistic).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
+            <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
+            <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the Statistic Map.  The optional attribute 
+            <dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-StatisticMap">StatisticMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          
+          </section>
+          <section id="overview-ModelParametersEstimation">
+            <h4>Model Parameters Estimation</h4>
+            The Model Parameters Estimation activity represents the computation of model parameters.  The activity uses the <a href="#overview-DesignMatrix">DesignMatrix</a>, <a href="#overview-Data">Data</a>,
+            and <a href="#overview-MaskMap">MaskMap</a> entities.  The activity generates the <a href="#overview-ParameterEstimateMap">ParameterEstimateMap</a>, <a href="#overview-ResidualMeanSquaresMap">
+            ResidualMeanSquaresMap</a>, <a href="#overview-MaskMap">MaskMap</a>, and the <a href="#overview-ReselsPerVoxelMap">ReselsPerVoxelMap</a> entities (see <a href="#SPM-SpecificConcepts"> figure </a>). The
+            attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the activity.  The attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">prov:type</a> identifies the map as of type <dfn>nidm:ModelParametersEstimate</dfn> giving semantic meaning to the activity. 
+            See <a href="#attributes-ModelParametersEstimation">ModelParametersEstimation</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-ContrastEstimation">
+            <h4>Contrast Estimation</h4>
+            The Contrast Estimation activity represents the computation of the <a href="#overview-ConstrastMap">ContrastMap</a> from  the  <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a> using
+            a set of <a href="#overview-ContrastWeights">ContrastWeights</a>.  The activity uses the <a href="#overview-DesignMatrix">DesignMatrix</a>, <a href="#overview-ParametersEstimateMap">ParametersEstimateMap</a>, 
+            <a href="#overview-ResidualMeanSquaresMap">ResidualMeanSquaresMap</a>, and <a href="#overview-MaskMap">MaskMap</a> entities.  The activity generates the <a href="#overview-StatisticMap">StatisticMap</a>, 
+            , <a href="#overview-ContrastMap">ContrastStandardErrorMap</a>, and <a href="#overview-ContrastStandardErrorMap">ContrastStandardErrorMap</a> entities (see <a href="#SPM-SpecificConcepts"> figure </a>). The
+            attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the activity.  The attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">prov:type</a> identifies the map as of type <dfn>nidm:ContrastEstimation</dfn> giving semantic meaning to the activity. 
+            See <a href="#attributes-ContrastEstimation">ContrastEstimation</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-Coordinate">
+            <h4>Coordinate</h4>
+            The Coordinate entity encodes a point in N-dimensional space where the dimensionsInVoxels could be arbitrary.  Principally the entity is used to specify the 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> of a <a href="#overview-Peak">Peak</a>.  The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a both a <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> 
+            prov:location</a> and a <dfn>nidm:Coordinate</dfn>.  The attributes <dfn>nidm:coordinate[K]</dfn> specifies the coordinate along the Kth dimension in voxels.  
+          </section>
+          <section id="overview-CoordinateSpace">
+            <h4>Coordinate Space</h4>
+            The Coordinate Space is an entity with spatial attributes (e.g. dimensionsInVoxels, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g. a <a href="#overview-StatisticMap">StatisticMap</a>.
+            The attribute <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:Coordinate</dfn>.  The attributes 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the coordinate space.  The attribute <dfn>nidm:voxelToWorldMapping</dfn> specifies the 
+            affine transformation matrix of the mapping from voxel to world space.  The attribute <dfn>nidm:worldCoordinateSystem</dfn> specifies the coordinate system (e.g. <dfn>nidm:mniCoordinateSystem</dfn>).  The
+            attribute <dfn>nidm:voxelUnits</dfn> specifies the units in each of the dimensionsInVoxels.  The attribute <dfn>nidm:voxelSize</dfn> specifies the size of the voxels in nidm:voxelUnits.  The attribute <dfn>nidm:dimensionsInVoxels</dfn>
+            specifies the dimensionsInVoxels of the coordinate space.  The attribute <dfn>nidm:numberOfDimensions</dfn> specifies the number of dimensionsInVoxels in the coordinate space.
+            
+          </section>
+        </section>
+          
+          <section id="inference">
+            <h1>Inference</h1>
+            The Inference activity in this context represents the process of inferring the<a href="#overview-ExcursionSet">ExcursionSet</a> from a <a href="#overview-StatisticMap">StatisticMap</a>.  
+            <!--<figure id="fig-nidmresults-inference">
+              <img src="img/nidm-results_010/nidm-results-inference.png" width=750px/>
+              <figcaption>Core Inference Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
+            </figure> -->
+
+            <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+              <caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of NIDM-Results Inference Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+              <tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+                <!-- ------------- Beginning of PROV Entities ------------- -->
+                <tr>
+                  <td><a title="concept-HeightThreshold">HeightThreshold</a>
+                  </td>
+                  <td rowspan="5" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
+                  <td><a>HeightThreshold</a>
+                  </td>
+                  <td><a href="#overview-HeightThreshold"></a></td>
+                </tr>
+                </tr>
+                  <td><a title="concept-ExtentThreshold">ExtentThreshold</a>
+                  </td>
+                  <td><a>ExtentThreshold</a>
+                  </td>
+                  <td><a href="#overview-ExtentThreshold"></a></td>
+                </tr>
+                  <td><a title="concept-ExcursionSet">ExcursionSet</a>
+                  </td>
+                  <td><a>ExcursionSet</a>
+                  </td>
+                  <td><a href="#overview-ExcursionSet"></a></td>
+                <tr>
+                  <td><a title="concept-ClusterStatistic">ClusterStatistic</a>
+                  </td>
+                  <td><a>ClusterStatistic</a>
+                  </td>
+                  <td><a href="#overview-ClusterStatistic"></a></td>
+                </tr>
+                <tr>
+                  <td><a title="concept-Peak">Peak</a>
+                  </td>
+                  <td><a>Peak</a>
+                  </td>
+                  <td><a href="#overview-Peak"></a></td>
+                </tr>
+                <!-- ------------- End of PROV Entities ------------- -->
+                <!-- ------------- Beginning of PROV Activities ------------- -->
+                <tr>
+                  <td><a title="concept-Inference">Inference</a>
+                  </td>
+                  <td rowspan="1" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
+                  <td><a>Inference</a></td>
+                  <td><a href="#overview-Inference"></a></td>
+                </tr>
+                <!-- ------------- End of PROV Activities ------------- -->
+              </tbody>
+            </table>
+          </div>
+
+          <section id="overview-HeightThreshold">
+            <h4>HeightThreshold</h4>
+            The Height Threshold entity represents a numerical value that establishes a bound on a range of voxel-wise or vertex-wise defined statistics.  The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:HeightThreshold</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the threshold.  The optional 
+            attribute <dfn>nidm:pValueUncorrected</dfn> specifies the uncorrected p-value associated with the <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-value"> 
+            prov:value</a> threshold. The prov:value threshold is in units consistent with the <a href="#overview-StatisticMap">StatisticMap</a> used in the 
+            <a href="#overview-Inference">Inference</a> activity.  The optional attribute <dfn>nidm:userSpecifiedThresholdType</dfn> stores a string identifying the threshold type
+            selected in the <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-software-agent">SoftwareAgent</a>.  The optional attribute <dfn>nidm:pValueFWER</dfn> specifies
+            the corrected p-value (e.g. family-wise error rate;FWER).  See <a href="#attributes-HeightThreshold">HeightThreshold</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-ExtentThreshold">
+            <h4>ExtentThreshold</h4>
+            The Extent Threshold entity represents a numerical value that establishes a bound on a range of cluster-sizes (i.e. minimum cluster size) used when thresholding a statistic. The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:ExtentThreshold</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the threshold.  The optional 
+            attribute <dfn>nidm:pValueUncorrected</dfn> specifies the uncorrected p-value associated with the <dfn>spm:clusterSizeInResels</dfn>.  The attributes <dfn>spm:clusterSizeInResels</dfn> and
+            <dfn>spm:clusterSizeInVoxels</dfn> specify the minimum cluster size in voxels and resels respectively.  The optional attribute <dfn>nidm:pValueFWER</dfn> specifies a corrected
+            p-value associated with the spm:clusterSizeInVoxels (e.g. family-wise error rate;FWER). See <a href="#attributes-ExtentThreshold">ExtentThreshold</a> for an example in 
+            <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+          </section>
+          <section id="overview-Inference">
+            <h4>Inference</h4>
+            The Inference activity in this context represents the process of inferring the <a href="#overview-ExcursionSet">ExcursionSet</a> from a <a href="#overview-StatisticMap">StatisticMap</a>. The
+            activity uses the <a href="#overview-HeightThreshold">HeightThreshold</a>, <a href="#overview-ExtentThreshold">ExtentThreshold</a>, <a href="#overview-StatisticMap">StatisticMap</a>, 
+            <a href="#overview-ReselsPerVoxelMap">ReselsPerVoxelMap</a>, and <a href="#overview-MaskMap">MaskMap</a>.  The inference activity generates the <a href="#overview-ExcursionSet">ExcursionSet</a> and
+            the additional metadata <a href="#overview-SearchSpace">SearchSpace</a> and <a href="#overview-StatisticalImageProperties">StatisticalImageProperties</a>. See <a href="#attributes-Inference">
+            Inference</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+          </section>
+
+          <section id="overview-ExcursionSet">
+            <h4>ExcursionSet</h4>
+            The Excursion Set entity represents a set of map elements surviving a thresholding procedure and is generated by the <a href="#overview-Inference">Inference</a> activity.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:ExcursionSet</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the excursion set.  The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the excursion set (e.g. in the case of voxelwise 
+            fMRI analyses this would be an image with voxel values equal to the statistic).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
+            <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
+            <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-Coordinate">Coordinate</a>).  The optional attribute <dfn>spm:maximumIntensityProjection</dfn>
+            The optional attribute specifies a deferenceable URL to a file representing the maximum intensity projection image of the excursion set.  The optional attribute <dfn>crypto:sha512</dfn> 
+            provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-ExcursionSet">ExcursionSet</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+          </section>
+          <section id="overview-ClusterStatistic">
+            <h4>ClusterStatistic</h4>
+            The Cluster Statistic entity represents a statistic defined at the cluster-level in an excursion set.  In SPM it is defined as the cluster size.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:ClusterStatistic</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the cluster statistic entity.  The optional attribute
+            <dfn>nidm:qvalueFDR</dfn> represents the p-value adjusted for multiple testing, controlling for the false discovery rate.  The optional attribute <dfn>nidm:clusterLabelId</dfn> specifies the cluster
+            number (e.g. the SPM software numbers the clusters).  The optional attribute <dfn>spm:clusterSizeInResels</dfn> specifies the cluster size in <a href="http://en.wikipedia.org/wiki/Resel">resels</a>. The
+            optional attribute <dfn>nidm:pValueFWER</dfn> specifies the p-value adjusted for multiple comparisons, controlling for the family-wise error rate.  The optional attribute <dfn>nidm:pValueUncorrected</dfn>
+            represents the uncorrected p-value.  The optional attribute <dfn>nidm:clusterSizeInVoxels</dfn> specifies the number of voxels contained in the cluster. See <a href="#attributes-ClusterStatistic">
+            ClusterStatistic</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.
+          </section>
+          <section id="overview-Peak">
+            <h4>Peak</h4>
+            The Peak Statistic entity represents a statistic defined at the peak-level in an excursion set.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:Peak</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the peak statistic entity.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> references a <a href="#overview-Coordinate">Coordinate</a> entity using the
+            an information resource identifier of the form niiri:[prov:label] where the prov:label is the label of the coordinate entity consistent with this peak statistic.The optional attribute
+            <dfn>nidm:qvalueFDR</dfn> represents the p-value adjusted for multiple testing, controlling for the false discovery rate.  The optional attribute <dfn>nidm:pValueFWER</dfn> specifies 
+            the p-value adjusted for multiple comparisons, controlling for the family-wise error rate.  The optional attribute <dfn>nidm:pValueUncorrected</dfn> represents the uncorrected p-value. The
+            optional attribute <dfn>nidm:equivalentZStatistic</dfn> specifies the z-statistic.    
+            See <a href="#attributes-Peak">Peak</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation.   
+          </section>
+
+  </section>
+          
+</section>
+<!-- This section will be updated late on with details about the Masking and Conjunction modelling -->
+          <!--<section>
+            <h1>NIDM-Results Extended structures</h1>
+
+            <section>
+            <h1>Masking</h1>
+            </section>
+
+  <section>
+            <h1>Conjunction</h1>
+            </section>
+
+          </section>-->
+
+          <section>
+            <h1>Software-specific structures</h1>
+
+            <section>
+            <h1>SPM-specific concepts</h1>
+
+            SPM-specific structures are outlined in <a href="#fig-nidmresults-core-uml-spm"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to SPM-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional SPM-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-spm">
+              <img src="img/nidm-results_010/nidm-results-core-uml-spm.png" width=900px/>
+              <figcaption>SPM-specific Structures. </figcaption>
+            </figure> 
+
+          
+            <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+              <caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>SPM-specific entities and generic entities including SPM-specific attributes</caption> <!-- Table 2 -->
+              <tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+                <!-- ------------- Beginning of PROV Entities ------------- -->
+                <tr>
+                  <td><a title="concept-ReselsPerVoxelMap">ReselsPerVoxelMap</a>
+                  </td>
+                  <td rowspan="3" style="text-align: center;">SPM-specific Entities</td>
+                  <td><a>ReselsPerVoxelMap</a>
+                  </td>
+                  <td><a href="#overview-ReselsPerVoxelMap"></a></td>
+                </tr>
+                <tr>
+                  <td><a title="concept-StatisticImageProperties">StatisticImageProperties</a>
+                  </td>
+                  <td><a>StatisticImageProperties</a>
+                  </td>
+                  <td><a href="#overview-StatisticImageProperties"></a></td>
+                </tr>
+                <tr>
+                  <td><a title="concept-Set">Set</a>
+                  </td>
+                  <td><a>Set</a>
+                  </td>
+                  <td><a href="#overview-Set"></a></td>
+                </tr>
+                <!-- ------------- End of SPM-specific Entities ------------- -->
+                <!-- ------------- Beginning of PROV Entities with SPM-specific attributes ------------- -->
+                <tr>
+                  <td><a title="concept-ExtentThreshold">ExtentThreshold</a>
+                  </td>
+                  <td rowspan="4" style="text-align: center;">Entities with SPM-specific attributes</td>
+                  <td><a>ExtentThreshold</a>
+                  </td>
+                  <td><a href="#overview-ExtentThresholdSPM"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ExcursionSet">ExcursionSet</a>
+                  </td>
+                  <td><a>ExcursionSet</a>
+                  </td>
+                  <td><a href="#overview-ExcursionSetSPM"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-SearchSpaceMap">SearchSpaceMap</a>
+                  </td>
+                  <td><a>SearchSpaceMap</a>
+                  </td>
+                  <td><a href="#overview-SearchSpaceMapSPM"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-ClusterStatistic">ClusterStatistic</a>
+                  </td>
+                  <td><a>ClusterStatistic</a>
+                  </td>
+                  <td><a href="#overview-ClusterStatisticSPM"></a>
+                  </td>
+                </tr>
+                <!-- ------------- End of PROV Activities ------------- -->
+              </tbody>
+            </table>
+          </div>
+          <section id="overview-ReselsPerVoxelMap">
+            <h4>ReselsPerVoxelMap</h4>
+            The ReselsPerVoxelMap entity specifies a map of the number of resels per voxel.  Details about the relationship between RESELS and voxels can be found at <a href="         
+            http://blogs.warwick.ac.uk/nichols/entry/fwhm_resel_details/">fwhm_resel_details</a>.  SPM explicitly saves a map (e.g. RPV.img).  This entity represents the map.  The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type">
+            prov:type</a> with value <dfn>spm:ReselsPerVoxelMap</dfn> specifies the type as a map whose value at each location is the number of resels per voxel.The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the Statistic Map (e.g. in the case of voxelwise 
+            fMRI analyses this would be an image with voxel values equal to the statistic).  Alternatively the relative (or absolute) path to a file could be used.  The optional attribute 
+            <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the prov:location was set to a URL.  The optional attribute 
+            <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-CoordinateSpace">CoordinateSpace</a>).  The optional attribute  
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label">prov:label</a> provides a human readable description of the map.  The optional attribute 
+            <dfn>crypto:sha512</dfn> provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.
+            See <a href="#attributes-ReselsPerVoxelMap">ReselsPerVoxelMap</a> for an example in <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> notation. 
+            
+          </section>
+          <section id="overview-StatisticalImageProperties">
+            <h4>StatisticalImageProperties</h4>
+            The Statistical Image Properties entity specifies metadata about the <a href="#overview-ExcursionSet">ExcursionSet</a>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>spm:StatisticImageProperties</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the entity.The optional attribute <dfn>spm:expectedNumberofClusters</dfn> specifies the
+            expected number of clusters in the excursion set.  The optional attribute <dfn>spm:smallestSignifClusterSizeInVoxelsFDR05</dfn> specifies the smallest cluster size in voxels that are significant at a false 
+            discovery rate corrected alpha value of 0.05. The optional attribute <dfn>spm:smallestSignifClusterSizeInVoxelsFWE05</dfn> specifies the smallest cluster size in voxels significant at family-wise error 
+            corrected alpha value of 0.05. The optional attribute <dfn>spm:heightCriticalThresholdFWE05</dfn> specifies the peak statistic threshold corrected for family-wise error at a level of alpha = 0.05.  The
+            optional attribute <dfn>spm:expectedNumberOfVoxelsPerCluster</dfn> specifies the expected number of voxels in a cluster. The optional attribute <dfn>spm:heightCriticalThresholdFDR05</dfn> specifies
+            the peak statistic threshold corrected for false discovery rate at a level of alpha = 0.05. 
+          </section>
+          <section id="overview-Set">
+            <h4>Set</h4>
+            The Set entity represents the "set-level" statistic.  In SPM it is defined as the number of clusters above a given size in an excursion set.The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>spm:Set</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the entity. The optional attribute <dfn>nidm:pValue</dfn> specifies
+            the uncorrected p-value of obtaining the <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-value"> prov:value</a> number of clusters or more by chance.
+          </section>
+          <section id="overview-ExtentThresholdSPM">
+            <h4>ExtentThreshold (SPM-specific attributes)</h4>
+            The following SPM-specific attributes are defined in ExtentThreshold:
+            <ul>
+              <li><dfn>spm:clusterSizeInResels</dfn></li>
+            </ul>
+
+            See  <a href="#overview-ExtentThreshold">ExtentThreshold</a> for a list of the generic attributes.
+          </section>
+          <section id="overview-ExcursionSetSPM">
+            <h4>ExcursionSet (SPM-specific attributes)</h4>
+            The following SPM-specific attributes are defined in ExcursionSet:
+            <ul>
+              <li><dfn>spm:maximumIntensityProjection</dfn></li>
+            </ul>
+            
+            See  <a href="#overview-ExcursionSet">ExcursionSet</a> for a list of the generic attributes.
+          </section>
+          <section id="overview-SearchSpaceMapSPM">
+            <h4>SearchSpace (SPM-specific attributes)</h4>
+            The following SPM-specific attributes are defined in SearchSpace:
+            <ul>
+              <li><dfn>spm:searchVolumeInVoxels</dfn></li>
+              <li><dfn>spm:searchVolumeInProductOfUnits</dfn></li>
+              <li><dfn>spm:reselSize</dfn></li>
+              <li><dfn>spm:searchVolumeInResels</dfn></li>
+              <li><dfn>spm:searchVolumeReselsGeometry</dfn></li>
+              <li><dfn>spm:noiseFWHMInVoxels</dfn></li>
+              <li><dfn>spm:noiseFWHMInUnits</dfn></li>
+            </ul>
+            
+            <p>See  <a href="#overview-SearchSpace">SearchSpace</a> for a list of the generic attributes.</p>
+
+            The Search Space map entity is of <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> <a href="#overview-MaskMap">MaskMap</a> and specifies the space in which inference is done
+            to create the <a href="#overview-ExcursionSet">ExcursionSet</a>.   The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-type"> prov:type</a> specifies the entity type as a <dfn>nidm:MaskMap</dfn>.  The attribute
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-label"> prov:label</a> provides a human readable description of the search space map.  The attribute 
+            <a href="http://www.w3.org/TR/2013/REC-prov-dm-20130430/#concept-location"> prov:location</a> specifies a deferenceable URL to a file representing the search space.  Alternatively the relative 
+            (or absolute) path to a file could be used.  The optional attribute <dfn>nidm:originalFileName</dfn> is used to retain the filename from the original software package that created it in case the 
+            prov:location was set to a URL.  The optional attribute <dfn>crypto:sha512</dfn> 
+            provides a unique <a href="http://csrc.nist.gov/groups/STM/cavp/documents/shs/sha256-384-512.pdf">sha-512</a> hash of the file pointed to by the prov:location attribute.  The optional attribute <dfn>nidm:coordinateSpace</dfn> is used to associate spatial metadata with a physical file (see <a href="#overview-CoordinateSpace">CoordinateSpace</a>).
+            The optional attribute <dfn>spm:noiseFWHMInVoxels</dfn> specifies estimated full width at half maximum of the noise distribution in voxels.  The optional attribute <dfn>spm:searchVolumeInResels</dfn> specifies
+            the total number of resels within the search volume.  The optional atribute <dfn>spm:noiseFWHMInUnits</dfn> specifies the estimated full width at half maximum of the noise distribution in world units.  The
+            optional attribute <dfn>nidm:randomFieldStationarity</dfn> has value <dfn>spm:nonStationarityRandomField</dfn> and specifies that the random field that is variable across the search volume.  The optional
+            attribute <dfn>spm:reselSize</dfn> specifies the size of one resel in voxels or vertices.  The optional attribute <dfn>spm:searchVolumeReselsGeometry</dfn> specifies Description of geometry of search volume.  
+            As per Worsley et al. (<a href="http://www.ncbi.nlm.nih.gov/pubmed/20408186">20408186</a>), the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, 
+            the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels.  The optional
+            attribute <dfn>spm:searchVolumeInVoxels</dfn> specifies the search volume in voxels.  
+          </section>
+          <section id="overview-ClusterStatisticSPM">
+            <h4>Cluster (SPM-specific attributes)</h4>
+            The following SPM-specific attributes are defined in Cluster:
+            <ul>
+              <li><dfn>spm:clusterSizeInResels</dfn></li>
+            </ul>
+            
+            See  <a title="concept-ClusterStatistic">ClusterStatistic</a> for a list of the generic attributes.
+          </section>
+        </section>
+          <section>
+            <h1>FSL-specific concepts</h1>
+            FSL-specific structures are outlined in <a href="#fig-nidmresults-core-uml-fsl"></a>. Grey boxes corresponds to generic concepts. Colored boxes corresponds to FSL-specific classes where color coding indicated the prov:type (blue: prov:entity, red: prov:activity), half-colored boxes corresponds to generic classes having additional FSL-specific attributes.
+            
+            <figure id="fig-nidmresults-core-uml-fsl">
+              <img src="img/nidm-results_010/nidm-results-core-uml-fsl.png" width=900px/>
+              <figcaption>FSL-specific Structures. </figcaption>
+            </figure> 
+            
+            <div style="text-align: left;">
+            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+              <caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>FSL-specific entities and generic entities including FSL-specific attributes</caption> <!-- Table 2 -->
+              <tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+                <!-- ------------- Beginning of PROV Entities ------------- -->
+                <tr>
+                  <td><a title="concept-ZStatisticMap">ZStatisticMap</a>
+                  </td>
+                  <td rowspan="2" style="text-align: center;">FSL-specific Entities</td>
+                  <td><a>ZStatisticMap</a>
+                  </td>
+                  <td><a href="#overview-ZStatisticMap"></a></td>
+                </tr>
+                <tr>
+                  <td><a title="concept-CenterOfGravity">CenterOfGravity</a>
+                  </td>
+                  <td><a>CenterOfGravity</a>
+                  </td>
+                  <td><a href="#overview-CenterOfGravity"></a></td>
+                </tr>
+                <!-- ------------- End of FSL-specific Entities ------------- -->
+                <!-- ------------- Beginning of PROV Entities with FSL-specific attributes ------------- -->
+                <tr>
+                  <td><a title="concept-SearchSpaceMap">SearchSpaceMap</a>
+                  </td>
+                  <td rowspan="2" style="text-align: center;">Entities with FSL-specific attributes</td>
+                  <td><a>SearchSpaceMap</a>
+                  </td>
+                  <td><a href="#overview-SearchSpaceMapFSL"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a title="concept-Peak">Peak</a>
+                  </td>
+                  <td><a>Peak</a>
+                  </td>
+                  <td><a href="#overview-PeakFSL"></a>
+                  </td>
+                </tr>
+                <!-- ------------- End of PROV Activities ------------- -->
+              </tbody>
+            </table>
+          </div>
+          <section id="overview-ZStatisticMap">
+            <h4>ZStatisticMap</h4>
+            Th ZStatisticMap entity is used to represent a map where entries correspond to a z-statistic.  
+          </section>
+          <section id="overview-CenterOfGravity">
+            <h4>CenterOfGravity</h4>
+            The Center of Gravity entity is used to represent the weighted average of the coordinates by intensities within a cluster.  
+          </section>
+
+          <section id="overview-SearchSpaceMapFSL">
+            <h4>SearchSpace (FSL-specific attributes)</h4>
+            The following FSL-specific attributes are defined in SearchSpace:
+            <ul>
+              <li><dfn>fsl:reselSizeInVoxels</dfn></li>
+            </ul>
+            
+            <p>See  <a href="#overview-SearchSpace">SearchSpace</a> for a list of the generic attributes.</p>
+
+          </section>
+          <section id="overview-PeakFSL">
+            <h4>Peak (FSL-specific attributes)</h4>
+            The following FSL-specific class can be used as a prov:type in Peak:
+            <ul>
+              <li><dfn>fsl:ClusterMaximumStatistic</dfn></li>
+            </ul>
+            
+            <p>See  <a href="#overview-Peak">Peak</a> for a list of the generic attributes.</p>
+          </section>
+          <section id="overview-CoordinateFSL">
+            <h4>Coordinate (FSL-specific attributes)</h4>
+            
+            The following FSL-specific attributes are defined in Coordinate:
+            <ul>
+              <li><dfn>fsl:coordinate1InVoxels</dfn></li>
+              <li><dfn>fsl:coordinate2InVoxels</dfn></li>
+              <li><dfn>fsl:coordinate3InVoxels</dfn></li>
+            </ul>
+            
+            <p>See  <a href="#overview-Coordinate">Coordinate</a> for a list of the generic attributes.</p>
+          </section>
+          </section>
+          </section>
+
+
+        </section>
+        <section id="illustration-SPM">
+          <h1>Illustration of NIDM-Results by an example.</h1>
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/spm/spm_results.svg">SPM Results Graph</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/spm/spm_results.provn">SPM Results PROV-N serialization</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/spm/spm_results.ttl">SPM Results TURTLE serialization</a></p>
+          <p>Further SPM Examples:</p>
+          <p><a href="https://github.com/incf-nidash/nidm/tree/master/nidm/nidm-results/spm/example001">example001</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/tree/master/nidm/nidm-results/spm/example002">example002</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/tree/master/nidm/nidm-results/spm/example003">example003</a></p>
+          
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/fsl/fsl_results.svg">FSL Results Graph</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/fsl/fsl_results.provn">FSL Results PROV-N serialization</a></p>
+          <p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/fsl/fsl_results.ttl">FSL Results TURTLE serialization</a></p>
+        </section>
+        <section>
+          <h1>NIDM-Results Types and Relations.</h1>
+          <section>
+            <h2>Element 1: Model Fitting</h2>
+            
+  <!-- Beginning of automatically-generated: model fitting -->
+  <section id="section-ModelParametersEstimation"> <!-- ModelParametersEstimation -->
+
+<h3 label="ModelParametersEstimation">ModelParametersEstimation</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ModelParametersEstimation">ModelParametersEstimation</dfn><sup><a title="concept-ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup>is a the process of estimating the parameters of a general linear model from the available data (sub-type of prov:Activity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ModelParametersEstimation"> A nidm:<dfn>ModelParametersEstimation</dfn><sup><a title="ModelParametersEstimation"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ModelParametersEstimation.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ModelParametersEstimation.</li>
+</ul>
+</div>
+<pre class='example highlight'>activity(niiri:model_pe_id,
+    [prov:type = 'nidm:ModelParametersEstimation',
+    prov:label = "Model parameters estimation"])</pre></section>
+
+<section id="section-Data"> <!-- Data -->
+
+<h3 label="Data">Data</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-Data">Data</dfn><sup><a title="concept-Data"><span class="diamond"> ◊</span></a></sup>is a "A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn." (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Data"> A nidm:<dfn>Data</dfn><sup><a title="Data"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="Data.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Data.</li>
+<li><span class="attribute" id="Data.grandMeanScaling">nidm:grandMeanScaling</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> binary flag defining whether the data was scaled. Specifically, "grand mean scaling" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses.</li>
+<li><span class="attribute" id="Data.targetIntensity">nidm:targetIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true).</li>
+<li><span class="attribute" id="Data.medianIntensity">nidm:medianIntensity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> value corresponding to the median intensity of the Data. When grandMeanScaling is TRUE, this is a useful diagnostic to see if the typical brain intensity has been scaled to approximately the targetIntensity.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:data_id,
+    [prov:type = 'nidm:Data',
+    prov:type = 'prov:Collection',
+    prov:label = "Data" %% xsd:string,
+    nidm:grandMeanScaling = "true" %%xsd:boolean,
+    nidm:targetIntensity = "100" %% xsd:float,
+    nidm:medianIntensity = "115.32" %% xsd:float])</pre></section>
+
+<section id="section-DesignMatrix"> <!-- DesignMatrix -->
+
+<h3 label="DesignMatrix">DesignMatrix</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-DesignMatrix">DesignMatrix</dfn><sup><a title="concept-DesignMatrix"><span class="diamond"> ◊</span></a></sup>is a design matrix associated with a particular design (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-DesignMatrix"> A nidm:<dfn>DesignMatrix</dfn><sup><a title="DesignMatrix"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="DesignMatrix.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the DesignMatrix.</li>
+<li><span class="attribute" id="DesignMatrix.path to a csv file describing the design matrix">prov:location:path to a csv file describing the design matrix</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="DesignMatrix.visualisation">nidm:visualisation</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> graphical representation of an entity.</li>
+<li><span class="attribute" id="DesignMatrix.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:design_matrix_id,
+    [prov:type = 'nidm:DesignMatrix',
+    prov:location = "file:///path/to/design_matrix.csv" %% xsd:anyURI,
+    nidm:visualisation = "file:///path/to/design_matrix.png" %% xsd:anyURI,
+    prov:label = "Design Matrix" %% xsd:string,
+    nidm:originalFileName = "design_matrix.csv" %% xsd:string])</pre></section>
+
+<section id="section-ParameterEstimateMap"> <!-- ParameterEstimateMap -->
+
+<h3 label="ParameterEstimateMap">ParameterEstimateMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ParameterEstimateMap">ParameterEstimateMap</dfn><sup><a title="concept-ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the estimate of a model parameter (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ParameterEstimateMap"> A nidm:<dfn>ParameterEstimateMap</dfn><sup><a title="ParameterEstimateMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ParameterEstimateMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ParameterEstimateMap.</li>
+<li><span class="attribute" id="ParameterEstimateMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ParameterEstimateMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ParameterEstimateMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ParameterEstimateMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:parameter_estimate_map_id_1,
+    [prov:type = 'nidm:ParameterEstimateMap',
+    prov:location = "file:///path/to/beta_0001.img" %% xsd:anyURI,
+    prov:label = "Beta Map 1" %% xsd:string,
+    nidm:originalFileName = "beta_0001.img" %% xsd:string,
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-ResidualMeanSquaresMap"> <!-- ResidualMeanSquaresMap -->
+
+<h3 label="ResidualMeanSquaresMap">ResidualMeanSquaresMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ResidualMeanSquaresMap">ResidualMeanSquaresMap</dfn><sup><a title="concept-ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the residual of the mean squares fit to the data.
+ (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ResidualMeanSquaresMap"> A nidm:<dfn>ResidualMeanSquaresMap</dfn><sup><a title="ResidualMeanSquaresMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ResidualMeanSquaresMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ResidualMeanSquaresMap.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ResidualMeanSquaresMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:residual_mean_squares_map_id,
+    [prov:type = 'nidm:ResidualMeanSquaresMap',
+    prov:location = "file:///path/to/ResMS.img" %% xsd:anyURI,
+    prov:label = "Residual Mean Squares Map" %% xsd:string,
+    nidm:originalFileName = "ResMS.img" %% xsd:string,
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-ContrastWeights"> <!-- ContrastWeights -->
+
+<h3 label="ContrastWeights">ContrastWeights</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ContrastWeights">ContrastWeights</dfn><sup><a title="concept-ContrastWeights"><span class="diamond"> ◊</span></a></sup>is a vector defining the linear combination associated with a particular contrast.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastWeights"> A nidm:<dfn>ContrastWeights</dfn><sup><a title="ContrastWeights"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ContrastWeights.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastWeights.</li>
+<li><span class="attribute" id="ContrastWeights.contrastName">nidm:contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastWeights.Name of the contrast.">prov:value:Name of the contrast.</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:t_contrast_id,
+    [prov:type = 'nidm:TContrastWeights',
+    nidm:contrastName = ""listening > rest"" %% xsd:string,
+    prov:label = ""Contrast: Listening > Rest"" %% xsd:string,
+    prov:value = ""[1, 0, 0]"" %% xsd:string])</pre></section>
+
+<section id="section-MaskMap"> <!-- MaskMap -->
+
+<h3 label="MaskMap">MaskMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-MaskMap">MaskMap</dfn><sup><a title="concept-MaskMap"><span class="diamond"> ◊</span></a></sup>is a map or surface on which the associated results are displayed.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-MaskMap"> A nidm:<dfn>MaskMap</dfn><sup><a title="MaskMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="MaskMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the MaskMap.</li>
+<li><span class="attribute" id="MaskMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="MaskMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="MaskMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="MaskMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:mask_id_2,
+    [prov:type = 'nidm:MaskMap',
+    prov:location = "file:///path/to/mask.img" %% xsd:anyURI,
+    prov:label = "Mask" %% xsd:string,
+    nidm:originalFileName = "mask.img" %% xsd:string,
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-ContrastEstimation"> <!-- ContrastEstimation -->
+
+<h3 label="ContrastEstimation">ContrastEstimation</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ContrastEstimation">ContrastEstimation</dfn><sup><a title="concept-ContrastEstimation"><span class="diamond"> ◊</span></a></sup>is a the process of estimating a contrast from the estimated parameters of statistical model (sub-type of prov:Activity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastEstimation"> A nidm:<dfn>ContrastEstimation</dfn><sup><a title="ContrastEstimation"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ContrastEstimation.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastEstimation.</li>
+</ul>
+</div>
+<pre class='example highlight'>activity(niiri:contrast_estimation_id,
+    [prov:type = 'nidm:ContrastEstimation',
+    prov:label = "Contrast estimation"])</pre></section>
+
+<section id="section-ContrastMap"> <!-- ContrastMap -->
+
+<h3 label="ContrastMap">ContrastMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ContrastMap">ContrastMap</dfn><sup><a title="concept-ContrastMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is statistical contrast estimate (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastMap"> A nidm:<dfn>ContrastMap</dfn><sup><a title="ContrastMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ContrastMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastMap.</li>
+<li><span class="attribute" id="ContrastMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ContrastMap.contrastName">nidm:contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ContrastMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ContrastMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>  entity(niiri:contrast_map_id,
+    [prov:type = 'nidm:ContrastMap',
+    prov:location = "file:///path/to/con_0001.img" %% xsd:anyURI,
+    prov:label = "Contrast Map: listening > rest" %% xsd:string,
+    nidm:contrastName = "listening > rest" %% xsd:string,
+    nidm:originalFileName = "con_0001.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-ContrastStandardErrorMap"> <!-- ContrastStandardErrorMap -->
+
+<h3 label="ContrastStandardErrorMap">ContrastStandardErrorMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ContrastStandardErrorMap">ContrastStandardErrorMap</dfn><sup><a title="concept-ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the standard error of a given contrast (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ContrastStandardErrorMap"> A nidm:<dfn>ContrastStandardErrorMap</dfn><sup><a title="ContrastStandardErrorMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ContrastStandardErrorMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ContrastStandardErrorMap.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.contrastName">nidm:contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ContrastStandardErrorMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:contrast_standard_error_map_id,
+    [prov:type = 'nidm:ContrastStandardErrorMap',
+    prov:location = "file:///path/to/contrastSE.nii" %% xsd:anyURI,
+    prov:label = "Contrast Standard Error Map" %% xsd:string,
+    nidm:originalFileName = "contrastSE.nii" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-StatisticMap"> <!-- StatisticMap -->
+
+<h3 label="StatisticMap">StatisticMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-StatisticMap">StatisticMap</dfn><sup><a title="concept-StatisticMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is a statistic.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-StatisticMap"> A nidm:<dfn>StatisticMap</dfn><sup><a title="StatisticMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="StatisticMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the StatisticMap.</li>
+<li><span class="attribute" id="StatisticMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="StatisticMap.contrastName">nidm:contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="StatisticMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="StatisticMap.errorDegreesOfFreedom">nidm:errorDegreesOfFreedom</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the error.</li>
+<li><span class="attribute" id="StatisticMap.effectDegreesOfFreedom">nidm:effectDegreesOfFreedom</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> degrees of freedom of the effect.</li>
+<li><span class="attribute" id="StatisticMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="StatisticMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:statistic_map_id,
+    [prov:type = 'nidm:StatisticMap',
+    prov:location = "file:///path/to/spmT_0001.img" %% xsd:anyURI,
+    prov:label = "Statistic Map: listening > rest" %% xsd:string,
+    nidm:contrastName = "listening > rest" %% xsd:string,
+    nidm:originalFileName = "spmT_0001.img" %% xsd:string,
+    nidm:errorDegreesOfFreedom = "72.9999999990787" %% xsd:float,
+    nidm:effectDegreesOfFreedom = "1" %% xsd:float,
+    nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+  <!-- End of automatically-generated model fitting-->
+  </section>
+
+  <section>
+  <h2>Element 2: Inference</h2>
+  <!-- Beginning of automatically-generated: inference -->
+  <section id="section-HeightThreshold"> <!-- HeightThreshold -->
+
+<h3 label="HeightThreshold">HeightThreshold</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-HeightThreshold">HeightThreshold</dfn><sup><a title="concept-HeightThreshold"><span class="diamond"> ◊</span></a></sup>is a a numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
+ (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-HeightThreshold"> A nidm:<dfn>HeightThreshold</dfn><sup><a title="HeightThreshold"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="HeightThreshold.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the HeightThreshold.</li>
+<li><span class="attribute" id="HeightThreshold.userSpecifiedThresholdType">nidm:userSpecifiedThresholdType</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> type (p-value either corrected or uncorrected or statistic) of the user-defined height threshold.</li>
+<li><span class="attribute" id="HeightThreshold.pValueUncorrected">nidm:pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="HeightThreshold.pValueFWER">nidm:pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:height_threshold_id,
+    [prov:type = 'nidm:HeightThreshold',
+    prov:label = "Height Threshold: p<0.05 (FWE)" %% xsd:string,
+    nidm:userSpecifiedThresholdType = "p-value FWE" %% xsd:string,
+    prov:value = "5.23529984739211" %% xsd:float,
+    nidm:pValueUncorrected = "7.62276079258051e-07" %% xsd:float,
+    nidm:pValueFWER = "0.05" %% xsd:float])</pre></section>
+
+<section id="section-ExtentThreshold"> <!-- ExtentThreshold -->
+
+<h3 label="ExtentThreshold">ExtentThreshold</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ExtentThreshold">ExtentThreshold</dfn><sup><a title="concept-ExtentThreshold"><span class="diamond"> ◊</span></a></sup>is a a numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
+ (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ExtentThreshold"> A nidm:<dfn>ExtentThreshold</dfn><sup><a title="ExtentThreshold"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ExtentThreshold.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ExtentThreshold.</li>
+<li><span class="attribute" id="ExtentThreshold.clusterSizeInVoxels">nidm:clusterSizeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster.</li>
+<li><span class="attribute" id="ExtentThreshold.clusterSizeInResels">nidm:clusterSizeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of resels that make up a cluster.</li>
+<li><span class="attribute" id="ExtentThreshold.pValueUncorrected">nidm:pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="ExtentThreshold.pValueFWER">nidm:pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:extent_threshold_id,
+    [prov:type = 'nidm:ExtentThreshold',
+    prov:label = "Extent Threshold: k>=0" %% xsd:string,
+    nidm:clusterSizeInVoxels = "0" %% xsd:float,
+    spm:clusterSizeInResels = "0" %% xsd:float,
+    nidm:pValueUncorrected = "1" %% xsd:float,
+    nidm:pValueFWER = "1" %% xsd:float])</pre></section>
+
+<section id="section-Inference"> <!-- Inference -->
+
+<h3 label="Inference">Inference</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-Inference">Inference</dfn><sup><a title="concept-Inference"><span class="diamond"> ◊</span></a></sup>is a the process of inferring the excursion set from a Statistic Map (sub-type of prov:Activity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Inference"> A nidm:<dfn>Inference</dfn><sup><a title="Inference"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="Inference.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Inference.</li>
+</ul>
+</div>
+<pre class='example highlight'>activity(niiri:inference_id,
+    [prov:type = 'nidm:Inference',
+    prov:label = "Inference"])</pre></section>
+
+<section id="section-ExcursionSet"> <!-- ExcursionSet -->
+
+<h3 label="ExcursionSet">ExcursionSet</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ExcursionSet">ExcursionSet</dfn><sup><a title="concept-ExcursionSet"><span class="diamond"> ◊</span></a></sup>is a set of map elements surviving a thresholding procedure (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ExcursionSet"> A nidm:<dfn>ExcursionSet</dfn><sup><a title="ExcursionSet"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ExcursionSet.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ExcursionSet.</li>
+<li><span class="attribute" id="ExcursionSet.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ExcursionSet.clusterLabelsMap">nidm:clusterLabelsMap</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer.</li>
+<li><span class="attribute" id="ExcursionSet.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ExcursionSet.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ExcursionSet.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:excursion_set_id,
+    [prov:type = 'nidm:ExcursionSet',
+    prov:location = "file:///path/to/thresh_spmT_0001.img" %% xsd:anyURI,
+    prov:label = "Excursion Set" %% xsd:string,
+    nidm:clusterLabelsMap = "file:///path/to/cluster_labels.img" %% xsd:anyURI,
+    spm:maximumIntensityProjection = "file:///path/to/MIP.png" %% xsd:anyURI,
+    nidm:originalFileName = "thresh_spmT_0001.img" %% xsd:string,
+    nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+    crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-ClusterStatistic"> <!-- ClusterStatistic -->
+
+<h3 label="ClusterStatistic">ClusterStatistic</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ClusterStatistic">ClusterStatistic</dfn><sup><a title="concept-ClusterStatistic"><span class="diamond"> ◊</span></a></sup>is a statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ClusterStatistic"> A nidm:<dfn>ClusterStatistic</dfn><sup><a title="ClusterStatistic"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ClusterStatistic.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ClusterStatistic.</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInVoxels">nidm:clusterSizeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of voxels that make up the cluster.</li>
+<li><span class="attribute" id="ClusterStatistic.clusterLabelId">nidm:clusterLabelId</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> integer associated with a particular cluster as specified in the clusterLabelsMap.</li>
+<li><span class="attribute" id="ClusterStatistic.clusterSizeInResels">nidm:clusterSizeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> number of resels that make up a cluster.</li>
+<li><span class="attribute" id="ClusterStatistic.pValueUncorrected">nidm:pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="ClusterStatistic.pValueFWER">nidm:pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+<li><span class="attribute" id="ClusterStatistic.qValueFDR">nidm:qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:cluster_0001,
+    [prov:type = 'nidm:Cluster',
+    prov:label = "Cluster 0001" %% xsd:string,
+    nidm:clusterSizeInVoxels = "530" %% xsd:int,
+    nidm:clusterLabelId = "1",
+    spm:clusterSizeInResels = "23.1209189500945" %% xsd:float,
+    nidm:pValueUncorrected = "9.56276736481136e-52" %% xsd:float,
+    nidm:pValueFWER = "0" %% xsd:float,
+    nidm:qValueFDR = "7.65021389184909e-51" %% xsd:float])</pre></section>
+
+<section id="section-Peak"> <!-- Peak -->
+
+<h3 label="Peak">Peak</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-Peak">Peak</dfn><sup><a title="concept-Peak"><span class="diamond"> ◊</span></a></sup>is a statistic defined at the peak-level in an excursion set (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Peak"> A nidm:<dfn>Peak</dfn><sup><a title="Peak"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="Peak.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Peak.</li>
+<li><span class="attribute" id="Peak.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="Peak.equivalentZStatistic">nidm:equivalentZStatistic</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score.</li>
+<li><span class="attribute" id="Peak.pValueUncorrected">nidm:pValueUncorrected</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a p-value reported without correction for multiple testing.        .</li>
+<li><span class="attribute" id="Peak.pValueFWER">nidm:pValueFWER</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests".</li>
+<li><span class="attribute" id="Peak.qValueFDR">nidm:qValueFDR</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> p-value adjusted for the multiple testing, controlling for the False Discovery Rate.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:peak_0001,
+    [prov:type = 'nidm:Peak',
+    prov:label = "Peak 0001" %% xsd:string,
+    prov:location = 'niiri:coordinate_0001',
+    prov:value = "13.9346199035645" %% xsd:float,
+    nidm:equivalentZStatistic = "999999999" %% xsd:float,
+    nidm:pValueUncorrected = "4.44089209850063e-16" %% xsd:float,
+    nidm:pValueFWER = "0" %% xsd:float,
+    nidm:qValueFDR = "6.3705194444993e-11" %% xsd:float])</pre></section>
+
+<section id="section-SearchSpaceMap"> <!-- SearchSpaceMap -->
+
+<h3 label="SearchSpaceMap">SearchSpaceMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-SearchSpaceMap">SearchSpaceMap</dfn><sup><a title="concept-SearchSpaceMap"><span class="diamond"> ◊</span></a></sup>is a mask in which the inference was performed (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-SearchSpaceMap"> A nidm:<dfn>SearchSpaceMap</dfn><sup><a title="SearchSpaceMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="SearchSpaceMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SearchSpaceMap.</li>
+<li><span class="attribute" id="SearchSpaceMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="SearchSpaceMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="SearchSpaceMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="SearchSpaceMap.randomFieldStationarity">nidm:randomFieldStationarity</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?.</li>
+<li><span class="attribute" id="SearchSpaceMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="SearchSpaceMap.searchVolumeInVoxels">spm:searchVolumeInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of voxels within the search volume.</li>
+<li><span class="attribute" id="SearchSpaceMap.searchVolumeInProductOfUnits">spm:searchVolumeInProductOfUnits</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>  -- missing definition --.</li>
+<li><span class="attribute" id="SearchSpaceMap.reselSize">spm:reselSize</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> size of one resel in voxels or vertices.</li>
+<li><span class="attribute" id="SearchSpaceMap.searchVolumeInResels">spm:searchVolumeInResels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of resels within the search volume.</li>
+<li><span class="attribute" id="SearchSpaceMap.searchVolumeReselsGeometry">spm:searchVolumeReselsGeometry</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels.</li>
+<li><span class="attribute" id="SearchSpaceMap.noiseFWHMInVoxels">spm:noiseFWHMInVoxels</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> estimatedf Full Width at Half Maximum of the noise distribution in voxels.</li>
+<li><span class="attribute" id="SearchSpaceMap.noiseFWHMInUnits">spm:noiseFWHMInUnits</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> estimated Full Width at Half Maximum of the noise distribution in world units.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:search_space_id,
+      [prov:type = 'nidm:SearchSpaceMap',
+      prov:location = "file:///path/to/final_mask.nii" %% xsd:anyURI,
+      prov:label = "Search Space Map" %% xsd:string,
+      nidm:originalFileName = "final_mask.nii" %% xsd:string,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+      spm:searchVolumeInVoxels = "65593" %% xsd:int,
+      spm:searchVolumeInProductOfUnits = "1771011" %% xsd:float,
+      spm:reselSize = "22.9229643140043" %% xsd:float,
+      spm:searchVolumeInResels = "2552.68032521656" %% xsd:float,
+      spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string,
+      spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string,
+      spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string,
+      nidm:randomFieldStationarity = 'spm:nonStationaryRandomField',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+  <!-- End of automatically-generated: inference -->
+  </section>
+
+  <section id="SPMspecific">
+    <h2>SPM-specific concepts</h2>
+    <!-- Beginning of automatically-generated: SPM-specific-->
+    <section id="section-ReselsPerVoxelMap"> <!-- ReselsPerVoxelMap -->
+
+<h3 label="ReselsPerVoxelMap">ReselsPerVoxelMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ReselsPerVoxelMap">ReselsPerVoxelMap</dfn><sup><a title="concept-ReselsPerVoxelMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is the number of resels per voxel.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ReselsPerVoxelMap"> A spm:<dfn>ReselsPerVoxelMap</dfn><sup><a title="ReselsPerVoxelMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ReselsPerVoxelMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ReselsPerVoxelMap.</li>
+<li><span class="attribute" id="ReselsPerVoxelMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ReselsPerVoxelMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ReselsPerVoxelMap.atCoordinateSpace">nidm:atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+<li><span class="attribute" id="ReselsPerVoxelMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:resels_per_voxel_map_id,
+      [prov:type = 'spm:ReselsPerVoxelMap',
+      prov:location = "file:///path/to/RPV.img" %% xsd:anyURI,
+      prov:label = "Resels per Voxel Map" %% xsd:string,
+      nidm:originalFileName = "RPV.img" %% xsd:string,
+      nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+      crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+<section id="section-StatisticImageProperties"> <!-- StatisticImageProperties -->
+
+<h3 label="StatisticImageProperties">StatisticImageProperties</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-StatisticImageProperties">StatisticImageProperties</dfn><sup><a title="concept-StatisticImageProperties"><span class="diamond"> ◊</span></a></sup>is a properties of the underlying statistical process (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-StatisticImageProperties"> A spm:<dfn>StatisticImageProperties</dfn><sup><a title="StatisticImageProperties"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="StatisticImageProperties.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the StatisticImageProperties.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:stat_image_properties_id,
+      [prov:type = 'spm:StatisticImageProperties',
+      prov:label = "Statistical image properties",
+      spm:expectedNumberOfVoxelsPerCluster = "0.553331387916112" %% xsd:float,
+      spm:expectedNumberOfClusters = "0.0889172687960151" %% xsd:float,
+      spm:heightCriticalThresholdFWE05 = "5.23529984739211" %% xsd:float,
+      spm:heightCriticalThresholdFDR05 = "6.22537899017334" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFWE05 = "1" %% xsd:float,
+      spm:smallestSignifClusterSizeInVoxelsFDR05 = "3" %% xsd:float])</pre></section>
+
+<section id="section-Set"> <!-- Set -->
+
+<h3 label="Set">Set</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-Set">Set</dfn><sup><a title="concept-Set"><span class="diamond"> ◊</span></a></sup>is a statistic defined at the set-level in an excusion set. In SPM it is defined as the number of clusters above a given size in an excursion set.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-Set"> A spm:<dfn>Set</dfn><sup><a title="Set"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="Set.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the Set.</li>
+<li><span class="attribute" id="Set.pValue">nidm:pValue</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> "A quantitative confidence value that represents the probability of obtaining a result at least as extreme as that actually obtained, assuming that the actual value was the result of chance alone.".</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:excursion_set_id,
+      [prov:type = 'spm:Set',
+      prov:label = "Set" %% xsd:string,
+      prov:value = "8" %% xsd:int,
+      nidm:pValue = "8.95949980872501e-14" %% xsd:float])</pre></section>
+
+
+
+<!-- End of automatically-generated: SPM-specific-->
+  </section>
+
+  <section>
+    <h2>FSL-specific concepts</h2>
+    <!-- Beginning of automatically-generated: FSL-specific-->
+    <section id="section-ZStatisticMap"> <!-- ZStatisticMap -->
+
+<h3 label="ZStatisticMap">ZStatisticMap</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-ZStatisticMap">ZStatisticMap</dfn><sup><a title="concept-ZStatisticMap"><span class="diamond"> ◊</span></a></sup>is a a map whose value at each location is a Z-statistic value.  (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-ZStatisticMap"> A fsl:<dfn>ZStatisticMap</dfn><sup><a title="ZStatisticMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="ZStatisticMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the ZStatisticMap.</li>
+<li><span class="attribute" id="ZStatisticMap.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+<li><span class="attribute" id="ZStatisticMap.contrastName">nidm:contrastName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> name of the contrast.</li>
+<li><span class="attribute" id="ZStatisticMap.originalFileName">nidm:originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+<li><span class="attribute" id="ZStatisticMap.coordinateSpace">nidm:coordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em>  -- missing definition --.</li>
+<li><span class="attribute" id="ZStatisticMap.SHA512 hash for the image file">crypto:sha512:SHA512 hash for the image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:z_statistic_map_id,
+        [prov:type = 'nidm:statisticalMap',
+        prov:type = 'fsl:ZStatisticMap',
+        prov:location = "file:///path/to/tstat1.nii.gz" %% xsd:anyURI,
+        prov:label = "Z-Statistic Map: listening &gt; rest: zstat1",
+        nidm:contrastName = "listening &gt; rest" %% xsd:string,
+        nidm:originalFileName = "zstat1.nii.gz" %% xsd:string,
+        nidm:coordinateSpace = 'niiri:coordinate_space_id_1',
+        crypto:sha = "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8"])
+</pre></section>
+
+<section id="section-CenterOfGravity"> <!-- CenterOfGravity -->
+
+<h3 label="CenterOfGravity">CenterOfGravity</h3>
+
+<div class="glossary-ref">   
+
+A <dfn title="concept-CenterOfGravity">CenterOfGravity</dfn><sup><a title="concept-CenterOfGravity"><span class="diamond"> ◊</span></a></sup>is a centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster) (sub-type of prov:Entity). </div>
+
+<p></p>
+
+<div class="attributes" id="attributes-CenterOfGravity"> A fsl:<dfn>CenterOfGravity</dfn><sup><a title="CenterOfGravity"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has attributes:
+<ul>
+<li><span class="attribute" id="CenterOfGravity.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the CenterOfGravity.</li>
+<li><span class="attribute" id="CenterOfGravity.path to the corresponding image file">prov:location:path to the corresponding image file</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> undefined.</li>
+</ul>
+</div>
+<pre class='example highlight'>entity(niiri:center_of_gravity_1,
+        [prov:type = 'fsl:centerOfGravity',
+        prov:label = "Center of gravity 1",
+        prov:location = 'niiri:COG_coordinate_0001'])</pre></section>
+
+
+<!-- End of automatically-generated: FSL-specific-->
+
+  </section>    
+
+  <section>
+  <h2>Element 3: User-specified masking</h2>
+  <!-- Beginning of automatically-generated: masking -->
+  <section id="section-CustomMaskMap"> <!-- CustomMaskMap -->
+
+  <h3 label="CustomMaskMap">CustomMaskMap</h3>
+
+  <div class="glossary-ref">   
+
+  A <dfn title="concept-CustomMaskMap">CustomMaskMap</dfn><sup><a title="concept-CustomMaskMap"><span class="diamond"> ◊</span></a></sup>is a mask defined by the user to restrain the space in which model fitting is performed (sub-type of prov:Entity). </div>
+
+  <p></p>
+
+  <div class="attributes" id="attributes-CustomMaskMap"> A <dfn>CustomMaskMap</dfn><sup><a title="CustomMaskMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+  <ul>
+  <li><span class="attribute" id="CustomMaskMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the CustomMaskMap.</li>
+  <li><span class="attribute" id="CustomMaskMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+  <li><span class="attribute" id="CustomMaskMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+  <li><span class="attribute" id="CustomMaskMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+  <li><span class="attribute" id="CustomMaskMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
+  </ul>
+  </div>
+  <pre class='example highlight'>entity(niiri:mask_id_1,
+        [prov:type = 'nidm:CustomMaskMap',
+        prov:location = "file:///path/to/custom_mask.nii" %% xsd:anyURI,
+        prov:label = "Custom mask" %% xsd:string,
+        nidm:originalFileName = "custom_mask.nii" %% xsd:string,
+        nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+  <section id="section-SubVolumeMap"> <!-- SubVolumeMap -->
+
+  <h3 label="SubVolumeMap">SubVolumeMap</h3>
+
+  <div class="glossary-ref">   
+
+  A <dfn title="concept-SubVolumeMap">SubVolumeMap</dfn><sup><a title="concept-SubVolumeMap"><span class="diamond"> ◊</span></a></sup>is a mask defined by the user to restrain the space in which inference is performed (sub-type of prov:Entity). </div>
+
+  <p></p>
+
+  <div class="attributes" id="attributes-SubVolumeMap"> A <dfn>SubVolumeMap</dfn><sup><a title="SubVolumeMap"><span class="diamond"> ◊</span></a></sup><span class="withPn"></span> has:
+  <ul>
+  <li><span class="attribute" id="SubVolumeMap.label">prov:label</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> label describing the SubVolumeMap.</li>
+  <li><span class="attribute" id="SubVolumeMap.prov:location">prov:location</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> path to the corresponding image file.</li>
+  <li><span class="attribute" id="SubVolumeMap.originalFileName">originalFileName</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> original name associated with a file (without path) in the context of the analysis software package.</li>
+  <li><span class="attribute" id="SubVolumeMap.atCoordinateSpace">atCoordinateSpace</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> attribute between a SpatialImage entity and a CoordinateSpace entity that is used to associate spatial metadata with a physical file.</li>
+  <li><span class="attribute" id="SubVolumeMap.crypto:sha512">crypto:sha512</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> SHA512 hash for the image file.</li>
+  </ul>
+  </div>
+  <pre class='example highlight'>entity(niiri:sub_volume_id,
+        [prov:type = 'nidm:SubVolumeMap',
+        prov:location = "file:///path/to/svc_mask.nii" %% xsd:anyURI,
+        prov:label = "Sub-volume Map" %% xsd:string,
+        nidm:originalFileName = "mask.img" %% xsd:string,
+        nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
+        crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])</pre></section>
+
+
+
+
+
+  <!-- End of automatically-generated: masking -->
+
+      </body>
+      </html>

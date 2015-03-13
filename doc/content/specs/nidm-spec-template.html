@@ -1,0 +1,406 @@
+			<!--
+			Template for NIDM model specifications
+			
+			This template provides a starting point for writing your NIDM object model specifications.  In this document we have added
+			placeholders in locations we think you should change using the notation [** ADD...].  Further, we have added comments above
+			these locations with links to the ReSpec User Manual that describes the purpose of these markups.  We hope this template makes
+			writing your object model specifications easier and will provide us with a uniform, professional look and feel to the NIDM
+			object model specifications!
+					
+			
+			-->
+			
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<!-- http://www.w3.org/respec/guide.html?#title-subtitle-short-name -->
+				<title>[** ADD SPECIFICATION TITLE HERE]</title>
+				<meta charset='utf-8'>
+				<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+				async class='remove'></script>
+
+				<LINK href="stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+
+					<script class='remove'>
+					var respecConfig = {
+						specStatus: "base",
+						<!-- http://www.w3.org/respec/guide.html?#title-subtitle-short-name -->
+						shortName:  "[** ADD SHORT NAME FOR SPECIFICATION HERE]",
+						overrideCopyright: "<p class=copyright>NIDM is licensed to the public under the Creative Commons CC0 1.0 Universal (CC0 1.0) license.</p>",
+						editors: [
+						{   <!-- Repeat this block for additional editors -->
+							<!-- http://www.w3.org/respec/guide.html?#editors-authors -->
+							name:       "[** ADD EDITORS NAME HERE]",                   
+						company:    "[** ADD COMPANY HERE]",
+						companyURL: "[** ADD COMPANY URL HERE]" },   
+						],
+						otherLinks: [{
+			            key: "Contributors",
+			            data: [{
+			                    value: "[** ADD CONTRIBUTOR 1 HERE]",
+			                }, {
+			                	value: "[** ADD CONTRIBUTOR 2 HERE]",
+			                }, {
+			                	value: "[** ...]",
+			                }, {
+								value: "[** ADD CONTRIBUTOR N HERE]",
+			                }
+			            ]}],
+						<!-- [** Replace the logos block to change the logo and hyperlink on the spec] -->
+						logos: [
+						   {
+						      src: 'stylesheet/nidm-text.png',
+						      url: "http://nidm.nidash.org",
+						      alt: "NIDM",
+						      width: 100,
+						      height: 50,
+						      id: 'logo-NIDM-WD'
+						   }
+						],
+						<!-- http://www.w3.org/respec/guide.html?#previousmaturity -->
+						previousMaturity: "FPWD",
+						previousPublishDate:  "2013-12-10",
+						<!-- http://www.w3.org/respec/guide.html?#previousmaturity?#wg -->
+						wg:           "[** ADD YOUR WORKING GROUP HERE]",
+						wgURI:        "[** ADD YOUR URI HERE]",
+						wgPublicList: "[** ADD YOUR MAILING LIST HERE]",
+						wgPatentURI:  "[** ADD YOUR URI HERE]",
+						afterEnd: function () {
+
+							var currentDate = new Date()
+							var date = currentDate.toString('dddd, MMMM ,yyyy')
+							$("#respecHeader h2").text("NIDM Specification " + date);
+						},
+						<!-- http://www.w3.org/respec/guide.html?#localbiblio -->
+						<!-- [** ADD REFERENCES] -->
+						localBiblio:  {
+							"DOE13": {
+								title:    "A Published Paper"
+								,   href:     "http://www.sciencedirect.com/science/article/pii/S105381191300596X"
+								,   authors:  [
+								"John Doe"
+								,   "Jane Doe"
+								]
+								,   publisher:  "	Free Publishing is Cool"
+							},
+						}
+					};
+					</script>
+					<!-- FIXME: PROV-N should be automatically retreive and not manually included in biblio-->
+				</head>
+				<body>
+<!-- FIXME: Software entity is missing-->
+
+					<!-- http://www.w3.org/respec/guide.html?#sections-1 -->
+					<section id='abstract'>
+						<p>
+							[** ADD YOUR ABSTRACT HERE]...example local reference listed in localBiblio section of HTML document head ([[!DOE13]])
+						</p>
+							[** HERE'S AN EXAMPLE FIGURE] <a href="#my-figure"></a>.
+							<figure id="my-figure">
+							<img src="img/nidm-layer-cake-nidmresults.png" alt="my figure" width=600px/>
+								<figcaption>My Figure</figcaption>
+							</figure>
+						<!--If the overview is ready then add here:<p>
+							The NIDM Document Overview describes the overall state of NIDM.
+						</p>-->
+					</section>
+
+					<section id='sotd'>
+						<p>
+							<!--FIXME: Status of this document-->
+						</p>
+
+						<!-- Douplicate section tag to have h4 titles as in PROV specification-->
+						<section>
+						<section>
+							<h4 id="nidm-family-of-documents">NIDM Family of Documents</h4>
+							This document is part of the NIDM family of documents.
+						</section>				
+
+						<section>
+							<h4 id="please-send-comments">Please Send Comments</h4>
+							<!-- FIXME: Is this the right e-mail address to receive comments? -->
+							[** ADD YOUR COMMENT OR MAILING LIST ADDRESS HERE]. All comments are welcome.
+						</section>			
+						</section>	
+					</section>
+
+					<section class='informative'>
+						<!-- http://www.w3.org/respec/guide.html?#sections-1 -->
+						<h2>Introduction</h2>
+						<p>
+							[** ADD NAME AND DESCRIPTION OF YOUR NIDM COMPLIANT OBJECT MODEL HERE]  
+						</p>
+						
+				<section class="informative" id="structure-of-this-document"> 
+				<h3>Structure of this Document</h3>
+
+				<p><a href="#section-nidmresults-overview">Section 2</a> [** ADD DESCRIPTION OF YOUR SECTIONS HERE..WE SUGGEST AN OVERVIEW OF TYPES AND RELATIONS SECTION] </p>
+
+				<p><a href="#nidmresults-dm-example">Section 3</a> [** ADD DESCRIPTION OF YOUR SECTIONS HERE...WE SUGGEST AN EXAMPLES SECTION]</p>
+
+				</section>
+
+				<section>
+				<h3>Notational Conventions</h3>
+				<p>The key word<!--s "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL
+			      NOT">SHALL
+			      NOT</em>", "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>",  "<em class="rfc2119" title="MAY">MAY</em>", and-->
+			      "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document <!--are--> is to be interpreted as described in
+			      [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+			      
+	  			</section>
+
+	  		<section class="informative" id="namespaces">
+			  	<h3>Namespaces</h3>
+			  	<p>
+			  		[** WE SUGGEST YOU ENUMERATE THE NAMESPACES USED IN YOUR DOCUMENT]
+			  	</p><div style="text-align: left;">
+			  	<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+			  		<caption id="namespace-table"><span>Table 1<sup><a class="internalDFN" href="#namespace-table"><span class="diamond"> ◊:</span></a></sup> </span>Prefix and Namespaces used in this specification</caption> <!-- Table 1-->
+			  		<tbody><tr><td><b>prefix</b></td><td><b>namespace IRI</b></td> <td><b>definition</b></td></tr>
+			  			<tr><td>nidm</td><td>http://www.incf.org/ns/nidash/nidm#</td><td>The NIDM namespace</td>
+			  			</tr>
+			  			<tr><td>prov</td><td>http://www.w3.org/ns/prov#</td><td>The PROV namespace [[prov-dm]]</td></tr>
+			  			<tr><td>xsd</td><td>http://www.w3.org/2000/10/XMLSchema#</td><td>XML Schema Namespace [[XMLSCHEMA11-2]]</td></tr>
+			  			<tr><td>(others)</td><td>(various)</td><td>All other namespace prefixes are used in examples only. <br> In particular, IRIs starting with "http://example.com" represent<br> some application-dependent IRI [[RFC3987]]</td></tr>
+			  		</tbody></table>
+			  	</div>
+			  </section>
+			</section>
+
+			<section>
+				<h2>Overview</h2>
+
+				<p>[** ADD A BRIEF OVERVIEW OF YOUR OBJECT MODEL HERE]</p>
+				
+				<section>
+				<h1>Domain covered by [** INSERT NAME OF YOUR OBJECT MODEL]</h1>
+				<p>
+				[** BRIEFLY DESCRIBE YOUR DOMAIN].
+				</p>
+				</section>
+					
+				<section>
+					<h3>[** DESCRIBE THE CORE STRUCTURES IN YOUR OBJECT MODEL]</h3>
+					<p>The concepts found in the core of [** ADD YOUR OBJECT MODEL NAME HERE] are introduced in the rest of this section. 
+					</p>
+
+					<section>
+						<h3>Core Structures Overview</h3>
+						The core [** ADD YOUR OBJECT MODEL NAME HERE] structures are presented in <a href="#fig-nidmresults-core-uml">[** ADD REFERENCE TO YOUR UML DIAGRAM BELOW]</a>. The color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity). 
+						<figure id="fig-nidmresults-core-uml">
+							<img alt="Core structures" src="img/nidm-results-core-uml.png" width=900px/>
+							<figcaption>Core structures overview UML diagram</figcaption>
+						</figure>
+					</section>
+
+					<section id="sec-reuse-prov">
+					<h3>Re-use of PROV-DM Structures</h3>
+					<p>
+						PROV relations used in [** ADD YOUR OBJECT MODEL NAME HERE] are summarized in  <a href="#overview-types-and-relations">Table 2</a>.
+					</p>
+					<div style="text-align: left;">
+						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>PROV relations in use in [** ADD YOUR OBJECT MODEL NAME HERE AND CHANGE THE LIST OF RELATIONS IN TABLE THAT MATCH YOUR OBJECT MODEL]</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>NIDM-Results Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+								<!-- ------------- Beginning of PROV Relations ------------- -->
+								<tr>
+									<td><a href="#concept-generation" class="internalDFN">Generation</a>
+									</td>
+									<td rowspan="3" style="text-align: center;">PROV Relations<br/> 
+									</td>
+									<td><a title="wasGeneratedBy" href="#dfn-wasgeneratedby" class="internalDFN">WasGeneratedBy</a>
+									</td>
+									<td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasgeneratedby"><span>PROV-DM wasGeneratedBy</span></a>
+									</td>
+								</tr>
+								<tr>
+									<td><a href="#concept-usage" class="internalDFN">Usage</a></td><td><a title="used" href="#dfn-used" class="internalDFN">Used</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-used"><span>PROV-DM used</span></a></td>
+								</tr>
+								<tr>
+									<td><a href="#concept-derivation" class="internalDFN">Derivation</a></td><td><a title="wasDerivedFrom" href="#dfn-wasderivedfrom" class="internalDFN">WasDerivedFrom</a></td><td style="text-align: center;"><a class="section-ref" href="http://www.w3.org/TR/prov-dm/#dfn-wasderivedfrom"><span>PROV-DM wasDerivedFrom</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</section>
+					
+
+					<section id="EXAMPLEMODELPART">
+						<h1>[** MODEL FITTING...WE CHOSE TO SEPARATE OUR UML DIAGRAM INTO MODEL FITTING AND INFERENCE SECTIONS]</h1>
+						<!--<figure id="fig-nidmresults-model-fitting">
+							<img src="img/nidm-results-model-fitting.png" width=750px/>
+							<figcaption>Core Model Fitting Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
+						</figure> -->
+						<div style="text-align: left;">
+						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of [** ADD NAME OF YOUR OBJECT MODEL HERE..NICE TO HAVE A MAPPING BETWEEN THE CORE CONCEPTS IN YOUR MODEL TO PROV-DM ENTITIES, AGENTS, AND ACTIVITIES] Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>[** ADD YOUR OBJECT MODEL NAME HERE] Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+								<!-- ------------- Beginning of PROV Entities ------------- -->
+								<tr>
+									<td>EXAMPLE
+									</td>
+									<td rowspan="3" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
+									<td>EXAMPLE
+									</td>
+									<td><a href="#overview-EXAMPLE"></a></td>
+								</tr>
+								<tr>
+									<td>EXAMPLE2
+									</td>
+									<td>EXAMPLE2
+									</td>
+									<td><a href="#overview-EXAMPLE2"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>EXAMPLE3
+									</td>
+									<td>EXAMPLE3
+									</td>
+									<td><a href="#overview-EXAMPLE3"></a>
+									</td>
+								</tr>
+								
+								<!-- ------------- End of PROV Entities ------------- -->
+								<!-- ------------- Beginning of PROV Activities ------------- -->
+								<tr>
+									<td>ACTIVITY1
+									</td>
+									<td rowspan="2" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
+									<td>ACTIVITY1
+									</td>
+									<td><a href="#overview-ACTIVITY1"></a></td>
+								</tr>
+								<tr>
+									<td>ACTIVITY2
+									</td>
+									<td>ACTIVITY2
+									</td>
+									<td><a href="#overview-ACTIVITY2"></a>
+									</td>
+								</tr>
+								<!-- ------------- End of PROV Activities ------------- -->
+							</tbody>
+						</table>
+					</div>
+						
+					<section id="overview-EXAMPLE">
+						<h4>EXAMPLE</h4>
+						The EXAMPLE entity used by the <a href="#overview-EXAMPL2">EXAMPLE2</a> entity represents ....  The optional attribute 
+						<dfn>THIS IS A DEFINITION</dfn> of type <a href="http://www.w3.org/TR/xmlschema-2/#boolean">xsd:boolean</a> indicating the presence or absence of ...
+						<p>
+						[** ADD EXAMPLES OF THE ENTITY CODE USING THE PRE CLASS AS SHOWN HERE]
+						<pre class='example highlight'>entity(niiri:data_id,
+						    [prov:type = 'nidm:Data',
+						    prov:type = 'prov:Collection',
+						    prov:label = "Data" %% xsd:string,
+						    nidm:grandMeanScaling = "true" %%xsd:boolean,
+						    nidm:targetIntensity = "100" %% xsd:float,
+						    nidm:medianIntensity = "115.32" %% xsd:float])</pre>
+						</p>
+					</section>
+					<section id="overview-EXAMPLE2">
+						<h4>EXAMPLE2</h4>
+					</section>
+					<section id="overview-EXAMPLE3">
+						<h4>EXAMPLE3</h4>
+					</section>
+					<section id="overview-ACTIVITY1">
+						<h4>ACTIVITY1</h4> 
+					</section>
+					<section id="overview-ACTIVITY2">
+						<h4>ACTIVITY2</h4>
+					</section>
+					
+				</section>
+					
+					<section id="[** INFERENCE...WE CHOSE TO SEPARATE OUR UML DIAGRAM INTO MODEL FITTING AND INFERENCE SECTIONS]">
+						<h1>[** INFERENCE...WE CHOSE TO SEPARATE OUR UML DIAGRAM INTO MODEL FITTING AND INFERENCE SECTIONS]</h1>
+						[** ADD DESCRIPITION AND TABLES IN THIS SECTION SAME AS MODEL FITTING SECTION ABOVE]  
+						<!--<figure id="fig-nidmresults-inference">
+							<img src="img/nidm-results-inference.png" width=750px/>
+							<figcaption>Core Inference Structures: the color coding corresponds to the prov:type (blue: prov:entity, red: prov:activity)</figcaption>
+						</figure> -->
+						<div style="text-align: left;">
+						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
+							<caption id="overview-types-and-relations"><span>Table 2<sup><a class="internalDFN" href="#overview-types-and-relations"><span class="diamond"> ◊:</span></a></sup> </span>Mapping of [** ADD NAME OF YOUR OBJECT MODEL HERE..NICE TO HAVE A MAPPING BETWEEN THE CORE CONCEPTS IN YOUR MODEL TO PROV-DM ENTITIES, AGENTS, AND ACTIVITIES] Core Concepts to types and relations and PROV core concepts</caption> <!-- Table 2 -->
+							<tbody><tr><td><b>[** ADD YOUR OBJECT MODEL NAME HERE] Concepts</b></td><td><b>Types or Relation (PROV concepts)</b></td><td><b>Name</b></td><td><b>Overview</b></td></tr>
+								<!-- ------------- Beginning of PROV Entities ------------- -->
+								<tr>
+									<td>EXAMPLE</td>
+									<td rowspan="3" style="text-align: center;">NIDM-Results Types<br/> (PROV Entities)</td>
+									<td>EXAMPLE
+									</td>
+									<td><a href="#overview-EXAMPLE"></a></td>
+								</tr>
+								<tr>
+									<td>EXAMPLE2</td>
+									<td>EXAMPLE2
+									</td>
+									<td><a href="#overview-EXAMPLE2"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>EXAMPLE3</td>
+									<td>EXAMPLE3
+									</td>
+									<td><a href="#overview-EXAMPLE3"></a>
+									</td>
+								</tr>
+								
+								<!-- ------------- End of PROV Entities ------------- -->
+								<!-- ------------- Beginning of PROV Activities ------------- -->
+								<tr>
+									<td>ACTIVITY1</td>
+									<td rowspan="2" style="text-align: center;">NIDM-Results Types<br/> (PROV Activities)</td>
+									<td>ACTIVITY1</td>
+									<td><a href="#overview-ACTIVITY1"></a></td>
+								</tr>
+								<tr>
+									<td>ACTIVITY2</td>
+									<td>ACTIVITY2
+									</td>
+									<td><a href="#overview-ACTIVITY2"></a>
+									</td>
+								</tr>
+								<!-- ------------- End of PROV Activities ------------- -->
+							</tbody>
+						</table>
+					</div>
+						
+					<section id="overview-EXAMPLE">
+						<h4>EXAMPLE</h4>
+						The EXAMPLE entity used by the <a href="#overview-EXAMPL2">EXAMPLE2</a> entity represents ....  The optional attribute 
+						<dfn>THIS IS ANOTHER DEFINITION</dfn> of type <a href="http://www.w3.org/TR/xmlschema-2/#boolean">xsd:boolean</a> indicating the presence or absence of ...
+					</section>
+					<section id="overview-EXAMPLE2">
+						<h4>EXAMPLE2</h4>
+					</section>
+					<section id="overview-EXAMPLE3">
+						<h4>EXAMPLE3</h4>
+					</section>
+					<section id="overview-ACTIVITY1">
+						<h4>ACTIVITY1</h4> 
+					</section>
+					<section id="overview-ACTIVITY2">
+						<h4>ACTIVITY2</h4>
+					</section>
+
+					
+
+				</section>
+					
+			</section>
+		</section>
+				<section id="illustration-SPM">
+					<h1>Illustration of [** ADD YOUR OBJECT MODEL NAME HERE] by an example.</h1>
+					<p>[** ADD LINK TO GRAPH OF YOUR OBJECT MODEL..WE SUGGEST USING PROVSTORE (<a href="https://provenance.ecs.soton.ac.uk/store/">provstore	</a>) TO CREATE]</p>
+					<p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/spm/spm_results.provn">[** WE SUGGEST A PROV-N SERIALIZATION EXAMPLE...WE SUGGEST USING PROV TOOLBOX TO CREATE]</a></p>
+					<p><a href="https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/spm/spm_results.ttl">[** WE SUGGEST A TURTLE SERIALIZATION EXAMPLE...WE SUGGEST USING PROVSTORE (https://provenance.ecs.soton.ac.uk/store/) TO CREATE]</a></p>
+				</section>
+		
+			</body>
+			</html>
