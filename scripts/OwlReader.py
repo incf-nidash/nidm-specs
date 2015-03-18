@@ -268,8 +268,7 @@ class OwlReader():
         return prov_class
 
     def get_definition(self, owl_term):
-        definition = list(self.graph.objects(owl_term, RDFS['isDefinedBy']))+\
-            list(self.graph.objects(owl_term, OBO_DEFINITION))
+        definition = list(self.graph.objects(owl_term, OBO_DEFINITION))
         if definition:
             definition = unicode(definition[0])
         else:
