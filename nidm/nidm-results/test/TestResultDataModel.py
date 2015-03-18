@@ -101,6 +101,7 @@ class TestResultDataModel(object):
         g2_terms = set(graph2.subjects(RDF.type, rdf_type))
 
         activity = False
+        MIN_MATCHING = 2
         if rdf_type == PROV['Activity']:
             activity = True
         elif rdf_type == PROV['Entity']:
@@ -109,6 +110,10 @@ class TestResultDataModel(object):
             g1_terms = g1_terms.union(set(graph1.subjects(RDF.type, PROV['Coordinate'])))
             g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Coordinate'])))
+            # For entities at least 4 attributes in common are needed for 
+            # matching (to deal with nifti files where format and 
+            # inCoordinateSpace might be the same for all)
+            MIN_MATCHING = 4
 
         for g1_term in g1_terms:
             # Look for a match in g2 corresponding to g1_term from g1
@@ -120,10 +125,14 @@ class TestResultDataModel(object):
                         g2_match[g2_term] += 1
 
             match_found = False
+            g2_matched = set()
             for g2_term, match_index in g2_match.items():
-                if max(g2_match.values()) > 1:
-                    if match_index == max(g2_match.values()):
+                if max(g2_match.values()) >= MIN_MATCHING:
+                    if (match_index == max(g2_match.values())) \
+                        and not g2_term in g2_matched:
                         # Found matching term
+                        g2_matched.add(g2_term)
+
                         if not g1_term == g2_term:
                             g2_name = graph2.qname(g2_term).split(":")[-1]
                             new_id = g1_term+'_'+g2_name 
