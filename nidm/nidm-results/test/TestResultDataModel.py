@@ -93,8 +93,10 @@ class TestResultDataModel(object):
 
     def _replace_match(self, graph1, graph2, rdf_type):
         """
-
+        Match classes of type 'rdf_type' across documents based on attributes.
         """
+
+        # Retreive objects of type 'rdf_type' (e.g. prov:Entities) 
         g1_terms = set(graph1.subjects(RDF.type, rdf_type))
         g2_terms = set(graph2.subjects(RDF.type, rdf_type))
 
@@ -102,12 +104,14 @@ class TestResultDataModel(object):
         if rdf_type == PROV['Activity']:
             activity = True
         elif rdf_type == PROV['Entity']:
+            # FIXME: This would be more efficiently done using the prov owl file
             g1_terms = g1_terms.union(set(graph1.subjects(RDF.type, PROV['Bundles'])))
             g1_terms = g1_terms.union(set(graph1.subjects(RDF.type, PROV['Coordinate'])))
             g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(set(graph2.subjects(RDF.type, PROV['Coordinate'])))
 
         for g1_term in g1_terms:
+            # Look for a match in g2 corresponding to g1_term from g1
             g2_match = dict.fromkeys(g2_terms, 0)
             for p, o in graph1.predicate_objects(g1_term):
                 if (not activity) or \
@@ -115,6 +119,7 @@ class TestResultDataModel(object):
                     for g2_term in graph2.subjects(p, o):
                         g2_match[g2_term] += 1
 
+            match_found = False
             for g2_term, match_index in g2_match.items():
                 if max(g2_match.values()) > 1:
                     if match_index == max(g2_match.values()):
@@ -124,7 +129,7 @@ class TestResultDataModel(object):
                             new_id = g1_term+'_'+g2_name 
                             logging.debug(graph1.qname(g1_term)+" is matched to "+\
                                 graph2.qname(g2_term)+" and replaced by "+\
-                                graph2.qname(new_id))
+                                graph2.qname(new_id)) 
 
                             for p, o in graph1.predicate_objects(g1_term):
                                 graph1.remove((g1_term,p,o))
@@ -141,6 +146,15 @@ class TestResultDataModel(object):
 
                             g2_terms.remove(g2_term)
                             g2_terms.add(new_id)
+                        else:
+                            logging.debug(graph1.qname(g1_term)+" is matched to "+\
+                                graph2.qname(g2_term))
+
+                        match_found = True
+                        break;
+
+            if not match_found:
+                logging.debug("No match found for "+graph1.qname(g1_term))
 
         return list([graph1, graph2])
 
