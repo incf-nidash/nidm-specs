@@ -201,7 +201,7 @@ def check_class_names(example_graph, example_name, class_names=None,
     return my_exception
 
 def check_attributes(example_graph, example_name, owl_attributes=None, owl_ranges=None, 
-    owl_restrictions=None, owl_graph=None, owl_file=None):
+    owl_restrictions=None, owl_graph=None, owl_file=None, owl_imports=None):
     my_exception = dict()
     my_range_exception = dict()
     my_restriction_exception = dict()
@@ -210,7 +210,7 @@ def check_attributes(example_graph, example_name, owl_attributes=None, owl_range
         if owl_file is None:
             raise Exception("One of class_names or owl_file must be not None.")
         else:
-            owl_graph = get_owl_graph(owl_file)
+            owl_graph = get_owl_graph(owl_file, owl_imports)
 
             attributes_ranges = get_attributes_from_owl(owl_graph)
             owl_attributes = attributes_ranges[0]
