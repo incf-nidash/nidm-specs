@@ -558,7 +558,7 @@ def main():
 			),
 		"SPM_Software": dict(
 			software_id="niiri:software_id",
-			software_type="nidm:SPM",
+			software_type="nlx:nif-0000-00343",
 			label="SPM",
 			version="SPM12b",
 			revision="5853"

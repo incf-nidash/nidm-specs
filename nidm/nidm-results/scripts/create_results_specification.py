@@ -64,8 +64,8 @@ def main():
              NIDM['SignificantCluster'], NIDM['Peak'], NIDM['Coordinate'], 
              NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
              NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
-    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap'], NIDM['SPM']]
-    components["FSL-specific Concepts"] = [FSL['CenterOfGravity'], NIDM['FSL']]
+    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
+    components["FSL-specific Concepts"] = [FSL['CenterOfGravity']]
 
     if nidm_version == 'dev':
         # For the developement version only list all terms that were not 

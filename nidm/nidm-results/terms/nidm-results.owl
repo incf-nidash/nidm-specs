@@ -3,6 +3,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nlx: <http://neurolex.org/wiki/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -21,6 +22,7 @@
   owl:imports <http://purl.obolibrary.org/nidm/iao_import.owl> ,
               <http://purl.org/nidash/nidm/dc_import.owl> ,
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
+              <http://purl.org/nidash/nidm/nlx_import.owl> ,
               <http://purl.org/nidash/nidm/stato_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
 ] .
@@ -399,9 +401,9 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
 
 fsl:featVersion rdf:type owl:DatatypeProperty ;
                 
-                obo:IAO_0000114 obo:IAO_0000124 ;
+                rdfs:domain nlx:birnlex_2067 ;
                 
-                rdfs:domain nidm:FSL ;
+                obo:IAO_0000114 obo:IAO_0000124 ;
                 
                 rdfs:range xsd:string .
 
@@ -1524,6 +1526,15 @@ afni:GammaHRF rdf:type owl:Class ;
               prov:editorialNote "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: supported via GAM."^^xsd:string .
 
 
+###  http://neurolex.org/wiki/birnlex_2067
+
+nlx:birnlex_2067 rdfs:subClassOf prov:SoftwareAgent .
+
+
+
+###  http://neurolex.org/wiki/nif-0000-00343
+
+nlx:nif-0000-00343 rdfs:subClassOf prov:SoftwareAgent .
 
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
@@ -1920,6 +1931,11 @@ nidm:DesignMatrix rdf:type owl:Class ;
                                     owl:onProperty dc:description ;
                                     owl:onClass dctype:Image ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
@@ -2038,22 +2054,6 @@ nidm:ExtentThreshold rdf:type owl:Class ;
                      obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/273" ;
                      
                      obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#FSL
-
-nidm:FSL rdf:type owl:Class ;
-         
-         rdfs:subClassOf prov:SoftwareAgent ;
-         
-         rdfs:seeAlso "http://fsl.fmrib.ox.ac.uk" ;
-         
-         obo:IAO_0000115 "FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB." ;
-         
-         obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/263" ;
-         
-         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2437,22 +2437,6 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ResidualMeanSquaresMap.txt" ;
                             
                             obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#SPM
-
-nidm:SPM rdf:type owl:Class ;
-         
-         rdfs:subClassOf prov:SoftwareAgent ;
-         
-         obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/263" ;
-         
-         obo:IAO_0000115 "Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group." ;
-         
-         rdfs:seeAlso "http://www.fil.ion.ucl.ac.uk/spm/" ;
-         
-         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
