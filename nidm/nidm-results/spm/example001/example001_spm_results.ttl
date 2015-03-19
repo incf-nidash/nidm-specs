@@ -181,20 +181,12 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id .
 
-niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
-	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file://./DisplayMask.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
-
 niiri:error_model_id a prov:Entity , nidm:ErrorModel ;
     nidm:hasErrorDistribution nidm:GaussianDistribution ;
     nidm:errorVarianceHomogeneous "true"^^xsd:boolean ;
     nidm:varianceSpatialModel nidm:SpatiallyLocalModel ;
     nidm:hasErrorDependence nidm:SeriallyCorrelatedError ;
-    nidm:dependenceSpatialModel nidm:SpatiallyLocalModel .
+    nidm:dependenceSpatialModel nidm:SpatiallyGlobalModel .
 
 niiri:excursion_set_map_id a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;
@@ -246,7 +238,7 @@ niiri:design_matrix_png_id a prov:Entity , dctype:Image ;
 niiri:inference_id a prov:Activity , nidm:Inference ;
 	rdfs:label "Inference" ;
 	nidm:hasAlternativeHypothesis nidm:OneTailedTest ;
-    prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:display_map_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
+    prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
     prov:wasAssociatedWith niiri:software_id .
 
 niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
@@ -406,7 +398,7 @@ niiri:resels_per_voxel_map_id a prov:Entity , spm:ReselsPerVoxelMap ;
 niiri:software_id a prov:Agent , nidm:SPM , prov:SoftwareAgent ;
 	rdfs:label "SPM" ;
 	nidm:softwareVersion "SPM12"^^xsd:string ;
-	spm:softwareRevision "5853"^^xsd:string .
+	spm:softwareRevision "12.0"^^xsd:string .
 
 niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
 	rdfs:label "Search Space Map" ;
