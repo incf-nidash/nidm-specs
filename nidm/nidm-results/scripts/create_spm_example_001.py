@@ -193,15 +193,6 @@ def main():
 			p_unc="1",
 			p_fwe="1"
 			),
-		"DisplayMaskMap": dict(
-			display_map_id="niiri:display_map_id",
-			label="Display Mask Map",
-			location="file://./DisplayMask.nii.gz",
-			filename="DisplayMask.nii.gz",
-			format="image/nifti",
-			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a..."
-			),
 		"PeakDefinitionCriteria": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id",
 			label="Peak Definition Criteria",
@@ -221,7 +212,6 @@ def main():
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
 			inference_mask_id="niiri:sub_volume_id", 
-			display_mask_id="niiri:display_map_id", 
 			peak_def_id="niiri:peak_definition_criteria_id", 
 			cluster_def_id="niiri:cluster_definition_criteria_id",
 			mask_id="niiri:mask_id_1",
