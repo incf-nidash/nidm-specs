@@ -227,9 +227,9 @@ def main():
 			p_value="8.95949980872501e-14",
 			inference_id="niiri:inference_id"
 			),
-		"Cluster": dict(
-			cluster_id="niiri:cluster_0001",
-			label="Cluster 0001",
+		"SignificantCluster": dict(
+			cluster_id="niiri:significant_cluster_0001",
+			label="Significant Cluster 0001",
 			cluster_size_in_voxels="530",
 			cluster_label_id="1",
 			cluster_size_in_resels="23.1209189500945",
@@ -247,7 +247,7 @@ def main():
 			p_value_unc="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="6.3705194444993e-11",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"Coordinate": dict(
 			coordinate_id="niiri:coordinate_0001",
@@ -284,7 +284,7 @@ def main():
 			center_of_gravity_id="niiri:center_of_gravity_1",
 			location="niiri:coordinate_0001",
 			label="Center of gravity",
-			cluster_id="niiri:cluster_0001",
+			cluster_id="niiri:significant_cluster_0001",
 			),
 		"FSL_ClusterMaximumStatistic": dict(
 			peak_id="niiri:cluster_max_statistic_0001",
@@ -292,7 +292,7 @@ def main():
 			location="niiri:coordinate_0001",
 			p_uncorr="0.00085796235",
 			equiv_z="3.135447",
-			cluster_id="niiri:cluster_0001"
+			cluster_id="niiri:significant_cluster_0001"
 			),
 		"CoordinateSpace": dict(
 			coordinate_space_id="niiri:coordinate_space_id_1",

@@ -53,10 +53,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:Cluster: </b>Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:CoordinateSpace: </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)</td>
 </tr>
 <tr>
@@ -118,13 +114,13 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:clusterLabelId: </b>Integer associated with a particular cluster as specified in the clusterLabelsMap</td>
-    <td>nidm:Cluster </td>
+    <td>nidm:SignificantCluster </td>
     <td>xsd:int </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:clusterSizeInVoxels: </b>Number of voxels that make up the cluster</td>
-    <td>nidm:Cluster nidm:ExtentThreshold </td>
+    <td>nidm:ExtentThreshold nidm:SignificantCluster </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
@@ -204,13 +200,13 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:pValueFWER: </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"(same as: <a href=This definition is from OBI. Please update this note if the definition is modified.>This definition is from OBI. Please update this note if the definition is modified.</a>)</td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
+    <td>nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak nidm:SignificantCluster </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:pValueUncorrected: </b>A p-value reported without correction for multiple testing.        </td>
-    <td>nidm:Cluster nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak </td>
+    <td>nidm:ExtentThreshold nidm:HeightThreshold nidm:Peak nidm:SignificantCluster </td>
     <td></td>
 </tr>
 <tr>
@@ -234,7 +230,7 @@
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:clusterSizeInVertices: </b>Number of vertices that make up the cluster</td>
-    <td>nidm:Cluster nidm:ExtentThreshold </td>
+    <td>nidm:ExtentThreshold nidm:SignificantCluster </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
