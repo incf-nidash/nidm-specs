@@ -8,14 +8,6 @@
 <tr><th>Curation Status</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastMap: </b>A map whose value at each location is statistical contrast estimate (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastStandardErrorMap: </b>A map whose value at each location is the standard error of a given contrast (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:Data: </b>"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn."(same as: <a href=http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474</a>) (This definition is from NCIT. Please update this note if the definition is modified.)</td>
 </tr>
 <tr>
@@ -30,10 +22,6 @@
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>nidm:HeightThreshold: </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data (editor: KH) (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -155,10 +143,6 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:ParameterEstimateMap: </b>A map whose value at each location is the estimate of a model parameter (Under discussion at: https://github.com/incf-nidash/nidm/issues/255 (see also https://github.com/ISA-tools/stato/issues/18))</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:Peak: </b>Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)</td>
 </tr>
 <tr>
@@ -168,10 +152,6 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:StandardizedCoordinateSystem: </b>Parent of all reference spaces except "Subject"</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:StatisticMap: </b>A map whose value at each location is a statistic.  (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
