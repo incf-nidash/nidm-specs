@@ -1601,13 +1601,13 @@ nidm:ContrastMap rdf:type owl:Class ;
                  
                  rdfs:subClassOf nidm:Map ;
                  
+                 obo:IAO_0000115 "A map whose value at each element is a [contrast estimate](http://purl.obolibrary.org/obo/STATO_0000384)."^^xsd:string ;
+                 
                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastMap.txt"^^xsd:anyURI ;
                  
-                 obo:IAO_0000115 "A map whose value at each location is statistical contrast estimate." ;
+                 obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255" ;
                  
-                 obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/255" ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
+                 obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1617,13 +1617,13 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:Map ;
                               
+                              obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255."^^xsd:anyURI ;
+                              
                               obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastStandardErrorMap.txt"^^xsd:anyURI ;
                               
-                              obo:IAO_0000115 "A map whose value at each location is the standard error of a given contrast." ;
+                              obo:IAO_0000115 "A map whose value at each element is a [standard error of a contrast estimate](http://purl.obolibrary.org/obo/STATO_0000385)." ;
                               
-                              obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/255" ;
-                              
-                              obo:IAO_0000114 obo:IAO_0000125 .
+                              obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1734,6 +1734,11 @@ nidm:DesignMatrix rdf:type owl:Class ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
@@ -1992,12 +1997,12 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty dct:format ;
+                           owl:onProperty nfo:fileName ;
                            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:string
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty nfo:fileName ;
+                           owl:onProperty dct:format ;
                            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:string
                          ] ;
@@ -2118,11 +2123,11 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
                           
                           obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ParameterEstimateMap.txt"^^xsd:anyURI ;
                           
-                          obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/issues/255 (see also https://github.com/ISA-tools/stato/issues/18)" ;
+                          obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255 and https://github.com/incf-nidash/nidm/issues/141 (see also https://github.com/ISA-tools/stato/issues/18)" ;
                           
-                          obo:IAO_0000115 "A map whose value at each location is the estimate of a model parameter." ;
+                          obo:IAO_0000115 "A map whose value at each element is a [model parameter estimate](http://purl.obolibrary.org/obo/STATO_0000144)." ;
                           
-                          obo:IAO_0000114 obo:IAO_0000120 .
+                          obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2190,17 +2195,13 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:Map ;
                             
-                            obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/255" ;
+                            obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255." ;
                             
-                            obo:IAO_0000117 "KH" ;
+                            obo:IAO_0000115 "A map whose value at each element is a [residual mean square](http://purl.obolibrary.org/obo/STATO_0000375)." ;
                             
                             obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ResidualMeanSquaresMap.txt" ;
                             
-                            obo:IAO_0000115 "A map whose value at each location is the residual of the mean squares fit to the data." ;
-                            
-                            rdfs:seeAlso "This is a map of \"residuals\" as defined at http://bioportal.bioontology.org/ontologies/STATO/?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FSTATO_0000234 " ;
-                            
-                            obo:IAO_0000114 obo:IAO_0000125 .
+                            obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2339,11 +2340,11 @@ nidm:StatisticMap rdf:type owl:Class ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/StatisticMap.txt"^^xsd:anyURI ;
                   
-                  obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/255" ;
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255" ;
                   
-                  obo:IAO_0000115 "A map whose value at each location is a statistic. " ;
+                  obo:IAO_0000115 "A map whose value at each element is a [statistic](http://purl.obolibrary.org/obo/STATO_0000039)." ;
                   
-                  obo:IAO_0000114 obo:IAO_0000120 .
+                  obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
