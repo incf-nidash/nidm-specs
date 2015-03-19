@@ -40,6 +40,26 @@
     <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group</td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:InferenceMaskMap: </b>mask defined by the user to restrain the space in which inference is performed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:SpatialModel: </b>FIXME</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:SpatiallyGlobalModel: </b>FIXME</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:SpatiallyLocalModel: </b>FIXME</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:SpatiallyRegularizedModel: </b>FIXME</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model</td>
 </tr>
@@ -190,6 +210,30 @@
     <td><b>nidm:userSpecifiedThresholdType: </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
     <td>nidm:ExtentThreshold nidm:HeightThreshold </td>
     <td>xsd:string </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:dependenceSpatialModel: </b>FIXME</td>
+    <td>nidm:ErrorModel </td>
+    <td>nidm:SpatialModel </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:varianceSpatialModel: </b>FIXME</td>
+    <td>nidm:ErrorModel </td>
+    <td>nidm:SpatialModel </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:withEstimationMethod: </b>FIXME</td>
+    <td>nidm:ModelParametersEstimation </td>
+    <td>obo:STATO_0000119 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>

@@ -339,10 +339,12 @@ class OwlReader():
         return domain_display
 
     def get_curation_status(self, owl_term):
-        curation_status = OBO_UNCURATED
         curation_status = list(self.graph.objects(owl_term, HAS_CURATION_STATUS))
         if curation_status:
             curation_status = curation_status[0]
+        else:
+            # By default consider that term is "uncurated"
+            curation_status = OBO_UNCURATED    
         return curation_status
 
     def get_editor(self, owl_term):
