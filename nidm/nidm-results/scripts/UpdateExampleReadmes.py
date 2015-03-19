@@ -10,8 +10,6 @@ import urllib2
 import json
 import logging
 import os
-import rdflib
-from rdflib.graph import Graph
 from rdflib.compare import *
 import sys
 from subprocess import call
@@ -58,7 +56,7 @@ def get_doc_from_title(doc_title):
 
 # Update Readme
 def write_readme(readme_file, doc_url):
-	readme_file_open = open(readme_file, 'w')
+	readme_file_open = open(readme_file, 'w+')
 
 	doc_url = doc_url.replace("api/v0/", "")
 
@@ -141,27 +139,31 @@ if __name__ == '__main__':
 		# Find corresponding document on the ProvStore by looking at the README
 		# Read README
 		readme_file = os.path.join(NIDMRESULTSPATH, os.path.dirname(example_file), 'README.md')
-		readme_fid = open(readme_file)
-		readme_txt = readme_fid.read()
-		readme_fid.close()
+		if os.path.isfile(readme_file):
+			readme_fid = open(readme_file)
+			readme_txt = readme_fid.read()
+			readme_fid.close()
 
-		provstore_url_index = re.search("https://provenance.ecs.soton.ac.uk/store/documents/[^/]*/", readme_txt)
-		# Get corresponding turtle on Prov Store            
-		if provstore_url_index:
-			same_doc_url = readme_txt[provstore_url_index.start():provstore_url_index.end()]
-		else:
-			same_doc_url = None
-
-		if same_doc_url:
-			same_doc_ttl_url = same_doc_url[:-1]+".ttl"
-			found_difference = compare_ttl_documents(doc_ttl_file, same_doc_ttl_url) 
-			
-			if found_difference:
-				logger.info('\tDifferent from last version.')
+			provstore_url_index = re.search("https://provenance.ecs.soton.ac.uk/store/documents/[^/]*/", readme_txt)
+			# Get corresponding turtle on Prov Store            
+			if provstore_url_index:
+				same_doc_url = readme_txt[provstore_url_index.start():provstore_url_index.end()]
 			else:
-				logger.info('\tSame as last version.')
+				same_doc_url = None
+
+			if same_doc_url:
+				same_doc_ttl_url = same_doc_url[:-1]+".ttl"
+				found_difference = compare_ttl_documents(doc_ttl_file, same_doc_ttl_url) 
+				
+				if found_difference:
+					logger.info('\tDifferent from last version.')
+				else:
+					logger.info('\tSame as last version.')
+			else:
+				logger.info('\tNo previous version.')
+				found_difference = True
 		else:
-			logger.info('\tNo previous version.')
+			logger.info('\tNo README.')
 			found_difference = True
 
 		if found_difference:
@@ -178,6 +180,4 @@ if __name__ == '__main__':
 			doc_url = same_doc_url
 
 		readme_file = os.path.join(os.path.dirname(os.path.join(NIDMRESULTSPATH, example_file)), 'README.md')
-		if not os.path.isfile(readme_file):
-			raise Exception("Missing README file. Please create a README file for "+example_file+".")
 		write_readme(readme_file, doc_url)
