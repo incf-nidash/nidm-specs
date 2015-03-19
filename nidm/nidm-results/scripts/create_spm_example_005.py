@@ -20,6 +20,15 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a..."
 			),
+		"CoordinateSpace-1": dict(
+			coordinate_space_id="niiri:coordinate_space_id_1",
+			label="Coordinate space 1",
+			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
+			voxel_units="['mm', 'mm', 'mm']",
+			voxel_size="[3, 3, 3]",
+			coord_system="nidm:MNICoordinateSystem",
+			number_of_dim="3",
+			dimensions="[53,63,52]"),
 		"Inference_Used_DisplayMask": dict(
 			inference_id="niiri:display_map_id",
 			display_mask_id="niiri:height_threshold_id", 
