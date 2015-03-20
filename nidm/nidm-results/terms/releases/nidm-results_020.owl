@@ -1,7 +1,7 @@
 @prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
-@prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix spm: <http://www.incf.org/ns/nidash/spm#> .
@@ -21,22 +21,71 @@
 #
 #################################################################
 
+###  http://purl.obolibrary.org/obo/IAO_0000112
 
-###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000112
+obo:IAO_0000112 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "example of usage"@en ;
+                
+                obo:IAO_0000115 "A phrase describing how a class name should be used. May also include other kinds of examples that facilitate immediate understanding of a class semantics, such as widely known prototypical subclasses or instances of the class. Although essential for high level terms, examples for low level terms (e.g., Affymetrix HU133 array) are not"@en ;
+                
+                obo:IAO_0000119 "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                
+                obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
+                
+                obo:IAO_0000111 "example"@en ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
 
-iao:IAO_0000112 rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000114
+
+obo:IAO_0000114 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "has curation status"@en ;
+                
+                obo:IAO_0000119 "OBI_0000281"@en ;
+                
+                obo:IAO_0000117 "PERSON:Alan Ruttenberg"@en ,
+                                "PERSON:Bill Bug"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                
+                obo:IAO_0000111 "has curation status"@en .
 
 
 
-###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000116
+###  http://purl.obolibrary.org/obo/IAO_0000115
 
-iao:IAO_0000116 rdf:type owl:AnnotationProperty .
+obo:IAO_0000115 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "definition"@en ;
+                
+                obo:IAO_0000119 "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+                
+                obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
+                
+                obo:IAO_0000115 "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ;
+                
+                obo:IAO_0000111 "definition"@en ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
 
+###  http://purl.obolibrary.org/obo/IAO_0000116
 
-
-###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
-
-rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+obo:IAO_0000116 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "editor note"@en ;
+                
+                obo:IAO_0000115 "An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology."@en ;
+                
+                obo:IAO_0000119 "GROUP:OBI:<http://purl.obfoundry.org/obo/obi>"@en ;
+                
+                obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
+                
+                obo:IAO_0000111 "editor note"@en ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -69,7 +118,7 @@ dct:format rdf:type owl:ObjectProperty ;
 
 nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
                            
-                           rdfs:isDefinedBy "FIXME" ;
+                           obo:IAO_0000115 "FIXME" ;
                            
                            rdfs:domain nidm:Inference .
 
@@ -79,7 +128,7 @@ nidm:alternativeHypothesis rdf:type owl:ObjectProperty ;
 
 nidm:atCoordinateSpace rdf:type owl:ObjectProperty ;
                        
-                       rdfs:isDefinedBy "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
+                       obo:IAO_0000115 "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
                        
                        rdfs:range nidm:CoordinateSpace ;
                        
@@ -91,7 +140,7 @@ nidm:atCoordinateSpace rdf:type owl:ObjectProperty ;
 
 nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
                             
-                            rdfs:isDefinedBy "FIXME" ;
+                            obo:IAO_0000115 "FIXME" ;
                             
                             rdfs:domain nidm:NoiseModel ;
                             
@@ -103,7 +152,7 @@ nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
 
 nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
                               
-                              rdfs:isDefinedBy "FIXME" ;
+                              obo:IAO_0000115 "FIXME" ;
                               
                               rdfs:domain nidm:Inference ;
                               
@@ -116,11 +165,11 @@ nidm:hasAlternativeHypothesis rdf:type owl:ObjectProperty ;
 
 nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
                          
-                         iao:IAO_0000112 "file:///path/to/cluster_labels.img" ;
+                         obo:IAO_0000112 "file:///path/to/cluster_labels.img" ;
                          
-                         rdfs:isDefinedBy "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
+                         obo:IAO_0000115 "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
                          
-                         iao:IAO_0000116 """Range: Pathtoaniftiimage not found. BIRNLex or 
+                         obo:IAO_0000116 """Range: Pathtoaniftiimage not found. BIRNLex or 
 NIDM Concept ID: nidm_4. """ ;
                          
                          rdfs:range nidm:ClusterLabelsMap ;
@@ -133,7 +182,7 @@ NIDM Concept ID: nidm_4. """ ;
 
 nidm:hasMapHeader rdf:type owl:ObjectProperty ;
                   
-                  rdfs:isDefinedBy "FIXME" ;
+                  obo:IAO_0000115 "FIXME" ;
                   
                   rdfs:domain nidm:Map ;
                   
@@ -145,7 +194,7 @@ nidm:hasMapHeader rdf:type owl:ObjectProperty ;
 
 nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
                         
-                        rdfs:isDefinedBy "FIXME" ;
+                        obo:IAO_0000115 "FIXME" ;
                         
                         rdfs:range nidm:NoiseDependence ;
                         
@@ -157,7 +206,7 @@ nidm:hasNoiseDependence rdf:type owl:ObjectProperty ;
 
 nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
                           
-                          rdfs:isDefinedBy "FIXME" ;
+                          obo:IAO_0000115 "FIXME" ;
                           
                           rdfs:range nidm:NoiseDistribution ;
                           
@@ -169,12 +218,12 @@ nidm:hasNoiseDistribution rdf:type owl:ObjectProperty ;
 
 nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
                              
-                             iao:IAO_0000116 """BIRNLex or 
+                             obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_22. """ ;
                              
-                             rdfs:isDefinedBy "Type of coordinate system." ;
+                             obo:IAO_0000115 "Type of coordinate system." ;
                              
-                             iao:IAO_0000112 "nidm:MNICoordinateSystem" ;
+                             obo:IAO_0000112 "nidm:MNICoordinateSystem" ;
                              
                              rdfs:domain nidm:CoordinateSpace ;
                              
@@ -186,7 +235,7 @@ NIDM Concept ID: nidm_22. """ ;
 
 nidm:objectModel rdf:type owl:ObjectProperty ;
                  
-                 rdfs:isDefinedBy "FIXME" ;
+                 obo:IAO_0000115 "FIXME" ;
                  
                  rdfs:range nidm:NIDMObjectModel ;
                  
@@ -198,7 +247,7 @@ nidm:objectModel rdf:type owl:ObjectProperty ;
 
 nidm:statisticType rdf:type owl:ObjectProperty ;
                    
-                   rdfs:isDefinedBy "FIXME" ;
+                   obo:IAO_0000115 "FIXME" ;
                    
                    rdfs:domain nidm:ContrastWeights ;
                    
@@ -212,7 +261,7 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
 
 nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
                           
-                          rdfs:isDefinedBy "FIXME" ;
+                          obo:IAO_0000115 "FIXME" ;
                           
                           rdfs:domain nidm:NoiseModel ;
                           
@@ -224,12 +273,12 @@ nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
 
 nidm:visualisation rdf:type owl:ObjectProperty ;
                    
-                   iao:IAO_0000112 "file:///path/to/design_matrix.png" ;
+                   obo:IAO_0000112 "file:///path/to/design_matrix.png" ;
                    
-                   iao:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
+                   obo:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
 NIDM Concept ID: nidm_66. """ ;
                    
-                   rdfs:isDefinedBy "Graphical representation of an entity." ;
+                   obo:IAO_0000115 "Graphical representation of an entity." ;
                    
                    rdfs:domain nidm:DesignMatrix ,
                                nidm:ExcursionSet ;
@@ -242,7 +291,7 @@ NIDM Concept ID: nidm_66. """ ;
 
 nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
                           
-                          rdfs:isDefinedBy "FIXME" ;
+                          obo:IAO_0000115 "FIXME" ;
                           
                           rdfs:range nidm:EstimationMethod ;
                           
@@ -254,11 +303,11 @@ nidm:withEstimationMethod rdf:type owl:ObjectProperty ;
 
 spm:hasMaximumIntensityProjection rdf:type owl:ObjectProperty ;
                                   
-                                  rdfs:isDefinedBy "Maximum intensity projection of a map." ;
+                                  obo:IAO_0000115 "Maximum intensity projection of a map." ;
                                   
-                                  iao:IAO_0000112 "file:///path/to/MIP.png" ;
+                                  obo:IAO_0000112 "file:///path/to/MIP.png" ;
                                   
-                                  iao:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
+                                  obo:IAO_0000116 """Range: Pathtoanimage(e.g.png) not found. BIRNLex or 
 NIDM Concept ID: spm_77. """ ;
                                   
                                   rdfs:domain nidm:ExcursionSet ;
@@ -350,12 +399,12 @@ dct:format rdf:type owl:DatatypeProperty ;
 
 fsl:coordinate1InVoxels rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000112 "-60" ;
+                        obo:IAO_0000112 "-60" ;
                         
-                        iao:IAO_0000116 """BIRNLex or 
+                        obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_16. """ ;
                         
-                        rdfs:isDefinedBy "Coordinate along the first dimension in voxels." ;
+                        obo:IAO_0000115 "Coordinate along the first dimension in voxels." ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -367,12 +416,12 @@ NIDM Concept ID: nidm_16. """ ;
 
 fsl:coordinate2InVoxels rdf:type owl:DatatypeProperty ;
                         
-                        rdfs:isDefinedBy "Coordinate along the second dimension in voxels." ;
+                        obo:IAO_0000115 "Coordinate along the second dimension in voxels." ;
                         
-                        iao:IAO_0000116 """BIRNLex or 
+                        obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_18. """ ;
                         
-                        iao:IAO_0000112 "-28" ;
+                        obo:IAO_0000112 "-28" ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -384,12 +433,12 @@ NIDM Concept ID: nidm_18. """ ;
 
 fsl:coordinate3InVoxels rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000116 """BIRNLex or 
+                        obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_20. """ ;
                         
-                        rdfs:isDefinedBy "Coordinate along the third dimension in voxels" ;
+                        obo:IAO_0000115 "Coordinate along the third dimension in voxels" ;
                         
-                        iao:IAO_0000112 "13" ;
+                        obo:IAO_0000112 "13" ;
                         
                         rdfs:domain nidm:Coordinate ;
                         
@@ -403,7 +452,7 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
         
         rdfs:comment "To be renamed" ;
         
-        rdfs:isDefinedBy "FIXME" ;
+        obo:IAO_0000115 "FIXME" ;
         
         rdfs:domain nidm:SearchSpaceMap ;
         
@@ -425,7 +474,7 @@ fsl:featVersion rdf:type owl:DatatypeProperty ;
 
 fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
                       
-                      rdfs:isDefinedBy "FIXME" ;
+                      obo:IAO_0000115 "FIXME" ;
                       
                       rdfs:domain nidm:SearchSpaceMap ;
                       
@@ -439,7 +488,7 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
 
 fsl:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
                          
-                         rdfs:isDefinedBy "FIXME" ;
+                         obo:IAO_0000115 "FIXME" ;
                          
                          rdfs:comment "Check if this can be merged with spm:searchVolumeInVoxels" ;
                          
@@ -455,11 +504,11 @@ fsl:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
 
 nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
                     
-                    iao:IAO_0000112 "5" ;
+                    obo:IAO_0000112 "5" ;
                     
-                    rdfs:isDefinedBy "Integer associated with a particular cluster as specified in the clusterLabelsMap." ;
+                    obo:IAO_0000115 "Integer associated with a particular cluster as specified in the clusterLabelsMap." ;
                     
-                    iao:IAO_0000116 """BIRNLex or 
+                    obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_3. """ ;
                     
                     rdfs:domain nidm:Cluster ;
@@ -472,12 +521,12 @@ NIDM Concept ID: nidm_3. """ ;
 
 nidm:clusterSizeInVertices rdf:type owl:DatatypeProperty ;
                            
-                           iao:IAO_0000112 "10" ;
+                           obo:IAO_0000112 "10" ;
                            
-                           iao:IAO_0000116 """BIRNLex or 
+                           obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_5. """ ;
                            
-                           rdfs:isDefinedBy "Number of vertices that make up the cluster." ;
+                           obo:IAO_0000115 "Number of vertices that make up the cluster." ;
                            
                            rdfs:domain nidm:Cluster ,
                                        nidm:ExtentThreshold ;
@@ -490,12 +539,12 @@ NIDM Concept ID: nidm_5. """ ;
 
 nidm:clusterSizeInVoxels rdf:type owl:DatatypeProperty ;
                          
-                         iao:IAO_0000112 "18" ;
+                         obo:IAO_0000112 "18" ;
                          
-                         iao:IAO_0000116 """BIRNLex or 
+                         obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_6. """ ;
                          
-                         rdfs:isDefinedBy "Number of voxels that make up the cluster." ;
+                         obo:IAO_0000115 "Number of voxels that make up the cluster." ;
                          
                          rdfs:domain nidm:Cluster ,
                                      nidm:ExtentThreshold ;
@@ -508,12 +557,12 @@ NIDM Concept ID: nidm_6. """ ;
 
 nidm:contrastName rdf:type owl:DatatypeProperty ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_11. """ ;
                   
-                  rdfs:isDefinedBy "Name of the contrast." ;
+                  obo:IAO_0000115 "Name of the contrast." ;
                   
-                  iao:IAO_0000112 "\"Listening > Rest\"" ;
+                  obo:IAO_0000112 "\"Listening > Rest\"" ;
                   
                   rdfs:domain nidm:ContrastMap ,
                               nidm:ContrastWeights ,
@@ -527,12 +576,12 @@ NIDM Concept ID: nidm_11. """ ;
 
 nidm:coordinate1 rdf:type owl:DatatypeProperty ;
                  
-                 iao:IAO_0000116 """BIRNLex or 
+                 obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_15. """ ;
                  
-                 rdfs:isDefinedBy "Coordinate along the first dimension in voxel units." ;
+                 obo:IAO_0000115 "Coordinate along the first dimension in voxel units." ;
                  
-                 iao:IAO_0000112 "-60" ;
+                 obo:IAO_0000112 "-60" ;
                  
                  rdfs:domain nidm:Coordinate ;
                  
@@ -544,12 +593,12 @@ NIDM Concept ID: nidm_15. """ ;
 
 nidm:coordinate2 rdf:type owl:DatatypeProperty ;
                  
-                 rdfs:isDefinedBy "Coordinate along the second dimension in voxel units." ;
+                 obo:IAO_0000115 "Coordinate along the second dimension in voxel units." ;
                  
-                 iao:IAO_0000116 """BIRNLex or 
+                 obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_17. """ ;
                  
-                 iao:IAO_0000112 "-28" ;
+                 obo:IAO_0000112 "-28" ;
                  
                  rdfs:domain nidm:Coordinate ;
                  
@@ -561,11 +610,11 @@ NIDM Concept ID: nidm_17. """ ;
 
 nidm:coordinate3 rdf:type owl:DatatypeProperty ;
                  
-                 iao:IAO_0000112 "13" ;
+                 obo:IAO_0000112 "13" ;
                  
-                 rdfs:isDefinedBy "Coordinate along the third dimension in voxel units." ;
+                 obo:IAO_0000115 "Coordinate along the third dimension in voxel units." ;
                  
-                 iao:IAO_0000116 """BIRNLex or 
+                 obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_19. """ ;
                  
                  rdfs:domain nidm:Coordinate ;
@@ -578,12 +627,12 @@ NIDM Concept ID: nidm_19. """ ;
 
 nidm:dimensionsInVoxels rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
+                        obo:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
 NIDM Concept ID: nidm_25. """ ;
                         
-                        rdfs:isDefinedBy "Dimensions of some N-dimensional data." ;
+                        obo:IAO_0000115 "Dimensions of some N-dimensional data." ;
                         
-                        iao:IAO_0000112 "[64 64 20]" ;
+                        obo:IAO_0000112 "[64 64 20]" ;
                         
                         rdfs:domain nidm:CoordinateSpace ;
                         
@@ -595,12 +644,12 @@ NIDM Concept ID: nidm_25. """ ;
 
 nidm:effectDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                             
-                            iao:IAO_0000112 "1" ;
+                            obo:IAO_0000112 "1" ;
                             
-                            iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
+                            obo:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
 NIDM Concept ID: nidm_26. """ ;
                             
-                            rdfs:isDefinedBy "Degrees of freedom of the effect." ;
+                            obo:IAO_0000115 "Degrees of freedom of the effect." ;
                             
                             rdfs:domain nidm:StatisticMap ;
                             
@@ -612,11 +661,11 @@ NIDM Concept ID: nidm_26. """ ;
 
 nidm:equivalentZStatistic rdf:type owl:DatatypeProperty ;
                           
-                          iao:IAO_0000112 "3.5" ;
+                          obo:IAO_0000112 "3.5" ;
                           
-                          rdfs:isDefinedBy "Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score." ;
+                          obo:IAO_0000115 "Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score." ;
                           
-                          iao:IAO_0000116 """Context: Functional. Parent: Data transformation;  http://purl.obolibrary.org/obo/OBI_0200000 not found. BIRNLex or 
+                          obo:IAO_0000116 """Context: Functional. Parent: Data transformation;  http://purl.obolibrary.org/obo/OBI_0200000 not found. BIRNLex or 
 NIDM Concept ID: nidm_27. new parent: Peak. """ ;
                           
                           rdfs:domain nidm:Peak ;
@@ -629,9 +678,9 @@ NIDM Concept ID: nidm_27. new parent: Peak. """ ;
 
 nidm:errorDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                            
-                           iao:IAO_0000112 "72.999999" ;
+                           obo:IAO_0000112 "72.999999" ;
                            
-                           rdfs:isDefinedBy "Degrees of freedom of the error." ;
+                           obo:IAO_0000115 "Degrees of freedom of the error." ;
                            
                            rdfs:domain nidm:StatisticMap ;
                            
@@ -648,10 +697,10 @@ nidm:errorDegreesOfFreedom rdf:type owl:DatatypeProperty ;
 
 nidm:f-statistic rdf:type owl:DatatypeProperty ;
                  
-                 iao:IAO_0000116 """Context: io terms. Domain or Attributes: <notdirectlyinuse> not found. BIRNLex or 
+                 obo:IAO_0000116 """Context: io terms. Domain or Attributes: <notdirectlyinuse> not found. BIRNLex or 
 NIDM Concept ID: nidm_31. """ ;
                  
-                 rdfs:isDefinedBy "The statistic from the F-test, a test of the hypothesis that the standard deviations of two normally distributed populations are equal, and thus that they are of comparable origin." ;
+                 obo:IAO_0000115 "The statistic from the F-test, a test of the hypothesis that the standard deviations of two normally distributed populations are equal, and thus that they are of comparable origin." ;
                  
                  rdfs:seeAlso "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#F-Test" .
 
@@ -663,7 +712,7 @@ nidm:filename rdf:type owl:DatatypeProperty ;
               
               owl:sameAs "http://purl.obolibrary.org/obo/OBIws_0000001"^^xsd:anyURI ;
               
-              iao:IAO_0000112 "con_0001.img" ;
+              obo:IAO_0000112 "con_0001.img" ;
               
               rdfs:domain nidm:DesignMatrix ,
                           nidm:ExcursionSet ,
@@ -679,7 +728,7 @@ nidm:filename rdf:type owl:DatatypeProperty ;
 
 nidm:globalNullDegree rdf:type owl:DatatypeProperty ;
                       
-                      rdfs:isDefinedBy "FIXME" ;
+                      obo:IAO_0000115 "FIXME" ;
                       
                       rdfs:domain spm:KConjunctionInference ;
                       
@@ -691,11 +740,11 @@ nidm:globalNullDegree rdf:type owl:DatatypeProperty ;
 
 nidm:grandMeanScaling rdf:type owl:DatatypeProperty ;
                       
-                      iao:IAO_0000112 "TRUE" ;
+                      obo:IAO_0000112 "TRUE" ;
                       
-                      rdfs:isDefinedBy "Binary flag defining whether the data was scaled. Specifically, \"grand mean scaling\" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses." ;
+                      obo:IAO_0000115 "Binary flag defining whether the data was scaled. Specifically, \"grand mean scaling\" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses." ;
                       
-                      iao:IAO_0000116 """BIRNLex or 
+                      obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_96. """ ;
                       
                       rdfs:domain nidm:Data ;
@@ -708,12 +757,12 @@ NIDM Concept ID: nidm_96. """ ;
 
 nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
                              
-                             iao:IAO_0000116 """BIRNLex or 
+                             obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_22. """ ;
                              
-                             rdfs:isDefinedBy "Type of coordinate system." ;
+                             obo:IAO_0000115 "Type of coordinate system." ;
                              
-                             iao:IAO_0000112 "nidm:MNICoordinateSystem" .
+                             obo:IAO_0000112 "nidm:MNICoordinateSystem" .
 
 
 
@@ -721,14 +770,14 @@ NIDM Concept ID: nidm_22. """ ;
 
 nidm:maskedMedian rdf:type owl:DatatypeProperty ;
                   
-                  rdfs:isDefinedBy "Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity." ;
+                  obo:IAO_0000115 "Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity." ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_98. """ ;
                   
                   rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0200119" ;
                   
-                  iao:IAO_0000112 "155.23" ;
+                  obo:IAO_0000112 "155.23" ;
                   
                   rdfs:domain nidm:GrandMeanMap ;
                   
@@ -740,12 +789,12 @@ NIDM Concept ID: nidm_98. """ ;
 
 nidm:noiseFWHM rdf:type owl:DatatypeProperty ;
                
-               iao:IAO_0000116 """Context: Functional. Domain or Attributes: <onlychildofareusedinthedatamodel> not found. BIRNLex or 
+               obo:IAO_0000116 """Context: Functional. Domain or Attributes: <onlychildofareusedinthedatamodel> not found. BIRNLex or 
 NIDM Concept ID: nidm_42. \"type\": SearchVol. """ ;
                
-               iao:IAO_0000112 "2.35" ;
+               obo:IAO_0000112 "2.35" ;
                
-               rdfs:isDefinedBy "Estimated Full Width at Half Maximum of the noise distribution." ;
+               obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution." ;
                
                rdfs:seeAlso "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Full_Width_at_Half_Maximum" .
 
@@ -755,7 +804,7 @@ NIDM Concept ID: nidm_42. \"type\": SearchVol. """ ;
 
 nidm:noiseVarianceHomogeneous rdf:type owl:DatatypeProperty ;
                               
-                              rdfs:isDefinedBy "FIXME" ;
+                              obo:IAO_0000115 "FIXME" ;
                               
                               rdfs:domain nidm:NoiseModel ;
                               
@@ -767,7 +816,7 @@ nidm:noiseVarianceHomogeneous rdf:type owl:DatatypeProperty ;
 
 nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
                       
-                      rdfs:isDefinedBy "FIXME" ;
+                      obo:IAO_0000115 "FIXME" ;
                       
                       rdfs:domain nidm:ExcursionSet ;
                       
@@ -781,12 +830,12 @@ nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
 
 nidm:numberOfDimensions rdf:type owl:DatatypeProperty ;
                         
-                        rdfs:isDefinedBy "Number of dimensions of a data matrix." ;
+                        obo:IAO_0000115 "Number of dimensions of a data matrix." ;
                         
-                        iao:IAO_0000116 """BIRNLex or 
+                        obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_43. """ ;
                         
-                        iao:IAO_0000112 "3" ;
+                        obo:IAO_0000112 "3" ;
                         
                         rdfs:domain nidm:CoordinateSpace ;
                         
@@ -800,14 +849,14 @@ nidm:pValue rdf:type owl:DatatypeProperty ;
             
             owl:sameAs "http://purl.obolibrary.org/obo/OBI_0000175"^^xsd:anyURI ;
             
-            iao:IAO_0000116 """Range: Floatbetween0and1 not found. BIRNLex or 
+            obo:IAO_0000116 """Range: Floatbetween0and1 not found. BIRNLex or 
 NIDM Concept ID: nidm_47. """ ;
             
             rdfs:seeAlso """http://purl.obolibrary.org/obo/IAO_0000121
 http://purl.obolibrary.org/obo/OBI_0000175
 http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
-            iao:IAO_0000112 "8.95E-14" ;
+            obo:IAO_0000112 "8.95E-14" ;
             
             owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
             
@@ -821,16 +870,16 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
 
 nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
-                iao:IAO_0000112 "0.05" ;
+                obo:IAO_0000112 "0.05" ;
                 
-                iao:IAO_0000116 """Range: Floatbetween0and1 not found. BIRNLex or 
+                obo:IAO_0000116 """Range: Floatbetween0and1 not found. BIRNLex or 
 NIDM Concept ID: nidm_48. """ ;
                 
                 owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
                 
                 rdfs:seeAlso "Synonym of \"nidm:pFWE\"" ;
                 
-                rdfs:isDefinedBy "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
+                obo:IAO_0000115 "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
                 
                 rdfs:domain nidm:Cluster ,
                             nidm:ExtentThreshold ,
@@ -845,13 +894,13 @@ NIDM Concept ID: nidm_48. """ ;
 
 nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
-                       rdfs:isDefinedBy "A p-value reported without correction for multiple testing.        " ;
+                       obo:IAO_0000115 "A p-value reported without correction for multiple testing.        " ;
                        
-                       iao:IAO_0000112 "0.0542" ;
+                       obo:IAO_0000112 "0.0542" ;
                        
                        rdfs:seeAlso "http://purl.obolibrary.org/obo/IAO_0000121" ;
                        
-                       iao:IAO_0000116 """Parent: p-value i.e. nidm:nidm_0011 not found. Range: Floatbetween0and1 not found. BIRNLex or 
+                       obo:IAO_0000116 """Parent: p-value i.e. nidm:nidm_0011 not found. Range: Floatbetween0and1 not found. BIRNLex or 
 NIDM Concept ID: nidm_49. """ ;
                        
                        rdfs:domain nidm:Cluster ,
@@ -867,12 +916,12 @@ NIDM Concept ID: nidm_49. """ ;
 
 nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
-               iao:IAO_0000112 "0.000154" ;
+               obo:IAO_0000112 "0.000154" ;
                
-               iao:IAO_0000116 """Parent: p-value i.e. nidm:nidm_0011 not found. Range: Floatbetween0and1 not found. BIRNLex or 
+               obo:IAO_0000116 """Parent: p-value i.e. nidm:nidm_0011 not found. Range: Floatbetween0and1 not found. BIRNLex or 
 NIDM Concept ID: nidm_50. """ ;
                
-               rdfs:isDefinedBy "P-value adjusted for the multiple testing, controlling for the False Discovery Rate" ;
+               obo:IAO_0000115 "P-value adjusted for the multiple testing, controlling for the False Discovery Rate" ;
                
                rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0001442" ;
                
@@ -889,12 +938,12 @@ NIDM Concept ID: nidm_50. """ ;
 
 nidm:randomFieldStationarity rdf:type owl:DatatypeProperty ;
                              
-                             iao:IAO_0000112 "stationaryRandomField" ;
+                             obo:IAO_0000112 "stationaryRandomField" ;
                              
-                             iao:IAO_0000116 """Range: {nonStationaryRandomField not foundstationaryRandomField} not found. BIRNLex or 
+                             obo:IAO_0000116 """Range: {nonStationaryRandomField not foundstationaryRandomField} not found. BIRNLex or 
 NIDM Concept ID: nidm_51. """ ;
                              
-                             rdfs:isDefinedBy "Is the random field assumed to be stationary across the entire search volume?" ;
+                             obo:IAO_0000115 "Is the random field assumed to be stationary across the entire search volume?" ;
                              
                              rdfs:domain nidm:SearchSpaceMap ;
                              
@@ -906,12 +955,12 @@ NIDM Concept ID: nidm_51. """ ;
 
 nidm:smoothingFWHM rdf:type owl:DatatypeProperty ;
                    
-                   iao:IAO_0000116 """Domain or Attributes: <notinuse> not found. BIRNLex or 
+                   obo:IAO_0000116 """Domain or Attributes: <notinuse> not found. BIRNLex or 
 NIDM Concept ID: nidm_54. """ ;
                    
-                   rdfs:isDefinedBy "Full width at half maximum of a Gaussian smoothing kernel in real world units (e.g. mm mm mm)." ;
+                   obo:IAO_0000115 "Full width at half maximum of a Gaussian smoothing kernel in real world units (e.g. mm mm mm)." ;
                    
-                   iao:IAO_0000112 "[6 6 6]" .
+                   obo:IAO_0000112 "[6 6 6]" .
 
 
 
@@ -919,12 +968,12 @@ NIDM Concept ID: nidm_54. """ ;
 
 nidm:softwareVersion rdf:type owl:DatatypeProperty ;
                      
-                     iao:IAO_0000116 """BIRNLex or 
+                     obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_55. """ ;
                      
-                     iao:IAO_0000112 "SPM99, SPM2, SPM5, SPM8, SPM12b, FSL5.0.0" ;
+                     obo:IAO_0000112 "SPM99, SPM2, SPM5, SPM8, SPM12b, FSL5.0.0" ;
                      
-                     rdfs:isDefinedBy "Name and number that specifies the software version." ;
+                     obo:IAO_0000115 "Name and number that specifies the software version." ;
                      
                      rdfs:range xsd:string ;
                      
@@ -938,10 +987,10 @@ nidm:standardError rdf:type owl:DatatypeProperty ;
                    
                    owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
                    
-                   iao:IAO_0000116 """Domain or Attributes: <notinuse> not found. BIRNLex or 
+                   obo:IAO_0000116 """Domain or Attributes: <notinuse> not found. BIRNLex or 
 NIDM Concept ID: nidm_58. """ ;
                    
-                   rdfs:isDefinedBy "\"A quantitative confidence value which is the standard deviations of the sample in a frequency distribution, obtained by dividing the standard deviation by the total number of cases in the frequency distribution.\"" .
+                   obo:IAO_0000115 "\"A quantitative confidence value which is the standard deviations of the sample in a frequency distribution, obtained by dividing the standard deviation by the total number of cases in the frequency distribution.\"" .
 
 
 
@@ -949,11 +998,11 @@ NIDM Concept ID: nidm_58. """ ;
 
 nidm:targetIntensity rdf:type owl:DatatypeProperty ;
                      
-                     rdfs:isDefinedBy "Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)." ;
+                     obo:IAO_0000115 "Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)." ;
                      
-                     iao:IAO_0000112 "100" ;
+                     obo:IAO_0000112 "100" ;
                      
-                     iao:IAO_0000116 """Range: positivefloat not found. BIRNLex or 
+                     obo:IAO_0000116 """Range: positivefloat not found. BIRNLex or 
 NIDM Concept ID: nidm_97. """ ;
                      
                      rdfs:domain nidm:Data ;
@@ -966,14 +1015,14 @@ NIDM Concept ID: nidm_97. """ ;
 
 nidm:underlayFile rdf:type owl:DatatypeProperty ;
                   
-                  rdfs:isDefinedBy "Map or surface on which the associated results are displayed. " ;
+                  obo:IAO_0000115 "Map or surface on which the associated results are displayed. " ;
                   
-                  iao:IAO_0000116 """Parent: nidm:map not found. Range: Pathtoaniftiimage not found. BIRNLex or 
+                  obo:IAO_0000116 """Parent: nidm:map not found. Range: Pathtoaniftiimage not found. BIRNLex or 
 NIDM Concept ID: nidm_64. """ ;
                   
-                  iao:IAO_0000112 "MNI152.nii.gz or cortex.surf.gii" ;
+                  obo:IAO_0000112 "MNI152.nii.gz or cortex.surf.gii" ;
                   
-                  iao:IAO_0000116 """Parent: nidm:map not found. Range: PathtoaNIfTIimage not found. BIRNLex or 
+                  obo:IAO_0000116 """Parent: nidm:map not found. Range: PathtoaNIfTIimage not found. BIRNLex or 
 NIDM Concept ID: nidm_64. """ ;
                   
                   rdfs:domain nidm:ExcursionSet .
@@ -984,12 +1033,12 @@ NIDM Concept ID: nidm_64. """ ;
 
 nidm:userSpecifiedThresholdType rdf:type owl:DatatypeProperty ;
                                 
-                                iao:IAO_0000116 """Range: {'nidm:pValueFWER' not found'nidm:pValueFDR' not found'nidm:pValueUncorrected';'nidm:statistic'} not found. BIRNLex or 
+                                obo:IAO_0000116 """Range: {'nidm:pValueFWER' not found'nidm:pValueFDR' not found'nidm:pValueUncorrected';'nidm:statistic'} not found. BIRNLex or 
 NIDM Concept ID: nidm_65. """ ;
                                 
-                                rdfs:isDefinedBy "Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value)." ;
+                                obo:IAO_0000115 "Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value)." ;
                                 
-                                iao:IAO_0000112 "nidm:pValueFWER" ;
+                                obo:IAO_0000112 "nidm:pValueFWER" ;
                                 
                                 rdfs:domain nidm:ExtentThreshold ,
                                             nidm:HeightThreshold ;
@@ -1002,7 +1051,7 @@ NIDM Concept ID: nidm_65. """ ;
 
 nidm:version rdf:type owl:DatatypeProperty ;
              
-             rdfs:isDefinedBy "FIXME" ;
+             obo:IAO_0000115 "FIXME" ;
              
              rdfs:range xsd:string ;
              
@@ -1014,14 +1063,14 @@ nidm:version rdf:type owl:DatatypeProperty ;
 
 nidm:voxelSize rdf:type owl:DatatypeProperty ;
                
-               iao:IAO_0000112 "[2 2 4]" ;
+               obo:IAO_0000112 "[2 2 4]" ;
                
-               rdfs:isDefinedBy "3D size of a voxel measured in voxelUnits." ;
+               obo:IAO_0000115 "3D size of a voxel measured in voxelUnits." ;
                
                rdfs:seeAlso """http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C95003 
 """ ;
                
-               iao:IAO_0000116 """Parent: size  not found. Range: Vectoroffloats not found. BIRNLex or 
+               obo:IAO_0000116 """Parent: size  not found. Range: Vectoroffloats not found. BIRNLex or 
 NIDM Concept ID: nidm_67. """ ;
                
                rdfs:domain nidm:CoordinateSpace ;
@@ -1034,11 +1083,11 @@ NIDM Concept ID: nidm_67. """ ;
 
 nidm:voxelToWorldMapping rdf:type owl:DatatypeProperty ;
                          
-                         iao:IAO_0000112 "[3 0 0 0;0 3 0 0;0 0 3 0; 0 0 0 1] " ;
+                         obo:IAO_0000112 "[3 0 0 0;0 3 0 0;0 0 3 0; 0 0 0 1] " ;
                          
-                         rdfs:isDefinedBy "Homogeneous transformation matrix to map from voxel coordinate system to world coordinate system." ;
+                         obo:IAO_0000115 "Homogeneous transformation matrix to map from voxel coordinate system to world coordinate system." ;
                          
-                         iao:IAO_0000116 """Range: Matrixoffloat not found. BIRNLex or 
+                         obo:IAO_0000116 """Range: Matrixoffloat not found. BIRNLex or 
 NIDM Concept ID: nidm_68. """ ;
                          
                          rdfs:domain nidm:CoordinateSpace ;
@@ -1051,12 +1100,12 @@ NIDM Concept ID: nidm_68. """ ;
 
 nidm:voxelUnits rdf:type owl:DatatypeProperty ;
                 
-                rdfs:isDefinedBy "Units associated with each dimensions of some N-dimensional data." ;
+                obo:IAO_0000115 "Units associated with each dimensions of some N-dimensional data." ;
                 
-                iao:IAO_0000116 """Range: Vectorofstrings not found. BIRNLex or 
+                obo:IAO_0000116 """Range: Vectorofstrings not found. BIRNLex or 
 NIDM Concept ID: nidm_69. """ ;
                 
-                iao:IAO_0000112 "{'mm' 'mm' 's'}" ;
+                obo:IAO_0000112 "{'mm' 'mm' 's'}" ;
                 
                 rdfs:domain nidm:CoordinateSpace ;
                 
@@ -1068,9 +1117,9 @@ NIDM Concept ID: nidm_69. """ ;
 
 spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
                         
-                        rdfs:isDefinedBy "Number of resels that make up a cluster." ;
+                        obo:IAO_0000115 "Number of resels that make up a cluster." ;
                         
-                        iao:IAO_0000112 "13" ;
+                        obo:IAO_0000112 "13" ;
                         
                         rdfs:domain nidm:Cluster ,
                                     nidm:ExtentThreshold ;
@@ -1088,9 +1137,9 @@ spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
 
 spm:expectedNumberOfClusters rdf:type owl:DatatypeProperty ;
                              
-                             rdfs:isDefinedBy "Expected number of clusters in an excursion set." ;
+                             obo:IAO_0000115 "Expected number of clusters in an excursion set." ;
                              
-                             iao:IAO_0000112 "9.51" ;
+                             obo:IAO_0000112 "9.51" ;
                              
                              rdfs:domain nidm:SearchSpaceMap ;
                              
@@ -1107,11 +1156,11 @@ spm:expectedNumberOfClusters rdf:type owl:DatatypeProperty ;
 
 spm:expectedNumberOfVerticesPerCluster rdf:type owl:DatatypeProperty ;
                                        
-                                       iao:IAO_0000112 "60.632" ;
+                                       obo:IAO_0000112 "60.632" ;
                                        
-                                       rdfs:isDefinedBy "Expected number of vertices in a cluster." ;
+                                       obo:IAO_0000115 "Expected number of vertices in a cluster." ;
                                        
-                                       iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
+                                       obo:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
 NIDM Concept ID: spm_72. """ ;
                                        
                                        rdfs:domain nidm:SearchSpaceMap ;
@@ -1129,12 +1178,12 @@ NIDM Concept ID: spm_72. """ ;
 
 spm:expectedNumberOfVoxelsPerCluster rdf:type owl:DatatypeProperty ;
                                      
-                                     iao:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
+                                     obo:IAO_0000116 """Range: Positivefloat not found. BIRNLex or 
 NIDM Concept ID: spm_73. """ ;
                                      
-                                     iao:IAO_0000112 "60.632" ;
+                                     obo:IAO_0000112 "60.632" ;
                                      
-                                     rdfs:isDefinedBy "Expected number of voxels in a cluster." ;
+                                     obo:IAO_0000115 "Expected number of voxels in a cluster." ;
                                      
                                      rdfs:domain nidm:SearchSpaceMap ;
                                      
@@ -1151,12 +1200,12 @@ NIDM Concept ID: spm_73. """ ;
 
 spm:heightCriticalThresholdFDR05 rdf:type owl:DatatypeProperty ;
                                  
-                                 rdfs:isDefinedBy "Peak statistic threshold corrected for false discovery rate at a level of alpha = 0.05. " ;
+                                 obo:IAO_0000115 "Peak statistic threshold corrected for false discovery rate at a level of alpha = 0.05. " ;
                                  
-                                 iao:IAO_0000116 """BIRNLex or 
+                                 obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_74. """ ;
                                  
-                                 iao:IAO_0000112 "5.896" ;
+                                 obo:IAO_0000112 "5.896" ;
                                  
                                  rdfs:domain nidm:SearchSpaceMap ;
                                  
@@ -1168,12 +1217,12 @@ NIDM Concept ID: spm_74. """ ;
 
 spm:heightCriticalThresholdFWE05 rdf:type owl:DatatypeProperty ;
                                  
-                                 rdfs:isDefinedBy "Peak statistic threshold corrected for family-wise error at a level of alpha = 0.05. " ;
+                                 obo:IAO_0000115 "Peak statistic threshold corrected for family-wise error at a level of alpha = 0.05. " ;
                                  
-                                 iao:IAO_0000116 """BIRNLex or 
+                                 obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_75. """ ;
                                  
-                                 iao:IAO_0000112 "4.913" ;
+                                 obo:IAO_0000112 "4.913" ;
                                  
                                  rdfs:domain nidm:SearchSpaceMap ;
                                  
@@ -1185,11 +1234,11 @@ NIDM Concept ID: spm_75. """ ;
 
 spm:noiseFWHMInUnits rdf:type owl:DatatypeProperty ;
                      
-                     iao:IAO_0000112 "[8.87, 8.89, 7.83]" ;
+                     obo:IAO_0000112 "[8.87, 8.89, 7.83]" ;
                      
-                     rdfs:isDefinedBy "Estimated Full Width at Half Maximum of the noise distribution in world units." ;
+                     obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution in world units." ;
                      
-                     iao:IAO_0000116 """Range: Vectorofpositivefloats not found. BIRNLex or 
+                     obo:IAO_0000116 """Range: Vectorofpositivefloats not found. BIRNLex or 
 NIDM Concept ID: spm_78. """ ;
                      
                      rdfs:domain nidm:SearchSpaceMap ;
@@ -1204,12 +1253,12 @@ NIDM Concept ID: spm_78. """ ;
 
 spm:noiseFWHMInVertices rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000116 """Range: Vectorofpositivefloats not found. BIRNLex or 
+                        obo:IAO_0000116 """Range: Vectorofpositivefloats not found. BIRNLex or 
 NIDM Concept ID: spm_79. """ ;
                         
-                        rdfs:isDefinedBy "Estimated Full Width at Half Maximum of the noise distribution in world vertices." ;
+                        obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution in world vertices." ;
                         
-                        iao:IAO_0000112 "[2.95, 2.96, 2.61]" ;
+                        obo:IAO_0000112 "[2.95, 2.96, 2.61]" ;
                         
                         rdfs:domain nidm:MaskMap ;
                         
@@ -1221,12 +1270,12 @@ NIDM Concept ID: spm_79. """ ;
 
 spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
                       
-                      rdfs:isDefinedBy "Estimated Full Width at Half Maximum of the noise distribution in voxels." ;
+                      obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution in voxels." ;
                       
-                      iao:IAO_0000116 """Context: NoiseFWHM nidm_0009. Range: Vectorofpositivefloats not found. BIRNLex or 
+                      obo:IAO_0000116 """Context: NoiseFWHM nidm_0009. Range: Vectorofpositivefloats not found. BIRNLex or 
 NIDM Concept ID: spm_80. """ ;
                       
-                      iao:IAO_0000112 "[3.7 3.7 3.1]" ;
+                      obo:IAO_0000112 "[3.7 3.7 3.1]" ;
                       
                       rdfs:seeAlso "Synonyms of or close match with nidm:NoiseFWHM" ;
                       
@@ -1242,9 +1291,9 @@ NIDM Concept ID: spm_80. """ ;
 
 spm:reselSize rdf:type owl:DatatypeProperty ;
               
-              iao:IAO_0000112 "22.325" ;
+              obo:IAO_0000112 "22.325" ;
               
-              rdfs:isDefinedBy "Size of one resel in voxels or vertices." ;
+              obo:IAO_0000115 "Size of one resel in voxels or vertices." ;
               
               rdfs:domain nidm:SearchSpaceMap ;
               
@@ -1261,11 +1310,11 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
 
 spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
                          
-                         rdfs:isDefinedBy "Total number of resels within the search volume." ;
+                         obo:IAO_0000115 "Total number of resels within the search volume." ;
                          
                          rdfs:seeAlso "Synonyms of nidm:volumeInResels" ;
                          
-                         iao:IAO_0000112 "151.3" ;
+                         obo:IAO_0000112 "151.3" ;
                          
                          rdfs:domain nidm:SearchSpaceMap ;
                          
@@ -1282,14 +1331,14 @@ spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
 
 spm:searchVolumeInUnits rdf:type owl:DatatypeProperty ;
                         
-                        iao:IAO_0000112 "1771011" ;
+                        obo:IAO_0000112 "1771011" ;
                         
-                        rdfs:isDefinedBy "Total number of product of coordinate units within the search volume." ;
+                        obo:IAO_0000115 "Total number of product of coordinate units within the search volume." ;
                         
-                        iao:IAO_0000116 """Context: volumeInVoxels nidm_0025. Range: Positivefloat not found. BIRNLex or 
+                        obo:IAO_0000116 """Context: volumeInVoxels nidm_0025. Range: Positivefloat not found. BIRNLex or 
 NIDM Concept ID: spm_84. """ ;
                         
-                        rdfs:isDefinedBy "The volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm in a three dimensional image, sec.Hz for a time by frequency two dimensional image)." ;
+                        obo:IAO_0000115 "The volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm in a three dimensional image, sec.Hz for a time by frequency two dimensional image)." ;
                         
                         rdfs:domain nidm:SearchSpaceMap ;
                         
@@ -1306,9 +1355,9 @@ NIDM Concept ID: spm_84. """ ;
 
 spm:searchVolumeInVertices rdf:type owl:DatatypeProperty ;
                            
-                           iao:IAO_0000112 "151.3" ;
+                           obo:IAO_0000112 "151.3" ;
                            
-                           rdfs:isDefinedBy "Total number of vertices within the search volume." ;
+                           obo:IAO_0000115 "Total number of vertices within the search volume." ;
                            
                            rdfs:domain nidm:SearchSpaceMap ;
                            
@@ -1327,12 +1376,12 @@ spm:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
                          
                          rdfs:seeAlso "Synonyms of nidm:volumeInVoxels" ;
                          
-                         iao:IAO_0000116 """Context: volumeInVoxels nidm_0025. BIRNLex or 
+                         obo:IAO_0000116 """Context: volumeInVoxels nidm_0025. BIRNLex or 
 NIDM Concept ID: spm_87. """ ;
                          
-                         rdfs:isDefinedBy "Total number of voxels within the search volume." ;
+                         obo:IAO_0000115 "Total number of voxels within the search volume." ;
                          
-                         iao:IAO_0000112 "68656" ;
+                         obo:IAO_0000112 "68656" ;
                          
                          rdfs:domain nidm:SearchSpaceMap ;
                          
@@ -1344,14 +1393,14 @@ NIDM Concept ID: spm_87. """ ;
 
 spm:searchVolumeReselsGeometry rdf:type owl:DatatypeProperty ;
                                
-                               iao:IAO_0000116 """Context: volumeInResels nidm_0024. Range: Vectorof1positiveintegerand3positivefloats not found. BIRNLex or 
+                               obo:IAO_0000116 """Context: volumeInResels nidm_0024. Range: Vectorof1positiveintegerand3positivefloats not found. BIRNLex or 
 NIDM Concept ID: spm_88. """ ;
                                
-                               iao:IAO_0000112 "[6 68.8 589.1 1475.5]" ;
+                               obo:IAO_0000112 "[6 68.8 589.1 1475.5]" ;
                                
                                rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/pubmed/20408186" ;
                                
-                               rdfs:isDefinedBy "Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels." ;
+                               obo:IAO_0000115 "Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels." ;
                                
                                rdfs:domain nidm:SearchSpaceMap ;
                                
@@ -1365,11 +1414,11 @@ NIDM Concept ID: spm_88. """ ;
 
 spm:smallestSignifClusterSizeInVerticesFDR05 rdf:type owl:DatatypeProperty ;
                                              
-                                             iao:IAO_0000112 "5" ;
+                                             obo:IAO_0000112 "5" ;
                                              
-                                             rdfs:isDefinedBy "Smallest cluster size in vertices that are significant at a false discovery rate corrected alpha value of 0.05.  " ;
+                                             obo:IAO_0000115 "Smallest cluster size in vertices that are significant at a false discovery rate corrected alpha value of 0.05.  " ;
                                              
-                                             iao:IAO_0000116 """BIRNLex or 
+                                             obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_90. """ ;
                                              
                                              rdfs:domain nidm:SearchSpaceMap ;
@@ -1382,12 +1431,12 @@ NIDM Concept ID: spm_90. """ ;
 
 spm:smallestSignifClusterSizeInVerticesFWE05 rdf:type owl:DatatypeProperty ;
                                              
-                                             rdfs:isDefinedBy """Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
+                                             obo:IAO_0000115 """Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
 """ ;
                                              
-                                             iao:IAO_0000112 "2" ;
+                                             obo:IAO_0000112 "2" ;
                                              
-                                             iao:IAO_0000116 """BIRNLex or 
+                                             obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_91. """ ;
                                              
                                              rdfs:domain nidm:SearchSpaceMap ;
@@ -1400,12 +1449,12 @@ NIDM Concept ID: spm_91. """ ;
 
 spm:smallestSignifClusterSizeInVoxelsFDR05 rdf:type owl:DatatypeProperty ;
                                            
-                                           iao:IAO_0000112 "3" ;
+                                           obo:IAO_0000112 "3" ;
                                            
-                                           iao:IAO_0000116 """BIRNLex or 
+                                           obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_92. """ ;
                                            
-                                           rdfs:isDefinedBy "Smallest cluster size in voxels significant at false discovery rate corrected alpha value of 0.05.  " ;
+                                           obo:IAO_0000115 "Smallest cluster size in voxels significant at false discovery rate corrected alpha value of 0.05.  " ;
                                            
                                            rdfs:domain nidm:SearchSpaceMap ;
                                            
@@ -1417,13 +1466,13 @@ NIDM Concept ID: spm_92. """ ;
 
 spm:smallestSignifClusterSizeInVoxelsFWE05 rdf:type owl:DatatypeProperty ;
                                            
-                                           rdfs:isDefinedBy """Smallest cluster size in voxels significant at family-wise error corrected alpha value of 0.05. 
+                                           obo:IAO_0000115 """Smallest cluster size in voxels significant at family-wise error corrected alpha value of 0.05. 
 """ ;
                                            
-                                           iao:IAO_0000116 """BIRNLex or 
+                                           obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_93. """ ;
                                            
-                                           iao:IAO_0000112 "1" ;
+                                           obo:IAO_0000112 "1" ;
                                            
                                            rdfs:domain nidm:SearchSpaceMap ;
                                            
@@ -1435,12 +1484,12 @@ NIDM Concept ID: spm_93. """ ;
 
 spm:softwareRevision rdf:type owl:DatatypeProperty ;
                      
-                     iao:IAO_0000116 """BIRNLex or 
+                     obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_94. """ ;
                      
-                     rdfs:isDefinedBy "revision number of a piece of software." ;
+                     obo:IAO_0000115 "revision number of a piece of software." ;
                      
-                     iao:IAO_0000112 "5417" ;
+                     obo:IAO_0000112 "5417" ;
                      
                      rdfs:range xsd:string ;
                      
@@ -1473,12 +1522,12 @@ fsl:CenterOfGravity rdf:type owl:Class ;
                     
                     rdfs:subClassOf prov:Entity ;
                     
-                    rdfs:isDefinedBy "Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)" ;
+                    obo:IAO_0000115 "Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)" ;
                     
-                    iao:IAO_0000116 """BIRNLex or 
+                    obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: fsl_102. """ ;
                     
-                    iao:IAO_0000112 """entity(niiri:center_of_gravity_1,
+                    obo:IAO_0000112 """entity(niiri:center_of_gravity_1,
         [prov:type = 'fsl:CenterOfGravity',
         prov:label = \"Center of gravity 1\",
         prov:location = 'niiri:COG_coordinate_0001'])""" ;
@@ -1493,14 +1542,14 @@ fsl:ClusterMaximumStatistic rdf:type owl:Class ;
                             
                             rdfs:subClassOf prov:Entity ;
                             
-                            iao:IAO_0000112 """entity(niiri:peak_0001,
+                            obo:IAO_0000112 """entity(niiri:peak_0001,
         [prov:type = 'fsl:ClusterMaximumStatistic',
         prov:type = 'nidm:Peak',
         prov:label = \"Peak 1\" %% xsd:string,
         prov:location = 'niiri:coordinate_0001',
         nidm:equivalentZStatistic = \"6.14\" %% xsd:float])""" ;
                             
-                            rdfs:isDefinedBy "FIXME" .
+                            obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1510,7 +1559,7 @@ fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
                                        
                                        rdfs:subClassOf nidm:NoiseDistribution ;
                                        
-                                       rdfs:isDefinedBy "FIXME" .
+                                       obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1520,7 +1569,7 @@ fsl:VarCope rdf:type owl:Class ;
             
             rdfs:subClassOf nidm:Map ;
             
-            rdfs:isDefinedBy "FIXME" .
+            obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1530,9 +1579,9 @@ fsl:ZStatisticMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  rdfs:isDefinedBy "A map whose value at each location is a Z-statistic value. " ;
+                  obo:IAO_0000115 "A map whose value at each location is a Z-statistic value. " ;
                   
-                  iao:IAO_0000112 """entity(niiri:z_statistical_map_id,
+                  obo:IAO_0000112 """entity(niiri:z_statistical_map_id,
         [prov:type = 'nidm:StatisticMap',
         prov:type = 'fsl:ZStatisticalMap',
         prov:location = \"file:///path/to/tstat1.nii.gz\" %% xsd:anyURI,
@@ -1551,7 +1600,7 @@ nidm:ArbitrarilyCorrelatedNoise rdf:type owl:Class ;
                                 
                                 rdfs:subClassOf nidm:NoiseDependence ;
                                 
-                                rdfs:isDefinedBy "FIXME" .
+                                obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1563,7 +1612,7 @@ nidm:Cluster rdf:type owl:Class ;
              
              rdfs:seeAlso "Child of \"nidm:Statistic\"" ;
              
-             iao:IAO_0000112 """entity(niiri:cluster_0001,
+             obo:IAO_0000112 """entity(niiri:cluster_0001,
       [prov:type = 'nidm:Cluster',
       prov:label = \"Cluster 0001\" %% xsd:string,
       nidm:clusterSizeInVoxels = \"530\" %% xsd:int,
@@ -1573,9 +1622,9 @@ nidm:Cluster rdf:type owl:Class ;
       nidm:pValueFWER = \"0\" %% xsd:float,
       nidm:qValueFDR = \"7.65021389184909e-51\" %% xsd:float])""" ;
              
-             rdfs:isDefinedBy "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)" ;
+             obo:IAO_0000115 "Statistic defined at the cluster-level in an excusion set. In SPM it is defined as the cluster size. FIXME (now Cluster instead of ClusterStatistic)" ;
              
-             iao:IAO_0000116 """Range: - not found. BIRNLex or 
+             obo:IAO_0000116 """Range: - not found. BIRNLex or 
 NIDM Concept ID: nidm_7. """ .
 
 
@@ -1586,9 +1635,9 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      rdfs:isDefinedBy "FIXME" ;
+                      obo:IAO_0000115 "FIXME" ;
                       
-                      iao:IAO_0000112 """entity(niiri:cluster_label_map_id,
+                      obo:IAO_0000112 """entity(niiri:cluster_label_map_id,
       [prov:type = 'nidm:ClusterLabelsMap',
       prov:location = \"file:///path/to/ClusterLabels.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"ClusterLabels.nii.gz\" %% xsd:string,
@@ -1606,7 +1655,7 @@ nidm:Colin27CoordinateSystem rdf:type owl:Class ;
                              
                              rdfs:comment "used in SPM96 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
                              
-                             rdfs:isDefinedBy "Coordinate system defined by the \"stereotaxic average of 27 T1-weighted MRI scans of the same individual\"." ;
+                             obo:IAO_0000115 "Coordinate system defined by the \"stereotaxic average of 27 T1-weighted MRI scans of the same individual\"." ;
                              
                              rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
@@ -1618,7 +1667,7 @@ nidm:CompoundSymmetricNoise rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:NoiseDependence ;
                             
-                            rdfs:isDefinedBy "FIXME" .
+                            obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1629,10 +1678,10 @@ nidm:ConjunctionInference rdf:type owl:Class ;
                           rdfs:subClassOf nidm:Inference ,
                                           prov:Activity ;
                           
-                          iao:IAO_0000116 """Range: - not found. BIRNLex or 
+                          obo:IAO_0000116 """Range: - not found. BIRNLex or 
 NIDM Concept ID: nidm_8. """ ;
                           
-                          rdfs:isDefinedBy "Statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses." .
+                          obo:IAO_0000115 "Statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses." .
 
 
 
@@ -1642,14 +1691,14 @@ nidm:ContrastEstimation rdf:type owl:Class ;
                         
                         rdfs:subClassOf prov:Activity ;
                         
-                        iao:IAO_0000112 """activity(niiri:contrast_estimation_id,
+                        obo:IAO_0000112 """activity(niiri:contrast_estimation_id,
       [prov:type = 'nidm:ContrastEstimation',
       prov:label = \"Contrast estimation\"])""" ;
                         
-                        iao:IAO_0000116 """Range: - not found. BIRNLex or 
+                        obo:IAO_0000116 """Range: - not found. BIRNLex or 
 NIDM Concept ID: nidm_9. """ ;
                         
-                        rdfs:isDefinedBy "The process of estimating a contrast from the estimated parameters of statistical model." .
+                        obo:IAO_0000115 "The process of estimating a contrast from the estimated parameters of statistical model." .
 
 
 
@@ -1660,20 +1709,20 @@ nidm:ContrastMap rdf:type owl:Class ;
                  rdfs:subClassOf nidm:Map ,
                                  prov:Entity ;
                  
-                 iao:IAO_0000112 """entity(niiri:contrast_map_id,
+                 obo:IAO_0000112 """entity(niiri:contrast_map_id,
       [prov:type = 'nidm:ContrastMap',
       prov:location = \"file:///path/to/Contrast.nii.gz\" %% xsd:anyURI,
-      dct:format = 'nidm:Nifti1Gz',
+      dct:format = \"image/nifti\",
       nidm:filename = \"Contrast.nii.gz\" %% xsd:string,
       prov:label = \"Contrast Map: listening > rest\" %% xsd:string,
       nidm:contrastName = \"listening > rest\" %% xsd:string,
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                  
-                 iao:IAO_0000116 """Context: io terms. Parent: nidm:map, Scan Image  not found. Range: - not found. BIRNLex or 
+                 obo:IAO_0000116 """Context: io terms. Parent: nidm:map, Scan Image  not found. Range: - not found. BIRNLex or 
 NIDM Concept ID: nidm_10. """ ;
                  
-                 rdfs:isDefinedBy "A map whose value at each location is statistical contrast estimate." .
+                 obo:IAO_0000115 "A map whose value at each location is statistical contrast estimate." .
 
 
 
@@ -1683,7 +1732,7 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:Map ;
                               
-                              iao:IAO_0000112 """entity(niiri:contrast_standard_error_map_id,
+                              obo:IAO_0000112 """entity(niiri:contrast_standard_error_map_id,
       [prov:type = 'nidm:ContrastStandardErrorMap',
       prov:location = \"file:///path/to/ContrastStandardError.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"ContrastStandardError.nii.gz\" %% xsd:string,
@@ -1692,9 +1741,9 @@ nidm:ContrastStandardErrorMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                               
-                              rdfs:isDefinedBy "A map whose value at each location is the standard error of a given contrast." ;
+                              obo:IAO_0000115 "A map whose value at each location is the standard error of a given contrast." ;
                               
-                              iao:IAO_0000116 """BIRNLex or 
+                              obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_12. """ .
 
 
@@ -1705,17 +1754,17 @@ nidm:ContrastWeights rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     iao:IAO_0000112 """entity(niiri:contrast_weights_id,
+                     obo:IAO_0000112 """entity(niiri:contrast_weights_id,
       [prov:type = 'nidm:ContrastWeights',
       nidm:statisticType = 'nidm:TStatistic',
       nidm:contrastName = \"listening > rest\" %% xsd:string,
       prov:label = \"Contrast: Listening > Rest\" %% xsd:string,
       prov:value = \"[1, 0, 0]\" %% xsd:string])""" ;
                      
-                     iao:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
+                     obo:IAO_0000116 """Range: Vectorofintegers not found. BIRNLex or 
 NIDM Concept ID: nidm_13. """ ;
                      
-                     rdfs:isDefinedBy "Vector defining the linear combination associated with a particular contrast. " .
+                     obo:IAO_0000115 "Vector defining the linear combination associated with a particular contrast. " .
 
 
 
@@ -1727,7 +1776,7 @@ nidm:Coordinate rdf:type owl:Class ;
                 
                 owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44465"^^xsd:anyURI ;
                 
-                iao:IAO_0000112 """entity(niiri:coordinate_0001,
+                obo:IAO_0000112 """entity(niiri:coordinate_0001,
       [prov:type = 'prov:Location',
       prov:type = 'nidm:Coordinate',
       prov:label = \"Coordinate: 0001\" %% xsd:string,
@@ -1745,7 +1794,7 @@ nidm:Coordinate rdf:type owl:Class ;
         nidm:coordinate2 = \"-73.7\" %% xsd:float,
         nidm:coordinate3 = \"-9.24\" %% xsd:float])""" ;
                 
-                iao:IAO_0000116 """Model: - search for coordinate uri
+                obo:IAO_0000116 """Model: - search for coordinate uri
 - subclasses of coordinate
 - additional properties (e.g. units) 
 . Context: Functional. BIRNLex or 
@@ -1759,10 +1808,10 @@ nidm:CoordinateSpace rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     iao:IAO_0000116 """BIRNLex or 
+                     obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_21. """ ;
                      
-                     iao:IAO_0000112 """entity(niiri:coordinate_space_id_1,
+                     obo:IAO_0000112 """entity(niiri:coordinate_space_id_1,
       [prov:type = 'nidm:CoordinateSpace',
       prov:label = \"Coordinate space 1\" %% xsd:string,
       nidm:voxelToWorldMapping = \"[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]\" %% xsd:string,
@@ -1772,7 +1821,7 @@ NIDM Concept ID: nidm_21. """ ;
       nidm:numberOfDimensions = \"3\" %% xsd:int,
       nidm:dimensionsInVoxels = \"[53,63,46]\" %% xsd:string])""" ;
                      
-                     rdfs:isDefinedBy "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." .
+                     obo:IAO_0000115 "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)." .
 
 
 
@@ -1792,7 +1841,7 @@ nidm:CustomMaskMap rdf:type owl:Class ;
                    
                    rdfs:subClassOf nidm:Map ;
                    
-                   iao:IAO_0000112 """entity(niiri:custom_mask_id_1,
+                   obo:IAO_0000112 """entity(niiri:custom_mask_id_1,
       [prov:type = 'nidm:CustomMaskMap',
       prov:location = \"file:///path/to/CustomMask.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"CustomMask.nii.gz\" %% xsd:string,
@@ -1801,10 +1850,10 @@ nidm:CustomMaskMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                    
-                   iao:IAO_0000116 """BIRNLex or 
+                   obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_99. """ ;
                    
-                   rdfs:isDefinedBy "mask defined by the user to restrain the space in which model fitting is performed." .
+                   obo:IAO_0000115 "mask defined by the user to restrain the space in which model fitting is performed." .
 
 
 
@@ -1814,14 +1863,14 @@ nidm:Data rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
           
-          iao:IAO_0000116 """BIRNLex or 
+          obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_23. """ ;
           
-          rdfs:isDefinedBy "\"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.\"" ;
+          obo:IAO_0000115 "\"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.\"" ;
           
           owl:sameAs "This definition is from NCIT. Please update this note if the definition is modified." ;
           
-          iao:IAO_0000112 """entity(niiri:data_id,
+          obo:IAO_0000112 """entity(niiri:data_id,
       [prov:type = 'nidm:Data',
       prov:type = 'prov:Collection',
       prov:label = \"Data\" %% xsd:string,
@@ -1838,10 +1887,10 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_24. """ ;
                   
-                  iao:IAO_0000112 """entity(niiri:design_matrix_id,
+                  obo:IAO_0000112 """entity(niiri:design_matrix_id,
       [prov:type = 'nidm:DesignMatrix',
       prov:location = \"file:///path/to/DesignMatrix.csv\" %% xsd:anyURI,
       dct:format = \"text/csv\",
@@ -1851,7 +1900,7 @@ NIDM Concept ID: nidm_24. """ ;
                   
                   rdfs:seeAlso "stato:design matrix" ;
                   
-                  rdfs:isDefinedBy "A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation." .
+                  obo:IAO_0000115 "A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation." .
 
 
 
@@ -1871,7 +1920,7 @@ nidm:ExchangeableNoise rdf:type owl:Class ;
                        
                        rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
                        
-                       rdfs:isDefinedBy "FIXME" .
+                       obo:IAO_0000115 "FIXME" .
 
 
 
@@ -1881,7 +1930,7 @@ nidm:ExcursionSet rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  iao:IAO_0000112 """entity(niiri:excursion_set_id,
+                  obo:IAO_0000112 """entity(niiri:excursion_set_id,
       [prov:type = 'nidm:ExcursionSet',
       prov:location = \"file:///path/to/ExcursionSet.nii.gz\" %% xsd:anyURI,
       dct:format = \"image/nifti\",
@@ -1894,10 +1943,10 @@ nidm:ExcursionSet rdf:type owl:Class ;
       nidm:numberOfClusters = \"8\" %% xsd:int,
       nidm:pValue = \"8.95949980872501e-14\" %% xsd:float])""" ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_29. """ ;
                   
-                  rdfs:isDefinedBy "Set of map elements surviving a thresholding procedure." .
+                  obo:IAO_0000115 "Set of map elements surviving a thresholding procedure." .
 
 
 
@@ -1907,10 +1956,10 @@ nidm:ExtentThreshold rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     rdfs:isDefinedBy """A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
+                     obo:IAO_0000115 """A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
 """ ;
                      
-                     iao:IAO_0000112 """entity(niiri:extent_threshold_id,
+                     obo:IAO_0000112 """entity(niiri:extent_threshold_id,
       [prov:type = 'nidm:ExtentThreshold',
       prov:label = \"Extent Threshold: k>=0\" %% xsd:string,
       nidm:clusterSizeInVoxels = \"0\" %% xsd:int,
@@ -1918,7 +1967,7 @@ nidm:ExtentThreshold rdf:type owl:Class ;
       nidm:pValueUncorrected = \"1\" %% xsd:float,
       nidm:pValueFWER = \"1\" %% xsd:float])""" ;
                      
-                     iao:IAO_0000116 """Context: Attribute \"prov:value\" 
+                     obo:IAO_0000116 """Context: Attribute \"prov:value\" 
 of \"extentThresh\" nidm_0079. BIRNLex or 
 NIDM Concept ID: nidm_30. new parent: Effect. """ .
 
@@ -1932,9 +1981,9 @@ nidm:FSL rdf:type owl:Class ;
          
          rdfs:seeAlso "http://fsl.fmrib.ox.ac.uk" ;
          
-         rdfs:isDefinedBy "FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB" ;
+         obo:IAO_0000115 "FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB" ;
          
-         iao:IAO_0000116 """BIRNLex or 
+         obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_57. """ .
 
 
@@ -1945,9 +1994,9 @@ nidm:FSLResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                rdfs:isDefinedBy "FIXME" ;
+                obo:IAO_0000115 "FIXME" ;
                 
-                iao:IAO_0000112 """entity(niiri:fsl_results_id,
+                obo:IAO_0000112 """entity(niiri:fsl_results_id,
     [prov:type = 'prov:Bundle',
     prov:label = \"FSL Results\",
     nidm:objectModel = 'nidm:FSLResults',
@@ -1981,7 +2030,7 @@ nidm:GeneralizedLeastSquares rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:EstimationMethod ;
                              
-                             rdfs:isDefinedBy "FIXME" ;
+                             obo:IAO_0000115 "FIXME" ;
                              
                              rdfs:comment "GLS (both heteroscedasticity and dependence accounted for) OLS is a special case of WLS & GLS; WLS is a special case of GLS." .
 
@@ -1993,7 +2042,7 @@ nidm:GrandMeanMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  iao:IAO_0000112 """entity(niiri:grand_mean_map_id,
+                  obo:IAO_0000112 """entity(niiri:grand_mean_map_id,
       [prov:type = 'nidm:GrandMeanMap',
       prov:location = \"file:///path/to/GrandMean.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"GrandMean.nii.gz\" %% xsd:string,
@@ -2003,7 +2052,7 @@ nidm:GrandMeanMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  rdfs:isDefinedBy "FIXME" .
+                  obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2013,14 +2062,14 @@ nidm:HeightThreshold rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     iao:IAO_0000116 """Context: Attribute \"statistic\" nidm_0049
+                     obo:IAO_0000116 """Context: Attribute \"statistic\" nidm_0049
 of \"StatisticThresh\" nidm_0018. BIRNLex or 
 NIDM Concept ID: nidm_34. """ ;
                      
-                     rdfs:isDefinedBy """A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
+                     obo:IAO_0000115 """A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 """ ;
                      
-                     iao:IAO_0000112 """entity(niiri:height_threshold_id,
+                     obo:IAO_0000112 """entity(niiri:height_threshold_id,
       [prov:type = 'nidm:HeightThreshold',
       prov:label = \"Height Threshold: p<0.05 (FWE)\" %% xsd:string,
       nidm:userSpecifiedThresholdType = \"p-value FWE\" %% xsd:string,
@@ -2038,7 +2087,7 @@ nidm:Icbm452AirCoordinateSystem rdf:type owl:Class ;
                                 
                                 rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
                                 
-                                rdfs:isDefinedBy "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" ;
+                                obo:IAO_0000115 "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" ;
                                 
                                 rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
@@ -2052,7 +2101,7 @@ nidm:Icbm452Warp5CoordinateSystem rdf:type owl:Class ;
                                   
                                   rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
                                   
-                                  rdfs:isDefinedBy "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" \"based on a 5th order polynomial transformation into the atlas space\"" ;
+                                  obo:IAO_0000115 "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" \"based on a 5th order polynomial transformation into the atlas space\"" ;
                                   
                                   rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
@@ -2069,7 +2118,7 @@ nidm:IcbmMni152LinearCoordinateSystem rdf:type owl:Class ;
                                       
                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" ;
                                       
-                                      rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly transformed to Talairach space\"." .
+                                      obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly transformed to Talairach space\"." .
 
 
 
@@ -2081,7 +2130,7 @@ nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                                                         
-                                                        rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                        obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" .
 
@@ -2095,7 +2144,7 @@ nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
-                                                       rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                       obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                        
                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
@@ -2111,7 +2160,7 @@ nidm:IcbmMni152NonLinear2009bAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                                                         
-                                                        rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
+                                                        obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." .
 
 
 
@@ -2121,7 +2170,7 @@ nidm:IcbmMni152NonLinear2009bSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
                                                        
-                                                       rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                       obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                        
                                                        rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                                                        
@@ -2139,7 +2188,7 @@ nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem rdf:type owl:Class ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
-                                                        rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                        obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                         
                                                         rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." .
 
@@ -2151,7 +2200,7 @@ nidm:IcbmMni152NonLinear2009cSymmetricCoordinateSystem rdf:type owl:Class ;
                                                        
                                                        rdfs:subClassOf nidm:MNICoordinateSystem ;
                                                        
-                                                       rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                       obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
@@ -2167,7 +2216,7 @@ nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem rdf:type owl:Class ;
                                                       
                                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6"^^xsd:anyURI ;
                                                       
-                                                      rdfs:isDefinedBy "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" ;
+                                                      obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" ;
                                                       
                                                       rdfs:comment "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" ,
                                                                    "FIXME. This definition needs to be re-worked and reviewed." .
@@ -2180,7 +2229,7 @@ nidm:Image rdf:type owl:Class ;
            
            rdfs:subClassOf prov:Entity ;
            
-           iao:IAO_0000112 """entity(niiri:design_matrix_png_id,
+           obo:IAO_0000112 """entity(niiri:design_matrix_png_id,
       [prov:type = 'nidm:Image',
       prov:location = \"file:///path/to/DesignMatrix.png\" %% xsd:anyURI,
       nidm:filename = \"DesignMatrix.png\",
@@ -2193,7 +2242,7 @@ nidm:Image rdf:type owl:Class ;
            
            rdfs:comment "Class used to represent png, gif..." ;
            
-           rdfs:isDefinedBy "FIXME" .
+           obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2203,7 +2252,7 @@ nidm:IndependentNoise rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:NoiseDependence ;
                       
-                      rdfs:isDefinedBy "FIXME" .
+                      obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2213,12 +2262,12 @@ nidm:Inference rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Activity ;
                
-               iao:IAO_0000116 """BIRNLex or 
+               obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_35. """ ;
                
-               rdfs:isDefinedBy "The process of inferring the excursion set from a statistical map." ;
+               obo:IAO_0000115 "The process of inferring the excursion set from a statistical map." ;
                
-               iao:IAO_0000112 """activity(niiri:inference_id,
+               obo:IAO_0000112 """activity(niiri:inference_id,
       [prov:type = 'nidm:Inference',
       nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest',
       prov:label = \"Inference\"])""" .
@@ -2231,7 +2280,7 @@ nidm:Ixi549Space rdf:type owl:Class ;
                  
                  rdfs:subClassOf nidm:MNICoordinateSystem ;
                  
-                 rdfs:isDefinedBy "Coordinate system defined by the average of the \"549 [...] subjects from the IXI dataset\" linearly transformed to ICBM MNI 452." ;
+                 obo:IAO_0000115 "Coordinate system defined by the average of the \"549 [...] subjects from the IXI dataset\" linearly transformed to ICBM MNI 452." ;
                  
                  rdfs:comment "Used in SPM12b (cf. spm12b/spm_templates.man)" ;
                  
@@ -2249,12 +2298,12 @@ nidm:MNICoordinateSystem rdf:type owl:Class ;
                          
                          rdfs:seeAlso "birnlex_2125" ;
                          
-                         iao:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
+                         obo:IAO_0000116 """Context: io terms. Parent: reference atlas not found. BIRNLex or 
 NIDM Concept ID: nidm:nidm_40. """ ;
                          
                          rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                          
-                         rdfs:isDefinedBy "Coordinate system defined with reference to the MNI atlas." .
+                         obo:IAO_0000115 "Coordinate system defined with reference to the MNI atlas." .
 
 
 
@@ -2264,7 +2313,7 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ;
          
-         rdfs:isDefinedBy "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." .
+         obo:IAO_0000115 "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." .
 
 
 
@@ -2274,7 +2323,7 @@ nidm:MapHeader rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Entity ;
                
-               rdfs:isDefinedBy "FIXME" .
+               obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2285,9 +2334,9 @@ nidm:MaskMap rdf:type owl:Class ;
              rdfs:subClassOf nidm:Map ,
                              prov:Entity ;
              
-             rdfs:isDefinedBy "map or surface on which the associated results are displayed. " ;
+             obo:IAO_0000115 "map or surface on which the associated results are displayed. " ;
              
-             iao:IAO_0000112 """entity(niiri:mask_id_2,
+             obo:IAO_0000112 """entity(niiri:mask_id_2,
       [prov:type = 'nidm:MaskMap',
       prov:location = \"file:///path/to/Mask.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"Mask.nii.gz\" %% xsd:string,
@@ -2296,7 +2345,7 @@ nidm:MaskMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
              
-             iao:IAO_0000116 """BIRNLex or 
+             obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_39. """ .
 
 
@@ -2307,7 +2356,7 @@ nidm:Mni305CoordinateSystem rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:MNICoordinateSystem ;
                             
-                            rdfs:isDefinedBy "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
+                            obo:IAO_0000115 "Coordinate system defined by the \"average of 305 T1-weighted MRI scans, linearly transformed to Talairach space\"." ;
                             
                             rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305" ;
                             
@@ -2321,10 +2370,10 @@ nidm:ModelParametersEstimation rdf:type owl:Class ;
                                
                                rdfs:subClassOf prov:Activity ;
                                
-                               iao:IAO_0000116 """BIRNLex or 
+                               obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_41. """ ;
                                
-                               iao:IAO_0000112 """activity(niiri:model_pe_id,
+                               obo:IAO_0000112 """activity(niiri:model_pe_id,
       [prov:type = 'nidm:ModelParametersEstimation',
       prov:label = \"Model parameters estimation\",
       nidm:withEstimationMethod = 'nidm:OrdinaryLeastSquares'
@@ -2332,7 +2381,7 @@ NIDM Concept ID: nidm_41. """ ;
                                
                                rdfs:seeAlso "stato:model parameter estimation" ;
                                
-                               rdfs:isDefinedBy "The process of estimating the parameters of a general linear model from the available data." .
+                               obo:IAO_0000115 "The process of estimating the parameters of a general linear model from the available data." .
 
 
 
@@ -2342,7 +2391,7 @@ nidm:NIDMObjectModel rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     rdfs:isDefinedBy "FIXME" .
+                     obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2352,7 +2401,7 @@ nidm:NoiseDependence rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
                      
-                     rdfs:isDefinedBy "FIXME" .
+                     obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2370,9 +2419,9 @@ nidm:NoiseModel rdf:type owl:Class ;
                 
                 rdfs:subClassOf prov:Entity ;
                 
-                rdfs:isDefinedBy "FIXME" ;
+                obo:IAO_0000115 "FIXME" ;
                 
-                iao:IAO_0000112 """entity(niiri:noise_model_id,
+                obo:IAO_0000112 """entity(niiri:noise_model_id,
       [prov:type = 'nidm:NoiseModel',
       nidm:hasNoiseDistribution = 'nidm:GaussianDistribution',
       nidm:noiseVarianceHomogeneous = \"true\" %%xsd:boolean,
@@ -2388,7 +2437,7 @@ nidm:NonParametricDistribution rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:NoiseDistribution ;
                                
-                               rdfs:isDefinedBy "FIXME" .
+                               obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2400,7 +2449,7 @@ nidm:OneTailedTest rdf:type owl:Class ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
                    
-                   rdfs:isDefinedBy "Re-use \"one tailed test\" from STATO." .
+                   obo:IAO_0000115 "Re-use \"one tailed test\" from STATO." .
 
 
 
@@ -2412,7 +2461,7 @@ nidm:OrdinaryLeastSquares rdf:type owl:Class ;
                           
                           rdfs:comment "OLS (no heteroscedasticity or dependence accounted for)" ;
                           
-                          rdfs:isDefinedBy "FIXME" .
+                          obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2422,12 +2471,12 @@ nidm:ParameterEstimateMap rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:Map ;
                           
-                          iao:IAO_0000116 """BIRNLex or 
+                          obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_45. """ ;
                           
-                          rdfs:isDefinedBy "A map whose value at each location is the estimate of a model parameter." ;
+                          obo:IAO_0000115 "A map whose value at each location is the estimate of a model parameter." ;
                           
-                          iao:IAO_0000112 """entity(niiri:parameter_estimate_map_id_1,
+                          obo:IAO_0000112 """entity(niiri:parameter_estimate_map_id_1,
       [prov:type = 'nidm:ParameterEstimateMap',
       prov:location = \"file:///path/to/ParameterEstimate_0001.nii.gz\" %% xsd:anyURI,
       prov:label = \"Beta Map 1\" %% xsd:string,
@@ -2444,10 +2493,10 @@ nidm:Peak rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
           
-          iao:IAO_0000116 """BIRNLex or 
+          obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_46. """ ;
           
-          iao:IAO_0000112 """entity(niiri:peak_0001,
+          obo:IAO_0000112 """entity(niiri:peak_0001,
       [prov:type = 'nidm:Peak',
       prov:label = \"Peak 0001\" %% xsd:string,
       prov:location = 'niiri:coordinate_0001',
@@ -2457,7 +2506,7 @@ NIDM Concept ID: nidm_46. """ ;
       nidm:pValueFWER = \"0\" %% xsd:float,
       nidm:qValueFDR = \"6.3705194444993e-11\" %% xsd:float])""" ;
           
-          rdfs:isDefinedBy "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" .
+          obo:IAO_0000115 "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" .
 
 
 
@@ -2477,13 +2526,13 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:Map ;
                             
-                            rdfs:isDefinedBy """A map whose value at each location is the residual of the mean squares fit to the data.
+                            obo:IAO_0000115 """A map whose value at each location is the residual of the mean squares fit to the data.
 """ ;
                             
-                            iao:IAO_0000116 """BIRNLex or 
+                            obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_52. """ ;
                             
-                            iao:IAO_0000112 """entity(niiri:residual_mean_squares_map_id,
+                            obo:IAO_0000112 """entity(niiri:residual_mean_squares_map_id,
       [prov:type = 'nidm:ResidualMeanSquaresMap',
       prov:location = \"file:///path/to/ResidualMeanSquares.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"ResidualMeanSquares.nii.gz\" %% xsd:string,
@@ -2502,7 +2551,7 @@ nidm:RobustIterativelyReweighedLeastSquares rdf:type owl:Class ;
                                             
                                             rdfs:subClassOf nidm:EstimationMethod ;
                                             
-                                            rdfs:isDefinedBy "FIXME" ;
+                                            obo:IAO_0000115 "FIXME" ;
                                             
                                             rdfs:comment "used for automatically down-weighting outliers, using some given influence function (e.g. Huber; see [1] for a neuroimaging application)." .
 
@@ -2514,16 +2563,16 @@ nidm:SPM rdf:type owl:Class ;
          
          rdfs:subClassOf prov:SoftwareAgent ;
          
-         rdfs:isDefinedBy "Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group." ;
+         obo:IAO_0000115 "Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group." ;
          
-         iao:IAO_0000112 """agent(niiri:software_id,
+         obo:IAO_0000112 """agent(niiri:software_id,
       [prov:type = 'nidm:SPM',
       prov:type = 'prov:SoftwareAgent',
       prov:label = \"SPM\" %% xsd:string,
       nidm:softwareVersion = \"SPM12b\" %% xsd:string,
       spm:softwareRevision = \"5853\" %% xsd:string])""" ;
          
-         iao:IAO_0000116 """BIRNLex or 
+         obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_56. """ ;
          
          rdfs:seeAlso "http://www.fil.ion.ucl.ac.uk/spm/" .
@@ -2536,13 +2585,13 @@ nidm:SPMResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
-                iao:IAO_0000112 """entity(niiri:spm_results_id,
+                obo:IAO_0000112 """entity(niiri:spm_results_id,
     [prov:type = 'prov:Bundle',
     prov:label = \"SPM Results\",
     nidm:objectModel = 'nidm:SPMResults',
     nidm:version = \"0.2.0\"])""" ;
                 
-                rdfs:isDefinedBy "FIXME" .
+                obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2553,7 +2602,7 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
                     rdfs:subClassOf nidm:Map ,
                                     prov:Entity ;
                     
-                    iao:IAO_0000112 """entity(niiri:search_space_id,
+                    obo:IAO_0000112 """entity(niiri:search_space_id,
         [prov:type = 'nidm:SearchSpaceMap',
         prov:location = \"file:///path/to/SearchSpace.nii.gz\" %% xsd:anyURI,
         dct:format = \"image/nifti\",
@@ -2574,17 +2623,17 @@ nidm:SearchSpaceMap rdf:type owl:Class ;
       spm:smallestSignifClusterSizeInVoxelsFWE05 = \"1\" %% xsd:float,
       spm:smallestSignifClusterSizeInVoxelsFDR05 = \"3\" %% xsd:float])""" ;
                     
-                    iao:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
+                    obo:IAO_0000116 """Domain or Attributes: spm:searchVolumeInUnits not found. BIRNLex or 
 NIDM Concept ID: nidm_100. """ ;
                     
                     rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
                     
-                    iao:IAO_0000116 """BIRNLex or 
+                    obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_95. """ ;
                     
-                    rdfs:isDefinedBy "mask in which the inference was performed." ;
+                    obo:IAO_0000115 "mask in which the inference was performed." ;
                     
-                    iao:IAO_0000112 """entity(niiri:search_space_id,
+                    obo:IAO_0000112 """entity(niiri:search_space_id,
       [prov:type = 'nidm:SearchSpaceMap',
       prov:location = \"file:///path/to/SearchSpace.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"SearchSpace.nii.gz\" %% xsd:string,
@@ -2607,7 +2656,7 @@ NIDM Concept ID: spm_95. """ ;
       nidm:randomFieldStationarity = \"false\" %%xsd:boolean,
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                     
-                    rdfs:isDefinedBy "Properties of the underlying statistical process." .
+                    obo:IAO_0000115 "Properties of the underlying statistical process." .
 
 
 
@@ -2617,7 +2666,7 @@ nidm:SeriallyCorrelatedNoise rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:NoiseDependence ;
                              
-                             rdfs:isDefinedBy "FIXME" .
+                             obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2627,7 +2676,7 @@ nidm:SpatialModel rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  rdfs:isDefinedBy "FIXME" .
+                  obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2637,7 +2686,7 @@ nidm:SpatiallyGlobalModel rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:SpatialModel ;
                           
-                          rdfs:isDefinedBy "FIXME" .
+                          obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2647,7 +2696,7 @@ nidm:SpatiallyLocalModel rdf:type owl:Class ;
                          
                          rdfs:subClassOf nidm:SpatialModel ;
                          
-                         rdfs:isDefinedBy "FIXME" .
+                         obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2657,7 +2706,7 @@ nidm:SpatiallyRegularizedModel rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:SpatialModel ;
                                
-                               rdfs:isDefinedBy "FIXME" .
+                               obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2670,7 +2719,7 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   rdfs:comment "This is meant to be used for retrospective export when exact template is unknown." ,
                                                "FIXME. This definition needs to be re-worked and reviewed." ;
                                   
-                                  rdfs:isDefinedBy "Parent of all reference spaces except \"Subject\"." .
+                                  obo:IAO_0000115 "Parent of all reference spaces except \"Subject\"." .
 
 
 
@@ -2691,7 +2740,7 @@ nidm:StatisticMap rdf:type owl:Class ;
                   rdfs:subClassOf nidm:Map ,
                                   prov:Entity ;
                   
-                  iao:IAO_0000112 """entity(niiri:statistic_map_id,
+                  obo:IAO_0000112 """entity(niiri:statistic_map_id,
       [prov:type = 'nidm:StatisticMap',
       nidm:statisticType = 'nidm:TStatistic',
       prov:location = \"file:///path/to/TStatistic.nii.gz\" %% xsd:anyURI,
@@ -2704,9 +2753,9 @@ nidm:StatisticMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  rdfs:isDefinedBy "A map whose value at each location is a statistic. " ;
+                  obo:IAO_0000115 "A map whose value at each location is a statistic. " ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_60. """ .
 
 
@@ -2717,7 +2766,7 @@ nidm:SubVolumeMap rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:Map ;
                   
-                  iao:IAO_0000112 """entity(niiri:sub_volume_id,
+                  obo:IAO_0000112 """entity(niiri:sub_volume_id,
       [prov:type = 'nidm:SubVolumeMap',
       prov:location = \"file:///path/to/SubVolume.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"SubVolume.nii.gz\" %% xsd:string,
@@ -2726,10 +2775,10 @@ nidm:SubVolumeMap rdf:type owl:Class ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_2',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                   
-                  iao:IAO_0000116 """BIRNLex or 
+                  obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_101. """ ;
                   
-                  rdfs:isDefinedBy "mask defined by the user to restrain the space in which inference is performed." .
+                  obo:IAO_0000115 "mask defined by the user to restrain the space in which inference is performed." .
 
 
 
@@ -2741,7 +2790,7 @@ nidm:SubjectCoordinateSystem rdf:type owl:Class ;
                              
                              rdfs:comment "Used in FSL and SPM un-registered data." ;
                              
-                             rdfs:isDefinedBy "Coordinate system defined by the subject brain (no spatial normalisation applied)." .
+                             obo:IAO_0000115 "Coordinate system defined by the subject brain (no spatial normalisation applied)." .
 
 
 
@@ -2761,7 +2810,7 @@ nidm:TalairachCoordinateSystem rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
                                
-                               rdfs:isDefinedBy "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
+                               obo:IAO_0000115 "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
                                
                                rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
                                
@@ -2775,7 +2824,7 @@ nidm:TwoTailedTest rdf:type owl:Class ;
                    
                    rdfs:subClassOf prov:Entity ;
                    
-                   rdfs:isDefinedBy "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
+                   obo:IAO_0000115 "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
                    
                    owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI .
 
@@ -2787,7 +2836,7 @@ nidm:WeightedLeastSquares rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:EstimationMethod ;
                           
-                          rdfs:isDefinedBy "FIXME" ;
+                          obo:IAO_0000115 "FIXME" ;
                           
                           rdfs:comment "WLS (heteroscedasticity accounted for, but no dependence)" .
 
@@ -2799,7 +2848,7 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           rdfs:isDefinedBy "FIXME" .
+                           obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2809,7 +2858,7 @@ nidm:ZStatistic rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:Statistic ;
                 
-                rdfs:isDefinedBy "FIXME" .
+                obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2819,10 +2868,10 @@ nidm:stationaryRandomField rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           iao:IAO_0000116 """BIRNLex or 
+                           obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: nidm_59. """ ;
                            
-                           rdfs:isDefinedBy "Random-field that is constant across the search volume." .
+                           obo:IAO_0000115 "Random-field that is constant across the search volume." .
 
 
 
@@ -2832,7 +2881,7 @@ spm:KConjunctionInference rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:Inference ;
                           
-                          rdfs:isDefinedBy "FIXME" .
+                          obo:IAO_0000115 "FIXME" .
 
 
 
@@ -2842,10 +2891,10 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      iao:IAO_0000116 """BIRNLex or 
+                      obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_83. """ ;
                       
-                      iao:IAO_0000112 """entity(niiri:resels_per_voxel_map_id,
+                      obo:IAO_0000112 """entity(niiri:resels_per_voxel_map_id,
       [prov:type = 'spm:ReselsPerVoxelMap',
       prov:location = \"file:///path/to/ReselsPerVoxel.nii.gz\" %% xsd:anyURI,
       nidm:filename = \"ReselsPerVoxel.nii.gz\" %% xsd:string,
@@ -2854,7 +2903,7 @@ NIDM Concept ID: spm_83. """ ;
       nidm:atCoordinateSpace = 'niiri:coordinate_space_id_1',
       crypto:sha512 = \"e43b6e01b0463fe7d40782137867a...\" %% xsd:string])""" ;
                       
-                      rdfs:isDefinedBy "A map whose value at each location is the number of resels per voxel. " .
+                      obo:IAO_0000115 "A map whose value at each location is the number of resels per voxel. " .
 
 
 
@@ -2864,9 +2913,9 @@ spm:kConjunctionInference rdf:type owl:Class ;
                           
                           rdfs:subClassOf prov:Activity ;
                           
-                          rdfs:isDefinedBy "Inference testing for the joint significance of a subset of the effects." ;
+                          obo:IAO_0000115 "Inference testing for the joint significance of a subset of the effects." ;
                           
-                          iao:IAO_0000116 """BIRNLex or 
+                          obo:IAO_0000116 """BIRNLex or 
 NIDM Concept ID: spm_76. """ .
 
 
@@ -2877,11 +2926,11 @@ spm:nonStationaryRandomField rdf:type owl:Class ;
                              
                              rdfs:subClassOf prov:Entity ;
                              
-                             iao:IAO_0000112 "<this is an attribute value>" ;
+                             obo:IAO_0000112 "<this is an attribute value>" ;
                              
-                             rdfs:isDefinedBy "Random field that is variable across the search volume." ;
+                             obo:IAO_0000115 "Random field that is variable across the search volume." ;
                              
-                             iao:IAO_0000116 """Range: <thisisanattributevalue> not found. BIRNLex or 
+                             obo:IAO_0000116 """Range: <thisisanattributevalue> not found. BIRNLex or 
 NIDM Concept ID: spm_81. """ .
 
 
