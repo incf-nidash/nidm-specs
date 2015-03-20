@@ -6,12 +6,8 @@
 # create a file named store_login_key.txt in the same directory including the following text: "mylogin:mykey" where mylogin 
 # must be replaced by your Prov Store login and mykey by your ApiKey (cf. https://provenance.ecs.soton.ac.uk/store/account/developer/)
 
-import urllib2
-import json
 import logging
 import os
-import rdflib
-from rdflib.graph import Graph
 from rdflib.compare import *
 import sys
 
@@ -20,7 +16,6 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 
 # Append test directory to path
 sys.path.append(os.path.join(RELPATH, "..", "test"))
-from TestCommons import example_filenames
 from CheckConsistency import *
 from OwlReader import OwlReader
 
@@ -108,15 +103,19 @@ class UpdateTermReadme():
         for owl_term in self.owl.classes.union(self.owl.properties):
             curation_status = self.owl.get_curation_status(owl_term)
             definition = self.owl.get_definition(owl_term)
+            if definition == "":
+                definition = "&lt;undefined&gt;"
             editor = self.owl.get_editor(owl_term)
             range_value = self.owl.get_range(owl_term)
             domain = self.owl.get_domain(owl_term)
             same = self.owl.get_same_as(owl_term)
             
-            if definition:
-                if curation_status:
-                    curation_key = curation_status
-                    term_key = self.owl.graph.qname(owl_term)
+            if curation_status:
+                curation_key = curation_status
+                term_key = self.owl.graph.qname(owl_term)
+
+                if term_key.startswith("nidm") or term_key.startswith("spm") or\
+                    term_key.startswith("fsl") or term_key.startswith("afni"):
                     if owl_term in self.owl.classes:
                         class_terms.setdefault(curation_key, list()).append(term_key)
                     else:

@@ -41,7 +41,39 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:ClusterMaximumStatistic: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:ContrastVarianceMap: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:ClusterLabelsMap: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:FSLResults: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:GrandMeanMap: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:InferenceMaskMap: </b>mask defined by the user to restrain the space in which inference is performed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:MapHeader: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:NIDMObjectModel: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:SPMResults: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -60,6 +92,22 @@
     <td><b>nidm:SpatiallyRegularizedModel: </b>FIXME</td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:WorldCoordinateSystem: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:ZStatistic: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:ArbitrarilyCorrelatedError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:CompoundSymmetricError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:ContrastEstimation: </b>The process of estimating a contrast from the estimated parameters of statistical model</td>
 </tr>
@@ -68,12 +116,28 @@
     <td><b>nidm:ContrastWeights: </b>Vector defining the linear combination associated with a particular contrast. </td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:ExchangeableError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:IndependentError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td><b>nidm:SeriallyCorrelatedError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>fsl:CenterOfGravity: </b>Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:CoordinateSpace: </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><b>nidm:CustomCoordinateSystem: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -213,15 +277,75 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:dlh: </b>&lt;undefined&gt;</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:featVersion: </b>&lt;undefined&gt;</td>
+    <td>nidm:FSL </td>
+    <td>xsd:string </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt;</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>fsl:searchVolumeInVoxels: </b>&lt;undefined&gt;</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td>xsd:positiveInteger </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:dependenceSpatialModel: </b>FIXME</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:SpatialModel </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:globalNullDegree: </b>&lt;undefined&gt;</td>
+    <td>spm:KConjunctionInference </td>
+    <td>xsd:int </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:hasMapHeader: </b>&lt;undefined&gt;</td>
+    <td>nidm:Map </td>
+    <td>nidm:MapHeader </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:numberOfClusters: </b>&lt;undefined&gt;</td>
+    <td>nidm:ExcursionSetMap </td>
+    <td>xsd:int </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:objectModel: </b>&lt;undefined&gt;</td>
+    <td>prov:Bundle </td>
+    <td>nidm:NIDMObjectModel </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:statisticType: </b>&lt;undefined&gt;</td>
+    <td>nidm:ContrastWeights nidm:StatisticMap </td>
+    <td>nidm:Statistic </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:varianceSpatialModel: </b>FIXME</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:SpatialModel </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:version: </b>&lt;undefined&gt;</td>
+    <td>prov:Bundle </td>
+    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
