@@ -96,10 +96,6 @@
     <td><b>nidm:WorldCoordinateSystem: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>nidm:ZStatistic: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td><b>nidm:ArbitrarilyCorrelatedError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
 </tr>
@@ -333,7 +329,7 @@
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:statisticType: </b>&lt;undefined&gt;</td>
     <td>nidm:ContrastWeights nidm:StatisticMap </td>
-    <td>nidm:Statistic </td>
+    <td>obo:STATO_0000039 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
