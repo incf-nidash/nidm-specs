@@ -383,23 +383,6 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://www.incf.org/ns/nidash/fsl#searchVolumeInVoxels
-
-fsl:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
-                         
-                         obo:IAO_0000116 """Under discussion at: https://github.com/incf-nidash/nidm/pull/269
-Check if this can be merged with spm:searchVolumeInVoxels""" ;
-                         
-                         obo:IAO_0000114 obo:IAO_0000124 ;
-                         
-                         rdfs:domain nidm:SearchSpaceMap ;
-                         
-                         rdfs:range xsd:positiveInteger ;
-                         
-                         rdfs:subPropertyOf owl:topDataProperty .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#clusterLabelId
 
 nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
@@ -882,6 +865,26 @@ nidm:randomFieldStationarity rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#searchVolumeInVoxels
+
+nidm:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
+                          
+                          obo:IAO_0000115 "Total number of voxels within the search volume." ;
+                          
+                          obo:IAO_0000112 "68656" ;
+                          
+                          rdfs:seeAlso "Synonyms of nidm:volumeInVoxels" ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000124 ;
+                          
+                          rdfs:domain nidm:SearchSpaceMap ;
+                          
+                          rdfs:range xsd:positiveInteger ;
+                          
+                          rdfs:subPropertyOf owl:topDataProperty .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#softwareVersion
 
 nidm:softwareVersion rdf:type owl:DatatypeProperty ;
@@ -1277,27 +1280,6 @@ spm:searchVolumeInVertices rdf:type owl:DatatypeProperty ;
                                                                ]
                                                              )
                                       ] .
-
-
-
-###  http://www.incf.org/ns/nidash/spm#searchVolumeInVoxels
-
-spm:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
-                         
-                         rdfs:seeAlso "Synonyms of nidm:volumeInVoxels" ;
-                         
-                         obo:IAO_0000115 "Total number of voxels within the search volume." ;
-                         
-                         obo:IAO_0000116 """Under discussion at: https://github.com/incf-nidash/nidm/pull/269
-Check if this can be merged with fsl:searchVolumeInVoxels""" ;
-                         
-                         obo:IAO_0000112 "68656" ;
-                         
-                         obo:IAO_0000114 obo:IAO_0000124 ;
-                         
-                         rdfs:domain nidm:SearchSpaceMap ;
-                         
-                         rdfs:range xsd:positiveInteger .
 
 
 
@@ -1741,6 +1723,11 @@ nidm:DesignMatrix rdf:type owl:Class ;
                                     owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
+                                    ] ,
+                                  [ rdf:type owl:Restriction ;  
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
@@ -1748,9 +1735,9 @@ nidm:DesignMatrix rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dc:description ;
-                                    owl:onClass dctype:Image ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
