@@ -104,7 +104,7 @@ def create_document(doc_json_url, doc_title):
 
 	return doc_url
 
-if __name__ == '__main__':
+def main():
 	for example_file in example_filenames:
 
 		# Get title for current document
@@ -181,3 +181,6 @@ if __name__ == '__main__':
 
 		readme_file = os.path.join(os.path.dirname(os.path.join(NIDMRESULTSPATH, example_file)), 'README.md')
 		write_readme(readme_file, doc_url)
+
+if __name__ == '__main__':
+    main()		

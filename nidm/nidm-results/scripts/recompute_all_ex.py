@@ -16,7 +16,7 @@ import create_fsl_example_001
 import create_fsl_example_002
 import create_fsl_example_003
 
-if __name__ == '__main__':
+def main():
 	create_term_examples.main()
 	create_spm_example.main()
 	create_spm_example_001.main()
@@ -28,3 +28,6 @@ if __name__ == '__main__':
 	create_fsl_example_001.main()
 	create_fsl_example_002.main()
 	create_fsl_example_003.main()
+
+if __name__ == '__main__':
+	main()	
