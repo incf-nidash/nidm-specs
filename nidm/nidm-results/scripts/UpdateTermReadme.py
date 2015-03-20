@@ -168,7 +168,7 @@ class UpdateTermReadme():
         title = "<h1>NIDM-Results Terms curation status</h1>"
         self.write_readme(readme_file, title+curation_legend+class_table_txt+prpty_table_txt)
 
-if __name__ == '__main__':
+def main():
     # Retreive owl file for NIDM-Results
     owl_file = os.path.join(class_termsPATH, 'nidm-results.owl')
 
@@ -179,5 +179,9 @@ if __name__ == '__main__':
 
     readme_file = os.path.join(class_termsPATH, 'README.md')
     updateReadme.update_readme(readme_file)
+
+if __name__ == '__main__':
+    main()
+    
 
 
