@@ -22,7 +22,7 @@ class OwlReader():
         self.classes = self.get_class_names() 
         self.properties = self.get_property_names()
         # For each class find out attribute list as defined by domain in attributes
-        self.attributes, self.ranges,  self.type_restrictions = self.get_attributes()
+        self.attributes, self.ranges,  self.type_restrictions, self.parent_ranges = self.get_attributes()
 
 
     def get_class_names(self):
@@ -103,6 +103,8 @@ class OwlReader():
         # For each ObjectProperty found out corresponding range
         ranges = dict()
 
+        parent_ranges = dict()
+
         restrictions = dict()
 
         # Attributes that can be found in all classes
@@ -144,14 +146,14 @@ class OwlReader():
                             range_name = sub_range_name
 
 
-                    ranges.setdefault(data_property, set()).add(range_name)
+                    parent_ranges.setdefault(data_property, set()).add(range_name)
 
                     # Add child_class to range (for ObjectProperty)
                     for child in self.graph.transitive_subjects(RDFS['subClassOf'], range_name):
                         ranges.setdefault(data_property, set()).add(child)
                     
 
-        return list((attributes, ranges, restrictions))
+        return list((attributes, ranges, restrictions, parent_ranges))
 
     def get_graph(self):
         # Read owl (turtle) file
