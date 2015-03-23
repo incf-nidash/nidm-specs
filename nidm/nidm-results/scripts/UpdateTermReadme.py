@@ -105,7 +105,8 @@ class UpdateTermReadme():
             definition = self.owl.get_definition(owl_term)
             if definition == "":
                 definition = "&lt;undefined&gt;"
-            editor = self.owl.get_editor(owl_term)
+            editor = self.owl.get_editor(owl_term)+\
+                self.owl.get_editor_note(owl_term)
             range_value = self.owl.get_range(owl_term)
             domain = self.owl.get_domain(owl_term)
             same = self.owl.get_same_as(owl_term)
