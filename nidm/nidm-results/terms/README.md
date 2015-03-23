@@ -8,11 +8,11 @@
 <tr><th>Curation Status</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastMap: </b>A map whose value at each location is statistical contrast estimate (Under discussion at: https://github.com/incf-nidash/nidm/pull/255.)</td>
+    <td><b>nidm:ContrastMap: </b>A map whose value at each location is statistical contrast estimate (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ContrastStandardErrorMap: </b>A map whose value at each location is the standard error of a given contrast (Under discussion at: https://github.com/incf-nidash/nidm/pull/255.)</td>
+    <td><b>nidm:ContrastStandardErrorMap: </b>A map whose value at each location is the standard error of a given contrast (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -24,7 +24,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:FSL: </b>FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB (Under discussion at: https://github.com/incf-nidash/nidm/pull/263.)</td>
+    <td><b>nidm:FSL: </b>FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB (Under discussion at: https://github.com/incf-nidash/nidm/pull/263)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -33,11 +33,11 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data (editor: KH) (Under discussion at: https://github.com/incf-nidash/nidm/pull/255.)</td>
+    <td><b>nidm:ResidualMeanSquaresMap: </b>A map whose value at each location is the residual of the mean squares fit to the data (editor: KH) (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group (Under discussion at: https://github.com/incf-nidash/nidm/pull/263.)</td>
+    <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group (Under discussion at: https://github.com/incf-nidash/nidm/pull/263)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -61,7 +61,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>nidm:InferenceMaskMap: </b>mask defined by the user to restrain the space in which inference is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258.)</td>
+    <td><b>nidm:InferenceMaskMap: </b>mask defined by the user to restrain the space in which inference is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -130,7 +130,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>fsl:CenterOfGravity: </b>Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster) (Under discussion at: https://github.com/incf-nidash/nidm/pull/257.)</td>
+    <td><b>fsl:CenterOfGravity: </b>Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster) (Under discussion at: https://github.com/incf-nidash/nidm/pull/257)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -142,12 +142,12 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:CustomMaskMap: </b>mask defined by the user to restrain the space in which model fitting is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258.)</td>
+    <td><b>nidm:CustomMaskMap: </b>mask defined by the user to restrain the space in which model fitting is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:ExtentThreshold: </b>A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
- (Under discussion at: https://github.com/incf-nidash/nidm/pull/273.)</td>
+ (Under discussion at: https://github.com/incf-nidash/nidm/pull/273)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -167,7 +167,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:SearchSpaceMap: </b>mask in which the inference was performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258.)</td>
+    <td><b>nidm:SearchSpaceMap: </b>mask in which the inference was performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -175,7 +175,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:StatisticMap: </b>A map whose value at each location is a statistic.  (Under discussion at: https://github.com/incf-nidash/nidm/pull/255.)</td>
+    <td><b>nidm:StatisticMap: </b>A map whose value at each location is a statistic.  (Under discussion at: https://github.com/incf-nidash/nidm/pull/255)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -198,7 +198,7 @@ Range: Vector of integers not found.)</td>
 <tr><th>Curation Status</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:clusterLabelId: </b>Integer associated with a particular cluster as specified in the clusterLabelsMap (Under discussion at: https://github.com/incf-nidash/nidm/pull/271.)</td>
+    <td><b>nidm:clusterLabelId: </b>Integer associated with a particular cluster as specified in the clusterLabelsMap (Under discussion at: https://github.com/incf-nidash/nidm/pull/271)</td>
     <td>nidm:SignificantCluster </td>
     <td>xsd:int </td>
 </tr>
@@ -296,7 +296,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>fsl:searchVolumeInVoxels: </b>&lt;undefined&gt; (Under discussion at: https://github.com/incf-nidash/nidm/pull/269.
+    <td><b>fsl:searchVolumeInVoxels: </b>&lt;undefined&gt; (Under discussion at: https://github.com/incf-nidash/nidm/pull/269
 Check if this can be merged with spm:searchVolumeInVoxels)</td>
     <td>nidm:SearchSpaceMap </td>
     <td>xsd:positiveInteger </td>
@@ -388,13 +388,13 @@ Check if this can be merged with fsl:searchVolumeInVoxels)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>fsl:coordinate2InVoxels: </b>Coordinate along the second dimension in voxels (Under discussion at: https://github.com/incf-nidash/nidm/pull/270.)</td>
+    <td><b>fsl:coordinate2InVoxels: </b>Coordinate along the second dimension in voxels (Under discussion at: https://github.com/incf-nidash/nidm/pull/270)</td>
     <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>fsl:coordinate3InVoxels: </b>Coordinate along the third dimension in voxels (Under discussion at: https://github.com/incf-nidash/nidm/pull/270.)</td>
+    <td><b>fsl:coordinate3InVoxels: </b>Coordinate along the third dimension in voxels (Under discussion at: https://github.com/incf-nidash/nidm/pull/270)</td>
     <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
@@ -418,13 +418,13 @@ Check if this can be merged with fsl:searchVolumeInVoxels)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:coordinate2: </b>Coordinate along the second dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270.)</td>
+    <td><b>nidm:coordinate2: </b>Coordinate along the second dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270)</td>
     <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:coordinate3: </b>Coordinate along the third dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270.)</td>
+    <td><b>nidm:coordinate3: </b>Coordinate along the third dimension in voxel units (Under discussion at: https://github.com/incf-nidash/nidm/pull/270)</td>
     <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
