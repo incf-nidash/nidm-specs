@@ -261,7 +261,7 @@ class OwlSpecification(object):
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """+\
                         self.format_definition(att_def)
 
-                    if att in self.owl.ranges:
+                    if att in self.owl.parent_ranges:
                         # range_names = map(self._get_name, \
                             # sorted(self.owl.ranges[att]))
 
@@ -271,24 +271,59 @@ class OwlSpecification(object):
                            self._get_name(list(self.owl.ranges[att])[0]).startswith("spm"):
                             nidm_namespace = True
                             
-
+                        child_ranges = sorted(self.owl.ranges[att] - self.owl.parent_ranges[att])
                         if nidm_namespace:
-                            if len(self.owl.ranges[att]) >= 2:
+                            child_range_txt = ""
+                            if child_ranges:
+                                # Get all child ranges
+                                if len(child_ranges) >= 2:
+                                    child_range_txt = " such as <a>"+"</a>, <a>".join(map(self._get_name, \
+                                        child_ranges[:-1]))+"</a> or <a>"+\
+                                        self._get_name(child_ranges[-1])+\
+                                        "</a>"
+                                else:
+                                    child_range_txt = \
+                                        " such as <a>"+self._get_name(list(child_ranges)[0])+\
+                                        "</a>"
+
+                            if len(self.owl.parent_ranges[att]) >= 2:
                                 self.text += " (range <a>"+"</a>, <a>".join(map(self._get_name, \
-                                    sorted(self.owl.ranges[att])[:-1]))+"</a> and <a>"+\
-                                    self._get_name(sorted(self.owl.ranges[att])[-1])+\
-                                    "</a>)"
+                                    sorted(self.owl.parent_ranges[att])[:-1]))+"</a> and <a>"+\
+                                    self._get_name(sorted(self.owl.parent_ranges[att])[-1])+\
+                                    "</a>"+child_range_txt+")"
                             else:
                                 self.text += \
-                                    " (range <a>"+self._get_name(list(self.owl.ranges[att])[0])+\
-                                    "</a>)"
+                                    " (range <a>"+self._get_name(list(self.owl.parent_ranges[att])[0])+\
+                                    "</a>"+child_range_txt+")"
                         else:
+                            child_range_txt = ""
+                            if child_ranges:
+                                child_range_txt = " such as "
+                                for child_range in child_ranges:
+                                    child_range_txt += '<a title="'+self.owl.graph.qname(child_range)+\
+                                    '" href="'+str(child_range)+'">'+\
+                                    self._get_name(child_range)+'</a>, '
+                                child_range_txt  = child_range_txt[:-2]
+                                child_range_txt = child_range_txt[::-1].replace(","[::-1], " or"[::-1], 1)[::-1]
+
+                                # # Get all child ranges
+                                # if len(child_ranges) >= 2:
+                                #     child_range_txt = " such as <a>"+"</a>, <a>".join(map(self._get_name, \
+                                #         child_ranges[:-1]))+"</a> or <a>"+\
+                                #         self._get_name(child_ranges[-1])+\
+                                #         "</a>"
+                                # else:
+                                #     child_range_txt = \
+                                #         " such as <a>"+self._get_name(list(child_ranges)[0])+\
+                                #         "</a>"
+
                             self.text += " (range "
-                            for range_uri in sorted(self.owl.ranges[att]):
+                            for range_uri in sorted(self.owl.parent_ranges[att]):
                                 self.text += '<a title="'+self.owl.graph.qname(range_uri)+\
                                 '" href="'+str(range_uri)+'">'+\
                                 self._get_name(range_uri)+'</a>, '
                             self.text = self.text[:-2]
+                            self.text += child_range_txt
                             self.text += ")"
 
 

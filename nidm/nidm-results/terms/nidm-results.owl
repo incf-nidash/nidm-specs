@@ -759,9 +759,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
-                                                [ xsd:maxInclusive "1.0"^^xsd:float
+                                                [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -789,9 +789,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
-                                                    [ xsd:maxInclusive "1.0"^^xsd:float
+                                                    [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -817,9 +817,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
-                                                           [ xsd:maxInclusive "1.0"^^xsd:float
+                                                           [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -845,9 +845,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
-                                                   [ xsd:maxInclusive "1.0"^^xsd:float
+                                                   [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -1429,20 +1429,6 @@ dctype:Image rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/fsl#BinomialDistribution
-
-fsl:BinomialDistribution rdf:type owl:Class ;
-                         
-                         rdfs:subClassOf nidm:ErrorDistribution ;
-                         
-                         owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI ;
-                         
-                         obo:IAO_0000115 "The binomial distribution is a discrete probability distribution which describes the probability of k successes in n draws with replacement from a finite population of size N. The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N. The binomial distribution gives the discrete probability distribution of obtaining exactly n successes out of N Bernoulli trials (where the result of each Bernoulli trial is true with probability p and false with probability q=1-p ) notation: B(n,p) The mean is N*p The variance is N*p*q. (Definition from STATO)." ;
-                         
-                         obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
 fsl:CenterOfGravity rdf:type owl:Class ;
@@ -1481,18 +1467,6 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/fsl#NonParametricSymmetricDistribution
-
-fsl:NonParametricSymmetricDistribution rdf:type owl:Class ;
-                                       
-                                       rdfs:subClassOf nidm:ErrorDistribution ;
-                                       
-                                       obo:IAO_0000115 "Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution." ;
-                                       
-                                       obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#ArbitrarilyCorrelatedError
 
 nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
@@ -1505,12 +1479,26 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#BinomialDistribution
+
+nidm:BinomialDistribution rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf nidm:ErrorDistribution ;
+                          
+                          owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI ;
+                          
+                          obo:IAO_0000115 "The binomial distribution is a discrete probability distribution which describes the probability of k successes in n draws with replacement from a finite population of size N. The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N. The binomial distribution gives the discrete probability distribution of obtaining exactly n successes out of N Bernoulli trials (where the result of each Bernoulli trial is true with probability p and false with probability q=1-p ) notation: B(n,p) The mean is N*p The variance is N*p*q. (Definition from STATO)." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#Cluster
 
 nidm:Cluster rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ;
-                          
+             
              obo:IAO_0000115 "A collection of elements related by one or more criteria."^^xsd:string ;
              
              prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
@@ -1734,12 +1722,12 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2094,6 +2082,18 @@ nidm:NonParametricDistribution rdf:type owl:Class ;
                                obo:IAO_0000115 "Probability distribution estimated empirically on the data without assumptions on the shape of the probability distribution." ;
                                
                                obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#NonParametricSymmetricDistribution
+
+nidm:NonParametricSymmetricDistribution rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf nidm:ErrorDistribution ;
+                                        
+                                        obo:IAO_0000115 "Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution." ;
+                                        
+                                        obo:IAO_0000114 obo:IAO_0000122 .
 
 
 

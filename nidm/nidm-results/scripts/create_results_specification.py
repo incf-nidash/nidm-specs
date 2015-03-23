@@ -104,12 +104,13 @@ def main():
 
     if nidm_version == "020":
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
-        components["Model fitting"][1] = NIDM['NoiseModel']
+        components["Parameters estimation"][1] = NIDM['NoiseModel']
         used_by.pop(NIDM['ErrorModel'], None)
         used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
         # No "InferenceMaskMap"
+        # "ExcursionSetMap" was called "ExcursionSet"
         components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'],
              NIDM['Coordinate']]
         # In version 0.2.0 "SignificantCluster" was called "Cluster"
