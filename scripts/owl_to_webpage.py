@@ -2,6 +2,7 @@ import os
 import codecs
 from OwlReader import OwlReader
 from Constants import *
+import re
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_ROOT = os.path.dirname(RELPATH)
@@ -137,6 +138,12 @@ class OwlSpecification(object):
         # Add a dot a the end of the definition
         if definition[-1:] is not ".":
             definition += "."
+
+        # Replace links specified in markdown by html
+        match = re.search(r'\[(?P<name>.*)\]\((?P<link>.*)\)', definition)
+        if match:
+            definition = definition.replace(match.group(), \
+                '<a href="'+match.group('link')+'">'+match.group('name')+'</a>')
 
         return definition
 
