@@ -292,13 +292,6 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>fsl:searchVolumeInVoxels: </b>&lt;undefined&gt; (Under discussion at: https://github.com/incf-nidash/nidm/pull/269
-Check if this can be merged with spm:searchVolumeInVoxels)</td>
-    <td>nidm:SearchSpaceMap </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:dependenceSpatialModel: </b>FIXME</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:SpatialModel </td>
@@ -329,6 +322,12 @@ Check if this can be merged with spm:searchVolumeInVoxels)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><b>nidm:searchVolumeInVoxels: </b>Total number of voxels within the search volume</td>
+    <td>nidm:SearchSpaceMap </td>
+    <td>xsd:positiveInteger </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:statisticType: </b>&lt;undefined&gt;</td>
     <td>nidm:ContrastWeights nidm:StatisticMap </td>
     <td>obo:STATO_0000039 </td>
@@ -356,13 +355,6 @@ Check if this can be merged with spm:searchVolumeInVoxels)</td>
     <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume</td>
     <td>nidm:SearchSpaceMap </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>spm:searchVolumeInVoxels: </b>Total number of voxels within the search volume (Under discussion at: https://github.com/incf-nidash/nidm/pull/269
-Check if this can be merged with fsl:searchVolumeInVoxels)</td>
-    <td>nidm:SearchSpaceMap </td>
-    <td>xsd:positiveInteger </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
