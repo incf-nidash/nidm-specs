@@ -104,9 +104,9 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
 
 nidm:hasConnectivityCriterion rdf:type owl:ObjectProperty ;
                               
-                              obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
-                              
                               obo:IAO_0000115 "Property that associates a ConnectivityCriterion with a ClusterDefinitionCriteria." ;
+                              
+                              obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                               
                               obo:IAO_0000114 obo:IAO_0000122 ;
                               
@@ -206,11 +206,10 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
                    
                    obo:IAO_0000114 obo:IAO_0000124 ;
                    
-                   rdfs:domain nidm:ContrastWeights ;
-                   
                    rdfs:range obo:STATO_0000039 ;
                    
-                   rdfs:domain nidm:StatisticMap .
+                   rdfs:domain nidm:ContrastWeights ,
+                               nidm:StatisticMap .
 
 
 
@@ -349,6 +348,8 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
         
         rdfs:comment "To be renamed" ;
         
+        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275" ;
+        
         obo:IAO_0000114 obo:IAO_0000124 ;
         
         rdfs:domain nidm:SearchSpaceMap ;
@@ -372,6 +373,8 @@ fsl:featVersion rdf:type owl:DatatypeProperty ;
 ###  http://www.incf.org/ns/nidash/fsl#reselSizeInVoxels
 
 fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
+                      
+                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
                       
                       obo:IAO_0000114 obo:IAO_0000124 ;
                       
@@ -493,9 +496,9 @@ nidm:coordinate2 rdf:type owl:DatatypeProperty ;
 
 nidm:coordinate3 rdf:type owl:DatatypeProperty ;
                  
-                 obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270" ;
-                 
                  obo:IAO_0000112 "13" ;
+                 
+                 obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270" ;
                  
                  obo:IAO_0000115 "Coordinate along the third dimension in voxel units." ;
                  
@@ -678,9 +681,9 @@ nidm:maxNumberOfPeaksPerCluster rdf:type owl:DatatypeProperty ;
 
 nidm:minDistanceBetweenPeaks rdf:type owl:DatatypeProperty ;
                              
-                             obo:IAO_0000115 "Minimum distance between two peaks to be reported after inference." ;
-                             
                              obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/200" ;
+                             
+                             obo:IAO_0000115 "Minimum distance between two peaks to be reported after inference." ;
                              
                              obo:IAO_0000114 obo:IAO_0000122 ;
                              
@@ -1201,6 +1204,8 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
               
               obo:IAO_0000115 "Size of one resel in voxels or vertices." ;
               
+              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
+              
               obo:IAO_0000112 "22.325" ;
               
               obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1219,6 +1224,8 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
 ###  http://www.incf.org/ns/nidash/spm#searchVolumeInResels
 
 spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
+                         
+                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
                          
                          obo:IAO_0000115 "Total number of resels within the search volume." ;
                          
@@ -1411,12 +1418,12 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -1561,11 +1568,10 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
-                           obo:IAO_0000117 "TN, KH, CM" ;
+                           obo:IAO_0000117 "TN, KH, CM" ,
+                                           "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                            
                            obo:IAO_0000115 "The criterion used to characterize two voxels, pixels or vertices as 'connected'." ;
-                           
-                           obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -1686,9 +1692,9 @@ nidm:CustomMaskMap rdf:type owl:Class ;
                    
                    rdfs:subClassOf nidm:Map ;
                    
-                   obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
-                   
                    obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/CustomMaskMap.txt" ;
+                   
+                   obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
                    
                    obo:IAO_0000115 "mask defined by the user to restrain the space in which model fitting is performed." ;
                    
@@ -1720,11 +1726,6 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                    ] ,
-                                  [ rdf:type owl:Restriction ;  
                                     owl:onProperty dc:description ;
                                     owl:onClass dctype:Image ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
@@ -1747,6 +1748,8 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   obo:IAO_0000117 "TN" ;
                   
                   rdfs:seeAlso "stato:design matrix" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/274" ;
                   
                   obo:IAO_0000114 obo:IAO_0000125 .
 
@@ -1851,10 +1854,10 @@ nidm:ExtentThreshold rdf:type owl:Class ;
                      
                      obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold.txt"^^xsd:anyURI ;
                      
-                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/273" ;
-                     
                      obo:IAO_0000115 """A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
 """ ;
+                     
+                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/273" ;
                      
                      obo:IAO_0000114 obo:IAO_0000120 .
 
@@ -1961,9 +1964,9 @@ nidm:InferenceMaskMap rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:Map ;
                       
-                      obo:IAO_0000115 "mask defined by the user to restrain the space in which inference is performed." ;
-                      
                       obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
+                      
+                      obo:IAO_0000115 "mask defined by the user to restrain the space in which inference is performed." ;
                       
                       obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/InferenceMaskMap.txt" .
 
@@ -2392,9 +2395,9 @@ nidm:VoxelConnectivityCriterion rdf:type owl:Class ;
                                 
                                 rdfs:subClassOf nidm:ConnectivityCriterion ;
                                 
-                                obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
-                                
                                 obo:IAO_0000115 "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;
+                                
+                                obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                                 
                                 obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2679,9 +2682,9 @@ nidm:pixel4connected rdf:type nidm:PixelConnectivityCriterion ,
 nidm:pixel8connected rdf:type nidm:PixelConnectivityCriterion ,
                               owl:NamedIndividual ;
                      
-                     obo:IAO_0000115 "A pair of pixels are 8-Connected if they share an edge or corner." ;
-                     
                      obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                     
+                     obo:IAO_0000115 "A pair of pixels are 8-Connected if they share an edge or corner." ;
                      
                      obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2692,9 +2695,9 @@ nidm:pixel8connected rdf:type nidm:PixelConnectivityCriterion ,
 nidm:voxel18connected rdf:type nidm:VoxelConnectivityCriterion ,
                                owl:NamedIndividual ;
                       
-                      obo:IAO_0000115 "A pair of voxels are 18-Connected if they share a face or edge." ;
-                      
                       obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                      
+                      obo:IAO_0000115 "A pair of voxels are 18-Connected if they share a face or edge." ;
                       
                       obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2705,9 +2708,9 @@ nidm:voxel18connected rdf:type nidm:VoxelConnectivityCriterion ,
 nidm:voxel26connected rdf:type nidm:VoxelConnectivityCriterion ,
                                owl:NamedIndividual ;
                       
-                      obo:IAO_0000115 "A pair of voxels are 26-Connected if they share a face, edge or corner." ;
-                      
                       obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                      
+                      obo:IAO_0000115 "A pair of voxels are 26-Connected if they share a face, edge or corner." ;
                       
                       obo:IAO_0000114 obo:IAO_0000122 .
 
