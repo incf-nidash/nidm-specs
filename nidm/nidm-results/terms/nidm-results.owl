@@ -1418,12 +1418,12 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -1726,11 +1726,6 @@ nidm:DesignMatrix rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dc:description ;
-                                    owl:onClass dctype:Image ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
@@ -1739,6 +1734,11 @@ nidm:DesignMatrix rdf:type owl:Class ;
                                     owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
@@ -1854,12 +1854,11 @@ nidm:ExtentThreshold rdf:type owl:Class ;
                      
                      obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold.txt"^^xsd:anyURI ;
                      
-                     obo:IAO_0000115 """A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
-""" ;
+                     obo:IAO_0000115 "A numerical value that establishes a lower bound on cluster-sizes and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum cluster size in voxels" ;
                      
-                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/273" ;
+                     obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/273" ;
                      
-                     obo:IAO_0000114 obo:IAO_0000120 .
+                     obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2016,12 +2015,12 @@ nidm:MapHeader rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Entity ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty nfo:fileName ;
+                                 owl:onProperty dct:format ;
                                  owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                  owl:onDataRange xsd:string
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty dct:format ;
+                                 owl:onProperty nfo:fileName ;
                                  owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                  owl:onDataRange xsd:string
                                ] ;
