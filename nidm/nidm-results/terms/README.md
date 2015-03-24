@@ -20,7 +20,7 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><b>nidm:DesignMatrix: </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
+    <td><b>nidm:DesignMatrix: </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN) (Under discussion at https://github.com/incf-nidash/nidm/issues/274)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -274,7 +274,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>fsl:dlh: </b>&lt;undefined&gt;</td>
+    <td><b>fsl:dlh: </b>&lt;undefined&gt; (Under discussion at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275)</td>
     <td>nidm:SearchSpaceMap </td>
     <td>xsd:float </td>
 </tr>
@@ -286,7 +286,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt;</td>
+    <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt; (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
     <td>nidm:SearchSpaceMap </td>
     <td>xsd:float </td>
 </tr>
@@ -352,7 +352,7 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume</td>
+    <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
     <td>nidm:SearchSpaceMap </td>
     <td></td>
 </tr>
@@ -521,7 +521,7 @@ Range: Vector of integers.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices</td>
+    <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
     <td>nidm:SearchSpaceMap </td>
     <td></td>
 </tr>
