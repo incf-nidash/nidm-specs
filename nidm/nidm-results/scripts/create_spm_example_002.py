@@ -56,7 +56,7 @@ def main():
 			error_model_id="niiri:error_model_id",
 			software_id="niiri:software_id"
 			),
-		"ParameterEstimateMap-1": dict(
+		"ParameterEstimateMap_Location-1": dict(
 			beta_map_id="niiri:beta_map_id_1",
 			label="Beta Map 1",
 			location="file:///path/to/ParameterEstimate_0001.nii.gz",
@@ -73,7 +73,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:beta_map_id_1"
 			),
-		"ParameterEstimateMap-2": dict(
+		"ParameterEstimateMap_Location-2": dict(
 			beta_map_id="niiri:beta_map_id_2",
 			label="Beta Map 2",
 			location="file:///path/to/ParameterEstimate_0002.nii.gz",
@@ -90,7 +90,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:beta_map_id_2"
 			),
-		"ParameterEstimateMap-3": dict(
+		"ParameterEstimateMap_Location-3": dict(
 			beta_map_id="niiri:beta_map_id_3",
 			label="Beta Map 3",
 			location="file:///path/to/ParameterEstimate_0003.nii.gz",
@@ -224,7 +224,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			contrast_est_id="niiri:contrast_estimation_id_2"),
-		"StatisticMap": dict(
+		"StatisticMap_T": dict(
 			statistic_map_id="niiri:statistic_map_id",
 			label="Statistic Map: listening > reading",
 			location="file:///path/to/TStatistic_0001.nii.gz",
@@ -246,7 +246,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:statistic_map_id"
 			),
-		"StatisticMap-2": dict(
+		"StatisticMap_T-2": dict(
 			statistic_map_id="niiri:statistic_map_id_2",
 			label="Statistic Map: motor",
 			location="file:///path/to/TStatistic_0002.nii.gz",
@@ -268,7 +268,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:statistic_map_id_2"
 			),
-		"HeightThreshold": dict(
+		"HeightThreshold_P": dict(
 			height_threshold_id="niiri:height_threshold_id",
 			label="Height Threshold: p<0.05 (FWE)",
 			value="5.23529984739211",
@@ -276,7 +276,7 @@ def main():
 			p_unc="7.62276079258051e-07",
 			p_fwe="0.05"
 			),
-		"HeightThreshold-2": dict(
+		"HeightThreshold_P-2": dict(
 			height_threshold_id="niiri:height_threshold_id_2",
 			label="Height Threshold: p<0.001 (unc)",
 			value="5.23529984739211",
@@ -284,7 +284,7 @@ def main():
 			p_unc="7.62276079258051e-07",
 			p_fwe="0.05"
 			),
-		"HeightThreshold-3": dict(
+		"HeightThreshold_P-3": dict(
 			height_threshold_id="niiri:height_threshold_id_3",
 			label="Height Threshold: p<0.001 (unc)",
 			value="5.23529984739211",
@@ -343,19 +343,19 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a..."
 			),
-		"PeakDefinitionCriteria": dict(
+		"PeakDefinitionCriteria_MaxPeaks": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id",
 			label="Peak Definition Criteria",
 			max_num_peaks="3",
 			min_dist_peaks="8.0"
 			),
-		"PeakDefinitionCriteria-2": dict(
+		"PeakDefinitionCriteria_MaxPeaks-2": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id_2",
 			label="Peak Definition Criteria",
 			max_num_peaks="3",
 			min_dist_peaks="8.0"
 			),
-		"PeakDefinitionCriteria-3": dict(
+		"PeakDefinitionCriteria_MaxPeaks-3": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id_3",
 			label="Peak Definition Criteria",
 			max_num_peaks="3",

@@ -27,9 +27,13 @@ import create_fsl_example_002
 import create_fsl_example_003
 from TestCommons import *
 
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 class TestExamplesMatchTemplates(unittest.TestCase):    
     def _parse_graph(self, ex_file, replace_by=None):
+        logger.info(ex_file)
+        
         ex_fid = open(ex_file, "r")
         ex = ex_fid.read()
         ex_fid.close()

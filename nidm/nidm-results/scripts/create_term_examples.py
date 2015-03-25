@@ -127,7 +127,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"StatisticMap": dict(
+		"StatisticMap_T": dict(
 			statistic_map_id="niiri:statistic_map_id",
 			label="Statistic Map: listening > rest",
 			location="file:///path/to/TStatistic.nii.gz",
@@ -141,7 +141,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"HeightThreshold": dict(
+		"HeightThreshold_P": dict(
 			height_threshold_id="niiri:height_threshold_id",
 			label="Height Threshold: p<0.05 (FWE)",
 			value="5.23529984739211",
@@ -182,7 +182,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			sha="e43b6e01b0463fe7d40782137867a..."
 			),
-		"PeakDefinitionCriteria": dict(
+		"PeakDefinitionCriteria_MaxPeaks": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id",
 			label="Peak Definition Criteria",
 			max_num_peaks="3",
@@ -241,13 +241,13 @@ def main():
 			p_value_fdr="7.65021389184909e-51",
 			excursion_set_id="niiri:excursion_set_map_id"
 			),
-		"Peak": dict(
+		"Peak_ValueP": dict(
 			peak_id="niiri:peak_0001",
 			label="Peak 0001",
 			location="niiri:coordinate_0001",
 			value="13.9346199035645",
 			equiv_z="INF",
-			p_value_unc="4.44089209850063e-16",
+			p_uncorr="4.44089209850063e-16",
 			p_value_fwe="0",
 			p_value_fdr="6.3705194444993e-11",
 			cluster_id="niiri:significant_cluster_0001"
