@@ -13,6 +13,7 @@ NIDM_TERMS_DIR = os.path.join(os.path.dirname(
 TPL_DIR = os.path.join(NIDM_TERMS_DIR, 'templates')
 EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
 class ExampleFromTemplate(object):
@@ -59,14 +60,18 @@ class ExampleFromTemplate(object):
                 try:
                     class_example = nidm_base_tpm.substitute(**substitutes)
                 except KeyError, k:
+                    logger.debug(nidm_class)
                     logger.debug(base_template_name)
+                    logger.debug(substitutes)
                     raise KeyError(k);
                 class_example = class_example[:-1]+" ;\n"
 
             try:
                 class_example += nidm_tpm.substitute(**substitutes)
             except KeyError, k:
+                logger.debug(nidm_class)
                 logger.debug(template_name)
+                logger.debug(substitutes)
                 raise KeyError(k);
 
 
