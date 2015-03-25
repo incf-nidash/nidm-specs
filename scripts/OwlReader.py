@@ -22,7 +22,7 @@ class OwlReader():
         self.classes = self.get_class_names() 
         self.properties = self.get_property_names()
         # For each class find out attribute list as defined by domain in attributes
-        self.attributes, self.ranges,  self.type_restrictions, self.parent_ranges = self.get_attributes()
+        self.attributes, self.ranges, self.type_restrictions, self.parent_ranges = self.get_attributes()
 
 
     def get_class_names(self):
@@ -107,24 +107,26 @@ class OwlReader():
 
         restrictions = dict()
 
+        # Check owl restrictions on classes
+        for class_name in self.graph.subjects(RDF['type'], OWL['Class']):
+            for class_restr in self.graph.objects(class_name, RDFS['subClassOf']):
+                if isinstance(class_restr, term.BNode):
+                    for prop in self.graph.objects(class_restr,OWL['onProperty']):
+                        attributes.setdefault(class_name, set()).add(prop)
+                        for child_class in self.graph.transitive_subjects(RDFS['subClassOf'], class_name): 
+                            attributes.setdefault(child_class, set()).add(prop)
+
         # Attributes that can be found in all classes
         for data_property,p,o in self.graph.triples((None, RDF['type'], None)):
             if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
                 for class_name in self.graph.objects(data_property, RDFS['domain']):
                     # Add attribute to current class
-                    if class_name in attributes:
-                        attributes[class_name].add(data_property)
-                    else:
-                        attributes[class_name] = set([data_property])
+                    attributes.setdefault(class_name, set()).add(data_property)
                     
                     # Add attribute to children of current class
-                    for child_class in self.graph.subjects(RDFS['subClassOf'], class_name):
+                    for child_class in self.graph.transitive_subjects(RDFS['subClassOf'], class_name):
                         # Add attribute to current class
-                        if child_class in attributes:
-                            attributes[child_class].add(data_property)
-                        else:
-                            attributes[child_class] = set([data_property])
-                        class_name = child_class
+                        attributes.setdefault(child_class, set()).add(data_property)
                         
                 for range_name in self.graph.objects(data_property, RDFS['range']):
                     # More complex type including restrictions
@@ -333,3 +335,178 @@ class OwlReader():
             editor_note = ""
         return editor_note
 
+    def get_sub_class_names(self):
+        sub_types = set()
+
+        prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
+        for prov_type in prov_types:
+            for instance_id in self.graph.subjects(RDF.type, prov_type):
+                for class_name in self.graph.objects(instance_id, RDF.type):
+                   if not class_name == prov_type:
+                        sub_types.add(class_name)
+
+        return sub_types
+
+
+    def check_class_names(self, example_graph, example_name):
+        my_exception = dict()
+        class_names = self.get_class_names()
+        sub_types = self.get_sub_class_names()
+
+        for not_recognised_sub_type in (sub_types - class_names):
+
+            if not not_recognised_sub_type.startswith(str(PROV)):
+                # key = example_graph.qname(not_recognised_sub_type)
+                key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
+                if key in my_exception:
+                    my_exception[key].add(example_name)
+                else:
+                    my_exception[key] = set([example_name])
+
+        return my_exception
+
+    def check_attributes(self, example_graph, example_name):
+        ignored_attributes = set([   
+                        RDFS['label'], 
+                        RDF['type'],
+                        PROV['value'], PROV['atTime'], PROV['used'], PROV['wasAssociatedWith'],
+                        PROV['qualifiedGeneration'], PROV['wasGeneratedBy'], PROV['atLocation'], 
+                        PROV['wasDerivedFrom'], 
+                        CRYPTO['sha512']
+                        ])  
+
+        my_exception = dict()
+        my_range_exception = dict()
+        my_restriction_exception = dict()
+
+        owl_attributes = self.attributes
+        owl_ranges = self.ranges
+        owl_restrictions = self.type_restrictions
+
+        # if not owl_attributes or not owl_ranges:
+        #     if owl_file is None:
+        #         raise Exception("One of class_names or owl_file must be not None.")
+        #     else:
+        #         owl_graph = get_owl_graph(owl_file, owl_imports)
+
+        #         attributes_ranges = get_attributes_from_owl(owl_graph)
+        #         owl_attributes = attributes_ranges[0]
+        #         owl_ranges = attributes_ranges[1]   
+        #         owl_restrictions = attributes_ranges[2]
+
+        # Find all attributes
+        for s,p,o in example_graph.triples((None, None, None)):
+            # To be a DataTypeProperty then o must be a literal
+            # if isinstance(o, rdflib.term.Literal):
+            if p not in ignored_attributes:
+                # *** Check domain
+                # Get all defined types of current object
+                found_attributes = False
+                class_names = ""
+                for class_name in sorted(example_graph.objects(s, RDF['type'])):
+                    attributes = owl_attributes.get(class_name)
+
+                    # If the current class was defined in the owl file check if current
+                    # attribute was also defined.
+                    if attributes:
+                        if p in attributes:
+                            found_attributes = True
+
+                    class_names += ", "+example_graph.qname(class_name)
+
+                # if not found_attributes:
+                    # if attributes:
+                        # if not (p in attributes):
+                if not found_attributes:
+                    key = "\n Unrecognised attribute: "+example_graph.qname(p)+\
+                                " in "+class_names[2:]
+                    if not key in my_exception:
+                        my_exception[key] = set([example_name])
+                    else:
+                        my_exception[key].add(example_name)
+
+
+                # *** Check range for ObjectProperties and DataProperties
+                if isinstance(o, term.URIRef):
+                    # An ObjectProperty can point to an instance, then we look for its type:
+                    found_range = set(example_graph.objects(o, RDF['type']))
+
+                    # An ObjectProperty can point to a term
+                    if not found_range:
+                        found_range = set([o])
+
+                        # If the term is an individual, look for its type
+                        if OWL['NamedIndividual'] in \
+                            set(self.graph.objects(o, RDF['type'])):
+                            found_range = set(self.graph.objects(o, RDF['type']))
+
+                elif isinstance(o, term.Literal):
+                    found_range = set([o.datatype])
+
+                correct_range = False
+                if p in owl_ranges:
+                    # If none of the class found for current ObjectProperty value is part of the range
+                    # throw an error
+
+                    # If the type of current value is within the authorised ranges
+                    if found_range.intersection(owl_ranges[p]):
+                        correct_range = True
+                    else:
+                        if p in owl_ranges:
+                            # A bit more complicated to deal with "positiveInteger"
+                            for owl_range in owl_ranges[p]:
+                                # FIXME: we should be able to do better than that to check that XSD['positiveInteger'] is 
+                                # in owl_ranges[p]
+                                if (XSD['positiveInteger'] == owl_range) and\
+                                     (next(iter(found_range)) == XSD['int']) and\
+                                      (o.value >= 0):
+                                        correct_range = True
+                    if not correct_range:
+                        found_range_line = ""
+                        # FIXME: This should be better handled to be able to do "if found_range"
+                        if not None in found_range:
+                            found_range_line = ', '.join(map(example_graph.qname, sorted(found_range)))
+                        owl_range_line = ""
+                        if p in owl_ranges:
+                            owl_range_line = ', '.join(map(example_graph.qname, sorted(owl_ranges[p])))
+
+                        key = "\n Unrecognised range: "+\
+                            found_range_line+\
+                            ' for '+example_graph.qname(p)+' should be '+\
+                            owl_range_line
+                else:
+                    # No range found for current attribute
+                    correct_range = False
+                    key = "\n No range defined for: "+\
+                            example_graph.qname(p)
+
+                if not correct_range:
+                    if not key in my_range_exception:
+                        my_range_exception[key] = set([example_name])
+                    else:
+                        my_range_exception[key].add(example_name)
+
+                if p in owl_restrictions:
+                    restrictions_ok = True
+                    if 'minInclusive' in owl_restrictions[p]:
+                        if o.value < owl_restrictions[p]['minInclusive'].value:
+                            restrictions_ok = False
+                    if 'minExclusive' in owl_restrictions[p]:
+                        if o.value <= owl_restrictions[p]['minExclusive'].value:
+                            restrictions_ok = False
+                    if 'maxInclusive' in owl_restrictions[p]:
+                        if o.value > owl_restrictions[p]['maxInclusive'].value:
+                            restrictions_ok = False
+                    if 'maxExclusive' in owl_restrictions[p]:
+                        if o.value >= owl_restrictions[p]['maxExclusive'].value:
+                            restrictions_ok = False
+                    if not restrictions_ok:
+                        key = "\n Contraints: value "+str(o.value)+\
+                            ' for '+example_graph.qname(p)+' does not observe contraints '+\
+                            ', '.join(sorted(owl_restrictions[p]))
+                        if not key in my_restriction_exception:
+                            my_restriction_exception[key] = set([example_name])
+                        else:
+                            my_restriction_exception[key].add(example_name)
+
+        return list((my_exception, my_range_exception, my_restriction_exception))

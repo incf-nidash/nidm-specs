@@ -8,7 +8,6 @@ import unittest
 import os
 import sys
 from TestCommons import *
-from CheckConsistency import *
 import difflib
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
