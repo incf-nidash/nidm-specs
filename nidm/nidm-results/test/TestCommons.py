@@ -32,7 +32,7 @@ example_filenames = import_test_filenames.union(set([
                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
                                 os.path.join('spm', 'example004', 'spm_inference_activities.provn'),
                                 os.path.join('spm', 'example005', 'nidm.provn'),
-                                os.path.join('spm', 'nonparam', 'spm_nonparametric.provn'),
+                                os.path.join('extensions', 'non_parametric', 'spm', 'example001', 'spm_nonparametric.provn'),
                                 os.path.join('fsl', 'fsl_results.provn')
                             ]))
 
