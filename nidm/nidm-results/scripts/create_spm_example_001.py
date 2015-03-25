@@ -207,14 +207,14 @@ def main():
 			label="Cluster Connectivity Criterion: 18",
 			connectivity="nidm:voxel18connected"
 			),
-		"INFerence": dict(
-			INFerence_id="niiri:INFerence_id",
-			label="INFerence",
+		"Inference": dict(
+			inference_id="niiri:inference_id",
+			label="Inference",
 			alternative_hyp="nidm:OneTailedTest",
 			stat_map_id="niiri:statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
-			INFerence_mask_id="niiri:sub_volume_id", 
+			Inference_mask_id="niiri:sub_volume_id", 
 			peak_def_id="niiri:peak_definition_criteria_id", 
 			cluster_def_id="niiri:cluster_definition_criteria_id",
 			mask_id="niiri:mask_id_1",
@@ -232,7 +232,7 @@ def main():
 			sha="d96b82761c299a66978893cab6034f3f8aed25d0a135636b0ffe79f4cf11becce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652",
 			num_of_clusters="5",
 			p_value="2.83510681598e-09",
-			INFerence_id="niiri:INFerence_id"
+			inference_id="niiri:inference_id"
 			),
 		"SignificantCluster-1": dict(
 			cluster_id="niiri:significant_cluster_0001",
@@ -473,7 +473,7 @@ def main():
 			noise_fwhm_in_units="[16.2383695773208, 16.3091687172086, 13.5499997663244]",
 			random_field_station="true",
 			sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
-			INFerence_id="niiri:INFerence_id"
+			inference_id="niiri:inference_id"
 			),
 		"DerivedMap": dict(
 			derived_from_map_id="niiri:contrast_map_id_der",
@@ -508,8 +508,8 @@ def main():
 			sha="2025dc6c33708b80708c2eba3215fb1149df236fb558a8e8f8f6cf34595fb54734fe5e436db3e192a424d99699dd7feb2f4a9020ceae8e7bcbd881b17825256a",
 			model_pe_id="niiri:model_pe_id"
 			),
-		"SPM_INFerenceUsedRPVMap": dict(
-			INFerence_id="niiri:INFerence_id",
+		"SPM_InferenceUsedRPVMap": dict(
+			inference_id="niiri:inference_id",
 			resels_per_voxel_map_id="niiri:resels_per_voxel_map_id"
 		),
 		"DerivedMap-RPVMap": dict(
