@@ -29,9 +29,10 @@ def main():
 			coord_system="nidm:MNICoordinateSystem",
 			number_of_dim="3",
 			dimensions="[53,63,52]"),
-		"Inference_Used_DisplayMask": dict(
-			inference_id="niiri:display_map_id",
-			display_mask_id="niiri:height_threshold_id", 
+		"ActivityUsedEntity": dict(
+			activity_id="niiri:display_map_id",
+			activity_type="nidm:Inference",
+			entity_id="niiri:height_threshold_id", 
 			)
 		}
 
