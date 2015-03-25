@@ -24,29 +24,9 @@ class TestExamples(unittest.TestCase):
 
     def __init__(self, *args, **kwargs):
         super(TestExamples, self).__init__(*args, **kwargs)    
-        # Retreive owl file for NIDM-Results
-        owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
-
-        # check the file exists
-        assert os.path.exists(owl_file)
-        # Read owl (turtle) file
-        import_files = glob.glob(os.path.join(os.path.dirname(owl_file), os.pardir, os.pardir, "imports", '*.ttl'))
-        # self.owl = get_owl_graph(owl_file, import_files)
-        self.owlreader = OwlReader(owl_file, import_files)
-        self.owl = self.owlreader.graph
-
-       
-        # Retreive all classes defined in the owl file
-        self.sub_types = self.owlreader.get_class_names() #set(); #{'entity': set(), 'activity': set(), 'agent' : set()}
-        # For each class find out attribute list as defined by domain in attributes
-        # For each ObjectProperty found out corresponding range
-        # attributes_ranges = get_attributes_from_owl(self.owl)
-        self.attributes, self.ranges, self.type_restrictions, self.parent_ranges = self.owlreader.get_attributes()
-        # attributes_ranges[0]
-        # self.ranges = attributes_ranges[1]      
-        # self.type_restrictions = attributes_ranges[2]      
 
         self.examples = dict()
+        self.owl_files = dict()
         for example_file in example_filenames:
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
@@ -57,12 +37,39 @@ class TestExamples(unittest.TestCase):
             self.examples[example_file] = Graph()
             self.examples[example_file].parse(ttl_file, format='turtle')
 
+            term_dir = os.path.join(os.path.dirname(ttl_file), os.pardir, 'terms')
+            if not os.path.isdir(term_dir):
+                term_dir = os.path.join(os.path.dirname(ttl_file), os.pardir, os.pardir, 'terms')
+            owl_files = glob.glob(os.path.join(term_dir, '*.owl'))
+            self.owl_files[example_file] = owl_files[0]
+            self.owl_readers = dict()
+
+    def _load_owl(self, owl_file):
+        if owl_file in self.owl_readers:
+            self.owl = self.owl_readers[owl_file]
+        else:
+            # Retreive owl file for NIDM-Results
+            # owl_file = os.path.join(RELPATH, 'terms', 'nidm-results.owl')
+
+            # check the file exists
+            assert os.path.exists(owl_file)
+            # Read owl (turtle) file
+            import_files = glob.glob(os.path.join(os.path.dirname(owl_file), os.pardir, os.pardir, "imports", '*.ttl'))
+            self.owl = OwlReader(owl_file, import_files)
+            self.owl_readers[owl_file] = self.owl
+
     def test_check_classes(self):
         logger.info("TestExamples: test_check_classes")
         my_exception = dict()
-        for example_name, example_graph in self.examples.items():
+        for example_file in example_filenames:
+            example_name = example_file
+            example_graph = self.examples[example_file]
+            owl = self.owl_files[example_file]
+
+            self._load_owl(owl)
+
             # Check that all entity, activity, agent are defined in the data model
-            exception_msg = self.owlreader.check_class_names(example_graph, example_name)
+            exception_msg = self.owl.check_class_names(example_graph, example_name)
             my_exception = merge_exception_dict(my_exception, exception_msg)
 
         # Aggredate errors over examples for conciseness
@@ -77,8 +84,14 @@ class TestExamples(unittest.TestCase):
         my_exception = dict()
         my_range_exception = dict()
         my_restriction_exception = dict()
-        for example_name, example_graph in self.examples.items():
-            exception_msg = self.owlreader.check_attributes(example_graph, example_name)
+        for example_file in example_filenames:
+            example_name = example_file
+            example_graph = self.examples[example_file]
+            owl = self.owl_files[example_file]
+
+            self._load_owl(owl)
+
+            exception_msg = self.owl.check_attributes(example_graph, example_name)
             
             my_exception = merge_exception_dict(my_exception, exception_msg[0])
             my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
