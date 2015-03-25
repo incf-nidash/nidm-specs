@@ -18,13 +18,15 @@ logger = logging.getLogger(__name__)
 
 class ExampleFromTemplate(object):
     
-    def __init__(self, nidm_classes, example_file, one_file_per_class=False):
+    def __init__(self, nidm_classes, example_file, one_file_per_class=False,
+        extension_tpl_dir=None):
         self.nidm_classes = nidm_classes
         self.one_file_per_class = one_file_per_class
         if not one_file_per_class:
             self.file = example_file
         else:
             self.dir = example_file
+        self.ext_tpl_dir = extension_tpl_dir
 
     def create_example(self):
         # To make a complete document, we need to add namespaces at 
@@ -35,15 +37,18 @@ class ExampleFromTemplate(object):
 
         example = ""
         for nidm_class, substitutes in sorted(self.nidm_classes.items()):
-
             templates = str.split(nidm_class, "_")
             if len(templates) > 1:
-                base_template_name = templates[0]            
+                base_template_name = templates[0]
+                base_template_file = os.path.join(TPL_DIR, base_template_name+".txt")
+                if not os.path.isfile(base_template_file) and self.ext_tpl_dir is not None:
+                    base_template_file = os.path.join(self.ext_tpl_dir, base_template_name+".txt")
+                if not os.path.isfile(base_template_file):
+                    base_template_file = None
             else:
-                base_template_name = None
+                base_template_file = None
 
-            if base_template_name and \
-                os.path.isfile(os.path.join(TPL_DIR, base_template_name+".txt")):
+            if base_template_file:
                 fid = open(os.path.join(TPL_DIR, base_template_name+".txt"), 'r')
                 nidm_base_tpm = Template(fid.read())
                 fid.close()
@@ -69,7 +74,11 @@ class ExampleFromTemplate(object):
                         class_example = class_example[:-1]+";\n"
                 logger.debug(" "+template_name)
 
-                fid = open(os.path.join(TPL_DIR, template_name+".txt"), 'r')
+                template_file = os.path.join(TPL_DIR, template_name+".txt")
+                if not os.path.isfile(template_file) and self.ext_tpl_dir is not None:
+                    template_file = os.path.join(self.ext_tpl_dir, template_name+".txt")
+
+                fid = open(template_file, 'r')
                 nidm_tpm = Template(fid.read())
                 fid.close()                
 

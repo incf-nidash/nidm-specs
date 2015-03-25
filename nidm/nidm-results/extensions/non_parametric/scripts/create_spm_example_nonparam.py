@@ -8,6 +8,8 @@ class templates available in nidm/nidm-results/terms/templates
 import os
 from create_example_from_templates import ExampleFromTemplate
 
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+
 def main():
 	nidm_classes = {
 		"StatisticMap_PseudoT": dict(
@@ -18,6 +20,7 @@ def main():
 			format="image/nifti",
 			filename="SmoothedVarianceTStatistic.nii.gz",
 			statistic_type="nidm:SmoothedVarianceTStatistic",
+			stat_type_comment="",
 			contrast_name="passive listening > rest",
 			effect_dof="1",
 			sha="799e9bbf8c15b35c0098bca4",
@@ -41,9 +44,13 @@ def main():
 	}
 
 	NIDM_SPM_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'spm', "example005")
+        os.path.dirname(os.path.abspath(__file__))), 'spm', "example001")
 	ttl_file = os.path.join(NIDM_SPM_DIR, 'spm_nonparametric.ttl')
-	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
+	
+	EXT_PATH = os.path.dirname(RELPATH)
+	EXTENSION_TPL_DIR = os.path.join(EXT_PATH, "terms", "templates")
+
+	example = ExampleFromTemplate(nidm_classes, ttl_file, False, EXTENSION_TPL_DIR)
 	example.create_example()
 	
 if __name__ == '__main__':

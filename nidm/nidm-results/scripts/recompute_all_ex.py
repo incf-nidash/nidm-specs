@@ -5,6 +5,7 @@ templates available in nidm/nidm-results/terms/templates
 @copyright: University of Warwick 2013-2014
 """
 import logging
+import os, sys
 
 import create_term_examples
 import create_spm_example
@@ -20,6 +21,13 @@ import create_fsl_example_003
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDM_RES_PATH = os.path.dirname(RELPATH)
+
+# Append non-parametric script directory to path
+sys.path.append(os.path.join(NIDM_RES_PATH, "extensions", "non_parametric", \
+	"scripts"))
+import create_spm_example_nonparam
 
 def main():
 	logger.debug(" create_term_examples")
@@ -44,6 +52,9 @@ def main():
 	create_fsl_example_002.main()
 	logger.debug(" create_fsl_example_003")
 	create_fsl_example_003.main()
+
+	# Extensions
+	create_spm_example_nonparam.main()
 
 if __name__ == '__main__':
 	main()	
