@@ -64,7 +64,7 @@ class ExampleFromTemplate(object):
                     logger.debug(base_template_name)
                     logger.debug(substitutes)
                     raise KeyError(k);
-                class_example = class_example[:-1]+" ;\n"
+                class_example = class_example[:-1]+";\n"
 
             try:
                 class_example += nidm_tpm.substitute(**substitutes)
