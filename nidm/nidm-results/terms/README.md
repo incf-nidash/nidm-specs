@@ -130,11 +130,6 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:ExtentThreshold: </b>A numerical value that establishes a bound on a range of cluster-sizes. / [from extentThresh:]        Minimum cluster size used when thresholding a statistic image        5voxels
- (Under discussion at: https://github.com/incf-nidash/nidm/pull/273)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:MNICoordinateSystem: </b>Coordinate system defined with reference to the MNI atlas</td>
 </tr>
 <tr>
