@@ -66,10 +66,8 @@ def get_attributes_from_owl(my_owl_graph):
             if isinstance(class_restr, term.BNode):
                 for prop in my_owl_graph.objects(class_restr,OWL['onProperty']):
                     attributes.setdefault(class_name, set([prop])).add(prop)
-                    for child in my_owl_graph.subjects(RDFS['subClassOf'], class_name): 
+                    for child in my_owl_graph.transitive_subjects(RDFS['subClassOf'], class_name): 
                         attributes.setdefault(child, set([prop])).add(prop)
-                        for grand_child in my_owl_graph.subjects(RDFS['subClassOf'], child): 
-                            attributes.setdefault(grand_child, set([prop])).add(prop)
 
     # Attributes that can be found in all classes
     for prop,p,o in my_owl_graph.triples((None, RDF['type'], None)):
@@ -84,12 +82,9 @@ def get_attributes_from_owl(my_owl_graph):
                     attributes[class_name] = set([prop])
                 
                 # Add attribute to children of current class
-                for child in my_owl_graph.subjects(RDFS['subClassOf'], class_name):
+                for child in my_owl_graph.transitive_subjects(RDFS['subClassOf'], class_name):
                     # Add attribute to current class
                     attributes.setdefault(child, set([prop])).add(prop)
-                    # class_name = child_class
-                    for grand_child in my_owl_graph.subjects(RDFS['subClassOf'], child):
-                        attributes.setdefault(grand_child, set([prop])).add(prop)
 
             for range_name in my_owl_graph.objects(prop, RDFS['range']):
                 # More complex type including restrictions
