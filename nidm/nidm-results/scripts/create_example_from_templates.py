@@ -36,11 +36,6 @@ class ExampleFromTemplate(object):
         example = ""
         for nidm_class, substitutes in sorted(self.nidm_classes.items()):
 
-            template_name = str.split(nidm_class, "-")[0]
-            fid = open(os.path.join(TPL_DIR, template_name+".txt"), 'r')
-            nidm_tpm = Template(fid.read())
-            fid.close()
-
             templates = str.split(nidm_class, "_")
             if len(templates) > 1:
                 base_template_name = templates[0]            
@@ -54,6 +49,7 @@ class ExampleFromTemplate(object):
                 fid.close()
             else:
                 nidm_base_tpm = None
+                templates = ["", nidm_class]
 
             class_example = ""
             if nidm_base_tpm:
@@ -64,15 +60,26 @@ class ExampleFromTemplate(object):
                     logger.debug(base_template_name)
                     logger.debug(substitutes)
                     raise KeyError(k);
-                class_example = class_example[:-1]+";\n"
 
-            try:
-                class_example += nidm_tpm.substitute(**substitutes)
-            except KeyError, k:
-                logger.debug(nidm_class)
-                logger.debug(template_name)
-                logger.debug(substitutes)
-                raise KeyError(k);
+            for template in templates[1:]:
+                template_name = str.split(template, "-")[0]
+                if nidm_base_tpm is not None:
+                    template_name = base_template_name+"_"+template_name
+                    if class_example:
+                        class_example = class_example[:-1]+";\n"
+                logger.debug(" "+template_name)
+
+                fid = open(os.path.join(TPL_DIR, template_name+".txt"), 'r')
+                nidm_tpm = Template(fid.read())
+                fid.close()                
+
+                try:
+                    class_example += nidm_tpm.substitute(**substitutes)
+                except KeyError, k:
+                    logger.debug(nidm_class)
+                    logger.debug(template_name)
+                    logger.debug(substitutes)
+                    raise KeyError(k);
 
 
             if self.one_file_per_class:

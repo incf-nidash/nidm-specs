@@ -104,16 +104,18 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_pe_id"),
-		"FSL_MaskMap": dict(
+		"MaskMap_Analysis_fileName": dict( # The analysis mask
 			mask_id="niiri:mask_id_1",
 			label="Mask",
 			location="file://path/to/Mask.nii.gz",
-			filename_1="Mask.nii.gz", 
+			filename="Mask.nii.gz", 
 			filename_2="mask.nii.gz", 
+			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
-			param_est_id="niiri:model_pe_id"),
+			generated_by_act_id="niiri:model_pe_id",
+			used_by_act_id="niiri:contrast_estimation_id"),
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id",
 			label="Contrast weights: listening > rest",
@@ -202,17 +204,18 @@ def main():
 			value="5.235300",
 			thresh_type="p-value FWE"
 			),
-		"FSL_ExtentThreshold_NoType": dict(
+		"FSL_ExtentThresholdNoType": dict(
 			extent_threshold_id="niiri:extent_threshold_id",
 			label="Cluster Threshold",
 			p_fwe="1.0"
 			),
-		"FSL_DisplayMaskMap": dict(
+		"DisplayMaskMap_fileName": dict(
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
 			location="file://path/to/DisplayMask.nii.gz",
 			format="image/nifti",
-			filename_1="DisplayMask.nii.gz",
+			user_defined="true",
+			filename="DisplayMask.nii.gz",
 			filename_2="mask.nii.gz",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			sha="e43b6e01b0463fe7d40782137867a..."
@@ -416,12 +419,13 @@ def main():
 			coord_2_in_vox="7",
 			coord_3_in_vox="16"
 			),
-		"FSL_SearchSpaceMap": dict(
-			search_space_id="niiri:search_space_id",
-			location="file://path/to/SearchSpace.nii.gz",
-			filename_1="SearchSpace.nii.gz",
+		"FSL_SearchSpaceMaskMap": dict(
+			search_space_id="niiri:search_space_mask_id",
+			location="file://path/to/SearchSpaceMask.nii.gz",
+			filename_1="SearchSpaceMask.nii.gz",
 			filename_2="mask.nii.gz",
-			label="Search Space Map",
+			label="Search Space Mask Map",
+			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			search_vol_voxels="45359",

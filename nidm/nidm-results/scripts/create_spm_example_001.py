@@ -100,16 +100,18 @@ def main():
 			sha="1635e0ae420cac1b5989fbc753b95f504dd957ff2986367fc4cd13ff35c44b4ee60994a9cdcab93a7d247fc5a8decb7578fa4c553b0ac905af8c7041db9b4acd",
 			map_id="niiri:residual_mean_squares_map_id"
 			),
-		"MaskMap": dict(
+		"MaskMap_Analysis": dict( # The "analysis mask"
 			mask_id="niiri:mask_id_1",
 			label="Mask",
 			location="file://./Mask.nii.gz",
+			user_defined="false",
 			filename="Mask.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
-			param_est_id="niiri:model_pe_id"),
-		"DerivedMap-Mask2": dict(
+			generated_by_act_id="niiri:model_pe_id",
+			used_by_act_id="niiri:contrast_estimation_id"),
+		"DerivedMap-Mask2": dict( # The "analysis mask" (derived)
 			derived_from_map_id="niiri:mask_id_1_der",
 			derived_map_type="nidm:MaskMap",
 			filename="mask.nii",
@@ -451,12 +453,13 @@ def main():
 			coord_2="-40",
 			coord_3="32"
 			),
-		"SearchSpaceMap": dict(
-			search_space_id="niiri:search_space_id",
-			location="file://./SearchSpace.nii.gz",
-			filename="SearchSpace.nii.gz",
-			label="Search Space Map",
+		"SearchSpaceMaskMap": dict( # The "search space"
+			search_space_id="niiri:search_space_mask_id",
+			location="file://./SearchSpaceMask.nii.gz",
+			filename="SearchSpaceMask.nii.gz",
+			label="Search Space Mask Map",
 			format="image/nifti",
+			user_defined="false",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			expected_num_voxels="4.02834655908613",
 			expected_num_clusters="0.0512932943875478",

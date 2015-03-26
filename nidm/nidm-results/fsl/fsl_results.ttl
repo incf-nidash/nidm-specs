@@ -71,6 +71,15 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id .
 
+niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
+	rdfs:label "Display Mask Map" ;
+	prov:atLocation "file://path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
+	dct:format "image/nifti"^^xsd:string ;
+    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
+    nfo:fileName "mask.nii.gz"^^xsd:string .
+
 niiri:error_model_id a prov:Entity , nidm:ErrorModel ;
     nidm:hasErrorDistribution nidm:GaussianDistribution ;
     nidm:errorVarianceHomogeneous "true"^^xsd:boolean ;
@@ -194,15 +203,6 @@ niiri:contrast_variance_map_id a prov:Entity , fsl:ContrastVarianceMap ;
 
 niiri:contrast_standard_error_map_id prov:wasDerivedFrom niiri:contrast_variance_map_id .
 
-niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
-	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file://path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
-    nfo:fileName "mask.nii.gz"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .
-
 niiri:excursion_set_map_id a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;
 	prov:atLocation "file://path/to/ExcursionSetMap.nii.gz"^^xsd:anyURI ;
@@ -225,16 +225,6 @@ niiri:grand_mean_map_id a prov:Entity , nidm:GrandMeanMap ;
     nfo:fileName "mean_func.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:maskedMedian "115"^^xsd:float ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
-    prov:wasGeneratedBy niiri:model_pe_id .
-
-niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
-	rdfs:label "Mask" ;
-	prov:atLocation "file://path/to/Mask.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "Mask.nii.gz"^^xsd:string ;
-    nfo:fileName "mask.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .
@@ -269,10 +259,10 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm:ResidualMeanSquaresMap ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .
 
-niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
-	rdfs:label "Search Space Map" ;
-	prov:atLocation "file://path/to/SearchSpace.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
+niiri:search_space_mask_id a prov:Entity , nidm:SearchSpaceMaskMap ;
+	rdfs:label "Search Space Mask Map" ;
+	prov:atLocation "file://path/to/SearchSpaceMask.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	nfo:fileName "mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
@@ -352,6 +342,18 @@ niiri:inference_id a prov:Activity , nidm:Inference ;
 	nidm:hasAlternativeHypothesis nidm:OneTailedTest ;
     prov:used niiri:z_statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
     prov:wasAssociatedWith niiri:software_id .
+
+niiri:contrast_estimation_id prov:used niiri:mask_id_1 .
+niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
+	rdfs:label "Mask" ;
+    nidm:isUserDefined "false"^^xsd:boolean ;
+	prov:atLocation "file://path/to/Mask.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "Mask.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
+    prov:wasGeneratedBy niiri:model_pe_id ;
+    nfo:fileName "mask.nii.gz"^^xsd:string .
 
 niiri:model_pe_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm:ModelParametersEstimation ;

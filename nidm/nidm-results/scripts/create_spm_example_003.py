@@ -125,15 +125,17 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_pe_id"),
-		"MaskMap": dict(
+		"MaskMap_Analysis": dict( # The analysis mask
 			mask_id="niiri:mask_id_1",
 			label="Mask",
 			location="file:///path/to/Mask.nii.gz",
 			filename="Mask.nii.gz",
+			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
-			param_est_id="niiri:model_pe_id"),
+			generated_by_act_id="niiri:model_pe_id",
+			used_by_act_id="niiri:contrast_estimation_id"), # fixme: also used by niiri:contrast_estimation_id_2
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id",
 			label="Contrast: listening > reading",
@@ -287,6 +289,7 @@ def main():
 		"DisplayMaskMap": dict(
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
+			user_defined="true",
 			location="file:///path/to/DisplayMask.nii.gz",
 			filename="DisplayMask.nii.gz",
 			format="image/nifti",

@@ -352,7 +352,7 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
         
         obo:IAO_0000114 obo:IAO_0000124 ;
         
-        rdfs:domain nidm:SearchSpaceMap ;
+        rdfs:domain nidm:SearchSpaceMaskMap ;
         
         rdfs:range xsd:float .
 
@@ -378,7 +378,7 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
                       
                       obo:IAO_0000114 obo:IAO_0000124 ;
                       
-                      rdfs:domain nidm:SearchSpaceMap ;
+                      rdfs:domain nidm:SearchSpaceMaskMap ;
                       
                       rdfs:range xsd:float ;
                       
@@ -641,6 +641,22 @@ nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://www.incf.org/ns/nidash/nidm#isUserDefined
+
+nidm:isUserDefined rdf:type owl:DatatypeProperty ;
+                   
+                   obo:IAO_0000115 "A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false)" ;
+                   
+                   obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/258" ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000122 ;
+                   
+                   rdfs:domain nidm:BinaryMap ;
+                   
+                   rdfs:range xsd:boolean .
+
+
+
 ###  http://www.incf.org/ns/nidash/nidm#maskedMedian
 
 nidm:maskedMedian rdf:type owl:DatatypeProperty ;
@@ -757,9 +773,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
             
             rdfs:range [ rdf:type rdfs:Datatype ;
                          owl:onDatatype xsd:float ;
-                         owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                 ]
-                                                [ xsd:minInclusive "0.0"^^xsd:float
+                                                [ xsd:maxInclusive "1.0"^^xsd:float
                                                 ]
                                               )
                        ] .
@@ -787,9 +803,9 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 
                 rdfs:range [ rdf:type rdfs:Datatype ;
                              owl:onDatatype xsd:float ;
-                             owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                     ]
-                                                    [ xsd:minInclusive "0.0"^^xsd:float
+                                                    [ xsd:maxInclusive "1.0"^^xsd:float
                                                     ]
                                                   )
                            ] .
@@ -815,9 +831,9 @@ nidm:pValueUncorrected rdf:type owl:DatatypeProperty ;
                        
                        rdfs:range [ rdf:type rdfs:Datatype ;
                                     owl:onDatatype xsd:float ;
-                                    owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                            ]
-                                                           [ xsd:minInclusive "0.0"^^xsd:float
+                                                           [ xsd:maxInclusive "1.0"^^xsd:float
                                                            ]
                                                          )
                                   ] .
@@ -843,9 +859,9 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                
                rdfs:range [ rdf:type rdfs:Datatype ;
                             owl:onDatatype xsd:float ;
-                            owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
+                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
                                                    ]
-                                                   [ xsd:minInclusive "0.0"^^xsd:float
+                                                   [ xsd:maxInclusive "1.0"^^xsd:float
                                                    ]
                                                  )
                           ] .
@@ -862,7 +878,7 @@ nidm:randomFieldStationarity rdf:type owl:DatatypeProperty ;
                              
                              obo:IAO_0000114 obo:IAO_0000120 ;
                              
-                             rdfs:domain nidm:SearchSpaceMap ;
+                             rdfs:domain nidm:SearchSpaceMaskMap ;
                              
                              rdfs:range xsd:boolean .
 
@@ -880,7 +896,7 @@ nidm:searchVolumeInVoxels rdf:type owl:DatatypeProperty ;
                           
                           obo:IAO_0000114 obo:IAO_0000124 ;
                           
-                          rdfs:domain nidm:SearchSpaceMap ;
+                          rdfs:domain nidm:SearchSpaceMaskMap ;
                           
                           rdfs:range xsd:positiveInteger ;
                           
@@ -1053,7 +1069,7 @@ spm:expectedNumberOfClusters rdf:type owl:DatatypeProperty ;
                              
                              obo:IAO_0000114 obo:IAO_0000125 ;
                              
-                             rdfs:domain nidm:SearchSpaceMap ;
+                             rdfs:domain nidm:SearchSpaceMaskMap ;
                              
                              rdfs:range [ rdf:type rdfs:Datatype ;
                                           owl:onDatatype xsd:float ;
@@ -1074,7 +1090,7 @@ spm:expectedNumberOfVerticesPerCluster rdf:type owl:DatatypeProperty ;
                                        
                                        obo:IAO_0000114 obo:IAO_0000120 ;
                                        
-                                       rdfs:domain nidm:SearchSpaceMap ;
+                                       rdfs:domain nidm:SearchSpaceMaskMap ;
                                        
                                        rdfs:range [ rdf:type rdfs:Datatype ;
                                                     owl:onDatatype xsd:float ;
@@ -1095,7 +1111,7 @@ spm:expectedNumberOfVoxelsPerCluster rdf:type owl:DatatypeProperty ;
                                      
                                      obo:IAO_0000114 obo:IAO_0000120 ;
                                      
-                                     rdfs:domain nidm:SearchSpaceMap ;
+                                     rdfs:domain nidm:SearchSpaceMaskMap ;
                                      
                                      rdfs:range [ rdf:type rdfs:Datatype ;
                                                   owl:onDatatype xsd:float ;
@@ -1116,7 +1132,7 @@ spm:heightCriticalThresholdFDR05 rdf:type owl:DatatypeProperty ;
                                  
                                  obo:IAO_0000114 obo:IAO_0000122 ;
                                  
-                                 rdfs:domain nidm:SearchSpaceMap ;
+                                 rdfs:domain nidm:SearchSpaceMaskMap ;
                                  
                                  rdfs:range xsd:float .
 
@@ -1132,7 +1148,7 @@ spm:heightCriticalThresholdFWE05 rdf:type owl:DatatypeProperty ;
                                  
                                  obo:IAO_0000114 obo:IAO_0000122 ;
                                  
-                                 rdfs:domain nidm:SearchSpaceMap ;
+                                 rdfs:domain nidm:SearchSpaceMaskMap ;
                                  
                                  rdfs:range xsd:float .
 
@@ -1150,7 +1166,7 @@ spm:noiseFWHMInUnits rdf:type owl:DatatypeProperty ;
                      
                      obo:IAO_0000114 obo:IAO_0000120 ;
                      
-                     rdfs:domain nidm:SearchSpaceMap ;
+                     rdfs:domain nidm:SearchSpaceMaskMap ;
                      
                      rdfs:subPropertyOf nidm:noiseFWHM ;
                      
@@ -1190,7 +1206,7 @@ spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
                       
                       obo:IAO_0000114 obo:IAO_0000120 ;
                       
-                      rdfs:domain nidm:SearchSpaceMap ;
+                      rdfs:domain nidm:SearchSpaceMaskMap ;
                       
                       rdfs:subPropertyOf nidm:noiseFWHM ;
                       
@@ -1210,7 +1226,7 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
               
               obo:IAO_0000114 obo:IAO_0000120 ;
               
-              rdfs:domain nidm:SearchSpaceMap ;
+              rdfs:domain nidm:SearchSpaceMaskMap ;
               
               rdfs:range [ rdf:type rdfs:Datatype ;
                            owl:onDatatype xsd:float ;
@@ -1233,7 +1249,7 @@ spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
                          
                          rdfs:seeAlso "Synonyms of nidm:volumeInResels" ;
                          
-                         rdfs:domain nidm:SearchSpaceMap ;
+                         rdfs:domain nidm:SearchSpaceMaskMap ;
                          
                          rdfs:range [ rdf:type rdfs:Datatype ;
                                       owl:onDatatype xsd:float ;
@@ -1258,7 +1274,7 @@ spm:searchVolumeInUnits rdf:type owl:DatatypeProperty ;
                         
                         obo:IAO_0000114 obo:IAO_0000122 ;
                         
-                        rdfs:domain nidm:SearchSpaceMap ;
+                        rdfs:domain nidm:SearchSpaceMaskMap ;
                         
                         rdfs:range [ rdf:type rdfs:Datatype ;
                                      owl:onDatatype xsd:float ;
@@ -1279,7 +1295,7 @@ spm:searchVolumeInVertices rdf:type owl:DatatypeProperty ;
                            
                            obo:IAO_0000114 obo:IAO_0000120 ;
                            
-                           rdfs:domain nidm:SearchSpaceMap ;
+                           rdfs:domain nidm:SearchSpaceMaskMap ;
                            
                            rdfs:range [ rdf:type rdfs:Datatype ;
                                         owl:onDatatype xsd:float ;
@@ -1304,7 +1320,7 @@ spm:searchVolumeReselsGeometry rdf:type owl:DatatypeProperty ;
                                
                                obo:IAO_0000114 obo:IAO_0000125 ;
                                
-                               rdfs:domain nidm:SearchSpaceMap ;
+                               rdfs:domain nidm:SearchSpaceMaskMap ;
                                
                                rdfs:range xsd:string ;
                                
@@ -1322,7 +1338,7 @@ spm:smallestSignifClusterSizeInVerticesFDR05 rdf:type owl:DatatypeProperty ;
                                              
                                              obo:IAO_0000114 obo:IAO_0000125 ;
                                              
-                                             rdfs:domain nidm:SearchSpaceMap ;
+                                             rdfs:domain nidm:SearchSpaceMaskMap ;
                                              
                                              rdfs:range xsd:positiveInteger .
 
@@ -1339,7 +1355,7 @@ spm:smallestSignifClusterSizeInVerticesFWE05 rdf:type owl:DatatypeProperty ;
                                              
                                              obo:IAO_0000114 obo:IAO_0000125 ;
                                              
-                                             rdfs:domain nidm:SearchSpaceMap ;
+                                             rdfs:domain nidm:SearchSpaceMaskMap ;
                                              
                                              rdfs:range xsd:positiveInteger .
 
@@ -1355,7 +1371,7 @@ spm:smallestSignifClusterSizeInVoxelsFDR05 rdf:type owl:DatatypeProperty ;
                                            
                                            obo:IAO_0000114 obo:IAO_0000125 ;
                                            
-                                           rdfs:domain nidm:SearchSpaceMap ;
+                                           rdfs:domain nidm:SearchSpaceMaskMap ;
                                            
                                            rdfs:range xsd:positiveInteger .
 
@@ -1372,7 +1388,7 @@ spm:smallestSignifClusterSizeInVoxelsFWE05 rdf:type owl:DatatypeProperty ;
                                            
                                            obo:IAO_0000114 obo:IAO_0000125 ;
                                            
-                                           rdfs:domain nidm:SearchSpaceMap ;
+                                           rdfs:domain nidm:SearchSpaceMaskMap ;
                                            
                                            rdfs:range xsd:positiveInteger .
 
@@ -1479,6 +1495,20 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
                                 obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                                 
                                 obo:IAO_0000114 obo:IAO_0000423 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#BinaryMap
+
+nidm:BinaryMap rdf:type owl:Class ;
+               
+               rdfs:subClassOf nidm:Map ;
+               
+               obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/258" ;
+               
+               obo:IAO_0000115 "A map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, and faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN" ;
+               
+               obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -1686,22 +1716,6 @@ nidm:CustomCoordinateSystem rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#CustomMaskMap
-
-nidm:CustomMaskMap rdf:type owl:Class ;
-                   
-                   rdfs:subClassOf nidm:Map ;
-                   
-                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/CustomMaskMap.txt" ;
-                   
-                   obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
-                   
-                   obo:IAO_0000115 "mask defined by the user to restrain the space in which model fitting is performed." ;
-                   
-                   obo:IAO_0000114 obo:IAO_0000120 .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#Data
 
 nidm:Data rdf:type owl:Class ;
@@ -1759,15 +1773,13 @@ nidm:DesignMatrix rdf:type owl:Class ;
 
 nidm:DisplayMaskMap rdf:type owl:Class ;
                     
-                    rdfs:subClassOf nidm:Map ;
+                    rdfs:subClassOf nidm:BinaryMap ;
                     
                     obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DisplayMaskMap.txt"^^xsd:anyURI ;
                     
-                    obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
+                    obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/pull/157" ;
                     
-                    rdfs:comment "Mask defined by the user to restrain the space in which inference results are reported. This mask does not affect the search volume used for multiple-testing correction; e.g. it does not alter voxel-wise corrected p-values." ;
-                    
-                    obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/157" ;
+                    obo:IAO_0000115 "A binary map used by an activity that changed the voxels displayed, but did not alter the space in which the activity was performed (e.g. at the level of inference, this mask is called \"contrast masking\" in both FSL & SPM and does not alter voxel-wise corrected p-values)" ;
                     
                     obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -1957,20 +1969,6 @@ nidm:Inference rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#InferenceMaskMap
-
-nidm:InferenceMaskMap rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:Map ;
-                      
-                      obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
-                      
-                      obo:IAO_0000115 "mask defined by the user to restrain the space in which inference is performed." ;
-                      
-                      obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/InferenceMaskMap.txt" .
-
-
-
 ###  http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem
 
 nidm:MNICoordinateSystem rdf:type owl:Class ;
@@ -1991,12 +1989,12 @@ nidm:Map rdf:type owl:Class ;
          
          rdfs:subClassOf prov:Entity ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty dct:format ;
+                           owl:onProperty nfo:fileName ;
                            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:string
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty nfo:fileName ;
+                           owl:onProperty dct:format ;
                            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:string
                          ] ;
@@ -2033,15 +2031,15 @@ nidm:MapHeader rdf:type owl:Class ;
 
 nidm:MaskMap rdf:type owl:Class ;
              
-             rdfs:subClassOf nidm:Map ;
+             rdfs:subClassOf nidm:BinaryMap ;
              
-             obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/issues/155." ;
+             obo:IAO_0000115 "A binary map representing the exact set of elements (e.g., pixels, voxels, vertices, and faces) in which an activity was performed (e.g. the mask map generated by the model parameter estimation activity represents the exact set of voxels in which the mass univariate model was estimated) and/or restraining the space in which an activity was performed (e.g. the mask map used by inference)" ;
              
-             obo:IAO_0000115 "map or surface on which the associated results are displayed. " ;
+             obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/issues/155" ;
              
              obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/MaskMap.txt" ;
              
-             obo:IAO_0000114 obo:IAO_0000120 .
+             obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -2225,21 +2223,19 @@ nidm:SPMResults rdf:type owl:Class ;
 
 
 
-###  http://www.incf.org/ns/nidash/nidm#SearchSpaceMap
+###  http://www.incf.org/ns/nidash/nidm#SearchSpaceMaskMap
 
-nidm:SearchSpaceMap rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf nidm:Map ;
-                    
-                    rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0000235" ;
-                    
-                    obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SearchSpaceMap.txt" ;
-                    
-                    obo:IAO_0000115 "mask in which the inference was performed." ;
-                    
-                    obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/258" ;
-                    
-                    obo:IAO_0000114 obo:IAO_0000120 .
+nidm:SearchSpaceMaskMap rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf nidm:MaskMap ;
+                        
+                        obo:IAO_0000115 "A mask map representing the set of elements in which the inference was performed" ;
+                        
+                        obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SearchSpaceMaskMap.txt" ;
+                        
+                        obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 .
 
 
 

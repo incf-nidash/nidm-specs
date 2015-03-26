@@ -67,6 +67,15 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id .
 
+niiri:display_map_id_1 a prov:Entity , nidm:DisplayMaskMap ;
+	rdfs:label "Display Mask Map" ;
+	prov:atLocation "file://./DisplayMask.nii.gz"^^xsd:anyURI ;
+	dct:format "image/nifti"^^xsd:string ;
+    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
+    nfo:fileName "mask.nii.gz"^^xsd:string .
+
 niiri:error_model_id a prov:Entity , nidm:ErrorModel ;
     nidm:hasErrorDistribution nidm:GaussianDistribution ;
     nidm:errorVarianceHomogeneous "true"^^xsd:boolean ;
@@ -332,15 +341,6 @@ niiri:COG_coordinate_0004   a prov:Entity , prov:Location , nidm:Coordinate ;
     fsl:coordinate2InVoxels "14.7"^^xsd:float ;
     fsl:coordinate3InVoxels "14"^^xsd:float .
 
-niiri:display_map_id_1 a prov:Entity , nidm:DisplayMaskMap ;
-	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file://./DisplayMask.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
-    nfo:fileName "mask.nii.gz"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string .
-
 niiri:excursion_set_map_id_1 a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;
 	prov:atLocation "file://./ExcursionSetMap.nii.gz"^^xsd:anyURI ;
@@ -366,16 +366,6 @@ niiri:grand_mean_map_id a prov:Entity , nidm:GrandMeanMap ;
 	nidm:maskedMedian "9597.36"^^xsd:float ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "7a2703cea740e27a5170fb19e4a09b5e815e4b7e477bc75958404d675aa408f53f747892a2ef4472f933cf5f12cd21cea99d5f5e551938081636fb6d4049473e"^^xsd:string ;
-    prov:wasGeneratedBy niiri:model_parameters_estimation_id .
-
-niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
-	rdfs:label "Mask" ;
-	prov:atLocation "file://./Mask.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "Mask.nii.gz"^^xsd:string ;
-    nfo:fileName "mask.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
     prov:wasGeneratedBy niiri:model_parameters_estimation_id .
 
 niiri:beta_map_id_1 a prov:Entity , nidm:ParameterEstimateMap ;
@@ -412,10 +402,10 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm:ResidualMeanSquaresMap ;
 	crypto:sha512 "1327a300eb1e20d42c67abb3c49a47b80ecabfebd13d0ba0aca0560e8bf43891f0e35a958c1afa84e041f62cf0038f58b4ab71f68b0b50d4153210aeed74f4ff"^^xsd:string ;
     prov:wasGeneratedBy niiri:model_parameters_estimation_id .
 
-niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
-	rdfs:label "Search Space Map" ;
+niiri:search_space_mask_id a prov:Entity , nidm:SearchSpaceMaskMap ;
+	rdfs:label "Search Space Mask Map" ;
 	prov:atLocation "file://./SearchSpace.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
+	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	nfo:fileName "mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
@@ -507,6 +497,18 @@ niiri:inference_id_1 a prov:Activity , nidm:Inference ;
 	nidm:hasAlternativeHypothesis nidm:OneTailedTest ;
     prov:used niiri:z_statistic_map_id_1, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id_1, niiri:cluster_definition_criteria_id_1, niiri:mask_id_1 ;
     prov:wasAssociatedWith niiri:software_id .
+
+niiri:contrast_estimation_id_1 prov:used niiri:mask_id_1 .
+niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
+	rdfs:label "Mask" ;
+    nidm:isUserDefined "false"^^xsd:boolean ;
+	prov:atLocation "file://./Mask.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "Mask.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
+    prov:wasGeneratedBy niiri:model_parameters_estimation_id ;
+    nfo:fileName "mask.nii.gz"^^xsd:string .
 
 niiri:model_parameters_estimation_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm:ModelParametersEstimation ;
