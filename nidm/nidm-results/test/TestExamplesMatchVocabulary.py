@@ -54,7 +54,19 @@ class TestExamples(unittest.TestCase):
             # check the file exists
             assert os.path.exists(owl_file)
             # Read owl (turtle) file
-            import_files = glob.glob(os.path.join(os.path.dirname(owl_file), os.pardir, os.pardir, "imports", '*.ttl'))
+
+            owl_path = os.path.dirname(owl_file)
+
+            if not "extension" in os.path.dirname(owl_file):
+                import_files = glob.glob(os.path.join(owl_path, \
+                    os.pardir, os.pardir, "imports", '*.ttl'))
+            else:
+                import_files = glob.glob(os.path.join(owl_path, \
+                    os.pardir, os.pardir, os.pardir, os.pardir, "imports", '*.ttl'))
+                # Main ontology file
+                import_files += glob.glob(os.path.join(owl_path, \
+                    os.pardir, os.pardir, os.pardir, "terms", '*.owl'))
+
             self.owl = OwlReader(owl_file, import_files)
             self.owl_readers[owl_file] = self.owl
 
