@@ -56,7 +56,7 @@ def main():
 			error_model_id="niiri:error_model_id",
 			software_id="niiri:software_id"
 			),
-		"FSL_ParameterEstimateMap_NoLocation-1": dict(
+		"FSL_ParameterEstimateMapNoLocation-1": dict(
 			beta_map_id="niiri:beta_map_id_1",
 			label="Parameter estimate 1",
 			filename="pe1.nii.gz",
@@ -64,7 +64,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_parameters_estimation_id"),
-		"FSL_ParameterEstimateMap_NoLocation-2": dict(
+		"FSL_ParameterEstimateMapNoLocation-2": dict(
 			beta_map_id="niiri:beta_map_id_2",
 			label="Parameter estimate 2",
 			filename="pe2.nii.gz",
@@ -72,7 +72,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_parameters_estimation_id"),
-		"FSL_ParameterEstimateMap_NoLocation-3": dict(
+		"FSL_ParameterEstimateMapNoLocation-3": dict(
 			beta_map_id="niiri:beta_map_id_3",
 			label="Parameter estimate 3",
 			filename="pe3.nii.gz",
@@ -80,7 +80,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_parameters_estimation_id"),
-		"FSL_ParameterEstimateMap_NoLocation-4": dict(
+		"FSL_ParameterEstimateMapNoLocation-4": dict(
 			beta_map_id="niiri:beta_map_id_4",
 			label="Parameter estimate 4",
 			filename="pe4.nii.gz",
@@ -107,16 +107,18 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="1327a300eb1e20d42c67abb3c49a47b80ecabfebd13d0ba0aca0560e8bf43891f0e35a958c1afa84e041f62cf0038f58b4ab71f68b0b50d4153210aeed74f4ff",
 			param_est_id="niiri:model_parameters_estimation_id"),
-		"FSL_MaskMap": dict(
+		"MaskMap_Analysis_fileName": dict( # Analysis mask
 			mask_id="niiri:mask_id_1",
 			label="Mask",
 			location="file://./Mask.nii.gz",
-			filename_1="Mask.nii.gz", 
+			filename="Mask.nii.gz", 
 			filename_2="mask.nii.gz", 
+			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
-			param_est_id="niiri:model_parameters_estimation_id"),
+			generated_by_act_id="niiri:model_parameters_estimation_id",
+			used_by_act_id="niiri:contrast_estimation_id_1"),
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id_1",
 			label="Contrast Weights: Generation",
@@ -205,12 +207,13 @@ def main():
 			thresh_type="p-value FWE",
 			p_fwe="0.05"
 			),
-		"FSL_DisplayMaskMap": dict(
+		"DisplayMaskMap_fileName": dict(
 			display_map_id="niiri:display_map_id_1",
 			label="Display Mask Map",
 			location="file://./DisplayMask.nii.gz",
 			format="image/nifti",
-			filename_1="DisplayMask.nii.gz",
+			user_defined="true",
+			filename="DisplayMask.nii.gz",
 			filename_2="mask.nii.gz",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"
@@ -680,12 +683,13 @@ def main():
 			coord_2_in_vox="46",
 			coord_3_in_vox="27"
 			),
-		"FSL_SearchSpaceMap": dict(
-			search_space_id="niiri:search_space_id",
+		"FSL_SearchSpaceMaskMap": dict(
+			search_space_id="niiri:search_space_mask_id",
 			location="file://./SearchSpace.nii.gz",
-			filename_1="SearchSpace.nii.gz",
+			filename_1="SearchSpaceMask.nii.gz",
 			filename_2="mask.nii.gz",
-			label="Search Space Map",
+			label="Search Space Mask Map",
+			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			search_vol_voxels="45203",

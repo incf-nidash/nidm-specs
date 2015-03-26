@@ -106,6 +106,7 @@ def create_document(doc_json_url, doc_title):
 
 def main():
 	for example_file in example_filenames:
+		logger.debug(" "+example_file)
 
 		# Get title for current document
 		if example_file not in doc_titles:

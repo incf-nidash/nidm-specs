@@ -55,12 +55,12 @@ def main():
              NIDM['ModelParametersEstimation'],  
              NIDM['ParameterEstimateMap'],
              NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
-             NIDM['MaskMap'], NIDM['CustomMaskMap']]    
+             NIDM['MaskMap']]    
     components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
              NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
              NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['InferenceMaskMap'], NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
+             NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMaskMap'], 
              NIDM['SignificantCluster'], NIDM['Peak'], NIDM['Coordinate'], 
              NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
              NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
@@ -84,7 +84,7 @@ def main():
                 NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
                 NIDM['ContrastMap']: [NIDM['Inference']], 
                 NIDM['StatisticMap']: [NIDM['Inference']],
-                NIDM['CustomMaskMap']: [NIDM['ModelParametersEstimation']],
+                NIDM['MaskMap']: [NIDM['ModelParametersEstimation']],
                 NIDM['ClusterDefinitionCriteria']: [NIDM['Inference']], 
                 NIDM['DisplayMaskMap']: [NIDM['Inference']], 
                 NIDM['PeakDefinitionCriteria']: [NIDM['Inference']], 
@@ -107,8 +107,13 @@ def main():
         components["Parameters estimation"][1] = NIDM['NoiseModel']
         used_by.pop(NIDM['ErrorModel'], None)
         used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
-        # No "InferenceMaskMap"
+
+        # CustomMaskMap was used by "Model Parameter Estimation"
+        components["Parameters estimation"].add(NIDM['CustomMaskMap'])
+        used_by[NIDM['CustomMaskMap']] = [NIDM['ModelParametersEstimation']]
+
         # "ExcursionSetMap" was called "ExcursionSet"
+        # "SearchSpaceMaskMap" was called "SearchSpaceMap"
         components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
              NIDM['Cluster'], NIDM['Peak'],

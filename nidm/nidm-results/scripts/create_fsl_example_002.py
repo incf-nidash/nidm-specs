@@ -17,7 +17,7 @@ def main():
 			p_fwe="0.050000",
 			thresh_type="p-value FWE"
 			),
-		"FSL_ExtentThreshold_NoType": dict(
+		"FSL_ExtentThresholdNoType": dict(
 			extent_threshold_id="niiri:extent_threshold_id",
 			label="Extent Threshold: k>=0",
 			p_fwe="1.0"

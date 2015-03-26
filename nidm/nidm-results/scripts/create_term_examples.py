@@ -76,13 +76,14 @@ def main():
 			param_est_id="niiri:model_pe_id"),
 		"MaskMap": dict(
 			mask_id="niiri:mask_id_2",
+			user_defined="false",
 			label="Mask",
 			location="file:///path/to/Mask.nii.gz",
 			filename="Mask.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
-			param_est_id="niiri:model_pe_id"),
+			used_by_act_id="niiri:model_pe_id"),
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id",
 			label="Contrast: Listening > Rest",
@@ -109,15 +110,6 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"CustomMaskMap": dict(
-			custom_mask_id="niiri:mask_id_1",
-			label="Custom mask",
-			location="file:///path/to/CustomMask.nii.gz",
-			filename="CustomMask.nii.gz",
-			format="image/nifti",
-			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a..."
-			),
 		"ContrastStandardErrorMap": dict(
 			contrast_standard_error_map_id="niiri:contrast_standard_error_map_id",
 			label="Contrast Standard Error Map",
@@ -193,15 +185,6 @@ def main():
 			label="Cluster Connectivity Criterion: 18",
 			connectivity="nidm:voxel18connected"
 			),
-		"InferenceMaskMap": dict(
-			inference_mask_id="niiri:sub_volume_id",
-			label="Inference Mask Map",
-			location="file:///path/to/InferenceMask.nii.gz",
-			filename="InferenceMask.nii.gz",
-			format="image/nifti",
-			coordinate_space_id="niiri:coordinate_space_id_2",
-			sha="e43b6e01b0463fe7d40782137867a..."
-			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
 			label="Inference",
@@ -209,7 +192,7 @@ def main():
 			stat_map_id="niiri:statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
-			inference_mask_id="niiri:sub_volume_id", 
+			inference_mask_id="niiri:mask_id_3", 
 			display_mask_id="niiri:display_map_id", 
 			mask_id="niiri:mask_id", 
 			software_id="niiri:software_id",
@@ -259,11 +242,11 @@ def main():
 			coord_2="-28",
 			coord_3="13"
 			),
-		"SearchSpaceMap": dict(
-			search_space_id="niiri:search_space_id",
-			location="file:///path/to/SearchSpace.nii.gz",
-			filename="SearchSpace.nii.gz",
-			label="Search Space Map",
+		"SearchSpaceMaskMap": dict(
+			search_space_id="niiri:search_space_mask_id",
+			location="file:///path/to/SearchSpaceMask.nii.gz",
+			filename="SearchSpaceMask.nii.gz",
+			label="Search Space Mask Map",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			expected_num_voxels="0.553331387916112",
