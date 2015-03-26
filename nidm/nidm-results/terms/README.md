@@ -49,10 +49,6 @@
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><b>nidm:InferenceMaskMap: </b>mask defined by the user to restrain the space in which inference is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:MapHeader: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
@@ -126,23 +122,11 @@ Range: Vector of integers not found.)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:CustomMaskMap: </b>mask defined by the user to restrain the space in which model fitting is performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:MNICoordinateSystem: </b>Coordinate system defined with reference to the MNI atlas</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:MaskMap: </b>map or surface on which the associated results are displayed.  (Under discussion at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/issues/155.)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:Peak: </b>Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><b>nidm:SearchSpaceMap: </b>mask in which the inference was performed (Under discussion at: https://github.com/incf-nidash/nidm/pull/258)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -206,39 +190,39 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:expectedNumberOfClusters: </b>Expected number of clusters in an excursion set</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:searchVolumeReselsGeometry: </b>Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels (Range: Vector of 1 positive integer and 3 positive floats.)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:smallestSignifClusterSizeInVerticesFDR05: </b>Smallest cluster size in vertices that are significant at a false discovery rate corrected alpha value of 0.05.  </td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:smallestSignifClusterSizeInVerticesFWE05: </b>Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05. 
 </td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:smallestSignifClusterSizeInVoxelsFDR05: </b>Smallest cluster size in voxels significant at false discovery rate corrected alpha value of 0.05.  </td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><b>spm:smallestSignifClusterSizeInVoxelsFWE05: </b>Smallest cluster size in voxels significant at family-wise error corrected alpha value of 0.05. 
 </td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
@@ -250,7 +234,7 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>fsl:dlh: </b>&lt;undefined&gt; (Under discussion at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:float </td>
 </tr>
 <tr>
@@ -262,7 +246,7 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt; (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:float </td>
 </tr>
 <tr>
@@ -298,7 +282,7 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>nidm:searchVolumeInVoxels: </b>Total number of voxels within the search volume</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:positiveInteger </td>
 </tr>
 <tr>
@@ -328,7 +312,7 @@ Range: Vector of integers not found.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>
@@ -443,7 +427,7 @@ Range: Vector of integers.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>nidm:randomFieldStationarity: </b>Is the random field assumed to be stationary across the entire search volume? (editor: Under discussion at https://github.com/incf-nidash/nidm/issues/130)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:boolean </td>
 </tr>
 <tr>
@@ -461,13 +445,13 @@ Range: Vector of integers.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:expectedNumberOfVerticesPerCluster: </b>Expected number of vertices in a cluster</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:expectedNumberOfVoxelsPerCluster: </b>Expected number of voxels in a cluster</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>
@@ -479,7 +463,7 @@ Range: Vector of integers.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:noiseFWHMInUnits: </b>Estimated Full Width at Half Maximum of the noise distribution in world units (Range: Vector of positive floats.)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:string </td>
 </tr>
 <tr>
@@ -491,19 +475,19 @@ Range: Vector of integers.)</td>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:noiseFWHMInVoxels: </b>Estimated Full Width at Half Maximum of the noise distribution in voxels (Range: Vector of positive floats.)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices (Under discussion at https://github.com/incf-nidash/nidm/issues/275)</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><b>spm:searchVolumeInVertices: </b>Total number of vertices within the search volume</td>
-    <td>nidm:SearchSpaceMap </td>
+    <td>nidm:SearchSpaceMaskMap </td>
     <td></td>
 </tr>
 <tr>

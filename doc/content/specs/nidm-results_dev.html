@@ -492,18 +492,11 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:CustomMaskMap">nidm:CustomMaskMap</a>
-                            </td>
-                    
-                                <td rowspan="8" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
-                        
-                                <td><a>nidm:CustomMaskMap</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:Data">nidm:Data</a>
                             </td>
                     
+                                <td rowspan="7" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                        
                                 <td><a>nidm:Data</a></td>
                             </tr>
                 
@@ -556,7 +549,7 @@
             <section id="section-nidm:ModelParametersEstimation"> 
                 <h1 label="nidm:ModelParametersEstimation">nidm:ModelParametersEstimation</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:ModelParametersEstimation</dfn>                    <sup><a title="nidm:ModelParametersEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of performing a <a href="http://purl.obolibrary.org/obo/STATO_0000119">obo:model parameter estimation</a> at each element of a map. <a>nidm:ModelParametersEstimation</a> is a prov:Activity that uses <a>nidm:CustomMaskMap</a>, <a>nidm:Data</a>, <a>nidm:DesignMatrix</a> and <a>nidm:ErrorModel</a> entities. This activity generates <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. 
+                    A <dfn>nidm:ModelParametersEstimation</dfn>                    <sup><a title="nidm:ModelParametersEstimation">                    <span class="diamond">&#9826;</span></a></sup> is the process of performing a <a href="http://purl.obolibrary.org/obo/STATO_0000119">obo:model parameter estimation</a> at each element of a map. <a>nidm:ModelParametersEstimation</a> is a prov:Activity that uses <a>nidm:Data</a>, <a>nidm:DesignMatrix</a>, <a>nidm:ErrorModel</a> and <a>nidm:MaskMap</a> entities. This activity generates <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:ModelParametersEstimation"> A <a>nidm:ModelParametersEstimation</a> has attributes:
@@ -576,33 +569,6 @@
     prov:used niiri:data_id ;
     prov:used niiri:error_model_id ;
     prov:wasAssociatedWith niiri:software_id .</pre>  
-            </section>
-            <!-- nidm:CustomMaskMap -->
-            <section id="section-nidm:CustomMaskMap"> 
-                <h1 label="nidm:CustomMaskMap">nidm:CustomMaskMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:CustomMaskMap</dfn>                    <sup><a title="nidm:CustomMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is mask defined by the user to restrain the space in which model fitting is performed. <a>nidm:CustomMaskMap</a> is a prov:Entity used by <a>nidm:ModelParametersEstimation</a>. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:CustomMaskMap"> A <a>nidm:CustomMaskMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:CustomMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:CustomMaskMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
-                        <li><span class="attribute" id="nidm:CustomMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:mask_id_1 a prov:Entity , nidm:CustomMaskMap ;
-	rdfs:label "Custom mask" ;
-	prov:atLocation "file:///path/to/CustomMask.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "CustomMask.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
             <!-- nidm:Data -->
             <section id="section-nidm:Data"> 
@@ -911,29 +877,27 @@
             <section id="section-nidm:MaskMap"> 
                 <h1 label="nidm:MaskMap">nidm:MaskMap</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:MaskMap</dfn>                    <sup><a title="nidm:MaskMap">                    <span class="diamond">&#9826;</span></a></sup> is map or surface on which the associated results are displayed. . <a>nidm:MaskMap</a> is a prov:Entity used by <a>nidm:'Contrast Estimation'</a> and  generated by <a>nidm:ModelParametersEstimation</a>. 
+                    A <dfn>nidm:MaskMap</dfn>                    <sup><a title="nidm:MaskMap">                    <span class="diamond">&#9826;</span></a></sup> is a binary map representing the exact set of elements (e.g., pixels, voxels, vertices, and faces) in which an activity was performed (e.g. the mask map generated by the model parameter estimation activity represents the exact set of voxels in which the mass univariate model was estimated) and/or restraining the space in which an activity was performed (e.g. the mask map used by inference). <a>nidm:MaskMap</a> is a prov:Entity used by <a>nidm:ModelParametersEstimation</a> and  generated by <a>nidm:ModelParametersEstimation</a>. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:MaskMap"> A <a>nidm:MaskMap</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:MaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:MaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:MaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
-                        <li><span class="attribute" id="nidm:MaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li>        
+                        <li><span class="attribute" id="nidm:MaskMap.nidm:isUserDefined">
+                        <dfn>nidm:isUserDefined</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="xsd:boolean" href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>        
                 </ul>
                 </div>
-                <pre class='example highlight'>niiri:mask_id_2 a prov:Entity , nidm:MaskMap ;
+                <pre class='example highlight'>niiri:model_pe_id prov:used niiri:mask_id_2 .
+niiri:mask_id_2 a prov:Entity , nidm:MaskMap ;
 	rdfs:label "Mask" ;
+    nidm:isUserDefined "false"^^xsd:boolean ;
 	prov:atLocation "file:///path/to/Mask.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "Mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
-    prov:wasGeneratedBy niiri:model_pe_id .</pre>  
+	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
             </section>
             <!-- nidm:ParameterEstimateMap -->
             <section id="section-nidm:ParameterEstimateMap"> 
@@ -1047,7 +1011,7 @@
             <section id="section-nidm:'Contrast Estimation'"> 
                 <h1 label="nidm:'Contrast Estimation'">nidm:'Contrast Estimation'</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:'Contrast Estimation'</dfn>                    <sup><a title="nidm:'Contrast Estimation'">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:'Contrast Estimation'</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:MaskMap</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a>, <a>nidm:ContrastStandardErrorMap</a> and <a>nidm:StatisticMap</a> entities. 
+                    A <dfn>nidm:'Contrast Estimation'</dfn>                    <sup><a title="nidm:'Contrast Estimation'">                    <span class="diamond">&#9826;</span></a></sup> is the process of estimating a contrast from the estimated parameters of statistical model. <a>nidm:'Contrast Estimation'</a> is a prov:Activity that uses <a>nidm:ContrastWeights</a>, <a>nidm:DesignMatrix</a>, <a>nidm:ParameterEstimateMap</a> and <a>nidm:ResidualMeanSquaresMap</a> entities. This activity generates <a>nidm:ContrastMap</a>, <a>nidm:ContrastStandardErrorMap</a> and <a>nidm:StatisticMap</a> entities. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Contrast Estimation'"> A <a>nidm:'Contrast Estimation'</a> has attributes:
@@ -1225,7 +1189,7 @@
                             <td><a title="nidm:ClusterDefinitionCriteria">nidm:ClusterDefinitionCriteria</a>
                             </td>
                     
-                                <td rowspan="12" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="11" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
                                 <td><a>nidm:ClusterDefinitionCriteria</a></td>
                             </tr>
@@ -1273,13 +1237,6 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:InferenceMaskMap">nidm:InferenceMaskMap</a>
-                            </td>
-                    
-                                <td><a>nidm:InferenceMaskMap</a></td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="nidm:Peak">nidm:Peak</a>
                             </td>
                     
@@ -1294,10 +1251,10 @@
                             </tr>
                 
                         <tr>
-                            <td><a title="nidm:SearchSpaceMap">nidm:SearchSpaceMap</a>
+                            <td><a title="nidm:SearchSpaceMaskMap">nidm:SearchSpaceMaskMap</a>
                             </td>
                     
-                                <td><a>nidm:SearchSpaceMap</a></td>
+                                <td><a>nidm:SearchSpaceMaskMap</a></td>
                             </tr>
                 
                         <tr>
@@ -1483,19 +1440,16 @@
             <section id="section-nidm:DisplayMaskMap"> 
                 <h1 label="nidm:DisplayMaskMap">nidm:DisplayMaskMap</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:DisplayMaskMap</dfn>                    <sup><a title="nidm:DisplayMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is . <a>nidm:DisplayMaskMap</a> is a prov:Entity used by <a>nidm:Inference</a>. 
+                    A <dfn>nidm:DisplayMaskMap</dfn>                    <sup><a title="nidm:DisplayMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is a binary map used by an activity that changed the voxels displayed, but did not alter the space in which the activity was performed (e.g. at the level of inference, this mask is called "contrast masking" in both FSL & SPM and does not alter voxel-wise corrected p-values). <a>nidm:DisplayMaskMap</a> is a prov:Entity used by <a>nidm:Inference</a>. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:DisplayMaskMap"> A <a>nidm:DisplayMaskMap</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:DisplayMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DisplayMaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
-                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li>        
+                        <li><span class="attribute" id="nidm:DisplayMaskMap.nidm:isUserDefined">
+                        <a>nidm:isUserDefined</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="xsd:boolean" href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>niiri:display_map_id a prov:Entity , nidm:DisplayMaskMap ;
@@ -1618,33 +1572,6 @@
 	nidm:pValueUncorrected "7.62276079258051e-07"^^xsd:float ;
 	nidm:pValueFWER "0.05"^^xsd:float .</pre>  
             </section>
-            <!-- nidm:InferenceMaskMap -->
-            <section id="section-nidm:InferenceMaskMap"> 
-                <h1 label="nidm:InferenceMaskMap">nidm:InferenceMaskMap</h1>
-                <div class="glossary-ref">
-                    A <dfn>nidm:InferenceMaskMap</dfn>                    <sup><a title="nidm:InferenceMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is mask defined by the user to restrain the space in which inference is performed. <a>nidm:InferenceMaskMap</a> is a prov:Entity. 
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:InferenceMaskMap"> A <a>nidm:InferenceMaskMap</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:InferenceMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:InferenceMaskMap.</li>
-                     
-                        <li><span class="attribute" id="nidm:InferenceMaskMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
-                        <li><span class="attribute" id="nidm:InferenceMaskMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li>        
-                </ul>
-                </div>
-                <pre class='example highlight'>niiri:sub_volume_id a prov:Entity , nidm:InferenceMaskMap ;
-	rdfs:label "Inference Mask Map" ;
-	prov:atLocation "file:///path/to/InferenceMask.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "InferenceMask.nii.gz"^^xsd:string ;
-	dct:format "image/nifti"^^xsd:string ;
-	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
-	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string .</pre>  
-            </section>
             <!-- nidm:Peak -->
             <section id="section-nidm:Peak"> 
                 <h1 label="nidm:Peak">nidm:Peak</h1>
@@ -1704,35 +1631,29 @@
 	nidm:maxNumberOfPeaksPerCluster "3"^^xsd:int ;
 	nidm:minDistanceBetweenPeaks "8.0"^^xsd:float .</pre>  
             </section>
-            <!-- nidm:SearchSpaceMap -->
-            <section id="section-nidm:SearchSpaceMap"> 
-                <h1 label="nidm:SearchSpaceMap">nidm:SearchSpaceMap</h1>
+            <!-- nidm:SearchSpaceMaskMap -->
+            <section id="section-nidm:SearchSpaceMaskMap"> 
+                <h1 label="nidm:SearchSpaceMaskMap">nidm:SearchSpaceMaskMap</h1>
                 <div class="glossary-ref">
-                    A <dfn>nidm:SearchSpaceMap</dfn>                    <sup><a title="nidm:SearchSpaceMap">                    <span class="diamond">&#9826;</span></a></sup> is mask in which the inference was performed. <a>nidm:SearchSpaceMap</a> is a prov:Entity. 
+                    A <dfn>nidm:SearchSpaceMaskMap</dfn>                    <sup><a title="nidm:SearchSpaceMaskMap">                    <span class="diamond">&#9826;</span></a></sup> is a mask map representing the set of elements in which the inference was performed. <a>nidm:SearchSpaceMaskMap</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:SearchSpaceMap"> A <a>nidm:SearchSpaceMap</a> has attributes:
+                <div class="attributes" id="attributes-nidm:SearchSpaceMaskMap"> A <a>nidm:SearchSpaceMaskMap</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:SearchSpaceMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:SearchSpaceMap.</li>
+                    <li><span class="attribute" id="nidm:SearchSpaceMaskMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:SearchSpaceMaskMap.</li>
                      
-                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:hasMapHeader">
-                        <a>nidm:hasMapHeader</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
-                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:inCoordinateSpace">
-                        <a>nidm:inCoordinateSpace</a>
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li> 
-                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:randomFieldStationarity">
+                        <li><span class="attribute" id="nidm:SearchSpaceMaskMap.nidm:randomFieldStationarity">
                         <dfn>nidm:randomFieldStationarity</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?. (range <a title="xsd:boolean" href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li> 
-                        <li><span class="attribute" id="nidm:SearchSpaceMap.nidm:searchVolumeInVoxels">
+                        <li><span class="attribute" id="nidm:SearchSpaceMaskMap.nidm:searchVolumeInVoxels">
                         <dfn>nidm:searchVolumeInVoxels</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of voxels within the search volume. (range <a title="xsd:positiveInteger" href="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li>        
                 </ul>
                 </div>
-                <pre class='example highlight'>niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
-	rdfs:label "Search Space Map" ;
-	prov:atLocation "file:///path/to/SearchSpace.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
+                <pre class='example highlight'>niiri:search_space_mask_id a prov:Entity , nidm:SearchSpaceMaskMap ;
+	rdfs:label "Search Space Mask Map" ;
+	prov:atLocation "file:///path/to/SearchSpaceMask.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_2 ;
 	spm:expectedNumberOfVoxelsPerCluster "0.553331387916112"^^xsd:float ;
@@ -1954,11 +1875,18 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
+                            <td><a title="nidm:BinaryMap">nidm:BinaryMap</a>
+                            </td>
+                    
+                                <td rowspan="5" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a>nidm:BinaryMap</a></td>
+                            </tr>
+                
+                        <tr>
                             <td><a title="nidm:Cluster">nidm:Cluster</a>
                             </td>
                     
-                                <td rowspan="4" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
-                        
                                 <td><a>nidm:Cluster</a></td>
                             </tr>
                 
@@ -1986,6 +1914,27 @@
                 </tbody>
                 </table>
             </div>
+            <!-- nidm:BinaryMap -->
+            <section id="section-nidm:BinaryMap"> 
+                <h1 label="nidm:BinaryMap">nidm:BinaryMap</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:BinaryMap</dfn>                    <sup><a title="nidm:BinaryMap">                    <span class="diamond">&#9826;</span></a></sup> is a map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, and faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN. <a>nidm:BinaryMap</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:BinaryMap"> A <a>nidm:BinaryMap</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:BinaryMap.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:BinaryMap.</li>
+                     
+                        <li><span class="attribute" id="nidm:BinaryMap.nidm:hasMapHeader">
+                        <a>nidm:hasMapHeader</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:MapHeader</a>)</li> 
+                        <li><span class="attribute" id="nidm:BinaryMap.nidm:inCoordinateSpace">
+                        <a>nidm:inCoordinateSpace</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file. (range <a>nidm:CoordinateSpace</a>)</li> 
+                        <li><span class="attribute" id="nidm:BinaryMap.nidm:isUserDefined">
+                        <a>nidm:isUserDefined</a>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="xsd:boolean" href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>  
+            </section>
             <!-- nidm:Cluster -->
             <section id="section-nidm:Cluster"> 
                 <h1 label="nidm:Cluster">nidm:Cluster</h1>

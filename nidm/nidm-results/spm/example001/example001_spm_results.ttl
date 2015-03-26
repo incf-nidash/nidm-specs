@@ -241,8 +241,10 @@ niiri:inference_id a prov:Activity , nidm:Inference ;
     prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
     prov:wasAssociatedWith niiri:software_id .
 
+niiri:contrast_estimation_id prov:used niiri:mask_id_1 .
 niiri:mask_id_1 a prov:Entity , nidm:MaskMap ;
 	rdfs:label "Mask" ;
+    nidm:isUserDefined "false"^^xsd:boolean ;
 	prov:atLocation "file://./Mask.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "Mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
@@ -400,10 +402,10 @@ niiri:software_id a prov:Agent , nidm:SPM , prov:SoftwareAgent ;
 	nidm:softwareVersion "SPM12"^^xsd:string ;
 	spm:softwareRevision "12.0"^^xsd:string .
 
-niiri:search_space_id a prov:Entity , nidm:SearchSpaceMap ;
-	rdfs:label "Search Space Map" ;
-	prov:atLocation "file://./SearchSpace.nii.gz"^^xsd:anyURI ;
-	nfo:fileName "SearchSpace.nii.gz"^^xsd:string ;
+niiri:search_space_mask_id a prov:Entity , nidm:SearchSpaceMaskMap ;
+	rdfs:label "Search Space Mask Map" ;
+	prov:atLocation "file://./SearchSpaceMask.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	spm:expectedNumberOfVoxelsPerCluster "4.02834655908613"^^xsd:float ;
