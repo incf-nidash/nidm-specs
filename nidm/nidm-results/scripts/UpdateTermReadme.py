@@ -166,7 +166,18 @@ class UpdateTermReadme():
 
         curation_legend = self.create_curation_legend(order)
         title = "<h1>NIDM-Results Terms curation status</h1>"
-        self.write_readme(readme_file, title+curation_legend+class_table_txt+prpty_table_txt)
+        intro = """You will find below a listing of the NIDM-Results terms that \
+need to be curated. If you would like **to help with the curation of a term, \
+please follow those steps**:
+ 1. Check if the terms is already under discussion in an issue.
+ 2. If not, create a new issue including the current definition (available in\
+  the table below) and your proposed update.
+
+If possible, priority should be given to uncurated terms (in red).
+
+Thank you in advance for taking part in NIDM-Results term curation!\n\n"""
+        self.write_readme(readme_file, title+intro+\
+            curation_legend+class_table_txt+prpty_table_txt)
 
 def main():
     # Retreive owl file for NIDM-Results
