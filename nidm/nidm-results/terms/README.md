@@ -1,4 +1,12 @@
-<h1>NIDM-Results Terms curation status</h1><b>Curation status</b>: 
+<h1>NIDM-Results Terms curation status</h1>You will find below a listing of the NIDM-Results terms that need to be curated. If you would like **to help with the curation of a term, please follow those steps**:
+ 1. Check if the terms is already under discussion in an issue.
+ 2. If not, create a new issue including the current definition (available in  the table below) and your proposed update.
+
+If possible, priority should be given to uncurated terms (in red).
+
+Thank you in advance for taking part in NIDM-Results term curation!
+
+<b>Curation status</b>: 
 <img src="../../../doc/content/specs/img/green.png?raw=true"/>&nbsp;Pending final vetting;
 <img src="../../../doc/content/specs/img/orange.png?raw=true"/>&nbsp;Metadata incomplete; Metadata complete; Requires discussion;
 <img src="../../../doc/content/specs/img/red.png?raw=true"/>&nbsp;Uncurated;
