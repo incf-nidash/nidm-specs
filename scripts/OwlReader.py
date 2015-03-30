@@ -339,7 +339,7 @@ class OwlReader():
     def get_editor_note(self, owl_term):
         editor_note = list(self.graph.objects(owl_term, OBO_EDITOR_NOTE))
         if editor_note:
-            editor_note = " ("+editor_note[0]+")"
+            editor_note = editor_note[0]
         else:
             editor_note = ""
         return editor_note
