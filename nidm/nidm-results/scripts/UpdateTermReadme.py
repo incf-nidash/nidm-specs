@@ -14,10 +14,13 @@ import sys
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 
-# Append test directory to path
-sys.path.append(os.path.join(RELPATH, "..", "test"))
-from CheckConsistency import *
+# # Append test directory to path
+# sys.path.append(os.path.join(RELPATH, "..", "test"))
+
+# Append parent script directory to path
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
 from OwlReader import OwlReader
+from Constants import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

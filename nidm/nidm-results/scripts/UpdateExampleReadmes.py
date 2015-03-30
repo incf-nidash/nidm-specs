@@ -56,6 +56,10 @@ def get_doc_from_title(doc_title):
 
 # Update Readme
 def write_readme(readme_file, doc_url):
+	folder = os.path.dirname(readme_file)
+	if not os.path.isdir(folder):
+		os.mkdir(folder)
+
 	readme_file_open = open(readme_file, 'w+')
 
 	doc_url = doc_url.replace("api/v0/", "")
@@ -125,46 +129,50 @@ def main():
 		call("provconvert -infile "+doc_ttl_file+" -outfile "+doc_provn_file, shell=True)
 
 		# Get provn of current document
-		doc_provn_file_open = open(doc_provn_file, 'r')
-		doc_provn = doc_provn_file_open.read()
-		doc_provn_file_open.close()
+		if os.path.isfile(doc_provn_file):
+			doc_provn_file_open = open(doc_provn_file, 'r')
+			doc_provn = doc_provn_file_open.read()
+			doc_provn_file_open.close()
 
 
-		# response = urllib2.urlopen(same_doc_ttl_url)
-		# doc_ttl = response.read()
-		# ttl_fid.write(doc_ttl)
+			# response = urllib2.urlopen(same_doc_ttl_url)
+			# doc_ttl = response.read()
+			# ttl_fid.write(doc_ttl)
 
-		# Find most recent document with same title on the ProvStore
-		# same_doc_url = get_doc_from_title(doc_title)
+			# Find most recent document with same title on the ProvStore
+			# same_doc_url = get_doc_from_title(doc_title)
 
-		# Find corresponding document on the ProvStore by looking at the README
-		# Read README
-		readme_file = os.path.join(NIDMRESULTSPATH, os.path.dirname(example_file), 'README.md')
-		if os.path.isfile(readme_file):
-			readme_fid = open(readme_file)
-			readme_txt = readme_fid.read()
-			readme_fid.close()
+			# Find corresponding document on the ProvStore by looking at the README
+			# Read README
+			readme_file = os.path.join(NIDMRESULTSPATH, os.path.dirname(example_file), 'README.md')
+			if os.path.isfile(readme_file):
+				readme_fid = open(readme_file)
+				readme_txt = readme_fid.read()
+				readme_fid.close()
 
-			provstore_url_index = re.search("https://provenance.ecs.soton.ac.uk/store/documents/[^/]*/", readme_txt)
-			# Get corresponding turtle on Prov Store            
-			if provstore_url_index:
-				same_doc_url = readme_txt[provstore_url_index.start():provstore_url_index.end()]
-			else:
-				same_doc_url = None
-
-			if same_doc_url:
-				same_doc_ttl_url = same_doc_url[:-1]+".ttl"
-				found_difference = compare_ttl_documents(doc_ttl_file, same_doc_ttl_url) 
-				
-				if found_difference:
-					logger.info('\tDifferent from last version.')
+				provstore_url_index = re.search("https://provenance.ecs.soton.ac.uk/store/documents/[^/]*/", readme_txt)
+				# Get corresponding turtle on Prov Store            
+				if provstore_url_index:
+					same_doc_url = readme_txt[provstore_url_index.start():provstore_url_index.end()]
 				else:
-					logger.info('\tSame as last version.')
+					same_doc_url = None
+
+				if same_doc_url:
+					same_doc_ttl_url = same_doc_url[:-1]+".ttl"
+					found_difference = compare_ttl_documents(doc_ttl_file, same_doc_ttl_url) 
+					
+					if found_difference:
+						logger.info('\tDifferent from last version.')
+					else:
+						logger.info('\tSame as last version.')
+				else:
+					logger.info('\tNo previous version.')
+					found_difference = True
 			else:
-				logger.info('\tNo previous version.')
+				logger.info('\tNo README.')
 				found_difference = True
 		else:
-			logger.info('\tNo README.')
+			logger.info('\tNo provn file.')
 			found_difference = True
 
 		if found_difference:
