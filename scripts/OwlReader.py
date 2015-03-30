@@ -35,6 +35,15 @@ class OwlReader():
 
         return sub_types
 
+    def get_direct_children(self, term):
+        # Find all direct children of 'term'
+        children = set();
+
+        for class_name in self.graph.subjects(RDFS['subClassOf'], term):
+            children.add(class_name)
+
+        return children
+
     def get_class_names_by_prov_type(self, classes=None, prefix=None, but=None):
         class_names = dict()
         # We at least want to have an output for Entity, Activity and Agent
