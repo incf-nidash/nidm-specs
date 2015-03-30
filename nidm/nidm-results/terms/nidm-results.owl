@@ -428,7 +428,7 @@ fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
 nidm:clusterLabelId rdf:type owl:DatatypeProperty ;
                     
                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/271" ;
-
+                    
                     obo:IAO_0000112 "5" ;
                     
                     obo:IAO_0000115 "Integer associated with a particular cluster as specified in the clusterLabelsMap." ;
@@ -573,6 +573,8 @@ nidm:effectDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                             
                             obo:IAO_0000115 "Degrees of freedom of the effect." ;
                             
+                            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/277" ;
+                            
                             obo:IAO_0000114 obo:IAO_0000120 ;
                             
                             rdfs:domain nidm:StatisticMap ;
@@ -607,6 +609,8 @@ nidm:equivalentZStatistic rdf:type owl:DatatypeProperty ;
 nidm:errorDegreesOfFreedom rdf:type owl:DatatypeProperty ;
                            
                            obo:IAO_0000115 "Degrees of freedom of the error." ;
+                           
+                           obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/277" ;
                            
                            obo:IAO_0000112 "72.999999" ;
                            
@@ -674,6 +678,7 @@ nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
                              obo:IAO_0000112 "nidm:MNICoordinateSystem" ;
                              
                              obo:IAO_0000114 obo:IAO_0000120 .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#isUserDefined
@@ -796,6 +801,8 @@ nidm:pValue rdf:type owl:DatatypeProperty ;
             
             owl:sameAs "http://purl.obolibrary.org/obo/OBI_0000175"^^xsd:anyURI ;
             
+            obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
+            
             rdfs:seeAlso """http://purl.obolibrary.org/obo/IAO_0000121
 http://purl.obolibrary.org/obo/OBI_0000175
 http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
@@ -824,6 +831,8 @@ nidm:pValueFWER rdf:type owl:DatatypeProperty ;
                 obo:IAO_0000112 "0.05" ;
                 
                 owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
+                
+                obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
                 
                 obo:IAO_0000115 "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
                 
@@ -882,6 +891,8 @@ nidm:qValueFDR rdf:type owl:DatatypeProperty ;
                owl:sameAs "http://purl.obolibrary.org/obo/OBI_0001442" ;
                
                obo:IAO_0000115 "A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442)." ;
+               
+               obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
                
                obo:IAO_0000112 "0.000154" ;
                
@@ -1021,7 +1032,7 @@ nidm:voxelSize rdf:type owl:DatatypeProperty ;
                obo:IAO_0000115 "3D size of a voxel measured in voxelUnits." ;
                
                obo:IAO_0000116 "Range: Vector of floats." ;
-
+               
                obo:IAO_0000114 obo:IAO_0000120 ;
                
                rdfs:domain nidm:CoordinateSpace ;
@@ -1277,7 +1288,7 @@ spm:reselSize rdf:type owl:DatatypeProperty ;
 spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
                          
                          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
-                        
+                         
                          obo:IAO_0000115 "Total number of resels within the search volume." ;
                          
                          obo:IAO_0000112 "151.3" ;
@@ -1463,6 +1474,23 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 #################################################################
 
 
+###  http://purl.org/dc/dcmitype/Image
+
+dctype:Image rdf:type owl:Class ;
+             
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty nfo:fileName ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:format ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] .
+
+
+
 ###  http://www.incf.org/ns/nidash/afni#BLOCK
 
 afni:BLOCK rdf:type owl:Class ;
@@ -1496,22 +1524,6 @@ afni:GammaHRF rdf:type owl:Class ;
               prov:editorialNote "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: supported via GAM."^^xsd:string .
 
 
-###  http://purl.org/dc/dcmitype/Image
-
-dctype:Image rdf:type owl:Class ;
-             
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
-                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:string
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
-                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:string
-                             ] .
-
-
 
 ###  http://www.incf.org/ns/nidash/fsl#CenterOfGravity
 
@@ -1524,7 +1536,7 @@ fsl:CenterOfGravity rdf:type owl:Class ;
                     obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_CenterOfGravity.txt" ;
                     
                     obo:IAO_0000115 "Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)" ;
-                   
+                    
                     rdfs:seeAlso "http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster" ;
                     
                     obo:IAO_0000114 obo:IAO_0000120 .
@@ -1550,6 +1562,7 @@ fsl:ContrastVarianceMap rdf:type owl:Class ;
                         rdfs:subClassOf nidm:Map ;
                         
                         obo:IAO_0000114 obo:IAO_0000124 .
+
 
 
 ###  http://www.incf.org/ns/nidash/fsl#CustomHRB
@@ -1693,6 +1706,7 @@ nidm:Cluster rdf:type owl:Class ;
              obo:IAO_0000114 obo:IAO_0000122 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#ClusterDefinitionCriteria
 
 nidm:ClusterDefinitionCriteria rdf:type owl:Class ;
@@ -1753,7 +1767,7 @@ nidm:ConnectivityCriterion rdf:type owl:Class ;
                            
                            obo:IAO_0000117 "TN, KH, CM" ,
                                            "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
-                          
+                           
                            obo:IAO_0000115 "The criterion used to characterize two voxels, pixels or vertices as 'connected'." ;
                            
                            obo:IAO_0000114 obo:IAO_0000122 .
@@ -1772,7 +1786,7 @@ nidm:ContrastEstimation rdf:type owl:Class ;
                         
                         obo:IAO_0000115 "The process of estimating a contrast from the estimated parameters of statistical model." ;
                         
-                        obo:IAO_0000116 "Under discussion at: https://github.com/ISA-tools/stato/issues/23" ;
+                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/276, discussed in https://github.com/ISA-tools/stato/issues/23" ;
                         
                         obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -1791,6 +1805,7 @@ nidm:ContrastMap rdf:type owl:Class ;
                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255" ;
                  
                  obo:IAO_0000114 obo:IAO_0000122 .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#ContrastStandardErrorMap
@@ -2009,6 +2024,7 @@ nidm:ExcursionSetMap rdf:type owl:Class ;
                      obo:IAO_0000114 obo:IAO_0000122 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#ExtentThreshold
 
 nidm:ExtentThreshold rdf:type owl:Class ;
@@ -2046,6 +2062,8 @@ nidm:FSL rdf:type owl:Class ;
 nidm:FSLResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
+                
+                obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/137" ;
                 
                 obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2102,6 +2120,7 @@ nidm:GaussianDistribution rdf:type owl:Class ;
                           obo:IAO_0000114 obo:IAO_0000122 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#GrandMeanMap
 
 nidm:GrandMeanMap rdf:type owl:Class ;
@@ -2145,12 +2164,12 @@ nidm:HemodynamicResponseFunctionBasis rdf:type owl:Class ;
                                       
                                       rdfs:subClassOf prov:Entity ;
                                       
-                                      obo:IAO_0000114 obo:IAO_0000124 ;
                                       obo:IAO_0000117 "@jbpoline"^^xsd:string ;
                                       
                                       rdfs:isDefinedBy "The set of functions to convolve anticipated neural responses to obtain anticipated hemodynamic responses."^^xsd:string ;
                                       
                                       obo:IAO_0000114 obo:IAO_0000124 .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#HemodynamicResponseFunctionDerivative
@@ -2264,6 +2283,7 @@ nidm:MaskMap rdf:type owl:Class ;
              obo:IAO_0000114 obo:IAO_0000122 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#ModelParametersEstimation
 
 nidm:ModelParametersEstimation rdf:type owl:Class ;
@@ -2285,6 +2305,8 @@ nidm:ModelParametersEstimation rdf:type owl:Class ;
 nidm:NIDMObjectModel rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Entity ;
+                     
+                     obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/137" ;
                      
                      obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2411,11 +2433,10 @@ nidm:ResidualMeanSquaresMap rdf:type owl:Class ;
                             obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255." ;
                             
                             obo:IAO_0000115 "A map whose value at each element is a [residual mean square](http://purl.obolibrary.org/obo/STATO_0000375)." ;
-                          
+                            
                             obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ResidualMeanSquaresMap.txt" ;
                             
                             obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 
@@ -2441,6 +2462,8 @@ nidm:SPMResults rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDMObjectModel ;
                 
+                obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/137" ;
+                
                 obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2458,6 +2481,7 @@ nidm:SearchSpaceMaskMap rdf:type owl:Class ;
                         obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258" ;
                         
                         obo:IAO_0000114 obo:IAO_0000122 .
+
 
 
 ###  http://www.incf.org/ns/nidash/nidm#SeriallyCorrelatedError
@@ -2542,6 +2566,7 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   obo:IAO_0000114 obo:IAO_0000120 .
 
 
+
 ###  http://www.incf.org/ns/nidash/nidm#StatisticMap
 
 nidm:StatisticMap rdf:type owl:Class ;
@@ -2623,6 +2648,7 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            obo:IAO_0000114 obo:IAO_0000124 .
 
 
+
 ###  http://www.incf.org/ns/nidash/spm#DispersionDerivative
 
 spm:DispersionDerivative rdf:type owl:Class ;
@@ -2673,7 +2699,6 @@ spm:GammaHRB rdf:type owl:Class ;
 
 
 
-
 ###  http://www.incf.org/ns/nidash/spm#KConjunctionInference
 
 spm:KConjunctionInference rdf:type owl:Class ;
@@ -2700,7 +2725,6 @@ spm:ReselsPerVoxelMap rdf:type owl:Class ;
 
 
 
-
 ###  http://www.incf.org/ns/nidash/spm#TemporalDerivative
 
 spm:TemporalDerivative rdf:type owl:Class ;
@@ -2708,6 +2732,8 @@ spm:TemporalDerivative rdf:type owl:Class ;
                        rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
                        
                        obo:IAO_0000114 obo:IAO_0000124 .
+
+
 
 
 
