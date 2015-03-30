@@ -19,13 +19,14 @@ from Constants import STATO_GLS_STR, STATO_GLS_LABEL, STATO_TSTATISTIC_STR, \
 
 def main():
 	nidm_classes = {
-		"DesignMatrix": dict(
+		"DesignMatrix_1stLevel": dict(
 			design_matrix_id='niiri:design_matrix_id', 
 			label="Design Matrix", 
 			location="file://./DesignMatrix.csv",
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
-			design_matrix_png_id="niiri:design_matrix_png_id"),
+			design_matrix_png_id="niiri:design_matrix_png_id",
+			hrf_basis="spm:GammaDifferenceHRF"),
 		"Image-DesignMatrix": dict(
 			image_id="niiri:design_matrix_png_id",
 			location="file://./DesignMatrix.png",
