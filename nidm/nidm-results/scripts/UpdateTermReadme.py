@@ -54,8 +54,8 @@ class UpdateTermReadme():
         readme_file_open.write(readme_txt)
         readme_file_open.close()
 
-    def create_term_row(self, term_name, definition, same_as, editor, color, 
-        range_value=None, domain=None):
+    def create_term_row(self, term_name, definition, same_as, editor, note, 
+        color, range_value=None, domain=None):
         img_color = ""        
         if color:
             img_color = '<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>  ' 
@@ -72,6 +72,10 @@ class UpdateTermReadme():
         term_row = """
 <tr>
     <td>"""+img_color+"""</td>
+    <td>"""+note.replace("https://github.com/incf-nidash/nidm/pull/", "#").\
+    replace("https://github.com/incf-nidash/nidm/issues/", "#").\
+    replace("https://github.com/ISA-tools/stato/issues/", "ISA-tools/stato#").\
+    replace("https://github.com/ISA-tools/stato/pull/", "ISA-tools/stato#")+"""</td>
     <td><b>"""+term_name+""": </b>"""+definition+same_as+editor+"""</td>"""+range_domain+"""
 </tr>"""
         return term_row
@@ -99,6 +103,7 @@ class UpdateTermReadme():
         prpty_terms = dict()
         definitions = dict()
         editors = dict()
+        notes = dict()
         ranges = dict()
         domains = dict()
         sameas = dict()
@@ -108,8 +113,8 @@ class UpdateTermReadme():
             definition = self.owl.get_definition(owl_term)
             if definition == "":
                 definition = "&lt;undefined&gt;"
-            editor = self.owl.get_editor(owl_term)+\
-                self.owl.get_editor_note(owl_term)
+            editor = self.owl.get_editor(owl_term)
+            note = self.owl.get_editor_note(owl_term)
             range_value = self.owl.get_range(owl_term)
             domain = self.owl.get_domain(owl_term)
             same = self.owl.get_same_as(owl_term)
@@ -127,6 +132,7 @@ class UpdateTermReadme():
                             prpty_terms.setdefault(curation_key, list()).append(term_key)
                     definitions[term_key] = definition
                     editors[term_key] = editor
+                    notes[term_key] = note
                     ranges[term_key] = range_value
                     domains[term_key] = domain
                     sameas[term_key] = same
@@ -137,7 +143,7 @@ class UpdateTermReadme():
         class_terms_sorted = [(key, class_terms.get(key)) for key in order]
         prpty_terms_sorted = [(key, prpty_terms.get(key)) for key in order]
 
-        class_table_txt = "<h2>Classes</h2>\n<table>\n<tr><th>Curation Status</th><th>Term</th></tr>"
+        class_table_txt = "<h2>Classes</h2>\n<table>\n<tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>"
         for tuple_status_term in class_terms_sorted:
             curation_status = tuple_status_term[0]
             class_names = tuple_status_term[1]
@@ -148,10 +154,11 @@ class UpdateTermReadme():
                         definitions[class_name], \
                         sameas[class_name], \
                         editors[class_name], \
+                        notes[class_name], \
                         CURATION_COLORS.setdefault(curation_status, ""))
         class_table_txt = class_table_txt+"\n</table>"
 
-        prpty_table_txt = "<h2>Properties</h2>\n<table>\n<tr><th>Curation Status</th><th>Term</th><th>Domain</th><th>Range</th></tr>"
+        prpty_table_txt = "<h2>Properties</h2>\n<table>\n<tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>"
         for tuple_status_term in prpty_terms_sorted:
             curation_status = tuple_status_term[0]
             term_names = tuple_status_term[1]
@@ -162,6 +169,7 @@ class UpdateTermReadme():
                         definitions[term_name], \
                         sameas[term_name], \
                         editors[term_name], \
+                        notes[term_name], \
                         CURATION_COLORS.setdefault(curation_status, ""), \
                         ranges[term_name], \
                         domains[term_name])
