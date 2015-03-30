@@ -1,0 +1,50 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@prefix neurolex: <http://neurolex.org/wiki/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix spm: <http://www.incf.org/ns/nidash/spm#> .
+@prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
+@prefix niiri: <http://iri.nidash.org/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+
+
+
+niiri:coordinate_space_id_1 a prov:Entity , nidm:CoordinateSpace ;
+	rdfs:label "Coordinate space 1" ;
+	nidm:voxelToWorldMapping "[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]"^^xsd:string ;
+	nidm:voxelUnits "['mm', 'mm', 'mm']"^^xsd:string ;
+	nidm:voxelSize "[3, 3, 3]"^^xsd:string ;
+	nidm:inWorldCoordinateSystem nidm:MNICoordinateSystem ;
+	nidm:numberOfDimensions "3"^^xsd:int ;
+	nidm:dimensionsInVoxels "[53,63,52]"^^xsd:string .
+
+niiri:inference_id_1 a prov:Activity , nidm:Inference ;
+	rdfs:label "Inference" ;
+    nidm:isParametricTest "false"^^xsd:boolean ;
+	nidm:hasAlternativeHypothesis nidm:OneTailedTest ;
+    prov:used niiri:non_parametric_null_dististribution_id, niiri:statistic_map_id .
+
+niiri:non_parametric_null_dististribution_id a prov:Entity , nidm:NonParametricNullDistribution;
+	rdfs:label "Non-Parametric Null Distribution" ;
+	nidm:numberOfPermutations "5000"^^xsd:int ;
+	nidm:exchangeabilityBlockSize "4"^^xsd:int .
+
+niiri:statistic_map_id a prov:Entity , nidm:StatisticMap ;
+	rdfs:label "Smoothed Variance T-Statistic Map: passive listening > rest" ;
+	prov:atLocation "file://./SmoothedVarianceTStatistic.nii.gz"^^xsd:anyURI ;
+	nidm:statisticType nidm:SmoothedVarianceTStatistic ; # 
+	nfo:fileName "SmoothedVarianceTStatistic.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string ;
+	nidm:contrastName "passive listening > rest"^^xsd:string ;
+	nidm:effectDegreesOfFreedom "1"^^xsd:float ;
+	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
+	crypto:sha512 "799e9bbf8c15b35c0098bca4"^^xsd:string ;
+	prov:wasGeneratedBy niiri:contrast_estimation_id;
+	nidm:varianceSmoothingFWHM "[6 6 6]"^^xsd:string .
+

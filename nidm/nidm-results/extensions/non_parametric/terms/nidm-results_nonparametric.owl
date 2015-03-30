@@ -1,0 +1,221 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fsl: <http://www.incf.org/ns/nidash/fsl#> .
+@prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spm: <http://www.incf.org/ns/nidash/spm#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix nidm: <http://www.incf.org/ns/nidash/nidm#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@base <http://purl.org/nidash/nidm/nidmresults_nonparam.owl> .
+
+<http://purl.org/nidash/nidm/nidmresults_nonparam.owl> rdf:type owl:Ontology ;
+                                                       
+                                                       owl:imports <http://purl.obolibrary.org/nidm/nidmresults.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000112
+
+iao:IAO_0000112 rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.obolibrary.org/obo/iao.owl#IAO_0000116
+
+iao:IAO_0000116 rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#curationStatus
+
+nidm:curationStatus rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#termEditor
+
+nidm:termEditor rdf:type owl:AnnotationProperty ;
+                
+                owl:sameAs "http://purl.obolibrary.org/obo/IAO_0000117" .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.incf.org/ns/nidash/nidm#EParameter
+
+nidm:EParameter rdf:type owl:DatatypeProperty ;
+                
+                rdfs:isDefinedBy "Pre-defined parameter E for threshold-free cluster enhancement statistic." ;
+                
+                obo:IAO_0000114 obo:IAO_0000124 ;
+                
+                rdfs:domain obo:STATO_0000039 ;
+                
+                rdfs:range xsd:float .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#HParameter
+
+nidm:HParameter rdf:type owl:DatatypeProperty ;
+                
+                rdfs:isDefinedBy "Pre-defined parameter H for threshold-free cluster enhancement statistic." ;
+                
+                obo:IAO_0000114 obo:IAO_0000124 ;
+                
+                rdfs:domain obo:STATO_0000039 ;
+                
+                rdfs:range xsd:float .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#clusterMass
+
+nidm:clusterMass rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:isDefinedBy "Mass of a cluster." ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000124 ;
+                 
+                 rdfs:domain nidm:Cluster ;
+                 
+                 rdfs:range xsd:float .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#exchangeabilityBlockSize
+
+nidm:exchangeabilityBlockSize rdf:type owl:DatatypeProperty ;
+                              
+                              rdfs:isDefinedBy "Size of exchangeability blocks used to define a non-parametric null distribution." ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000124 ;
+                              
+                              rdfs:domain nidm:NonParametricNullDistribution ;
+                              
+                              rdfs:range xsd:int .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#isParametricTest
+
+nidm:isParametricTest rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:isDefinedBy "True if inference is done using a parametric test, false for a non-parametric test." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000124 ;
+                      
+                      rdfs:domain nidm:Inference ;
+                      
+                      rdfs:range xsd:boolean .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#numberOfPermutations
+
+nidm:numberOfPermutations rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:isDefinedBy "Number of permutations used to define a non-parametric null distribution." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000124 ;
+                          
+                          rdfs:domain nidm:NonParametricNullDistribution ;
+                          
+                          rdfs:range xsd:int .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#varianceSmoothingFWHM
+
+nidm:varianceSmoothingFWHM rdf:type owl:DatatypeProperty ;
+                           
+                           rdfs:isDefinedBy "Full width at half maximum (in world units) of the gaussian kernel used to smoothed the variance map to compute the pseudo-T Statistic." ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000124 ;
+                           
+                           rdfs:domain nidm:StatisticMap ;
+                           
+                           rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.incf.org/ns/nidash/nidm#NonParametricNullDistribution
+
+nidm:NonParametricNullDistribution rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf prov:Entity ;
+                                   
+                                   rdfs:isDefinedBy "Non-parametric null distribution used by inference" ;
+                                   
+                                   obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#SmoothedVarianceTStatistic
+
+nidm:SmoothedVarianceTStatistic rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf obo:STATO_0000039 ;
+                                
+                                rdfs:isDefinedBy "T-Statistic with smoothed variance." ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://www.incf.org/ns/nidash/nidm#ThresholdFreeClusterEnhancement
+
+nidm:ThresholdFreeClusterEnhancement rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf obo:STATO_0000039 ;
+                                     
+                                     rdfs:isDefinedBy "Corresponding citation: Smith, S. M. and Nichols, T. E. (2009). Threshold-free cluster enhancement: addressing problems of smoothing, threshold dependence and localisation in cluster inference. NeuroImage, 44(1), 83-98. doi:10.1016/j.neuroimage.2008.03.061" ;
+                                     
+                                     obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

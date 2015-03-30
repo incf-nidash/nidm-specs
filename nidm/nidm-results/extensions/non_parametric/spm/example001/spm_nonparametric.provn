@@ -1,0 +1,24 @@
+document
+prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
+prefix neurolex <http://neurolex.org/wiki/>
+prefix obo <http://purl.obolibrary.org/obo/>
+prefix dct <http://purl.org/dc/terms/>
+prefix spm <http://www.incf.org/ns/nidash/spm#>
+prefix pre_0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix fsl <http://www.incf.org/ns/nidash/fsl#>
+prefix rdfs <http://www.w3.org/2000/01/rdf-schema#>
+prefix nfo <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+prefix nidm <http://www.incf.org/ns/nidash/nidm#>
+prefix niiri <http://iri.nidash.org/>
+prefix xsd <http://www.w3.org/2001/XMLSchema>
+prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+prefix dctype <http://purl.org/dc/dcmitype/>
+prefix dc <http://purl.org/dc/elements/1.1/>
+activity(niiri:inference_id_1,-,-,[prov:type = 'nidm:Inference', prov:label = "Inference", nidm:isParametricTest = "false" %% xsd:boolean, nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
+entity(niiri:non_parametric_null_dististribution_id,[prov:type = 'nidm:NonParametricNullDistribution', prov:label = "Non-Parametric Null Distribution", nidm:numberOfPermutations = "5000" %% xsd:int, nidm:exchangeabilityBlockSize = "4" %% xsd:int])
+entity(niiri:statistic_map_id,[prov:type = 'nidm:StatisticMap', prov:label = "Smoothed Variance T-Statistic Map: passive listening > rest", prov:location = "file://./SmoothedVarianceTStatistic.nii.gz" %% xsd:anyURI, nidm:statisticType = 'nidm:SmoothedVarianceTStatistic', nfo:fileName = "SmoothedVarianceTStatistic.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:contrastName = "passive listening > rest" %% xsd:string, nidm:effectDegreesOfFreedom = "1" %% xsd:float, nidm:inCoordinateSpace = 'niiri:coordinate_space_id_1', crypto:sha512 = "799e9bbf8c15b35c0098bca4" %% xsd:string, nidm:varianceSmoothingFWHM = "[6 6 6]" %% xsd:string])
+entity(niiri:coordinate_space_id_1,[prov:type = 'nidm:CoordinateSpace', prov:label = "Coordinate space 1", nidm:voxelToWorldMapping = "[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]" %% xsd:string, nidm:voxelUnits = "['mm', 'mm', 'mm']" %% xsd:string, nidm:voxelSize = "[3, 3, 3]" %% xsd:string, nidm:inWorldCoordinateSystem = 'nidm:MNICoordinateSystem', nidm:numberOfDimensions = "3" %% xsd:int, nidm:dimensionsInVoxels = "[53,63,52]" %% xsd:string])
+used(niiri:inference_id_1,niiri:non_parametric_null_dististribution_id,-)
+used(niiri:inference_id_1,niiri:statistic_map_id,-)
+wasGeneratedBy(niiri:statistic_map_id,niiri:contrast_estimation_id,-)
+endDocument
