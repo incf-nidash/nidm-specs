@@ -275,10 +275,16 @@ class OwlSpecification(object):
                         nidm_namespace = False
                         if self._get_name(list(self.owl.ranges[att])[0]).startswith("nidm") or \
                            self._get_name(list(self.owl.ranges[att])[0]).startswith("fsl") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("spm"):
+                           self._get_name(list(self.owl.ranges[att])[0]).startswith("spm") or \
+                           self._get_name(list(self.owl.ranges[att])[0]).startswith("afni"):
                             nidm_namespace = True
                             
-                        child_ranges = sorted(self.owl.ranges[att] - self.owl.parent_ranges[att])
+                        # child_ranges = sorted(self.owl.ranges[att] - self.owl.parent_ranges[att])
+                        child_ranges = list()
+                        for parent_range in self.owl.parent_ranges[att]:
+                            child_ranges += self.owl.get_direct_children(parent_range)
+                        child_ranges = sorted(child_ranges)
+
                         if nidm_namespace:
                             child_range_txt = ""
                             if child_ranges:
