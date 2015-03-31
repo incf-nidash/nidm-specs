@@ -10,6 +10,7 @@ import logging
 import os
 from rdflib.compare import *
 import sys
+import re
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -69,13 +70,26 @@ class UpdateTermReadme():
     <td>"""+domain+"""</td>
     <td>"""+range_value+"""</td>"""
 
+        # Github mardow-like links 
+        nidm_repo = "https://github.com/incf-nidash/nidm/"
+        stato_repo = "https://github.com/ISA-tools/stato/"
+
+        nidm_pr_issue = re.compile(nidm_repo+r'[a-zA-Z]*/(\d+)')
+        note = nidm_pr_issue.sub(r'<a href="'+nidm_repo+r'pull/\1">'+r'#\1</a>', note)
+
+        stato_pr_issue = re.compile(stato_repo+r'[a-zA-Z]*/(\d+)')
+        note = stato_pr_issue.sub(r'<a href="'+stato_repo+r'pull/\1">'+r'ISA-tools/stato#\1</a>', note)
+
+        if note:
+            note = note+"<br/>"
+
+        # Add a search link (to check current state of the repo)
+        note = note+"<a href=\""+nidm_repo+"/issues?&q="+term_name.split(":")[1]+"\"> [search] </a>"        
+
         term_row = """
 <tr>
     <td>"""+img_color+"""</td>
-    <td>"""+note.replace("https://github.com/incf-nidash/nidm/pull/", "#").\
-    replace("https://github.com/incf-nidash/nidm/issues/", "#").\
-    replace("https://github.com/ISA-tools/stato/issues/", "ISA-tools/stato#").\
-    replace("https://github.com/ISA-tools/stato/pull/", "ISA-tools/stato#")+"""</td>
+    <td>"""+note+"""</td>
     <td><b>"""+term_name+""": </b>"""+definition+same_as+editor+"""</td>"""+range_domain+"""
 </tr>"""
         return term_row
