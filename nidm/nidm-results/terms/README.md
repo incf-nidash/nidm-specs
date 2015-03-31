@@ -311,13 +311,6 @@ Range: Vector of integers not found.</td>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at: #271</td>
-    <td><b>nidm:clusterLabelId: </b>Integer associated with a particular cluster as specified in the clusterLabelsMap</td>
-    <td>nidm:SignificantCluster </td>
-    <td>xsd:int </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td></td>
     <td><b>nidm:clusterSizeInVoxels: </b>Number of voxels that make up the cluster</td>
     <td>nidm:ExtentThreshold nidm:SignificantCluster </td>
