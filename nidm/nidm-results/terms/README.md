@@ -26,19 +26,9 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at: #263</td>
-    <td><b>nidm:FSL: </b>FMRIB Software Library software package for the analysis of neuroimaging data from the FMRIB</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td></td>
     <td><b>nidm:HeightThreshold: </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at: #263</td>
-    <td><b>nidm:SPM: </b>Statistical Parametric Mapping software package for the analysis of neuroimaging data from the FIL Methods Group</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -422,7 +412,7 @@ Range: Vector of integers not found.</td>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td></td>
     <td><b>fsl:featVersion: </b>&lt;undefined&gt;</td>
-    <td>nidm:FSL </td>
+    <td>nlx:birnlex_2067 </td>
     <td>xsd:string </td>
 </tr>
 <tr>
