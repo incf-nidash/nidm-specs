@@ -26,23 +26,24 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=HeightThreshold"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/280">#280</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=HeightThreshold"> [search] </a></td>
     <td><b>nidm:HeightThreshold: </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [search] </a></td>
     <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
     <td><b>afni:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a>
+Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/248">#248</a>: supported via GAM<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
     <td><b>afni:GammaHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
@@ -57,52 +58,52 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomHRB"> [search] </a></td>
     <td><b>fsl:CustomHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
     <td><b>fsl:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
     <td><b>fsl:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
     <td><b>fsl:GammaHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
     <td><b>fsl:GammaHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GaussianHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GaussianHRF"> [search] </a></td>
     <td><b>fsl:GaussianHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=NoHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=NoHRF"> [search] </a></td>
     <td><b>fsl:NoHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SineHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SineHRB"> [search] </a></td>
     <td><b>fsl:SineHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [search] </a></td>
     <td><b>fsl:TemporalDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=ClusterLabelsMap"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/282">#282</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=ClusterLabelsMap"> [search] </a></td>
     <td><b>nidm:ClusterLabelsMap: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
@@ -112,22 +113,22 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
     <td><b>nidm:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
     <td><b>nidm:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
     <td><b>nidm:GammaHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [search] </a></td>
     <td><b>nidm:GammaHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
@@ -137,17 +138,17 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunction"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunction"> [search] </a></td>
     <td><b>nidm:HemodynamicResponseFunction: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunctionBasis"> [search] </a></td>
-    <td><b>nidm:HemodynamicResponseFunctionBasis: </b>&lt;undefined&gt; (editor: @jbpoline)</td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunctionBasis"> [search] </a></td>
+    <td><b>nidm:HemodynamicResponseFunctionBasis: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunctionDerivative"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=HemodynamicResponseFunctionDerivative"> [search] </a></td>
     <td><b>nidm:HemodynamicResponseFunctionDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
@@ -167,68 +168,68 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatialModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatialModel"> [search] </a></td>
     <td><b>nidm:SpatialModel: </b>FIXME</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyGlobalModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyGlobalModel"> [search] </a></td>
     <td><b>nidm:SpatiallyGlobalModel: </b>FIXME</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyLocalModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyLocalModel"> [search] </a></td>
     <td><b>nidm:SpatiallyLocalModel: </b>FIXME</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyRegularizedModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SpatiallyRegularizedModel"> [search] </a></td>
     <td><b>nidm:SpatiallyRegularizedModel: </b>FIXME</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=WorldCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=WorldCoordinateSystem"> [search] </a></td>
     <td><b>nidm:WorldCoordinateSystem: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=DispersionDerivative"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=DispersionDerivative"> [search] </a></td>
     <td><b>spm:DispersionDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [search] </a></td>
     <td><b>spm:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=FourierHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FourierHRB"> [search] </a></td>
     <td><b>spm:FourierHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [search] </a></td>
     <td><b>spm:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [search] </a></td>
     <td><b>spm:GammaHRB: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [search] </a></td>
     <td><b>spm:TemporalDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=ArbitrarilyCorrelatedError"> [search] </a></td>
-    <td><b>nidm:ArbitrarilyCorrelatedError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=ArbitrarilyCorrelatedError"> [search] </a></td>
+    <td><b>nidm:ArbitrarilyCorrelatedError: </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=CompoundSymmetricError"> [search] </a></td>
-    <td><b>nidm:CompoundSymmetricError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CompoundSymmetricError"> [search] </a></td>
+    <td><b>nidm:CompoundSymmetricError: </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
@@ -243,18 +244,18 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=ExchangeableError"> [search] </a></td>
-    <td><b>nidm:ExchangeableError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=ExchangeableError"> [search] </a></td>
+    <td><b>nidm:ExchangeableError: </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=IndependentError"> [search] </a></td>
-    <td><b>nidm:IndependentError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IndependentError"> [search] </a></td>
+    <td><b>nidm:IndependentError: </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SeriallyCorrelatedError"> [search] </a></td>
-    <td><b>nidm:SeriallyCorrelatedError: </b>&lt;undefined&gt; (editor: TN; Under discussion at https://github.com/ISA-tools/stato/issues/28)</td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SeriallyCorrelatedError"> [search] </a></td>
+    <td><b>nidm:SeriallyCorrelatedError: </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -268,32 +269,32 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomCoordinateSystem"> [search] </a></td>
     <td><b>nidm:CustomCoordinateSystem: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=MNICoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=MNICoordinateSystem"> [search] </a></td>
     <td><b>nidm:MNICoordinateSystem: </b>Coordinate system defined with reference to the MNI atlas</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=Peak"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/283">#283</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Peak"> [search] </a></td>
     <td><b>nidm:Peak: </b>Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=StandardizedCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=StandardizedCoordinateSystem"> [search] </a></td>
     <td><b>nidm:StandardizedCoordinateSystem: </b>Parent of all reference spaces except "Subject"</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=SubjectCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SubjectCoordinateSystem"> [search] </a></td>
     <td><b>nidm:SubjectCoordinateSystem: </b>Coordinate system defined by the subject brain (no spatial normalisation applied)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=TalairachCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=TalairachCoordinateSystem"> [search] </a></td>
     <td><b>nidm:TalairachCoordinateSystem: </b>Reference space defined by the dissected brain used for the Talairach and Tournoux atlas</td>
 </tr>
 <tr>
@@ -417,7 +418,7 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=dependenceSpatialModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=dependenceSpatialModel"> [search] </a></td>
     <td><b>nidm:dependenceSpatialModel: </b>FIXME</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:SpatialModel </td>
@@ -431,24 +432,10 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=hasHRFBasis"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=hasHRFBasis"> [search] </a></td>
     <td><b>nidm:hasHRFBasis: </b>&lt;undefined&gt;</td>
     <td>nidm:DesignMatrix </td>
     <td>nidm:HemodynamicResponseFunctionBasis </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=hasHemodynamicResponseFunction"> [search] </a></td>
-    <td><b>nidm:hasHemodynamicResponseFunction: </b>&lt;undefined&gt;</td>
-    <td>nidm:DesignMatrix </td>
-    <td>nidm:HemodynamicResponseFunction </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=hasHemodynamicResponseFunctionDerivative"> [search] </a></td>
-    <td><b>nidm:hasHemodynamicResponseFunctionDerivative: </b>&lt;undefined&gt;</td>
-    <td>nidm:DesignMatrix </td>
-    <td>nidm:HemodynamicResponseFunctionDerivative </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -487,7 +474,7 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=varianceSpatialModel"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=varianceSpatialModel"> [search] </a></td>
     <td><b>nidm:varianceSpatialModel: </b>FIXME</td>
     <td>nidm:ErrorModel </td>
     <td>nidm:SpatialModel </td>
@@ -613,14 +600,14 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=hasClusterLabelsMap"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/282">#282</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=hasClusterLabelsMap"> [search] </a></td>
     <td><b>nidm:hasClusterLabelsMap: </b>A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer</td>
     <td>nidm:ExcursionSetMap </td>
     <td>nidm:ClusterLabelsMap </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=inWorldCoordinateSystem"> [search] </a></td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=inWorldCoordinateSystem"> [search] </a></td>
     <td><b>nidm:inWorldCoordinateSystem: </b>Type of coordinate system</td>
     <td>nidm:CoordinateSpace </td>
     <td>nidm:WorldCoordinateSystem </td>
@@ -683,21 +670,21 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Range: Vector of positive floats.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInUnits"> [search] </a></td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInUnits"> [search] </a></td>
     <td><b>spm:noiseFWHMInUnits: </b>Estimated Full Width at Half Maximum of the noise distribution in world units</td>
     <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Range: Vector of positive floats.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVertices"> [search] </a></td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVertices"> [search] </a></td>
     <td><b>spm:noiseFWHMInVertices: </b>Estimated Full Width at Half Maximum of the noise distribution in world vertices</td>
     <td>nidm:MaskMap </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Range: Vector of positive floats.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVoxels"> [search] </a></td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVoxels"> [search] </a></td>
     <td><b>spm:noiseFWHMInVoxels: </b>Estimated Full Width at Half Maximum of the noise distribution in voxels</td>
     <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:string </td>

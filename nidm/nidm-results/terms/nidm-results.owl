@@ -60,6 +60,8 @@ dc:description rdfs:range dctype:Image .
 
 nidm:dependenceSpatialModel rdf:type owl:ObjectProperty ;
                             
+                            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" ;
+                            
                             obo:IAO_0000115 "FIXME" ;
                             
                             rdfs:domain nidm:ErrorModel ;
@@ -94,6 +96,8 @@ nidm:hasClusterLabelsMap rdf:type owl:ObjectProperty ;
                          obo:IAO_0000115 "A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer." ;
                          
                          obo:IAO_0000112 "file:///path/to/cluster_labels.img" ;
+                         
+                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/282" ;
                          
                          obo:IAO_0000114 obo:IAO_0000120 ;
                          
@@ -151,35 +155,13 @@ nidm:hasErrorDistribution rdf:type owl:ObjectProperty ;
 
 nidm:hasHRFBasis rdf:type owl:ObjectProperty ;
                  
+                 obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                 
                  obo:IAO_0000114 obo:IAO_0000124 ;
                  
                  rdfs:domain nidm:DesignMatrix ;
                  
                  rdfs:range nidm:HemodynamicResponseFunctionBasis .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunction
-
-nidm:hasHemodynamicResponseFunction rdf:type owl:ObjectProperty ;
-                                    
-                                    obo:IAO_0000114 obo:IAO_0000124 ;
-                                    
-                                    rdfs:domain nidm:DesignMatrix ;
-                                    
-                                    rdfs:range nidm:HemodynamicResponseFunction .
-
-
-
-###  http://www.incf.org/ns/nidash/nidm#hasHemodynamicResponseFunctionDerivative
-
-nidm:hasHemodynamicResponseFunctionDerivative rdf:type owl:ObjectProperty ;
-                                              
-                                              obo:IAO_0000114 obo:IAO_0000124 ;
-                                              
-                                              rdfs:domain nidm:DesignMatrix ;
-                                              
-                                              rdfs:range nidm:HemodynamicResponseFunctionDerivative .
 
 
 
@@ -216,6 +198,8 @@ nidm:inCoordinateSpace rdf:type owl:ObjectProperty ;
 nidm:inWorldCoordinateSystem rdf:type owl:ObjectProperty ;
                              
                              obo:IAO_0000115 "Type of coordinate system." ;
+                             
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                              
                              obo:IAO_0000112 "nidm:MNICoordinateSystem" ;
                              
@@ -255,6 +239,8 @@ nidm:statisticType rdf:type owl:ObjectProperty ;
 ###  http://www.incf.org/ns/nidash/nidm#varianceSpatialModel
 
 nidm:varianceSpatialModel rdf:type owl:ObjectProperty ;
+                          
+                          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" ;
                           
                           obo:IAO_0000115 "FIXME" ;
                           
@@ -676,6 +662,8 @@ nidm:grandMeanScaling rdf:type owl:DatatypeProperty ;
 nidm:inWorldCoordinateSystem rdf:type owl:DatatypeProperty ;
                              
                              obo:IAO_0000115 "Type of coordinate system." ;
+                             
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                              
                              obo:IAO_0000112 "nidm:MNICoordinateSystem" ;
                              
@@ -1206,7 +1194,9 @@ spm:heightCriticalThresholdFWE05 rdf:type owl:DatatypeProperty ;
 
 spm:noiseFWHMInUnits rdf:type owl:DatatypeProperty ;
                      
-                     obo:IAO_0000116 "Range: Vector of positive floats." ;
+                     rdfs:comment "Range: Vector of positive floats." ;
+                     
+                     obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/214" ;
                      
                      obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution in world units." ;
                      
@@ -1230,7 +1220,9 @@ spm:noiseFWHMInVertices rdf:type owl:DatatypeProperty ;
                         
                         obo:IAO_0000115 "Estimated Full Width at Half Maximum of the noise distribution in world vertices." ;
                         
-                        obo:IAO_0000116 "Range: Vector of positive floats." ;
+                        obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/214" ;
+                        
+                        rdfs:comment "Range: Vector of positive floats." ;
                         
                         obo:IAO_0000114 obo:IAO_0000120 ;
                         
@@ -1244,7 +1236,9 @@ spm:noiseFWHMInVertices rdf:type owl:DatatypeProperty ;
 
 spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
                       
-                      obo:IAO_0000116 "Range: Vector of positive floats." ;
+                      obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/214" ;
+                      
+                      rdfs:comment "Range: Vector of positive floats." ;
                       
                       obo:IAO_0000112 "[3.7 3.7 3.1]" ;
                       
@@ -1513,6 +1507,8 @@ afni:BLOCK rdf:type owl:Class ;
            
            prov:editorialNote "We will have to determine if afni:BLOCK is child of a more specific nidm HRFBasis sub-class."^^xsd:string ;
            
+           obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+           
            obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1525,6 +1521,8 @@ afni:FiniteImpulseResponseHRB rdf:type owl:Class ;
                               
                               rdfs:comment "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: in AFNI, FIR is supported via the TENT basis function set."^^xsd:string ;
                               
+                              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                              
                               obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1535,7 +1533,8 @@ afni:GammaHRF rdf:type owl:Class ;
               
               rdfs:subClassOf nidm:GammaHRF ;
               
-              prov:editorialNote "Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: supported via GAM."^^xsd:string .
+              obo:IAO_0000116 """Under discussion at https://github.com/incf-nidash/nidm/issues/281
+Discussed with @afni-rickr in https://github.com/incf-nidash/nidm/pull/248: supported via GAM""" .
 
 
 
@@ -1585,6 +1584,8 @@ fsl:CustomHRB rdf:type owl:Class ;
               
               rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
               
+              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+              
               obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1594,6 +1595,8 @@ fsl:CustomHRB rdf:type owl:Class ;
 fsl:FiniteImpulseResponseHRB rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:FiniteImpulseResponseHRB ;
+                             
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                              
                              obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1605,6 +1608,8 @@ fsl:GammaDifferenceHRF rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:GammaDifferenceHRF ;
                        
+                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
                        obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1613,7 +1618,9 @@ fsl:GammaDifferenceHRF rdf:type owl:Class ;
 
 fsl:GammaHRB rdf:type owl:Class ;
              
-             rdfs:subClassOf nidm:GammaHRB .
+             rdfs:subClassOf nidm:GammaHRB ;
+             
+             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" .
 
 
 
@@ -1622,6 +1629,8 @@ fsl:GammaHRB rdf:type owl:Class ;
 fsl:GammaHRF rdf:type owl:Class ;
              
              rdfs:subClassOf nidm:GammaHRF ;
+             
+             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
              
              obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1633,6 +1642,8 @@ fsl:GaussianHRF rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:HemodynamicResponseFunction ;
                 
+                obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                
                 obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1642,6 +1653,8 @@ fsl:GaussianHRF rdf:type owl:Class ;
 fsl:NoHRF rdf:type owl:Class ;
           
           rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+          
+          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
           
           obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1653,6 +1666,8 @@ fsl:SineHRB rdf:type owl:Class ;
             
             rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
             
+            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+            
             obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1662,6 +1677,8 @@ fsl:SineHRB rdf:type owl:Class ;
 fsl:TemporalDerivative rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
+                       
+                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                        
                        obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -1673,7 +1690,9 @@ nidm:ArbitrarilyCorrelatedError rdf:type owl:Class ;
                                 
                                 rdfs:subClassOf nidm:ErrorDependence ;
                                 
-                                obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                                obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                                
+                                obo:IAO_0000117 "TN" ;
                                 
                                 obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -1743,6 +1762,8 @@ nidm:ClusterLabelsMap rdf:type owl:Class ;
                       
                       obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ClusterLabelsMap.txt"^^xsd:anyURI ;
                       
+                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/282" ;
+                      
                       obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -1753,7 +1774,9 @@ nidm:CompoundSymmetricError rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:ErrorDependence ;
                             
-                            obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                            obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                            
+                            obo:IAO_0000117 "TN" ;
                             
                             obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -1891,7 +1914,7 @@ nidm:CustomCoordinateSystem rdf:type owl:Class ;
                             
                             rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
                             
-                            rdfs:comment "FIXME. This definition needs to be re-worked and reviewed." ;
+                            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                             
                             obo:IAO_0000114 obo:IAO_0000120 .
 
@@ -2015,9 +2038,11 @@ nidm:ExchangeableError rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:ErrorDependence ;
                        
-                       obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                       obo:IAO_0000117 "TN" ;
                        
                        rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
+                       
+                       obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                        
                        obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -2078,6 +2103,8 @@ nidm:FiniteImpulseResponseHRB rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                               
+                              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                              
                               obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2087,6 +2114,8 @@ nidm:FiniteImpulseResponseHRB rdf:type owl:Class ;
 nidm:GammaDifferenceHRF rdf:type owl:Class ;
                         
                         rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+                        
+                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                         
                         obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2098,6 +2127,8 @@ nidm:GammaHRB rdf:type owl:Class ;
               
               rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
               
+              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+              
               obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2106,7 +2137,9 @@ nidm:GammaHRB rdf:type owl:Class ;
 
 nidm:GammaHRF rdf:type owl:Class ;
               
-              rdfs:subClassOf nidm:HemodynamicResponseFunction .
+              rdfs:subClassOf nidm:HemodynamicResponseFunction ;
+              
+              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" .
 
 
 
@@ -2144,6 +2177,8 @@ nidm:HeightThreshold rdf:type owl:Class ;
                      
                      obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold.txt"^^xsd:anyURI ;
                      
+                     obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/280" ;
+                     
                      obo:IAO_0000115 """A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 """ ;
                      
@@ -2157,6 +2192,8 @@ nidm:HemodynamicResponseFunction rdf:type owl:Class ;
                                  
                                  rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                                  
+                                 obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                                 
                                  obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2167,9 +2204,9 @@ nidm:HemodynamicResponseFunctionBasis rdf:type owl:Class ;
                                       
                                       rdfs:subClassOf prov:Entity ;
                                       
-                                      obo:IAO_0000117 "@jbpoline"^^xsd:string ;
-                                      
                                       rdfs:isDefinedBy "The set of functions to convolve anticipated neural responses to obtain anticipated hemodynamic responses."^^xsd:string ;
+                                      
+                                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                                       
                                       obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2181,6 +2218,8 @@ nidm:HemodynamicResponseFunctionDerivative rdf:type owl:Class ;
                                            
                                            rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
                                            
+                                           obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                                           
                                            obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2191,7 +2230,9 @@ nidm:IndependentError rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:ErrorDependence ;
                       
-                      obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                      obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                      
+                      obo:IAO_0000117 "TN" ;
                       
                       obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -2220,6 +2261,8 @@ nidm:MNICoordinateSystem rdf:type owl:Class ;
                          rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
                          
                          rdfs:seeAlso "birnlex_2125" ;
+                         
+                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                          
                          obo:IAO_0000115 "Coordinate system defined with reference to the MNI atlas." ;
                          
@@ -2375,6 +2418,8 @@ nidm:Peak rdf:type owl:Class ;
           
           rdfs:subClassOf prov:Entity ;
           
+          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/283" ;
+          
           obo:IAO_0000115 "Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)" ;
           
           obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Peak.txt" ;
@@ -2477,7 +2522,9 @@ nidm:SeriallyCorrelatedError rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:ErrorDependence ;
                              
-                             obo:IAO_0000117 "TN; Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                             obo:IAO_0000117 "TN" ;
+                             
+                             obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
                              
                              obo:IAO_0000114 obo:IAO_0000423 .
 
@@ -2505,7 +2552,9 @@ nidm:SpatialModel rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  obo:IAO_0000115 "FIXME" .
+                  obo:IAO_0000115 "FIXME" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" .
 
 
 
@@ -2514,6 +2563,8 @@ nidm:SpatialModel rdf:type owl:Class ;
 nidm:SpatiallyGlobalModel rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:SpatialModel ;
+                          
+                          obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" ;
                           
                           obo:IAO_0000115 "FIXME" .
 
@@ -2525,6 +2576,8 @@ nidm:SpatiallyLocalModel rdf:type owl:Class ;
                          
                          rdfs:subClassOf nidm:SpatialModel ;
                          
+                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" ;
+                         
                          obo:IAO_0000115 "FIXME" .
 
 
@@ -2535,7 +2588,9 @@ nidm:SpatiallyRegularizedModel rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:SpatialModel ;
                                
-                               obo:IAO_0000115 "FIXME" .
+                               obo:IAO_0000115 "FIXME" ;
+                               
+                               obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/194" .
 
 
 
@@ -2547,8 +2602,9 @@ nidm:StandardizedCoordinateSystem rdf:type owl:Class ;
                                   
                                   obo:IAO_0000115 "Parent of all reference spaces except \"Subject\"." ;
                                   
-                                  rdfs:comment "This is meant to be used for retrospective export when exact template is unknown." ,
-                                               "FIXME. This definition needs to be re-worked and reviewed." ;
+                                  rdfs:comment "This is meant to be used for retrospective export when exact template is unknown." ;
+                                  
+                                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                   
                                   obo:IAO_0000114 obo:IAO_0000120 .
 
@@ -2578,6 +2634,8 @@ nidm:SubjectCoordinateSystem rdf:type owl:Class ;
                              
                              obo:IAO_0000115 "Coordinate system defined by the subject brain (no spatial normalisation applied)." ;
                              
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                             
                              rdfs:comment "Used in FSL and SPM un-registered data." ;
                              
                              obo:IAO_0000114 obo:IAO_0000120 .
@@ -2589,6 +2647,8 @@ nidm:SubjectCoordinateSystem rdf:type owl:Class ;
 nidm:TalairachCoordinateSystem rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:StandardizedCoordinateSystem ;
+                               
+                               obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                
                                obo:IAO_0000115 "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas." ;
                                
@@ -2632,6 +2692,8 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
                            
                            rdfs:subClassOf prov:Entity ;
                            
+                           obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                           
                            obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2641,6 +2703,8 @@ nidm:WorldCoordinateSystem rdf:type owl:Class ;
 spm:DispersionDerivative rdf:type owl:Class ;
                          
                          rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
+                         
+                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                          
                          obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2652,6 +2716,8 @@ spm:FiniteImpulseResponseHRB rdf:type owl:Class ;
                              
                              rdfs:subClassOf nidm:FiniteImpulseResponseHRB ;
                              
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                             
                              obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2661,6 +2727,8 @@ spm:FiniteImpulseResponseHRB rdf:type owl:Class ;
 spm:FourierHRB rdf:type owl:Class ;
                
                rdfs:subClassOf nidm:HemodynamicResponseFunctionBasis ;
+               
+               obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
                
                obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2672,6 +2740,8 @@ spm:GammaDifferenceHRF rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:GammaDifferenceHRF ;
                        
+                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
                        obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2681,6 +2751,8 @@ spm:GammaDifferenceHRF rdf:type owl:Class ;
 spm:GammaHRB rdf:type owl:Class ;
              
              rdfs:subClassOf nidm:GammaHRB ;
+             
+             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
              
              obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -2718,6 +2790,8 @@ spm:TemporalDerivative rdf:type owl:Class ;
                        
                        rdfs:subClassOf nidm:HemodynamicResponseFunctionDerivative ;
                        
+                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
                        obo:IAO_0000114 obo:IAO_0000124 .
 
 
@@ -2740,8 +2814,9 @@ nidm:Colin27CoordinateSystem rdf:type nidm:StandardizedCoordinateSystem ,
                              
                              rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres" ;
                              
-                             rdfs:comment "used in SPM96 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ,
-                                          "FIXME. This definition needs to be re-worked and reviewed." ;
+                             rdfs:comment "used in SPM96 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
+                             
+                             obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                              
                              obo:IAO_0000114 obo:IAO_0000120 .
 
@@ -2753,6 +2828,8 @@ nidm:Icbm452AirCoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                          owl:NamedIndividual ;
                                 
                                 rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                                
+                                obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                 
                                 obo:IAO_0000115 "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" with \"linear transforms of the subjects into the atlas space using a 12-parameter affine transformation\"" ;
                                 
@@ -2766,6 +2843,8 @@ nidm:Icbm452Warp5CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                            owl:NamedIndividual ;
                                   
                                   rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                                  
+                                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                   
                                   obo:IAO_0000115 "Coordinate system defined by the \"average of 452 T1-weighted MRIs of normal young adult brains\" \"based on a 5th order polynomial transformation into the atlas space\"" ;
                                   
@@ -2784,6 +2863,8 @@ nidm:IcbmMni152LinearCoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                       
                                       rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" ;
                                       
+                                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                                      
                                       obo:IAO_0000114 obo:IAO_0000120 .
 
 
@@ -2797,6 +2878,8 @@ nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem rdf:type nidm:MNICoordin
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
+                                                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                                                        
                                                         obo:IAO_0000114 obo:IAO_0000120 .
 
 
@@ -2805,6 +2888,8 @@ nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem rdf:type nidm:MNICoordin
 
 nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                                                 owl:NamedIndividual ;
+                                                       
+                                                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
@@ -2818,6 +2903,8 @@ nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem rdf:type nidm:MNICoordina
 
 nidm:IcbmMni152NonLinear2009bAsymmetricCoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                                                  owl:NamedIndividual ;
+                                                        
+                                                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                                         
                                                         rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                         
@@ -2833,6 +2920,8 @@ nidm:IcbmMni152NonLinear2009bSymmetricCoordinateSystem rdf:type nidm:MNICoordina
                                                                 owl:NamedIndividual ;
                                                        
                                                        obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
+                                                       
+                                                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
@@ -2851,6 +2940,8 @@ nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem rdf:type nidm:MNICoordin
                                                         
                                                         obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space\"." ;
                                                         
+                                                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                                                        
                                                         obo:IAO_0000114 obo:IAO_0000120 .
 
 
@@ -2859,6 +2950,8 @@ nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem rdf:type nidm:MNICoordin
 
 nidm:IcbmMni152NonLinear2009cSymmetricCoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                                                 owl:NamedIndividual ;
+                                                       
+                                                       obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                                                        
                                                        rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
                                                        
@@ -2877,6 +2970,8 @@ nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem rdf:type nidm:MNICoordinat
                                                       
                                                       obo:IAO_0000115 "Coordinate system defined by the \"average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space\"" ;
                                                       
+                                                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
+                                                      
                                                       rdfs:comment "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" ;
                                                       
                                                       obo:IAO_0000114 obo:IAO_0000120 .
@@ -2887,6 +2982,8 @@ nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem rdf:type nidm:MNICoordinat
 
 nidm:Ixi549CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                      owl:NamedIndividual ;
+                            
+                            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                             
                             rdfs:seeAlso "http://biomedic.doc.ic.ac.uk/brain-development/index.php?n=Main.Datasets" ;
                             
@@ -2902,6 +2999,8 @@ nidm:Ixi549CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
 
 nidm:Mni305CoordinateSystem rdf:type nidm:MNICoordinateSystem ,
                                      owl:NamedIndividual ;
+                            
+                            obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/284" ;
                             
                             rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305" ;
                             
