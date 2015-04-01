@@ -723,4 +723,121 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td>prov:SoftwareAgent </td>
     <td>xsd:string </td>
 </tr>
+</table><h2>Individuals</h2>
+<table>
+<tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected18In3D"> [search] </a></td>
+    <td><b>nidm:connected18In3D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected26In3D"> [search] </a></td>
+    <td><b>nidm:connected26In3D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected4In2D"> [search] </a></td>
+    <td><b>nidm:connected4In2D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected6In2D"> [search] </a></td>
+    <td><b>nidm:connected6In2D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected6In3D"> [search] </a></td>
+    <td><b>nidm:connected6In3D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=connected8In2D"> [search] </a></td>
+    <td><b>nidm:connected8In2D: </b>&lt;undefined&gt;</td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Colin27CoordinateSystem"> [search] </a></td>
+    <td><b>nidm:Colin27CoordinateSystem: </b>Coordinate system defined by the "stereotaxic average of 27 T1-weighted MRI scans of the same individual"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#StandardizedCoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Icbm452AirCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:Icbm452AirCoordinateSystem: </b>Coordinate system defined by the "average of 452 T1-weighted MRIs of normal young adult brains" with "linear transforms of the subjects into the atlas space using a 12-parameter affine transformation"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Icbm452Warp5CoordinateSystem"> [search] </a></td>
+    <td><b>nidm:Icbm452Warp5CoordinateSystem: </b>Coordinate system defined by the "average of 452 T1-weighted MRIs of normal young adult brains" "based on a 5th order polynomial transformation into the atlas space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152LinearCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152LinearCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, linearly transformed to Talairach space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009aAsymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009aAsymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009aSymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009aSymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009bAsymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009bAsymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009bSymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009bSymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009cAsymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009cAsymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear2009cSymmetricCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear2009cSymmetricCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=IcbmMni152NonLinear6thGenerationCoordinateSystem"> [search] </a></td>
+    <td><b>nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem: </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Ixi549CoordinateSystem"> [search] </a></td>
+    <td><b>nidm:Ixi549CoordinateSystem: </b>Coordinate system defined by the average of the "549 [...] subjects from the IXI dataset" linearly transformed to ICBM MNI 452</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Mni305CoordinateSystem"> [search] </a></td>
+    <td><b>nidm:Mni305CoordinateSystem: </b>Coordinate system defined by the "average of 305 T1-weighted MRI scans, linearly transformed to Talairach space"</td>
+    <td>http://www.incf.org/ns/nidash/nidm#MNICoordinateSystem</td>
+</tr>
 </table>

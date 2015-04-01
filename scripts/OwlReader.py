@@ -21,6 +21,7 @@ class OwlReader():
         # Retreive all classes defined in the owl file
         self.classes = self.get_class_names() 
         self.properties = self.get_property_names()
+        self.individuals = self.get_individuals()
         # For each class find out attribute list as defined by domain in attributes
         self.attributes, self.ranges, self.type_restrictions, self.parent_ranges = self.get_attributes()
 
@@ -106,6 +107,12 @@ class OwlReader():
         for class_name in self.graph.subjects(RDF['type'], OWL['ObjectProperty']):
             properties.add(class_name)
         return properties
+
+    def get_individuals(self):
+        individuals = set();
+        for class_name in self.graph.subjects(RDF['type'], OWL['NamedIndividual']):
+            individuals.add(class_name)
+        return individuals
 
     def get_attributes(self):
         attributes = dict()
@@ -261,6 +268,17 @@ class OwlReader():
                 definition = definition[:-1]
 
         return definition
+
+    def get_individual_type(self, owl_term):
+        indiv_type = list(self.graph.objects(owl_term, RDF['type']))
+        if OWL['NamedIndividual'] in indiv_type:
+            indiv_type.remove(OWL['NamedIndividual'])
+
+        if indiv_type:
+            indiv_type = ", ".join(map(self.graph.qname, indiv_type))
+        else:
+            indiv_type = ""
+        return indiv_type
 
     def get_same_as(self, owl_term):
         same_as = list(self.graph.objects(owl_term, OWL['sameAs']))
