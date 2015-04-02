@@ -88,7 +88,12 @@ class UpdateTermReadme():
             note = note+"<br/>"
 
         # Add a search link (to check current state of the repo)
-        note = note+"<a href=\""+nidm_repo+"/issues?&q="+term_name.split(":")[1]+"\"> [search] </a>"        
+        if "Under discussion" in note:
+            search_text = "more"
+        else:
+            search_text = "find issues/PR"
+
+        note = "<a href=\""+nidm_repo+"/issues?&q="+term_name.split(":")[1]+"\"> ["+search_text+"] </a>"        
 
         term_row = """
 <tr>
