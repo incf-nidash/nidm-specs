@@ -93,7 +93,7 @@ class UpdateTermReadme():
         else:
             search_text = "find issues/PR"
 
-        note = "<a href=\""+nidm_repo+"/issues?&q="+term_name.split(":")[1]+"\"> ["+search_text+"] </a>"        
+        note = note+"<a href=\""+nidm_repo+"/issues?&q="+term_name.split(":")[1]+"\"> ["+search_text+"] </a>"        
 
         term_row = """
 <tr>
