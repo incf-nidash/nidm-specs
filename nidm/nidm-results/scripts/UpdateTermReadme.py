@@ -56,7 +56,7 @@ class UpdateTermReadme():
         readme_file_open.close()
 
     def create_term_row(self, term_name, definition, same_as, editor, note, 
-        color, range_value=None, domain=None):
+        color, range_value=None, domain=None, indiv_type=None):
         img_color = ""        
         if color:
             img_color = '<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>  ' 
@@ -64,11 +64,15 @@ class UpdateTermReadme():
         if same_as:
             same_as = "(same as: <a href="+same_as+">"+same_as+"</a>)"
 
-        range_domain = ""
+        range_domain_type = ""
         if range_value is not None:
-            range_domain = """
+            range_domain_type = """
     <td>"""+domain+"""</td>
     <td>"""+range_value+"""</td>"""
+
+        if indiv_type is not None:
+            range_domain_type += """
+    <td>"""+indiv_type+"""</td>"""
 
         # Github mardow-like links 
         nidm_repo = "https://github.com/incf-nidash/nidm/"
@@ -90,7 +94,7 @@ class UpdateTermReadme():
 <tr>
     <td>"""+img_color+"""</td>
     <td>"""+note+"""</td>
-    <td><b>"""+term_name+""": </b>"""+definition+same_as+editor+"""</td>"""+range_domain+"""
+    <td><b>"""+term_name+""": </b>"""+definition+same_as+editor+"""</td>"""+range_domain_type+"""
 </tr>"""
         return term_row
 
@@ -115,14 +119,16 @@ class UpdateTermReadme():
     def update_readme(self, readme_file): 
         class_terms = dict()
         prpty_terms = dict()
+        indiv_terms = dict()
         definitions = dict()
         editors = dict()
         notes = dict()
         ranges = dict()
         domains = dict()
         sameas = dict()
+        types = dict()
 
-        for owl_term in self.owl.classes.union(self.owl.properties):
+        for owl_term in self.owl.classes.union(self.owl.properties).union(self.owl.individuals):
             curation_status = self.owl.get_curation_status(owl_term)
             definition = self.owl.get_definition(owl_term)
             if definition == "":
@@ -132,6 +138,7 @@ class UpdateTermReadme():
             range_value = self.owl.get_range(owl_term)
             domain = self.owl.get_domain(owl_term)
             same = self.owl.get_same_as(owl_term)
+            indiv_type = self.owl.get_individual_type(owl_term)
             
             if curation_status:
                 curation_key = curation_status
@@ -144,18 +151,22 @@ class UpdateTermReadme():
                     else:
                         if owl_term in self.owl.properties:
                             prpty_terms.setdefault(curation_key, list()).append(term_key)
+                        else:
+                            if owl_term in self.owl.individuals:
+                                indiv_terms.setdefault(curation_key, list()).append(term_key)
                     definitions[term_key] = definition
                     editors[term_key] = editor
                     notes[term_key] = note
                     ranges[term_key] = range_value
                     domains[term_key] = domain
                     sameas[term_key] = same
-
+                    types[term_key] = indiv_type
 
         # Include missing keys and do not display ready for release terms
         order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([OBO_READY]))))
         class_terms_sorted = [(key, class_terms.get(key)) for key in order]
         prpty_terms_sorted = [(key, prpty_terms.get(key)) for key in order]
+        indiv_terms_sorted = [(key, indiv_terms.get(key)) for key in order]
 
         class_table_txt = "<h2>Classes</h2>\n<table>\n<tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>"
         for tuple_status_term in class_terms_sorted:
@@ -189,6 +200,23 @@ class UpdateTermReadme():
                         domains[term_name])
         prpty_table_txt = prpty_table_txt+"\n</table>"
 
+        indiv_table_txt = "<h2>Individuals</h2>\n<table>\n<tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>"
+        for tuple_status_term in indiv_terms_sorted:
+            curation_status = tuple_status_term[0]
+            term_names = tuple_status_term[1]
+
+            if term_names:
+                for term_name in sorted(term_names):
+                    indiv_table_txt += self.create_term_row(term_name, \
+                        definitions[term_name], \
+                        sameas[term_name], \
+                        editors[term_name], \
+                        notes[term_name], \
+                        CURATION_COLORS.setdefault(curation_status, ""), \
+                        None, None,
+                        types[term_name])
+        indiv_table_txt = indiv_table_txt+"\n</table>"
+
         curation_legend = self.create_curation_legend(order)
         title = "<h1>NIDM-Results Terms curation status</h1>"
         intro = """You will find below a listing of the NIDM-Results terms that \
@@ -202,7 +230,7 @@ If possible, priority should be given to uncurated terms (in red).
 
 Thank you in advance for taking part in NIDM-Results term curation!\n\n"""
         self.write_readme(readme_file, title+intro+\
-            curation_legend+class_table_txt+prpty_table_txt)
+            curation_legend+class_table_txt+prpty_table_txt+indiv_table_txt)
 
 def main():
     # Retreive owl file for NIDM-Results
