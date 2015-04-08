@@ -140,6 +140,10 @@ def main(nidm_original_version):
         components["Inference"].remove(NIDM_DISPLAY_MASK_MAP)
         components["Inference"].remove(NIDM_CONJUNCTION_INFERENCE)
 
+        del used_by[NIDM_CLUSTER_DEFINITION_CRITERIA]
+        del used_by[NIDM_PEAK_DEFINITION_CRITERIA]
+        del used_by[NIDM_DISPLAY_MASK_MAP]
+
         # SPM and FSL software were described using software-specific terms
         components["SPM-specific Concepts"].append(NIDM_INCF['SPM'])
         components["FSL-specific Concepts"].append(NIDM_INCF['FSL'])
