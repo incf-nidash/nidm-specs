@@ -13,7 +13,7 @@ def main():
 		"Inference": dict(
 			inference_id="niiri:inference_id_1",
 			label="Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
@@ -26,7 +26,7 @@ def main():
 		"ConjunctionInference": dict(
 			conj_inference_id="niiri:conjunction_id_1",
 			label="Conjunction Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id_1="niiri:statistic_map_id_1", 
 			stat_map_id_2="niiri:statistic_map_id_2", 
 			height_thresh_id="niiri:height_threshold_id", 
@@ -40,7 +40,7 @@ def main():
 		"SPM_KConjunctionInference": dict(
 			conj_inference_id="niiri:conjunction_id_2",
 			label="k-Conjunction Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id_1="niiri:statistic_map_id_1", 
 			stat_map_id_2="niiri:statistic_map_id_2", 
 			global_null_degree="1",

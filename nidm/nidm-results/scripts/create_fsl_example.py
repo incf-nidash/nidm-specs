@@ -40,11 +40,11 @@ def main():
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
-			noise_distribution="nidm:GaussianDistribution",
+			noise_distribution="nidm:NIDM_0000032",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocalModel",
-			dependence="nidm:IndependentError",
-			dependence_spatial="nidm:SpatiallyLocalModel"
+			variance_spatial="nidm:NIDM_0000073",
+			dependence="nidm:NIDM_0000048",
+			dependence_spatial="nidm:NIDM_0000073"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_pe_id",
@@ -82,7 +82,7 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:NIDM_0000047",
 			number_of_dim="3",
 			dimensions="[53,63,46]"),
 		"CoordinateSpace-2": dict(
@@ -91,7 +91,7 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 81],[0, 3, 0, -115],[0, 0, 3, -53],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:IcbmMni152NonLinear6thGenerationCoordinateSystem",
+			coord_system="nidm:NIDM_0000047",
 			number_of_dim="3",
 			dimensions="[53,63,46]"),
 		"FSL_ResidualMeanSquaresMap": dict(
@@ -229,12 +229,12 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18connected"
+			connectivity="nidm:NIDM_0000128"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
 			label="Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:z_statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
@@ -406,7 +406,7 @@ def main():
 		"NIDMBundle": dict(
 			bundle_id="niiri:fsl_results_id",
 			label="FSL Results",
-			object_model="nidm:FSLResults",
+			object_model="nidm:NIDM_0000027",
 			version="0.2.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),

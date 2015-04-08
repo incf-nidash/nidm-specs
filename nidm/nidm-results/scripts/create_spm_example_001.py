@@ -47,11 +47,11 @@ def main():
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
-			noise_distribution="nidm:GaussianDistribution",
+			noise_distribution="nidm:NIDM_0000032",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocalModel",
-			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyGlobalModel"
+			variance_spatial="nidm:NIDM_0000073",
+			dependence="nidm:NIDM_0000069",
+			dependence_spatial="nidm:NIDM_0000072"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_pe_id",
@@ -70,7 +70,7 @@ def main():
 			param_est_id="niiri:model_pe_id"),
 		"DerivedMap-PE1": dict(
 			derived_from_map_id="niiri:beta_map_id_1_der",
-			derived_map_type="nidm:ParameterEstimateMap",
+			derived_map_type="nidm:NIDM_0000061",
 			filename="beta_0001.nii",
 			format="image/nifti",
 			sha="fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c17412731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f",
@@ -87,7 +87,7 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:MNICoordinateSystem",
+			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
 			dimensions="[53,63,52]"),
 		"ResidualMeanSquaresMap": dict(
@@ -101,7 +101,7 @@ def main():
 			param_est_id="niiri:model_pe_id"),
 		"DerivedMap-RMSMap": dict(
 			derived_from_map_id="niiri:residual_mean_squares_map_id_der",
-			derived_map_type="nidm:ResidualMeanSquaresMap",
+			derived_map_type="nidm:NIDM_0000066",
 			filename="ResMS.nii",
 			format="image/nifti",
 			sha="1635e0ae420cac1b5989fbc753b95f504dd957ff2986367fc4cd13ff35c44b4ee60994a9cdcab93a7d247fc5a8decb7578fa4c553b0ac905af8c7041db9b4acd",
@@ -120,7 +120,7 @@ def main():
 			used_by_act_id="niiri:contrast_estimation_id"),
 		"DerivedMap-Mask2": dict( # The "analysis mask" (derived)
 			derived_from_map_id="niiri:mask_id_1_der",
-			derived_map_type="nidm:MaskMap",
+			derived_map_type="nidm:NIDM_0000054",
 			filename="mask.nii",
 			format="image/nifti",
 			sha="fbc254cab29db5532feccce554ec9d3c845197eca9013ec9f0efd5d8d56e3aa008ccee4038fb3651d30447fa0f316938b07c3ad961b623458dcd9b46968a8e11",
@@ -183,7 +183,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id"),
 		"DerivedMap-StatMap": dict(
 			derived_from_map_id="niiri:statistic_map_id_der",
-			derived_map_type="nidm:StatisticMap",
+			derived_map_type="nidm:NIDM_0000076",
 			filename="spmT_0001.nii",
 			format="image/nifti",
 			sha="55951f31f0ede7e88eca5cd4793df3f630aba21bc90fb81e3695db060c7d4c0b0ccf0b51fd8958c32ea3253d3122e9b31a54262bf910f8b5b646054ceb9a5825",
@@ -214,12 +214,12 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18connected"
+			connectivity="nidm:NIDM_0000128"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
 			label="Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
@@ -477,7 +477,7 @@ def main():
 			),
 		"DerivedMap-2": dict(
 			derived_from_map_id="niiri:beta_map_id_2_der",
-			derived_map_type="nidm:ParameterEstimateMap",
+			derived_map_type="nidm:NIDM_0000061",
 			filename="beta_0002.nii",
 			format="image/nifti",
 			sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
@@ -486,7 +486,7 @@ def main():
 		"NIDMBundle": dict(
 			bundle_id="niiri:spm_results_id",
 			label="SPM Results",
-			object_model="nidm:SPMResults",
+			object_model="nidm:NIDM_0000067",
 			version="0.2.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),
