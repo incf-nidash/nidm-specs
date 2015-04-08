@@ -26,6 +26,11 @@ XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
+# NIDM constants
+NIDM_CONTRAST_ESTIMATION = NIDM['NIDM_0000001']
+
+
+# OBO constants
 OBO_EXAMPLE = OBO['IAO_0000112']
 OBO_TERM_EDITOR = OBO['IAO_0000117']
 OBO_EDITOR_NOTE = OBO['IAO_0000116']

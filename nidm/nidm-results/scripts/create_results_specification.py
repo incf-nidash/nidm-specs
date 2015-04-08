@@ -56,7 +56,7 @@ def main():
              NIDM['ParameterEstimateMap'],
              NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
              NIDM['MaskMap']]    
-    components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
+    components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
              NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
              NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
@@ -77,11 +77,11 @@ def main():
                 NIDM['Data']: [NIDM['ModelParametersEstimation']],
                 NIDM['ErrorModel']: [NIDM['ModelParametersEstimation']],
                 NIDM['DesignMatrix']: [NIDM['ModelParametersEstimation'],
-                                       NIDM['ContrastEstimation']],
-                NIDM['ParameterEstimateMap']: [NIDM['ContrastEstimation']],
-                NIDM['ResidualMeanSquaresMap']: [NIDM['ContrastEstimation']],
-                NIDM['MaskMap']: [NIDM['ContrastEstimation']],
-                NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
+                                       NIDM_CONTRAST_ESTIMATION],
+                NIDM['ParameterEstimateMap']: [NIDM_CONTRAST_ESTIMATION],
+                NIDM['ResidualMeanSquaresMap']: [NIDM_CONTRAST_ESTIMATION],
+                NIDM['MaskMap']: [NIDM_CONTRAST_ESTIMATION],
+                NIDM['ContrastWeights']: [NIDM_CONTRAST_ESTIMATION],
                 NIDM['ContrastMap']: [NIDM['Inference']], 
                 NIDM['StatisticMap']: [NIDM['Inference']],
                 NIDM['MaskMap']: [NIDM['ModelParametersEstimation']],
@@ -93,38 +93,51 @@ def main():
                 NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
                 NIDM['ResidualMeanSquaresMap']: NIDM['ModelParametersEstimation'],
                 NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ContrastMap']: NIDM['ContrastEstimation'], 
-                NIDM['StatisticMap']: NIDM['ContrastEstimation'], 
-                NIDM['ContrastStandardErrorMap']: NIDM['ContrastEstimation'], 
+                NIDM['ContrastMap']: NIDM_CONTRAST_ESTIMATION, 
+                NIDM['StatisticMap']: NIDM_CONTRAST_ESTIMATION, 
+                NIDM['ContrastStandardErrorMap']: NIDM_CONTRAST_ESTIMATION, 
     }
+
     derived_from = {
                 NIDM['SignificantCluster']: NIDM['ExcursionSetMap'],
                 NIDM['Peak']: NIDM['SignificantCluster'],                
     }
 
     if nidm_version == "020":
-        # In version 0.2.0 "ErrorModel" was called "NoiseModel"
-        components["Parameters estimation"][1] = NIDM['NoiseModel']
-        used_by.pop(NIDM['ErrorModel'], None)
-        used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
+        # The following classes were named differently in 0.2.0
+        renaming =  [(NIDM['ExcursionSetMap'],NIDM['ExcursionSet']),
+                     (NIDM['SearchSpaceMaskMap'],NIDM['SearchSpaceMap']),
+                     (NIDM['SignificantCluster'],NIDM['Cluster']),
+                     (NIDM['ErrorModel'],NIDM['NoiseModel']),
+                     (NIDM_CONTRAST_ESTIMATION,NIDM['ContrastEstimation'])]
 
-        # CustomMaskMap was used by "Model Parameter Estimation"
-        components["Parameters estimation"].add(NIDM['CustomMaskMap'])
+        # MaskMap was sometimes called CustomMaskMap (when isUserDefined=true)
+        components["Parameters estimation"].append(NIDM['CustomMaskMap'])
+        
+        # The following classes were not represented in 0.2.0
+        components["Inference"].remove(NIDM['ClusterDefinitionCriteria'])
+        components["Inference"].remove(NIDM['PeakDefinitionCriteria'])
+        components["Inference"].remove(NIDM['DisplayMaskMap'])
+        components["Inference"].remove(NIDM['ConjunctionInference'])
+
+        # SPM and FSL software were described using software-specific terms
+        components["SPM-specific Concepts"].append(NIDM['SPM'])
+        components["FSL-specific Concepts"].append(NIDM['FSL'])
+
+
+        # Add manually used and wasDerivedFrom because these are not stored in the owl file
+        used_by[NIDM['MaskMap']] = [NIDM['ContrastEstimation']]
         used_by[NIDM['CustomMaskMap']] = [NIDM['ModelParametersEstimation']]
+    
 
-        # "ExcursionSetMap" was called "ExcursionSet"
-        # "SearchSpaceMaskMap" was called "SearchSpaceMap"
-        components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'],
-             NIDM['Coordinate']]
-        # In version 0.2.0 "SignificantCluster" was called "Cluster"
-        derived_from.pop(NIDM['SignificantCluster'], None)
-        derived_from[NIDM['Cluster']] = NIDM['ExcursionSet']
-        derived_from[NIDM['Peak']] = NIDM['Cluster']
+        # In version 0.2.0 "ErrorModel" was called "NoiseModel"
+        components, used_by, generated_by, derived_from = _replace_term_by(\
+            renaming, components, used_by, generated_by, derived_from)
 
     owlspec = OwlSpecification(owl_file, import_files, "NIDM-Results", 
         components, used_by, generated_by, derived_from, prefix=str(NIDM))
+
+    
 
     owlspec._header_footer(component="nidm-results")
 
@@ -137,6 +150,26 @@ def main():
         owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
+
+def _replace_term_by(renaming, components, used_by, generated_by, derived_from):
+    for original_term, renamed_term in renaming:
+        generated_by = dict((k if k != original_term else renamed_term, \
+                             v if v != original_term else renamed_term) \
+                                for (k, v) in generated_by.items())
+        derived_from = dict((k if k != original_term else renamed_term, \
+                             v if v != original_term else renamed_term) \
+                                for (k, v) in derived_from.items())
+
+        used_by = dict((k if k != original_term else renamed_term, \
+                        list(el if el != original_term else renamed_term for el in v)) \
+                            for (k, v) in used_by.items())
+
+        components = collections.OrderedDict((k if k != original_term else renamed_term, \
+                        list(el if el != original_term else renamed_term for el in v)) \
+                            for (k, v) in components.items())
+
+    return list([components, used_by, generated_by, derived_from])
+
 
 if __name__ == '__main__':
     main()
