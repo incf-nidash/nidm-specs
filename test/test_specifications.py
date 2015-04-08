@@ -33,15 +33,22 @@ class TestSpecifications(unittest.TestCase):
 
     def test_nidm_results(self):
         component = "nidm-results"
-        self._run(component, create_res_spec, "create_results_specification")
+        self._run(component, create_res_spec, "create_results_specification", "dev")
+
+    def test_nidm_results_020(self):
+        component = "nidm-results"
+        self._run(component, create_res_spec, "create_results_specification", "0.2.0")
 
     def test_nidm_experiment(self):
         component = "nidm-experiment"
         self._run(component, create_expe_spec, "create_expe_specification")
 
-    def _run(self, component, spec_fun, spec_fun_name):
+    def _run(self, component, spec_fun, spec_fun_name, param=None):
         original_spec = self._get_spec_txt(component)
-        spec_fun()
+        if param is not None:
+            spec_fun(param)
+        else:
+            spec_fun()
         updated_spec = self._get_spec_txt(component, original_spec)
         self._compare(component, original_spec, updated_spec, spec_fun_name)
 

@@ -27,12 +27,8 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
-def main():
-    if len(sys.argv) > 1:
-        nidm_original_version = sys.argv[1]
-        nidm_version = nidm_original_version.replace(".", "")
-    else:
-        nidm_version = 'dev'
+def main(nidm_original_version):
+    nidm_version = nidm_original_version.replace(".", "")
 
     # Retreive owl file for NIDM-Results
     if nidm_version == "dev":
@@ -47,7 +43,6 @@ def main():
 
     # check the file exists
     assert os.path.exists(owl_file)
-
 
     components =  collections.OrderedDict()
     components["General"] = [NIDM['Map']]
@@ -172,5 +167,10 @@ def _replace_term_by(renaming, components, used_by, generated_by, derived_from):
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1:
+        nidm_version = sys.argv[1]
+    else:
+        nidm_version = 'dev'
+
+    main(nidm_version)
 
