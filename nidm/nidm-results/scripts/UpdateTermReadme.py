@@ -147,7 +147,7 @@ class UpdateTermReadme():
             
             if curation_status:
                 curation_key = curation_status
-                term_key = self.owl.graph.qname(owl_term)
+                term_key = self.owl.get_label(owl_term)
 
                 if term_key.startswith("nidm") or term_key.startswith("spm") or\
                     term_key.startswith("fsl") or term_key.startswith("afni"):
