@@ -202,7 +202,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id_2"),
 		"DerivedMap-ContrastMap-2": dict(
 			derived_from_map_id="niiri:contrast_map_id_2_der",
-			derived_map_type="nidm:ContrastMap",
+			derived_map_type="nidm:NIDM_0000002",
 			filename="con_0002.nii",
 			format="image/nifti",
 			sha="e43b6e01b0463fe7d40782137867a...",
@@ -423,7 +423,7 @@ def main():
 			),
 		"DerivedMap-Contrast": dict(
 			derived_from_map_id="niiri:contrast_map_id_der",
-			derived_map_type="nidm:ContrastMap",
+			derived_map_type="nidm:NIDM_0000002",
 			filename="con_0001.nii",
 			format="image/nifti",
 			sha="e43b6e01b0463fe7d40782137867a...",

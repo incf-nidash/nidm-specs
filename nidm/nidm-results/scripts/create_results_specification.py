@@ -52,7 +52,7 @@ def main(nidm_original_version):
              NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
              NIDM['MaskMap']]    
     components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
-             NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
+             NIDM['ContrastWeights'], NIDM_CONTRAST_MAP, NIDM['StatisticMap'], 
              NIDM['ContrastStandardErrorMap']]
     components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
              NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMaskMap'], 
@@ -77,7 +77,7 @@ def main(nidm_original_version):
                 NIDM['ResidualMeanSquaresMap']: [NIDM_CONTRAST_ESTIMATION],
                 NIDM['MaskMap']: [NIDM_CONTRAST_ESTIMATION],
                 NIDM['ContrastWeights']: [NIDM_CONTRAST_ESTIMATION],
-                NIDM['ContrastMap']: [NIDM['Inference']], 
+                NIDM_CONTRAST_MAP: [NIDM['Inference']], 
                 NIDM['StatisticMap']: [NIDM['Inference']],
                 NIDM['MaskMap']: [NIDM['ModelParametersEstimation']],
                 NIDM['ClusterDefinitionCriteria']: [NIDM['Inference']], 
@@ -88,7 +88,7 @@ def main(nidm_original_version):
                 NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
                 NIDM['ResidualMeanSquaresMap']: NIDM['ModelParametersEstimation'],
                 NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ContrastMap']: NIDM_CONTRAST_ESTIMATION, 
+                NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION, 
                 NIDM['StatisticMap']: NIDM_CONTRAST_ESTIMATION, 
                 NIDM['ContrastStandardErrorMap']: NIDM_CONTRAST_ESTIMATION, 
     }
@@ -110,7 +110,7 @@ def main(nidm_original_version):
                      (NIDM['SignificantCluster'],NIDM_INCF['Cluster']),
                      (NIDM['ErrorModel'],NIDM_INCF['NoiseModel']),
                      (NIDM_CONTRAST_ESTIMATION,NIDM_INCF['ContrastEstimation']),
-                     (NIDM['ContrastMap'],NIDM_INCF['ContrastMap']),
+                     (NIDM_CONTRAST_MAP,NIDM_INCF['ContrastMap']),
                      (NIDM['Map'], NIDM_INCF['Map']),
                      (NIDM['Data'], NIDM_INCF['Data']),
                      (NIDM['DesignMatrix'], NIDM_INCF['DesignMatrix']),

@@ -469,7 +469,7 @@ def main():
 			),
 		"DerivedMap": dict(
 			derived_from_map_id="niiri:contrast_map_id_der",
-			derived_map_type="nidm:ContrastMap",
+			derived_map_type="nidm:NIDM_0000002",
 			filename="con_0001.nii",
 			format="image/nifti",
 			sha="277dd1da13d391c33c172fb8c71060008cc66e173de6362eb857b0055b41e9bae57911f7ec4b45659905103b1139ebf3da0c2d04cf105bbce0cdc3004b643c22",
