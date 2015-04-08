@@ -1,14 +1,18 @@
 prefix prov: <http://www.w3.org/ns/prov#>
-prefix nidm: <http://www.incf.org/ns/nidash/nidm#>
-prefix contrast_estimation: <http://www.incf.org/ns/nidash/nidm#NIDM_0000001>
-prefix contrast_map: <http://www.incf.org/ns/nidash/nidm#NIDM_0000002>
+prefix nidm: <http://purl.org/nidash/nidm#>
+
+prefix contrast_estimation: <http://purl.org/nidash/nidm#NIDM_0000001>
+prefix contrast_map: <http://purl.org/nidash/nidm#NIDM_0000002>
+prefix contrast_name: <http://purl.org/nidash/nidm#NIDM_0000085>
+prefix statistic_map: <http://purl.org/nidash/nidm#NIDM_0000076>
+prefix statistic_type: <http://purl.org/nidash/nidm#NIDM_0000123>
 
 SELECT ?contrastName ?statType ?statFile WHERE {
  ?cid a contrast_map: ;
-      nidm:contrastName ?contrastName .
+      contrast_name: ?contrastName .
  ?cea a contrast_estimation: .
  ?cid prov:wasGeneratedBy ?cea .
- ?sid a nidm:StatisticMap ;
-      nidm:statisticType ?statType ;
+ ?sid a statistic_map: ;
+      statistic_type: ?statType ;
       prov:atLocation ?statFile .
 }

@@ -3,6 +3,15 @@ prefix spm: <http://purl.org/nidash/spm#>
 prefix nidm: <http://purl.org/nidash/nidm#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+prefix peak: <http://purl.org/nidash/nidm#NIDM_0000062>
+prefix significant_cluster: <http://purl.org/nidash/nidm#NIDM_0000070>
+prefix coordinate: <http://purl.org/nidash/nidm#NIDM_0000086>
+prefix equivalent_zstatistic: <http://purl.org/nidash/nidm#NIDM_0000092>
+prefix pvalue_fwer: <http://purl.org/nidash/nidm#NIDM_0000115>
+prefix pvalue_uncorrected: <http://purl.org/nidash/nidm#NIDM_0000116>
+prefix statistic_map: <http://purl.org/nidash/nidm#NIDM_0000076>
+prefix statistic_type: <http://purl.org/nidash/nidm#NIDM_0000123>
+
 ####################
 #Peaks Data Query
 ####################
@@ -11,18 +20,18 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT *
 WHERE 
-{ ?peak a nidm:Peak . 
-  ?cluster a nidm:SignificantCluster . 
+{ ?peak a peak: . 
+  ?cluster a significant_cluster: . 
   ?peak prov:wasDerivedFrom ?cluster .
   ?peak prov:atLocation ?coordinate .
-  ?coordinate nidm:coordinate ?x .
+  ?coordinate coordinate: ?x .
   OPTIONAL { ?peak prov:value ?value }.
-  ?peak nidm:equivalentZStatistic ?zstat .
-  OPTIONAL { ?peak nidm:pValueFWER ?pvalcor }.
-  ?peak nidm:pValueUncorrected ?pvalunc .
+  ?peak equivalent_zstatistic: ?zstat .
+  OPTIONAL { ?peak pvalue_fwer: ?pvalcor }.
+  ?peak pvalue_uncorrected: ?pvalunc .
   ?cluster prov:wasDerivedFrom/prov:wasGeneratedBy/prov:used ?statmap .
-  ?statmap a nidm:StatisticMap . 
-  ?statmap nidm:statisticType ?stat .
+  ?statmap a statistic_map: . 
+  ?statmap statistic_type: ?stat .
 }
 ORDER BY ?cluster ?peak
 
