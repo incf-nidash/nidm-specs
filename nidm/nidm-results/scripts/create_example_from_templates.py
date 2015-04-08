@@ -127,7 +127,9 @@ class ExampleFromTemplate(object):
             prefix_name = self.owl.get_label(term_uri).replace(" ", "_")\
                             .lower()\
                             .replace(":", "_").replace("'", "")+":"
-            prefix_definitions += "@prefix "+prefix_name+" <"+str(term_uri)+"> .\n"
+            prefix_definition = "@prefix "+prefix_name+" <"+str(term_uri)+"> .\n"
+            if not prefix_definition in prefix_definitions:
+                prefix_definitions += prefix_definition
 
             example = example.replace(idt, prefix_name)
         
