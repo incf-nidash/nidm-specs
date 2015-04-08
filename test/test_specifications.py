@@ -60,6 +60,8 @@ class TestSpecifications(unittest.TestCase):
 
         spec_file = os.path.join(REPO_ROOT, "doc", "content", "specs", 
                 component+"_"+version+".html")
+        print str(spec_file)        
+
         spec_fid = open(spec_file, 'r')
         spec_txt = spec_fid.read()
         spec_fid.close()
