@@ -45,20 +45,20 @@ def main(nidm_original_version):
     assert os.path.exists(owl_file)
 
     components =  collections.OrderedDict()
-    components["General"] = [NIDM['Map']]
-    components["Parameters estimation"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
-             NIDM['ModelParametersEstimation'],  
-             NIDM['ParameterEstimateMap'],
-             NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
-             NIDM['MaskMap']]    
+    components["General"] = [NIDM_MAP]
+    components["Parameters estimation"] = [NIDM_DATA, NIDM_ERROR_MODEL, NIDM_DESIGN_MATRIX, 
+             NIDM_MODEL_PARAMETERS_ESTIMATION,  
+             NIDM_PARAMETER_ESTIMATE_MAP,
+             NIDM_GRAND_MEAN_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP, 
+             NIDM_MASK_MAP]    
     components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
-             NIDM['ContrastWeights'], NIDM_CONTRAST_MAP, NIDM['StatisticMap'], 
-             NIDM['ContrastStandardErrorMap']]
-    components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMaskMap'], 
-             NIDM['SignificantCluster'], NIDM['Peak'], NIDM['Coordinate'], 
-             NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
-             NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
+             NIDM_CONTRAST_WEIGHTS, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP, 
+             NIDM_CONTRAST_STANDARD_ERROR_MAP]
+    components["Inference"] = [NIDM_INFERENCE, NIDM_HEIGHT_THRESHOLD, NIDM_EXTENT_THRESHOLD, 
+             NIDM_EXCURSION_SET_MAP, NIDM_CLUSTER_LABELS_MAP, NIDM_SEARCH_SPACE_MASK_MAP, 
+             NIDM_SIGNIFICANT_CLUSTER, NIDM_PEAK, NIDM_COORDINATE, 
+             NIDM_CONJUNCTION_INFERENCE, NIDM_CLUSTER_DEFINITION_CRITERIA,
+             NIDM_DISPLAY_MASK_MAP, NIDM_PEAK_DEFINITION_CRITERIA]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['ClusterCenterOfGravity']]
 
@@ -69,33 +69,33 @@ def main(nidm_original_version):
 
     # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
-                NIDM['Data']: [NIDM['ModelParametersEstimation']],
-                NIDM['ErrorModel']: [NIDM['ModelParametersEstimation']],
-                NIDM['DesignMatrix']: [NIDM['ModelParametersEstimation'],
+                NIDM_DATA: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_ERROR_MODEL: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_DESIGN_MATRIX: [NIDM_MODEL_PARAMETERS_ESTIMATION,
                                        NIDM_CONTRAST_ESTIMATION],
-                NIDM['ParameterEstimateMap']: [NIDM_CONTRAST_ESTIMATION],
-                NIDM['ResidualMeanSquaresMap']: [NIDM_CONTRAST_ESTIMATION],
-                NIDM['MaskMap']: [NIDM_CONTRAST_ESTIMATION],
-                NIDM['ContrastWeights']: [NIDM_CONTRAST_ESTIMATION],
-                NIDM_CONTRAST_MAP: [NIDM['Inference']], 
-                NIDM['StatisticMap']: [NIDM['Inference']],
-                NIDM['MaskMap']: [NIDM['ModelParametersEstimation']],
-                NIDM['ClusterDefinitionCriteria']: [NIDM['Inference']], 
-                NIDM['DisplayMaskMap']: [NIDM['Inference']], 
-                NIDM['PeakDefinitionCriteria']: [NIDM['Inference']], 
+                NIDM_PARAMETER_ESTIMATE_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_RESIDUAL_MEAN_SQUARES_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_CONTRAST_WEIGHTS: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_CONTRAST_MAP: [NIDM_INFERENCE], 
+                NIDM_STATISTIC_MAP: [NIDM_INFERENCE],
+                NIDM_MASK_MAP: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_CLUSTER_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
+                NIDM_DISPLAY_MASK_MAP: [NIDM_INFERENCE], 
+                NIDM_PEAK_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
     }
     generated_by = { 
-                NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ResidualMeanSquaresMap']: NIDM['ModelParametersEstimation'],
-                NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
+                NIDM_PARAMETER_ESTIMATE_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_RESIDUAL_MEAN_SQUARES_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_MASK_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
                 NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION, 
-                NIDM['StatisticMap']: NIDM_CONTRAST_ESTIMATION, 
-                NIDM['ContrastStandardErrorMap']: NIDM_CONTRAST_ESTIMATION, 
+                NIDM_STATISTIC_MAP: NIDM_CONTRAST_ESTIMATION, 
+                NIDM_CONTRAST_STANDARD_ERROR_MAP: NIDM_CONTRAST_ESTIMATION, 
     }
 
     derived_from = {
-                NIDM['SignificantCluster']: NIDM['ExcursionSetMap'],
-                NIDM['Peak']: NIDM['SignificantCluster'],                
+                NIDM_SIGNIFICANT_CLUSTER: NIDM_EXCURSION_SET_MAP,
+                NIDM_PEAK: NIDM_SIGNIFICANT_CLUSTER,                
     }
 
     if nidm_version == "020":
@@ -105,40 +105,40 @@ def main(nidm_original_version):
         FSL_INCF = Namespace('http://www.incf.org/ns/nidash/fsl#')
 
         # The following classes were named differently in 0.2.0
-        renaming =  [(NIDM['ExcursionSetMap'],NIDM_INCF['ExcursionSet']),
-                     (NIDM['SearchSpaceMaskMap'],NIDM_INCF['SearchSpaceMap']),
-                     (NIDM['SignificantCluster'],NIDM_INCF['Cluster']),
-                     (NIDM['ErrorModel'],NIDM_INCF['NoiseModel']),
+        renaming =  [(NIDM_EXCURSION_SET_MAP,NIDM_INCF['ExcursionSet']),
+                     (NIDM_SEARCH_SPACE_MASK_MAP,NIDM_INCF['SearchSpaceMap']),
+                     (NIDM_SIGNIFICANT_CLUSTER,NIDM_INCF['Cluster']),
+                     (NIDM_ERROR_MODEL,NIDM_INCF['NoiseModel']),
                      (NIDM_CONTRAST_ESTIMATION,NIDM_INCF['ContrastEstimation']),
                      (NIDM_CONTRAST_MAP,NIDM_INCF['ContrastMap']),
-                     (NIDM['Map'], NIDM_INCF['Map']),
-                     (NIDM['Data'], NIDM_INCF['Data']),
-                     (NIDM['DesignMatrix'], NIDM_INCF['DesignMatrix']),
-                     (NIDM['ModelParametersEstimation'], NIDM_INCF['ModelParametersEstimation']),
-                     (NIDM['GrandMeanMap'], NIDM_INCF['GrandMeanMap']),
-                     (NIDM['ResidualMeanSquaresMap'], NIDM_INCF['ResidualMeanSquaresMap']),
-                     (NIDM['MaskMap'], NIDM_INCF['MaskMap']),
-                     (NIDM['ContrastWeights'], NIDM_INCF['ContrastWeights']),
-                     (NIDM['StatisticMap'], NIDM_INCF['StatisticMap']),
-                     (NIDM['ContrastStandardErrorMap'], NIDM_INCF['ContrastStandardErrorMap']),
-                     (NIDM['Inference'], NIDM_INCF['Inference']),
-                     (NIDM['HeightThreshold'], NIDM_INCF['HeightThreshold']),
-                     (NIDM['ExtentThreshold'], NIDM_INCF['ExtentThreshold']),
-                     (NIDM['Peak'], NIDM_INCF['Peak']),
-                     (NIDM['ClusterLabelsMap'], NIDM_INCF['ClusterLabelsMap']),
-                     (NIDM['Coordinate'], NIDM_INCF['Coordinate']),
-                     (NIDM['ParameterEstimateMap'], NIDM_INCF['ParameterEstimateMap']),
+                     (NIDM_MAP, NIDM_INCF['Map']),
+                     (NIDM_DATA, NIDM_INCF['Data']),
+                     (NIDM_DESIGN_MATRIX, NIDM_INCF['DesignMatrix']),
+                     (NIDM_MODEL_PARAMETERS_ESTIMATION, NIDM_INCF['ModelParametersEstimation']),
+                     (NIDM_GRAND_MEAN_MAP, NIDM_INCF['GrandMeanMap']),
+                     (NIDM_RESIDUAL_MEAN_SQUARES_MAP, NIDM_INCF['ResidualMeanSquaresMap']),
+                     (NIDM_MASK_MAP, NIDM_INCF['MaskMap']),
+                     (NIDM_CONTRAST_WEIGHTS, NIDM_INCF['ContrastWeights']),
+                     (NIDM_STATISTIC_MAP, NIDM_INCF['StatisticMap']),
+                     (NIDM_CONTRAST_STANDARD_ERROR_MAP, NIDM_INCF['ContrastStandardErrorMap']),
+                     (NIDM_INFERENCE, NIDM_INCF['Inference']),
+                     (NIDM_HEIGHT_THRESHOLD, NIDM_INCF['HeightThreshold']),
+                     (NIDM_EXTENT_THRESHOLD, NIDM_INCF['ExtentThreshold']),
+                     (NIDM_PEAK, NIDM_INCF['Peak']),
+                     (NIDM_CLUSTER_LABELS_MAP, NIDM_INCF['ClusterLabelsMap']),
+                     (NIDM_COORDINATE, NIDM_INCF['Coordinate']),
+                     (NIDM_PARAMETER_ESTIMATE_MAP, NIDM_INCF['ParameterEstimateMap']),
                      (SPM['ReselsPerVoxelMap'], SPM_INCF['ReselsPerVoxelMap']),
-                     (FSL['CenterOfGravity'], FSL_INCF['CenterOfGravity'])]
+                     (FSL['ClusterCenterOfGravity'], FSL_INCF['CenterOfGravity'])]
 
         # MaskMap was sometimes called CustomMaskMap (when isUserDefined=true)
         components["Parameters estimation"].append(NIDM_INCF['CustomMaskMap'])
         
         # The following classes were not represented in 0.2.0
-        components["Inference"].remove(NIDM['ClusterDefinitionCriteria'])
-        components["Inference"].remove(NIDM['PeakDefinitionCriteria'])
-        components["Inference"].remove(NIDM['DisplayMaskMap'])
-        components["Inference"].remove(NIDM['ConjunctionInference'])
+        components["Inference"].remove(NIDM_CLUSTER_DEFINITION_CRITERIA)
+        components["Inference"].remove(NIDM_PEAK_DEFINITION_CRITERIA)
+        components["Inference"].remove(NIDM_DISPLAY_MASK_MAP)
+        components["Inference"].remove(NIDM_CONJUNCTION_INFERENCE)
 
         # SPM and FSL software were described using software-specific terms
         components["SPM-specific Concepts"].append(NIDM_INCF['SPM'])
@@ -149,7 +149,7 @@ def main(nidm_original_version):
         used_by[NIDM_INCF['MaskMap']] = [NIDM_INCF['ContrastEstimation']]
         used_by[NIDM_INCF['CustomMaskMap']] = [NIDM_INCF['ModelParametersEstimation']]
     
-
+        print used_by[NIDM_INCF['MaskMap']]
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
         components, used_by, generated_by, derived_from = _replace_term_by(\
             renaming, components, used_by, generated_by, derived_from)
