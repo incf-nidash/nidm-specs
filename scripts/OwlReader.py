@@ -45,6 +45,9 @@ class OwlReader():
 
         return children
 
+    def is_class(self, uri):
+        return (uri, RDF['type'], OWL['Class']) in self.graph
+
     def get_class_names_by_prov_type(self, classes=None, prefix=None, but=None):
         class_names = dict()
         # We at least want to have an output for Entity, Activity and Agent
@@ -67,6 +70,9 @@ class OwlReader():
                 classes = list(set(classes) - set(but))
 
         for class_name in classes:
+            if not self.is_class(class_name):
+                raise Exception('Class '+str(class_name)+' does not exist.')
+
             if not isinstance(class_name, term.BNode):
                 prov_type = self.get_prov_class(class_name)
                 if prov_type:
@@ -545,3 +551,20 @@ class OwlReader():
                             my_restriction_exception[key].add(example_name)
 
         return list((my_exception, my_range_exception, my_restriction_exception))
+
+    def get_label(self, uri):
+        name = self.graph.qname(uri)
+
+        # If a label is available, use the namespace:label, otherwise qname
+        label = list(self.graph.objects(uri, RDFS['label']))
+        if label:
+            label = label[0]
+            name = name.split(":")[0]+":'"+label+"'"
+
+        return name
+
+    def sorted_by_labels(self, term_list):
+        class_labels = map(self.get_label, term_list)
+        sorted_term_list = [x for (y,x) in sorted(zip(class_labels, term_list))]
+
+        return sorted_term_list
