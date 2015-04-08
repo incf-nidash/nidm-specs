@@ -3,6 +3,7 @@ import codecs
 from OwlReader import OwlReader
 from Constants import *
 import re
+import cgi
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_ROOT = os.path.dirname(RELPATH)
@@ -348,7 +349,7 @@ class OwlSpecification(object):
             self.text += """        
                 </ul>
                 </div>
-                <pre class='example highlight'>"""+example+"""</pre>"""
+                <pre class='example highlight'>"""+cgi.escape(example)+"""</pre>"""
 
         for range_name in range_classes:
             if not range_name in self.already_defined_classes:
