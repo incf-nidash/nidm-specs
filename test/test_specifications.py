@@ -44,17 +44,22 @@ class TestSpecifications(unittest.TestCase):
         self._run(component, create_expe_spec, "create_expe_specification")
 
     def _run(self, component, spec_fun, spec_fun_name, param=None):
-        original_spec = self._get_spec_txt(component)
+        original_spec = self._get_spec_txt(component, None, param)
         if param is not None:
             spec_fun(param)
         else:
             spec_fun()
-        updated_spec = self._get_spec_txt(component, original_spec)
-        self._compare(component, original_spec, updated_spec, spec_fun_name)
+        updated_spec = self._get_spec_txt(component, original_spec, param)
+        self._compare(component, original_spec, updated_spec, spec_fun_name, param)
 
-    def _get_spec_txt(self, component, original=None):
+    def _get_spec_txt(self, component, original=None, version=None):
+        if not version:
+            version = "dev"
+        else:
+            version = version.replace(".", "")
+
         spec_file = os.path.join(REPO_ROOT, "doc", "content", "specs", 
-                component+"_dev.html")
+                component+"_"+version+".html")
         spec_fid = open(spec_file, 'r')
         spec_txt = spec_fid.read()
         spec_fid.close()
@@ -67,7 +72,8 @@ class TestSpecifications(unittest.TestCase):
 
         return spec_txt
             
-    def _compare(self, component, original_spec, updated_spec, spec_fun_name):
+    def _compare(self, component, original_spec, updated_spec, spec_fun_name,\
+        param=None):
         if not (updated_spec == original_spec):
             original_spec_lines = original_spec.splitlines()
             updated_spec_lines = updated_spec.splitlines()
@@ -75,8 +81,14 @@ class TestSpecifications(unittest.TestCase):
                 updated_spec_lines)
             logger.debug('\n'.join(diff))
 
+            if param is None:
+                version = ""
+            else:
+                version = param
+
             error_msg = component+" Specification outdated, please update "\
-                "using python nidm/"+component+"/scripts/"+spec_fun_name+".py"
+                "using python nidm/"+component+"/scripts/"+spec_fun_name+".py"\
+                +" "+version
 
             raise Exception(error_msg)
 
