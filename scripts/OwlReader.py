@@ -367,9 +367,12 @@ class OwlReader():
 
         prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
         for prov_type in prov_types:
+            print prov_type
             for instance_id in self.graph.subjects(RDF.type, prov_type):
+                print instance_id
                 for class_name in self.graph.objects(instance_id, RDF.type):
-                   if not class_name == prov_type:
+                    print class_name
+                    if not class_name == prov_type:
                         sub_types.add(class_name)
 
         return sub_types
@@ -378,13 +381,18 @@ class OwlReader():
     def check_class_names(self, example_graph, example_name):
         my_exception = dict()
         class_names = self.get_class_names()
-        sub_types = self.get_sub_class_names()
 
-        for not_recognised_sub_type in (sub_types - class_names):
+        unrecognised_classes = list()
+        # for class_name in example_graph.subjects(RDF['type'], OWL['Class']):
+        for class_name in example_graph.objects(None, RDF.type):
+            if not isinstance(class_name, term.BNode):
+                if not class_name in class_names:
+                    unrecognised_classes.append(class_name)
 
-            if not not_recognised_sub_type.startswith(str(PROV)):
+        for unrecognised_class in unrecognised_classes:
+            if not unrecognised_class.startswith(str(PROV)):
                 # key = example_graph.qname(not_recognised_sub_type)
-                key = "\n Unrecognised sub-type: "+example_graph.qname(not_recognised_sub_type)
+                key = "\n Unrecognised sub-type: "+example_graph.qname(unrecognised_class)
                 if key in my_exception:
                     my_exception[key].add(example_name)
                 else:
