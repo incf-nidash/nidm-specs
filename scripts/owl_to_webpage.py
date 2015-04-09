@@ -34,12 +34,15 @@ class OwlSpecification(object):
         if not subcomponents:
             subcomponents = dict([(None, self.owl.classes)])
 
+        table_num = 3
         for subcomponent_name, classes in subcomponents.items():
             classes_by_types = self.owl.get_class_names_by_prov_type(classes, \
                 prefix=prefix, but=self.already_defined_classes)
             self.already_defined_classes += classes
 
-            self.create_subcomponent_table(classes_by_types, subcomponent_name)
+            self.create_subcomponent_table(classes_by_types, table_num, \
+                subcomponent_name)
+            table_num = table_num + 1
             all_classes = sorted(classes_by_types[PROV['Agent']])+\
                           sorted(classes_by_types[PROV['Activity']])+\
                           sorted(classes_by_types[PROV['Entity']])+\
@@ -58,7 +61,7 @@ class OwlSpecification(object):
 
         self.close_sections()
 
-    def create_subcomponent_table(self, classes, subcomponent_name=None):
+    def create_subcomponent_table(self, classes, table_num, subcomponent_name=None):
         if subcomponent_name:
             self.text += """
         <section><h1>"""+subcomponent_name+"""</h1>"""
@@ -73,15 +76,18 @@ class OwlSpecification(object):
         else:
             subcomponent_name = ""
 
+        # Did not find how to handle table numbering and ids with Respec as we
+        # did for figures?
+        table_id = "prov-mapping-"""+subcomponent_name.lower()
         self.text += """
         <div style="text-align: left;">
             <table class="thinborder" style="margin-left: auto; margin-right: auto;">
-                <caption id="overview-types-and-relations"><span>Table 2<sup>\
-                <a class="internalDFN" href="#overview-types-and-relations">\
-                <span class="diamond"> &#9826;:</span></a></sup> </span>\
+                <caption id=\""""+table_id+"""\">\
+                Table """+str(table_num)+"""<sup>\
+                <a class="internalDFN" href=\"#"""+table_id+"""\">\
+                &#9826;</a></sup>: 
                 Mapping of """+self.name+""" """+subcomponent_name+""" Core Concepts to types and relations \
                 and PROV core concepts</caption> \
-                <!-- Table 2 -->
                 <tbody>
                     <tr>
                         <td><b>"""+self.name+""" Concepts</b></td>
