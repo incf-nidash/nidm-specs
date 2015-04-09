@@ -51,19 +51,19 @@ def main():
 
     subcomponents =  collections.OrderedDict()
     
-    subcomponents["Investigation"] = [NIDM_EXPERIMENT['InvestigationCollection'],
-        NIDM_EXPERIMENT['InvestigationProcess'],NIDM_EXPERIMENT['Model'], 
-        NIDM_EXPERIMENT['ModelSpecification'],NIDM_EXPERIMENT['Group'],
-        NIDM_EXPERIMENT['Contrast'], NIDM_EXPERIMENT['Task'],NIDM_EXPERIMENT['Condition']]
-    subcomponents["Session"] = [NIDM_EXPERIMENT['DataCollection'],NIDM_EXPERIMENT['SessionAcquisition']]
-    subcomponents["Serie"] = [NIDM_EXPERIMENT['AnatomyImagingAcquisition'],
-        NIDM_EXPERIMENT['TaskBasedImagingAcquisition'], NIDM_EXPERIMENT['AnatomicalScan'],
-        NIDM_EXPERIMENT['FunctionalScan'], NIDM_EXPERIMENT['BehaviorAndConsitionOnsets'],
-        NIDM_EXPERIMENT['MRScanner'], NIDM_EXPERIMENT['PresentationSoftware']]
+    subcomponents["Investigation"] = [NIDM['InvestigationCollection'],
+        NIDM['InvestigationProcess'],NIDM['Model'], 
+        NIDM['ModelSpecification'],NIDM['Group'],
+        NIDM['Contrast'], NIDM['Task'],NIDM['Condition']]
+    subcomponents["Session"] = [NIDM['DataCollection'],NIDM['SessionAcquisition']]
+    subcomponents["Serie"] = [NIDM['AnatomyImagingAcquisition'],
+        NIDM['TaskBasedImagingAcquisition'], NIDM['AnatomicalScan'],
+        NIDM['FunctionalScan'], NIDM['BehaviorAndConsitionOnsets'],
+        NIDM['MRScanner'], NIDM['PresentationSoftware']]
 
-    subcomponents["Project"] = [NIDM_EXPERIMENT['ProjectObject']]
-    subcomponents["Study"] = [NIDM_EXPERIMENT['StudyObject']]
-    subcomponents["Acquisition"] = [NIDM_EXPERIMENT['AcquisitionObject']]
+    subcomponents["Project"] = [NIDM['ProjectObject']]
+    subcomponents["Study"] = [NIDM['StudyObject']]
+    subcomponents["Acquisition"] = [NIDM['AcquisitionObject']]
     subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the 
@@ -77,7 +77,7 @@ def main():
 
     owlspec = OwlSpecification(owl_file, import_files, "NIDM-Experiment", 
         subcomponents, used_by, generated_by, derived_from, 
-        prefix=str(NIDM_EXPERIMENT))
+        prefix=str(NIDM))
 
     if not nidm_version == "dev":
         owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)
