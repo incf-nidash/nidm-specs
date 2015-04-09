@@ -10,8 +10,6 @@ from rdflib import Namespace
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://purl.org/nidash/nidm#')
 
-NIDM_EXPERIMENT = Namespace('http://purl.org/nidash/nidm/experiment#')
-
 NIIRI = Namespace('http://iri.nidash.org/')
 SPM = Namespace('http://purl.org/nidash/spm#')
 FSL = Namespace('http://purl.org/nidash/fsl#')
