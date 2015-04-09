@@ -99,15 +99,40 @@ def main(nidm_original_version):
     }
 
     if nidm_version == "020":
+        # nidm namespaces were defined under incf.org (instead of purl)
+        NIDM_INCF = Namespace('http://www.incf.org/ns/nidash/nidm#')
+        SPM_INCF = Namespace('http://www.incf.org/ns/nidash/spm#')
+        FSL_INCF = Namespace('http://www.incf.org/ns/nidash/fsl#')
+
         # The following classes were named differently in 0.2.0
-        renaming =  [(NIDM['ExcursionSetMap'],NIDM['ExcursionSet']),
-                     (NIDM['SearchSpaceMaskMap'],NIDM['SearchSpaceMap']),
-                     (NIDM['SignificantCluster'],NIDM['Cluster']),
-                     (NIDM['ErrorModel'],NIDM['NoiseModel']),
-                     (NIDM_CONTRAST_ESTIMATION,NIDM['ContrastEstimation'])]
+        renaming =  [(NIDM['ExcursionSetMap'],NIDM_INCF['ExcursionSet']),
+                     (NIDM['SearchSpaceMaskMap'],NIDM_INCF['SearchSpaceMap']),
+                     (NIDM['SignificantCluster'],NIDM_INCF['Cluster']),
+                     (NIDM['ErrorModel'],NIDM_INCF['NoiseModel']),
+                     (NIDM_CONTRAST_ESTIMATION,NIDM_INCF['ContrastEstimation']),
+                     (NIDM['ContrastMap'],NIDM_INCF['ContrastMap']),
+                     (NIDM['Map'], NIDM_INCF['Map']),
+                     (NIDM['Data'], NIDM_INCF['Data']),
+                     (NIDM['DesignMatrix'], NIDM_INCF['DesignMatrix']),
+                     (NIDM['ModelParametersEstimation'], NIDM_INCF['ModelParametersEstimation']),
+                     (NIDM['GrandMeanMap'], NIDM_INCF['GrandMeanMap']),
+                     (NIDM['ResidualMeanSquaresMap'], NIDM_INCF['ResidualMeanSquaresMap']),
+                     (NIDM['MaskMap'], NIDM_INCF['MaskMap']),
+                     (NIDM['ContrastWeights'], NIDM_INCF['ContrastWeights']),
+                     (NIDM['StatisticMap'], NIDM_INCF['StatisticMap']),
+                     (NIDM['ContrastStandardErrorMap'], NIDM_INCF['ContrastStandardErrorMap']),
+                     (NIDM['Inference'], NIDM_INCF['Inference']),
+                     (NIDM['HeightThreshold'], NIDM_INCF['HeightThreshold']),
+                     (NIDM['ExtentThreshold'], NIDM_INCF['ExtentThreshold']),
+                     (NIDM['Peak'], NIDM_INCF['Peak']),
+                     (NIDM['ClusterLabelsMap'], NIDM_INCF['ClusterLabelsMap']),
+                     (NIDM['Coordinate'], NIDM_INCF['Coordinate']),
+                     (NIDM['ParameterEstimateMap'], NIDM_INCF['ParameterEstimateMap']),
+                     (SPM['ReselsPerVoxelMap'], SPM_INCF['ReselsPerVoxelMap']),
+                     (FSL['CenterOfGravity'], FSL_INCF['CenterOfGravity'])]
 
         # MaskMap was sometimes called CustomMaskMap (when isUserDefined=true)
-        components["Parameters estimation"].append(NIDM['CustomMaskMap'])
+        components["Parameters estimation"].append(NIDM_INCF['CustomMaskMap'])
         
         # The following classes were not represented in 0.2.0
         components["Inference"].remove(NIDM['ClusterDefinitionCriteria'])
@@ -116,13 +141,13 @@ def main(nidm_original_version):
         components["Inference"].remove(NIDM['ConjunctionInference'])
 
         # SPM and FSL software were described using software-specific terms
-        components["SPM-specific Concepts"].append(NIDM['SPM'])
-        components["FSL-specific Concepts"].append(NIDM['FSL'])
+        components["SPM-specific Concepts"].append(NIDM_INCF['SPM'])
+        components["FSL-specific Concepts"].append(NIDM_INCF['FSL'])
 
 
         # Add manually used and wasDerivedFrom because these are not stored in the owl file
-        used_by[NIDM['MaskMap']] = [NIDM['ContrastEstimation']]
-        used_by[NIDM['CustomMaskMap']] = [NIDM['ModelParametersEstimation']]
+        used_by[NIDM_INCF['MaskMap']] = [NIDM_INCF['ContrastEstimation']]
+        used_by[NIDM_INCF['CustomMaskMap']] = [NIDM_INCF['ModelParametersEstimation']]
     
 
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
