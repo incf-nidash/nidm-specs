@@ -563,6 +563,18 @@ class OwlReader():
 
         return name
 
+    def is_external_namespace(self, term_uri):
+        term_label = self.get_label(term_uri)
+
+        return not (term_label.startswith("nidm") or \
+                    term_label.startswith("fsl") or \
+                    term_label.startswith("spm") or \
+                    term_label.startswith("afni"))
+
+    def get_name(self, uri):
+        name = self.graph.qname(uri).split(":")[1]
+        return name
+
     def sorted_by_labels(self, term_list):
         class_labels = map(self.get_label, term_list)
         sorted_term_list = [x for (y,x) in sorted(zip(class_labels, term_list))]
