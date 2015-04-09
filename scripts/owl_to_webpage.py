@@ -292,7 +292,7 @@ class OwlSpecification(object):
 
                         self.text += self.linked_listing(\
                             self.owl.parent_ranges[att], \
-                            "(range ", child_range_txt)                       
+                            "(range ", child_range_txt+")")                       
 
                         for range_class in sorted(self.owl.ranges[att]):
                             if self.owl.get_label(range_class).startswith('nidm'):
