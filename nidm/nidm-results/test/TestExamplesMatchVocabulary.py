@@ -25,9 +25,18 @@ class TestExamples(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestExamples, self).__init__(*args, **kwargs)    
 
+        namespaces_def = os.path.join(RELPATH, "terms", "templates", 'Namespaces.txt')
+        fid = open(namespaces_def, "r")
+        namespaces = fid.read()
+        fid.close()
+
+        self.term_examples = glob.glob(os.path.join(RELPATH, "terms", "examples", '*.txt'))
+        self.example_files = example_filenames.union(self.term_examples)
+
         self.examples = dict()
         self.owl_files = dict()
-        for example_file in example_filenames:
+
+        for example_file in self.example_files:
             provn_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
             # ttl_file_url = get_turtle(provn_file)
@@ -35,7 +44,14 @@ class TestExamples(unittest.TestCase):
 
             # Read turtle
             self.examples[example_file] = Graph()
-            self.examples[example_file].parse(ttl_file, format='turtle')
+            if example_file in self.term_examples:
+                fid = open(ttl_file, "r")
+                ttl_txt = fid.read()
+                fid.close()
+
+                self.examples[example_file].parse(data=namespaces+ttl_txt, format='turtle')
+            else:
+                self.examples[example_file].parse(ttl_file, format='turtle')
 
             term_dir = os.path.join(os.path.dirname(ttl_file), os.pardir, 'terms')
             if not os.path.isdir(term_dir):
@@ -73,7 +89,8 @@ class TestExamples(unittest.TestCase):
     def test_check_classes(self):
         logger.info("TestExamples: test_check_classes")
         my_exception = dict()
-        for example_file in example_filenames:
+        for example_file in self.example_files:
+
             example_name = example_file
             example_graph = self.examples[example_file]
             owl = self.owl_files[example_file]
@@ -96,7 +113,7 @@ class TestExamples(unittest.TestCase):
         my_exception = dict()
         my_range_exception = dict()
         my_restriction_exception = dict()
-        for example_file in example_filenames:
+        for example_file in self.example_files:
             example_name = example_file
             example_graph = self.examples[example_file]
             owl = self.owl_files[example_file]
@@ -106,7 +123,12 @@ class TestExamples(unittest.TestCase):
             exception_msg = self.owl.check_attributes(example_graph, example_name)
             
             my_exception = merge_exception_dict(my_exception, exception_msg[0])
-            my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
+            if not example_file in self.term_examples:
+                my_range_exception = merge_exception_dict(my_range_exception, exception_msg[1])
+            else:
+                # Ignore range exceptions for test examples (as for object 
+                # properties the linked object will be missing)
+                my_range_exception = dict()
             my_restriction_exception = merge_exception_dict(my_restriction_exception, exception_msg[2])
 
         # Aggregate errors over examples for conciseness
