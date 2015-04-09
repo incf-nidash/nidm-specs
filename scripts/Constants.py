@@ -8,13 +8,13 @@
 from rdflib import Namespace
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
-NIDM = Namespace('http://www.incf.org/ns/nidash/nidm#')
+NIDM = Namespace('http://purl.org/nidash/nidm#')
 
 NIDM_EXPERIMENT = Namespace('http://purl.org/nidash/nidm/experiment#')
 
 NIIRI = Namespace('http://iri.nidash.org/')
-SPM = Namespace('http://www.incf.org/ns/nidash/spm#')
-FSL = Namespace('http://www.incf.org/ns/nidash/fsl#')
+SPM = Namespace('http://purl.org/nidash/spm#')
+FSL = Namespace('http://purl.org/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
 DCT = Namespace('http://purl.org/dc/terms/')

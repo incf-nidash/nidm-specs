@@ -9,7 +9,7 @@ from uuid import uuid1
 dcterms = prov.Namespace("dcterms", "http://purl.org/dc/terms/")
 xsd = prov.Namespace("xsd", "http://www.w3.org/2001/XMLSchema#")
 cml = prov.Namespace("cml", "http://www.connectomics.org/cff-2/")
-nidm = prov.Namespace("nidm", "http://www.incf.org/ns/nidash/fs#")
+nidm = prov.Namespace("nidm", "http://purl.org/nidash/nidm#")
 
 # uuid method
 get_id = lambda: uuid1().hex
