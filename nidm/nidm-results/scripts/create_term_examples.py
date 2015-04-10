@@ -303,6 +303,16 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			model_pe_id="niiri:model_pe_id"
+			),
+		"SPM_DriftModel": dict(
+			id="niiri:drift_model_id",
+			label="SPM's DCT Drift Model",
+			cut_off="2"
+			),
+		"FSL_DriftModel": dict(
+			id="niiri:drift_model_id",
+			label="FSL's Gaussian Running Line Drift Model",
+			cut_off="2"
 			)
 		}
 
