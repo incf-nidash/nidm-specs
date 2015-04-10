@@ -254,11 +254,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/257">#257</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CenterOfGravity"> [more] </a></td>
-    <td><b>fsl:CenterOfGravity: </b>Centre Of Gravity for the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case (definition from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/290">#290</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CoordinateSpace"> [more] </a></td>
     <td><b>nidm:CoordinateSpace: </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a SpatialImage (e.g., a StatisticMap)</td>
 </tr>
