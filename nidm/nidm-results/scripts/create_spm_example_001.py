@@ -306,9 +306,7 @@ def main():
 		"Coordinate-1": dict(
 			coordinate_id="niiri:coordinate_0001",
 			label="Coordinate: 0001",
-			coord_1="-60",
-			coord_2="-25",
-			coord_3="11"
+			coord="[-60, -25, 11]"
 			),
 		"Peak_ValueP-2": dict(
 			peak_id="niiri:peak_0002",
@@ -324,9 +322,7 @@ def main():
 		"Coordinate-2": dict(
 			coordinate_id="niiri:coordinate_0002",
 			label="Coordinate: 0002",
-			coord_1="-42",
-			coord_2="-31",
-			coord_3="11"
+			coord="[-42, -31, 11]"
 			),
 		"Peak_ValueP-3": dict(
 			peak_id="niiri:peak_0003",
@@ -342,9 +338,7 @@ def main():
 		"Coordinate-3": dict(
 			coordinate_id="niiri:coordinate_0003",
 			label="Coordinate: 0003",
-			coord_1="-66",
-			coord_2="-31",
-			coord_3="-1"
+			coord="[-66, -31, -1]"
 			),
 		"Peak_ValueP-4": dict(
 			peak_id="niiri:peak_0004",
@@ -360,9 +354,7 @@ def main():
 		"Coordinate-4": dict(
 			coordinate_id="niiri:coordinate_0004",
 			label="Coordinate: 0004",
-			coord_1="63",
-			coord_2="-13",
-			coord_3="-4"
+			coord="[63, -13, -4]"
 			),
 		"Peak_ValueP-5": dict(
 			peak_id="niiri:peak_0005",
@@ -378,9 +370,7 @@ def main():
 		"Coordinate-5": dict(
 			coordinate_id="niiri:coordinate_0005",
 			label="Coordinate: 0005",
-			coord_1="60",
-			coord_2="-22",
-			coord_3="11"
+			coord="[60, -22, 11]"
 			),
 		"Peak_ValueP-6": dict(
 			peak_id="niiri:peak_0006",
@@ -396,9 +386,7 @@ def main():
 		"Coordinate-6": dict(
 			coordinate_id="niiri:coordinate_0006",
 			label="Coordinate: 0006",
-			coord_1="57",
-			coord_2="-40",
-			coord_3="5"
+			coord="[57, -40, 5]"
 			),
 		"Peak_ValueP-7": dict(
 			peak_id="niiri:peak_0007",
@@ -414,9 +402,7 @@ def main():
 		"Coordinate-7": dict(
 			coordinate_id="niiri:coordinate_0007",
 			label="Coordinate: 0007",
-			coord_1="36",
-			coord_2="-28",
-			coord_3="-13"
+			coord="[36, -28, -13]"
 			),
 		"Peak_ValueP-8": dict(
 			peak_id="niiri:peak_0008",
@@ -432,9 +418,7 @@ def main():
 		"Coordinate-8": dict(
 			coordinate_id="niiri:coordinate_0008",
 			label="Coordinate: 0008",
-			coord_1="-33",
-			coord_2="-31",
-			coord_3="-16"
+			coord="[-33, -31, -16]"
 			),
 		"Peak_ValueP-9": dict(
 			peak_id="niiri:peak_0009",
@@ -450,9 +434,7 @@ def main():
 		"Coordinate-9": dict(
 			coordinate_id="niiri:coordinate_0009",
 			label="Coordinate: 0009",
-			coord_1="45",
-			coord_2="-40",
-			coord_3="32"
+			coord="[45, -40, 32]"
 			),
 		"SearchSpaceMaskMap": dict( # The "search space"
 			search_space_id="niiri:search_space_mask_id",

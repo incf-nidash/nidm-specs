@@ -238,9 +238,7 @@ def main():
 		"Coordinate": dict(
 			coordinate_id="niiri:coordinate_0001",
 			label="Coordinate: 0001",
-			coord_1="-60",
-			coord_2="-28",
-			coord_3="13"
+			coord="[-60, -28, 13]"
 			),
 		"SearchSpaceMaskMap": dict(
 			search_space_id="niiri:search_space_mask_id",

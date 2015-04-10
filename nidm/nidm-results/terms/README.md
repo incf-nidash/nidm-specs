@@ -392,6 +392,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinateInVoxels"> [more] </a></td>
+    <td><b>fsl:coordinateInVoxels: </b>Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
+    <td>nidm:Coordinate </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a> and <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=dlh"> [more] </a></td>
     <td><b>fsl:dlh: </b>&lt;undefined&gt;</td>
     <td>nidm:SearchSpaceMaskMap </td>
@@ -409,6 +416,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=reselSizeInVoxels"> [more] </a></td>
     <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt;</td>
     <td>nidm:SearchSpaceMaskMap </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate"> [more] </a></td>
+    <td><b>nidm:coordinate: </b>Coordinate along the first dimension in voxel units. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
+    <td>nidm:Coordinate </td>
     <td>xsd:float </td>
 </tr>
 <tr>
@@ -504,27 +518,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate1InVoxels"> [more] </a></td>
-    <td><b>fsl:coordinate1InVoxels: </b>Coordinate along the first dimension in voxels</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate2InVoxels"> [more] </a></td>
-    <td><b>fsl:coordinate2InVoxels: </b>Coordinate along the second dimension in voxels</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate3InVoxels"> [more] </a></td>
-    <td><b>fsl:coordinate3InVoxels: </b>Coordinate along the third dimension in voxels</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q=clusterSizeInVertices"> [find issues/PR] </a></td>
     <td><b>nidm:clusterSizeInVertices: </b>Number of vertices that make up the cluster</td>
     <td>nidm:ExtentThreshold nidm:SignificantCluster </td>
@@ -536,27 +529,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:contrastName: </b>Name of the contrast</td>
     <td>nidm:ContrastMap nidm:ContrastWeights nidm:StatisticMap </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate1"> [more] </a></td>
-    <td><b>nidm:coordinate1: </b>Coordinate along the first dimension in voxel units</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate2"> [more] </a></td>
-    <td><b>nidm:coordinate2: </b>Coordinate along the second dimension in voxel units</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinate3"> [more] </a></td>
-    <td><b>nidm:coordinate3: </b>Coordinate along the third dimension in voxel units</td>
-    <td>nidm:Coordinate </td>
-    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
