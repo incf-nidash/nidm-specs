@@ -153,11 +153,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/289">#289</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=MapHeader"> [more] </a></td>
-    <td><b>nidm:MapHeader: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=NIDMObjectModel"> [more] </a></td>
     <td><b>nidm:NIDMObjectModel: </b>&lt;undefined&gt;</td>
 </tr>
@@ -436,13 +431,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:hasHRFBasis: </b>&lt;undefined&gt;</td>
     <td>nidm:DesignMatrix </td>
     <td>nidm:HemodynamicResponseFunctionBasis </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/289">#289</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=hasMapHeader"> [more] </a></td>
-    <td><b>nidm:hasMapHeader: </b>&lt;undefined&gt;</td>
-    <td>nidm:Map </td>
-    <td>nidm:MapHeader </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
