@@ -264,7 +264,7 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			inference_id="niiri:inference_id"
 			),
-		"FSL_CenterOfGravity": dict(
+		"FSL_ClusterCenterOfGravity": dict(
 			center_of_gravity_id="niiri:center_of_gravity_1",
 			location="niiri:coordinate_0001",
 			label="Center of gravity",
