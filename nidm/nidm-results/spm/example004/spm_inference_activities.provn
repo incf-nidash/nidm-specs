@@ -1,23 +1,28 @@
 document
-prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
 prefix nlx <http://neurolex.org/wiki/>
-prefix neurolex <http://neurolex.org/wiki/>
-prefix obo <http://purl.obolibrary.org/obo/>
-prefix dct <http://purl.org/dc/terms/>
-prefix spm <http://purl.org/nidash/spm#>
+prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+prefix niiri <http://iri.nidash.org/>
+prefix nidm <http://purl.org/nidash/nidm#>
+prefix nfo <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
 prefix pre_0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix fsl <http://purl.org/nidash/fsl#>
-prefix rdfs <http://www.w3.org/2000/01/rdf-schema#>
-prefix nfo <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
-prefix nidm <http://purl.org/nidash/nidm#>
-prefix niiri <http://iri.nidash.org/>
+prefix nidm_ConjunctionInference <http://purl.org/nidash/nidm#NIDM_0000011>
 prefix xsd <http://www.w3.org/2001/XMLSchema>
-prefix bnode <http://openprovenance.org/provtoolbox/bnode/>
+prefix obo <http://purl.obolibrary.org/obo/>
+prefix spm <http://purl.org/nidash/spm#>
 prefix dctype <http://purl.org/dc/dcmitype/>
+prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
+prefix dct <http://purl.org/dc/terms/>
+prefix rdfs <http://www.w3.org/2000/01/rdf-schema#>
+prefix nidm_OneTailedTest <http://purl.org/nidash/nidm#NIDM_0000060>
+prefix nidm_globalNullDegree <http://purl.org/nidash/nidm#NIDM_0000095>
+prefix neurolex <http://neurolex.org/wiki/>
+prefix nidm_Inference <http://purl.org/nidash/nidm#NIDM_0000049>
+prefix nidm_hasAlternativeHypothesis <http://purl.org/nidash/nidm#NIDM_0000097>
 prefix dc <http://purl.org/dc/elements/1.1/>
-activity(niiri:inference_id_1,-,-,[prov:type = 'nidm:Inference', prov:label = "Inference", nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
-activity(niiri:conjunction_id_2,-,-,[prov:type = 'spm:KConjunctionInference', prov:label = "k-Conjunction Inference", nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest', nidm:globalNullDegree = "1" %% xsd:int])
-activity(niiri:conjunction_id_1,-,-,[prov:type = 'nidm:ConjunctionInference', prov:label = "Conjunction Inference", nidm:hasAlternativeHypothesis = 'nidm:OneTailedTest'])
+activity(niiri:inference_id_1,-,-,[prov:type = 'nidm:NIDM_0000049', prov:label = "Inference", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
+activity(niiri:conjunction_id_2,-,-,[prov:type = 'spm:KConjunctionInference', prov:label = "k-Conjunction Inference", nidm:NIDM_0000097 = 'nidm:NIDM_0000060', nidm:NIDM_0000095 = "1" %% xsd:int])
+activity(niiri:conjunction_id_1,-,-,[prov:type = 'nidm:NIDM_0000011', prov:label = "Conjunction Inference", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
 used(niiri:inference_id_1,niiri:statistic_map_id,-)
 used(niiri:inference_id_1,niiri:height_threshold_id,-)
 used(niiri:inference_id_1,niiri:extent_threshold_id,-)
