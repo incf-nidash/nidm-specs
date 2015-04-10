@@ -271,7 +271,7 @@ def main():
 			p_value_fwe="0.000000",
 			excursion_set_id="niiri:excursion_set_map_id"
 			),
-		"FSL_CenterOfGravity-1": dict(
+		"FSL_ClusterCenterOfGravity-1": dict(
 			center_of_gravity_id="niiri:center_of_gravity_1",
 			label="Center of gravity 1",
 			location="niiri:COG_coordinate_0001",
@@ -291,7 +291,7 @@ def main():
 			p_value_fwe="0.000000",
 			excursion_set_id="niiri:excursion_set_map_id"
 			),
-		"FSL_CenterOfGravity-2": dict(
+		"FSL_ClusterCenterOfGravity-2": dict(
 			center_of_gravity_id="niiri:center_of_gravity_2",
 			label="Center of gravity 2",
 			location="niiri:COG_coordinate_0002",

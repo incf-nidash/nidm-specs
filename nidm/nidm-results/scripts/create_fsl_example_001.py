@@ -270,7 +270,7 @@ def main():
 			p_value_fwe="0.00894",
 			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
-		"FSL_CenterOfGravity-1": dict(
+		"FSL_ClusterCenterOfGravity-1": dict(
 			center_of_gravity_id="niiri:center_of_gravity_1",
 			label="Center of gravity 1",
 			location="niiri:COG_coordinate_0001",
@@ -291,7 +291,7 @@ def main():
 			p_value_fwe="0.000621",
 			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
-		"FSL_CenterOfGravity-2": dict(
+		"FSL_ClusterCenterOfGravity-2": dict(
 			center_of_gravity_id="niiri:center_of_gravity_2",
 			label="Center of gravity 2",
 			location="niiri:COG_coordinate_0002",
@@ -312,7 +312,7 @@ def main():
 			p_value_fwe="1.26e-12",
 			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
-		"FSL_CenterOfGravity-3 ": dict(
+		"FSL_ClusterCenterOfGravity-3 ": dict(
 			center_of_gravity_id="niiri:center_of_gravity_3 ",
 			label="Center of gravity 3",
 			location="niiri:COG_coordinate_0003 ",
@@ -332,7 +332,7 @@ def main():
 			p_value_fwe="8.02e-24",
 			excursion_set_id="niiri:excursion_set_map_id_1"
 			),
-		"FSL_CenterOfGravity-4  ": dict(
+		"FSL_ClusterCenterOfGravity-4  ": dict(
 			center_of_gravity_id="niiri:center_of_gravity_4",
 			label="Center of gravity 4",
 			location="niiri:COG_coordinate_0004  ",
