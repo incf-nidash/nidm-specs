@@ -67,7 +67,8 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	dct:format "text/csv"^^xsd:string ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id ;
-    nidm:hasHRFBasis fsl:GammaDifferenceHRF .
+    nidm:hasHRFBasis fsl:GammaDifferenceHRF ;
+    nidm:hasDriftModel niiri:drift_model_id.
 
 niiri:display_map_id_1 a prov:Entity , nidm:DisplayMaskMap ;
 	rdfs:label "Display Mask Map" ;
@@ -254,6 +255,10 @@ niiri:COG_coordinate_0004   a prov:Entity , prov:Location , nidm:Coordinate ;
 	rdfs:label "Coordinate 0004" ;
 	nidm:coordinate "[-7.38,-72.5,-8.5]"^^xsd:string ;
 	fsl:coordinateInVoxels "[34,14.7, 14]"^^xsd:string .
+
+niiri:drift_model_id a prov:Entity , fsl:GaussianRunningLineDriftModel ;
+	rdfs:label "FSL's Gaussian Running Line Drift Model" ;
+	fsl:driftCutoffPeriod 2 .
 
 niiri:excursion_set_map_id_1 a prov:Entity , nidm:ExcursionSetMap ;
 	rdfs:label "Excursion Set Map" ;

@@ -16,6 +16,16 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=LegendrePolynomialDriftModel"> [find issues/PR] </a></td>
+    <td><b>afni:LegendrePolynomialDriftModel: </b>A drift model in which the drifts are modeled by a Legendre orthogonal polynomial basis added to the regression model</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=GaussianRunningLineDriftModel"> [find issues/PR] </a></td>
+    <td><b>fsl:GaussianRunningLineDriftModel: </b>A drift model in which the drifts are modeled with a Gaussian-weighted running line smoother, fit to and subtracted from the data and each column of the design matrix</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/285">#285</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=Data"> [more] </a></td>
     <td><b>nidm:Data: </b>"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn." (This definition is from NCIT)(same as: <a href=http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474</a>)</td>
 </tr>
@@ -26,9 +36,19 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=DriftModel"> [find issues/PR] </a></td>
+    <td><b>nidm:DriftModel: </b>A model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/280">#280</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=HeightThreshold"> [more] </a></td>
     <td><b>nidm:HeightThreshold: </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=DCTDriftModel"> [find issues/PR] </a></td>
+    <td><b>spm:DCTDriftModel: </b>A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -302,6 +322,20 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=driftBasisOrder"> [find issues/PR] </a></td>
+    <td><b>afni:driftBasisOrder: </b>The number of basis in the drift model</td>
+    <td>afni:LegendrePolynomialDriftModel </td>
+    <td>xsd:int </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=driftCutoffPeriod"> [find issues/PR] </a></td>
+    <td><b>fsl:driftCutoffPeriod: </b>Full Width at Half Maximum in seconds of the Gaussian weight function used in the running line smoother</td>
+    <td>fsl:GaussianRunningLineDriftModel </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q=clusterSizeInVoxels"> [find issues/PR] </a></td>
     <td><b>nidm:clusterSizeInVoxels: </b>Number of voxels that make up the cluster</td>
     <td>nidm:ExtentThreshold nidm:SignificantCluster </td>
@@ -313,6 +347,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:grandMeanScaling: </b>Binary flag defining whether the data was scaled. Specifically, "grand mean scaling" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses</td>
     <td>nidm:Data </td>
     <td>xsd:boolean </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=hasDriftModel"> [find issues/PR] </a></td>
+    <td><b>nidm:hasDriftModel: </b>A property that associates a drift model to a design matrix (only used for first-level fMRI experiments)</td>
+    <td>nidm:DesignMatrix </td>
+    <td>nidm:DriftModel </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -334,6 +375,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:targetIntensity: </b>Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)</td>
     <td>nidm:Data </td>
     <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=driftCutoffPeriod"> [find issues/PR] </a></td>
+    <td><b>spm:driftCutoffPeriod: </b>Discrete Cosine Transform basis cut-off, specified as period length in seconds and ensures that all basis elements will have period of this duration or longer</td>
+    <td>spm:DCTDriftModel </td>
+    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>

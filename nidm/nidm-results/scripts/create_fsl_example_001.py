@@ -26,7 +26,13 @@ def main():
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
-			hrf_basis="fsl:GammaDifferenceHRF"),
+			hrf_basis="fsl:GammaDifferenceHRF",
+			drift_model="niiri:drift_model_id"),
+		"FSL_DriftModel": dict(
+			id="niiri:drift_model_id",
+			label="FSL's Gaussian Running Line Drift Model",
+			cut_off="2"
+			),
 		"Image-DesignMatrix": dict(
 			image_id="niiri:design_matrix_png_id",
 			location="file://./DesignMatrix.png",

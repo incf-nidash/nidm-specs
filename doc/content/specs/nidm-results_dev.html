@@ -605,6 +605,9 @@
                 <ul>
                     <li><span class="attribute" id="nidm:DesignMatrix.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:DesignMatrix.</li>
                      
+                        <li><span class="attribute" id="nidm:DesignMatrix.nidm:'has Drift Model'">
+                        <dfn>nidm:'has Drift Model'</dfn>
+                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a property that associates a drift model to a design matrix (only used for first-level fMRI experiments). (range <a>nidm:'Drift Model'</a> such as <a>afni:'AFNI's Legendre Polinomial Drift Model'</a>, <a>fsl:'FSL's Gaussian Running Line Drift Model'</a> or <a>spm:'SPM's DCT Drift Model'</a>)</li> 
                         <li><span class="attribute" id="nidm:DesignMatrix.nidm:hasHRFBasis">
                         <dfn>nidm:hasHRFBasis</dfn>
                         </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> . (range <a>nidm:HemodynamicResponseFunctionBasis</a> such as <a>afni:BLOCK</a>, <a>fsl:CustomHRB</a>, <a>fsl:SineHRB</a>, <a>nidm:FiniteImpulseResponseHRB</a>, <a>nidm:GammaHRB</a>, <a>nidm:HemodynamicResponseFunction</a>, <a>nidm:HemodynamicResponseFunctionDerivative</a> or <a>spm:FourierHRB</a>)</li>        
@@ -616,6 +619,28 @@
 	dct:format "text/csv"^^xsd:string ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id .</pre>
+            <!-- nidm:'Drift Model' -->
+            <section id="section-nidm:'Drift Model'"> 
+                <h1 label="nidm:'Drift Model'">nidm:'Drift Model'</h1>
+                <div class="glossary-ref">
+                    A <dfn>nidm:'Drift Model'</dfn>                    <sup><a title="nidm:'Drift Model'">                    <span class="diamond">&#9826;</span></a></sup> is a model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level. <a>nidm:'Drift Model'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Drift Model'"> A <a>nidm:'Drift Model'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Drift Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Drift Model'.</li>
+                            
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:drift_model_id a prov:Entity , fsl:GaussianRunningLineDriftModel ;
+	rdfs:label "FSL's Gaussian Running Line Drift Model" ;
+	fsl:driftCutoffPeriod 2 .</pre>        
+                </ul>
+                </div>
+                <pre class='example highlight'>niiri:drift_model_id a prov:Entity , spm:DCTDriftModel ;
+	rdfs:label "SPM's DCT Drift Model" ;
+	spm:driftCutoffPeriod 2 .</pre>  
+            </section>
             <!-- nidm:FiniteImpulseResponseHRB -->
             <section id="section-nidm:FiniteImpulseResponseHRB"> 
                 <h1 label="nidm:FiniteImpulseResponseHRB">nidm:FiniteImpulseResponseHRB</h1>
