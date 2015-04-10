@@ -163,7 +163,8 @@ niiri:design_matrix_id a prov:Entity , nidm:DesignMatrix ;
 	dct:format "text/csv"^^xsd:string ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id ;
-    nidm:hasHRFBasis spm:GammaDifferenceHRF .
+    nidm:hasHRFBasis spm:GammaDifferenceHRF ;
+    nidm:hasDriftModel niiri:drift_model_id.
 
 niiri:error_model_id a prov:Entity , nidm:ErrorModel ;
     nidm:hasErrorDistribution nidm:GaussianDistribution ;
@@ -369,6 +370,10 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm:ResidualMeanSquaresMap ;
 	nidm:inCoordinateSpace niiri:coordinate_space_id_1 ;
 	crypto:sha512 "84cd0e608b8763307a1166b88761291e552838d85b58334a69a286060f6489a3b0929a940c3ccac883803455118787ea32e0bb5a6d236a5d6e9e8b6a9f918a6b"^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .
+
+niiri:drift_model_id a prov:Entity , spm:DCTDriftModel ;
+	rdfs:label "SPM's DCT Drift Model" ;
+	spm:driftCutoffPeriod 2 .
 
 niiri:inference_id prov:used niiri:resels_per_voxel_map_id .
 
