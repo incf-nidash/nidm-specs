@@ -62,15 +62,13 @@ class TestSpecifications(unittest.TestCase):
                 component+"_"+version+".html")
         print str(spec_file)        
 
-        spec_fid = open(spec_file, 'r')
-        spec_txt = spec_fid.read()
-        spec_fid.close()
+        with open(spec_file, 'r') as f:
+            spec_txt = f.read()
 
         if original is not None:
-            # Write back original text found in README           
-            spec_fid = open(spec_file, 'w')
-            spec_fid.write(original)
-            spec_fid.close()
+            # Write back original text found in README         
+            with open(spec_file, 'w') as f:
+                f.write(original)
 
         return spec_txt
             
