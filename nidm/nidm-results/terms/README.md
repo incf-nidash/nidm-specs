@@ -73,11 +73,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/287">#287</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=ContrastVarianceMap"> [more] </a></td>
-    <td><b>fsl:ContrastVarianceMap: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomHRB"> [more] </a></td>
     <td><b>fsl:CustomHRB: </b>&lt;undefined&gt;</td>
 </tr>
