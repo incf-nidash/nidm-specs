@@ -126,7 +126,7 @@ nidm:hasConnectivityCriterion rdf:type owl:ObjectProperty ;
 ###  http://purl.org/nidash/nidm#hasDriftModel
 
 nidm:hasDriftModel rdf:type owl:ObjectProperty ;
-
+                   
                    rdfs:label "has Drift Model" ;
                    
                    obo:IAO_0000115 "A property that associates a drift model to a design matrix (only used for first-level fMRI experiments)." ;
@@ -342,7 +342,7 @@ dct:format rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/nidash/afni#driftBasisOrder
 
 afni:driftBasisOrder rdf:type owl:DatatypeProperty ;
-
+                     
                      rdfs:label "AFNI's drift Basis Order" ;
                      
                      obo:IAO_0000115 "The number of basis in the drift model." ;
@@ -392,7 +392,7 @@ fsl:dlh rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/nidash/fsl#driftCutoffPeriod
 
 fsl:driftCutoffPeriod rdf:type owl:DatatypeProperty ;
-
+                      
                       rdfs:label "FSL's Drift Cut-off Period" ;
                       
                       obo:IAO_0000115 "Full Width at Half Maximum in seconds of the Gaussian weight function used in the running line smoother." ;
@@ -767,13 +767,13 @@ nidm:numberOfClusters rdf:type owl:DatatypeProperty ;
 
 nidm:numberOfDimensions rdf:type owl:DatatypeProperty ;
                         
-                        obo:IAO_0000115 "Number of dimensions of a data matrix." ;
+                        obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295" ;
+                        
+                        obo:IAO_0000115 "Number of dimensions of the data matrix (e.g. 3 for volumetric data)" ;
                         
                         obo:IAO_0000112 "3" ;
                         
-                        obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/295" ;
-                        
-                        obo:IAO_0000114 obo:IAO_0000120 ;
+                        obo:IAO_0000114 obo:IAO_0000122 ;
                         
                         rdfs:domain nidm:CoordinateSpace ;
                         
@@ -988,6 +988,7 @@ nidm:userSpecifiedThresholdType rdf:type owl:DatatypeProperty ;
                                 obo:IAO_0000112 "nidm:pValueFWER" ;
                                 
                                 obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/150" ;
+                                
                                 rdfs:comment "Range is currently string but should be limited to {'nidm:pValueFWER' not found'nidm:pValueFDR' not found'nidm:pValueUncorrected';'nidm:statistic'}?" ;
                                 
                                 
@@ -1018,18 +1019,13 @@ nidm:version rdf:type owl:DatatypeProperty ;
 
 nidm:voxelSize rdf:type owl:DatatypeProperty ;
                
-               obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/295" ;
+               obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295" ;
                
-               obo:IAO_0000112 "[2 2 4]" ;
+               obo:IAO_0000112 "[2, 2, 4]" ;
                
-               rdfs:seeAlso """http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C95003 
-""" ;
+               obo:IAO_0000115 "3D size of a voxel measured in voxel units (e.g. [2, 2, 4])" ;
                
-               obo:IAO_0000115 "3D size of a voxel measured in voxelUnits." ;
-               
-               rdfs:comment "Range: Vector of floats." ;
-               
-               obo:IAO_0000114 obo:IAO_0000120 ;
+               obo:IAO_0000114 obo:IAO_0000122 ;
                
                rdfs:domain nidm:CoordinateSpace ;
                
@@ -1061,15 +1057,15 @@ nidm:voxelToWorldMapping rdf:type owl:DatatypeProperty ;
 
 nidm:voxelUnits rdf:type owl:DatatypeProperty ;
                 
-                obo:IAO_0000115 "Units associated with each dimensions of some N-dimensional data." ;
-                
-                obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/295 (previously discussed in https://github.com/incf-nidash/nidm/issues/147)" ;
+                obo:IAO_0000115 "Set of units associated with the dimensions of some N-dimensional data (e.g. [mm, mm, mm])" ;
                 
                 rdfs:comment "Range: Vector of strings." ;
                 
-                obo:IAO_0000112 "{'mm' 'mm' 's'}" ;
+                obo:IAO_0000112 "['mm', 'mm', 's']" ;
                 
-                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295 and https://github.com/incf-nidash/nidm/issues/147" ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 ;
                 
                 rdfs:domain nidm:CoordinateSpace ;
                 
@@ -1104,7 +1100,7 @@ spm:clusterSizeInResels rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/nidash/spm#driftCutoffPeriod
 
 spm:driftCutoffPeriod rdf:type owl:DatatypeProperty ;
-
+                      
                       rdfs:label "SPM's Drift Cut-off Period" ;
                       
                       obo:IAO_0000115 "Discrete Cosine Transform basis cut-off, specified as period length in seconds and ensures that all basis elements will have period of this duration or longer." ;
