@@ -160,7 +160,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id"),
 		"FSL_DerivedMap-ContrastVariance": dict(
 			derived_from_map_id="niiri:contrast_variance_map_id",
-			derived_map_type="nidm:ContrastVarianceMap",
+			derived_map_type="nidm:NIDM_0000135",
 			filename="varcope1.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
