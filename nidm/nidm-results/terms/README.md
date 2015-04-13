@@ -624,31 +624,10 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/295">#295</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=numberOfDimensions"> [more] </a></td>
-    <td><b>nidm:numberOfDimensions: </b>Number of dimensions of a data matrix</td>
-    <td>nidm:CoordinateSpace </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/130">#130</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=randomFieldStationarity"> [more] </a></td>
     <td><b>nidm:randomFieldStationarity: </b>Is the random field assumed to be stationary across the entire search volume?</td>
     <td>nidm:SearchSpaceMaskMap </td>
     <td>xsd:boolean </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/295">#295</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=voxelSize"> [more] </a></td>
-    <td><b>nidm:voxelSize: </b>3D size of a voxel measured in voxelUnits</td>
-    <td>nidm:CoordinateSpace </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/295">#295</a> (previously discussed in <a href="https://github.com/incf-nidash/nidm/pull/147">#147</a>)<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=voxelUnits"> [more] </a></td>
-    <td><b>nidm:voxelUnits: </b>Units associated with each dimensions of some N-dimensional data</td>
-    <td>nidm:CoordinateSpace </td>
-    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
