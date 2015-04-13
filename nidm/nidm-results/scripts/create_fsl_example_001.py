@@ -166,7 +166,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id_1"),
 		"DerivedMap-ContrastVariance": dict(
 			derived_from_map_id="niiri:d4de4b20b2d408cd8d825ac0edb6030a",
-			derived_map_type="fsl:ContrastVarianceMap",
+			derived_map_type="nidm:ContrastVarianceMap",
 			filename="varcope1.nii.gz",
 			format="image/nifti",
 			sha="7d183bbacc0b99cd1db84174d32445457f532bca9f774fdcc53bc1d0faa5e7d250a1abf03864bd90b30f96f5a7516e0056104a729a565019b0f254a8a7bced1e",
