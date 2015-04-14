@@ -81,11 +81,11 @@ class OwlSpecification(object):
         table_id = "prov-mapping-"""+subcomponent_name.lower()
         self.text += """
         <div style="text-align: left;">
-            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
+            <table class="thinborder" \
+            style="margin-left: auto; margin-right: auto;">
                 <caption id=\""""+table_id+"""\">\
-                Table """+str(table_num)+"""<sup>\
                 <a class="internalDFN" href=\"#"""+table_id+"""\">\
-                &#9826;</a></sup>: 
+                Table """+str(table_num)+"""</a>:
                 Mapping of """+self.name+""" """+subcomponent_name+""" Core Concepts to types and relations \
                 and PROV core concepts</caption> \
                 <tbody>
@@ -166,19 +166,25 @@ class OwlSpecification(object):
 
         return linked_listing+suffix
 
-    def term_link(self, term_uri, tag="a", link_text=None):
+    def term_link(self, term_uri, tag="a", text=None):
         href = ""
         if self.owl.is_external_namespace(term_uri):
             href = " href =\""+str(term_uri)+"\""
 
-        if not link_text:
-            link_text = self.owl.get_label(term_uri)
+        if text is None:
+            text = self.owl.get_label(term_uri)
 
-        return "<"+tag+" title=\""+self.owl.get_name(term_uri)+"\""+href+">"+\
-                    link_text+"</"+tag+">"
+        term_link = "<" + tag + " title=\"" + self.owl.get_name(term_uri) + \
+                    "\"" + href + ">" + text+"</"+tag+">"
+
+        if tag is "dfn":
+            # Add link to current definition
+            term_link = self.term_link(term_uri, text=term_link)
+
+        return term_link
 
 
-    def create_class_section(self, class_uri, definition, attributes, 
+    def create_class_section(self, class_uri, definition, attributes,
         used_by=None, generated_by=None, derived_from=None):
         class_label = self.owl.get_label(class_uri)
         class_name = self.owl.get_name(class_uri)
@@ -191,7 +197,6 @@ class OwlSpecification(object):
                 <h1 label=\""""+class_name+"""\">"""+class_label+"""</h1>
                 <div class="glossary-ref">
                     A """+self.term_link(class_uri, "dfn")+\
-                    "<sup>"+self.term_link(class_uri, link_text="&#9826;")+"</sup>"+\
                     """ is """+definition
 
         self.text += " "+self.term_link(class_uri)+" is"
@@ -266,15 +271,13 @@ class OwlSpecification(object):
                 if att not in self.attributes_done:
                     # First definition of this attribute
                     att_tag = "dfn" 
-                    diamond = "<sup>"+self.term_link(att, link_text="&#9826;")+"</sup>"
                 else:
                     att_tag = "a" 
-                    diamond = ""
 
                 if att_label[0:5] == "nidm:":
                     att_def = self.owl.get_definition(att)
                     self.text += """ 
-                        <li>"""+self.term_link(att, att_tag)+diamond+\
+                        <li>"""+self.term_link(att, att_tag)+\
                         """</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """+\
                         self.format_definition(att_def)
 
