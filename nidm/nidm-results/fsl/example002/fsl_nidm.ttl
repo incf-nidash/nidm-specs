@@ -15,16 +15,22 @@
 @prefix nlx: <http://neurolex.org/wiki/> .
 
 
+@prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
+@prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
+@prefix nidm_HeightThreshold: <http://purl.org/nidash/nidm#NIDM_0000034> .
+@prefix nidm_userSpecifiedThresholdType: <http://purl.org/nidash/nidm#NIDM_0000125> .
+@prefix nidm_Inference: <http://purl.org/nidash/nidm#NIDM_0000049> .
 
-niiri:extent_threshold_id a prov:Entity , nidm:ExtentThreshold ;
+
+niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
 	rdfs:label "Extent Threshold: k>=0" ;
-	nidm:pValueFWER "1.0"^^xsd:float .
+	nidm_pValueFWER: "1.0"^^xsd:float .
 
-niiri:height_threshold_id a prov:Entity , nidm:HeightThreshold ;
+niiri:height_threshold_id a prov:Entity , nidm_HeightThreshold: ;
 	rdfs:label "Height Threshold: p<0.05 (FWE)" ;
-	nidm:userSpecifiedThresholdType "p-value FWE"^^xsd:string ;
-	nidm:pValueFWER "0.050000"^^xsd:float .
+	nidm_userSpecifiedThresholdType: "p-value FWE"^^xsd:string ;
+	nidm_pValueFWER: "0.050000"^^xsd:float .
 
-niiri:inference_id a prov:Activity , nidm:Inference ;
+niiri:inference_id a prov:Activity , nidm_Inference: ;
     prov:used niiri:height_threshold_id, niiri:extent_threshold_id .
 

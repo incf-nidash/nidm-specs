@@ -3,26 +3,37 @@ prefix spm: <http://purl.org/nidash/spm#>
 prefix nidm: <http://purl.org/nidash/nidm#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+prefix inference: <http://purl.org/nidash/nidm#NIDM_0000049>
+prefix height_threshold: <http://purl.org/nidash/nidm#NIDM_0000034>
+prefix extent_threshold: <http://purl.org/nidash/nidm#NIDM_0000026>
+prefix user_specified_threshold_type: <http://purl.org/nidash/nidm#NIDM_0000125>
+prefix cluster_size_in_voxels: <http://purl.org/nidash/nidm#NIDM_0000084>
+prefix statistic_map: <http://purl.org/nidash/nidm#NIDM_0000076>
+prefix statistic_type: <http://purl.org/nidash/nidm#NIDM_0000123>
+prefix pvalue_fwer: <http://purl.org/nidash/nidm#NIDM_0000115>
+prefix pvalue_uncorrected: <http://purl.org/nidash/nidm#NIDM_0000116>
+
+
 #####################
 #thresholds query
 #####################
 SELECT DISTINCT *
 WHERE 
-{ ?inference a nidm:Inference .
-  ?height a nidm:HeightThreshold .
-  ?extent a nidm:ExtentThreshold .
+{ ?inference a inference: .
+  ?height a height_threshold: .
+  ?extent a extent_threshold: .
   ?height rdfs:label ?heightLabel .
-  ?height nidm:userSpecifiedThresholdType ?heightType .
+  ?height user_specified_threshold_type: ?heightType .
   ?height prov:value ?heightThr .
   ?inference prov:used ?statmap .
-  ?statmap a nidm:StatisticMap . 
-  ?statmap nidm:statisticType ?statType .
-  OPTIONAL {?height nidm:pValueUncorrected  ?heightPunc} .
-  OPTIONAL {?height nidm:pValueFWER ?heightPcor} .
+  ?statmap a statistic_map: . 
+  ?statmap statistic_type: ?statType .
+  OPTIONAL {?height pvalue_uncorrected:  ?heightPunc} .
+  OPTIONAL {?height pvalue_fwer: ?heightPcor} .
   ?extent rdfs:label ?extentLabel .
-  OPTIONAL {?extent nidm:clusterSizeInVoxels ?extentThrVox }.
+  OPTIONAL {?extent cluster_size_in_voxels: ?extentThrVox }.
   OPTIONAL {?extent spm:clusterSizeInResels ?extentThrRes }.
-  OPTIONAL {?extent nidm:pValueUncorrected ?extentPunc }.
-  ?extent nidm:pValueFWER ?extentPcor .
+  OPTIONAL {?extent pvalue_uncorrected: ?extentPunc }.
+  ?extent pvalue_fwer: ?extentPcor .
 }
 

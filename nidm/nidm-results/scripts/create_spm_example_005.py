@@ -27,12 +27,12 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:MNICoordinateSystem",
+			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
 			dimensions="[53,63,52]"),
 		"ActivityUsedEntity": dict(
 			activity_id="niiri:display_map_id",
-			activity_type="nidm:Inference",
+			activity_type="nidm:NIDM_0000049",
 			entity_id="niiri:height_threshold_id", 
 			)
 		}

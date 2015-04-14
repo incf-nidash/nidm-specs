@@ -3,6 +3,7 @@ import codecs
 from OwlReader import OwlReader
 from Constants import *
 import re
+import cgi
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_ROOT = os.path.dirname(RELPATH)
@@ -33,12 +34,15 @@ class OwlSpecification(object):
         if not subcomponents:
             subcomponents = dict([(None, self.owl.classes)])
 
+        table_num = 3
         for subcomponent_name, classes in subcomponents.items():
             classes_by_types = self.owl.get_class_names_by_prov_type(classes, \
                 prefix=prefix, but=self.already_defined_classes)
             self.already_defined_classes += classes
 
-            self.create_subcomponent_table(classes_by_types, subcomponent_name)
+            self.create_subcomponent_table(classes_by_types, table_num, \
+                subcomponent_name)
+            table_num = table_num + 1
             all_classes = sorted(classes_by_types[PROV['Agent']])+\
                           sorted(classes_by_types[PROV['Activity']])+\
                           sorted(classes_by_types[PROV['Entity']])+\
@@ -57,7 +61,7 @@ class OwlSpecification(object):
 
         self.close_sections()
 
-    def create_subcomponent_table(self, classes, subcomponent_name=None):
+    def create_subcomponent_table(self, classes, table_num, subcomponent_name=None):
         if subcomponent_name:
             self.text += """
         <section><h1>"""+subcomponent_name+"""</h1>"""
@@ -72,15 +76,18 @@ class OwlSpecification(object):
         else:
             subcomponent_name = ""
 
+        # Did not find how to handle table numbering and ids with Respec as we
+        # did for figures?
+        table_id = "prov-mapping-"""+subcomponent_name.lower()
         self.text += """
         <div style="text-align: left;">
-            <table class="thinborder" style="margin-left: auto; margin-right: auto;">
-                <caption id="overview-types-and-relations"><span>Table 2<sup>\
-                <a class="internalDFN" href="#overview-types-and-relations">\
-                <span class="diamond"> &#9826;:</span></a></sup> </span>\
+            <table class="thinborder" \
+            style="margin-left: auto; margin-right: auto;">
+                <caption id=\""""+table_id+"""\">\
+                <a class="internalDFN" href=\"#"""+table_id+"""\">\
+                Table """+str(table_num)+"""</a>:
                 Mapping of """+self.name+""" """+subcomponent_name+""" Core Concepts to types and relations \
                 and PROV core concepts</caption> \
-                <!-- Table 2 -->
                 <tbody>
                     <tr>
                         <td><b>"""+self.name+""" Concepts</b></td>
@@ -96,25 +103,23 @@ class OwlSpecification(object):
 
         for prov_class in list([PROV['Agent'], PROV['Activity'], PROV['Entity']]):
             sorted_classes = sorted(classes[prov_class])
-            for class_name in sorted_classes:
-                class_qname = self._get_name(class_name)
-
+            for class_uri in sorted_classes:
                 self.text += """
                         <tr>
-                            <td><a title=\""""+class_qname+"""\">"""+class_qname+"""</a>
+                            <td>"""+self.term_link(class_uri)+"""
                             </td>
                     """
 
                 # First iteration
-                if class_name is sorted_classes[0]:
+                if class_uri is sorted_classes[0]:
                     self.text += """
                                 <td rowspan=\""""+str(len(sorted_classes))+\
                                 """\" style="text-align: center;">"""+self.name+""" Types<br/> \
-                                (PROV """+self._get_name(prov_class).replace('prov:', '')+""")</td>
+                                (PROV """+self.owl.get_label(prov_class).replace('prov:', '')+""")</td>
                         """
 
                 self.text += """
-                                <td><a>"""+class_qname+"""</a></td>
+                                <td>"""+self.term_link(class_uri)+"""</td>
                             </tr>
                 """
 
@@ -147,92 +152,117 @@ class OwlSpecification(object):
 
         return definition
 
-    def _get_name(self, uri):
-        name = self.owl.graph.qname(uri)
+    def linked_listing(self, uri_list, prefix="", suffix=""):
+        linked_listing = prefix
 
-        # If a label is available, use the namespace:label, otherwise qname
-        label = list(self.owl.graph.objects(uri, RDFS['label']))
-        if label:
-            label = label[0]
-            name = name.split(":")[0]+":'"+label+"'"
+        for i, uri in enumerate(self.owl.sorted_by_labels(uri_list)):
+            if i == 0:
+                sep = ""
+            elif i == len(uri_list):
+                sep = " and "
+            else:
+                sep = ", "
+            linked_listing += sep+self.term_link(uri)
 
-        return name
+        return linked_listing+suffix
 
-    def create_class_section(self, class_name, definition, attributes, 
+    def term_link(self, term_uri, tag="a", text=None):
+        href = ""
+        if self.owl.is_external_namespace(term_uri):
+            href = " href =\""+str(term_uri)+"\""
+
+        if text is None:
+            text = self.owl.get_label(term_uri)
+
+        term_link = "<" + tag + " title=\"" + self.owl.get_name(term_uri) + \
+                    "\"" + href + ">" + text+"</"+tag+">"
+
+        # # This could be handled by Respec, here we overwrite the id and href
+        # # fields in order to be able to have an id that is not generated from
+        # # the title field. e.g. title = nidm_0000001 (nidm:Map) and
+        # # id = nidm_0000001
+        # name_lw = self.owl.get_name(term_uri).lower()
+        # if tag is "dfn":
+        #     link_info = " id=\"dfn-" + name_lw + "\""
+        # elif tag is "a":
+        #     link_info = " href=\"#dfn-" + name_lw + "\""
+
+        # term_link = "<" + tag + link_info + \
+        #             "  class=\"internalDFN\"" + \
+        #             " title=\"" + self.owl.get_name(term_uri) + \
+        #             " (" + self.owl.get_label(term_uri) + ")" + \
+        #             "\"" + href + ">" + text + "</" + tag + ">"
+
+        if tag is "dfn":
+            # Add link to current definition
+            term_link = self.term_link(term_uri, text=term_link)
+
+        return term_link
+
+
+    def create_class_section(self, class_uri, definition, attributes,
         used_by=None, generated_by=None, derived_from=None):
-        class_qname = self._get_name(class_name)
+        class_label = self.owl.get_label(class_uri)
+        class_name = self.owl.get_name(class_uri)
 
         definition = self.format_definition(definition)
-       
-        self.text += """
-            <!-- """+class_qname+""" -->
-            <section id="section-"""+class_qname+""""> 
-                <h1 label=\""""+class_qname+"""\">"""+class_qname+"""</h1>
-                <div class="glossary-ref">
-                    A <dfn>"""+class_qname+"""</dfn>\
-                    <sup><a title=\""""+class_qname+"""\">\
-                    <span class="diamond">&#9826;</span></a></sup> is """+definition
 
-        self.text += " <a>"+class_qname+"</a> is"
-        prov_class = self.owl.get_prov_class(class_name)
+        self.text += """
+            <!-- """+class_label+""" ("""+class_name+""")"""+""" -->
+            <section id="section-"""+class_label+""""> 
+                <h1 label=\""""+class_name+"""\">"""+class_label+"""</h1>
+                <div class="glossary-ref">
+                    A """+self.term_link(class_uri, "dfn")+\
+                    """ is """+definition
+
+        self.text += " "+self.term_link(class_uri)+" is"
+
+        prov_class = self.owl.get_prov_class(class_uri)
         if prov_class:
-            self.text += " a "+self._get_name(prov_class)
+            self.text += " a "+self.owl.get_label(prov_class)
 
         found_used_by = False
         if used_by:
-            if class_name in used_by:
-
-                if len(used_by[class_name]) >= 2:
-                    self.text += \
-                        " used by <a>"+"</a>, <a>".join(map(self._get_name, \
-                        sorted(used_by[class_name])[:-1]))+"</a> and <a>"+\
-                        self._get_name(sorted(used_by[class_name])[-1])+\
-                        "</a>"
-                else:
-                    self.text += \
-                        " used by <a>"+self._get_name(used_by[class_name][0])+\
-                        "</a>"
+            if class_uri in used_by:
+                self.text += self.linked_listing(used_by[class_uri], " used by ")
                 found_used_by = True
             used_entities = list()
+
             for used_entity, used_activities in used_by.items():
                 for used_act in used_activities:
-                    if used_act == class_name:
+                    if used_act == class_uri:
                         used_entities.append(used_entity)
             if used_entities:
-                self.text += " that uses <a>"+"</a>, <a>".join(map(self._get_name, \
-                        sorted(used_entities)[:-1]))+"</a> and <a>"+\
-                        self._get_name(sorted(used_entities)[-1])+\
-                        "</a> entities"
+                self.text += self.linked_listing(used_entities, " that uses ", " entities")
+
         found_generated_by = False
         if generated_by:
-            if class_name in generated_by:
+            if class_uri in generated_by:
                 if found_used_by:
                     self.text += " and "
 
-                self.text += """ generated by <a>"""+\
-                        self._get_name(generated_by[class_name])+"""</a>"""
+                self.text += self.linked_listing(\
+                    list([generated_by[class_uri]]), " generated by ")
+
                 found_generated_by = True
 
-            if class_name in generated_by.values():
+            if class_uri in generated_by.values():
                 generated_entities = list()
                 for generated_entity, generated_act in generated_by.items():
-                    if generated_act == class_name:
+                    if generated_act == class_uri:
                         generated_entities.append(generated_entity)
 
                 if generated_entities:
-                    self.text += ". This activity generates <a>"+\
-                    "</a>, <a>".join(map(self._get_name, \
-                    sorted(generated_entities)[:-1]))+\
-                    "</a> and <a>"+self._get_name(sorted(generated_entities)[-1])+\
-                            "</a> entities"
+                    self.text += self.linked_listing(generated_entities, \
+                        ". This activity generates ", " entities")
 
         if derived_from:
-            if class_name in derived_from:
+            if class_uri in derived_from:
                 if found_used_by or found_generated_by:
                     self.text += " and "
 
-                self.text += """ derived from <a>"""+\
-                        self._get_name(derived_from[class_name])+"""</a>"""
+                self.text += self.linked_listing(\
+                            list([derived_from[class_uri]]), " derived from ")
 
         self.text +="."
 
@@ -240,19 +270,19 @@ class OwlSpecification(object):
         self.text += """ 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-"""+class_qname+""""> A """+\
-                """<a>"""+class_qname+"""</a> has attributes:
+                <div class="attributes" id="attributes-"""+class_label+""""> A """+\
+                self.term_link(class_uri)+""" has attributes:
                 <ul>
                     <li><span class="attribute" id=\""""+\
-                    class_qname+""".label">rdfs:label</span>: an \
+                    class_label+""".label">rdfs:label</span>: an \
                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description \
-                    of the """+class_qname+""".</li>
+                    of the """+class_label+""".</li>
                     """
 
         range_classes = list()
         if attributes:
             for att in sorted(attributes):
-                att_name = self._get_name(att)
+                att_label = self.owl.get_label(att)
 
                 if att not in self.attributes_done:
                     # First definition of this attribute
@@ -260,93 +290,31 @@ class OwlSpecification(object):
                 else:
                     att_tag = "a" 
 
-                if att_name[0:5] == "nidm:":
+                if att_label[0:5] == "nidm:":
                     att_def = self.owl.get_definition(att)
                     self.text += """ 
-                        <li><span class="attribute" id=\""""+class_qname+"""."""+att_name+"""">
-                        <"""+att_tag+""">"""+att_name+"""</"""+att_tag+""">
-                        </span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """+\
+                        <li>"""+self.term_link(att, att_tag)+\
+                        """</span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """+\
                         self.format_definition(att_def)
 
                     if att in self.owl.parent_ranges:
-                        # range_names = map(self._get_name, \
-                            # sorted(self.owl.ranges[att]))
-
-                        nidm_namespace = False
-                        if self._get_name(list(self.owl.ranges[att])[0]).startswith("nidm") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("fsl") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("spm") or \
-                           self._get_name(list(self.owl.ranges[att])[0]).startswith("afni"):
-                            nidm_namespace = True
-                            
-                        # child_ranges = sorted(self.owl.ranges[att] - self.owl.parent_ranges[att])
                         child_ranges = list()
                         for parent_range in self.owl.parent_ranges[att]:
                             child_ranges += self.owl.get_direct_children(parent_range)
                         child_ranges = sorted(child_ranges)
 
-                        if nidm_namespace:
-                            child_range_txt = ""
-                            if child_ranges:
-                                # Get all child ranges
-                                if len(child_ranges) >= 2:
-                                    child_range_txt = " such as <a>"+"</a>, <a>".join(map(self._get_name, \
-                                        child_ranges[:-1]))+"</a> or <a>"+\
-                                        self._get_name(child_ranges[-1])+\
-                                        "</a>"
-                                else:
-                                    child_range_txt = \
-                                        " such as <a>"+self._get_name(list(child_ranges)[0])+\
-                                        "</a>"
+                        # if nidm_namespace:
+                        child_range_txt = ""
+                        if child_ranges:
+                            # Get all child ranges
+                            child_range_txt = self.linked_listing(child_ranges, " such as ")
 
-                            if len(self.owl.parent_ranges[att]) >= 2:
-                                self.text += " (range <a>"+"</a>, <a>".join(map(self._get_name, \
-                                    sorted(self.owl.parent_ranges[att])[:-1]))+"</a> and <a>"+\
-                                    self._get_name(sorted(self.owl.parent_ranges[att])[-1])+\
-                                    "</a>"+child_range_txt+")"
-                            else:
-                                self.text += \
-                                    " (range <a>"+self._get_name(list(self.owl.parent_ranges[att])[0])+\
-                                    "</a>"+child_range_txt+")"
-                        else:
-                            child_range_txt = ""
-                            if child_ranges:
-                                child_range_txt = " such as "
-                                for child_range in child_ranges:
-                                    child_range_txt += '<a title="'+self.owl.graph.qname(child_range)+\
-                                    '" href="'+str(child_range)+'">'+\
-                                    self._get_name(child_range)+'</a>, '
-                                child_range_txt  = child_range_txt[:-2]
-                                child_range_txt = child_range_txt[::-1].replace(","[::-1], " or"[::-1], 1)[::-1]
-
-                                # # Get all child ranges
-                                # if len(child_ranges) >= 2:
-                                #     child_range_txt = " such as <a>"+"</a>, <a>".join(map(self._get_name, \
-                                #         child_ranges[:-1]))+"</a> or <a>"+\
-                                #         self._get_name(child_ranges[-1])+\
-                                #         "</a>"
-                                # else:
-                                #     child_range_txt = \
-                                #         " such as <a>"+self._get_name(list(child_ranges)[0])+\
-                                #         "</a>"
-
-                            self.text += " (range "
-                            for range_uri in sorted(self.owl.parent_ranges[att]):
-                                self.text += '<a title="'+self.owl.graph.qname(range_uri)+\
-                                '" href="'+str(range_uri)+'">'+\
-                                self._get_name(range_uri)+'</a>, '
-                            self.text = self.text[:-2]
-                            self.text += child_range_txt
-                            self.text += ")"
-
-
-
-                        # print map(startswith('nidm'), map(self.owl.graph.qname, sorted(self.owl.ranges[att])))
-                        # self.text += " (range "+", ".join(range_names)+")"
-                        
+                        self.text += self.linked_listing(\
+                            self.owl.parent_ranges[att], \
+                            "(range ", child_range_txt+")")                       
 
                         for range_class in sorted(self.owl.ranges[att]):
-                            if self._get_name(range_class).startswith('nidm'):
+                            if self.owl.get_label(range_class).startswith('nidm'):
                                 range_classes.append(range_class)                              
 
                     self.text += "</li>"
@@ -354,12 +322,12 @@ class OwlSpecification(object):
                 self.attributes_done.add(att)
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/incf-nidash/nidm/master/"
-        examples = self.owl.get_example(class_name, BASE_REPOSITORY)
+        examples = self.owl.get_example(class_uri, BASE_REPOSITORY)
         for example in sorted(examples):
             self.text += """        
                 </ul>
                 </div>
-                <pre class='example highlight'>"""+example+"""</pre>"""
+                <pre class='example highlight'>"""+cgi.escape(example)+"""</pre>"""
 
         for range_name in range_classes:
             if not range_name in self.already_defined_classes:

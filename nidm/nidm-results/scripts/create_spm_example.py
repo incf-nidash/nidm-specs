@@ -40,11 +40,11 @@ def main():
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
-			noise_distribution="nidm:GaussianDistribution",
+			noise_distribution="nidm:NIDM_0000032",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocalModel",
-			dependence="nidm:IndependentError",
-			dependence_spatial="nidm:SpatiallyLocalModel"
+			variance_spatial="nidm:NIDM_0000073",
+			dependence="nidm:NIDM_0000048",
+			dependence_spatial="nidm:NIDM_0000073"
 			),
 		"MaskMap-1": dict( # Explicit mask used by Model Param. Est. 
 			mask_id="niiri:mask_id_1",
@@ -59,7 +59,7 @@ def main():
 			),
 		"DerivedMap-MaskMap-1": dict(
 			derived_from_map_id="niiri:mask_id_1_der",
-			derived_map_type="nidm:MaskMap",
+			derived_map_type="nidm:NIDM_0000054",
 			filename="MaskMap_1_der.nii",
 			format="image/nifti",
 			sha="e43b6e01b0463fe7d40782137867a...",
@@ -86,7 +86,7 @@ def main():
 			param_est_id="niiri:model_pe_id"),
 		"DerivedMapWithHeader-PE1": dict(
 			derived_from_map_id="niiri:beta_map_id_1_der",
-			derived_map_type="nidm:ParameterEstimateMap",
+			derived_map_type="nidm:NIDM_0000061",
 			filename="beta_0001.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:original_pe_map_header_id",
@@ -111,7 +111,7 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:MNICoordinateSystem",
+			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
 			dimensions="[53,63,46]"),
 		"ResidualMeanSquaresMap": dict(
@@ -136,7 +136,7 @@ def main():
 			used_by_act_id="niiri:contrast_estimation_id"),
 		"DerivedMapWithHeader-Mask2": dict(
 			derived_from_map_id="niiri:mask_id_2_der",
-			derived_map_type="nidm:MaskMap",
+			derived_map_type="nidm:NIDM_0000054",
 			filename="mask.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:original_mask_map_header_id",
@@ -203,7 +203,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id"),
 		"DerivedMapWithHeader-StatMap": dict(
 			derived_from_map_id="niiri:statistic_map_id_der",
-			derived_map_type="nidm:StatisticMap",
+			derived_map_type="nidm:NIDM_0000076",
 			filename="spmT_0001.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:statistic_original_map_header_id",
@@ -248,7 +248,7 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id",
 			label="Cluster Connectivity Criterion: 18",
-			connectivity="nidm:voxel18connected"
+			connectivity="nidm:NIDM_0000128"
 			),
 		"MaskMap-2": dict( # Explicit mask used by Inference
 			mask_id="niiri:mask_id_3",
@@ -267,13 +267,13 @@ def main():
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3, 3, 3]",
-			coord_system="nidm:MNICoordinateSystem",
+			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
 			dimensions="[53,63,46]"),
 		"Inference": dict(
 			inference_id="niiri:inference_id",
 			label="Inference",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:statistic_map_id", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
@@ -469,7 +469,7 @@ def main():
 			),
 		"DerivedMapWithHeader": dict(
 			derived_from_map_id="niiri:contrast_map_id_der",
-			derived_map_type="nidm:ContrastMap",
+			derived_map_type="nidm:NIDM_0000002",
 			filename="con_0001.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:original_contrast_map_header_id",
@@ -481,7 +481,7 @@ def main():
 			),
 		"DerivedMapWithHeader-2": dict(
 			derived_from_map_id="niiri:beta_map_id_2_der",
-			derived_map_type="nidm:ParameterEstimateMap",
+			derived_map_type="nidm:NIDM_0000061",
 			filename="beta_0002.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:original_pe_map_header_2_id",
@@ -493,7 +493,7 @@ def main():
 			),
 		"DerivedMapWithHeader-3": dict(
 			derived_from_map_id="niiri:statistic_map_id_der",
-			derived_map_type="nidm:StatisticMap",
+			derived_map_type="nidm:NIDM_0000076",
 			filename="spmT_0001.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:statistic_original_map_header_id",
@@ -506,7 +506,7 @@ def main():
 		"NIDMBundle": dict(
 			bundle_id="niiri:spm_results_id",
 			label="SPM Results",
-			object_model="nidm:SPMResults",
+			object_model="nidm:NIDM_0000067",
 			version="0.2.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),

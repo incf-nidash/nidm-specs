@@ -3,6 +3,12 @@ prefix spm: <http://purl.org/nidash/spm#>
 prefix nidm: <http://purl.org/nidash/nidm#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
+prefix significant_cluster: <http://purl.org/nidash/nidm#NIDM_0000070>
+prefix pvalue_fwer: <http://purl.org/nidash/nidm#NIDM_0000115>
+prefix pvalue_uncorrected: <http://purl.org/nidash/nidm#NIDM_0000116>
+prefix cluster_size_in_voxels: <http://purl.org/nidash/nidm#NIDM_0000084>
+prefix cluster_label_id: <http://purl.org/nidash/nidm#NIDM_0000082>
+
 #####################
 #Cluster Data Query
 #####################
@@ -10,11 +16,11 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 #cluster data query
 
 SELECT DISTINCT * WHERE 
-{ ?cluster a nidm:SignificantCluster . 
-  ?cluster nidm:clusterLabelId ?label .
-  ?cluster nidm:clusterSizeInVoxels ?sizeVx .
+{ ?cluster a significant_cluster: . 
+  ?cluster cluster_label_id: ?label .
+  ?cluster cluster_size_in_voxels: ?sizeVx .
   OPTIONAL { ?cluster spm:clusterSizeInResels ?sizeRz } .
-  OPTIONAL { ?cluster nidm:pValueFWER ?pvalcor }.
-  OPTIONAL { ?cluster nidm:pValueUncorrected ?pvalunc }.
+  OPTIONAL { ?cluster pvalue_fwer: ?pvalcor }.
+  OPTIONAL { ?cluster pvalue_uncorrected: ?pvalunc }.
 }
 ORDER BY ?cluster

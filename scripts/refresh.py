@@ -27,5 +27,5 @@ if __name__ == '__main__':
 	# Update terms README
 	UpdateTermReadme.main()
 	# Update specifications
-	create_results_specification.main()
+	create_results_specification.main("dev")
 	create_expe_specification.main()

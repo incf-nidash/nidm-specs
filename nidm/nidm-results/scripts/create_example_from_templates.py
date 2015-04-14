@@ -4,23 +4,37 @@ Use templates defined in terms/templates to create a new NIDM example.
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
 @copyright: University of Warwick 2013-2014
 """
-import os
+import os, sys
 from string import Template
 import logging
+import re
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'terms')
 TPL_DIR = os.path.join(NIDM_TERMS_DIR, 'templates')
 EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
+# Append parent script directory to path
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
+from OwlReader import OwlReader
+from Constants import *
+
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
 class ExampleFromTemplate(object):
     
-    def __init__(self, nidm_classes, example_file, one_file_per_class=False):
+    def __init__(self, nidm_classes, example_file, one_file_per_class=False, 
+        owl_file=None):
         self.nidm_classes = nidm_classes
         self.one_file_per_class = one_file_per_class
+
+        self.owl = None
+        if owl_file is None:
+            owl_file = os.path.join(NIDM_TERMS_DIR, 'nidm-results.owl')
+        self.owl = OwlReader(owl_file)
+
         if not one_file_per_class:
             self.file = example_file
         else:
@@ -85,15 +99,40 @@ class ExampleFromTemplate(object):
             if self.one_file_per_class:
                 example_file = os.path.join(self.dir, nidm_class+".txt")
                 example_fid = open(example_file, 'w')
+                if self.owl:     
+                    class_example = self.replace_alphanum_id_by_prefixes(class_example)   
                 example_fid.write(str(class_example))
                 example_fid.close()
+
+
             else:
                 example += class_example+"\n\n"
 
-        if not self.one_file_per_class:              
-                example = namespaces+"\n\n"+example
+        if not self.one_file_per_class:  
+                if self.owl:     
+                    example = self.replace_alphanum_id_by_prefixes(example)   
+                example = namespaces+"\n"+example
 
                 example_fid = open(self.file, 'w')
                 example_fid.write(str(example))
                 example_fid.close()
 
+
+    def replace_alphanum_id_by_prefixes(self, example):
+        alphanum_ids = re.findall('nidm:NIDM_\d*', example)
+
+        prefix_definitions = ""
+        for idt in alphanum_ids:
+            term_uri = NIDM[idt.split(":")[1]]
+            prefix_name = self.owl.get_label(term_uri).replace(" ", "")\
+                            .replace(":", "_").replace("'", "")+":"
+            prefix_definition = "@prefix "+prefix_name+" <"+str(term_uri)+"> .\n"
+            if not prefix_definition in prefix_definitions:
+                prefix_definitions += prefix_definition
+
+            example = example.replace(idt, prefix_name)
+        
+        if prefix_definitions:
+            example = prefix_definitions+"\n\n"+example
+
+        return example

@@ -33,34 +33,47 @@ class TestSpecifications(unittest.TestCase):
 
     def test_nidm_results(self):
         component = "nidm-results"
-        self._run(component, create_res_spec, "create_results_specification")
+        self._run(component, create_res_spec, "create_results_specification", "dev")
+
+    def test_nidm_results_020(self):
+        component = "nidm-results"
+        self._run(component, create_res_spec, "create_results_specification", "0.2.0")
 
     def test_nidm_experiment(self):
         component = "nidm-experiment"
         self._run(component, create_expe_spec, "create_expe_specification")
 
-    def _run(self, component, spec_fun, spec_fun_name):
-        original_spec = self._get_spec_txt(component)
-        spec_fun()
-        updated_spec = self._get_spec_txt(component, original_spec)
-        self._compare(component, original_spec, updated_spec, spec_fun_name)
+    def _run(self, component, spec_fun, spec_fun_name, param=None):
+        original_spec = self._get_spec_txt(component, None, param)
+        if param is not None:
+            spec_fun(param)
+        else:
+            spec_fun()
+        updated_spec = self._get_spec_txt(component, original_spec, param)
+        self._compare(component, original_spec, updated_spec, spec_fun_name, param)
 
-    def _get_spec_txt(self, component, original=None):
+    def _get_spec_txt(self, component, original=None, version=None):
+        if not version:
+            version = "dev"
+        else:
+            version = version.replace(".", "")
+
         spec_file = os.path.join(REPO_ROOT, "doc", "content", "specs", 
-                component+"_dev.html")
-        spec_fid = open(spec_file, 'r')
-        spec_txt = spec_fid.read()
-        spec_fid.close()
+                component+"_"+version+".html")
+        print str(spec_file)        
+
+        with open(spec_file, 'r') as f:
+            spec_txt = f.read()
 
         if original is not None:
-            # Write back original text found in README           
-            spec_fid = open(spec_file, 'w')
-            spec_fid.write(original)
-            spec_fid.close()
+            # Write back original text found in README         
+            with open(spec_file, 'w') as f:
+                f.write(original)
 
         return spec_txt
             
-    def _compare(self, component, original_spec, updated_spec, spec_fun_name):
+    def _compare(self, component, original_spec, updated_spec, spec_fun_name,\
+        param=None):
         if not (updated_spec == original_spec):
             original_spec_lines = original_spec.splitlines()
             updated_spec_lines = updated_spec.splitlines()
@@ -68,8 +81,14 @@ class TestSpecifications(unittest.TestCase):
                 updated_spec_lines)
             logger.debug('\n'.join(diff))
 
+            if param is None:
+                version = ""
+            else:
+                version = param
+
             error_msg = component+" Specification outdated, please update "\
-                "using python nidm/"+component+"/scripts/"+spec_fun_name+".py"
+                "using python nidm/"+component+"/scripts/"+spec_fun_name+".py"\
+                +" "+version
 
             raise Exception(error_msg)
 

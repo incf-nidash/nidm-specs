@@ -27,12 +27,8 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
-def main():
-    if len(sys.argv) > 1:
-        nidm_original_version = sys.argv[1]
-        nidm_version = nidm_original_version.replace(".", "")
-    else:
-        nidm_version = 'dev'
+def main(nidm_original_version):
+    nidm_version = nidm_original_version.replace(".", "")
 
     # Retreive owl file for NIDM-Results
     if nidm_version == "dev":
@@ -48,22 +44,21 @@ def main():
     # check the file exists
     assert os.path.exists(owl_file)
 
-
     components =  collections.OrderedDict()
-    components["General"] = [NIDM['Map']]
-    components["Parameters estimation"] = [NIDM['Data'], NIDM['ErrorModel'], NIDM['DesignMatrix'], 
-             NIDM['ModelParametersEstimation'],  
-             NIDM['ParameterEstimateMap'],
-             NIDM['GrandMeanMap'], NIDM['ResidualMeanSquaresMap'], 
-             NIDM['MaskMap']]    
-    components["Contrast estimation"] = [NIDM['ContrastEstimation'], 
-             NIDM['ContrastWeights'], NIDM['ContrastMap'], NIDM['StatisticMap'], 
-             NIDM['ContrastStandardErrorMap']]
-    components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSetMap'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMaskMap'], 
-             NIDM['SignificantCluster'], NIDM['Peak'], NIDM['Coordinate'], 
-             NIDM['ConjunctionInference'], NIDM['ClusterDefinitionCriteria'],
-             NIDM['DisplayMaskMap'], NIDM['PeakDefinitionCriteria']]
+    components["General"] = [NIDM_MAP]
+    components["Parameters estimation"] = [NIDM_DATA, NIDM_ERROR_MODEL, NIDM_DESIGN_MATRIX, 
+             NIDM_MODEL_PARAMETERS_ESTIMATION,  
+             NIDM_PARAMETER_ESTIMATE_MAP,
+             NIDM_GRAND_MEAN_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP, 
+             NIDM_MASK_MAP]    
+    components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
+             NIDM_CONTRAST_WEIGHTS, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP, 
+             NIDM_CONTRAST_STANDARD_ERROR_MAP]
+    components["Inference"] = [NIDM_INFERENCE, NIDM_HEIGHT_THRESHOLD, NIDM_EXTENT_THRESHOLD, 
+             NIDM_EXCURSION_SET_MAP, NIDM_CLUSTER_LABELS_MAP, NIDM_SEARCH_SPACE_MASK_MAP, 
+             NIDM_SIGNIFICANT_CLUSTER, NIDM_PEAK, NIDM_COORDINATE, 
+             NIDM_CONJUNCTION_INFERENCE, NIDM_CLUSTER_DEFINITION_CRITERIA,
+             NIDM_DISPLAY_MASK_MAP, NIDM_PEAK_DEFINITION_CRITERIA]
     components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
     components["FSL-specific Concepts"] = [FSL['ClusterCenterOfGravity']]
 
@@ -74,57 +69,99 @@ def main():
 
     # Add manually used and wasDerivedFrom because these are not stored in the owl file
     used_by = { 
-                NIDM['Data']: [NIDM['ModelParametersEstimation']],
-                NIDM['ErrorModel']: [NIDM['ModelParametersEstimation']],
-                NIDM['DesignMatrix']: [NIDM['ModelParametersEstimation'],
-                                       NIDM['ContrastEstimation']],
-                NIDM['ParameterEstimateMap']: [NIDM['ContrastEstimation']],
-                NIDM['ResidualMeanSquaresMap']: [NIDM['ContrastEstimation']],
-                NIDM['MaskMap']: [NIDM['ContrastEstimation']],
-                NIDM['ContrastWeights']: [NIDM['ContrastEstimation']],
-                NIDM['ContrastMap']: [NIDM['Inference']], 
-                NIDM['StatisticMap']: [NIDM['Inference']],
-                NIDM['MaskMap']: [NIDM['ModelParametersEstimation']],
-                NIDM['ClusterDefinitionCriteria']: [NIDM['Inference']], 
-                NIDM['DisplayMaskMap']: [NIDM['Inference']], 
-                NIDM['PeakDefinitionCriteria']: [NIDM['Inference']], 
+                NIDM_DATA: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_ERROR_MODEL: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_DESIGN_MATRIX: [NIDM_MODEL_PARAMETERS_ESTIMATION,
+                                       NIDM_CONTRAST_ESTIMATION],
+                NIDM_PARAMETER_ESTIMATE_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_RESIDUAL_MEAN_SQUARES_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_CONTRAST_WEIGHTS: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_CONTRAST_MAP: [NIDM_INFERENCE], 
+                NIDM_STATISTIC_MAP: [NIDM_INFERENCE],
+                NIDM_MASK_MAP: [NIDM_MODEL_PARAMETERS_ESTIMATION],
+                NIDM_CLUSTER_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
+                NIDM_DISPLAY_MASK_MAP: [NIDM_INFERENCE], 
+                NIDM_PEAK_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
     }
     generated_by = { 
-                NIDM['ParameterEstimateMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ResidualMeanSquaresMap']: NIDM['ModelParametersEstimation'],
-                NIDM['MaskMap']: NIDM['ModelParametersEstimation'],
-                NIDM['ContrastMap']: NIDM['ContrastEstimation'], 
-                NIDM['StatisticMap']: NIDM['ContrastEstimation'], 
-                NIDM['ContrastStandardErrorMap']: NIDM['ContrastEstimation'], 
+                NIDM_PARAMETER_ESTIMATE_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_RESIDUAL_MEAN_SQUARES_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_MASK_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION, 
+                NIDM_STATISTIC_MAP: NIDM_CONTRAST_ESTIMATION, 
+                NIDM_CONTRAST_STANDARD_ERROR_MAP: NIDM_CONTRAST_ESTIMATION, 
     }
+
     derived_from = {
-                NIDM['SignificantCluster']: NIDM['ExcursionSetMap'],
-                NIDM['Peak']: NIDM['SignificantCluster'],                
+                NIDM_SIGNIFICANT_CLUSTER: NIDM_EXCURSION_SET_MAP,
+                NIDM_PEAK: NIDM_SIGNIFICANT_CLUSTER,                
     }
 
     if nidm_version == "020":
+        # nidm namespaces were defined under incf.org (instead of purl)
+        NIDM_INCF = Namespace('http://www.incf.org/ns/nidash/nidm#')
+        SPM_INCF = Namespace('http://www.incf.org/ns/nidash/spm#')
+        FSL_INCF = Namespace('http://www.incf.org/ns/nidash/fsl#')
+
+        # The following classes were named differently in 0.2.0
+        renaming =  [(NIDM_EXCURSION_SET_MAP,NIDM_INCF['ExcursionSet']),
+                     (NIDM_SEARCH_SPACE_MASK_MAP,NIDM_INCF['SearchSpaceMap']),
+                     (NIDM_SIGNIFICANT_CLUSTER,NIDM_INCF['Cluster']),
+                     (NIDM_ERROR_MODEL,NIDM_INCF['NoiseModel']),
+                     (NIDM_CONTRAST_ESTIMATION,NIDM_INCF['ContrastEstimation']),
+                     (NIDM_CONTRAST_MAP,NIDM_INCF['ContrastMap']),
+                     (NIDM_MAP, NIDM_INCF['Map']),
+                     (NIDM_DATA, NIDM_INCF['Data']),
+                     (NIDM_DESIGN_MATRIX, NIDM_INCF['DesignMatrix']),
+                     (NIDM_MODEL_PARAMETERS_ESTIMATION, NIDM_INCF['ModelParametersEstimation']),
+                     (NIDM_GRAND_MEAN_MAP, NIDM_INCF['GrandMeanMap']),
+                     (NIDM_RESIDUAL_MEAN_SQUARES_MAP, NIDM_INCF['ResidualMeanSquaresMap']),
+                     (NIDM_MASK_MAP, NIDM_INCF['MaskMap']),
+                     (NIDM_CONTRAST_WEIGHTS, NIDM_INCF['ContrastWeights']),
+                     (NIDM_STATISTIC_MAP, NIDM_INCF['StatisticMap']),
+                     (NIDM_CONTRAST_STANDARD_ERROR_MAP, NIDM_INCF['ContrastStandardErrorMap']),
+                     (NIDM_INFERENCE, NIDM_INCF['Inference']),
+                     (NIDM_HEIGHT_THRESHOLD, NIDM_INCF['HeightThreshold']),
+                     (NIDM_EXTENT_THRESHOLD, NIDM_INCF['ExtentThreshold']),
+                     (NIDM_PEAK, NIDM_INCF['Peak']),
+                     (NIDM_CLUSTER_LABELS_MAP, NIDM_INCF['ClusterLabelsMap']),
+                     (NIDM_COORDINATE, NIDM_INCF['Coordinate']),
+                     (NIDM_PARAMETER_ESTIMATE_MAP, NIDM_INCF['ParameterEstimateMap']),
+                     (SPM['ReselsPerVoxelMap'], SPM_INCF['ReselsPerVoxelMap']),
+                     (FSL['ClusterCenterOfGravity'], FSL_INCF['CenterOfGravity'])]
+
+        # MaskMap was sometimes called CustomMaskMap (when isUserDefined=true)
+        components["Parameters estimation"].append(NIDM_INCF['CustomMaskMap'])
+        
+        # The following classes were not represented in 0.2.0
+        components["Inference"].remove(NIDM_CLUSTER_DEFINITION_CRITERIA)
+        components["Inference"].remove(NIDM_PEAK_DEFINITION_CRITERIA)
+        components["Inference"].remove(NIDM_DISPLAY_MASK_MAP)
+        components["Inference"].remove(NIDM_CONJUNCTION_INFERENCE)
+
+        del used_by[NIDM_CLUSTER_DEFINITION_CRITERIA]
+        del used_by[NIDM_PEAK_DEFINITION_CRITERIA]
+        del used_by[NIDM_DISPLAY_MASK_MAP]
+
+        # SPM and FSL software were described using software-specific terms
+        components["SPM-specific Concepts"].append(NIDM_INCF['SPM'])
+        components["FSL-specific Concepts"].append(NIDM_INCF['FSL'])
+
+
+        # Add manually used and wasDerivedFrom because these are not stored in the owl file
+        used_by[NIDM_INCF['MaskMap']] = [NIDM_INCF['ContrastEstimation']]
+        used_by[NIDM_INCF['CustomMaskMap']] = [NIDM_INCF['ModelParametersEstimation']]
+    
+        print used_by[NIDM_INCF['MaskMap']]
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
-        components["Parameters estimation"][1] = NIDM['NoiseModel']
-        used_by.pop(NIDM['ErrorModel'], None)
-        used_by[NIDM['NoiseModel']] = [NIDM['ModelParametersEstimation']]
-
-        # CustomMaskMap was used by "Model Parameter Estimation"
-        components["Parameters estimation"].add(NIDM['CustomMaskMap'])
-        used_by[NIDM['CustomMaskMap']] = [NIDM['ModelParametersEstimation']]
-
-        # "ExcursionSetMap" was called "ExcursionSet"
-        # "SearchSpaceMaskMap" was called "SearchSpaceMap"
-        components["Inference"] = [NIDM['Inference'], NIDM['HeightThreshold'], NIDM['ExtentThreshold'], 
-             NIDM['ExcursionSet'], NIDM['ClusterLabelsMap'], NIDM['SearchSpaceMap'], 
-             NIDM['Cluster'], NIDM['Peak'],
-             NIDM['Coordinate']]
-        # In version 0.2.0 "SignificantCluster" was called "Cluster"
-        derived_from.pop(NIDM['SignificantCluster'], None)
-        derived_from[NIDM['Cluster']] = NIDM['ExcursionSet']
-        derived_from[NIDM['Peak']] = NIDM['Cluster']
+        components, used_by, generated_by, derived_from = _replace_term_by(\
+            renaming, components, used_by, generated_by, derived_from)
 
     owlspec = OwlSpecification(owl_file, import_files, "NIDM-Results", 
         components, used_by, generated_by, derived_from, prefix=str(NIDM))
+
+    
 
     owlspec._header_footer(component="nidm-results")
 
@@ -138,6 +175,31 @@ def main():
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
 
+def _replace_term_by(renaming, components, used_by, generated_by, derived_from):
+    for original_term, renamed_term in renaming:
+        generated_by = dict((k if k != original_term else renamed_term, \
+                             v if v != original_term else renamed_term) \
+                                for (k, v) in generated_by.items())
+        derived_from = dict((k if k != original_term else renamed_term, \
+                             v if v != original_term else renamed_term) \
+                                for (k, v) in derived_from.items())
+
+        used_by = dict((k if k != original_term else renamed_term, \
+                        list(el if el != original_term else renamed_term for el in v)) \
+                            for (k, v) in used_by.items())
+
+        components = collections.OrderedDict((k if k != original_term else renamed_term, \
+                        list(el if el != original_term else renamed_term for el in v)) \
+                            for (k, v) in components.items())
+
+    return list([components, used_by, generated_by, derived_from])
+
+
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1:
+        nidm_version = sys.argv[1]
+    else:
+        nidm_version = 'dev'
+
+    main(nidm_version)
 

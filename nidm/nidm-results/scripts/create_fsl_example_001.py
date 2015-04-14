@@ -47,11 +47,11 @@ def main():
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
-			noise_distribution="nidm:GaussianDistribution",
+			noise_distribution="nidm:NIDM_0000032",
 			variance_homo="true",
-			variance_spatial="nidm:SpatiallyLocalModel",
-			dependence="nidm:SeriallyCorrelatedError",
-			dependence_spatial="nidm:SpatiallyRegularizedModel"
+			variance_spatial="nidm:NIDM_0000073",
+			dependence="nidm:NIDM_0000069",
+			dependence_spatial="nidm:NIDM_0000074"
 			),
 		"ModelParametersEstimation": dict(
 			model_pe_id="niiri:model_parameters_estimation_id",
@@ -101,7 +101,7 @@ def main():
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
 			voxel_units="['mm', 'mm', 'mm']",
 			voxel_size="[3.5, 3.5, 3.5]",
-			coord_system="nidm:SubjectCoordinateSystem",
+			coord_system="nidm:NIDM_0000077",
 			number_of_dim="3",
 			dimensions="[64, 64, 42]"),
 		"FSL_ResidualMeanSquaresMap": dict(
@@ -166,7 +166,7 @@ def main():
 			contrast_est_id="niiri:contrast_estimation_id_1"),
 		"DerivedMap-ContrastVariance": dict(
 			derived_from_map_id="niiri:d4de4b20b2d408cd8d825ac0edb6030a",
-			derived_map_type="nidm:ContrastVarianceMap",
+			derived_map_type="nidm:NIDM_0000135",
 			filename="varcope1.nii.gz",
 			format="image/nifti",
 			sha="7d183bbacc0b99cd1db84174d32445457f532bca9f774fdcc53bc1d0faa5e7d250a1abf03864bd90b30f96f5a7516e0056104a729a565019b0f254a8a7bced1e",
@@ -233,12 +233,12 @@ def main():
 		"ClusterDefinitionCriteria": dict(
 			cluster_definition_criteria_id="niiri:cluster_definition_criteria_id_1",
 			label="Cluster Connectivity Criterion: 26",
-			connectivity="nidm:voxel26connected"
+			connectivity="nidm:NIDM_0000129"
 			),
 		"Inference": dict(
 			inference_id="niiri:inference_id_1",
 			label="Inference: Generation",
-			alternative_hyp="nidm:OneTailedTest",
+			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:z_statistic_map_id_1", 
 			height_thresh_id="niiri:height_threshold_id", 
 			extent_thresh_id="niiri:extent_threshold_id", 
@@ -621,7 +621,7 @@ def main():
 		"NIDMBundle": dict(
 			bundle_id="niiri:fsl_results_id",
 			label="FSL Results",
-			object_model="nidm:FSLResults",
+			object_model="nidm:NIDM_0000027",
 			version="0.2.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),
