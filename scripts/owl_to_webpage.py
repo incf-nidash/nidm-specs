@@ -177,6 +177,22 @@ class OwlSpecification(object):
         term_link = "<" + tag + " title=\"" + self.owl.get_name(term_uri) + \
                     "\"" + href + ">" + text+"</"+tag+">"
 
+        # # This could be handled by Respec, here we overwrite the id and href
+        # # fields in order to be able to have an id that is not generated from
+        # # the title field. e.g. title = nidm_0000001 (nidm:Map) and
+        # # id = nidm_0000001
+        # name_lw = self.owl.get_name(term_uri).lower()
+        # if tag is "dfn":
+        #     link_info = " id=\"dfn-" + name_lw + "\""
+        # elif tag is "a":
+        #     link_info = " href=\"#dfn-" + name_lw + "\""
+
+        # term_link = "<" + tag + link_info + \
+        #             "  class=\"internalDFN\"" + \
+        #             " title=\"" + self.owl.get_name(term_uri) + \
+        #             " (" + self.owl.get_label(term_uri) + ")" + \
+        #             "\"" + href + ">" + text + "</" + tag + ">"
+
         if tag is "dfn":
             # Add link to current definition
             term_link = self.term_link(term_uri, text=term_link)
