@@ -493,13 +493,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/293">#293</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='statistic Type'"> [more] </a></td>
-    <td><b>nidm:'statistic Type': </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000014 nidm:NIDM_0000076 </td>
-    <td>obo:STATO_0000039 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='variance Spatial Model'"> [more] </a></td>
     <td><b>nidm:'variance Spatial Model': </b>FIXME</td>
     <td>nidm:NIDM_0000023 </td>
@@ -511,13 +504,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'version': </b>&lt;undefined&gt;</td>
     <td>prov:Bundle </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/293">#293</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='with Estimation Method'"> [more] </a></td>
-    <td><b>nidm:'with Estimation Method': </b>FIXME</td>
-    <td>nidm:NIDM_0000056 </td>
-    <td>obo:STATO_0000119 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -644,13 +630,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>spm:expectedNumberOfVoxelsPerCluster: </b>Expected number of voxels in a cluster</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/293">#293</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=hasMaximumIntensityProjection"> [more] </a></td>
-    <td><b>spm:hasMaximumIntensityProjection: </b>Maximum intensity projection of a map</td>
-    <td>nidm:NIDM_0000025 </td>
-    <td>dctype:Image </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
