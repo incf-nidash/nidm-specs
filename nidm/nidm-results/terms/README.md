@@ -626,6 +626,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='search Volume In Vertices'"> [find issues/PR] </a></td>
+    <td><b>nidm:'search Volume In Vertices': </b>Total number of vertices within the search volume</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q=expectedNumberOfVerticesPerCluster"> [find issues/PR] </a></td>
     <td><b>spm:expectedNumberOfVerticesPerCluster: </b>Expected number of vertices in a cluster</td>
     <td>nidm:NIDM_0000068 </td>
@@ -670,13 +677,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=reselSize"> [more] </a></td>
     <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=searchVolumeInVertices"> [find issues/PR] </a></td>
-    <td><b>spm:searchVolumeInVertices: </b>Total number of vertices within the search volume</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
 </tr>
