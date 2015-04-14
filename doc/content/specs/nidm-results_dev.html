@@ -1748,12 +1748,15 @@ niiri:peak_definition_criteria_id a prov:Entity , nidm_PeakDefinitionCriteria: ;
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property of a DataArray to associate a CoordinateSpace with a physical file.(range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>)</li> 
                         <li><a title="NIDM_0000106">nidm:'is User Defined'</a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false).(range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li> 
                         <li><a title="NIDM_0000120"><dfn title="NIDM_0000120">nidm:'random Field Stationarity'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> is the random field assumed to be stationary across the entire search volume?.(range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li> 
-                        <li><a title="NIDM_0000121"><dfn title="NIDM_0000121">nidm:'search Volume In Voxels'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of voxels within the search volume.(range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li>        
+                        <li><a title="NIDM_0000121"><dfn title="NIDM_0000121">nidm:'search Volume In Voxels'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of voxels within the search volume.(range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>)</li> 
+                        <li><a title="NIDM_0000136"><dfn title="NIDM_0000136">nidm:'search Volume In Units'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> the volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm in a three dimensional image, sec.Hz for a time by frequency two dimensional image).(range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li> 
+                        <li><a title="NIDM_0000137"><dfn title="NIDM_0000137">nidm:'search Volume In Vertices'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> total number of vertices within the search volume.(range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_SearchSpaceMaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000068&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 @prefix nidm_searchVolumeInVoxels: &lt;http://purl.org/nidash/nidm#NIDM_0000121&gt; .
+@prefix nidm_searchVolumeInUnits: &lt;http://purl.org/nidash/nidm#NIDM_0000136&gt; .
 @prefix nidm_randomFieldStationarity: &lt;http://purl.org/nidash/nidm#NIDM_0000120&gt; .
 
 
@@ -1770,7 +1773,7 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	spm:smallestSignifClusterSizeInVoxelsFWE05 "1"^^xsd:int ;
 	spm:smallestSignifClusterSizeInVoxelsFDR05 "3"^^xsd:int ;
 	nidm_searchVolumeInVoxels: "65593"^^xsd:int ;
-	spm:searchVolumeInUnits "1771011"^^xsd:float ;
+	nidm_searchVolumeInUnits: "1771011"^^xsd:float ;
 	spm:reselSize "22.9229643140043"^^xsd:float ;
 	spm:searchVolumeInResels "2552.68032521656"^^xsd:float ;
 	spm:searchVolumeReselsGeometry "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]"^^xsd:string ;
