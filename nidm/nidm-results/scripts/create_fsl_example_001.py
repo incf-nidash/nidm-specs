@@ -350,7 +350,7 @@ def main():
 			coord="[-7.38,-72.5,-8.5]", 
 			coord_in_vox="[34,14.7, 14]",
 			),
-		"FSL_ClusterMaximumStatistic-4-1": dict(
+		"Peak-M4-1": dict(
 			peak_id="niiri:peak_0004_1",
 			label="Peak 0004_1",
 			p_uncorr="3.51932e-09",
@@ -434,7 +434,7 @@ def main():
 			coord="[0.791,-87.2,3.23]", 
 			coord_in_vox="[32,10, 16]"
 			),
-		"FSL_ClusterMaximumStatistic-3-1": dict(
+		"Peak-M3-1": dict(
 			peak_id="niiri:peak_0003_1",
 			label="Peak 0003_1",
 			p_uncorr="1.01163e-08",
@@ -518,7 +518,7 @@ def main():
 			coord="[-53.3,23.3,12.2]", 
 			coord_in_vox="[45,42, 25]"
 			),
-		"FSL_ClusterMaximumStatistic-2-1": dict(
+		"Peak-M2-1": dict(
 			peak_id="niiri:peak_0002_1",
 			label="Peak 0002_1",
 			p_uncorr="1.74205e-06",
@@ -546,7 +546,7 @@ def main():
 			coord="[-56.7,-53.1,18.2]", 
 			coord_in_vox="[47,20, 22]"
 			),
-		"FSL_ClusterMaximumStatistic-1-1": dict(
+		"Peak-M1-1": dict(
 			peak_id="niiri:peak_0001_1",
 			label="Peak 0001_1",
 			p_uncorr="2.01334e-06",

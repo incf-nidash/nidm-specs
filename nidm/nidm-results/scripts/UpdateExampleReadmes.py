@@ -19,11 +19,11 @@ from rdflib.compare import *
 import sys
 from subprocess import call
 
-RELPATH = os.path.dirname(os.path.abspath(__file__))
-NIDMRESULTSPATH = os.path.dirname(RELPATH)
+SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
+NIDMRESULTSPATH = os.path.dirname(SCRIPT_PATH)
 
 # Append test directory to path
-sys.path.append(os.path.join(RELPATH, "..", "test"))
+sys.path.append(os.path.join(SCRIPT_PATH, "..", "test"))
 from TestCommons import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
@@ -105,8 +105,9 @@ def create_document(doc_json_url, doc_title):
     doc_json = response.read()
 
     # Retreive ApiKey
-    api_key_file = os.path.join(RELPATH, "store_login_key.txt")
+    api_key_file = os.path.join(SCRIPT_PATH, "store_login_key.txt")
     if not os.path.isfile(api_key_file):
+        logger.debug('Missing key file: ' + api_key_file)
         raise Exception(
             "No Api Key. Please specify your ApiKey in store_login_key.txt.")
     api_key_file = open(api_key_file, 'r')
