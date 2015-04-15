@@ -41,12 +41,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/280">#280</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Height Threshold'"> [more] </a></td>
-    <td><b>nidm:'Height Threshold': </b>A numerical value that establishes a bound on a range of voxelwise or vertex-wise defined statistic.
-</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's DCT Drift Model'"> [find issues/PR] </a></td>
     <td><b>spm:'SPM's DCT Drift Model': </b>A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model</td>
 </tr>
