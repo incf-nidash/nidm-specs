@@ -338,10 +338,24 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has fMRI Design'"> [find issues/PR] </a></td>
+    <td><b>nidm:'has fMRI Design': </b>A property that associates an fMRI design to a design matrix in first-level fMRI analyses</td>
+    <td>nidm:NIDM_0000019 </td>
+    <td>nidm:fMRIDesign </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/288">#288</a>, naming previously discussed at: <a href="https://github.com/incf-nidash/nidm/pull/70">#70</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='masked Median'"> [more] </a></td>
     <td><b>nidm:'masked Median': </b>Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity</td>
     <td>nidm:NIDM_0000033 </td>
     <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='regressor Names'"> [find issues/PR] </a></td>
+    <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
+    <td>nidm:NIDM_0000019 </td>
+    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -585,6 +599,24 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Block-Based Design'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Block-Based Design': </b>In a block-based design, all trials consists of epochs of sustained neural activity (blocks) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
+    <td>nidm:fMRIDesign</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Event-Related Design'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Event-Related Design': </b>In an event-related design, all trials consists of brief bursts of neural activity (impulses, or events) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
+    <td>nidm:fMRIDesign</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Mixed Design'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Mixed Design': </b>In a mixed design, a subset of the trials consists of epochs of sustained neural activity (blocks) and another subset consists of brief bursts of neural activity (impulses, or events) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
+    <td>nidm:fMRIDesign</td>
+</tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Colin27 Coordinate System'"> [more] </a></td>
