@@ -663,13 +663,13 @@ nidm:NIDM_0000096 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "grand Mean Scaling" ;
                   
-                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/285" ;
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
                   
                   obo:IAO_0000112 "TRUE" ;
                   
-                  obo:IAO_0000115 "Binary flag defining whether the data was scaled. Specifically, \"grand mean scaling\" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses." ;
+                  obo:IAO_0000115 "Binary flag defining whether the data was scaled (true for scaled). Specifically, \"grand mean scaling\" refers to multiplication of every voxel in every scan by a common (or session-specific) value." ;
                   
-                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  obo:IAO_0000114 obo:IAO_0000122 ;
                   
                   rdfs:domain nidm:NIDM_0000018 ;
                   
@@ -1022,13 +1022,13 @@ nidm:NIDM_0000124 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "target Intensity" ;
                   
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
+                  
+                  obo:IAO_0000115 "Value to which the grand mean of the Data was scaled (applies only if grand mean scaling is true)." ;
+                  
                   obo:IAO_0000112 "100" ;
                   
-                  obo:IAO_0000115 "Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)." ;
-                  
-                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/285" ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  obo:IAO_0000114 obo:IAO_0000122 ;
                   
                   rdfs:domain nidm:NIDM_0000018 ;
                   
@@ -2071,19 +2071,17 @@ nidm:NIDM_0000017 rdf:type owl:Class ;
 
 nidm:NIDM_0000018 rdf:type owl:Class ;
                   
-                  rdfs:label "Data" ;
+                  rdfs:label "Data Scaling" ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Data.txt"^^xsd:anyURI ;
                   
-                  owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474" ;
+                  obo:IAO_0000115 "Scaling applied to the data before parameter estimation, including specification of the target intensity." ;
                   
-                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/285" ;
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
                   
-                  obo:IAO_0000115 "\"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn.\" (This definition is from NCIT)." ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000125 .
+                  obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
