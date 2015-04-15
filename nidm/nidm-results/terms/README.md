@@ -395,13 +395,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/292">#292</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='number Of Clusters'"> [more] </a></td>
-    <td><b>nidm:'number Of Clusters': </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000025 </td>
-    <td>xsd:int </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='object Model'"> [more] </a></td>
     <td><b>nidm:'object Model': </b>&lt;undefined&gt;</td>
     <td>prov:Bundle </td>
