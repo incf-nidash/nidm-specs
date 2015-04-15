@@ -26,6 +26,8 @@ def main():
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
+			regressors="[\\\"Listening\\\"]",
+			design="nidm:NIDM_0000151",
 			hrf_basis="spm:GammaDifferenceHRF",
 			drift_model="niiri:drift_model_id"),
 		"SPM_DriftModel": dict(

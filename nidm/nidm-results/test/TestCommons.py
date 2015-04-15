@@ -134,7 +134,7 @@ def display_graph(diff_graph, prefix_msg="Difference in:"):
                         elif isinstance(o, rdflib.term.Literal):
                             o_str = o_str+" ("+str(o.datatype)+")"    
                                                     
-                        logger.info("\t"+prefix_msg+' s='+s_str+\
+                        logger.debug("\t"+prefix_msg+' s='+s_str+\
                                 ", p="+p_str+\
                                 ", o="+o_str)
 
