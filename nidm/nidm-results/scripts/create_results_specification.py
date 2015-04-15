@@ -74,11 +74,11 @@ def main(nidm_original_version):
                                        NIDM_CONTRAST_ESTIMATION],
                 NIDM_PARAMETER_ESTIMATE_MAP: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_RESIDUAL_MEAN_SQUARES_MAP: [NIDM_CONTRAST_ESTIMATION],
-                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION,
+                                NIDM_MODEL_PARAMETERS_ESTIMATION],
                 NIDM_CONTRAST_WEIGHTS: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_CONTRAST_MAP: [NIDM_INFERENCE], 
                 NIDM_STATISTIC_MAP: [NIDM_INFERENCE],
-                NIDM_MASK_MAP: [NIDM_MODEL_PARAMETERS_ESTIMATION],
                 NIDM_CLUSTER_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
                 NIDM_DISPLAY_MASK_MAP: [NIDM_INFERENCE], 
                 NIDM_PEAK_DEFINITION_CRITERIA: [NIDM_INFERENCE],
@@ -156,10 +156,10 @@ def main(nidm_original_version):
             NIDM_INCF['FSL'], FSL_INCF['CenterOfGravity']]
 
         # Add manually used and wasDerivedFrom because these are not stored in the owl file
-        used_by[NIDM_INCF['MaskMap']] = [NIDM_INCF['ContrastEstimation']]
-        used_by[NIDM_INCF['CustomMaskMap']] = [NIDM_INCF['ModelParametersEstimation']]
-    
-        print used_by[NIDM_INCF['MaskMap']]
+        used_by[NIDM_INCF['CustomMaskMap']] = [
+            NIDM_INCF['ModelParametersEstimation']]
+        used_by[NIDM_MASK_MAP] = [NIDM_CONTRAST_ESTIMATION]
+
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
         components, used_by, generated_by, derived_from = _replace_term_by(\
             renaming, components, used_by, generated_by, derived_from)
