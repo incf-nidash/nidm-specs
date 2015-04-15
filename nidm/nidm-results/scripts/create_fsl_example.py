@@ -303,7 +303,7 @@ def main():
 			coord="[25.6, 12.8, 14.6]",
 			coord_in_vox="[24.1, -77.1, -4.27]"
 			),
-		"FSL_ClusterMaximumStatistic-1": dict(
+		"Peak-M1": dict(
 			peak_id="niiri:peak_0001",
 			label="Peak 1",
 			p_uncorr="4.126074e-10",
@@ -359,7 +359,7 @@ def main():
 			coord="[0.791, -87.2, 3.23]",
 			coord_in_vox="[39, 13, 12]"
 			),
-		"FSL_ClusterMaximumStatistic-5": dict(
+		"Peak-M5": dict(
 			peak_id="niiri:peak_0005",
 			label="Peak 5",
 			p_uncorr="2.178976e-09",

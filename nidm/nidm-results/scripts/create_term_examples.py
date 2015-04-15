@@ -270,14 +270,6 @@ def main():
 			label="Center of gravity",
 			cluster_id="niiri:significant_cluster_0001",
 			),
-		"FSL_ClusterMaximumStatistic": dict(
-			peak_id="niiri:cluster_max_statistic_0001",
-			label="Cluster Maximum Statistic",
-			location="niiri:coordinate_0001",
-			p_uncorr="0.00085796235",
-			equiv_z="3.135447",
-			cluster_id="niiri:significant_cluster_0001"
-			),
 		"CoordinateSpace": dict(
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
