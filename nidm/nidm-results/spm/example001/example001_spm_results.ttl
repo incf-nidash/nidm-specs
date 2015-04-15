@@ -42,6 +42,7 @@
 @prefix nidm_ParameterEstimateMap: <http://purl.org/nidash/nidm#NIDM_0000061> .
 @prefix nidm_MaskMap: <http://purl.org/nidash/nidm#NIDM_0000054> .
 @prefix nidm_ResidualMeanSquaresMap: <http://purl.org/nidash/nidm#NIDM_0000066> .
+@prefix nidm_ReselsPerVoxelMap: <http://purl.org/nidash/nidm#NIDM_0000144> .
 @prefix nidm_StatisticMap: <http://purl.org/nidash/nidm#NIDM_0000076> .
 @prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
 @prefix nidm_hasHRFBasis: <http://purl.org/nidash/nidm#NIDM_0000102> .
@@ -86,6 +87,10 @@
 @prefix nidm_qValueFDR: <http://purl.org/nidash/nidm#NIDM_0000119> .
 @prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_SearchSpaceMaskMap: <http://purl.org/nidash/nidm#NIDM_0000068> .
+@prefix nidm_expectedNumberOfVoxelsPerCluster: <http://purl.org/nidash/nidm#NIDM_0000143> .
+@prefix nidm_expectedNumberOfClusters: <http://purl.org/nidash/nidm#NIDM_0000141> .
+@prefix nidm_heightCriticalThresholdFWE05: <http://purl.org/nidash/nidm#NIDM_0000147> .
+@prefix nidm_heightCriticalThresholdFDR05: <http://purl.org/nidash/nidm#NIDM_0000146> .
 @prefix nidm_searchVolumeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000121> .
 @prefix nidm_searchVolumeInUnits: <http://purl.org/nidash/nidm#NIDM_0000136> .
 @prefix nidm_randomFieldStationarity: <http://purl.org/nidash/nidm#NIDM_0000120> .
@@ -222,7 +227,7 @@ niiri:residual_mean_squares_map_id_der a prov:Entity , nidm_ResidualMeanSquaresM
 
 niiri:residual_mean_squares_map_id prov:wasDerivedFrom niiri:residual_mean_squares_map_id_der .
 
-niiri:resels_per_voxel_map_id_der a prov:Entity , spm:ReselsPerVoxelMap ;
+niiri:resels_per_voxel_map_id_der a prov:Entity , nidm_ReselsPerVoxelMap: ;
     nfo:fileName "RPV.nii"^^xsd:string ;
     dct:format "image/nifti"^^xsd:string ;
     crypto:sha512 "963283cdde607c40e4640c27453867bd0d70133b6d61482933862487c0f4a5acdb2e338a12a2605ee044b1aa47b5717f0c520b90ed3c49b5227f0483bd48512d"^^xsd:string .
@@ -457,7 +462,7 @@ niiri:drift_model_id a prov:Entity , spm:DCTDriftModel ;
 
 niiri:inference_id prov:used niiri:resels_per_voxel_map_id .
 
-niiri:resels_per_voxel_map_id a prov:Entity , spm:ReselsPerVoxelMap ;
+niiri:resels_per_voxel_map_id a prov:Entity , nidm_ReselsPerVoxelMap: ;
 	rdfs:label "Resels per Voxel Map" ;
 	prov:atLocation "file://./ReselsPerVoxel.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ReselsPerVoxel.nii.gz"^^xsd:string ;
@@ -476,10 +481,10 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
-	spm:expectedNumberOfVoxelsPerCluster "4.02834655908613"^^xsd:float ;
-	spm:expectedNumberOfClusters "0.0512932943875478"^^xsd:float ;
-	spm:heightCriticalThresholdFWE05 "4.85241745689539"^^xsd:float ;
-	spm:heightCriticalThresholdFDR05 "5.7639536857605"^^xsd:float ;
+	nidm_expectedNumberOfVoxelsPerCluster: "4.02834655908613"^^xsd:float ;
+	nidm_expectedNumberOfClusters: "0.0512932943875478"^^xsd:float ;
+	nidm_heightCriticalThresholdFWE05: "4.85241745689539"^^xsd:float ;
+	nidm_heightCriticalThresholdFDR05: "5.7639536857605"^^xsd:float ;
 	spm:smallestSignifClusterSizeInVoxelsFWE05 "12"^^xsd:int ;
 	spm:smallestSignifClusterSizeInVoxelsFDR05 "29"^^xsd:int ;
 	nidm_searchVolumeInVoxels: "69306"^^xsd:int ;
