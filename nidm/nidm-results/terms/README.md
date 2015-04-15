@@ -521,13 +521,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/146">#146</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='dimensions In Voxels'"> [more] </a></td>
-    <td><b>nidm:'dimensions In Voxels': </b>Dimensions of some N-dimensional data</td>
-    <td>nidm:NIDM_0000016 </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='effect Degrees Of Freedom'"> [more] </a></td>
     <td><b>nidm:'effect Degrees Of Freedom': </b>Degrees of freedom of the effect</td>
     <td>nidm:NIDM_0000076 </td>
