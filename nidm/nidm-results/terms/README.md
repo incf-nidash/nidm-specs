@@ -279,11 +279,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/283">#283</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Peak'"> [more] </a></td>
-    <td><b>nidm:'Peak': </b>Statistic defined at the peak-level in an excursion set. FIXME (now Peak instead of PeakStatistic)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Standardized Coordinate System'"> [more] </a></td>
     <td><b>nidm:'Standardized Coordinate System': </b>Parent of all reference spaces except "Subject"</td>
 </tr>
