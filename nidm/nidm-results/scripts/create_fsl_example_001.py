@@ -613,7 +613,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			search_vol_voxels="45203",
 			resel_size="12.0418",
-			dlh="0.384676",
+			noise_roughness="0.384676",
 			random_field_station="true",
 			sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
 			inference_id="niiri:inference_id_1"

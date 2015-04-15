@@ -50,7 +50,7 @@ def main(nidm_original_version):
              NIDM_MODEL_PARAMETERS_ESTIMATION,  
              NIDM_PARAMETER_ESTIMATE_MAP,
              NIDM_GRAND_MEAN_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP, 
-             NIDM_MASK_MAP]    
+             NIDM_MASK_MAP, NIDM_RESELS_PER_VOXEL_MAP]    
     components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
              NIDM_CONTRAST_WEIGHTS, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP, 
              NIDM_CONTRAST_STANDARD_ERROR_MAP]
@@ -58,9 +58,8 @@ def main(nidm_original_version):
              NIDM_EXCURSION_SET_MAP, NIDM_CLUSTER_LABELS_MAP, NIDM_SEARCH_SPACE_MASK_MAP, 
              NIDM_SIGNIFICANT_CLUSTER, NIDM_PEAK, NIDM_COORDINATE, 
              NIDM_CONJUNCTION_INFERENCE, NIDM_CLUSTER_DEFINITION_CRITERIA,
-             NIDM_DISPLAY_MASK_MAP, NIDM_PEAK_DEFINITION_CRITERIA]
-    components["SPM-specific Concepts"] = [SPM['ReselsPerVoxelMap']]
-    components["FSL-specific Concepts"] = [FSL['ClusterCenterOfGravity']]
+             NIDM_DISPLAY_MASK_MAP, NIDM_PEAK_DEFINITION_CRITERIA,
+             ]
 
     if nidm_version == 'dev':
         # For the developement version only list all terms that were not 
@@ -75,18 +74,20 @@ def main(nidm_original_version):
                                        NIDM_CONTRAST_ESTIMATION],
                 NIDM_PARAMETER_ESTIMATE_MAP: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_RESIDUAL_MEAN_SQUARES_MAP: [NIDM_CONTRAST_ESTIMATION],
-                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION],
+                NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION,
+                                NIDM_MODEL_PARAMETERS_ESTIMATION],
                 NIDM_CONTRAST_WEIGHTS: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_CONTRAST_MAP: [NIDM_INFERENCE], 
                 NIDM_STATISTIC_MAP: [NIDM_INFERENCE],
-                NIDM_MASK_MAP: [NIDM_MODEL_PARAMETERS_ESTIMATION],
                 NIDM_CLUSTER_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
                 NIDM_DISPLAY_MASK_MAP: [NIDM_INFERENCE], 
-                NIDM_PEAK_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
+                NIDM_PEAK_DEFINITION_CRITERIA: [NIDM_INFERENCE],
+                NIDM_RESELS_PER_VOXEL_MAP: [NIDM_INFERENCE]
     }
     generated_by = { 
                 NIDM_PARAMETER_ESTIMATE_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
                 NIDM_RESIDUAL_MEAN_SQUARES_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
+                NIDM_RESELS_PER_VOXEL_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
                 NIDM_MASK_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
                 NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION, 
                 NIDM_STATISTIC_MAP: NIDM_CONTRAST_ESTIMATION, 
@@ -95,7 +96,8 @@ def main(nidm_original_version):
 
     derived_from = {
                 NIDM_SIGNIFICANT_CLUSTER: NIDM_EXCURSION_SET_MAP,
-                NIDM_PEAK: NIDM_SIGNIFICANT_CLUSTER,                
+                NIDM_PEAK: NIDM_SIGNIFICANT_CLUSTER,
+                NIDM_CLUSTER_CENTER_OF_GRAVITY: NIDM_SIGNIFICANT_CLUSTER
     }
 
     if nidm_version == "020":
@@ -128,32 +130,36 @@ def main(nidm_original_version):
                      (NIDM_CLUSTER_LABELS_MAP, NIDM_INCF['ClusterLabelsMap']),
                      (NIDM_COORDINATE, NIDM_INCF['Coordinate']),
                      (NIDM_PARAMETER_ESTIMATE_MAP, NIDM_INCF['ParameterEstimateMap']),
-                     (SPM['ReselsPerVoxelMap'], SPM_INCF['ReselsPerVoxelMap']),
-                     (FSL['ClusterCenterOfGravity'], FSL_INCF['CenterOfGravity'])]
+                     (NIDM_RESELS_PER_VOXEL_MAP, SPM_INCF['ReselsPerVoxelMap']),
+                     (NIDM_CLUSTER_CENTER_OF_GRAVITY, FSL_INCF['CenterOfGravity'])]
 
         # MaskMap was sometimes called CustomMaskMap (when isUserDefined=true)
         components["Parameters estimation"].append(NIDM_INCF['CustomMaskMap'])
-        
+
         # The following classes were not represented in 0.2.0
         components["Inference"].remove(NIDM_CLUSTER_DEFINITION_CRITERIA)
         components["Inference"].remove(NIDM_PEAK_DEFINITION_CRITERIA)
         components["Inference"].remove(NIDM_DISPLAY_MASK_MAP)
         components["Inference"].remove(NIDM_CONJUNCTION_INFERENCE)
 
+        # The following classes were represented in another component in 0.2.0
+        components["Parameters estimation"].remove(NIDM_RESELS_PER_VOXEL_MAP)
+
         del used_by[NIDM_CLUSTER_DEFINITION_CRITERIA]
         del used_by[NIDM_PEAK_DEFINITION_CRITERIA]
         del used_by[NIDM_DISPLAY_MASK_MAP]
 
         # SPM and FSL software were described using software-specific terms
-        components["SPM-specific Concepts"].append(NIDM_INCF['SPM'])
-        components["FSL-specific Concepts"].append(NIDM_INCF['FSL'])
-
+        components["SPM-specific Concepts"] = [
+            NIDM_INCF['SPM'], SPM_INCF['ReselsPerVoxelMap']]
+        components["FSL-specific Concepts"] = [
+            NIDM_INCF['FSL'], FSL_INCF['CenterOfGravity']]
 
         # Add manually used and wasDerivedFrom because these are not stored in the owl file
-        used_by[NIDM_INCF['MaskMap']] = [NIDM_INCF['ContrastEstimation']]
-        used_by[NIDM_INCF['CustomMaskMap']] = [NIDM_INCF['ModelParametersEstimation']]
-    
-        print used_by[NIDM_INCF['MaskMap']]
+        used_by[NIDM_INCF['CustomMaskMap']] = [
+            NIDM_INCF['ModelParametersEstimation']]
+        used_by[NIDM_MASK_MAP] = [NIDM_CONTRAST_ESTIMATION]
+
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
         components, used_by, generated_by, derived_from = _replace_term_by(\
             renaming, components, used_by, generated_by, derived_from)

@@ -506,7 +506,7 @@ def main():
 		),
 		"DerivedMap-RPVMap": dict(
 			derived_from_map_id="niiri:resels_per_voxel_map_id_der",
-			derived_map_type="spm:ReselsPerVoxelMap",
+			derived_map_type="nidm:NIDM_0000144",
 			filename="RPV.nii",
 			format="image/nifti",
 			sha="963283cdde607c40e4640c27453867bd0d70133b6d61482933862487c0f4a5acdb2e338a12a2605ee044b1aa47b5717f0c520b90ed3c49b5227f0483bd48512d",

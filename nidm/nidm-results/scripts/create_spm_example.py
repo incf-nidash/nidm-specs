@@ -526,7 +526,7 @@ def main():
 		),
 		"DerivedMapWithHeader-4": dict(
 			derived_from_map_id="niiri:resels_per_voxel_map_id_der",
-			derived_map_type="spm:ReselsPerVoxelMap",
+			derived_map_type="nidm:NIDM_0000144",
 			filename="RPV.img",
 			format="image/nifti",
 			derived_from_map_header_id="niiri:original_rpv_map_header_id",

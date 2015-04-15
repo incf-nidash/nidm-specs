@@ -268,6 +268,11 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Resels Per Voxel Map'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Resels Per Voxel Map': </b>A map whose value at each location is the number of resels per voxel. </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Standardized Coordinate System'"> [more] </a></td>
     <td><b>nidm:'Standardized Coordinate System': </b>Parent of all reference spaces except "Subject"</td>
 </tr>
@@ -285,11 +290,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=KConjunctionInference"> [more] </a></td>
     <td><b>spm:KConjunctionInference: </b>Inference testing for the joint significance of a subset of the effects</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=ReselsPerVoxelMap"> [find issues/PR] </a></td>
-    <td><b>spm:ReselsPerVoxelMap: </b>A map whose value at each location is the number of resels per voxel. </td>
 </tr>
 </table><h2>Properties</h2>
 <table>
@@ -314,6 +314,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'cluster Size In Voxels': </b>Number of voxels that make up the cluster</td>
     <td>nidm:NIDM_0000026 nidm:NIDM_0000070 </td>
     <td>xsd:positiveInteger </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Clusters'"> [find issues/PR] </a></td>
+    <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -349,13 +356,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>spm:'SPM's Drift Cut-off Period': </b>Discrete Cosine Transform basis cut-off, specified as period length in seconds and ensures that all basis elements will have period of this duration or longer</td>
     <td>spm:DCTDriftModel </td>
     <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=expectedNumberOfClusters"> [find issues/PR] </a></td>
-    <td><b>spm:expectedNumberOfClusters: </b>Expected number of clusters in an excursion set</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -402,13 +402,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a> and <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=dlh"> [more] </a></td>
-    <td><b>fsl:dlh: </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=reselSizeInVoxels"> [more] </a></td>
     <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt;</td>
     <td>nidm:NIDM_0000068 </td>
@@ -434,6 +427,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'has HRF Basis': </b>&lt;undefined&gt;</td>
     <td>nidm:NIDM_0000019 </td>
     <td>nidm:NIDM_0000036 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a> and <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='noise Roughness In Voxels'"> [more] </a></td>
+    <td><b>nidm:'noise Roughness In Voxels': </b>&lt;undefined&gt;</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -493,13 +493,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=coordinateInVoxels"> [more] </a></td>
-    <td><b>fsl:coordinateInVoxels: </b>Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
-    <td>nidm:NIDM_0000015 </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='cluster Size In Vertices'"> [find issues/PR] </a></td>
     <td><b>nidm:'cluster Size In Vertices': </b>Number of vertices that make up the cluster</td>
     <td>nidm:NIDM_0000026 nidm:NIDM_0000070 </td>
@@ -511,6 +504,13 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'contrast Name': </b>Name of the contrast</td>
     <td>nidm:NIDM_0000002 nidm:NIDM_0000014 nidm:NIDM_0000076 </td>
     <td>xsd:string </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate In Voxels'"> [more] </a></td>
+    <td><b>nidm:'coordinate In Voxels': </b>Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
+    <td>nidm:NIDM_0000015 </td>
+    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -542,6 +542,20 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Vertices Per Cluster'"> [find issues/PR] </a></td>
+    <td><b>nidm:'expected Number Of Vertices Per Cluster': </b>Expected number of vertices in a cluster</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Voxels Per Cluster'"> [find issues/PR] </a></td>
+    <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='in World Coordinate System'"> [more] </a></td>
     <td><b>nidm:'in World Coordinate System': </b>Type of coordinate system</td>
     <td>nidm:NIDM_0000016 </td>
@@ -565,20 +579,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='search Volume In Vertices'"> [find issues/PR] </a></td>
     <td><b>nidm:'search Volume In Vertices': </b>Total number of vertices within the search volume</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=expectedNumberOfVerticesPerCluster"> [find issues/PR] </a></td>
-    <td><b>spm:expectedNumberOfVerticesPerCluster: </b>Expected number of vertices in a cluster</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=expectedNumberOfVoxelsPerCluster"> [find issues/PR] </a></td>
-    <td><b>spm:expectedNumberOfVoxelsPerCluster: </b>Expected number of voxels in a cluster</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
 </tr>

@@ -460,7 +460,7 @@ def main():
 		),
 		"DerivedMap-RPV": dict(
 			derived_from_map_id="niiri:resels_per_voxel_map_id_der",
-			derived_map_type="spm:ReselsPerVoxelMap",
+			derived_map_type="nidm:NIDM_0000144",
 			filename="RPV.nii",
 			format="image/nifti",
 			sha="e43b6e01b0463fe7d40782137867a...",

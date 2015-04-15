@@ -46,9 +46,11 @@
 @prefix nidm_hasErrorDependence: <http://purl.org/nidash/nidm#NIDM_0000100> .
 @prefix nidm_IndependentError: <http://purl.org/nidash/nidm#NIDM_0000048> .
 @prefix nidm_dependenceSpatialModel: <http://purl.org/nidash/nidm#NIDM_0000089> .
+@prefix nidm_ClusterCenterOfGravity: <http://purl.org/nidash/nidm#NIDM_0000140> .
 @prefix nidm_ContrastMap: <http://purl.org/nidash/nidm#NIDM_0000002> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
 @prefix nidm_coordinate: <http://purl.org/nidash/nidm#NIDM_0000086> .
+@prefix nidm_coordinateInVoxels: <http://purl.org/nidash/nidm#NIDM_0000139> .
 @prefix nidm_ContrastVarianceMap: <http://purl.org/nidash/nidm#NIDM_0000135> .
 @prefix nidm_ExcursionSetMap: <http://purl.org/nidash/nidm#NIDM_0000025> .
 @prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
@@ -60,6 +62,7 @@
 @prefix nidm_SearchSpaceMaskMap: <http://purl.org/nidash/nidm#NIDM_0000068> .
 @prefix nidm_randomFieldStationarity: <http://purl.org/nidash/nidm#NIDM_0000120> .
 @prefix nidm_searchVolumeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000121> .
+@prefix nidm_noiseRoughnessInVoxels: <http://purl.org/nidash/nidm#NIDM_0000145> .
 @prefix nidm_SignificantCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
 @prefix nidm_clusterLabelId: <http://purl.org/nidash/nidm#NIDM_0000082> .
@@ -159,12 +162,12 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceSpatialModel: nidm_SpatiallyLocalModel: .
 
-niiri:center_of_gravity_1 a prov:Entity , fsl:ClusterCenterOfGravity ;
+niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 1" ;
 	prov:atLocation niiri:COG_coordinate_0001 ;
 	prov:wasDerivedFrom niiri:significant_cluster_0001 .
 
-niiri:center_of_gravity_2 a prov:Entity , fsl:ClusterCenterOfGravity ;
+niiri:center_of_gravity_2 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 2" ;
 	prov:atLocation niiri:COG_coordinate_0002 ;
 	prov:wasDerivedFrom niiri:significant_cluster_0002 .
@@ -184,49 +187,49 @@ niiri:contrast_map_id a prov:Entity , nidm_ContrastMap: ;
 niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 1" ;
 	nidm_coordinate: "[-48.1, -73.7, -9.24]"^^xsd:string ;
-	fsl:coordinateInVoxels "[45, 15, 14]"^^xsd:string .
+	nidm_coordinateInVoxels: "[45, 15, 14]"^^xsd:string .
 
 
 niiri:coordinate_0002 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 2" ;
 	nidm_coordinate: "[-38.1, -53.4, -18]"^^xsd:string ;
-	fsl:coordinateInVoxels "[42, 21, 13]"^^xsd:string .
+	nidm_coordinateInVoxels: "[42, 21, 13]"^^xsd:string .
 
 
 niiri:coordinate_0003 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 3" ;
 	nidm_coordinate: "[-29.6, -73.8, -16.9]"^^xsd:string ;
-	fsl:coordinateInVoxels "[40, 15, 12]"^^xsd:string .
+	nidm_coordinateInVoxels: "[40, 15, 12]"^^xsd:string .
 
 
 niiri:coordinate_0004 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 4" ;
 	nidm_coordinate: "[0.791, -87.2, 3.23]"^^xsd:string ;
-	fsl:coordinateInVoxels "[39, 13, 12]"^^xsd:string .
+	nidm_coordinateInVoxels: "[39, 13, 12]"^^xsd:string .
 
 
 niiri:coordinate_0005 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 5" ;
 	nidm_coordinate: "[16.1, -96.6, 5.82]"^^xsd:string ;
-	fsl:coordinateInVoxels "[32, 10, 16]"^^xsd:string .
+	nidm_coordinateInVoxels: "[32, 10, 16]"^^xsd:string .
 
 
 niiri:coordinate_0006 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 6" ;
 	nidm_coordinate: "[-25.5, -80.4, 15.3]"^^xsd:string ;
-	fsl:coordinateInVoxels "[28, 7, 16]"^^xsd:string .
+	nidm_coordinateInVoxels: "[28, 7, 16]"^^xsd:string .
 
 
 niiri:COG_coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 1" ;
 	nidm_coordinate: "[40.2, 16.4, 13.2]"^^xsd:string ;
-	fsl:coordinateInVoxels "[-30.8, -68.5, -13.4]"^^xsd:string .
+	nidm_coordinateInVoxels: "[-30.8, -68.5, -13.4]"^^xsd:string .
 
 
 niiri:COG_coordinate_0002 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 2" ;
 	nidm_coordinate: "[25.6, 12.8, 14.6]"^^xsd:string ;
-	fsl:coordinateInVoxels "[24.1, -77.1, -4.27]"^^xsd:string .
+	nidm_coordinateInVoxels: "[24.1, -77.1, -4.27]"^^xsd:string .
 
 
 niiri:contrast_variance_map_id a prov:Entity , nidm_ContrastVarianceMap: ;
@@ -303,7 +306,7 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	nidm_randomFieldStationarity: "true"^^xsd:boolean ;
 	nidm_searchVolumeInVoxels: "45359"^^xsd:int ;
 	fsl:reselSizeInVoxels "12.2251"^^xsd:float ;
-	fsl:dlh "0.384676"^^xsd:float ;
+	nidm_noiseRoughnessInVoxels: "0.384676"^^xsd:float ;
 	crypto:sha512 "400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8"^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id .
 
