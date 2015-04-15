@@ -6,6 +6,7 @@
 '''
 
 import os
+import sys
 import re
 import urllib2
 import rdflib
@@ -13,7 +14,15 @@ from rdflib.graph import Graph
 from rdflib.compare import *
 import logging
 import signal
-import socket, ssl
+import socket
+import ssl
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+
+# Append parent script directory to path
+sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir,
+                             os.pardir, "scripts"))
+from Constants import NIDM_SOFTWARE_VERSION
 
 # Save debug info in a log file (debug.log)
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
@@ -97,7 +106,7 @@ def display_graph(diff_graph, prefix_msg="Difference in:"):
     for s,p,o in diff_graph.triples((None,None,None)):
             # workaround to avoid issue with "5853" being a string
             prefix, namespace, name = diff_graph.compute_qname(p)
-            if name != "softwareRevision":
+            if p != NIDM_SOFTWARE_VERSION:
                 if name != "featVersion":
                     o_name = ""
                     if isinstance(o, rdflib.URIRef):
