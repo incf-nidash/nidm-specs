@@ -107,11 +107,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/282">#282</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Cluster Labels Map'"> [more] </a></td>
-    <td><b>nidm:'Cluster Labels Map': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL Results'"> [more] </a></td>
     <td><b>nidm:'FSL Results': </b>&lt;undefined&gt;</td>
 </tr>
@@ -551,13 +546,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'error Degrees Of Freedom': </b>Degrees of freedom of the error</td>
     <td>nidm:NIDM_0000076 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/282">#282</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has Cluster Labels Map'"> [more] </a></td>
-    <td><b>nidm:'has Cluster Labels Map': </b>A map whose value at each location denotes cluster membership. Each cluster is denoted by a different integer</td>
-    <td>nidm:NIDM_0000025 </td>
-    <td>nidm:NIDM_0000008 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
