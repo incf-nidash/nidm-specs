@@ -362,8 +362,7 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nlx:nif-0000-00343",
 			label="SPM",
-			version="SPM12b",
-			revision="5853"
+			version="12b.5853"
 			),
 		"GrandMeanMap": dict(
 			grand_mean_map_id="niiri:grand_mean_map_id",

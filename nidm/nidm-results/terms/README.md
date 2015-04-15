@@ -359,13 +359,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/291">#291</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='software Version'"> [more] </a></td>
-    <td><b>nidm:'software Version': </b>Name and number that specifies the software version</td>
-    <td>prov:SoftwareAgent </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/285">#285</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='target Intensity'"> [more] </a></td>
     <td><b>nidm:'target Intensity': </b>Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)</td>
     <td>nidm:NIDM_0000018 </td>
@@ -434,13 +427,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>fsl:dlh: </b>&lt;undefined&gt;</td>
     <td>nidm:NIDM_0000068 </td>
     <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/291">#291</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=featVersion"> [more] </a></td>
-    <td><b>fsl:featVersion: </b>&lt;undefined&gt;</td>
-    <td>nlx:birnlex_2067 </td>
-    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -658,13 +644,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/291">#291</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=softwareRevision"> [more] </a></td>
-    <td><b>spm:softwareRevision: </b>revision number of a piece of software</td>
-    <td>prov:SoftwareAgent </td>
-    <td>xsd:string </td>
 </tr>
 </table><h2>Individuals</h2>
 <table>

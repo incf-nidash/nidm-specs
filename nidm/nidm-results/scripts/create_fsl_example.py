@@ -414,7 +414,7 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nlx:birnlex_2067",
 			label="FSL",
-			version="fsl-5_0_x",
+			version="5.0.x",
 			feat_version="6.00"
 			),
 		"FSL_GrandMeanMap": dict(

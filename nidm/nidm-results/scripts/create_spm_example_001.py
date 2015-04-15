@@ -522,8 +522,7 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nlx:nif-0000-00343",
 			label="SPM",
-			version="SPM12",
-			revision="12.0"
+			version="12.12"
 			),
 		"Image": dict(
 			image_id="niiri:maximum_intensity_projection_id",
