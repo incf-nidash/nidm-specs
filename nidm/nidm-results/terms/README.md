@@ -227,11 +227,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/276">#276</a>, discussed in <a href="https://github.com/ISA-tools/stato/pull/23">ISA-tools/stato#23</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Estimation'"> [more] </a></td>
-    <td><b>nidm:'Contrast Estimation': </b>The process of estimating a contrast from the estimated parameters of statistical model</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/ISA-tools/stato/pull/23">ISA-tools/stato#23</a>
 Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Weights'"> [more] </a></td>
     <td><b>nidm:'Contrast Weights': </b>Vector defining the linear combination associated with a particular contrast. </td>
