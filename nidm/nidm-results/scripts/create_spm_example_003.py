@@ -331,8 +331,8 @@ def main():
 			),
 		"NIDMBundle": dict(
 			bundle_id="niiri:spm_results_id",
-			label="SPM Results",
-			object_model="nidm:NIDM_0000067",
+			label="NIDM-Results",
+			object_model="nidm:NIDM_0000027",
 			version="0.2.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),
