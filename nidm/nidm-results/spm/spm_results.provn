@@ -79,6 +79,7 @@ prefix nidm_ContrastMap <http://purl.org/nidash/nidm#NIDM_0000002>
 prefix nidm_pValueFWER <http://purl.org/nidash/nidm#NIDM_0000115>
 prefix nidm_coordinate <http://purl.org/nidash/nidm#NIDM_0000086>
 prefix nidm_hasErrorDependence <http://purl.org/nidash/nidm#NIDM_0000100>
+prefix obo_contrastweightmatrix <http://purl.obolibrary.org/obo/STATO_0000323>
 prefix nidm_clusterLabelId <http://purl.org/nidash/nidm#NIDM_0000082>
 prefix nidm_ReselsPerVoxelMap <http://purl.org/nidash/nidm#NIDM_0000144>
 prefix nidm_voxel18connected <http://purl.org/nidash/nidm#NIDM_0000128>
@@ -95,7 +96,6 @@ prefix nidm_IndependentError <http://purl.org/nidash/nidm#NIDM_0000048>
 prefix nidm_MNICoordinateSystem <http://purl.org/nidash/nidm#NIDM_0000051>
 prefix nidm_randomFieldStationarity <http://purl.org/nidash/nidm#NIDM_0000120>
 prefix nidm_voxelUnits <http://purl.org/nidash/nidm#NIDM_0000133>
-prefix nidm_ContrastWeights <http://purl.org/nidash/nidm#NIDM_0000014>
 prefix nidm_varianceMapWiseDependence <http://purl.org/nidash/nidm#NIDM_0000126>
 prefix nidm_userSpecifiedThresholdType <http://purl.org/nidash/nidm#NIDM_0000125>
 prefix nidm_ErrorModel <http://purl.org/nidash/nidm#NIDM_0000023>
@@ -131,7 +131,7 @@ entity(niiri:original_pe_map_header_id,[prov:type = 'nidm:NIDM_0000053', dct:for
 entity(niiri:original_mask_map_header_id,[prov:type = 'nidm:NIDM_0000053', dct:format = "image/nifti" %% xsd:string, nfo:fileName = "mask.hdr" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:data_id,[prov:type = 'nidm:NIDM_0000018', prov:type = 'prov:Collection', prov:label = "Data", nidm:NIDM_0000096 = "true" %% xsd:boolean, nidm:NIDM_0000124 = "100" %% xsd:float])
 entity(niiri:design_matrix_png_id,[prov:type = 'dctype:Image', prov:location = "file:///path/to/DesignMatrix.png" %% xsd:anyURI, nfo:fileName = "DesignMatrix.png" %% xsd:string, dct:format = "image/png" %% xsd:string])
-entity(niiri:contrast_id,[prov:type = 'nidm:NIDM_0000014', prov:label = "Contrast: Listening > Rest", prov:value = "[1, 0, 0]" %% xsd:string, nidm:NIDM_0000123 = 'obo:STATO_0000176', nidm:NIDM_0000085 = "listening > rest" %% xsd:string])
+entity(niiri:contrast_id,[prov:type = 'obo:STATO_0000323', prov:label = "Contrast: Listening > Rest", prov:value = "[1, 0, 0]" %% xsd:string, nidm:NIDM_0000123 = 'obo:STATO_0000176', nidm:NIDM_0000085 = "listening > rest" %% xsd:string])
 entity(niiri:original_rpv_map_header_id,[prov:type = 'nidm:NIDM_0000053', dct:format = "image/nifti" %% xsd:string, nfo:fileName = "RPV.hdr" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:design_matrix_id,[prov:type = 'nidm:NIDM_0000019', prov:label = "Design Matrix", prov:location = "file:///path/to/DesignMatrix.csv" %% xsd:anyURI, dct:format = "text/csv" %% xsd:string, nfo:fileName = "DesignMatrix.csv" %% xsd:string, dc:description = 'niiri:design_matrix_png_id'])
 entity(niiri:statistic_original_map_header_id,[prov:type = 'nidm:NIDM_0000053', prov:type = 'nidm:NIDM_0000053', dct:format = "image/nifti" %% xsd:string, nfo:fileName = "spmT_0001.hdr" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "spmT_0001.hdr" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
