@@ -76,6 +76,8 @@
 @prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_effectDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000091> .
 @prefix nidm_errorDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000093> .
+@prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
+@prefix obo_ordinaryleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000370> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -153,13 +155,13 @@ niiri:contrast_standard_error_map_id_2 a prov:Entity , nidm_ContrastStandardErro
 niiri:contrast_id a prov:Entity , nidm_ContrastWeights: ;
 	rdfs:label "Contrast: listening > reading" ;
 	prov:value "[1, -1, 0, 0]"^^xsd:string ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nidm_contrastName: "listening > reading"^^xsd:string .
 
 niiri:contrast_id_2 a prov:Entity , nidm_ContrastWeights: ;
 	rdfs:label "Contrast: motor" ;
 	prov:value "[0, 0, 1]"^^xsd:string ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nidm_contrastName: "motor"^^xsd:string .
 
 niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
@@ -353,7 +355,7 @@ niiri:mask_id_1 a prov:Entity , nidm_MaskMap: ;
 niiri:model_pe_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm_ModelParametersEstimation: ;
 	rdfs:label "Model parameters estimation" ;
-	nidm_withEstimationMethod: obo:STATO_0000370 ; # obo:'ordinary least squares estimation'
+	nidm_withEstimationMethod: obo_ordinaryleastsquaresestimation: ; # obo:'ordinary least squares estimation'
 	prov:used niiri:design_matrix_id ;
     prov:used niiri:data_id ;
     prov:used niiri:error_model_id ;
@@ -443,7 +445,7 @@ niiri:software_id a prov:Agent , nlx:nif-0000-00343 , prov:SoftwareAgent ;
 niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: listening > reading" ;
 	prov:atLocation "file:///path/to/TStatistic_0001.nii.gz"^^xsd:anyURI ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nfo:fileName "TStatistic_0001.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_contrastName: "listening > reading"^^xsd:string ;
@@ -456,7 +458,7 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 niiri:statistic_map_id_2 a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: motor" ;
 	prov:atLocation "file:///path/to/TStatistic_0002.nii.gz"^^xsd:anyURI ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nfo:fileName "TStatistic_0002.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_contrastName: "motor"^^xsd:string ;

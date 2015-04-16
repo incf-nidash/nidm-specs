@@ -100,6 +100,8 @@
 @prefix nidm_clusterLabelId: <http://purl.org/nidash/nidm#NIDM_0000082> .
 @prefix nidm_effectDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000091> .
 @prefix nidm_errorDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000093> .
+@prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
+@prefix obo_generalizedleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000372> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -141,7 +143,7 @@ niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorM
 niiri:contrast_id a prov:Entity , nidm_ContrastWeights: ;
 	rdfs:label "Contrast: passive listening > rest" ;
 	prov:value "[1, 0]"^^xsd:string ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nidm_contrastName: "passive listening > rest"^^xsd:string .
 
 niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
@@ -327,7 +329,7 @@ niiri:mask_id_1 a prov:Entity , nidm_MaskMap: ;
 niiri:model_pe_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm_ModelParametersEstimation: ;
 	rdfs:label "Model parameters estimation" ;
-	nidm_withEstimationMethod: obo:STATO_0000372 ; # obo:'generalized least squares estimation'
+	nidm_withEstimationMethod: obo_generalizedleastsquaresestimation: ; # obo:'generalized least squares estimation'
 	prov:used niiri:design_matrix_id ;
     prov:used niiri:data_id ;
     prov:used niiri:error_model_id ;
@@ -553,7 +555,7 @@ niiri:significant_cluster_0005 a prov:Entity , nidm_SignificantCluster: ;
 niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: passive listening > rest" ;
 	prov:atLocation "file://./TStatistic.nii.gz"^^xsd:anyURI ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nfo:fileName "TStatistic.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_contrastName: "passive listening > rest"^^xsd:string ;

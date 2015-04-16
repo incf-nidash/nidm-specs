@@ -89,6 +89,9 @@
 @prefix nidm_PeakDefinitionCriteria: <http://purl.org/nidash/nidm#NIDM_0000063> .
 @prefix nidm_minDistanceBetweenPeaks: <http://purl.org/nidash/nidm#NIDM_0000109> .
 @prefix nidm_maxNumberOfPeaksPerCluster: <http://purl.org/nidash/nidm#NIDM_0000108> .
+@prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
+@prefix obo_Zstatistic: <http://purl.obolibrary.org/obo/STATO_0000376> .
+@prefix obo_ordinaryleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000370> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -114,7 +117,7 @@ niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorM
 niiri:contrast_id a prov:Entity , nidm_ContrastWeights: ;
 	rdfs:label "Contrast weights: listening > rest" ;
 	prov:value "[1, 0, 0]"^^xsd:string ;
-	nidm_statisticType: obo:STATO_0000176 ; # obo:'t-statistic'
+	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nidm_contrastName: "listening > rest"^^xsd:string .
 
 niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
@@ -333,7 +336,7 @@ niiri:software_id a prov:Agent , nlx:birnlex_2067 , prov:SoftwareAgent ;
 niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: listening > rest" ;
 	prov:atLocation "file://path/to/TStatistic_0001.nii.gz"^^xsd:anyURI ;
-	nidm_statisticType: obo:STATO_0000176 ;
+	nidm_statisticType: obo_tstatistic: ;
 	nfo:fileName "TStatistic_0001.nii.gz"^^xsd:string ;
 	nfo:fileName "tstat1.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
@@ -347,7 +350,7 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 niiri:z_statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Z-Statistic Map: listening > rest" ;
 	prov:atLocation "file://path/to/ZStatistic_0001.nii.gz"^^xsd:anyURI ;
-	nidm_statisticType: obo:STATO_0000376 ;
+	nidm_statisticType: obo_Zstatistic: ;
 	nfo:fileName "ZStatistic_0001.nii.gz"^^xsd:string ;
 	nfo:fileName "zstat1.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
@@ -396,7 +399,7 @@ niiri:mask_id_1 a prov:Entity , nidm_MaskMap: ;
 niiri:model_pe_id prov:used niiri:error_model_id ;
 	a prov:Activity , nidm_ModelParametersEstimation: ;
 	rdfs:label "Model parameters estimation" ;
-	nidm_withEstimationMethod: obo:STATO_0000370 ; # obo:'ordinary least squares estimation'
+	nidm_withEstimationMethod: obo_ordinaryleastsquaresestimation: ; # obo:'ordinary least squares estimation'
 	prov:used niiri:design_matrix_id ;
     prov:used niiri:data_id ;
     prov:used niiri:error_model_id ;
