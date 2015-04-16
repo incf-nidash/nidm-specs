@@ -8,9 +8,11 @@ import os, sys
 from string import Template
 import logging
 import re
+import glob
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'terms')
+NIDMPATH = os.path.join(NIDM_TERMS_DIR, os.pardir, os.pardir)
 TPL_DIR = os.path.join(NIDM_TERMS_DIR, 'templates')
 EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
@@ -32,8 +34,10 @@ class ExampleFromTemplate(object):
 
         self.owl = None
         if owl_file is None:
+            import_files = glob.glob(os.path.join(NIDMPATH, "imports", '*.ttl'))
             owl_file = os.path.join(NIDM_TERMS_DIR, 'nidm-results.owl')
-        self.owl = OwlReader(owl_file)
+
+        self.owl = OwlReader(owl_file, import_files)
 
         if not one_file_per_class:
             self.file = example_file
@@ -119,11 +123,16 @@ class ExampleFromTemplate(object):
 
 
     def replace_alphanum_id_by_prefixes(self, example):
-        alphanum_ids = re.findall('nidm:NIDM_\d*', example)
+        alphanum_ids = re.findall('nidm:NIDM_\d*', example) + \
+                       re.findall('obo:STATO_\d*', example)
 
         prefix_definitions = ""
         for idt in alphanum_ids:
-            term_uri = NIDM[idt.split(":")[1]]
+            if idt.startswith("nidm:"):
+                term_uri = NIDM[idt.split(":")[1]]
+            elif idt.startswith("obo:"):
+                term_uri = OBO[idt.split(":")[1]]
+
             prefix_name = self.owl.get_label(term_uri).replace(" ", "")\
                                                       .replace(":", "_")\
                                                       .replace("'", "")\
