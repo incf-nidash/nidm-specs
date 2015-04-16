@@ -26,6 +26,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Custom Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Custom Basis Set': </b>Customised set of basis functions</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/274">#274</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Design Matrix'"> [more] </a></td>
     <td><b>nidm:'Design Matrix': </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
 </tr>
@@ -33,6 +38,56 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Drift Model'"> [find issues/PR] </a></td>
     <td><b>nidm:'Drift Model': </b>A model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Finite Impulse Response Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Finite Impulse Response Basis Set': </b>Set of Finite impulse response (FIR) filters, with FIR the convolution kernel is represented as a set of discrete fixed-width "impulses" (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Fourier Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Fourier Basis Set': </b>Set of Fourier basis</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Gamma Basis Set': </b>Set of gamma probability density functions</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma Difference HRF'"> [more] </a></td>
+    <td><b>nidm:'Gamma Difference HRF': </b>Hemodynamic response function which is a difference of two gamma probability density functions</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma HRF'"> [more] </a></td>
+    <td><b>nidm:'Gamma HRF': </b>Hemodynamic response function which is a gamma probability density function</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gaussian HRF'"> [more] </a></td>
+    <td><b>nidm:'Gaussian HRF': </b>Hemodynamic response function which is a gaussian kernel</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function Derivative'"> [more] </a></td>
+    <td><b>nidm:'Hemodynamic Response Function Derivative': </b>Hemodynamic response function basis which is the derivative of an hemodynamic response function</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function'"> [more] </a></td>
+    <td><b>nidm:'Hemodynamic Response Function': </b>Hemodynamic response function basis that can on its own be used to represent the idealised hemodynamic response function</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Linear Spline Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Linear Spline Basis Set': </b>A Linear (order 1) spline, providing an estimate that is continuous over time (in contrast to a FIR basis, which is discontinuous between each time bin). This is called TENT in AFNI's 3dDeconvolve program</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Sine Basis Set'"> [more] </a></td>
+    <td><b>nidm:'Sine Basis Set': </b>A set of Sine waves of differing frequencies (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -46,99 +101,8 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [more] </a></td>
-    <td><b>afni:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a>
-Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/248">#248</a>: supported via GAM<br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [more] </a></td>
-    <td><b>afni:GammaHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=CustomHRB"> [more] </a></td>
-    <td><b>fsl:CustomHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [more] </a></td>
-    <td><b>fsl:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [more] </a></td>
-    <td><b>fsl:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [more] </a></td>
-    <td><b>fsl:GammaHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRF"> [more] </a></td>
-    <td><b>fsl:GammaHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GaussianHRF"> [more] </a></td>
-    <td><b>fsl:GaussianHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=NoHRF"> [more] </a></td>
-    <td><b>fsl:NoHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=SineHRB"> [more] </a></td>
-    <td><b>fsl:SineHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [more] </a></td>
-    <td><b>fsl:TemporalDerivative: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL Results'"> [more] </a></td>
     <td><b>nidm:'FSL Results': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Finite Impulse Response HRB'"> [more] </a></td>
-    <td><b>nidm:'Finite Impulse Response HRB': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma Difference HRF'"> [more] </a></td>
-    <td><b>nidm:'Gamma Difference HRF': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma HRB'"> [more] </a></td>
-    <td><b>nidm:'Gamma HRB': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma HRF'"> [more] </a></td>
-    <td><b>nidm:'Gamma HRF': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function Basis'"> [more] </a></td>
-    <td><b>nidm:'Hemodynamic Response Function Basis': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function Derivative'"> [more] </a></td>
-    <td><b>nidm:'Hemodynamic Response Function Derivative': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function'"> [more] </a></td>
-    <td><b>nidm:'Hemodynamic Response Function': </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -154,36 +118,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='World Coordinate System'"> [more] </a></td>
     <td><b>nidm:'World Coordinate System': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=DispersionDerivative"> [more] </a></td>
-    <td><b>spm:DispersionDerivative: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FiniteImpulseResponseHRB"> [more] </a></td>
-    <td><b>spm:FiniteImpulseResponseHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=FourierHRB"> [more] </a></td>
-    <td><b>spm:FourierHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaDifferenceHRF"> [more] </a></td>
-    <td><b>spm:GammaDifferenceHRF: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=GammaHRB"> [more] </a></td>
-    <td><b>spm:GammaHRB: </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=TemporalDerivative"> [more] </a></td>
-    <td><b>spm:TemporalDerivative: </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
@@ -280,6 +214,13 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has HRF Basis'"> [more] </a></td>
+    <td><b>nidm:'has HRF Basis': </b>A property that associates a set of functions that, when convolved with the anticipated neural responses, yield a set of regressors to model the anticipated hemodynamic responses in a design matrix</td>
+    <td>nidm:NIDM_0000019 </td>
+    <td>nidm:NIDM_0000036 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has fMRI Design'"> [find issues/PR] </a></td>
     <td><b>nidm:'has fMRI Design': </b>A property that associates an fMRI design to a design matrix in first-level fMRI analyses</td>
     <td>nidm:NIDM_0000019 </td>
@@ -355,13 +296,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
     <td><b>nidm:'global Null Degree': </b>&lt;undefined&gt;</td>
     <td>spm:KConjunctionInference </td>
     <td>xsd:int </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has HRF Basis'"> [more] </a></td>
-    <td><b>nidm:'has HRF Basis': </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000019 </td>
-    <td>nidm:NIDM_0000036 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -513,6 +447,42 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a> and discussed in <a href="https://github.com/incf-nidash/nidm/pull/248">#248</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='AFNI's Gamma HRF'"> [more] </a></td>
+    <td><b>afni:'AFNI's Gamma HRF': </b>Hemodynamic response function which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py)</td>
+    <td>nidm:NIDM_0000031</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Gamma Difference HRF'"> [more] </a></td>
+    <td><b>fsl:'FSL's Gamma Difference HRF': </b>Hemodynamic response function which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)). This is the default in FSL</td>
+    <td>nidm:NIDM_0000029</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Temporal Derivative'"> [more] </a></td>
+    <td><b>fsl:'FSL's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function</td>
+    <td>nidm:NIDM_0000037</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Canonical HRF'"> [more] </a></td>
+    <td><b>spm:'SPM's Canonical HRF': </b>Hemodynamic response function which is a fixed difference of two gamma probability density functions and is denoted by "canonical HRF" in SPM. This is the default in SPM</td>
+    <td>nidm:NIDM_0000029</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Dispersion Derivative'"> [more] </a></td>
+    <td><b>spm:'SPM's Dispersion Derivative': </b>Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function</td>
+    <td>nidm:NIDM_0000037</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Temporal Derivative'"> [more] </a></td>
+    <td><b>spm:'SPM's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function</td>
+    <td>nidm:NIDM_0000037</td>
+</tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Colin27 Coordinate System'"> [more] </a></td>
