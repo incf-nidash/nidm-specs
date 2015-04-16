@@ -741,76 +741,76 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <ul>
                     <li><span class="attribute" id="nidm:'Error Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Error Model'.</li>
                      
-                        <li><a title="NIDM_0000089"><dfn title="NIDM_0000089">nidm:'dependence Spatial Model'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME.(range <a title="NIDM_0000071">nidm:'Spatial Model'</a> such as <a title="NIDM_0000072">nidm:'Spatially Global Model'</a>, <a title="NIDM_0000073">nidm:'Spatially Local Model'</a>, <a title="NIDM_0000074">nidm:'Spatially Regularized Model'</a>)</li> 
+                        <li><a title="NIDM_0000089"><dfn title="NIDM_0000089">nidm:'dependence Map-Wise Dependence'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an Error Parameter Map-Wise Dependence to the dependence of an error model.(range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>)</li> 
                         <li><a title="NIDM_0000094"><dfn title="NIDM_0000094">nidm:'error Variance Homogeneous'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance.(range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li> 
                         <li><a title="NIDM_0000100"><dfn title="NIDM_0000100">nidm:'has Error Dependence'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an ErrorDependence with an ErrorModel.(range <a title="NIDM_0000021">nidm:'Error Dependence'</a> such as <a title="NIDM_0000003">nidm:'Arbitrarily Correlated Error'</a>, <a title="NIDM_0000010">nidm:'Compound Symmetric Error'</a>, <a title="NIDM_0000024">nidm:'Exchangeable Error'</a>, <a title="NIDM_0000048">nidm:'Independent Error'</a>, <a title="NIDM_0000069">nidm:'Serially Correlated Error'</a>)</li> 
                         <li><a title="NIDM_0000101"><dfn title="NIDM_0000101">nidm:'has Error Distribution'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an ErrorDistribution with an ErrorModel.(range <a title="NIDM_0000022">nidm:'Error Distribution'</a> such as <a title="NIDM_0000005">nidm:'Binomial Distribution'</a>, <a title="NIDM_0000032">nidm:'Gaussian Distribution'</a>, <a title="NIDM_0000058">nidm:'Non Parametric Distribution'</a>, <a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a>, <a title="NIDM_0000065">nidm:'Poisson Distribution'</a>)</li> 
-                        <li><a title="NIDM_0000126"><dfn title="NIDM_0000126">nidm:'variance Spatial Model'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> fIXME.(range <a title="NIDM_0000071">nidm:'Spatial Model'</a> such as <a title="NIDM_0000072">nidm:'Spatially Global Model'</a>, <a title="NIDM_0000073">nidm:'Spatially Local Model'</a>, <a title="NIDM_0000074">nidm:'Spatially Regularized Model'</a>)</li>        
+                        <li><a title="NIDM_0000126"><dfn title="NIDM_0000126">nidm:'variance Map-Wise Dependence'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> property that associates an Error Parameter Map-Wise Dependence to the variance of an error model.(range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>)</li>        
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
 @prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
 @prefix nidm_GaussianDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000032&gt; .
 @prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
-@prefix nidm_varianceSpatialModel: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
-@prefix nidm_SpatiallyLocalModel: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
+@prefix nidm_varianceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
+@prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
 @prefix nidm_hasErrorDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000100&gt; .
 @prefix nidm_IndependentError: &lt;http://purl.org/nidash/nidm#NIDM_0000048&gt; .
-@prefix nidm_dependenceSpatialModel: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
+@prefix nidm_dependenceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
 
 
 niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_hasErrorDistribution: nidm_GaussianDistribution: ;
     nidm_errorVarianceHomogeneous: "true"^^xsd:boolean ;
-    nidm_varianceSpatialModel: nidm_SpatiallyLocalModel: ;
+    nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
-    nidm_dependenceSpatialModel: nidm_SpatiallyLocalModel: .</pre>
-            <!-- nidm:'Spatial Model' (NIDM_0000071) -->
-            <section id="section-nidm:'Spatial Model'"> 
-                <h1 label="NIDM_0000071">nidm:'Spatial Model'</h1>
+    nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .</pre>
+            <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
+            <section id="section-nidm:'Error Parameter Map-Wise Dependence'"> 
+                <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000071"><dfn title="NIDM_0000071">nidm:'Spatial Model'</dfn></a> is fIXME. <a title="NIDM_0000071">nidm:'Spatial Model'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000071"><dfn title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</dfn></a> is map-wise dependence structure of a parameter in the error model (i.e. variance or dependence parameter). For example, whether a temporal autocorrelation parameter is estimated at each element separately, estimated using data in a local neighbourhood, or estimated using all elements in the map. <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Spatial Model'"> A <a title="NIDM_0000071">nidm:'Spatial Model'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Error Parameter Map-Wise Dependence'"> A <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Spatial Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Spatial Model'.</li>
+                    <li><span class="attribute" id="nidm:'Error Parameter Map-Wise Dependence'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Error Parameter Map-Wise Dependence'.</li>
                       
             </section>
-            <!-- nidm:'Spatially Global Model' (NIDM_0000072) -->
-            <section id="section-nidm:'Spatially Global Model'"> 
-                <h1 label="NIDM_0000072">nidm:'Spatially Global Model'</h1>
+            <!-- nidm:'Constant Parameter' (NIDM_0000072) -->
+            <section id="section-nidm:'Constant Parameter'"> 
+                <h1 label="NIDM_0000072">nidm:'Constant Parameter'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000072"><dfn title="NIDM_0000072">nidm:'Spatially Global Model'</dfn></a> is fIXME. <a title="NIDM_0000072">nidm:'Spatially Global Model'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000072"><dfn title="NIDM_0000072">nidm:'Constant Parameter'</dfn></a> is parameter estimated as constant over a entire set of elements considered (e.g. those in the analysis mask). <a title="NIDM_0000072">nidm:'Constant Parameter'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Spatially Global Model'"> A <a title="NIDM_0000072">nidm:'Spatially Global Model'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Constant Parameter'"> A <a title="NIDM_0000072">nidm:'Constant Parameter'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Spatially Global Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Spatially Global Model'.</li>
+                    <li><span class="attribute" id="nidm:'Constant Parameter'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Constant Parameter'.</li>
                       
             </section>
-            <!-- nidm:'Spatially Local Model' (NIDM_0000073) -->
-            <section id="section-nidm:'Spatially Local Model'"> 
-                <h1 label="NIDM_0000073">nidm:'Spatially Local Model'</h1>
+            <!-- nidm:'Independent Parameter' (NIDM_0000073) -->
+            <section id="section-nidm:'Independent Parameter'"> 
+                <h1 label="NIDM_0000073">nidm:'Independent Parameter'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000073"><dfn title="NIDM_0000073">nidm:'Spatially Local Model'</dfn></a> is fIXME. <a title="NIDM_0000073">nidm:'Spatially Local Model'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000073"><dfn title="NIDM_0000073">nidm:'Independent Parameter'</dfn></a> is parameter whose estimation at a given element does not depend on any other element. <a title="NIDM_0000073">nidm:'Independent Parameter'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Spatially Local Model'"> A <a title="NIDM_0000073">nidm:'Spatially Local Model'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Independent Parameter'"> A <a title="NIDM_0000073">nidm:'Independent Parameter'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Spatially Local Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Spatially Local Model'.</li>
+                    <li><span class="attribute" id="nidm:'Independent Parameter'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Independent Parameter'.</li>
                       
             </section>
-            <!-- nidm:'Spatially Regularized Model' (NIDM_0000074) -->
-            <section id="section-nidm:'Spatially Regularized Model'"> 
-                <h1 label="NIDM_0000074">nidm:'Spatially Regularized Model'</h1>
+            <!-- nidm:'Regularized Parameter' (NIDM_0000074) -->
+            <section id="section-nidm:'Regularized Parameter'"> 
+                <h1 label="NIDM_0000074">nidm:'Regularized Parameter'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000074"><dfn title="NIDM_0000074">nidm:'Spatially Regularized Model'</dfn></a> is fIXME. <a title="NIDM_0000074">nidm:'Spatially Regularized Model'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000074"><dfn title="NIDM_0000074">nidm:'Regularized Parameter'</dfn></a> is parameter whose estimation at a given element depends on a local neighborhood of elements. <a title="NIDM_0000074">nidm:'Regularized Parameter'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Spatially Regularized Model'"> A <a title="NIDM_0000074">nidm:'Spatially Regularized Model'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Regularized Parameter'"> A <a title="NIDM_0000074">nidm:'Regularized Parameter'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Spatially Regularized Model'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Spatially Regularized Model'.</li>
+                    <li><span class="attribute" id="nidm:'Regularized Parameter'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Regularized Parameter'.</li>
                       
             </section>
             <!-- nidm:'Arbitrarily Correlated Error' (NIDM_0000003) -->
