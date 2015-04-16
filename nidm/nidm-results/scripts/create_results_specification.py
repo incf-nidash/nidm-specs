@@ -52,7 +52,7 @@ def main(nidm_original_version):
              NIDM_GRAND_MEAN_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP, 
              NIDM_MASK_MAP, NIDM_RESELS_PER_VOXEL_MAP]    
     components["Contrast estimation"] = [NIDM_CONTRAST_ESTIMATION, 
-             NIDM_CONTRAST_WEIGHTS, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP, 
+             STATO_CONTRAST_WEIGHT_MATRIX, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP, 
              NIDM_CONTRAST_STANDARD_ERROR_MAP]
     components["Inference"] = [NIDM_INFERENCE, NIDM_HEIGHT_THRESHOLD, NIDM_EXTENT_THRESHOLD, 
              NIDM_EXCURSION_SET_MAP, NIDM_CLUSTER_LABELS_MAP, NIDM_SEARCH_SPACE_MASK_MAP, 
@@ -76,7 +76,7 @@ def main(nidm_original_version):
                 NIDM_RESIDUAL_MEAN_SQUARES_MAP: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_MASK_MAP: [NIDM_CONTRAST_ESTIMATION,
                                 NIDM_MODEL_PARAMETERS_ESTIMATION],
-                NIDM_CONTRAST_WEIGHTS: [NIDM_CONTRAST_ESTIMATION],
+                STATO_CONTRAST_WEIGHT_MATRIX: [NIDM_CONTRAST_ESTIMATION],
                 NIDM_CONTRAST_MAP: [NIDM_INFERENCE], 
                 NIDM_STATISTIC_MAP: [NIDM_INFERENCE],
                 NIDM_CLUSTER_DEFINITION_CRITERIA: [NIDM_INFERENCE], 
@@ -120,7 +120,7 @@ def main(nidm_original_version):
                      (NIDM_GRAND_MEAN_MAP, NIDM_INCF['GrandMeanMap']),
                      (NIDM_RESIDUAL_MEAN_SQUARES_MAP, NIDM_INCF['ResidualMeanSquaresMap']),
                      (NIDM_MASK_MAP, NIDM_INCF['MaskMap']),
-                     (NIDM_CONTRAST_WEIGHTS, NIDM_INCF['ContrastWeights']),
+                     (STATO_CONTRAST_WEIGHT_MATRIX, NIDM_INCF['ContrastWeights']),
                      (NIDM_STATISTIC_MAP, NIDM_INCF['StatisticMap']),
                      (NIDM_CONTRAST_STANDARD_ERROR_MAP, NIDM_INCF['ContrastStandardErrorMap']),
                      (NIDM_INFERENCE, NIDM_INCF['Inference']),
