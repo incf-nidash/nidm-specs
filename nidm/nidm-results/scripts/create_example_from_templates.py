@@ -125,7 +125,9 @@ class ExampleFromTemplate(object):
         for idt in alphanum_ids:
             term_uri = NIDM[idt.split(":")[1]]
             prefix_name = self.owl.get_label(term_uri).replace(" ", "")\
-                            .replace(":", "_").replace("'", "")+":"
+                                                      .replace(":", "_")\
+                                                      .replace("'", "")\
+                                                      .replace("-", "")+":"
             prefix_definition = "@prefix "+prefix_name+" <"+str(term_uri)+"> .\n"
             if not prefix_definition in prefix_definitions:
                 prefix_definitions += prefix_definition

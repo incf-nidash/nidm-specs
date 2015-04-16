@@ -73,7 +73,8 @@ def main(sid, aid, owl_file, template_files, script_files,
     for scr, scr_txt in scripts_txt.items():
         scripts_txt[scr] = scr_txt.replace('"'+sid+'"', '"'+aid+'"')
 
-    new_constant = "NIDM_" + label.upper().replace(" ", "_") + \
+    new_constant = "NIDM_" + \
+                   label.upper().replace(" ", "_").replace("-", "_") + \
                    " = NIDM['"+aid.replace("nidm:", "")+"']"
     cst_txt = cst_txt.replace("# NIDM constants",
                               "# NIDM constants\n"+new_constant)
