@@ -600,24 +600,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Block-Based Design'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Block-Based Design': </b>In a block-based design, all trials consists of epochs of sustained neural activity (blocks) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
-    <td>nidm:fMRIDesign</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Event-Related Design'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Event-Related Design': </b>In an event-related design, all trials consists of brief bursts of neural activity (impulses, or events) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
-    <td>nidm:fMRIDesign</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Mixed Design'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Mixed Design': </b>In a mixed design, a subset of the trials consists of epochs of sustained neural activity (blocks) and another subset consists of brief bursts of neural activity (impulses, or events) (definition adapted from [MRC-CBU Design efficiency](http://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency))</td>
-    <td>nidm:fMRIDesign</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Colin27 Coordinate System'"> [more] </a></td>
     <td><b>nidm:'Colin27 Coordinate System': </b>Coordinate system defined by the "stereotaxic average of 27 T1-weighted MRI scans of the same individual"</td>
