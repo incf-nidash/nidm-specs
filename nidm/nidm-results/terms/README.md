@@ -162,26 +162,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Spatial Model'"> [more] </a></td>
-    <td><b>nidm:'Spatial Model': </b>FIXME</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Spatially Global Model'"> [more] </a></td>
-    <td><b>nidm:'Spatially Global Model': </b>FIXME</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Spatially Local Model'"> [more] </a></td>
-    <td><b>nidm:'Spatially Local Model': </b>FIXME</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Spatially Regularized Model'"> [more] </a></td>
-    <td><b>nidm:'Spatially Regularized Model': </b>FIXME</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='World Coordinate System'"> [more] </a></td>
     <td><b>nidm:'World Coordinate System': </b>&lt;undefined&gt;</td>
 </tr>
@@ -397,13 +377,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='dependence Spatial Model'"> [more] </a></td>
-    <td><b>nidm:'dependence Spatial Model': </b>FIXME</td>
-    <td>nidm:NIDM_0000023 </td>
-    <td>nidm:NIDM_0000071 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='global Null Degree'"> [more] </a></td>
     <td><b>nidm:'global Null Degree': </b>&lt;undefined&gt;</td>
     <td>spm:KConjunctionInference </td>
@@ -436,13 +409,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'search Volume In Voxels': </b>Total number of voxels within the search volume</td>
     <td>nidm:NIDM_0000068 </td>
     <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='variance Spatial Model'"> [more] </a></td>
-    <td><b>nidm:'variance Spatial Model': </b>FIXME</td>
-    <td>nidm:NIDM_0000023 </td>
-    <td>nidm:NIDM_0000071 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
