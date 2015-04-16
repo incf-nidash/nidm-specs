@@ -417,22 +417,6 @@ fsl:featVersion rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/fsl#reselSizeInVoxels
-
-fsl:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
-                      
-                      obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
-                      
-                      obo:IAO_0000114 obo:IAO_0000124 ;
-                      
-                      rdfs:domain nidm:NIDM_0000068 ;
-                      
-                      rdfs:range xsd:float ;
-                      
-                      rdfs:subPropertyOf owl:topDataProperty .
-
-
-
 ###  http://purl.org/nidash/nidm#NIDM_0000082
 
 nidm:NIDM_0000082 rdf:type owl:DatatypeProperty ;
@@ -1281,11 +1265,11 @@ nidm:NIDM_0000145 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "noise Roughness In Voxels" ;
                   
-                  rdfs:comment "To be renamed" ;
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275" ;
                   
-                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275" ;
+                  obo:IAO_0000115 "Estimated spatial roughness of the noise process in voxel units, as measured by the square-root determinant of the variance-covariance matrix of spatial derivatives of the noise process (Lambda matrix)." ;
                   
-                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  obo:IAO_0000114 obo:IAO_0000122 ;
                   
                   rdfs:domain nidm:NIDM_0000068 ;
                   
@@ -1326,6 +1310,60 @@ nidm:NIDM_0000147 rdf:type owl:DatatypeProperty ;
                   rdfs:domain nidm:NIDM_0000068 ;
                   
                   rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#reselSizeInVoxels
+
+nidm:reselSizeInVoxels rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:label "resel Size In Voxels" ;
+                       
+                       obo:IAO_0000112 "22.325" ;
+                       
+                       obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/275" ;
+                       
+                       obo:IAO_0000115 "Size of one resel in elements (e.g., pixels, voxels or vertices)." ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 ;
+                       
+                       rdfs:domain nidm:NIDM_0000068 ;
+                       
+                       rdfs:range xsd:float ;
+                       
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       
+                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                    owl:onDatatype xsd:float ;
+                                    owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                           ]
+                                                         )
+                                  ] .
+
+
+
+###  http://purl.org/nidash/nidm#searchVolumeInResels
+
+nidm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:label "search Volume In Resels" ;
+                          
+                          obo:IAO_0000112 "151.3" ;
+                          
+                          obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/275" ;
+                          
+                          obo:IAO_0000115 "Size of search volume measured in resels." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000122 ;
+                          
+                          rdfs:domain nidm:NIDM_0000068 ;
+                          
+                          rdfs:range [ rdf:type rdfs:Datatype ;
+                                       owl:onDatatype xsd:float ;
+                                       owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                              ]
+                                                            )
+                                     ] .
 
 
 
@@ -1432,52 +1470,6 @@ spm:noiseFWHMInVoxels rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf nidm:NIDM_0000110 ;
                       
                       rdfs:range xsd:string .
-
-
-
-###  http://purl.org/nidash/spm#reselSize
-
-spm:reselSize rdf:type owl:DatatypeProperty ;
-              
-              obo:IAO_0000112 "22.325" ;
-              
-              obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
-              
-              obo:IAO_0000115 "Size of one resel in voxels or vertices." ;
-              
-              obo:IAO_0000114 obo:IAO_0000120 ;
-              
-              rdfs:domain nidm:NIDM_0000068 ;
-              
-              rdfs:range [ rdf:type rdfs:Datatype ;
-                           owl:onDatatype xsd:float ;
-                           owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
-                                                  ]
-                                                )
-                         ] .
-
-
-
-###  http://purl.org/nidash/spm#searchVolumeInResels
-
-spm:searchVolumeInResels rdf:type owl:DatatypeProperty ;
-                         
-                         rdfs:seeAlso "Synonyms of nidm:volumeInResels" ;
-                         
-                         obo:IAO_0000115 "Total number of resels within the search volume." ;
-                         
-                         obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/275" ;
-                         
-                         obo:IAO_0000112 "151.3" ;
-                         
-                         rdfs:domain nidm:NIDM_0000068 ;
-                         
-                         rdfs:range [ rdf:type rdfs:Datatype ;
-                                      owl:onDatatype xsd:float ;
-                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
-                                                             ]
-                                                           )
-                                    ] .
 
 
 
