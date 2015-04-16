@@ -402,13 +402,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=reselSizeInVoxels"> [more] </a></td>
-    <td><b>fsl:reselSizeInVoxels: </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/194">#194</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='dependence Spatial Model'"> [more] </a></td>
     <td><b>nidm:'dependence Spatial Model': </b>FIXME</td>
     <td>nidm:NIDM_0000023 </td>
@@ -427,13 +420,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'has HRF Basis': </b>&lt;undefined&gt;</td>
     <td>nidm:NIDM_0000019 </td>
     <td>nidm:NIDM_0000036 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a> and <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='noise Roughness In Voxels'"> [more] </a></td>
-    <td><b>nidm:'noise Roughness In Voxels': </b>&lt;undefined&gt;</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -469,13 +455,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>nidm:'version': </b>&lt;undefined&gt;</td>
     <td>prov:Bundle </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=searchVolumeInResels"> [more] </a></td>
-    <td><b>spm:searchVolumeInResels: </b>Total number of resels within the search volume</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
@@ -602,13 +581,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><b>spm:noiseFWHMInVoxels: </b>Estimated Full Width at Half Maximum of the noise distribution in voxels</td>
     <td>nidm:NIDM_0000068 </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/275">#275</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=reselSize"> [more] </a></td>
-    <td><b>spm:reselSize: </b>Size of one resel in voxels or vertices</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
 </tr>
 </table><h2>Individuals</h2>
 <table>
