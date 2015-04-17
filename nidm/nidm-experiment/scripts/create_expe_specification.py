@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-''' Automatically-generates NIDM-Experiment specification based on 
-nidm-experiment.owl
+''' Automatically-generates NIDM-Experiment specification based on nidm-experiment.owl
 
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
 @copyright: University of Warwick 2014
@@ -50,9 +49,9 @@ def main():
     assert os.path.exists(owl_file)
 
     subcomponents =  collections.OrderedDict()
-    
+
     subcomponents["Investigation"] = [NIDM['InvestigationCollection'],
-        NIDM['InvestigationProcess'],NIDM['Model'], 
+        NIDM['InvestigationProcess'],NIDM['Model'],
         NIDM['ModelSpecification'],NIDM['Group'],
         NIDM['Contrast'], NIDM['Task'],NIDM['Condition']]
     subcomponents["Session"] = [NIDM['DataCollection'],NIDM['SessionAcquisition']]
@@ -66,17 +65,17 @@ def main():
     subcomponents["Acquisition"] = [NIDM['AcquisitionObject']]
     subcomponents["Other"] = []
 
-    # Add manually used and wasDerivedFrom because these are not stored in the 
+    # Add manually used and wasDerivedFrom because these are not stored in the
     # owl file (no relations yet!)
-    used_by = { 
+    used_by = {
     }
-    generated_by = { 
+    generated_by = {
     }
-    derived_from = {       
+    derived_from = {
     }
 
-    owlspec = OwlSpecification(owl_file, import_files, "NIDM-Experiment", 
-        subcomponents, used_by, generated_by, derived_from, 
+    owlspec = OwlSpecification(owl_file, import_files, "NIDM-Experiment",
+        subcomponents, used_by, generated_by, derived_from,
         prefix=str(NIDM))
 
     if not nidm_version == "dev":

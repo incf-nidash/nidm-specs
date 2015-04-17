@@ -142,7 +142,7 @@
                 neuroimaging research that are necessary to achieve the vision of inter-operable interchange of information in
                 heterogeneous environments such as the Web, research consortia, and laboratories. A list of current <abbr
                 title="Neuroimaging Data Model">NIDM</abbr> documents and the latest revision of this specification can be
-                found in the <a href="http://nidm.nidash.org/specs"><abbr title="Neuroimgaing Data Model">NIDM </abbr>
+                found in the <a href="http://nidm.nidash.org/specs"><abbr title="Neuroimaging Data Model">NIDM </abbr>
                 specification index</a>. These documents are listed below.
             </p>
             <ul>
@@ -319,7 +319,7 @@
                     NIDM Dataset Descriptor. Summary-level descriptions provide information that does not change between
                     difference versions or releases of a dataset. Version-level descriptions provide information that is
                     specific to a given version. Distribution-level descriptors captures information that is specific to
-                    a given format or serialization of a dataset. Figure adapted from the <a href="http://htmlpreview.github.io/?https://github.com/joejimbo/HCLSDatasetDescriptions/blob/master/Overview.html#datasetdescriptionlevels">
+                    a given format or serialisation of a dataset. Figure adapted from the <a href="http://htmlpreview.github.io/?https://github.com/joejimbo/HCLSDatasetDescriptions/blob/master/Overview.html#datasetdescriptionlevels">
                     HCLS Dataset Description Levels</a>.
                 </figcaption>
             </figure>
@@ -381,7 +381,7 @@
 		<section>
 			<h3>Conceptial Model</h3>
 			<p>The first step in modeling your data is to create a conceptual graph of the objects needed to represent the data 			you will instantiate into a NIDM object model. Here we will use a particularly simple example.  We will start with 
-			an Excel spreadsheet containing a time series of maternal heart rate measurements sampled each second for 180 seconds 			during pregnancy. This data was colected at the University of California, Irvine (UCI) as part of the UCI <a 			href=http://contecenter.uci.edu/>Conte Center</a>.  First, let's have a look at a subset of the Excel spreadsheet.
+			an Excel spreadsheet containing a time series of maternal heart rate measurements sampled each second for 180 seconds 			during pregnancy. This data was collected at the University of California, Irvine (UCI) as part of the UCI <a 			href=http://contecenter.uci.edu/>Conte Center</a>.  First, let's have a look at a subset of the Excel spreadsheet.
 	        <figure>
 	            <img src="img/heart_rate_excel.png" width="600">
 	            <figcaption>
@@ -396,7 +396,7 @@
 	        <figure>
 	            <img src="img/heart_rate_model.png" width="600">
 	            <figcaption>
-	                Graph describing the heart rate data as entities, agents, and activites.
+	                Graph describing the heart rate data as entities, agents, and activities.
 	            </figcaption>
 	        </figure>
 			</p>
@@ -409,12 +409,12 @@
 		</section>
 		<section id="terms">
 			<h3>Vocabularies and Terms Selections</h3>
-			In order to give our representation semantic meaning we follow the conventions used in the <a href=http://www.w3.org/TR/rdf11-concepts/#section-IRIs>Resource Descripition Framework (RDF)</a> W3C recommendation such that each attribute is formated as a Internation Resource Identifier (IRI).  IRIs, a generalization of Uniform Resource Identifiers (URIs) are dereferencable objects that can be found on the web to give semantic meaning to the attribute.  For example, in the heart rate entity we chose the <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a> IRI.  This IRI is formed using the NCIT namespace and the heartRate term within that namespace. At the begining of any NIDM serialization of this heart rate model the NCIT namespace IRI is defined and with the term creates a deferencable definition for the attribute <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a>. It is critical to make sure the namespaces and terms you use in your models are available and persistent on the web.  By following this convention instatiations of your object model are self documenting.  Anyone who receives a document can make sense of the attributes and objects defined therein.  In the event a term you need for your model is not defined in an existing terminology you can define you own terms but they should be available on the web.   
+			In order to give our representation semantic meaning we follow the conventions used in the <a href=http://www.w3.org/TR/rdf11-concepts/#section-IRIs>Resource Descripition Framework (RDF)</a> W3C recommendation such that each attribute is formated as a Internation Resource Identifier (IRI).  IRIs, a generalization of Uniform Resource Identifiers (URIs) are dereferencable objects that can be found on the web to give semantic meaning to the attribute.  For example, in the heart rate entity we chose the <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a> IRI.  This IRI is formed using the NCIT namespace and the heartRate term within that namespace. At the begining of any NIDM serialisation of this heart rate model the NCIT namespace IRI is defined and with the term creates a deferencable definition for the attribute <a href=http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C0018810>ncit:heartRate</a>. It is critical to make sure the namespaces and terms you use in your models are available and persistent on the web.  By following this convention instatiations of your object model are self documenting.  Anyone who receives a document can make sense of the attributes and objects defined therein.  In the event a term you need for your model is not defined in an existing terminology you can define you own terms but they should be available on the web.   
 		</section>
 		<section>
 			<h3>Instantiating Your Object Model</h3>
 			<p>
-			Once you've defined your object model by specifying the objects, relationships, and attributes, it's time to apply your object model to your data.  Typically one writes a parser to reformat the input data into a NIDM serialization.  Typical serialization formats include <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> (the provenance notation),<a href="http://www.w3.org/TR/turtle/">Turtle</a> (Terse RDF Triple Language), <a href="http://json-ld.org/">JSON-LD</a> (Java Serial Object Notation for Linked Data), and <a href="http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/">RDF-XML</a> (Resource Description Framework XML Syntax).  In Example 1 we show the Turtle syntax of the heart rate data entity for <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C2826694">ncit:subjectID</a> 30564.  
+			Once you've defined your object model by specifying the objects, relationships, and attributes, it's time to apply your object model to your data.  Typically one writes a parser to reformat the input data into a NIDM serialisation.  Typical serialisation formats include <a href="http://www.w3.org/TR/prov-n/">PROV-N</a> (the provenance notation),<a href="http://www.w3.org/TR/turtle/">Turtle</a> (Terse RDF Triple Language), <a href="http://json-ld.org/">JSON-LD</a> (Java Serial Object Notation for Linked Data), and <a href="http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/">RDF-XML</a> (Resource Description Framework XML Syntax).  In Example 1 we show the Turtle syntax of the heart rate data entity for <a href="http://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20MetaThesaurus&code=C2826694">ncit:subjectID</a> 30564.  
 			
 			<pre class='example highlight'>
 			    [mhr:entity_71759c9cf0c811e3a3c23c07541223b4 a prov:DataItem,
