@@ -157,6 +157,9 @@ def main(args=None):
     elif outformat == "xml":
         out = g.rdf().serialize(format='xml')
         ext = ".xml"
+    else:
+        # Even though limited to cmdline choices, better to be safe than kaboom
+        raise ValueError("Unknown format %s" % outformat)
 
     if output_dir:
         outfilename = os.path.join(os.path.abspath(output_dir), project_id)
