@@ -1,13 +1,72 @@
-@prefix : <http://purl.org/nidash/nidm/iao_import.owl#> .
+@prefix : <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns: <http://usefulinc.com/ns/> .
+@prefix iao: <http://purl.obolibrary.org/obo/iao/2015-02-23/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://purl.org/nidash/nidm/iao_import.owl> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <http://purl.obolibrary.org/obo/iao.owl> .
 
-<http://purl.org/nidash/nidm/iao_import.owl> rdf:type owl:Ontology .
+<http://purl.obolibrary.org/obo/iao.owl> rdf:type owl:Ontology ;
+                                         
+                                         dc:date "2009-07-31"^^xsd:date ;
+                                         
+                                         owl:versionInfo "2015-02-23"^^xsd:string ;
+                                         
+                                         rdfs:comment "An information artifact is, loosely, a dependent continuant or its bearer that is created as the result of one or more intentional processes. Examples: uniprot, the english language, the contents of this document or a printout of it, the temperature measurements from a weather balloon. For more information, see the project home page at http://code.google.com/p/information-artifact-ontology/"^^xsd:string ,
+                                                      "IDs allocated to related efforts: PNO: IAO_0020000-IAO_0020999, D_ACTS: IAO_0021000-IAO_0021999"^^xsd:string ,
+                                                      "IDs allocated to subdomains of IAO. pno.owl: IAO_0020000-IAO_0020999, d-acts.owl: IAO_0021000-IAO_0021999"^^xsd:string ,
+                                                      "This file is based on checkout of our SVN repository revision $Revision: 717 $ "^^xsd:string ;
+                                         
+                                         protege:defaultLanguage "en"^^xsd:string ;
+                                         
+                                         dc:contributor "Adam Goldstein"@en ,
+                                                        "Alan Ruttenberg"@en ,
+                                                        "Albert Goldfain"@en ,
+                                                        "Barry Smith"@en ,
+                                                        "Bjoern Peters"@en ,
+                                                        "Carlo Torniai"@en ,
+                                                        "Chris Mungall"@en ,
+                                                        "Chris Stoeckert"@en ,
+                                                        "Christian A. Boelling"@en ,
+                                                        "Darren Natale"@en ,
+                                                        "David Osumi-Sutherland"@en ,
+                                                        "Gwen Frishkoff"@en ,
+                                                        "Holger Stenzhorn"@en ,
+                                                        "James A. Overton"@en ,
+                                                        "James Malone"@en ,
+                                                        "Jennifer Fostel"@en ,
+                                                        "Jie Zheng"@en ,
+                                                        "Jonathan Rees"@en ,
+                                                        "Larisa Soldatova"@en ,
+                                                        "Lawrence Hunter"@en ,
+                                                        "Mathias Brochhausen"@en ,
+                                                        "Matt Brush"@en ,
+                                                        "Melanie Courtot"@en ,
+                                                        "Michel Dumontier"@en ,
+                                                        "Paolo Ciccarese"@en ,
+                                                        "Pat Hayes"@en ,
+                                                        "Philippe Rocca-Serra"@en ,
+                                                        "Randy Dipert"@en ,
+                                                        "Ron Rudnicki"@en ,
+                                                        "Satya Sahoo"@en ,
+                                                        "Sivaram Arabandi"@en ,
+                                                        "Werner Ceusters"@en ,
+                                                        "William Duncan"@en ,
+                                                        "William Hogan"@en ,
+                                                        "Yongqun (Oliver) He"@en ;
+                                         
+                                         foaf:homepage <http://code.google.com/p/information-artifact-ontology/> ;
+                                         
+                                         dc:license <http://creativecommons.org/licenses/by/3.0/> ;
+                                         
+                                         owl:versionIRI iao:iao.owl .
 
 
 #################################################################
@@ -17,11 +76,51 @@
 #################################################################
 
 
+###  http://protege.stanford.edu/plugins/owl/protege#defaultLanguage
+
+protege:defaultLanguage rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000179
+
+obo:BFO_0000179 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "BFO OWL specification label"@en ;
+                
+                obo:IAO_0000232 "Really of interest to developers only"@en ;
+                
+                obo:IAO_0000115 "Relates an entity in the ontology to the name of the variable that is used to represent it in the code that generates the BFO OWL file from the lispy specification."@en ;
+                
+                rdfs:subPropertyOf rdfs:label .
+
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000180
+
+obo:BFO_0000180 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "BFO CLIF specification label"@en ;
+                
+                obo:IAO_0000119 "Person:Alan Ruttenberg" ;
+                
+                obo:IAO_0000232 "Really of interest to developers only"@en ;
+                
+                obo:IAO_0000115 "Relates an entity in the ontology to the term that is used to represent it in the the CLIF specification of BFO2"@en ;
+                
+                rdfs:subPropertyOf rdfs:label .
+
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000111
 
 obo:IAO_0000111 rdf:type owl:AnnotationProperty ;
                 
-                rdfs:label "editor preferred term"@en ;
+                rdfs:label "editor preferred term" ,
+                           "editor preferred label"@en ,
+                           "editor preferred term"@en ;
+                
+                obo:IAO_0000111 "editor preferred term" ;
                 
                 obo:IAO_0000119 "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
                 
@@ -29,9 +128,12 @@ obo:IAO_0000111 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000115 "The concise, meaningful, and human-friendly name for a class or property preferred by the ontology developers. (US-English)"@en ;
                 
-                obo:IAO_0000111 "editor preferred term"@en ;
+                obo:IAO_0000111 "editor preferred label"@en ,
+                                "editor preferred term"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -47,9 +149,12 @@ obo:IAO_0000112 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
                 
-                obo:IAO_0000111 "example"@en ;
+                obo:IAO_0000111 "example"@en ,
+                                "example of usage"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -73,17 +178,27 @@ obo:IAO_0000114 rdf:type owl:AnnotationProperty ;
 
 obo:IAO_0000115 rdf:type owl:AnnotationProperty ;
                 
-                rdfs:label "definition"@en ;
+                rdfs:label "definition"^^xsd:string ,
+                           "textual definition"^^xsd:string ,
+                           "definition" ,
+                           "definition"@en ;
+                
+                obo:IAO_0000111 "definition"^^xsd:string ,
+                                "textual definition"^^xsd:string ,
+                                "definition" ;
                 
                 obo:IAO_0000119 "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
                 
                 obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
                 
-                obo:IAO_0000115 "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ;
+                obo:IAO_0000115 "The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ,
+                                "The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions."@en ;
                 
                 obo:IAO_0000111 "definition"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -101,7 +216,9 @@ obo:IAO_0000116 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000111 "editor note"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -121,7 +238,9 @@ obo:IAO_0000117 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000111 "term editor"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -139,7 +258,9 @@ obo:IAO_0000118 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000111 "alternative term"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000125 .
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -158,7 +279,27 @@ obo:IAO_0000119 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000115 "formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000122 .
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
+
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000232
+
+obo:IAO_0000232 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "curator note"@en ;
+                
+                obo:IAO_0000115 "An administrative note of use for a curator but of no use for a user"@en ;
+                
+                obo:IAO_0000117 "PERSON:Alan Ruttenberg"@en ;
+                
+                obo:IAO_0000111 "curator note"@en ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -177,7 +318,71 @@ obo:IAO_0000412 rdf:type owl:AnnotationProperty ;
                 
                 obo:IAO_0000111 "imported from"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000125 .
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
+
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000600
+
+obo:IAO_0000600 rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "elucidation"@en ;
+                
+                obo:IAO_0000119 "Person:Barry Smith"@en ;
+                
+                obo:IAO_0000600 "Primitive terms in a highest-level ontology such as BFO are terms which are so basic to our understanding of reality that there is no way of defining them in a non-circular fashion. For these, therefore, we can provide only elucidations, supplemented by examples and by axioms"@en ;
+                
+                obo:IAO_0000111 "elucidation"@en ;
+                
+                obo:IAO_0000117 "person:Alan Ruttenberg"@en ;
+                
+                rdfs:isDefinedBy <http://purl.obolibrary.org/obo/iao.owl> .
+
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+
+dc:contributor rdf:type owl:AnnotationProperty ;
+               
+               rdfs:label "Contributor"@en-us ;
+               
+               rdfs:isDefinedBy dc: .
+
+
+
+###  http://purl.org/dc/elements/1.1/date
+
+dc:date rdf:type owl:AnnotationProperty ;
+        
+        rdfs:label "Date"@en-us ;
+        
+        rdfs:isDefinedBy dc: .
+
+
+
+###  http://usefulinc.com/ns/doap#file-release
+
+doap:file-release rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+
+owl:versionInfo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xmlns.com/foaf/0.1/homepage
+
+foaf:homepage rdf:type owl:AnnotationProperty .
 
 
 
@@ -204,9 +409,30 @@ obo:IAO_0000136 rdf:type owl:ObjectProperty ;
                 
                 obo:IAO_0000117 "person:Alan Ruttenberg"@en ;
                 
+                rdfs:domain obo:IAO_0000030 ;
+                
                 obo:IAO_0000114 obo:IAO_0000125 ;
                 
-                obo:IAO_0000412 obo:iao.owl .
+                obo:IAO_0000412 <http://purl.obolibrary.org/obo/iao.owl> .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://usefulinc.com/ns/doap#revision
+
+doap:revision rdf:type owl:DatatypeProperty ;
+              
+              obo:IAO_0000412 <http://purl.obolibrary.org/obo/iao.owl> ;
+              
+              rdfs:isDefinedBy ns:doap .
 
 
 
@@ -217,6 +443,30 @@ obo:IAO_0000136 rdf:type owl:ObjectProperty ;
 #    Classes
 #
 #################################################################
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000030
+
+obo:IAO_0000030 rdf:type owl:Class ;
+                
+                rdfs:label "information content entity"@en ;
+                
+                obo:IAO_0000116 "2014-03-10: The use of \"thing\" is intended to be general enough to include universals and configurations (see https://groups.google.com/d/msg/information-ontology/GBxvYZCk1oc/-L6B5fSBBTQJ)."@en ;
+                
+                obo:IAO_0000115 "A generically dependent continuant that is about some thing."@en ;
+                
+                obo:IAO_0000112 "Examples of information content entites include journal articles, data, graphical layouts, and graphs."@en ;
+                
+                obo:IAO_0000119 "OBI_0000142"@en ;
+                
+                obo:IAO_0000117 "PERSON: Chris Stoeckert"@en ;
+                
+                obo:IAO_0000111 "information content entity"@en ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                obo:IAO_0000412 <http://purl.obolibrary.org/obo/iao.owl> .
+
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000109
@@ -238,9 +488,9 @@ obo:IAO_0000109 rdf:type owl:Class ;
                 
                 obo:IAO_0000117 "person:Chris Stoeckert"@en ;
                 
-                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
                 
-                obo:IAO_0000412 obo:iao.owl .
+                obo:IAO_0000412 <http://purl.obolibrary.org/obo/iao.owl> .
 
 
 
@@ -251,6 +501,12 @@ obo:IAO_0000109 rdf:type owl:Class ;
 #    Individuals
 #
 #################################################################
+
+
+###  http://code.google.com/p/information-artifact-ontology/
+
+<http://code.google.com/p/information-artifact-ontology/> rdf:type owl:NamedIndividual .
+
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000002
@@ -346,6 +602,39 @@ obo:IAO_0000428 rdf:type owl:NamedIndividual ;
                 obo:IAO_0000117 "Alan Ruttenberg"@en ;
                 
                 obo:IAO_0000119 "group:OBI"@en .
+
+
+
+###  http://purl.obolibrary.org/obo/iao.owl
+
+<http://purl.obolibrary.org/obo/iao.owl> rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.obolibrary.org/obo/iao/2015-02-23/iao.owl
+
+iao:iao.owl rdf:type owl:NamedIndividual ;
+            
+            rdfs:label "IAO Release 2015-02-23" ;
+            
+            doap:revision "SVN $Revision: 717 $" ;
+            
+            doap:file-release <http://purl.obolibrary.org/obo/iao.owl> ,
+                              iao:iao.owl ;
+            
+            rdfs:seeAlso <http://purl.obolibrary.org/obo/iao/wiki/Releases/2015-02-23> .
+
+
+
+###  http://purl.obolibrary.org/obo/iao/wiki/Releases/2015-02-23
+
+<http://purl.obolibrary.org/obo/iao/wiki/Releases/2015-02-23> rdf:type owl:NamedIndividual .
+
+
+
+###  http://usefulinc.com/ns/doap
+
+ns:doap rdf:type owl:NamedIndividual .
 
 
 

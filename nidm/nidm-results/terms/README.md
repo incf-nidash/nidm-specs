@@ -202,12 +202,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/ISA-tools/stato/pull/23">ISA-tools/stato#23</a>
-Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Weights'"> [more] </a></td>
-    <td><b>nidm:'Contrast Weights': </b>Vector defining the linear combination associated with a particular contrast. </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Exchangeable Error'"> [more] </a></td>
     <td><b>nidm:'Exchangeable Error': </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
@@ -446,7 +440,7 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='contrast Name'"> [find issues/PR] </a></td>
     <td><b>nidm:'contrast Name': </b>Name of the contrast</td>
-    <td>nidm:NIDM_0000002 nidm:NIDM_0000014 nidm:NIDM_0000076 </td>
+    <td>obo:STATO_0000323 nidm:NIDM_0000002 nidm:NIDM_0000076 </td>
     <td>xsd:string </td>
 </tr>
 <tr>
