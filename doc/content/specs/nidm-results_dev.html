@@ -611,7 +611,7 @@ niiri:data_id a prov:Entity , nidm_DataScaling: , prov:Collection ;
                     <li><span class="attribute" id="nidm:'Design Matrix'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Design Matrix'.</li>
                      
                         <li><a title="NIDM_0000088"><dfn title="NIDM_0000088">nidm:'has Drift Model'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a property that associates a drift model to a design matrix (only used for first-level fMRI experiments).(range <a title="NIDM_0000087">nidm:'Drift Model'</a> such as <a title="LegendrePolynomialDriftModel">afni:'AFNI's Legendre Polinomial Drift Model'</a>, <a title="GaussianRunningLineDriftModel">fsl:'FSL's Gaussian Running Line Drift Model'</a>, <a title="DCTDriftModel">spm:'SPM's DCT Drift Model'</a>)</li> 
-                        <li><a title="NIDM_0000102"><dfn title="NIDM_0000102">nidm:'has HRF Basis'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> .(range <a title="NIDM_0000036">nidm:'Hemodynamic Response Function Basis'</a> such as <a title="BLOCK">afni:BLOCK</a>, <a title="CustomHRB">fsl:CustomHRB</a>, <a title="SineHRB">fsl:SineHRB</a>, <a title="NIDM_0000028">nidm:'Finite Impulse Response HRB'</a>, <a title="NIDM_0000030">nidm:'Gamma HRB'</a>, <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a>, <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a>, <a title="FourierHRB">spm:FourierHRB</a>)</li> 
+                        <li><a title="NIDM_0000102"><dfn title="NIDM_0000102">nidm:'has HRF Basis'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a property that associates a set of functions that, when convolved with the anticipated neural responses, yield a set of regressors to model the anticipated hemodynamic responses in a design matrix.(range <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a> such as <a title="BLOCK">afni:BLOCK</a>, <a title="CustomHRB">nidm:'Custom Basis Set'</a>, <a title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</a>, <a title="FourierHRB">nidm:'Fourier Basis Set'</a>, <a title="NIDM_0000030">nidm:'Gamma Basis Set'</a>, <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a>, <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a>, <a title="LinearSplineHRB">nidm:'Linear Spline Basis Set'</a>, <a title="SineHRB">nidm:'Sine Basis Set'</a>)</li> 
                         <li><a title="hasfMRIDesign"><dfn title="hasfMRIDesign">nidm:'has fMRI Design'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a property that associates an fMRI design to a design matrix in first-level fMRI analyses.(range <a title="fMRIDesign">nidm:'fMRI Design Type'</a>)</li> 
                         <li><a title="regressorNames"><dfn title="regressorNames">nidm:'regressor Names'</dfn></a></span>: an <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> a list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"]).(range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>        
                 </ul>
@@ -647,23 +647,71 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
 	rdfs:label "SPM's DCT Drift Model" ;
 	spm:driftCutoffPeriod 2 .</pre>  
             </section>
-            <!-- nidm:'Finite Impulse Response HRB' (NIDM_0000028) -->
-            <section id="section-nidm:'Finite Impulse Response HRB'"> 
-                <h1 label="NIDM_0000028">nidm:'Finite Impulse Response HRB'</h1>
+            <!-- nidm:'Custom Basis Set' (CustomHRB) -->
+            <section id="section-nidm:'Custom Basis Set'"> 
+                <h1 label="CustomHRB">nidm:'Custom Basis Set'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000028"><dfn title="NIDM_0000028">nidm:'Finite Impulse Response HRB'</dfn></a> is . <a title="NIDM_0000028">nidm:'Finite Impulse Response HRB'</a> is a prov:Entity. 
+                    A <a title="CustomHRB"><dfn title="CustomHRB">nidm:'Custom Basis Set'</dfn></a> is customised set of basis functions. <a title="CustomHRB">nidm:'Custom Basis Set'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Finite Impulse Response HRB'"> A <a title="NIDM_0000028">nidm:'Finite Impulse Response HRB'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Custom Basis Set'"> A <a title="CustomHRB">nidm:'Custom Basis Set'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Finite Impulse Response HRB'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Finite Impulse Response HRB'.</li>
+                    <li><span class="attribute" id="nidm:'Custom Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Custom Basis Set'.</li>
+                      
+            </section>
+            <!-- nidm:'Fourier Basis Set' (FourierHRB) -->
+            <section id="section-nidm:'Fourier Basis Set'"> 
+                <h1 label="FourierHRB">nidm:'Fourier Basis Set'</h1>
+                <div class="glossary-ref">
+                    A <a title="FourierHRB"><dfn title="FourierHRB">nidm:'Fourier Basis Set'</dfn></a> is set of Fourier basis. <a title="FourierHRB">nidm:'Fourier Basis Set'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Fourier Basis Set'"> A <a title="FourierHRB">nidm:'Fourier Basis Set'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Fourier Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Fourier Basis Set'.</li>
+                      
+            </section>
+            <!-- nidm:'Gaussian HRF' (GaussianHRF) -->
+            <section id="section-nidm:'Gaussian HRF'"> 
+                <h1 label="GaussianHRF">nidm:'Gaussian HRF'</h1>
+                <div class="glossary-ref">
+                    A <a title="GaussianHRF"><dfn title="GaussianHRF">nidm:'Gaussian HRF'</dfn></a> is hemodynamic response function which is a gaussian kernel. <a title="GaussianHRF">nidm:'Gaussian HRF'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Gaussian HRF'"> A <a title="GaussianHRF">nidm:'Gaussian HRF'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Gaussian HRF'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Gaussian HRF'.</li>
+                      
+            </section>
+            <!-- nidm:'Linear Spline Basis Set' (LinearSplineHRB) -->
+            <section id="section-nidm:'Linear Spline Basis Set'"> 
+                <h1 label="LinearSplineHRB">nidm:'Linear Spline Basis Set'</h1>
+                <div class="glossary-ref">
+                    A <a title="LinearSplineHRB"><dfn title="LinearSplineHRB">nidm:'Linear Spline Basis Set'</dfn></a> is a Linear (order 1) spline, providing an estimate that is continuous over time (in contrast to a FIR basis, which is discontinuous between each time bin). This is called TENT in AFNI's 3dDeconvolve program. <a title="LinearSplineHRB">nidm:'Linear Spline Basis Set'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Linear Spline Basis Set'"> A <a title="LinearSplineHRB">nidm:'Linear Spline Basis Set'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Linear Spline Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Linear Spline Basis Set'.</li>
+                      
+            </section>
+            <!-- nidm:'Finite Impulse Response Basis Set' (NIDM_0000028) -->
+            <section id="section-nidm:'Finite Impulse Response Basis Set'"> 
+                <h1 label="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</h1>
+                <div class="glossary-ref">
+                    A <a title="NIDM_0000028"><dfn title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</dfn></a> is set of Finite impulse response (FIR) filters, with FIR the convolution kernel is represented as a set of discrete fixed-width "impulses" (definition adapted from <a href="http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)">FSL wiki</a>. <a title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Finite Impulse Response Basis Set'"> A <a title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Finite Impulse Response Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Finite Impulse Response Basis Set'.</li>
                       
             </section>
             <!-- nidm:'Gamma Difference HRF' (NIDM_0000029) -->
             <section id="section-nidm:'Gamma Difference HRF'"> 
                 <h1 label="NIDM_0000029">nidm:'Gamma Difference HRF'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000029"><dfn title="NIDM_0000029">nidm:'Gamma Difference HRF'</dfn></a> is . <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000029"><dfn title="NIDM_0000029">nidm:'Gamma Difference HRF'</dfn></a> is hemodynamic response function which is a difference of two gamma probability density functions. <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> is a prov:Entity. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Gamma Difference HRF'"> A <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> has attributes:
@@ -671,23 +719,23 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                     <li><span class="attribute" id="nidm:'Gamma Difference HRF'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Gamma Difference HRF'.</li>
                       
             </section>
-            <!-- nidm:'Gamma HRB' (NIDM_0000030) -->
-            <section id="section-nidm:'Gamma HRB'"> 
-                <h1 label="NIDM_0000030">nidm:'Gamma HRB'</h1>
+            <!-- nidm:'Gamma Basis Set' (NIDM_0000030) -->
+            <section id="section-nidm:'Gamma Basis Set'"> 
+                <h1 label="NIDM_0000030">nidm:'Gamma Basis Set'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000030"><dfn title="NIDM_0000030">nidm:'Gamma HRB'</dfn></a> is . <a title="NIDM_0000030">nidm:'Gamma HRB'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000030"><dfn title="NIDM_0000030">nidm:'Gamma Basis Set'</dfn></a> is set of gamma probability density functions. <a title="NIDM_0000030">nidm:'Gamma Basis Set'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Gamma HRB'"> A <a title="NIDM_0000030">nidm:'Gamma HRB'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Gamma Basis Set'"> A <a title="NIDM_0000030">nidm:'Gamma Basis Set'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Gamma HRB'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Gamma HRB'.</li>
+                    <li><span class="attribute" id="nidm:'Gamma Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Gamma Basis Set'.</li>
                       
             </section>
             <!-- nidm:'Gamma HRF' (NIDM_0000031) -->
             <section id="section-nidm:'Gamma HRF'"> 
                 <h1 label="NIDM_0000031">nidm:'Gamma HRF'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000031"><dfn title="NIDM_0000031">nidm:'Gamma HRF'</dfn></a> is . <a title="NIDM_0000031">nidm:'Gamma HRF'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000031"><dfn title="NIDM_0000031">nidm:'Gamma HRF'</dfn></a> is hemodynamic response function which is a gamma probability density function. <a title="NIDM_0000031">nidm:'Gamma HRF'</a> is a prov:Entity. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Gamma HRF'"> A <a title="NIDM_0000031">nidm:'Gamma HRF'</a> has attributes:
@@ -699,7 +747,7 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
             <section id="section-nidm:'Hemodynamic Response Function'"> 
                 <h1 label="NIDM_0000035">nidm:'Hemodynamic Response Function'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000035"><dfn title="NIDM_0000035">nidm:'Hemodynamic Response Function'</dfn></a> is . <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000035"><dfn title="NIDM_0000035">nidm:'Hemodynamic Response Function'</dfn></a> is hemodynamic response function basis that can on its own be used to represent the idealised hemodynamic response function. <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a> is a prov:Entity. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Hemodynamic Response Function'"> A <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a> has attributes:
@@ -707,28 +755,40 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                     <li><span class="attribute" id="nidm:'Hemodynamic Response Function'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Hemodynamic Response Function'.</li>
                       
             </section>
-            <!-- nidm:'Hemodynamic Response Function Basis' (NIDM_0000036) -->
-            <section id="section-nidm:'Hemodynamic Response Function Basis'"> 
-                <h1 label="NIDM_0000036">nidm:'Hemodynamic Response Function Basis'</h1>
+            <!-- nidm:'Convolution Basis Set' (NIDM_0000036) -->
+            <section id="section-nidm:'Convolution Basis Set'"> 
+                <h1 label="NIDM_0000036">nidm:'Convolution Basis Set'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000036"><dfn title="NIDM_0000036">nidm:'Hemodynamic Response Function Basis'</dfn></a> is . <a title="NIDM_0000036">nidm:'Hemodynamic Response Function Basis'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000036"><dfn title="NIDM_0000036">nidm:'Convolution Basis Set'</dfn></a> is . <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a> is a prov:Entity. 
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Hemodynamic Response Function Basis'"> A <a title="NIDM_0000036">nidm:'Hemodynamic Response Function Basis'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Convolution Basis Set'"> A <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Hemodynamic Response Function Basis'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Hemodynamic Response Function Basis'.</li>
+                    <li><span class="attribute" id="nidm:'Convolution Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Convolution Basis Set'.</li>
                       
             </section>
             <!-- nidm:'Hemodynamic Response Function Derivative' (NIDM_0000037) -->
             <section id="section-nidm:'Hemodynamic Response Function Derivative'"> 
                 <h1 label="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</h1>
                 <div class="glossary-ref">
-                    A <a title="NIDM_0000037"><dfn title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</dfn></a> is . <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> is a prov:Entity. 
+                    A <a title="NIDM_0000037"><dfn title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</dfn></a> is hemodynamic response function basis which is the derivative of an hemodynamic response function. <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> is a prov:Entity. 
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Hemodynamic Response Function Derivative'"> A <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:'Hemodynamic Response Function Derivative'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Hemodynamic Response Function Derivative'.</li>
+                      
+            </section>
+            <!-- nidm:'Sine Basis Set' (SineHRB) -->
+            <section id="section-nidm:'Sine Basis Set'"> 
+                <h1 label="SineHRB">nidm:'Sine Basis Set'</h1>
+                <div class="glossary-ref">
+                    A <a title="SineHRB"><dfn title="SineHRB">nidm:'Sine Basis Set'</dfn></a> is a set of Sine waves of differing frequencies (definition adapted from <a href="http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)">FSL wiki</a>. <a title="SineHRB">nidm:'Sine Basis Set'</a> is a prov:Entity. 
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Sine Basis Set'"> A <a title="SineHRB">nidm:'Sine Basis Set'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Sine Basis Set'.label">rdfs:label</span>: an                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> human readable description                     of the nidm:'Sine Basis Set'.</li>
                       
             </section>
             <!-- nidm:'fMRI Design Type' (fMRIDesign) -->
