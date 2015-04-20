@@ -28,7 +28,7 @@ def main():
 			design_matrix_png_id="niiri:design_matrix_png_id",
 			regressors="[\\\"Listening\\\"]",
 			design="nidm:NIDM_0000151",
-			hrf_basis="spm:GammaDifferenceHRF",
+			hrf_basis="spm:SPM_0000004",
 			drift_model="niiri:drift_model_id"),
 		"SPM_DriftModel": dict(
 			id="niiri:drift_model_id",
