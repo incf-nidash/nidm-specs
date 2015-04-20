@@ -307,42 +307,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
     <td>xsd:float </td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=searchVolumeReselsGeometry"> [find issues/PR] </a></td>
-    <td><b>spm:searchVolumeReselsGeometry: </b>Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=smallestSignifClusterSizeInVerticesFDR05"> [find issues/PR] </a></td>
-    <td><b>spm:smallestSignifClusterSizeInVerticesFDR05: </b>Smallest cluster size in vertices that are significant at a false discovery rate corrected alpha value of 0.05.  </td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=smallestSignifClusterSizeInVerticesFWE05"> [find issues/PR] </a></td>
-    <td><b>spm:smallestSignifClusterSizeInVerticesFWE05: </b>Smallest cluster size in vertices significant at family-wise error rate corrected alpha value of 0.05</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=smallestSignifClusterSizeInVoxelsFDR05"> [find issues/PR] </a></td>
-    <td><b>spm:smallestSignifClusterSizeInVoxelsFDR05: </b>Smallest cluster size in voxels significant at false discovery rate corrected alpha value of 0.05.  </td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=smallestSignifClusterSizeInVoxelsFWE05"> [find issues/PR] </a></td>
-    <td><b>spm:smallestSignifClusterSizeInVoxelsFWE05: </b>Smallest cluster size in voxels significant at family-wise error corrected alpha value of 0.05. 
-</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='user Specified Threshold Type'"> [find issues/PR] </a></td>
     <td><b>nidm:'user Specified Threshold Type': </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
