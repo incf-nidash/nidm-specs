@@ -143,13 +143,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='cluster Size In Voxels'"> [find issues/PR] </a></td>
-    <td><b>nidm:'cluster Size In Voxels': </b>Number of voxels that make up the cluster</td>
-    <td>nidm:NIDM_0000026 nidm:NIDM_0000070 </td>
-    <td>xsd:positiveInteger </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Clusters'"> [find issues/PR] </a></td>
     <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
