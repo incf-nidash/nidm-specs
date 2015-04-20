@@ -340,6 +340,24 @@ nidm:NIDM_0000138 rdf:type owl:ObjectProperty ;
 
 
 
+###  http://purl.org/nidash/nidm#hasfMRIDesign
+
+nidm:hasfMRIDesign rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has fMRI Design" ;
+                   
+                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                   
+                   obo:IAO_0000115 "A property that associates an fMRI design to a design matrix in first-level fMRI analyses." ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000125 ;
+                   
+                   rdfs:domain nidm:NIDM_0000019 ;
+                   
+                   rdfs:range nidm:fMRIDesign .
+
+
+
 
 
 #################################################################
@@ -1368,6 +1386,24 @@ nidm:NIDM_0000149 rdf:type owl:DatatypeProperty ;
                                                       ]
                                                     )
                              ] .
+
+
+
+###  http://purl.org/nidash/nidm#regressorNames
+
+nidm:regressorNames rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:label "regressor Names" ;
+                    
+                    obo:IAO_0000115 "A list of abstract names associated with each column of the design matrix (e.g. [\"motor_left\", \"motor_right\"])." ;
+                    
+                    obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000125 ;
+                    
+                    rdfs:domain nidm:NIDM_0000019 ;
+                    
+                    rdfs:range xsd:string .
 
 
 
@@ -3015,6 +3051,22 @@ nidm:NIDM_0000144 rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#fMRIDesign
+
+nidm:fMRIDesign rdf:type owl:Class ;
+                
+                rdfs:label "fMRI Design Type" ;
+                
+                rdfs:subClassOf prov:Entity ;
+                
+                obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design event-related design or mixed design." ;
+                
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
 ###  http://purl.org/nidash/spm#DCTDriftModel
 
 spm:DCTDriftModel rdf:type owl:Class ;
@@ -3122,6 +3174,51 @@ spm:TemporalDerivative rdf:type owl:Class ;
 #    Individuals
 #
 #################################################################
+
+
+###  http://purl.org/nidash/nidm#BlockBasedDesign
+
+nidm:BlockBasedDesign rdf:type nidm:fMRIDesign ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Block-Based Design" ;
+                      
+                      obo:IAO_0000115 "An fMRI design comprised of epochs of stimulus and/or behavior." ;
+                      
+                      obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#EventRelatedDesign
+
+nidm:EventRelatedDesign rdf:type nidm:fMRIDesign ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Event-Related Design" ;
+                        
+                        obo:IAO_0000115 "An fMRI design comprised of discrete events of stimulus and/or behavior." ;
+                        
+                        obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#MixedDesign
+
+nidm:MixedDesign rdf:type nidm:fMRIDesign ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Mixed Design" ;
+                 
+                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                 
+                 obo:IAO_0000115 "An fMRI design comprised of both epochs & discrete events of stimulus and/or behavior." ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000122 .
+
 
 
 ###  http://purl.org/nidash/nidm#NIDM_0000009

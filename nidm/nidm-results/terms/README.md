@@ -313,10 +313,24 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has fMRI Design'"> [find issues/PR] </a></td>
+    <td><b>nidm:'has fMRI Design': </b>A property that associates an fMRI design to a design matrix in first-level fMRI analyses</td>
+    <td>nidm:NIDM_0000019 </td>
+    <td>nidm:fMRIDesign </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/288">#288</a>, naming previously discussed at: <a href="https://github.com/incf-nidash/nidm/pull/70">#70</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='masked Median'"> [more] </a></td>
     <td><b>nidm:'masked Median': </b>Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity</td>
     <td>nidm:NIDM_0000033 </td>
     <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='regressor Names'"> [find issues/PR] </a></td>
+    <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
+    <td>nidm:NIDM_0000019 </td>
+    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
