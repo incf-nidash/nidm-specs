@@ -25,6 +25,7 @@ prefix nidm_Data <http://purl.org/nidash/nidm#NIDM_0000018>
 prefix nidm_ParameterEstimateMap <http://purl.org/nidash/nidm#NIDM_0000061>
 prefix nidm_isUserDefined <http://purl.org/nidash/nidm#NIDM_0000106>
 prefix nidm_hasClusterLabelsMap <http://purl.org/nidash/nidm#NIDM_0000098>
+prefix obo_Toeplitzcovariancestructure <http://purl.obolibrary.org/obo/STATO_0000357>
 prefix dc <http://purl.org/dc/elements/1.1/>
 prefix nidm_pValueUncorrected <http://purl.org/nidash/nidm#NIDM_0000116>
 prefix nidm_voxelToWorldMapping <http://purl.org/nidash/nidm#NIDM_0000132>
@@ -93,7 +94,6 @@ prefix nidm_IndependentParameter <http://purl.org/nidash/nidm#NIDM_0000073>
 prefix nidm_MNICoordinateSystem <http://purl.org/nidash/nidm#NIDM_0000051>
 prefix nidm_randomFieldStationarity <http://purl.org/nidash/nidm#NIDM_0000120>
 prefix nidm_hasDriftModel <http://purl.org/nidash/nidm#NIDM_0000088>
-prefix nidm_SeriallyCorrelatedError <http://purl.org/nidash/nidm#NIDM_0000069>
 prefix nidm_voxelUnits <http://purl.org/nidash/nidm#NIDM_0000133>
 prefix nidm_ContrastWeights <http://purl.org/nidash/nidm#NIDM_0000014>
 prefix nidm_varianceMapWiseDependence <http://purl.org/nidash/nidm#NIDM_0000126>
@@ -156,7 +156,7 @@ entity(niiri:peak_definition_criteria_id,[prov:type = 'nidm:NIDM_0000063', prov:
 entity(niiri:peak_0008,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0008", prov:location = 'niiri:coordinate_0008', prov:value = "6.19558477401733" %% xsd:float, nidm:NIDM_0000116 = "1.0325913235576e-08" %% xsd:float, nidm:NIDM_0000092 = "5.60645028016544" %% xsd:float, nidm:NIDM_0000115 = "0.000382453907303626" %% xsd:float, nidm:NIDM_0000119 = "0.00949154522981781" %% xsd:float])
 entity(niiri:cluster_label_map_id,[prov:type = 'nidm:NIDM_0000008', prov:location = "file://./ClusterLabels.nii.gz" %% xsd:anyURI, nfo:fileName = "ClusterLabels.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string])
 entity(niiri:contrast_map_id,[prov:type = 'nidm:NIDM_0000002', prov:label = "Contrast Map: passive listening > rest", prov:location = "file://./Contrast.nii.gz" %% xsd:anyURI, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "Contrast.nii.gz" %% xsd:string, nidm:NIDM_0000085 = "passive listening > rest" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "f0720b732aaf19c2ec42d0469f8308beb3aa978baf65c7dce6476a0d8e5b2f38c4fa9609f045a536678440feebce9a047e3bd6d59fdb8fb64baae058690bbda2" %% xsd:string])
-entity(niiri:error_model_id,[prov:type = 'nidm:NIDM_0000023', nidm:NIDM_0000101 = 'nidm:NIDM_0000032', nidm:NIDM_0000094 = "true" %% xsd:boolean, nidm:NIDM_0000126 = 'nidm:NIDM_0000073', nidm:NIDM_0000100 = 'nidm:NIDM_0000069', nidm:NIDM_0000089 = 'nidm:NIDM_0000072'])
+entity(niiri:error_model_id,[prov:type = 'nidm:NIDM_0000023', nidm:NIDM_0000101 = 'nidm:NIDM_0000032', nidm:NIDM_0000094 = "true" %% xsd:boolean, nidm:NIDM_0000126 = 'nidm:NIDM_0000073', nidm:NIDM_0000100 = 'obo:STATO_0000357', nidm:NIDM_0000089 = 'nidm:NIDM_0000072'])
 entity(niiri:cluster_definition_criteria_id,[prov:type = 'nidm:NIDM_0000007', prov:label = "Cluster Connectivity Criterion: 18", nidm:NIDM_0000099 = 'nidm:NIDM_0000128'])
 entity(niiri:excursion_set_map_id,[prov:type = 'nidm:NIDM_0000025', prov:label = "Excursion Set Map", prov:location = "file://./ExcursionSetMap.nii.gz" %% xsd:anyURI, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "ExcursionSetMap.nii.gz" %% xsd:string, nidm:NIDM_0000098 = 'niiri:cluster_label_map_id', nidm:NIDM_0000138 = 'niiri:maximum_intensity_projection_id', nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "d96b82761c299a66978893cab6034f3f8aed25d0a135636b0ffe79f4cf11becce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652" %% xsd:string, nidm:NIDM_0000111 = "5" %% xsd:int, nidm:NIDM_0000114 = "2.83510681598e-09" %% xsd:float])
 entity(niiri:beta_map_id_2_der,[prov:type = 'nidm:NIDM_0000061', nfo:fileName = "beta_0002.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008" %% xsd:string])

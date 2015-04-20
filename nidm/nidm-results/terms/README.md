@@ -202,11 +202,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Compound Symmetric Error'"> [more] </a></td>
-    <td><b>nidm:'Compound Symmetric Error': </b>&lt;undefined&gt; (editor: TN)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/ISA-tools/stato/pull/23">ISA-tools/stato#23</a>
 Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Weights'"> [more] </a></td>
     <td><b>nidm:'Contrast Weights': </b>Vector defining the linear combination associated with a particular contrast. </td>
@@ -220,11 +215,6 @@ Range: Vector of integers not found.<br/><a href="https://github.com/incf-nidash
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Independent Error'"> [more] </a></td>
     <td><b>nidm:'Independent Error': </b>&lt;undefined&gt; (editor: TN)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Serially Correlated Error'"> [more] </a></td>
-    <td><b>nidm:'Serially Correlated Error': </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

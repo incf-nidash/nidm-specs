@@ -52,7 +52,7 @@ def main():
 			noise_distribution="nidm:NIDM_0000032",
 			variance_homo="true",
 			variance_spatial="nidm:NIDM_0000073",
-			dependence="nidm:NIDM_0000069",
+			dependence="obo:STATO_0000357",
 			dependence_spatial="nidm:NIDM_0000072"
 			),
 		"ModelParametersEstimation": dict(
