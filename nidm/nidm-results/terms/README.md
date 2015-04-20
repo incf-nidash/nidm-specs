@@ -16,28 +16,8 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='AFNI's Legendre Polinomial Drift Model'"> [find issues/PR] </a></td>
-    <td><b>afni:'AFNI's Legendre Polinomial Drift Model': </b>A drift model in which the drifts are modeled by a Legendre orthogonal polynomial basis added to the regression model</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Gaussian Running Line Drift Model'"> [find issues/PR] </a></td>
-    <td><b>fsl:'FSL's Gaussian Running Line Drift Model': </b>A drift model in which the drifts are modeled with a Gaussian-weighted running line smoother, fit to and subtracted from the data and each column of the design matrix</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/274">#274</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Design Matrix'"> [more] </a></td>
     <td><b>nidm:'Design Matrix': </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Drift Model'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Drift Model': </b>A model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's DCT Drift Model'"> [find issues/PR] </a></td>
-    <td><b>spm:'SPM's DCT Drift Model': </b>A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -124,20 +104,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='AFNI's drift Basis Order'"> [find issues/PR] </a></td>
-    <td><b>afni:'AFNI's drift Basis Order': </b>The number of basis in the drift model</td>
-    <td>afni:LegendrePolynomialDriftModel </td>
-    <td>xsd:int </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Drift Cut-off Period'"> [find issues/PR] </a></td>
-    <td><b>fsl:'FSL's Drift Cut-off Period': </b>Full Width at Half Maximum in seconds of the Gaussian weight function used in the running line smoother</td>
-    <td>fsl:GaussianRunningLineDriftModel </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Clusters'"> [find issues/PR] </a></td>
     <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
@@ -156,13 +122,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='has Drift Model'"> [find issues/PR] </a></td>
-    <td><b>nidm:'has Drift Model': </b>A property that associates a drift model to a design matrix (only used for first-level fMRI experiments)</td>
-    <td>nidm:NIDM_0000019 </td>
-    <td>nidm:NIDM_0000087 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -191,13 +150,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
     <td>nidm:NIDM_0000019 </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Drift Cut-off Period'"> [find issues/PR] </a></td>
-    <td><b>spm:'SPM's Drift Cut-off Period': </b>Discrete Cosine Transform basis cut-off, specified as period length in seconds and ensures that all basis elements will have period of this duration or longer</td>
-    <td>spm:DCTDriftModel </td>
-    <td>xsd:float </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
