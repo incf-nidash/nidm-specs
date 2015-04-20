@@ -245,27 +245,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td>nidm:NIDM_0000068 </td>
     <td></td>
 </tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInUnits"> [more] </a></td>
-    <td><b>spm:noiseFWHMInUnits: </b>Estimated Full Width at Half Maximum of the noise distribution in world units</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVertices"> [more] </a></td>
-    <td><b>spm:noiseFWHMInVertices: </b>Estimated Full Width at Half Maximum of the noise distribution in world vertices</td>
-    <td>nidm:NIDM_0000054 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/214">#214</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=noiseFWHMInVoxels"> [more] </a></td>
-    <td><b>spm:noiseFWHMInVoxels: </b>Estimated Full Width at Half Maximum of the noise distribution in voxels</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:string </td>
-</tr>
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
