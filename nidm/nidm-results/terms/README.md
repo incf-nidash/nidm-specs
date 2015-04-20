@@ -84,6 +84,20 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='effect Degrees Of Freedom'"> [more] </a></td>
+    <td><b>nidm:'effect Degrees Of Freedom': </b>In the context of a general linear model, the effect degrees of freedom is the rank of the contrast. For example, a contrast comprising of a vector has effect degrees of freedom of 1 and can be tested with a F-test with numerator degrees of freedom of 1</td>
+    <td>nidm:NIDM_0000076 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='error Degrees Of Freedom'"> [more] </a></td>
+    <td><b>nidm:'error Degrees Of Freedom': </b>In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the design matrix</td>
+    <td>nidm:NIDM_0000076 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Clusters'"> [find issues/PR] </a></td>
     <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
@@ -210,24 +224,10 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='effect Degrees Of Freedom'"> [more] </a></td>
-    <td><b>nidm:'effect Degrees Of Freedom': </b>Degrees of freedom of the effect</td>
-    <td>nidm:NIDM_0000076 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='equivalent ZStatistic'"> [find issues/PR] </a></td>
     <td><b>nidm:'equivalent ZStatistic': </b>Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score</td>
     <td>nidm:NIDM_0000062 </td>
     <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='error Degrees Of Freedom'"> [more] </a></td>
-    <td><b>nidm:'error Degrees Of Freedom': </b>Degrees of freedom of the error</td>
-    <td>nidm:NIDM_0000076 </td>
-    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
