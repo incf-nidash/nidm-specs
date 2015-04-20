@@ -137,6 +137,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/130">#130</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='random Field Stationarity'"> [more] </a></td>
+    <td><b>nidm:'random Field Stationarity': </b>A binary flag that indicates whether Random Field Theory methods assumed smoothness that was homogeneous over the map (true), or allowed for smoothness that varies over the map (false)</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td>xsd:boolean </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='regressor Names'"> [find issues/PR] </a></td>
     <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
     <td>nidm:NIDM_0000019 </td>
@@ -218,13 +225,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'equivalent ZStatistic': </b>Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score</td>
     <td>nidm:NIDM_0000062 </td>
     <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/130">#130</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='random Field Stationarity'"> [more] </a></td>
-    <td><b>nidm:'random Field Stationarity': </b>Is the random field assumed to be stationary across the entire search volume?</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:boolean </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
