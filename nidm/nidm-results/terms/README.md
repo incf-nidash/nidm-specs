@@ -101,11 +101,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Resels Per Voxel Map'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Resels Per Voxel Map': </b>A map whose value at each location is the number of resels per voxel. </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Standardized Coordinate System'"> [more] </a></td>
     <td><b>nidm:'Standardized Coordinate System': </b>Parent of all reference spaces except "Subject"</td>
 </tr>
