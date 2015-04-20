@@ -36,6 +36,9 @@
 @prefix nidm_targetIntensity: <http://purl.org/nidash/nidm#NIDM_0000124> .
 @prefix nidm_ContrastVarianceMap: <http://purl.org/nidash/nidm#NIDM_0000135> .
 @prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
+@prefix nidm_regressorNames: <http://purl.org/nidash/nidm#NIDM_0000021> .
+@prefix nidm_hasfMRIDesign: <http://purl.org/nidash/nidm#NIDM_0000010> .
+@prefix nidm_BlockBasedDesign: <http://purl.org/nidash/nidm#NIDM_0000152> .
 @prefix nidm_hasHRFBasis: <http://purl.org/nidash/nidm#NIDM_0000102> .
 @prefix nidm_hasDriftModel: <http://purl.org/nidash/nidm#NIDM_0000088> .
 @prefix nidm_DisplayMaskMap: <http://purl.org/nidash/nidm#NIDM_0000020> .
@@ -51,8 +54,8 @@
 @prefix nidm_ClusterCenterOfGravity: <http://purl.org/nidash/nidm#NIDM_0000140> .
 @prefix nidm_ContrastMap: <http://purl.org/nidash/nidm#NIDM_0000002> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
-@prefix nidm_coordinate: <http://purl.org/nidash/nidm#NIDM_0000086> .
-@prefix nidm_coordinateInVoxels: <http://purl.org/nidash/nidm#NIDM_0000139> .
+@prefix nidm_coordinateVector: <http://purl.org/nidash/nidm#NIDM_0000086> .
+@prefix nidm_coordinateVectorInVoxels: <http://purl.org/nidash/nidm#NIDM_0000139> .
 @prefix nidm_ExcursionSetMap: <http://purl.org/nidash/nidm#NIDM_0000025> .
 @prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
 @prefix nidm_userSpecifiedThresholdType: <http://purl.org/nidash/nidm#NIDM_0000125> .
@@ -93,6 +96,10 @@
 @prefix obo_Toeplitzcovariancestructure: <http://purl.obolibrary.org/obo/STATO_0000357> .
 @prefix obo_Zstatistic: <http://purl.obolibrary.org/obo/STATO_0000376> .
 @prefix obo_generalizedleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000372> .
+@prefix fsl_FSLsGammaDifferenceHRF: <http://purl.org/nidash/fsl#FSL_0000001> .
+@prefix fsl_GaussianRunningLineDriftModel: <http://purl.org/nidash/fsl#FSL_0000002> .
+@prefix fsl_driftCutoffPeriod: <http://purl.org/nidash/fsl#FSL_0000004> .
+@prefix fsl_featVersion: <http://purl.org/nidash/fsl#FSL_0000005> .
 
 
 niiri:cluster_definition_criteria_id_1 a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -146,9 +153,9 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
 	dct:format "text/csv"^^xsd:string ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id ;
-    nidm:regressorNames "[\"Gen\", \"Gen_der\", \"Shad\", \"Shad_der\"]"^^xsd:string ;
-    nidm:hasfMRIDesign nidm:BlockBasedDesign ;
-    nidm_hasHRFBasis: fsl:GammaDifferenceHRF ;
+    nidm_regressorNames: "[\"Gen\", \"Gen_der\", \"Shad\", \"Shad_der\"]"^^xsd:string ;
+    nidm_hasfMRIDesign: nidm_BlockBasedDesign: ;
+    nidm_hasHRFBasis: fsl_FSLsGammaDifferenceHRF: ;
     nidm_hasDriftModel: niiri:drift_model_id.
 
 
@@ -202,139 +209,139 @@ niiri:contrast_map_id_1 a prov:Entity , nidm_ContrastMap: ;
 
 niiri:coordinate_0001_1 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001_1" ;
-	nidm_coordinate: "[-8.35,15.1,39.6]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[33,38, 31]"^^xsd:string .
+	nidm_coordinateVector: "[-8.35,15.1,39.6]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[33,38, 31]"^^xsd:string .
 
 
 niiri:coordinate_0001_2 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001_2" ;
-	nidm_coordinate: "[-9.14,30.5,23.7]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[33,43, 28]"^^xsd:string .
+	nidm_coordinateVector: "[-9.14,30.5,23.7]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[33,43, 28]"^^xsd:string .
 
 
 niiri:coordinate_0001_3 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001_3" ;
-	nidm_coordinate: "[-19.6,17.4,34.7]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[36,39, 30]"^^xsd:string .
+	nidm_coordinateVector: "[-19.6,17.4,34.7]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[36,39, 30]"^^xsd:string .
 
 
 niiri:coordinate_0001_4 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001_4" ;
-	nidm_coordinate: "[-9.64,40.1,17.3]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[33,46, 27]"^^xsd:string .
+	nidm_coordinateVector: "[-9.64,40.1,17.3]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[33,46, 27]"^^xsd:string .
 
 
 niiri:coordinate_0002_1 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0002_1" ;
-	nidm_coordinate: "[-56.2,-61.9,4.03]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[47,18, 18]"^^xsd:string .
+	nidm_coordinateVector: "[-56.2,-61.9,4.03]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[47,18, 18]"^^xsd:string .
 
 
 niiri:coordinate_0002_2 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0002_2" ;
-	nidm_coordinate: "[-56.7,-53.1,18.2]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[47,20, 22]"^^xsd:string .
+	nidm_coordinateVector: "[-56.7,-53.1,18.2]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[47,20, 22]"^^xsd:string .
 
 
 niiri:coordinate_0003_1 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_1" ;
-	nidm_coordinate: "[-38.3,20.7,13.2]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[41,41, 25]"^^xsd:string .
+	nidm_coordinateVector: "[-38.3,20.7,13.2]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[41,41, 25]"^^xsd:string .
 
 
 niiri:coordinate_0003_2 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_2" ;
-	nidm_coordinate: "[-45.5,17.8,-6.65]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[43,41, 20]"^^xsd:string .
+	nidm_coordinateVector: "[-45.5,17.8,-6.65]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[43,41, 20]"^^xsd:string .
 
 
 niiri:coordinate_0003_3 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_3" ;
-	nidm_coordinate: "[-63.4,3.78,0.366]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[48,37, 21]"^^xsd:string .
+	nidm_coordinateVector: "[-63.4,3.78,0.366]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[48,37, 21]"^^xsd:string .
 
 
 niiri:coordinate_0003_4 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_4" ;
-	nidm_coordinate: "[-57.4,31.8,-2.12]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[46,45, 22]"^^xsd:string .
+	nidm_coordinateVector: "[-57.4,31.8,-2.12]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[46,45, 22]"^^xsd:string .
 
 
 niiri:coordinate_0003_5 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_5" ;
-	nidm_coordinate: "[-34,8.84,28.3]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[40,37, 28]"^^xsd:string .
+	nidm_coordinateVector: "[-34,8.84,28.3]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[40,37, 28]"^^xsd:string .
 
 
 niiri:coordinate_0003_6 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003_6" ;
-	nidm_coordinate: "[-53.3,23.3,12.2]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[45,42, 25]"^^xsd:string .
+	nidm_coordinateVector: "[-53.3,23.3,12.2]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[45,42, 25]"^^xsd:string .
 
 
 niiri:coordinate_0004_1 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_1" ;
-	nidm_coordinate: "[-33.7,-66.7,-14.7]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[41,17, 13]"^^xsd:string .
+	nidm_coordinateVector: "[-33.7,-66.7,-14.7]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[41,17, 13]"^^xsd:string .
 
 
 niiri:coordinate_0004_2 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_2" ;
-	nidm_coordinate: "[-38,-53.9,-21.9]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[42,21, 12]"^^xsd:string .
+	nidm_coordinateVector: "[-38,-53.9,-21.9]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[42,21, 12]"^^xsd:string .
 
 
 niiri:coordinate_0004_3 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_3" ;
-	nidm_coordinate: "[16.1, -96.6, 5.82]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[28, 7, 16]"^^xsd:string .
+	nidm_coordinateVector: "[16.1, -96.6, 5.82]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[28, 7, 16]"^^xsd:string .
 
 
 niiri:coordinate_0004_4 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_4" ;
-	nidm_coordinate: "[-48.1,-73.7,-9.24]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[45,15, 14]"^^xsd:string .
+	nidm_coordinateVector: "[-48.1,-73.7,-9.24]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[45,15, 14]"^^xsd:string .
 
 
 niiri:coordinate_0004_5 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_5" ;
-	nidm_coordinate: "[-25.5,-80.4,-15.3]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[39,13, 12]"^^xsd:string .
+	nidm_coordinateVector: "[-25.5,-80.4,-15.3]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[39,13, 12]"^^xsd:string .
 
 
 niiri:coordinate_0004_6 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004_6" ;
-	nidm_coordinate: "[0.791,-87.2,3.23]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[32,10, 16]"^^xsd:string .
+	nidm_coordinateVector: "[0.791,-87.2,3.23]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[32,10, 16]"^^xsd:string .
 
 
 niiri:COG_coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001" ;
-	nidm_coordinate: "[-5.8, 19.1, 38.5]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[32.3, 39.2, 31]"^^xsd:string .
+	nidm_coordinateVector: "[-5.8, 19.1, 38.5]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[32.3, 39.2, 31]"^^xsd:string .
 
 
 niiri:COG_coordinate_0002 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0002" ;
-	nidm_coordinate: "[-56.9,-57.1,9.86]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[47.1,19.2, 19.7]"^^xsd:string .
+	nidm_coordinateVector: "[-56.9,-57.1,9.86]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[47.1,19.2, 19.7]"^^xsd:string .
 
 
 niiri:COG_coordinate_0003  a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0003" ;
-	nidm_coordinate: "[-47.2,17.3,9.18]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[43.4,40.3, 23.9]"^^xsd:string .
+	nidm_coordinateVector: "[-47.2,17.3,9.18]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[43.4,40.3, 23.9]"^^xsd:string .
 
 
 niiri:COG_coordinate_0004   a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0004" ;
-	nidm_coordinate: "[-7.38,-72.5,-8.5]"^^xsd:string ;
-	nidm_coordinateInVoxels: "[34,14.7, 14]"^^xsd:string .
+	nidm_coordinateVector: "[-7.38,-72.5,-8.5]"^^xsd:string ;
+	nidm_coordinateVectorInVoxels: "[34,14.7, 14]"^^xsd:string .
 
 
-niiri:drift_model_id a prov:Entity , fsl:GaussianRunningLineDriftModel ;
+niiri:drift_model_id a prov:Entity , fsl_GaussianRunningLineDriftModel: ;
 	rdfs:label "FSL's Gaussian Running Line Drift Model" ;
-	fsl:driftCutoffPeriod 2 .
+	fsl_driftCutoffPeriod: 2 .
 
 niiri:excursion_set_map_id_1 a prov:Entity , nidm_ExcursionSetMap: ;
 	rdfs:label "Excursion Set Map" ;
@@ -442,7 +449,7 @@ niiri:significant_cluster_0004  a prov:Entity , nidm_SignificantCluster: ;
 niiri:software_id a prov:Agent , nlx:birnlex_2067 , prov:SoftwareAgent ;
 	rdfs:label "FSL" ;
 	nidm_softwareVersion: "5.0.x"^^xsd:string ;
-	fsl:featVersion "6.00"^^xsd:string .
+	fsl_featVersion: "6.00"^^xsd:string .
 
 niiri:statistic_map_id_1 a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: Generation" ;
