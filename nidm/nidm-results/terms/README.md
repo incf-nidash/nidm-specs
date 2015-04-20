@@ -106,27 +106,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has HRF Basis'"> [more] </a></td>
-    <td><b>nidm:'has HRF Basis': </b>A property that associates a set of functions that, when convolved with the anticipated neural responses, yield a set of regressors to model the anticipated hemodynamic responses in a design matrix</td>
-    <td>nidm:NIDM_0000019 </td>
-    <td>nidm:NIDM_0000036 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has fMRI Design'"> [find issues/PR] </a></td>
-    <td><b>nidm:'has fMRI Design': </b>A property that associates an fMRI design to a design matrix in first-level fMRI analyses</td>
-    <td>nidm:NIDM_0000019 </td>
-    <td>nidm:fMRIDesign </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/288">#288</a>, naming previously discussed at: <a href="https://github.com/incf-nidash/nidm/pull/70">#70</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='masked Median'"> [more] </a></td>
-    <td><b>nidm:'masked Median': </b>Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity</td>
-    <td>nidm:NIDM_0000033 </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='partial Conjunction Degree'"> [more] </a></td>
     <td><b>nidm:'partial Conjunction Degree': </b>The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference</td>
     <td>spm:KConjunctionInference </td>
@@ -138,13 +117,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'random Field Stationarity': </b>A binary flag that indicates whether Random Field Theory methods assumed smoothness that was homogeneous over the map (true), or allowed for smoothness that varies over the map (false)</td>
     <td>nidm:NIDM_0000068 </td>
     <td>xsd:boolean </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='regressor Names'"> [find issues/PR] </a></td>
-    <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
-    <td>nidm:NIDM_0000019 </td>
-    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -226,22 +198,4 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Temporal Derivative'"> [more] </a></td>
-    <td><b>fsl:'FSL's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function</td>
-    <td>nidm:NIDM_0000037</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Dispersion Derivative'"> [more] </a></td>
-    <td><b>spm:'SPM's Dispersion Derivative': </b>Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function</td>
-    <td>nidm:NIDM_0000037</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Temporal Derivative'"> [more] </a></td>
-    <td><b>spm:'SPM's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function</td>
-    <td>nidm:NIDM_0000037</td>
-</tr>
 </table>
