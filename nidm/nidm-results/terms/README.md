@@ -55,11 +55,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'SPM Results': </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='World Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'World Coordinate System': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Arbitrarily Correlated Error'"> [more] </a></td>
     <td><b>nidm:'Arbitrarily Correlated Error': </b>&lt;undefined&gt; (editor: TN)</td>
@@ -76,28 +71,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Custom Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Custom Coordinate System': </b>&lt;undefined&gt;</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='MNI Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'MNI Coordinate System': </b>Coordinate system defined with reference to the MNI atlas</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Standardized Coordinate System'"> [more] </a></td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Standardized Coordinate System'"> [find issues/PR] </a></td>
     <td><b>nidm:'Standardized Coordinate System': </b>Parent of all reference spaces except "Subject"</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Subject Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Subject Coordinate System': </b>Coordinate system defined by the subject brain (no spatial normalisation applied)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Talairach Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Talairach Coordinate System': </b>Reference space defined by the dissected brain used for the Talairach and Tournoux atlas</td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Subject Coordinate System'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Subject Coordinate System': </b>Reference space corresponding to the subject brain (no spatial normalization applied)</td>
 </tr>
 </table><h2>Properties</h2>
 <table>
@@ -251,13 +231,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='in World Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'in World Coordinate System': </b>Type of coordinate system</td>
-    <td>nidm:NIDM_0000016 </td>
-    <td>nidm:NIDM_0000081 </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/173">#173</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='noise FWHM'"> [more] </a></td>
     <td><b>nidm:'noise FWHM': </b>Estimated Full Width at Half Maximum of the noise distribution</td>
     <td></td>
@@ -318,83 +291,5 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Temporal Derivative'"> [more] </a></td>
     <td><b>spm:'SPM's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function</td>
     <td>nidm:NIDM_0000037</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Colin27 Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Colin27 Coordinate System': </b>Coordinate system defined by the "stereotaxic average of 27 T1-weighted MRI scans of the same individual"</td>
-    <td>nidm:NIDM_0000075</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Linear Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Linear Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, linearly transformed to Talairach space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009a Asymmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009a Asymmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009a Symmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009a Symmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009b Asymmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009b Asymmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009b Symmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009b Symmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009c Asymmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009c Asymmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear2009c Symmetric Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear2009c Symmetric Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm Mni152 Non Linear6th Generation Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm Mni152 Non Linear6th Generation Coordinate System': </b>Coordinate system defined by the "average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm452 Air Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm452 Air Coordinate System': </b>Coordinate system defined by the "average of 452 T1-weighted MRIs of normal young adult brains" with "linear transforms of the subjects into the atlas space using a 12-parameter affine transformation"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Icbm452 Warp5 Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Icbm452 Warp5 Coordinate System': </b>Coordinate system defined by the "average of 452 T1-weighted MRIs of normal young adult brains" "based on a 5th order polynomial transformation into the atlas space"</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Ixi549 Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Ixi549 Coordinate System': </b>Coordinate system defined by the average of the "549 [...] subjects from the IXI dataset" linearly transformed to ICBM MNI 452</td>
-    <td>nidm:NIDM_0000051</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Mni305 Coordinate System'"> [more] </a></td>
-    <td><b>nidm:'Mni305 Coordinate System': </b>Coordinate system defined by the "average of 305 T1-weighted MRI scans, linearly transformed to Talairach space"</td>
-    <td>nidm:NIDM_0000051</td>
 </tr>
 </table>
