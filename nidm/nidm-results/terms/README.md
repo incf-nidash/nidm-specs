@@ -74,6 +74,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate'"> [more] </a></td>
+    <td><b>nidm:'coordinate': </b>A vector with one number per dimension. The first element corresponds to the coordinate along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the coordinate along the second dimension etc</td>
+    <td>nidm:NIDM_0000015 </td>
+    <td>xsd:float </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='effect Degrees Of Freedom'"> [more] </a></td>
     <td><b>nidm:'effect Degrees Of Freedom': </b>In the context of a general linear model, the effect degrees of freedom is the rank of the contrast. For example, a contrast comprising of a vector has effect degrees of freedom of 1 and can be tested with a F-test with numerator degrees of freedom of 1</td>
     <td>nidm:NIDM_0000076 </td>
@@ -202,13 +209,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate In Voxels'"> [more] </a></td>
     <td><b>nidm:'coordinate In Voxels': </b>Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
-    <td>nidm:NIDM_0000015 </td>
-    <td>xsd:float </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate'"> [more] </a></td>
-    <td><b>nidm:'coordinate': </b>Coordinate along the first dimension in voxel units. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
     <td>nidm:NIDM_0000015 </td>
     <td>xsd:float </td>
 </tr>
