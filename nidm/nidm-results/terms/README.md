@@ -20,6 +20,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'Design Matrix': </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Partial Conjunction Inference'"> [more] </a></td>
+    <td><b>spm:'Partial Conjunction Inference': </b>The process of testing the joint significance of multiple effects to infer that some (not necessarily all) of the respective effects are real (i.e. their null hypotheses are false). If there are K effects considered, the partial conjunction degree u is the number non-null effects allowed as part of partial conjunction null hypothesis; if the partial conjunction null is rejected, it may be inferred that u+1 or more effects are real. The case of u=K-1 corresponds to proper "conjunction inference", while the case of u=0 corresponds to "global null" conjunction test. See [Friston et al. (2005). Conjunction revisited. NeuroImage, 25(3), 661-7.](http://dx.doi.org/10.1016/j.neuroimage.2005.01.013)</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [find issues/PR] </a></td>
     <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
@@ -94,11 +99,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/284">#284</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Talairach Coordinate System'"> [more] </a></td>
     <td><b>nidm:'Talairach Coordinate System': </b>Reference space defined by the dissected brain used for the Talairach and Tournoux atlas</td>
 </tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=KConjunctionInference"> [more] </a></td>
-    <td><b>spm:KConjunctionInference: </b>Inference testing for the joint significance of a subset of the effects</td>
-</tr>
 </table><h2>Properties</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
@@ -146,6 +146,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='partial Conjunction Degree'"> [more] </a></td>
+    <td><b>nidm:'partial Conjunction Degree': </b>The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference</td>
+    <td>spm:KConjunctionInference </td>
+    <td>xsd:int </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='regressor Names'"> [find issues/PR] </a></td>
     <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
     <td>nidm:NIDM_0000019 </td>
@@ -157,13 +164,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'user Specified Threshold Type': </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
     <td>nidm:NIDM_0000026 nidm:NIDM_0000034 </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='global Null Degree'"> [more] </a></td>
-    <td><b>nidm:'global Null Degree': </b>&lt;undefined&gt;</td>
-    <td>spm:KConjunctionInference </td>
-    <td>xsd:int </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
