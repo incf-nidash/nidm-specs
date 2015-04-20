@@ -1,0 +1,3513 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix fsl: <http://purl.org/nidash/fsl#> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nlx: <http://neurolex.org/wiki/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spm: <http://purl.org/nidash/spm#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix afni: <http://purl.org/nidash/afni#> .
+@prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology ;
+  owl:imports <http://purl.obolibrary.org/nidm/iao_import.owl> ,
+              <http://purl.org/nidash/nidm/dc_import.owl> ,
+              <http://purl.org/nidash/nidm/crypto_import.owl> ,              
+              <http://purl.org/nidash/nidm/nfo_import.owl> ,
+              <http://purl.org/nidash/nidm/nlx_import.owl> ,
+              <http://purl.org/nidash/nidm/stato_import.owl> ,
+              <http://www.w3.org/ns/prov-o-20130430>
+] .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdfs:range dctype:Image .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000088
+
+nidm:NIDM_0000088 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Drift Model" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                  
+                  obo:IAO_0000115 "A property that associates a drift model to a design matrix (only used for first-level fMRI experiments)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000019 ;
+                  
+                  rdfs:range nidm:NIDM_0000087 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000089
+
+nidm:NIDM_0000089 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "dependence Map-Wise Dependence" ;
+                  
+                  obo:IAO_0000115 "Property that associates an Error Parameter Map-Wise Dependence to the dependence of an error model." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000023 ;
+                  
+                  rdfs:range nidm:NIDM_0000071 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000097
+
+nidm:NIDM_0000097 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Alternative Hypothesis" ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/81" ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000208" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000049 ;
+                  
+                  rdfs:range nidm:NIDM_0000060 ,
+                             nidm:NIDM_0000079 ;
+                  
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000098
+
+nidm:NIDM_0000098 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Cluster Labels Map" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/282" ;
+                  
+                  obo:IAO_0000115 "A property that associates a clusters label map to the excursion set." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range nidm:NIDM_0000008 ;
+                  
+                  rdfs:domain nidm:NIDM_0000025 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000099
+
+nidm:NIDM_0000099 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Connectivity Criterion" ;
+                  
+                  obo:IAO_0000115 "Property that associates a ConnectivityCriterion with a ClusterDefinitionCriteria." ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000007 ;
+                  
+                  rdfs:range nidm:NIDM_0000012 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000100
+
+nidm:NIDM_0000100 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Error Dependence" ;
+                  
+                  obo:IAO_0000115 "Property that associates a covariance structure representing the dependence structure of the error, used as part of model estimation with an Error Model." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range obo:STATO_0000346 ;
+                  
+                  rdfs:domain nidm:NIDM_0000023 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000101
+
+nidm:NIDM_0000101 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Error Distribution" ;
+                  
+                  obo:IAO_0000115 "Property that associates an ErrorDistribution with an ErrorModel." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range nidm:NIDM_0000022 ;
+                  
+                  rdfs:domain nidm:NIDM_0000023 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000102
+
+nidm:NIDM_0000102 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has HRF Basis" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000115 "A property that associates a set of functions that, when convolved with the anticipated neural responses, yield a set of regressors to model the anticipated hemodynamic responses in a design matrix." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000019 ;
+                  
+                  rdfs:range nidm:NIDM_0000036 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000103
+
+nidm:NIDM_0000103 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Map Header" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/289" ;
+                  
+                  obo:IAO_0000115 "A Property that associates an additional file containing the map header with a map" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000052 ;
+                  
+                  rdfs:range nidm:NIDM_0000053 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000104
+
+nidm:NIDM_0000104 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "in Coordinate Space" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/171 by NN JT CM SG KH TN." ;
+                  
+                  obo:IAO_0000115 "Property of a DataArray to associate a CoordinateSpace with a physical file." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range nidm:NIDM_0000016 ;
+                  
+                  rdfs:domain nidm:NIDM_0000052 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000105
+
+nidm:NIDM_0000105 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "in World Coordinate System" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Property that associates a world coordinate system to the coordinate space." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range nidm:NIDM_0000081 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000113
+
+nidm:NIDM_0000113 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "object Model" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/137" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  
+                  rdfs:range nidm:NIDM_0000057 ;
+                  
+                  rdfs:domain prov:Bundle .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000123
+
+nidm:NIDM_0000123 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "statistic Type" ;
+                  
+                  obo:IAO_0000115 "Property that associates a  [stato:\"statistic\"](http://purl.obolibrary.org/obo/STATO_0000039) with a StatisticMap or a ContrastWeights entity." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/293" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range obo:STATO_0000039 ;
+                  
+                  rdfs:domain obo:STATO_0000323 ,
+                              nidm:NIDM_0000076 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000126
+
+nidm:NIDM_0000126 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "variance Map-Wise Dependence" ;
+                  
+                  obo:IAO_0000115 "Property that associates an Error Parameter Map-Wise Dependence to the variance of an error model" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000023 ;
+                  
+                  rdfs:range nidm:NIDM_0000071 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000134
+
+nidm:NIDM_0000134 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "with Estimation Method" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/293" ;
+                  
+                  obo:IAO_0000115 "Property that associates a  [stato:\"model parameter estimation\"](http://purl.obolibrary.org/obo/STATO_0000119) method with a model parameter estimation" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range obo:STATO_0000119 ;
+                  
+                  rdfs:domain nidm:NIDM_0000056 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000138
+
+nidm:NIDM_0000138 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has Maximum Intensity Projection" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/293" ;
+                  
+                  obo:IAO_0000115 "Property that associates an image of the maximum intensity projection with an excursion set map." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range dctype:Image ;
+                  
+                  rdfs:domain nidm:NIDM_0000025 .
+
+
+
+###  http://purl.org/nidash/nidm#hasfMRIDesign
+
+nidm:NIDM_0000010 rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has fMRI Design" ;
+                   
+                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                   
+                   obo:IAO_0000115 "A property that associates an fMRI design to a design matrix in first-level fMRI analyses." ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000122 ;
+                   
+                   rdfs:domain nidm:NIDM_0000019 ;
+                   
+                   rdfs:range nidm:NIDM_0000155 .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/dc/terms/format
+
+dct:format rdf:type owl:DatatypeProperty ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/fsl#driftCutoffPeriod
+
+fsl:FSL_0000004 rdf:type owl:DatatypeProperty ;
+
+                      rdfs:label "drift Cutoff Period" ;
+                      
+                      obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                      
+                      obo:IAO_0000115 "Full Width at Half Maximum in seconds of the Gaussian weight function used in the running line smoother." ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 ;
+                      
+                      rdfs:domain fsl:FSL_0000002 ;
+                      
+                      rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/fsl#featVersion
+
+fsl:FSL_0000005 rdf:type owl:DatatypeProperty ;
+
+                            rdfs:label "feat Version" ;
+                
+                obo:IAO_0000115 "Version of the FEAT software." ;
+                
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/291" ;
+                
+                rdfs:domain nlx:birnlex_2067 ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#LegendrePolynomialOrder
+
+nidm:NIDM_0000014 rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "Legendre Polynomial Order" ;
+                             
+                             obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                             
+                             obo:IAO_0000115 "The number of basis in the drift model (1 = linear, 2 = quadratic, etc.)" ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000122 ;
+                             
+                             rdfs:domain afni:LegendrePolynomialDriftModel ;
+                             
+                             rdfs:range xsd:int .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000082
+
+nidm:NIDM_0000082 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "cluster Label Id" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/271" ;
+                  
+                  obo:IAO_0000115 "Integer value used in the cluster label map to identify the location of the cluster within the excursion set." ;
+                  
+                  obo:IAO_0000112 "5" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000070 ;
+                  
+                  rdfs:range xsd:int .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000083
+
+nidm:NIDM_0000083 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "cluster Size In Vertices" ;
+                  
+                  obo:IAO_0000115 "Number of vertices that make up the cluster." ;
+                  
+                  obo:IAO_0000112 "10" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000070 ;
+                  
+                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000084
+
+nidm:NIDM_0000084 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "cluster Size In Voxels" ;
+                  
+                  obo:IAO_0000112 "18" ;
+                  
+                  obo:IAO_0000115 "Number of voxels that make up the cluster." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000070 ;
+                  
+                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000085
+
+nidm:NIDM_0000085 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "contrast Name" ;
+                  
+                  obo:IAO_0000115 "Name of the contrast." ;
+                  
+                  obo:IAO_0000112 "\"Listening > Rest\"" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
+                  
+                  rdfs:domain obo:STATO_0000323 ,
+                              nidm:NIDM_0000002 ,
+                              nidm:NIDM_0000076 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000086
+
+nidm:NIDM_0000086 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "coordinate Vector" ;
+                  
+                  obo:IAO_0000112 "[-60, 32, 54]"^^xsd:string ;
+                  
+                  obo:IAO_0000115 "A vector with one number per dimension. The first element corresponds to the coordinate along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the coordinate along the second dimension etc." ;
+                  
+                  obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270 and https://github.com/incf-nidash/nidm/issues/145" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000015 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000090
+
+nidm:NIDM_0000090 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "dimensions In Voxels" ;
+                  
+                  obo:IAO_0000115 "Number of voxels in each of the dimensions of the data array. For example, \"91 109 91\" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension." ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/issues/146" ;
+                  
+                  obo:IAO_0000112 "[64 64 20]" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000091
+
+nidm:NIDM_0000091 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "effect Degrees Of Freedom" ;
+                  
+                  obo:IAO_0000112 "1" ;
+                  
+                  obo:IAO_0000115 "In the context of a general linear model, the effect degrees of freedom is the rank of the contrast. For example, a contrast comprising of a vector has effect degrees of freedom of 1 and can be tested with a F-test with numerator degrees of freedom of 1." ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/277" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000076 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000092
+
+nidm:NIDM_0000092 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "equivalent ZStatistic" ;
+                  
+                  obo:IAO_0000115 "Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score." ;
+                  
+                  obo:IAO_0000112 "3.5" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
+                  
+                  rdfs:domain nidm:NIDM_0000062 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000093
+
+nidm:NIDM_0000093 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "error Degrees Of Freedom" ;
+                  
+                  obo:IAO_0000115 "In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the design matrix." ;
+                  
+                  obo:IAO_0000112 "72.999999" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/277" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000076 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000094
+
+nidm:NIDM_0000094 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "error Variance Homogeneous" ;
+                  
+                  obo:IAO_0000115 "A boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000023 ;
+                  
+                  rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000095
+
+nidm:NIDM_0000095 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "partial Conjunction Degree" ;
+                  
+                  obo:IAO_0000115 "The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/294" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain spm:SPM_0000005 ;
+                  
+                  rdfs:range xsd:int .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000096
+
+nidm:NIDM_0000096 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "grand Mean Scaling" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
+                  
+                  obo:IAO_0000112 "TRUE" ;
+                  
+                  obo:IAO_0000115 "Binary flag defining whether the data was scaled (true for scaled). Specifically, \"grand mean scaling\" refers to multiplication of every voxel in every scan by a common (or session-specific) value." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000018 ;
+                  
+                  rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000105
+
+nidm:NIDM_0000105 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "in World Coordinate System" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Property that associates a world coordinate system to the coordinate space." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000106
+
+nidm:NIDM_0000106 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "is User Defined" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/258" ;
+                  
+                  obo:IAO_0000115 "A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false)" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000004 ;
+                  
+                  rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000107
+
+nidm:NIDM_0000107 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "masked Median" ;
+                  
+                  obo:IAO_0000115 "Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/288, naming previously discussed at: https://github.com/incf-nidash/nidm/issues/70" ;
+                  
+                  rdfs:seeAlso "http://purl.obolibrary.org/obo/OBI_0200119" ;
+                  
+                  obo:IAO_0000112 "155.23" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000033 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000108
+
+nidm:NIDM_0000108 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "max Number Of Peaks Per Cluster" ;
+                  
+                  obo:IAO_0000115 "Maximum number of peaks to be reported after inference within a cluster." ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/200" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000063 ;
+                  
+                  rdfs:range xsd:int .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000109
+
+nidm:NIDM_0000109 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "min Distance Between Peaks" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/200" ;
+                  
+                  obo:IAO_0000115 "Minimum distance between two peaks to be reported after inference." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000063 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000111
+
+nidm:NIDM_0000111 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "number Of Significant Clusters" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/292" ;
+                  
+                  obo:IAO_0000115 "Number of significant clusters found by the inference activity. This is SPM's set level statistic." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000025 ;
+                  
+                  rdfs:range xsd:int ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000112
+
+nidm:NIDM_0000112 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "number Of Dimensions" ;
+                  
+                  obo:IAO_0000115 "Number of dimensions of the data matrix (e.g. 3 for volumetric data)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295" ;
+                  
+                  obo:IAO_0000112 "3" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000114
+
+nidm:NIDM_0000114 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "p Value" ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/OBI_0000175"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000112 "8.95E-14" ;
+                  
+                  rdfs:seeAlso """http://purl.obolibrary.org/obo/IAO_0000121
+http://purl.obolibrary.org/obo/OBI_0000175
+http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000025 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000115
+
+nidm:NIDM_0000115 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "p Value FWER" ;
+                  
+                  obo:IAO_0000112 "0.05" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
+                  
+                  obo:IAO_0000115 "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
+                  
+                  owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
+                  
+                  rdfs:seeAlso "Synonym of \"nidm:pFWE\"" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000423 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000034 ,
+                              nidm:NIDM_0000062 ,
+                              nidm:NIDM_0000070 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000116
+
+nidm:NIDM_0000116 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "p Value Uncorrected" ;
+                  
+                  obo:IAO_0000115 "A p-value reported without correction for multiple testing.        " ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
+                  
+                  obo:IAO_0000112 "0.0542" ;
+                  
+                  rdfs:seeAlso "http://purl.obolibrary.org/obo/IAO_0000121" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000423 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000034 ,
+                              nidm:NIDM_0000062 ,
+                              nidm:NIDM_0000070 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000119
+
+nidm:NIDM_0000119 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "q Value FDR" ;
+                  
+                  obo:IAO_0000112 "0.000154" ;
+                  
+                  obo:IAO_0000115 "A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442)." ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/OBI_0001442" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000034 ,
+                              nidm:NIDM_0000062 ,
+                              nidm:NIDM_0000070 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000120
+
+nidm:NIDM_0000120 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "random Field Stationarity" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/130" ;
+                  
+                  obo:IAO_0000115 "A binary flag that indicates whether Random Field Theory methods assumed smoothness that was homogeneous over the map (true), or allowed for smoothness that varies over the map (false)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000121
+
+nidm:NIDM_0000121 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "search Volume In Voxels" ;
+                  
+                  obo:IAO_0000112 "68656" ;
+                  
+                  rdfs:seeAlso "Synonyms of nidm:volumeInVoxels" ;
+                  
+                  obo:IAO_0000115 "Total number of voxels within the search volume." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:positiveInteger ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000122
+
+nidm:NIDM_0000122 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "software Version" ;
+                  
+                  obo:IAO_0000112 8.6225 ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/291" ;
+                  
+                  obo:IAO_0000115 "Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:range xsd:string ;
+                  
+                  rdfs:domain prov:SoftwareAgent .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000124
+
+nidm:NIDM_0000124 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "target Intensity" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
+                  
+                  obo:IAO_0000115 "Value to which the grand mean of the Data was scaled (applies only if grand mean scaling is true)." ;
+                  
+                  obo:IAO_0000112 "100" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000018 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000125
+
+nidm:NIDM_0000125 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "user Specified Threshold Type" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/150" ;
+                  
+                  obo:IAO_0000112 "nidm:pValueFWER" ;
+                  
+                  obo:IAO_0000115 "Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value)." ;
+                  
+                  rdfs:comment "Range is currently string but should be limited to {'nidm:pValueFWER' not found'nidm:pValueFDR' not found'nidm:pValueUncorrected';'nidm:statistic'}?" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+                  rdfs:domain nidm:NIDM_0000026 ,
+                              nidm:NIDM_0000034 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000127
+
+nidm:NIDM_0000127 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "version" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/pull/137" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  
+                  rdfs:range xsd:string ;
+                  
+                  rdfs:domain prov:Bundle .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000131
+
+nidm:NIDM_0000131 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "voxel Size" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295" ;
+                  
+                  obo:IAO_0000115 "3D size of a voxel measured in voxel units (e.g. [2, 2, 4])" ;
+                  
+                  obo:IAO_0000112 "[2, 2, 4]" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000132
+
+nidm:NIDM_0000132 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "voxel To World Mapping" ;
+                  
+                  obo:IAO_0000116 "Range: Matrix of float." ;
+                  
+                  obo:IAO_0000112 "[3 0 0 0;0 3 0 0;0 0 3 0; 0 0 0 1] " ;
+                  
+                  obo:IAO_0000115 "Homogeneous transformation matrix to map from voxel coordinate system to world coordinate system." ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/148" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000133
+
+nidm:NIDM_0000133 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "voxel Units" ;
+                  
+                  obo:IAO_0000112 "['mm', 'mm', 's']" ;
+                  
+                  rdfs:comment "Range: Vector of strings." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295 and https://github.com/incf-nidash/nidm/issues/147" ;
+                  
+                  obo:IAO_0000115 "Set of units associated with the dimensions of some N-dimensional data (e.g. [mm, mm, mm])" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000016 ;
+                  
+                  rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000136
+
+nidm:NIDM_0000136 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "search Volume In Units" ;
+                  
+                  obo:IAO_0000117 "Discussed at https://github.com/incf-nidash/nidm/pull/131" ;
+                  
+                  obo:IAO_0000115 "The volume of the searched region in units determined by the current coordinate space units (e.g., mm^3 for axis units of mm in a three dimensional image, sec.Hz for a time by frequency two dimensional image)." ;
+                  
+                  obo:IAO_0000116 "Context: volumeInVoxels nidm_0025. Range: Positivefloat not found." ;
+                  
+                  obo:IAO_0000112 "1771011" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000137
+
+nidm:NIDM_0000137 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "search Volume In Vertices" ;
+                  
+                  obo:IAO_0000112 "151.3" ;
+                  
+                  obo:IAO_0000115 "Total number of vertices within the search volume." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000139
+
+nidm:NIDM_0000139 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "coordinate Vector In Voxels" ;
+                  
+                  obo:IAO_0000115 "Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)" ;
+                  
+                  obo:IAO_0000112 "[12 51 48]" ;
+                  
+                  obo:IAO_0000116 "Under discussion at: https://github.com/incf-nidash/nidm/pull/270" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 ;
+                  
+                  rdfs:domain nidm:NIDM_0000015 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000141
+
+nidm:NIDM_0000141 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "expected Number Of Clusters" ;
+                  
+                  obo:IAO_0000115 "Expected number of clusters in an excursion set under the null hypothesis." ;
+                  
+                  obo:IAO_0000112 "9.51" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000142
+
+nidm:NIDM_0000142 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "expected Number Of Vertices Per Cluster" ;
+                  
+                  obo:IAO_0000115 "Expected number of vertices in a cluster under the null hypothesis." ;
+                  
+                  obo:IAO_0000112 "60.632" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000143
+
+nidm:NIDM_0000143 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "expected Number Of Voxels Per Cluster" ;
+                  
+                  obo:IAO_0000112 "60.632" ;
+                  
+                  obo:IAO_0000115 "Expected number of voxels in a cluster under the null hypothesis." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000145
+
+nidm:NIDM_0000145 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "noise Roughness In Voxels" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/214 and https://github.com/incf-nidash/nidm/issues/275" ;
+                  
+                  obo:IAO_0000115 "Estimated spatial roughness of the noise process in voxel units, as measured by the square-root determinant of the variance-covariance matrix of spatial derivatives of the noise process (Lambda matrix)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000146
+
+nidm:NIDM_0000146 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "height Critical Threshold FDR 05" ;
+                  
+                  obo:IAO_0000112 "5.896" ;
+                  
+                  obo:IAO_0000115 "Peak statistic threshold corrected for false discovery rate at a level of alpha = 0.05. " ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000147
+
+nidm:NIDM_0000147 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "height Critical Threshold FWE 05" ;
+                  
+                  obo:IAO_0000112 "4.913" ;
+                  
+                  obo:IAO_0000115 "Peak statistic threshold corrected for family-wise error at a level of alpha = 0.05. " ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000148
+
+nidm:NIDM_0000148 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "resel Size In Voxels" ;
+                  
+                  obo:IAO_0000112 "22.325" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/275" ;
+                  
+                  obo:IAO_0000115 "Size of one resel in elements (e.g., pixels, voxels or vertices)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:float ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000149
+
+nidm:NIDM_0000149 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "search Volume In Resels" ;
+                  
+                  obo:IAO_0000112 "151.3" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/275" ;
+                  
+                  obo:IAO_0000115 "Size of search volume measured in resels." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range [ rdf:type rdfs:Datatype ;
+                               owl:onDatatype xsd:float ;
+                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                      ]
+                                                    )
+                             ] .
+
+
+
+###  http://purl.org/nidash/nidm#regressorNames
+
+nidm:NIDM_0000021 rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:label "regressor Names" ;
+                    
+                    obo:IAO_0000115 "A list of abstract names associated with each column of the design matrix (e.g. [\"motor_left\", \"motor_right\"])." ;
+                    
+                    obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                    
+                    obo:IAO_0000114 obo:IAO_0000122 ;
+                    
+                    rdfs:domain nidm:NIDM_0000019 ;
+                    
+                    rdfs:range xsd:string .
+
+
+
+###  http://purl.org/nidash/spm#clusterSizeInResels
+
+nidm:NIDM_0000156 rdf:type owl:DatatypeProperty ;
+                    
+                        rdfs:label "cluster Size In Resels" ;
+                        
+                        obo:IAO_0000115 "Size of cluster measured in resels." ;
+                        
+                        obo:IAO_0000112 "13" ;
+                        
+                        obo:IAO_0000117 "Under discussion at: https://github.com/incf-nidash/nidm/issues/127" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 ;
+                        
+                        rdfs:domain nidm:NIDM_0000026 ,
+                                    nidm:NIDM_0000070 ;
+                        
+                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                     owl:onDatatype xsd:float ;
+                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                            ]
+                                                          )
+                                   ] .
+
+
+
+###  http://purl.org/nidash/spm#driftCutoffPeriod
+
+spm:SPM_0000001 rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "SPM's Drift Cut-off Period" ;
+                      
+                      obo:IAO_0000115 "Discrete Cosine Transform basis cut-off, specified as period length in seconds and ensures that all basis elements will have period of this duration or longer." ;
+                      
+                      obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 ;
+                      
+                      rdfs:domain spm:SPM_0000002 ;
+                      
+                      rdfs:range xsd:float .
+
+
+
+###  http://purl.org/nidash/spm#noiseFWHMInUnits
+
+spm:SPM_0000007 rdf:type owl:DatatypeProperty ;
+
+                            rdfs:label "noise FWHM In Units" ;
+                     
+                     rdfs:label "noise FWHM In Units" ;
+                     
+                     rdfs:comment "Range: Vector of positive floats." ;
+                     
+                     obo:IAO_0000112 "[8.87, 8.89, 7.83]" ;
+                     
+                     obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in world units (e.g. mm^2 or mm^3, in subject or atlas space)." ;
+                     obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000122 ;
+                     
+                     rdfs:domain nidm:NIDM_0000068 ;
+                     
+                     rdfs:range xsd:string ;
+                     
+                     rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/spm#noiseFWHMInVertices
+
+spm:SPM_0000008 rdf:type owl:DatatypeProperty ;
+
+                            rdfs:label "noise FWHM In Vertices" ;
+                        
+                        rdfs:label "noise FWHM In Vertices" ;
+                        
+                        rdfs:comment "Range: Vector of positive floats." ;
+                        
+                        obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices." ;
+                        
+                        obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                        
+                        obo:IAO_0000112 "[2.95, 2.96, 2.61]" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 ;
+                        
+                        rdfs:domain nidm:NIDM_0000054 ;
+                        
+                        rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/spm#noiseFWHMInVoxels
+
+spm:SPM_0000009 rdf:type owl:DatatypeProperty ;
+
+                            rdfs:label "noise FWHM In Voxels" ;
+                      
+                      obo:IAO_0000112 "[3.7 3.7 3.1]" ;
+                      rdfs:label "noise FWHM In Voxels" ;
+                      
+                      obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in voxels." ;
+                      
+                      
+                      rdfs:seeAlso "Synonyms of or close match with nidm:NoiseFWHM" ;
+                      
+                      rdfs:comment "Range: Vector of positive floats." ;
+                      
+                      obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                      
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 ;
+                      
+                      rdfs:domain nidm:NIDM_0000068 ;
+                      
+                      rdfs:range xsd:string ;
+                      
+                      rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/spm#searchVolumeReselsGeometry
+
+spm:SPM_0000010 rdf:type owl:DatatypeProperty ;
+
+                            rdfs:label "search Volume Resels Geometry" ;
+                               
+                               rdfs:label "search Volume Resels Geometry" ;
+                               
+                               obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/310" ;
+                               
+                               rdfs:comment "Range: Vector of 1 positive integer and 3 positive floats." ;
+                               
+                               obo:IAO_0000115 "Description of geometry of search volume.  As per Worsley et al. [ http://www.ncbi.nlm.nih.gov/pubmed/20408186 ], for space dimension 3 the first element is the Euler Characteristic of the search volume, the second element is twice the average caliper diameter, the third element is half the surface area, and the fourth element is the volume.  With the exception of the first element (which is a unitless integer) all quantities are in units of Resels." ;
+                               
+                               rdfs:seeAlso "http://www.ncbi.nlm.nih.gov/pubmed/20408186" ;
+                               
+                               obo:IAO_0000112 "[6 68.8 589.1 1475.5]" ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000122 ;
+                               
+                               rdfs:domain nidm:NIDM_0000068 ;
+                               
+                               rdfs:range xsd:string ;
+                               
+                               rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/spm#smallestSignificantClusterSizeInVerticesFDR05
+
+spm:SPM_0000011 rdf:type owl:DatatypeProperty ;
+                                                  
+                                                  rdfs:label "smallest Significant Cluster Size In Vertices FDR 05" ;
+                                                  
+                                                  obo:IAO_0000115 "Smallest cluster size in vertices that is significant at the false discovery rate of 0.05.  " ;
+                                                  
+                                                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/310" ;
+                                                  
+                                                  obo:IAO_0000112 "5" ;
+                                                  
+                                                  obo:IAO_0000114 obo:IAO_0000122 ;
+                                                  
+                                                  rdfs:domain nidm:NIDM_0000068 ;
+                                                  
+                                                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/spm#smallestSignificantClusterSizeInVerticesFWE05
+
+spm:SPM_0000012 rdf:type owl:DatatypeProperty ;
+                                                  
+                                                  rdfs:label "smallest Significant Cluster Size In Vertices FWE 05" ;
+                                                  
+                                                  obo:IAO_0000112 "2" ;
+                                                  
+                                                  obo:IAO_0000115 "Smallest cluster size in vertices that is significant at the family-wise corrected type I error rate (alpha value) value of 0.05." ;
+                                                  
+                                                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/310" ;
+                                                  
+                                                  obo:IAO_0000114 obo:IAO_0000122 ;
+                                                  
+                                                  rdfs:domain nidm:NIDM_0000068 ;
+                                                  
+                                                  rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/spm#smallestSignificantClusterSizeInVoxelsFDR05
+
+spm:SPM_0000013 rdf:type owl:DatatypeProperty ;
+                                                
+                                                rdfs:label "smallest Significant Cluster Size In Voxels FDR 05" ;
+                                                
+                                                obo:IAO_0000112 "3" ;
+                                                
+                                                obo:IAO_0000115 "Smallest cluster size in voxels that is significant at the false discovery rate of 0.05.  " ;
+                                                
+                                                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/310" ;
+                                                
+                                                obo:IAO_0000114 obo:IAO_0000122 ;
+                                                
+                                                rdfs:domain nidm:NIDM_0000068 ;
+                                                
+                                                rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/nidash/spm#smallestSignificantClusterSizeInVoxelsFWE05
+
+spm:SPM_0000014 rdf:type owl:DatatypeProperty ;
+                                                
+                                                rdfs:label "smallest Significant Cluster Size In Voxels FWE 05" ;
+                                                
+                                                obo:IAO_0000115 """Smallest cluster size in voxels that is significant at the family-wise error corrected type I error rate (alpha value) of 0.05. 
+""" ;
+                                                
+                                                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/310" ;
+                                                
+                                                obo:IAO_0000112 "1" ;
+                                                
+                                                obo:IAO_0000114 obo:IAO_0000122 ;
+                                                
+                                                rdfs:domain nidm:NIDM_0000068 ;
+                                                
+                                                rdfs:range xsd:positiveInteger .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName
+
+nfo:fileName rdf:type owl:DatatypeProperty ;
+             
+             obo:IAO_0000112 "con_0001.img" ;
+             
+             rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://neurolex.org/wiki/birnlex_2067
+
+nlx:birnlex_2067 rdfs:subClassOf prov:SoftwareAgent .
+
+
+
+###  http://neurolex.org/wiki/nif-0000-00343
+
+nlx:nif-0000-00343 rdfs:subClassOf prov:SoftwareAgent .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000039
+
+obo:STATO_0000039 rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000119
+
+obo:STATO_0000119 rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000323
+
+obo:STATO_0000323 rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastWeights.txt" .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000346
+
+obo:STATO_0000346 rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.org/dc/dcmitype/Image
+
+dctype:Image rdf:type owl:Class ;
+             
+             rdfs:subClassOf prov:Entity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:format ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty nfo:fileName ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] .
+
+
+
+###  http://purl.org/nidash/afni#BLOCK
+
+afni:BLOCK rdf:type owl:Class ;
+           
+           rdfs:subClassOf nidm:NIDM_0000036 ;
+           
+           prov:editorialNote "We will have to determine if afni:BLOCK is child of a more specific nidm HRFBasis sub-class."^^xsd:string ;
+           
+           obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+           
+           obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/afni#LegendrePolynomialDriftModel
+
+afni:LegendrePolynomialDriftModel rdf:type owl:Class ;
+                                  
+                                  rdfs:label "AFNI's Legendre Polinomial Drift Model" ;
+                                  
+                                  rdfs:subClassOf nidm:NIDM_0000087 ;
+                                  
+                                  obo:IAO_0000115 "A drift model in which the drifts are modeled by a Legendre orthogonal polynomial basis added to the regression model" ;
+                                  
+                                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                                  
+                                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/fsl#GaussianRunningLineDriftModel
+
+fsl:FSL_0000002 rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Gaussian Running Line Drift Model" ;
+                                  
+                                  rdfs:subClassOf nidm:NIDM_0000087 ;
+                                  
+                                  obo:IAO_0000115 "A drift model in which the drifts are modeled with a Gaussian-weighted running line smoother, fit to and subtracted from the data and each column of the design matrix." ;
+                                  
+                                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                                  
+                                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#CustomHRB
+
+nidm:NIDM_0000067 rdf:type owl:Class ;
+               
+               rdfs:label "Custom Basis Set" ;
+               
+               rdfs:subClassOf nidm:NIDM_0000036 ;
+               
+               obo:IAO_0000115 "Customised set of basis functions." ;
+               
+               obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+               
+               obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#FourierHRB
+
+nidm:NIDM_0000069 rdf:type owl:Class ;
+                
+                rdfs:label "Fourier Basis Set" ;
+                
+                rdfs:subClassOf nidm:NIDM_0000036 ;
+                
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                
+                obo:IAO_0000115 "Set of Fourier basis." ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#GaussianHRF
+
+nidm:NIDM_0000110 rdf:type owl:Class ;
+                 
+                 rdfs:label "Gaussian HRF" ;
+                 
+                 rdfs:subClassOf nidm:NIDM_0000035 ;
+                 
+                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                 
+                 obo:IAO_0000115 "Hemodynamic response function which is a gaussian kernel." ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#LinearSplineHRB
+
+nidm:NIDM_0000150 rdf:type owl:Class ;
+                     
+                     rdfs:label "Linear Spline Basis Set" ;
+                     
+                     rdfs:subClassOf nidm:NIDM_0000036 ;
+                     
+                     obo:IAO_0000115 "A Linear (order 1) spline, providing an estimate that is continuous over time (in contrast to a FIR basis, which is discontinuous between each time bin). This is called TENT in AFNI's 3dDeconvolve program." ;
+                     
+                     obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000001
+
+nidm:NIDM_0000001 rdf:type owl:Class ;
+                  
+                  rdfs:label "Contrast Estimation" ;
+                  
+                  rdfs:subClassOf prov:Activity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastEstimation.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "The process of performing a [obo:contrast estimation](http://purl.obolibrary.org/obo/STATO_0000383) at each element (e.g., pixel, voxel, vertex, or face) of a map" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/276 and https://github.com/ISA-tools/stato/issues/23" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000002
+
+nidm:NIDM_0000002 rdf:type owl:Class ;
+                  
+                  rdfs:label "Contrast Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [contrast estimate](http://purl.obolibrary.org/obo/STATO_0000384)."^^xsd:string ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000003
+
+nidm:NIDM_0000003 rdf:type owl:Class ;
+                  
+                  rdfs:label "Arbitrarily Correlated Error" ;
+                  
+                  rdfs:subClassOf obo:STATO_0000346 ;
+                  
+                  obo:IAO_0000117 "TN" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000423 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000004
+
+nidm:NIDM_0000004 rdf:type owl:Class ;
+                  
+                  rdfs:label "Binary Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000115 "A map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, or faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/258" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000005
+
+nidm:NIDM_0000005 rdf:type owl:Class ;
+                  
+                  rdfs:label "Binomial Distribution" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000022 ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000276"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "The binomial distribution is a discrete probability distribution which describes the probability of k successes in n draws with replacement from a finite population of size N. The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N. The binomial distribution gives the discrete probability distribution of obtaining exactly n successes out of N Bernoulli trials (where the result of each Bernoulli trial is true with probability p and false with probability q=1-p ) notation: B(n,p) The mean is N*p The variance is N*p*q. (Definition from STATO)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000006
+
+nidm:NIDM_0000006 rdf:type owl:Class ;
+                  
+                  rdfs:label "Cluster" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "A collection of elements related by one or more criteria."^^xsd:string ;
+                  
+                  prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000007
+
+nidm:NIDM_0000007 rdf:type owl:Class ;
+                  
+                  rdfs:label "Cluster Definition Criteria" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "Set of criterion specified a priori to define the clusters reported after inference (e.g. pixel or voxel connectivity criterion)." ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ClusterDefinitionCriteria.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000008
+
+nidm:NIDM_0000008 rdf:type owl:Class ;
+                  
+                  rdfs:label "Cluster Labels Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ClusterLabelsMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) denotes cluster membership within the excursion set. Each cluster is denoted by a different integer and all members of the same cluster have the same value." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/282" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000011
+
+nidm:NIDM_0000011 rdf:type owl:Class ;
+                  
+                  rdfs:label "Conjunction Inference" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000049 ;
+                  
+                  obo:IAO_0000115 "Statistically testing for the joint significance of multiple effects, with emphasis on rejecting all (instead of one or more) of the respective null hypotheses." ;
+                  
+                  obo:IAO_0000116 "Term discussed in https://github.com/incf-nidash/nidm/pull/134" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000012
+
+nidm:NIDM_0000012 rdf:type owl:Class ;
+                  
+                  rdfs:label "Connectivity Criterion" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000117 "TN, KH, CM" ;
+                  
+                  obo:IAO_0000115 "The criterion used to characterize two voxels, pixels or vertices as 'connected'." ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000013
+
+nidm:NIDM_0000013 rdf:type owl:Class ;
+                  
+                  rdfs:label "Contrast Standard Error Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255."^^xsd:anyURI ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ContrastStandardErrorMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [standard error of a contrast estimate](http://purl.obolibrary.org/obo/STATO_0000385)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000015
+
+nidm:NIDM_0000015 rdf:type owl:Class ;
+                  
+                  rdfs:label "Coordinate" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  owl:sameAs "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44465"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Coordinate.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/144 and https://github.com/incf-nidash/nidm/pull/172" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000016
+
+nidm:NIDM_0000016 rdf:type owl:Class ;
+                  
+                  rdfs:label "Coordinate Space" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/CoordinateSpace.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)." ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/incf-nidash/nidm/issues/290" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000017
+
+nidm:NIDM_0000017 rdf:type owl:Class ;
+                  
+                  rdfs:label "Custom Coordinate System" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000075 ;
+                  
+                  obo:IAO_0000115 "Custom (unknown) reference space selected by the user" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000018
+
+nidm:NIDM_0000018 rdf:type owl:Class ;
+                  
+                  rdfs:label "Data Scaling" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Data.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "Scaling applied to the data before parameter estimation, including specification of the target intensity." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/285" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000019
+
+nidm:NIDM_0000019 rdf:type owl:Class ;
+                  
+                  rdfs:label "Design Matrix" ;
+                  
+                  rdfs:subClassOf prov:Entity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/274" ;
+                  
+                  rdfs:seeAlso "stato:design matrix" ;
+                  
+                  obo:IAO_0000115 "A [stato:design matrix](http://purl.obolibrary.org/obo/STATO_0000289), with additional neuroimaging attributes, including HRF and drift for first level fMRI models" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000020
+
+nidm:NIDM_0000020 rdf:type owl:Class ;
+                  
+                  rdfs:label "Display Mask Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000004 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DisplayMaskMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/pull/157" ;
+                  
+                  obo:IAO_0000115 "A binary map used by an activity that changed the voxels displayed, but did not alter the space in which the activity was performed (e.g. at the level of inference, this mask is called \"contrast masking\" in both FSL & SPM and does not alter voxel-wise corrected p-values)" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000022
+
+nidm:NIDM_0000022 rdf:type owl:Class ;
+                  
+                  rdfs:label "Error Distribution" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "Probability distribution used to model the error." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000023
+
+nidm:NIDM_0000023 rdf:type owl:Class ;
+                  
+                  rdfs:label "Error Model" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ErrorModel.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "Model used to describe the random variation of the error term as part of parameter estimation, including specification of the error probability distribution, its variance and dependence both spatially and across observations." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000024
+
+nidm:NIDM_0000024 rdf:type owl:Class ;
+                  
+                  rdfs:label "Exchangeable Error" ;
+                  
+                  rdfs:subClassOf obo:STATO_0000346 ;
+                  
+                  rdfs:comment "Under gaussianity assumption this is equivalent to compound symmetry but not in general." ;
+                  
+                  obo:IAO_0000117 "TN" ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000423 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000025
+
+nidm:NIDM_0000025 rdf:type owl:Class ;
+                  
+                  rdfs:label "Excursion Set Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ;
+                  
+                  obo:IAO_0000116 "Discussed in the Neuroimaging terms spreadsheet and in https://github.com/incf-nidash/nidm/issues/256." ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExcursionSetMap.txt" ;
+                  
+                  obo:IAO_0000115 "A map in which the set of elements (e.g., pixels, voxels, vertices, or faces) not selected by the inference activity is set to zero or NaN" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000026
+
+nidm:NIDM_0000026 rdf:type owl:Class ;
+                  
+                  rdfs:label "Extent Threshold" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A numerical value that establishes a lower bound on cluster-sizes and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum cluster size in voxels" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/273" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000027
+
+nidm:NIDM_0000027 rdf:type owl:Class ;
+                  
+                  rdfs:label "NIDM-Results" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000057 ;
+                  
+                  obo:IAO_0000115 "NIDM Object model representing the results of a mass univariate neuroimaging study and targeting the application of meta-analysis. The  specification is available at: http://nidm.nidash.org/specs/nidm-results.html" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/137" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000028
+
+nidm:NIDM_0000028 rdf:type owl:Class ;
+                  
+                  rdfs:label "Finite Impulse Response Basis Set" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000036 ;
+                  
+                  obo:IAO_0000115 "Set of Finite impulse response (FIR) filters, with FIR the convolution kernel is represented as a set of discrete fixed-width \"impulses\" (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000029
+
+nidm:NIDM_0000029 rdf:type owl:Class ;
+                  
+                  rdfs:label "Gamma Difference HRF" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000035 ;
+                  
+                  obo:IAO_0000115 "Hemodynamic response function which is a difference of two gamma probability density functions." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000030
+
+nidm:NIDM_0000030 rdf:type owl:Class ;
+                  
+                  rdfs:label "Gamma Basis Set" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000036 ;
+                  
+                  obo:IAO_0000115 "Set of gamma probability density functions." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000031
+
+nidm:NIDM_0000031 rdf:type owl:Class ;
+                  
+                  rdfs:label "Gamma HRF" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000035 ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000115 "Hemodynamic response function which is a gamma probability density function." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000032
+
+nidm:NIDM_0000032 rdf:type owl:Class ;
+                  
+                  rdfs:label "Gaussian Distribution" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000022 ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000227"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A normal distribution is a continuous probability distribution described by a probability distribution function described here: http://mathworld.wolfram.com/NormalDistribution.html (Definition from STATO)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000033
+
+nidm:NIDM_0000033 rdf:type owl:Class ;
+                  
+                  rdfs:label "Grand Mean Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/GrandMeanMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the mean over all observations of that element in the input maps (after any scaling of those input maps)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/288" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000034
+
+nidm:NIDM_0000034 rdf:type owl:Class ;
+                  
+                  rdfs:label "Height Threshold" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold_P.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A numerical value that establishes a lower bound on statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum statistic value." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/280" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000035
+
+nidm:NIDM_0000035 rdf:type owl:Class ;
+                  
+                  rdfs:label "Hemodynamic Response Function" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000036 ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000115 "Hemodynamic response function basis that can on its own be used to represent the idealised hemodynamic response function." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000036
+
+nidm:NIDM_0000036 rdf:type owl:Class ;
+                  
+                  rdfs:label "Convolution Basis Set" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  rdfs:isDefinedBy "A set of functions that, when convolved with the anticipated neural responses, yield a set of regressors to model the anticipated hemodynamic responses."^^xsd:string ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000037
+
+nidm:NIDM_0000037 rdf:type owl:Class ;
+                  
+                  rdfs:label "Hemodynamic Response Function Derivative" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000036 ;
+                  
+                  obo:IAO_0000115 "Hemodynamic response function basis which is the derivative of an hemodynamic response function." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000048
+
+nidm:NIDM_0000048 rdf:type owl:Class ;
+                  
+                  rdfs:label "Independent Error" ;
+                  
+                  rdfs:subClassOf obo:STATO_0000346 ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/28" ;
+                  
+                  obo:IAO_0000117 "TN" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000423 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000049
+
+nidm:NIDM_0000049 rdf:type owl:Class ;
+                  
+                  rdfs:label "Inference" ;
+                  
+                  rdfs:subClassOf prov:Activity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Inference.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "Statistical inference is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO)." ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000299" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000051
+
+nidm:NIDM_0000051 rdf:type owl:Class ;
+                  
+                  rdfs:label "MNI Coordinate System" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000075 ;
+                  
+                  rdfs:seeAlso "birnlex_2125" ;
+                  
+                  obo:IAO_0000115 "MNI 305 coordinate system or any coordinate system derived from MNI 305." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000052
+
+nidm:NIDM_0000052 rdf:type owl:Class ;
+                  
+                  rdfs:label "Map" ;
+                  
+                  rdfs:subClassOf prov:Entity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  
+                  obo:IAO_0000115 "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000053
+
+nidm:NIDM_0000053 rdf:type owl:Class ;
+                  
+                  rdfs:label "Map Header" ;
+                  
+                  rdfs:subClassOf prov:Entity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,                  
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/289" ;
+                  
+                  obo:IAO_0000115 "A file associated with a Map to provide header information (e.g. NIfTI header file)" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000054
+
+nidm:NIDM_0000054 rdf:type owl:Class ;
+                  
+                  rdfs:label "Mask Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000004 ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258 and https://github.com/incf-nidash/nidm/issues/155" ;
+                  
+                  obo:IAO_0000115 "A binary map representing the exact set of elements (e.g., pixels, voxels, vertices, and faces) in which an activity was performed (e.g. the mask map generated by the model parameter estimation activity represents the exact set of voxels in which the mass univariate model was estimated) and/or restraining the space in which an activity was performed (e.g. the mask map used by inference)" ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/MaskMap.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000056
+
+nidm:NIDM_0000056 rdf:type owl:Class ;
+                  
+                  rdfs:label "Model Parameters Estimation" ;
+                  
+                  rdfs:subClassOf prov:Activity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ModelParametersEstimation.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "the process of performing a [obo:model parameter estimation](http://purl.obolibrary.org/obo/STATO_0000119) at each element (e.g., pixel, voxel, vertex, or face) of a map" ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/issues/141" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000057
+
+nidm:NIDM_0000057 rdf:type owl:Class ;
+                  
+                  rdfs:label "NIDM Object Model" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault)." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/137" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000058
+
+nidm:NIDM_0000058 rdf:type owl:Class ;
+                  
+                  rdfs:label "Non Parametric Distribution" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000022 ;
+                  
+                  obo:IAO_0000115 "Probability distribution estimated empirically on the data without assumptions on the shape of the probability distribution." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000059
+
+nidm:NIDM_0000059 rdf:type owl:Class ;
+                  
+                  rdfs:label "Non Parametric Symmetric Distribution" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000022 ;
+                  
+                  obo:IAO_0000115 "Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000060
+
+nidm:NIDM_0000060 rdf:type owl:Class ;
+                  
+                  rdfs:label "One Tailed Test" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000286"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Re-use \"one tailed test\" from STATO." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000061
+
+nidm:NIDM_0000061 rdf:type owl:Class ;
+                  
+                  rdfs:label "Parameter Estimate Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ParameterEstimateMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255 and https://github.com/incf-nidash/nidm/issues/141 (see also https://github.com/ISA-tools/stato/issues/18)" ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [model parameter estimate](http://purl.obolibrary.org/obo/STATO_0000144)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000062
+
+nidm:NIDM_0000062 rdf:type owl:Class ;
+                  
+                  rdfs:label "Peak" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the significant cluster and complies with the peak definition criteria." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/283" ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Peak_ValueP.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000063
+
+nidm:NIDM_0000063 rdf:type owl:Class ;
+                  
+                  rdfs:label "Peak Definition Criteria" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/PeakDefinitionCriteria_MaxPeaks.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/200" ;
+                  
+                  obo:IAO_0000115 "Set of criterion specified a priori to define the peaks reported after inference (e.g. maximum number of peaks within a cluster, minimum distance between peaks)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000064
+
+nidm:NIDM_0000064 rdf:type owl:Class ;
+                  
+                  rdfs:label "Pixel Connectivity Criterion" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000012 ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "The criterion used to characterize two pixels as 'connected'. In two dimensions voxels that are connected can share an edge (4-connected) or, edge or corner (8-connected)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000065
+
+nidm:NIDM_0000065 rdf:type owl:Class ;
+                  
+                  rdfs:label "Poisson Distribution" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000022 ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000051"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "Poisson distribution is a probability distribution used to model the number of events occurring within a given time interval. It is defined by a real number (λ) and an integer k representing the number of events and a function. The expected value of a Poisson-distributed random variable is equal to λ and so is its variance. (Definition from STATO)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000066
+
+nidm:NIDM_0000066 rdf:type owl:Class ;
+                  
+                  rdfs:label "Residual Mean Squares Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255." ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [residual mean square](http://purl.obolibrary.org/obo/STATO_0000375)." ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ResidualMeanSquaresMap.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000068
+
+nidm:NIDM_0000068 rdf:type owl:Class ;
+                  
+                  rdfs:label "Search Space Mask Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000054 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SearchSpaceMaskMap.txt" ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/258" ;
+                  
+                  obo:IAO_0000115 "A mask map representing the set of elements (e.g., pixels, voxels, vertices, or faces) in which the inference was performed" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000070
+
+nidm:NIDM_0000070 rdf:type owl:Class ;
+                  
+                  rdfs:label "Significant Cluster" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000006 ;
+                  
+                  obo:IAO_0000115 "A cluster of map elements (e.g., pixels, voxels, vertices, and faces) that were selected by the inference activity and are contiguous according to the cluster connectivity criteria."^^xsd:string ;
+                  
+                  prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SignificantCluster.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000071
+
+nidm:NIDM_0000071 rdf:type owl:Class ;
+                  
+                  rdfs:label "Error Parameter Map-Wise Dependence" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "Map-wise dependence structure of a parameter in the error model (i.e. variance or dependence parameter). For example, whether a temporal autocorrelation parameter is estimated at each element separately, estimated using data in a local neighbourhood, or estimated using all elements in the map." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000072
+
+nidm:NIDM_0000072 rdf:type owl:Class ;
+                  
+                  rdfs:label "Constant Parameter" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000071 ;
+                  
+                  obo:IAO_0000115 "Parameter estimated as constant over a entire set of elements considered (e.g. those in the analysis mask)." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000073
+
+nidm:NIDM_0000073 rdf:type owl:Class ;
+                  
+                  rdfs:label "Independent Parameter" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000071 ;
+                  
+                  obo:IAO_0000115 "Parameter whose estimation at a given element does not depend on any other element." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000074
+
+nidm:NIDM_0000074 rdf:type owl:Class ;
+                  
+                  rdfs:label "Regularized Parameter" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000071 ;
+                  
+                  obo:IAO_0000115 "Parameter whose estimation at a given element depends on a local neighborhood of elements" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/194" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000075
+
+nidm:NIDM_0000075 rdf:type owl:Class ;
+                  
+                  rdfs:label "Standardized Coordinate System" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000081 ;
+                  
+                  rdfs:comment "This is meant to be used for retrospective export when exact template is unknown." ;
+                  
+                  obo:IAO_0000115 "Parent of all reference spaces except \"Subject\"." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000076
+
+nidm:NIDM_0000076 rdf:type owl:Class ;
+                  
+                  rdfs:label "Statistic Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/StatisticMap_T.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/255" ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [statistic](http://purl.obolibrary.org/obo/STATO_0000039)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000077
+
+nidm:NIDM_0000077 rdf:type owl:Class ;
+                  
+                  rdfs:label "Subject Coordinate System" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000081 ;
+                  
+                  obo:IAO_0000115 "Reference space corresponding to the subject brain (no spatial normalization applied)." ;
+                  
+                  rdfs:comment "Used in FSL and SPM un-registered data." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000120 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000078
+
+nidm:NIDM_0000078 rdf:type owl:Class ;
+                  
+                  rdfs:label "Talairach Coordinate System" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000075 ;
+                  
+                  obo:IAO_0000115 "Reference space defined by the dissected brain used for the Talairach and Tournoux atlas (cf. http://www.talairach.org/about.html)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  rdfs:seeAlso "http://www.talairach.org/" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000079
+
+nidm:NIDM_0000079 rdf:type owl:Class ;
+                  
+                  rdfs:label "Two Tailed Test" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "Re-use \"two tailed test\" from STATO"^^xsd:anyURI ;
+                  
+                  owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000287"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000080
+
+nidm:NIDM_0000080 rdf:type owl:Class ;
+                  
+                  rdfs:label "Voxel Connectivity Criterion" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000012 ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000081
+
+nidm:NIDM_0000081 rdf:type owl:Class ;
+                  
+                  rdfs:label "World Coordinate System" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 """Reference space on which real-world positions are expressed (cf. [Nifti-1 FAQ question 14](http://nifti.nimh.nih.gov/nifti-1/documentation/faq#Q14) and [Understanding affines on nipy](http://nipy.org/nipy/stable/devel/code_discussions/understanding_affines.html)
+). A world coordinate system can be represented by an image obtained by registering an initial set of images, using a given normalization algorithm to match a target template.""" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000087
+
+nidm:NIDM_0000087 rdf:type owl:Class ;
+                  
+                  rdfs:label "Drift Model" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_DriftModel.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_DriftModel.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                  
+                  obo:IAO_0000115 "A model used to compensate for low frequency baseline drifts when analyzing functional MRI data at the subject level." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000135
+
+nidm:NIDM_0000135 rdf:type owl:Class ;
+                  
+                  rdfs:label "Contrast Variance Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a contrast variance (i.e. the square of a [standard error of a contrast estimate](http://purl.obolibrary.org/obo/STATO_0000385))" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/287" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000140
+
+nidm:NIDM_0000140 rdf:type owl:Class ;
+                  
+                  rdfs:label "Cluster Center Of Gravity" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/257" ;
+                  
+                  obo:IAO_0000115 "A centre of gravity of the cluster, equivalent to the concept of Centre Of Gravity for a object with distributed mass, where intensity substitutes for mass in this case. The coordinate of the centre of gravity is the weighted average of the cluster element (e.g., pixels, voxels, vertices, or faces) coordinates, where the weighting factors are the cluster element intensities. (definition adapted from http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster)" ;
+                  
+                  rdfs:seeAlso "http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster" ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_ClusterCenterOfGravity.txt" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000144
+
+nidm:NIDM_0000144 rdf:type owl:Class ;
+                  
+                  rdfs:label "Resels Per Voxel Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_ReselsPerVoxelMap.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) location is the number of resels per voxel." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#SineHRB
+
+nidm:NIDM_0000151 rdf:type owl:Class ;
+             
+             rdfs:label "Sine Basis Set" ;
+             
+             rdfs:subClassOf nidm:NIDM_0000036 ;
+             
+             obo:IAO_0000115 "A set of Sine waves of differing frequencies (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))." ;
+             
+             obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+             
+             obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#fMRIDesign
+
+nidm:NIDM_0000155 rdf:type owl:Class ;
+
+                rdfs:label "fMRI Design Type" ;
+                
+                rdfs:subClassOf prov:Entity ;
+                
+                obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design event-related design or mixed design." ;
+                
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/spm#DCTDriftModel
+
+spm:SPM_0000002 rdf:type owl:Class ;
+
+                  rdfs:label "DCT Drift Model" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000087 ;
+                  
+                  obo:IAO_0000115 "A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/spm#KConjunctionInference
+
+spm:SPM_0000005 rdf:type owl:Class ;
+                          
+                          rdfs:label "Partial Conjunction Inference" ;
+                          
+                          rdfs:subClassOf nidm:NIDM_0000049 ;
+                          
+                          obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/294" ;
+                          
+                          obo:IAO_0000115 "The process of testing the joint significance of multiple effects to infer that some (not necessarily all) of the respective effects are real (i.e. their null hypotheses are false). If there are K effects considered, the partial conjunction degree u is the number non-null effects allowed as part of partial conjunction null hypothesis; if the partial conjunction null is rejected, it may be inferred that u+1 or more effects are real. The case of u=K-1 corresponds to proper \"conjunction inference\", while the case of u=0 corresponds to \"global null\" conjunction test. See [Friston et al. (2005). Conjunction revisited. NeuroImage, 25(3), 661-7.](http://dx.doi.org/10.1016/j.neuroimage.2005.01.013)." ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/nidash/afni#GammaHRF
+
+afni:GammaHRF rdf:type nidm:NIDM_0000031 ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "AFNI's Gamma HRF" ;
+              
+              obo:IAO_0000115 "Hemodynamic response function which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py)." ;
+              
+              obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281 and discussed in https://github.com/incf-nidash/nidm/pull/248" ;
+              
+              obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/fsl#GammaDifferenceHRF
+
+fsl:FSL_0000001 rdf:type nidm:NIDM_0000029 ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "FSL's Gamma Difference HRF" ;
+                       
+                       obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
+                       obo:IAO_0000115 "Hemodynamic response function which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)). This is the default in FSL." ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/fsl#TemporalDerivative
+
+fsl:FSL_0000003 rdf:type nidm:NIDM_0000037 ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "FSL's Temporal Derivative" ;
+                       
+                       obo:IAO_0000115 "Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function." ;
+                       
+                       obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#BlockBasedDesign
+
+nidm:NIDM_0000152 rdf:type nidm:NIDM_0000155 ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Block-Based Design" ;
+                      
+                      obo:IAO_0000115 "An fMRI design comprised of epochs of stimulus and/or behavior." ;
+                      
+                      obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                      
+                      obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#EventRelatedDesign
+
+nidm:NIDM_0000153 rdf:type nidm:NIDM_0000155 ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Event-Related Design" ;
+                        
+                        obo:IAO_0000115 "An fMRI design comprised of discrete events of stimulus and/or behavior." ;
+                        
+                        obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#MixedDesign
+
+nidm:NIDM_0000154 rdf:type nidm:NIDM_0000155 ,
+                          owl:NamedIndividual ;
+
+                    rdfs:label "Mixed Design" ;
+                 
+                 rdfs:label "Mixed Design" ;
+                 
+                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
+                 
+                 obo:IAO_0000115 "An fMRI design comprised of both epochs & discrete events of stimulus and/or behavior." ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000009
+
+nidm:NIDM_0000009 rdf:type nidm:NIDM_0000075 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Colin27 Coordinate System" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the stereotaxic average of 27 T1-weighted MRI scans of the same individual transformed into the Talairach stereotaxic space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres and http://neuro.debian.net/pkgs/mni-colin27-nifti.html). This is the default in SPM96 (cf. [MRC CBSU Wiki](http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach))." ;
+                  
+                  rdfs:comment "used in SPM96 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000038
+
+nidm:NIDM_0000038 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm452 Air Coordinate System" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 452 T1-weighted MRIs of normal young adult brains after 12 parameter AIR linear transform to the MNI 305 space (cf. http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml and http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
+                  
+                  rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000039
+
+nidm:NIDM_0000039 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm452 Warp5 Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 452 T1-weighted MRIs of normal young adult brains after affine and 5 order polynomial non-linear warping to the MNI 305 space (cf. http://www.loni.usc.edu/ICBM/Downloads/Downloads_452T1.shtml and http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000040
+
+nidm:NIDM_0000040 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Linear Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin" ;
+                  
+                  rdfs:comment "used in SPM99 to SPM8 (cf. http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach and spm8/spm_templates.man)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Reference space which is the average of 152 T1-weighted MRI scans, linearly transformed onto the MNI 305 reference space (definition adapted from: http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin). This is the default in SPM99 to SPM8 (cf. [MRC CBSU Wiki](http://imaging.mrc-cbu.cam.ac.uk/imaging/MniTalairach) and spm8/spm_templates.man." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000041
+
+nidm:NIDM_0000041 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009a Asymmetric Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000042
+
+nidm:NIDM_0000042 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009a Symmetric Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans, non-linearly transformed to to form a symmetric model in MNI152 linear space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details)." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000043
+
+nidm:NIDM_0000043 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009b Asymmetric Coordinate System" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans in high-resolution, non-linearly transformed to MNI152 linear space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000044
+
+nidm:NIDM_0000044 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009b Symmetric Coordinate System" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans in high-resolution, non-linearly transformed to form a symmetric model in MNI152 linear space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details)." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000045
+
+nidm:NIDM_0000045 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009c Asymmetric Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans, non-linearly transformed to MNI152 linear space using the N3 algorithm (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details)." ;
+                  
+                  rdfs:comment "Used in DARTEL toolbox in SPM12b (cf. spm12b/spm_templates.man)" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000046
+
+nidm:NIDM_0000046 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear2009c Symmetric Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans, non-linearly transformed to form a symmetric model in MNI152 linear space using the N3 algorithm (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009 for more details). This is the default for DARTEL toolbox in SPM12b (cf. spm12/spm_templates.man)." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000047
+
+nidm:NIDM_0000047 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Icbm Mni152 Non Linear6th Generation Coordinate System" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 152 T1-weighted MRI scans, linearly and non-linearly (6 iterations) transformed to form a symmetric model in Talairach space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6)" ;
+                  
+                  rdfs:comment "Used in FSL (cf. http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases)" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000050
+
+nidm:NIDM_0000050 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Ixi549 Coordinate System" ;
+                  
+                  obo:IAO_0000115 "Reference space defined by the average of the 549 subjects from the IXI dataset linearly transformed to the ICBM MNI 452 (cf. spm12/spm\\_templates.man and http://biomedic.doc.ic.ac.uk/brain-development/index.php?n=Main.Datasets). This is the default in SPM12 (cf. spm12/spm_templates.man)." ;
+                  
+                  rdfs:seeAlso "http://biomedic.doc.ic.ac.uk/brain-development/index.php?n=Main.Datasets" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  rdfs:comment "Used in SPM12b (cf. spm12b/spm_templates.man)" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000055
+
+nidm:NIDM_0000055 rdf:type nidm:NIDM_0000051 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Mni305 Coordinate System" ;
+                  
+                  obo:IAO_0000115 "Reference space defined as the average of 305 T1-weighted MRI scans, linearly transformed to Talairach space (cf. http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305 for more details)" ;
+                  
+                  rdfs:seeAlso "http://www.bic.mni.mcgill.ca/ServicesAtlases/MNI305" ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/284" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000117
+
+nidm:NIDM_0000117 rdf:type nidm:NIDM_0000064 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "pixel4connected" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "A pair of pixels are 4-Connected if they share an edge." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000118
+
+nidm:NIDM_0000118 rdf:type nidm:NIDM_0000064 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "pixel8connected" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "A pair of pixels are 8-Connected if they share an edge or corner." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000128
+
+nidm:NIDM_0000128 rdf:type nidm:NIDM_0000080 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "voxel18connected" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "A pair of voxels are 18-Connected if they share a face or edge." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000129
+
+nidm:NIDM_0000129 rdf:type nidm:NIDM_0000080 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "voxel26connected" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "A pair of voxels are 26-Connected if they share a face, edge or corner." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000130
+
+nidm:NIDM_0000130 rdf:type nidm:NIDM_0000080 ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "voxel6connected" ;
+                  
+                  obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
+                  
+                  obo:IAO_0000115 "A pair of voxels are 6-Connected if they share a face." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/spm#DispersionDerivative
+
+spm:SPM_0000003 rdf:type nidm:NIDM_0000037 ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "SPM's Dispersion Derivative" ;
+                         
+                         obo:IAO_0000115 "Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function." ;
+                         
+                         obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/spm#GammaDifferenceHRF
+
+spm:SPM_0000004 rdf:type nidm:NIDM_0000029 ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "SPM's Canonical HRF" ;
+                       
+                       obo:IAO_0000115 "Hemodynamic response function which is a fixed difference of two gamma probability density functions and is denoted by \"canonical HRF\" in SPM. This is the default in SPM" ;
+                       
+                       obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/spm#TemporalDerivative
+
+spm:SPM_0000006 rdf:type nidm:NIDM_0000037 ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "SPM's Temporal Derivative" ;
+                       
+                       obo:IAO_0000115 "Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function." ;
+                       
+                       obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
