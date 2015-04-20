@@ -21,16 +21,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='NIDM Object Model'"> [more] </a></td>
-    <td><b>nidm:'NIDM Object Model': </b>Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='NIDM-Results'"> [more] </a></td>
-    <td><b>nidm:'NIDM-Results': </b>NIDM Object model representing the results of a mass univariate neuroimaging study and targeting the application of meta-analysis. The  specification is available at: http://nidm.nidash.org/specs/nidm-results.html</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Partial Conjunction Inference'"> [more] </a></td>
     <td><b>spm:'Partial Conjunction Inference': </b>The process of testing the joint significance of multiple effects to infer that some (not necessarily all) of the respective effects are real (i.e. their null hypotheses are false). If there are K effects considered, the partial conjunction degree u is the number non-null effects allowed as part of partial conjunction null hypothesis; if the partial conjunction null is rejected, it may be inferred that u+1 or more effects are real. The case of u=K-1 corresponds to proper "conjunction inference", while the case of u=0 corresponds to "global null" conjunction test. See [Friston et al. (2005). Conjunction revisited. NeuroImage, 25(3), 661-7.](http://dx.doi.org/10.1016/j.neuroimage.2005.01.013)</td>
 </tr>
