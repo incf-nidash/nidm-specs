@@ -26,11 +26,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Custom Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Custom Basis Set': </b>Customised set of basis functions</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/274">#274</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Design Matrix'"> [more] </a></td>
     <td><b>nidm:'Design Matrix': </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
 </tr>
@@ -41,63 +36,18 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Finite Impulse Response Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Finite Impulse Response Basis Set': </b>Set of Finite impulse response (FIR) filters, with FIR the convolution kernel is represented as a set of discrete fixed-width "impulses" (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Fourier Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Fourier Basis Set': </b>Set of Fourier basis</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Gamma Basis Set': </b>Set of gamma probability density functions</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma Difference HRF'"> [more] </a></td>
-    <td><b>nidm:'Gamma Difference HRF': </b>Hemodynamic response function which is a difference of two gamma probability density functions</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gamma HRF'"> [more] </a></td>
-    <td><b>nidm:'Gamma HRF': </b>Hemodynamic response function which is a gamma probability density function</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Gaussian HRF'"> [more] </a></td>
-    <td><b>nidm:'Gaussian HRF': </b>Hemodynamic response function which is a gaussian kernel</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function Derivative'"> [more] </a></td>
-    <td><b>nidm:'Hemodynamic Response Function Derivative': </b>Hemodynamic response function basis which is the derivative of an hemodynamic response function</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hemodynamic Response Function'"> [more] </a></td>
-    <td><b>nidm:'Hemodynamic Response Function': </b>Hemodynamic response function basis that can on its own be used to represent the idealised hemodynamic response function</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Linear Spline Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Linear Spline Basis Set': </b>A Linear (order 1) spline, providing an estimate that is continuous over time (in contrast to a FIR basis, which is discontinuous between each time bin). This is called TENT in AFNI's 3dDeconvolve program</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Sine Basis Set'"> [more] </a></td>
-    <td><b>nidm:'Sine Basis Set': </b>A set of Sine waves of differing frequencies (definition adapted from [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's DCT Drift Model'"> [find issues/PR] </a></td>
     <td><b>spm:'SPM's DCT Drift Model': </b>A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [more] </a></td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [find issues/PR] </a></td>
     <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Convolution Basis Set'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Convolution Basis Set': </b>&lt;undefined&gt;</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
@@ -449,27 +399,9 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a> and discussed in <a href="https://github.com/incf-nidash/nidm/pull/248">#248</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='AFNI's Gamma HRF'"> [more] </a></td>
-    <td><b>afni:'AFNI's Gamma HRF': </b>Hemodynamic response function which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py)</td>
-    <td>nidm:NIDM_0000031</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Gamma Difference HRF'"> [more] </a></td>
-    <td><b>fsl:'FSL's Gamma Difference HRF': </b>Hemodynamic response function which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)). This is the default in FSL</td>
-    <td>nidm:NIDM_0000029</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='FSL's Temporal Derivative'"> [more] </a></td>
     <td><b>fsl:'FSL's Temporal Derivative': </b>Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function</td>
     <td>nidm:NIDM_0000037</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='SPM's Canonical HRF'"> [more] </a></td>
-    <td><b>spm:'SPM's Canonical HRF': </b>Hemodynamic response function which is a fixed difference of two gamma probability density functions and is denoted by "canonical HRF" in SPM. This is the default in SPM</td>
-    <td>nidm:NIDM_0000029</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
