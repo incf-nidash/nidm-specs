@@ -26,11 +26,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/285">#285</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Data'"> [more] </a></td>
-    <td><b>nidm:'Data': </b>"A collection or single item of factual information, derived from measurement or research, from which conclusions may be drawn." (This definition is from NCIT)(same as: <a href=http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25474</a>)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/274">#274</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Design Matrix'"> [more] </a></td>
     <td><b>nidm:'Design Matrix': </b>A matrix of values defining the explanatory variables used in a regression model.  Each column corresponds to one explanatory variable, each row corresponds to one observation (editor: TN)</td>
 </tr>
@@ -278,13 +273,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/285">#285</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='grand Mean Scaling'"> [more] </a></td>
-    <td><b>nidm:'grand Mean Scaling': </b>Binary flag defining whether the data was scaled. Specifically, "grand mean scaling" refers to multipliciation of every voxel in every scan by a common value.  Grand mean scaling is essential for first-level fMRI, to transform the arbitrary MRI units, but is generally not used with second level analyses</td>
-    <td>nidm:NIDM_0000018 </td>
-    <td>xsd:boolean </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='has Drift Model'"> [find issues/PR] </a></td>
     <td><b>nidm:'has Drift Model': </b>A property that associates a drift model to a design matrix (only used for first-level fMRI experiments)</td>
     <td>nidm:NIDM_0000019 </td>
@@ -310,13 +298,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
     <td><b>nidm:'regressor Names': </b>A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"])</td>
     <td>nidm:NIDM_0000019 </td>
     <td>xsd:string </td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/285">#285</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='target Intensity'"> [more] </a></td>
-    <td><b>nidm:'target Intensity': </b>Value to which the grand mean of the Data was scaled (applies only if grandMeanScaling is true)</td>
-    <td>nidm:NIDM_0000018 </td>
-    <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
