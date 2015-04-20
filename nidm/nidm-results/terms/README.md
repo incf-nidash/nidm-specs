@@ -221,13 +221,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/173">#173</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='noise FWHM'"> [more] </a></td>
-    <td><b>nidm:'noise FWHM': </b>Estimated Full Width at Half Maximum of the noise distribution</td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/130">#130</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='random Field Stationarity'"> [more] </a></td>
     <td><b>nidm:'random Field Stationarity': </b>Is the random field assumed to be stationary across the entire search volume?</td>
     <td>nidm:NIDM_0000068 </td>
