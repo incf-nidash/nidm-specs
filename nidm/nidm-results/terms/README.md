@@ -267,7 +267,21 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Clusters'"> [find issues/PR] </a></td>
-    <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set</td>
+    <td><b>nidm:'expected Number Of Clusters': </b>Expected number of clusters in an excursion set under the null hypothesis</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Vertices Per Cluster'"> [find issues/PR] </a></td>
+    <td><b>nidm:'expected Number Of Vertices Per Cluster': </b>Expected number of vertices in a cluster under the null hypothesis</td>
+    <td>nidm:NIDM_0000068 </td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Voxels Per Cluster'"> [find issues/PR] </a></td>
+    <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
 </tr>
@@ -409,20 +423,6 @@ Discussed with @afni-rickr in <a href="https://github.com/incf-nidash/nidm/pull/
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='error Degrees Of Freedom'"> [more] </a></td>
     <td><b>nidm:'error Degrees Of Freedom': </b>Degrees of freedom of the error</td>
     <td>nidm:NIDM_0000076 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Vertices Per Cluster'"> [find issues/PR] </a></td>
-    <td><b>nidm:'expected Number Of Vertices Per Cluster': </b>Expected number of vertices in a cluster</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='expected Number Of Voxels Per Cluster'"> [find issues/PR] </a></td>
-    <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster</td>
-    <td>nidm:NIDM_0000068 </td>
     <td></td>
 </tr>
 <tr>
