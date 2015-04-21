@@ -10,7 +10,6 @@
 @prefix spm: <http://purl.org/nidash/spm#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix afni: <http://purl.org/nidash/afni#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -408,25 +407,6 @@ fsl:FSL_0000005 rdf:type owl:DatatypeProperty ;
                 obo:IAO_0000114 obo:IAO_0000122 ;
                 
                 rdfs:range xsd:string .
-
-
-
-###  http://purl.org/nidash/nidm#LegendrePolynomialOrder
-
-nidm:NIDM_0000014 rdf:type owl:DatatypeProperty ;
-                             
-                             rdfs:label "Legendre Polynomial Order" ;
-                             
-                             obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
-                             
-                             obo:IAO_0000115 "The number of basis in the drift model (1 = linear, 2 = quadratic, etc.)" ;
-                             
-                             obo:IAO_0000114 obo:IAO_0000122 ;
-                             
-                             rdfs:domain afni:LegendrePolynomialDriftModel ;
-                             
-                             rdfs:range xsd:int .
-
 
 
 ###  http://purl.org/nidash/nidm#NIDM_0000082
@@ -1686,36 +1666,6 @@ dctype:Image rdf:type owl:Class ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
-
-
-
-###  http://purl.org/nidash/afni#BLOCK
-
-afni:BLOCK rdf:type owl:Class ;
-           
-           rdfs:subClassOf nidm:NIDM_0000036 ;
-           
-           prov:editorialNote "We will have to determine if afni:BLOCK is child of a more specific nidm HRFBasis sub-class."^^xsd:string ;
-           
-           obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
-           
-           obo:IAO_0000114 obo:IAO_0000124 .
-
-
-
-###  http://purl.org/nidash/afni#LegendrePolynomialDriftModel
-
-afni:LegendrePolynomialDriftModel rdf:type owl:Class ;
-                                  
-                                  rdfs:label "AFNI's Legendre Polinomial Drift Model" ;
-                                  
-                                  rdfs:subClassOf nidm:NIDM_0000087 ;
-                                  
-                                  obo:IAO_0000115 "A drift model in which the drifts are modeled by a Legendre orthogonal polynomial basis added to the regression model" ;
-                                  
-                                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
-                                  
-                                  obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -3054,21 +3004,6 @@ spm:SPM_0000005 rdf:type owl:Class ;
 #    Individuals
 #
 #################################################################
-
-
-###  http://purl.org/nidash/afni#GammaHRF
-
-afni:GammaHRF rdf:type nidm:NIDM_0000031 ,
-                       owl:NamedIndividual ;
-              
-              rdfs:label "AFNI's Gamma HRF" ;
-              
-              obo:IAO_0000115 "Hemodynamic response function which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py)." ;
-              
-              obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281 and discussed in https://github.com/incf-nidash/nidm/pull/248" ;
-              
-              obo:IAO_0000114 obo:IAO_0000122 .
-
 
 
 ###  http://purl.org/nidash/fsl#GammaDifferenceHRF
