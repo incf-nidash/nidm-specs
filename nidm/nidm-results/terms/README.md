@@ -100,13 +100,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td></td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/130">#130</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='random Field Stationarity'"> [more] </a></td>
-    <td><b>nidm:'random Field Stationarity': </b>A binary flag that indicates whether Random Field Theory methods assumed smoothness that was homogeneous over the map (true), or allowed for smoothness that varies over the map (false)</td>
-    <td>nidm:NIDM_0000068 </td>
-    <td>xsd:boolean </td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='user Specified Threshold Type'"> [find issues/PR] </a></td>
     <td><b>nidm:'user Specified Threshold Type': </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
