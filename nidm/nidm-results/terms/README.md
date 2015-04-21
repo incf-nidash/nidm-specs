@@ -20,11 +20,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)</td>
 </tr>
 <tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Partial Conjunction Inference'"> [more] </a></td>
-    <td><b>spm:'Partial Conjunction Inference': </b>The process of testing the joint significance of multiple effects to infer that some (not necessarily all) of the respective effects are real (i.e. their null hypotheses are false). If there are K effects considered, the partial conjunction degree u is the number non-null effects allowed as part of partial conjunction null hypothesis; if the partial conjunction null is rejected, it may be inferred that u+1 or more effects are real. The case of u=K-1 corresponds to proper "conjunction inference", while the case of u=0 corresponds to "global null" conjunction test. See [Friston et al. (2005). Conjunction revisited. NeuroImage, 25(3), 661-7.](http://dx.doi.org/10.1016/j.neuroimage.2005.01.013)</td>
-</tr>
-<tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [find issues/PR] </a></td>
     <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
@@ -103,13 +98,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/294">#294</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='partial Conjunction Degree'"> [more] </a></td>
-    <td><b>nidm:'partial Conjunction Degree': </b>The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference</td>
-    <td>spm:KConjunctionInference </td>
-    <td>xsd:int </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
