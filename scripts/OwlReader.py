@@ -111,12 +111,17 @@ class OwlReader():
             properties.add(class_name)
         return properties
 
-    def get_individuals(self):
+    def get_individuals(self, uri=None):
         individuals = set()
-        for class_name in self.graph.subjects(
-                RDF['type'], OWL['NamedIndividual']):
-            individuals.add(class_name)
-        return individuals
+
+        if uri is None:
+            individuals = self.graph.subjects(
+                RDF['type'], OWL['NamedIndividual'])
+        else:
+            individuals = self.graph.subjects(
+                RDF['type'], uri)
+
+        return list(individuals)
 
     def get_attributes(self):
         attributes = dict()

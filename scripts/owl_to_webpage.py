@@ -148,13 +148,9 @@ class OwlSpecification(object):
         self.section_open += 1
 
     def format_definition(self, definition):
-        # Lower case first letter of definition
+        # Capitalize first letter of definition
         if definition:
-            definition = definition[0].lower() + definition[1:]
-
-        # Add a dot a the end of the definition
-        if definition[-1:] is not ".":
-            definition += "."
+            definition = definition[0].upper() + definition[1:]
 
         # Replace links specified in markdown by html
         match = re.search(r'\[(?P<name>.*)\]\((?P<link>.*)\)', definition)
@@ -226,8 +222,7 @@ class OwlSpecification(object):
             <section id="section-"""+class_label+"""">
                 <h1 label=\""""+class_name+"""\">"""+class_label+"""</h1>
                 <div class="glossary-ref">
-                    A """+self.term_link(class_uri, "dfn") + \
-            """ is """+definition
+                    """+self.term_link(class_uri, "dfn") + ": " + definition
 
         self.text += " "+self.term_link(class_uri)+" is"
 
@@ -295,50 +290,56 @@ class OwlSpecification(object):
                 self.term_link(class_uri)+""" has attributes:
                 <ul>
                     <li><span class="attribute" id=\"""" + \
-                class_label+""".label">rdfs:label</span>: an \
-                    <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """\
-            """human readable description of the """+class_label+""".</li>"""
+                class_label+""".label">rdfs:label</span>: \
+                    (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) """\
+            """Human readable description of the """ + \
+                self.term_link(class_uri)+""".</li>"""
 
             for att in sorted(attributes):
-                if att not in self.attributes_done:
-                    # First definition of this attribute
-                    att_tag = "dfn"
-                else:
-                    att_tag = "a"
 
-                # if att_label.startswith("nidm:"):
-                att_def = self.owl.get_definition(att)
-                self.text += """
-                    <li>"""+self.term_link(att, att_tag) + \
-                    '</span>: an <em class="rfc2119" title="OPTIONAL">' + \
-                    'OPTIONAL</em> ' + self.format_definition(att_def)
+                # Do not display prov relations (used, wasGeneratedBy...) as
+                # attributes
+                if not self.owl.get_label(att).startswith("prov"):
+                    if att not in self.attributes_done:
+                        # First definition of this attribute
+                        att_tag = "dfn"
+                    else:
+                        att_tag = "a"
 
-                if att in self.owl.parent_ranges:
-                    child_ranges = list()
-                    for parent_range in self.owl.parent_ranges[att]:
-                        child_ranges += self.owl.get_direct_children(
-                            parent_range)
-                    child_ranges = sorted(child_ranges)
+                    self.attributes_done.add(att)
 
-                    # if nidm_namespace:
-                    child_range_txt = ""
-                    if child_ranges:
-                        # Get all child ranges
-                        child_range_txt = self.linked_listing(
-                            child_ranges, " such as ")
+                    # if att_label.startswith("nidm:"):
+                    att_def = self.owl.get_definition(att)
+                    self.text += """
+                        <li>"""+self.term_link(att, att_tag) + \
+                        '</span>: (<em class="rfc2119" title="OPTIONAL">' + \
+                        'OPTIONAL</em>) ' + self.format_definition(att_def)
 
-                    self.text += self.linked_listing(
-                        self.owl.parent_ranges[att],
-                        "(range ", child_range_txt+")")
+                    if att in self.owl.parent_ranges:
+                        child_ranges = list()
+                        for parent_range in self.owl.parent_ranges[att]:
+                            child_ranges += self.owl.get_direct_children(
+                                parent_range)
+                        child_ranges = sorted(child_ranges)
 
-                    for range_class in sorted(self.owl.ranges[att]):
-                        if self.owl.get_label(range_class).\
-                                startswith('nidm'):
-                            range_classes.append(range_class)
+                        # if nidm_namespace:
+                        child_range_txt = ""
+                        if child_ranges:
+                            # Get all child ranges
+                            child_range_txt = self.linked_listing(
+                                child_ranges, " such as ")
 
-                    self.text += "</li>"
+                        self.text += self.linked_listing(
+                            self.owl.parent_ranges[att],
+                            " (range ", child_range_txt+")")
+                        self.text += "."
 
-                self.attributes_done.add(att)
+                        for range_class in sorted(self.owl.ranges[att]):
+                            if self.owl.get_label(range_class).\
+                                    startswith('nidm'):
+                                range_classes.append(range_class)
+
+                        self.text += "</li>"
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/" + \
             "incf-nidash/nidm/master/"
@@ -352,16 +353,17 @@ class OwlSpecification(object):
 
         for range_name in range_classes:
             if not range_name in self.already_defined_classes:
+                self.already_defined_classes.append(range_name)
                 self.create_class_section(
                     range_name,
                     self.owl.get_definition(range_name),
                     self.owl.attributes.setdefault(range_name, None),
                     children=True)
-                self.already_defined_classes.append(range_name)
 
-        # For object property list also all children
+        # For object property list also children (in sub-sections)
         if children:
-            direct_children = self.owl.get_direct_children(class_uri)
+            direct_children = self.owl.sorted_by_labels(
+                self.owl.get_direct_children(class_uri))
             for child in direct_children:
                 if not child in self.already_defined_classes:
                     self.create_class_section(
@@ -370,6 +372,22 @@ class OwlSpecification(object):
                         self.owl.attributes.setdefault(child, None),
                         children=True)
                     self.already_defined_classes.append(child)
+
+        # Display individuals
+        individuals = self.owl.sorted_by_labels(
+            self.owl.get_individuals(class_uri))
+        if individuals:
+            self.text += \
+                " Examples of "+self.term_link(class_uri)+" includes " + \
+                "<ul>"
+
+            for indiv in individuals:
+                self.text += "<li>" + self.term_link(indiv, "dfn") + ": " + \
+                             self.format_definition(
+                                 self.owl.get_definition(indiv)) + \
+                             "</li>"
+
+            self.text += "</ul>"
 
         self.text += """
             </section>"""
