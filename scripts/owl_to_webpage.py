@@ -284,20 +284,21 @@ class OwlSpecification(object):
 
         self.text += "."
 
-        self.text += """
+        range_classes = list()
+
+        if attributes and (attributes != set([CRYPTO['sha512']])):
+            self.text += """
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-"""+class_label + \
-            """"> A """ + \
-            self.term_link(class_uri)+""" has attributes:
+                """"> A """ + \
+                self.term_link(class_uri)+""" has attributes:
                 <ul>
                     <li><span class="attribute" id=\"""" + \
-            class_label+""".label">rdfs:label</span>: an \
+                class_label+""".label">rdfs:label</span>: an \
                     <em class="rfc2119" title="OPTIONAL">OPTIONAL</em> """\
             """human readable description of the """+class_label+""".</li>"""
 
-        range_classes = list()
-        if attributes:
             for att in sorted(attributes):
                 att_label = self.owl.get_label(att)
 
@@ -307,7 +308,7 @@ class OwlSpecification(object):
                 else:
                     att_tag = "a"
 
-                if att_label[0:5] == "nidm:":
+                if att_label.startswith("nidm:"):
                     att_def = self.owl.get_definition(att)
                     self.text += """
                         <li>"""+self.term_link(att, att_tag) + \
