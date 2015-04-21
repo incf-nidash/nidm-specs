@@ -201,7 +201,7 @@ class OwlSpecification(object):
 
 
     def create_class_section(self, class_uri, definition, attributes,
-        used_by=None, generated_by=None, derived_from=None):
+        used_by=None, generated_by=None, derived_from=None, children=False):
         class_label = self.owl.get_label(class_uri)
         class_name = self.owl.get_name(class_uri)
 
@@ -324,7 +324,7 @@ class OwlSpecification(object):
         BASE_REPOSITORY = "https://raw.githubusercontent.com/incf-nidash/nidm/master/"
         examples = self.owl.get_example(class_uri, BASE_REPOSITORY)
         for example in sorted(examples):
-            self.text += """        
+            self.text += """
                 </ul>
                 </div>
                 <pre class='example highlight'>"""+cgi.escape(example)+"""</pre>"""
@@ -332,12 +332,25 @@ class OwlSpecification(object):
         for range_name in range_classes:
             if not range_name in self.already_defined_classes:
                 self.create_class_section(
-                        range_name, 
-                        self.owl.get_definition(range_name), 
-                        self.owl.attributes.setdefault(range_name, None))
+                    range_name,
+                    self.owl.get_definition(range_name),
+                    self.owl.attributes.setdefault(range_name, None),
+                    children=True)
                 self.already_defined_classes.append(range_name)
 
-        self.text += """  
+        # For object property list also all children
+        if children:
+            direct_children = self.owl.get_direct_children(class_uri)
+            for child in direct_children:
+                if not child in self.already_defined_classes:
+                    self.create_class_section(
+                        child,
+                        self.owl.get_definition(child),
+                        self.owl.attributes.setdefault(child, None),
+                        children=True)
+                    self.already_defined_classes.append(child)
+
+        self.text += """
             </section>"""
 
     def close_sections(self):
