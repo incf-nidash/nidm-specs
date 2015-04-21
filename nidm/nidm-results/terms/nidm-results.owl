@@ -369,16 +369,6 @@ nidm:hasfMRIDesign rdf:type owl:ObjectProperty ;
 #################################################################
 
 
-###  http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512
-
-crypto:sha512 rdf:type owl:DatatypeProperty ;
-              
-              rdfs:range xsd:string ;
-              
-              rdfs:domain prov:Entity .
-
-
-
 ###  http://purl.org/dc/elements/1.1/description
 
 dc:description rdf:type owl:DatatypeProperty .
@@ -2422,6 +2412,11 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
@@ -2447,6 +2442,11 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   rdfs:label "Map Header" ;
                   
                   rdfs:subClassOf prov:Entity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,                  
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
