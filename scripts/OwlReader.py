@@ -285,6 +285,10 @@ class OwlReader():
     def get_definition(self, owl_term):
         definition = list(self.graph.objects(owl_term, OBO_DEFINITION))
         if definition:
+            if len(definition) > 1:
+                warnings.warn('Multiple definitions for '
+                              + self.get_label(owl_term) + ': '
+                              + ",".join(definition))
             definition = unicode(definition[0])
         else:
             definition = ""
@@ -369,6 +373,9 @@ class OwlReader():
         curation_status = list(self.graph.objects(
             owl_term, HAS_CURATION_STATUS))
         if curation_status:
+            warnings.warn('Multiple curation status for '
+                          + self.get_label(owl_term) + ': '
+                          + ",".join(curation_status))
             curation_status = curation_status[0]
         else:
             # By default consider that term is "uncurated"
@@ -378,6 +385,9 @@ class OwlReader():
     def get_editor(self, owl_term):
         editor = list(self.graph.objects(owl_term, OBO_TERM_EDITOR))
         if editor:
+            warnings.warn('Multiple editors for '
+                          + self.get_label(owl_term) + ': '
+                          + ",".join(editor))
             editor = " (editor: "+editor[0]+")"
         else:
             editor = ""
@@ -386,6 +396,9 @@ class OwlReader():
     def get_editor_note(self, owl_term):
         editor_note = list(self.graph.objects(owl_term, OBO_EDITOR_NOTE))
         if editor_note:
+            warnings.warn('Multiple editor notes for '
+                          + self.get_label(owl_term) + ': '
+                          + ",".join(editor_note))
             editor_note = editor_note[0]
         else:
             editor_note = ""
