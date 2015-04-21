@@ -585,7 +585,9 @@ class OwlReader():
         # If a label is available, use the namespace:label, otherwise qname
         label = list(self.graph.objects(uri, RDFS['label']))
         if label:
-            label = label[0]
+            if len(label) > 1:
+                warnings.warn('Multiple labels for '+name+': '+",".join(label))
+            label = sorted(label)[0]
             name = name.split(":")[0]+":'"+label+"'"
 
         return name
