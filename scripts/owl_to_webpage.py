@@ -300,43 +300,41 @@ class OwlSpecification(object):
             """human readable description of the """+class_label+""".</li>"""
 
             for att in sorted(attributes):
-                att_label = self.owl.get_label(att)
-
                 if att not in self.attributes_done:
                     # First definition of this attribute
                     att_tag = "dfn"
                 else:
                     att_tag = "a"
 
-                if att_label.startswith("nidm:"):
-                    att_def = self.owl.get_definition(att)
-                    self.text += """
-                        <li>"""+self.term_link(att, att_tag) + \
-                        '</span>: an <em class="rfc2119" title="OPTIONAL">' + \
-                        'OPTIONAL</em> ' + self.format_definition(att_def)
+                # if att_label.startswith("nidm:"):
+                att_def = self.owl.get_definition(att)
+                self.text += """
+                    <li>"""+self.term_link(att, att_tag) + \
+                    '</span>: an <em class="rfc2119" title="OPTIONAL">' + \
+                    'OPTIONAL</em> ' + self.format_definition(att_def)
 
-                    if att in self.owl.parent_ranges:
-                        child_ranges = list()
-                        for parent_range in self.owl.parent_ranges[att]:
-                            child_ranges += self.owl.get_direct_children(
-                                parent_range)
-                        child_ranges = sorted(child_ranges)
+                if att in self.owl.parent_ranges:
+                    child_ranges = list()
+                    for parent_range in self.owl.parent_ranges[att]:
+                        child_ranges += self.owl.get_direct_children(
+                            parent_range)
+                    child_ranges = sorted(child_ranges)
 
-                        # if nidm_namespace:
-                        child_range_txt = ""
-                        if child_ranges:
-                            # Get all child ranges
-                            child_range_txt = self.linked_listing(
-                                child_ranges, " such as ")
+                    # if nidm_namespace:
+                    child_range_txt = ""
+                    if child_ranges:
+                        # Get all child ranges
+                        child_range_txt = self.linked_listing(
+                            child_ranges, " such as ")
 
-                        self.text += self.linked_listing(
-                            self.owl.parent_ranges[att],
-                            "(range ", child_range_txt+")")
+                    self.text += self.linked_listing(
+                        self.owl.parent_ranges[att],
+                        "(range ", child_range_txt+")")
 
-                        for range_class in sorted(self.owl.ranges[att]):
-                            if self.owl.get_label(range_class).\
-                                    startswith('nidm'):
-                                range_classes.append(range_class)
+                    for range_class in sorted(self.owl.ranges[att]):
+                        if self.owl.get_label(range_class).\
+                                startswith('nidm'):
+                            range_classes.append(range_class)
 
                     self.text += "</li>"
 
