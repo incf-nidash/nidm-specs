@@ -26,7 +26,7 @@
 @prefix nidm_ContrastStandardErrorMap: <http://purl.org/nidash/nidm#NIDM_0000013> .
 @prefix nidm_statisticType: <http://purl.org/nidash/nidm#NIDM_0000123> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
-@prefix nidm_coordinate: <http://purl.org/nidash/nidm#NIDM_0000086> .
+@prefix nidm_coordinateVector: <http://purl.org/nidash/nidm#NIDM_0000086> .
 @prefix nidm_CoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000016> .
 @prefix nidm_voxelToWorldMapping: <http://purl.org/nidash/nidm#NIDM_0000132> .
 @prefix nidm_voxelUnits: <http://purl.org/nidash/nidm#NIDM_0000133> .
@@ -62,6 +62,7 @@
 @prefix nidm_pValue: <http://purl.org/nidash/nidm#NIDM_0000114> .
 @prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
+@prefix nidm_clusterSizeInResels: <http://purl.org/nidash/nidm#NIDM_0000156> .
 @prefix nidm_pValueUncorrected: <http://purl.org/nidash/nidm#NIDM_0000116> .
 @prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
 @prefix nidm_GrandMeanMap: <http://purl.org/nidash/nidm#NIDM_0000033> .
@@ -101,6 +102,11 @@
 @prefix obo_contrastweightmatrix: <http://purl.obolibrary.org/obo/STATO_0000323> .
 @prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
 @prefix obo_ordinaryleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000370> .
+@prefix spm_smallestSignificantClusterSizeInVoxelsFWE05: <http://purl.org/nidash/spm#SPM_0000014> .
+@prefix spm_smallestSignificantClusterSizeInVoxelsFDR05: <http://purl.org/nidash/spm#SPM_0000013> .
+@prefix spm_searchVolumeReselsGeometry: <http://purl.org/nidash/spm#SPM_0000010> .
+@prefix spm_noiseFWHMInVoxels: <http://purl.org/nidash/spm#SPM_0000009> .
+@prefix spm_noiseFWHMInUnits: <http://purl.org/nidash/spm#SPM_0000007> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -147,31 +153,31 @@ niiri:contrast_id a prov:Entity , obo_contrastweightmatrix: ;
 
 niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0001" ;
-	nidm_coordinate: "[-60, -28, 13]"^^xsd:string .
+	nidm_coordinateVector: "[-60, -28, 13]"^^xsd:string .
 
 niiri:coordinate_0002 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0002" ;
-	nidm_coordinate: "[-66, -13, 4]"^^xsd:string .
+	nidm_coordinateVector: "[-66, -13, 4]"^^xsd:string .
 
 niiri:coordinate_0003 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0003" ;
-	nidm_coordinate: "[-63, -7, -2]"^^xsd:string .
+	nidm_coordinateVector: "[-63, -7, -2]"^^xsd:string .
 
 niiri:coordinate_0004 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0004" ;
-	nidm_coordinate: "[57, -22, 13]"^^xsd:string .
+	nidm_coordinateVector: "[57, -22, 13]"^^xsd:string .
 
 niiri:coordinate_0005 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0005" ;
-	nidm_coordinate: "[66, -13, -2]"^^xsd:string .
+	nidm_coordinateVector: "[66, -13, -2]"^^xsd:string .
 
 niiri:coordinate_0006 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0006" ;
-	nidm_coordinate: "[57, -40, 7]"^^xsd:string .
+	nidm_coordinateVector: "[57, -40, 7]"^^xsd:string .
 
 niiri:coordinate_0007 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0007" ;
-	nidm_coordinate: "[36, -31, -14]"^^xsd:string .
+	nidm_coordinateVector: "[36, -31, -14]"^^xsd:string .
 
 niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
 	rdfs:label "Coordinate space 1" ;
@@ -332,7 +338,7 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
 niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
 	rdfs:label "Extent Threshold: k>=0" ;
 	nidm_clusterSizeInVoxels: "0"^^xsd:int ;
-	spm:clusterSizeInResels "0"^^xsd:float ;
+	nidm_clusterSizeInResels: "0"^^xsd:float ;
 	nidm_pValueUncorrected: "1"^^xsd:float ;
 	nidm_pValueFWER: "1"^^xsd:float .
 
@@ -411,7 +417,7 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
 
 niiri:spm_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
-	nidm_version: "0.2.0"^^xsd:string .
+	nidm_version: "1.0.0"^^xsd:string .
 
 _:blank1 a prov:Generation .
 
@@ -546,15 +552,15 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	nidm_expectedNumberOfClusters: "0.0889172687960151"^^xsd:float ;
 	nidm_heightCriticalThresholdFWE05: "5.23529984739211"^^xsd:float ;
 	nidm_heightCriticalThresholdFDR05: "6.22537899017334"^^xsd:float ;
-	spm:smallestSignificantClusterSizeInVoxelsFWE05 "1"^^xsd:int ;
-	spm:smallestSignificantClusterSizeInVoxelsFDR05 "3"^^xsd:int ;
+	spm_smallestSignificantClusterSizeInVoxelsFWE05: "1"^^xsd:int ;
+	spm_smallestSignificantClusterSizeInVoxelsFDR05: "3"^^xsd:int ;
 	nidm_searchVolumeInVoxels: "65593"^^xsd:int ;
 	nidm_searchVolumeInUnits: "1771011"^^xsd:float ;
 	nidm_reselSizeInVoxels: "22.9229643140043"^^xsd:float ;
 	nidm_searchVolumeInResels: "2552.68032521656"^^xsd:float ;
-	spm:searchVolumeReselsGeometry "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]"^^xsd:string ;
-	spm:noiseFWHMInVoxels "[2.95881189165801, 2.96628446669584, 2.61180425626264]"^^xsd:string ;
-	spm:noiseFWHMInUnits "[8.87643567497404, 8.89885340008753, 7.83541276878791]"^^xsd:string ;
+	spm_searchVolumeReselsGeometry: "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]"^^xsd:string ;
+	spm_noiseFWHMInVoxels: "[2.95881189165801, 2.96628446669584, 2.61180425626264]"^^xsd:string ;
+	spm_noiseFWHMInUnits: "[8.87643567497404, 8.89885340008753, 7.83541276878791]"^^xsd:string ;
 	nidm_randomFieldStationarity: "false"^^xsd:boolean ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id .
@@ -563,7 +569,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
 	rdfs:label "Significant Cluster 0001" ;
 	nidm_clusterSizeInVoxels: "530"^^xsd:int ;
 	nidm_clusterLabelId: "1"^^xsd:int ;
-	spm:clusterSizeInResels "23.1209189500945"^^xsd:float ;
+	nidm_clusterSizeInResels: "23.1209189500945"^^xsd:float ;
 	nidm_pValueUncorrected: "9.56276736481136e-52"^^xsd:float ;
 	nidm_pValueFWER: "0"^^xsd:float ;
 	nidm_qValueFDR: "7.65021389184909e-51"^^xsd:float ;
@@ -573,7 +579,7 @@ niiri:significant_cluster_0002 a prov:Entity , nidm_SignificantCluster: ;
 	rdfs:label "Significant Cluster 0002" ;
 	nidm_clusterSizeInVoxels: "445"^^xsd:int ;
 	nidm_clusterLabelId: "2"^^xsd:int ;
-	spm:clusterSizeInResels "19.4128470430038"^^xsd:float ;
+	nidm_clusterSizeInResels: "19.4128470430038"^^xsd:float ;
 	nidm_pValueUncorrected: "3.91543427861809e-46"^^xsd:float ;
 	nidm_pValueFWER: "0"^^xsd:float ;
 	nidm_qValueFDR: "1.56617371144723e-45"^^xsd:float ;
@@ -583,7 +589,7 @@ niiri:significant_cluster_0003 a prov:Entity , nidm_SignificantCluster: ;
 	rdfs:label "Significant Cluster 0003" ;
 	nidm_clusterSizeInVoxels: "38"^^xsd:int ;
 	nidm_clusterLabelId: "3"^^xsd:int ;
-	spm:clusterSizeInResels "1.6577262643464"^^xsd:float ;
+	nidm_clusterSizeInResels: "1.6577262643464"^^xsd:float ;
 	nidm_pValueUncorrected: "1.56592642027122e-09"^^xsd:float ;
 	nidm_pValueFWER: "1.39237954499549e-10"^^xsd:float ;
 	nidm_qValueFDR: "4.17580378738993e-09"^^xsd:float ;

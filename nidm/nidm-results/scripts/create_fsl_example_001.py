@@ -27,8 +27,8 @@ def main():
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
 			regressors="[\\\"Gen\\\", \\\"Gen_der\\\", \\\"Shad\\\", \\\"Shad_der\\\"]",
-			design="nidm:BlockBasedDesign",
-			hrf_basis="fsl:GammaDifferenceHRF",
+			design="nidm:NIDM_0000152",
+			hrf_basis="fsl:FSL_0000001",
 			drift_model="niiri:drift_model_id"),
 		"FSL_DriftModel": dict(
 			id="niiri:drift_model_id",
@@ -624,7 +624,7 @@ def main():
 			bundle_id="niiri:fsl_results_id",
 			label="NIDM-Results",
 			object_model="nidm:NIDM_0000027",
-			version="0.2.0",
+			version="1.0.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),
 		"FSL_Software": dict(

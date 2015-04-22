@@ -22,7 +22,7 @@ RELPATH = os.path.dirname(os.path.abspath(__file__))
 # Append parent script directory to path
 sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir,
                              os.pardir, "scripts"))
-from Constants import NIDM_SOFTWARE_VERSION
+from Constants import NIDM_SOFTWARE_VERSION, FSL_FEAT_VERSION
 
 # Save debug info in a log file (debug.log)
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
@@ -107,7 +107,7 @@ def display_graph(diff_graph, prefix_msg="Difference in:"):
             # workaround to avoid issue with "5853" being a string
             prefix, namespace, name = diff_graph.compute_qname(p)
             if p != NIDM_SOFTWARE_VERSION:
-                if name != "featVersion":
+                if p != FSL_FEAT_VERSION:
                     o_name = ""
                     if isinstance(o, rdflib.URIRef):
                         unused, unused, o_name = diff_graph.compute_qname(o)

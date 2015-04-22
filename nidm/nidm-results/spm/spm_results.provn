@@ -26,6 +26,7 @@ prefix nidm_ParameterEstimateMap <http://purl.org/nidash/nidm#NIDM_0000061>
 prefix nidm_isUserDefined <http://purl.org/nidash/nidm#NIDM_0000106>
 prefix nidm_hasClusterLabelsMap <http://purl.org/nidash/nidm#NIDM_0000098>
 prefix dc <http://purl.org/dc/elements/1.1/>
+prefix nidm_coordinateVector <http://purl.org/nidash/nidm#NIDM_0000086>
 prefix nidm_numberOfSignificantClusters <http://purl.org/nidash/nidm#NIDM_0000111>
 prefix nidm_pValueUncorrected <http://purl.org/nidash/nidm#NIDM_0000116>
 prefix nidm_voxelToWorldMapping <http://purl.org/nidash/nidm#NIDM_0000132>
@@ -48,6 +49,7 @@ prefix nfo <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
 prefix nidm_hasMapHeader <http://purl.org/nidash/nidm#NIDM_0000103>
 prefix nidm_Peak <http://purl.org/nidash/nidm#NIDM_0000062>
 prefix nidm_GaussianDistribution <http://purl.org/nidash/nidm#NIDM_0000032>
+prefix spm_smallestSignificantClusterSizeInVoxelsFWE05 <http://purl.org/nidash/spm#SPM_0000014>
 prefix nidm_ClusterLabelsMap <http://purl.org/nidash/nidm#NIDM_0000008>
 prefix nidm_clusterSizeInVoxels <http://purl.org/nidash/nidm#NIDM_0000084>
 prefix nidm_inWorldCoordinateSystem <http://purl.org/nidash/nidm#NIDM_0000105>
@@ -57,9 +59,11 @@ prefix dctype <http://purl.org/dc/dcmitype/>
 prefix nidm_hasAlternativeHypothesis <http://purl.org/nidash/nidm#NIDM_0000097>
 prefix nidm_HeightThreshold <http://purl.org/nidash/nidm#NIDM_0000034>
 prefix nidm_targetIntensity <http://purl.org/nidash/nidm#NIDM_0000124>
+prefix spm_smallestSignificantClusterSizeInVoxelsFDR05 <http://purl.org/nidash/spm#SPM_0000013>
 prefix nidm_CoordinateSpace <http://purl.org/nidash/nidm#NIDM_0000016>
 prefix fsl <http://purl.org/nidash/fsl#>
 prefix nidm_DesignMatrix <http://purl.org/nidash/nidm#NIDM_0000019>
+prefix nidm_clusterSizeInResels <http://purl.org/nidash/nidm#NIDM_0000156>
 prefix nidm_errorVarianceHomogeneous <http://purl.org/nidash/nidm#NIDM_0000094>
 prefix neurolex <http://neurolex.org/wiki/>
 prefix nidm_maxNumberOfPeaksPerCluster <http://purl.org/nidash/nidm#NIDM_0000108>
@@ -75,7 +79,6 @@ prefix nidm_reselSizeInVoxels <http://purl.org/nidash/nidm#NIDM_0000148>
 prefix rdfs <http://www.w3.org/2000/01/rdf-schema#>
 prefix nidm_ContrastMap <http://purl.org/nidash/nidm#NIDM_0000002>
 prefix nidm_pValueFWER <http://purl.org/nidash/nidm#NIDM_0000115>
-prefix nidm_coordinate <http://purl.org/nidash/nidm#NIDM_0000086>
 prefix nidm_DataScaling <http://purl.org/nidash/nidm#NIDM_0000018>
 prefix nidm_hasErrorDependence <http://purl.org/nidash/nidm#NIDM_0000100>
 prefix obo_contrastweightmatrix <http://purl.obolibrary.org/obo/STATO_0000323>
@@ -97,9 +100,12 @@ prefix nidm_randomFieldStationarity <http://purl.org/nidash/nidm#NIDM_0000120>
 prefix nidm_voxelUnits <http://purl.org/nidash/nidm#NIDM_0000133>
 prefix nidm_varianceMapWiseDependence <http://purl.org/nidash/nidm#NIDM_0000126>
 prefix nidm_userSpecifiedThresholdType <http://purl.org/nidash/nidm#NIDM_0000125>
+prefix spm_noiseFWHMInVoxels <http://purl.org/nidash/spm#SPM_0000009>
 prefix nidm_ErrorModel <http://purl.org/nidash/nidm#NIDM_0000023>
+prefix spm_noiseFWHMInUnits <http://purl.org/nidash/spm#SPM_0000007>
 prefix nidm_maskedMedian <http://purl.org/nidash/nidm#NIDM_0000107>
 prefix nidm_hasErrorDistribution <http://purl.org/nidash/nidm#NIDM_0000101>
+prefix spm_searchVolumeReselsGeometry <http://purl.org/nidash/spm#SPM_0000010>
 prefix nidm_ClusterDefinitionCriteria <http://purl.org/nidash/nidm#NIDM_0000007>
 activity(niiri:model_pe_id,-,-,[prov:type = 'nidm:NIDM_0000056', prov:label = "Model parameters estimation", nidm:NIDM_0000134 = 'obo:STATO_0000370'])
 activity(niiri:inference_id,-,-,[prov:type = 'nidm:NIDM_0000049', prov:label = "Inference", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
@@ -121,7 +127,7 @@ entity(niiri:coordinate_0004,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coo
 entity(niiri:coordinate_0001,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate: 0001", nidm:NIDM_0000086 = "[-60, -28, 13]" %% xsd:string])
 entity(niiri:display_map_id,[prov:type = 'nidm:NIDM_0000020', prov:label = "Display Mask Map", prov:location = "file:///path/to/DisplayMask.nii.gz" %% xsd:anyURI, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "DisplayMask.nii.gz" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_2', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:coordinate_0002,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate: 0002", nidm:NIDM_0000086 = "[-66, -13, 4]" %% xsd:string])
-entity(niiri:search_space_mask_id,[prov:type = 'nidm:NIDM_0000068', prov:label = "Search Space Mask Map", prov:location = "file:///path/to/SearchSpaceMask.nii.gz" %% xsd:anyURI, nfo:fileName = "SearchSpaceMask.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_2', nidm:NIDM_0000143 = "0.553331387916112" %% xsd:float, nidm:NIDM_0000141 = "0.0889172687960151" %% xsd:float, nidm:NIDM_0000147 = "5.23529984739211" %% xsd:float, nidm:NIDM_0000146 = "6.22537899017334" %% xsd:float, spm:smallestSignificantClusterSizeInVoxelsFWE05 = "1" %% xsd:int, spm:smallestSignificantClusterSizeInVoxelsFDR05 = "3" %% xsd:int, nidm:NIDM_0000121 = "65593" %% xsd:int, nidm:NIDM_0000136 = "1771011" %% xsd:float, nidm:NIDM_0000148 = "22.9229643140043" %% xsd:float, nidm:NIDM_0000149 = "2552.68032521656" %% xsd:float, spm:searchVolumeReselsGeometry = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string, spm:noiseFWHMInVoxels = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string, spm:noiseFWHMInUnits = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string, nidm:NIDM_0000120 = "false" %% xsd:boolean, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
+entity(niiri:search_space_mask_id,[prov:type = 'nidm:NIDM_0000068', prov:label = "Search Space Mask Map", prov:location = "file:///path/to/SearchSpaceMask.nii.gz" %% xsd:anyURI, nfo:fileName = "SearchSpaceMask.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_2', nidm:NIDM_0000143 = "0.553331387916112" %% xsd:float, nidm:NIDM_0000141 = "0.0889172687960151" %% xsd:float, nidm:NIDM_0000147 = "5.23529984739211" %% xsd:float, nidm:NIDM_0000146 = "6.22537899017334" %% xsd:float, spm:SPM_0000014 = "1" %% xsd:int, spm:SPM_0000013 = "3" %% xsd:int, nidm:NIDM_0000121 = "65593" %% xsd:int, nidm:NIDM_0000136 = "1771011" %% xsd:float, nidm:NIDM_0000148 = "22.9229643140043" %% xsd:float, nidm:NIDM_0000149 = "2552.68032521656" %% xsd:float, spm:SPM_0000010 = "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]" %% xsd:string, spm:SPM_0000009 = "[2.95881189165801, 2.96628446669584, 2.61180425626264]" %% xsd:string, spm:SPM_0000007 = "[8.87643567497404, 8.89885340008753, 7.83541276878791]" %% xsd:string, nidm:NIDM_0000120 = "false" %% xsd:boolean, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:beta_map_id_2,[prov:type = 'nidm:NIDM_0000061', prov:label = "Beta Map 2", prov:location = "file:///path/to/ParameterEstimate_0002.nii" %% xsd:anyURI, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', nfo:fileName = "ParameterEstimate_0002.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:coordinate_space_id_1,[prov:type = 'nidm:NIDM_0000016', prov:label = "Coordinate space 1", nidm:NIDM_0000132 = "[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]" %% xsd:string, nidm:NIDM_0000133 = "['mm', 'mm', 'mm']" %% xsd:string, nidm:NIDM_0000131 = "[3, 3, 3]" %% xsd:string, nidm:NIDM_0000105 = 'nidm:NIDM_0000051', nidm:NIDM_0000112 = "3" %% xsd:int, nidm:NIDM_0000090 = "[53,63,46]" %% xsd:string])
 entity(niiri:residual_mean_squares_map_id,[prov:type = 'nidm:NIDM_0000066', prov:label = "Residual Mean Squares Map", prov:location = "file:///path/to/ResidualMeanSquares.nii.gz" %% xsd:anyURI, nfo:fileName = "ResidualMeanSquares.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
@@ -141,16 +147,16 @@ entity(niiri:contrast_map_id_der,[prov:type = 'nidm:NIDM_0000002', nfo:fileName 
 entity(niiri:grand_mean_map_id,[prov:type = 'nidm:NIDM_0000033', prov:label = "Grand Mean Map", prov:location = "file:///path/to/GrandMean.nii.gz" %% xsd:anyURI, nfo:fileName = "GrandMean.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000107 = "115" %% xsd:float, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:height_threshold_id,[prov:type = 'nidm:NIDM_0000034', prov:label = "Height Threshold: p<0.05 (FWE)", prov:value = "5.23529984739211" %% xsd:float, nidm:NIDM_0000125 = "p-value FWE" %% xsd:string, nidm:NIDM_0000116 = "7.62276079258051e-07" %% xsd:float, nidm:NIDM_0000115 = "0.05" %% xsd:float])
 entity(niiri:beta_map_id_1,[prov:type = 'nidm:NIDM_0000061', prov:label = "Beta Map 1", prov:location = "file:///path/to/ParameterEstimate_0001.nii.gz" %% xsd:anyURI, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', nfo:fileName = "ParameterEstimate_0001.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-entity(niiri:extent_threshold_id,[prov:type = 'nidm:NIDM_0000026', prov:label = "Extent Threshold: k>=0", nidm:NIDM_0000084 = "0" %% xsd:int, spm:clusterSizeInResels = "0" %% xsd:float, nidm:NIDM_0000116 = "1" %% xsd:float, nidm:NIDM_0000115 = "1" %% xsd:float])
+entity(niiri:extent_threshold_id,[prov:type = 'nidm:NIDM_0000026', prov:label = "Extent Threshold: k>=0", nidm:NIDM_0000084 = "0" %% xsd:int, nidm:NIDM_0000156 = "0" %% xsd:float, nidm:NIDM_0000116 = "1" %% xsd:float, nidm:NIDM_0000115 = "1" %% xsd:float])
 entity(niiri:resels_per_voxel_map_id_der,[prov:type = 'nidm:NIDM_0000144', nfo:fileName = "RPV.img" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000103 = 'niiri:original_rpv_map_header_id', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:peak_0001,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0001", prov:location = 'niiri:coordinate_0001', prov:value = "13.9346199035645" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "6.3705194444993e-11" %% xsd:float])
 entity(niiri:peak_0003,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0003", prov:location = 'niiri:coordinate_0003', prov:value = "9.82185649871826" %% xsd:float, nidm:NIDM_0000116 = "2.99760216648792e-15" %% xsd:float, nidm:NIDM_0000092 = "7.80404869241187" %% xsd:float, nidm:NIDM_0000115 = "1.82057147135595e-10" %% xsd:float, nidm:NIDM_0000119 = "9.95383070867767e-08" %% xsd:float])
-entity(niiri:significant_cluster_0003,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0003", nidm:NIDM_0000084 = "38" %% xsd:int, nidm:NIDM_0000082 = "3" %% xsd:int, spm:clusterSizeInResels = "1.6577262643464" %% xsd:float, nidm:NIDM_0000116 = "1.56592642027122e-09" %% xsd:float, nidm:NIDM_0000115 = "1.39237954499549e-10" %% xsd:float, nidm:NIDM_0000119 = "4.17580378738993e-09" %% xsd:float])
+entity(niiri:significant_cluster_0003,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0003", nidm:NIDM_0000084 = "38" %% xsd:int, nidm:NIDM_0000082 = "3" %% xsd:int, nidm:NIDM_0000156 = "1.6577262643464" %% xsd:float, nidm:NIDM_0000116 = "1.56592642027122e-09" %% xsd:float, nidm:NIDM_0000115 = "1.39237954499549e-10" %% xsd:float, nidm:NIDM_0000119 = "4.17580378738993e-09" %% xsd:float])
 entity(niiri:peak_0002,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0002", prov:location = 'niiri:coordinate_0002', prov:value = "11.3457498550415" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "3.12855975726156e-10" %% xsd:float])
 entity(niiri:peak_0005,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0005", prov:location = 'niiri:coordinate_0005', prov:value = "12.322901725769" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "6.3705194444993e-11" %% xsd:float])
-entity(niiri:significant_cluster_0001,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0001", nidm:NIDM_0000084 = "530" %% xsd:int, nidm:NIDM_0000082 = "1" %% xsd:int, spm:clusterSizeInResels = "23.1209189500945" %% xsd:float, nidm:NIDM_0000116 = "9.56276736481136e-52" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "7.65021389184909e-51" %% xsd:float])
+entity(niiri:significant_cluster_0001,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0001", nidm:NIDM_0000084 = "530" %% xsd:int, nidm:NIDM_0000082 = "1" %% xsd:int, nidm:NIDM_0000156 = "23.1209189500945" %% xsd:float, nidm:NIDM_0000116 = "9.56276736481136e-52" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "7.65021389184909e-51" %% xsd:float])
 entity(niiri:peak_0004,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0004", prov:location = 'niiri:coordinate_0004', prov:value = "13.7208814620972" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "6.3705194444993e-11" %% xsd:float])
-entity(niiri:significant_cluster_0002,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0002", nidm:NIDM_0000084 = "445" %% xsd:int, nidm:NIDM_0000082 = "2" %% xsd:int, spm:clusterSizeInResels = "19.4128470430038" %% xsd:float, nidm:NIDM_0000116 = "3.91543427861809e-46" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.56617371144723e-45" %% xsd:float])
+entity(niiri:significant_cluster_0002,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster 0002", nidm:NIDM_0000084 = "445" %% xsd:int, nidm:NIDM_0000082 = "2" %% xsd:int, nidm:NIDM_0000156 = "19.4128470430038" %% xsd:float, nidm:NIDM_0000116 = "3.91543427861809e-46" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.56617371144723e-45" %% xsd:float])
 entity(niiri:peak_0007,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0007", prov:location = 'niiri:coordinate_0007', prov:value = "7.49709033966064" %% xsd:float, nidm:NIDM_0000116 = "6.17598194807556e-11" %% xsd:float, nidm:NIDM_0000092 = "6.43494304364426" %% xsd:float, nidm:NIDM_0000115 = "4.05099727462943e-06" %% xsd:float, nidm:NIDM_0000119 = "0.000463130517859672" %% xsd:float])
 entity(niiri:peak_0006,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0006", prov:location = 'niiri:coordinate_0006', prov:value = "9.62070846557617" %% xsd:float, nidm:NIDM_0000116 = "6.66133814775094e-15" %% xsd:float, nidm:NIDM_0000092 = "7.7026943536333" %% xsd:float, nidm:NIDM_0000115 = "4.2237258135458e-10" %% xsd:float, nidm:NIDM_0000119 = "1.58195372181651e-07" %% xsd:float])
 entity(niiri:peak_definition_criteria_id,[prov:type = 'nidm:NIDM_0000063', prov:label = "Peak Definition Criteria", nidm:NIDM_0000109 = "8.0" %% xsd:float, nidm:NIDM_0000108 = "3" %% xsd:int])
@@ -160,7 +166,7 @@ entity(niiri:error_model_id,[prov:type = 'nidm:NIDM_0000023', nidm:NIDM_0000101 
 entity(niiri:cluster_definition_criteria_id,[prov:type = 'nidm:NIDM_0000007', prov:label = "Cluster Connectivity Criterion: 18", nidm:NIDM_0000099 = 'nidm:NIDM_0000128'])
 entity(niiri:excursion_set_map_id,[prov:type = 'nidm:NIDM_0000025', prov:label = "Excursion Set Map", prov:location = "file:///path/to/ExcursionSetMap.nii.gz" %% xsd:anyURI, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "ExcursionSetMap.nii.gz" %% xsd:string, nidm:NIDM_0000098 = 'niiri:cluster_label_map_id', nidm:NIDM_0000138 = 'niiri:maximum_intensity_projection_id', nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string, nidm:NIDM_0000111 = "8" %% xsd:int, nidm:NIDM_0000114 = "8.95949980872501e-14" %% xsd:float])
 entity(niiri:beta_map_id_2_der,[prov:type = 'nidm:NIDM_0000061', nfo:fileName = "beta_0002.img" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000103 = 'niiri:original_pe_map_header_2_id', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
-entity(niiri:spm_results_id,[prov:type = 'prov:Bundle', prov:type = 'nidm:NIDM_0000027', prov:label = "NIDM-Results", nidm:NIDM_0000127 = "0.2.0" %% xsd:string])
+entity(niiri:spm_results_id,[prov:type = 'prov:Bundle', prov:type = 'nidm:NIDM_0000027', prov:label = "NIDM-Results", nidm:NIDM_0000127 = "1.0.0" %% xsd:string])
 entity(niiri:mask_id_2_der,[prov:type = 'nidm:NIDM_0000054', nfo:fileName = "mask.img" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000103 = 'niiri:original_mask_map_header_id', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 entity(niiri:beta_map_id_1_der,[prov:type = 'nidm:NIDM_0000061', nfo:fileName = "beta_0001.img" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000103 = 'niiri:original_pe_map_header_id', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
 used(niiri:model_pe_id,niiri:mask_id_1,-)
