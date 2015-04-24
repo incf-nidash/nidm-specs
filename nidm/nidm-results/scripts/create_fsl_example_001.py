@@ -606,7 +606,7 @@ def main():
 			),
 		"FSL_SearchSpaceMaskMap": dict(
 			search_space_id="niiri:search_space_mask_id",
-			location="file://./SearchSpace.nii.gz",
+			location="file://./SearchSpaceMask.nii.gz",
 			filename_1="SearchSpaceMask.nii.gz",
 			filename_2="mask.nii.gz",
 			label="Search Space Mask Map",
