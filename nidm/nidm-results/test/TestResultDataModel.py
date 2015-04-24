@@ -131,6 +131,11 @@ class TestResultDataModel(object):
 
         activity = False
         MIN_MATCHING = 2
+        # For maps at least 4 attributes in common are needed for
+        # matching (to deal with nifti files where format and
+        # inCoordinateSpace might be the same for all)
+        MIN_MAP_MATCHING = 4
+
         if rdf_type == PROV['Activity']:
             activity = True
         elif rdf_type == PROV['Entity']:
@@ -144,15 +149,16 @@ class TestResultDataModel(object):
                 graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(
                 set(graph2.subjects(RDF.type, PROV['Coordinate'])))
-            # For entities at least 4 attributes in common are needed for
-            # matching (to deal with nifti files where format and
-            # inCoordinateSpace might be the same for all)
-            MIN_MATCHING = 4
 
         for g1_term in g1_terms:
+            min_matching = MIN_MATCHING
+
             # Look for a match in g2 corresponding to g1_term from g1
             g2_match = dict.fromkeys(g2_terms, 0)
             for p, o in graph1.predicate_objects(g1_term):
+                if p == NIDM_IN_COORDINATE_SPACE:
+                    min_matching = MIN_MAP_MATCHING
+
                 if (not activity) or \
                    (isinstance(o, rdflib.term.Literal) or p == RDF.type):
                     for g2_term in graph2.subjects(p, o):
@@ -161,7 +167,7 @@ class TestResultDataModel(object):
             match_found = False
             g2_matched = set()
             for g2_term, match_index in g2_match.items():
-                if max(g2_match.values()) >= MIN_MATCHING:
+                if max(g2_match.values()) >= min_matching:
                     if (match_index == max(g2_match.values())) \
                             and not g2_term in g2_matched:
                         # Found matching term
@@ -364,7 +370,7 @@ class TestResultDataModel(object):
                                 self.get_alternatives(other_graph, s=s, p=p)
                             )
 
-                        # exc_wrong_literal += "\nWrong literal o:\t p('%s') of\
+                        # exc_wrong_literal += "\nWrong literal o:\t p('%s') of
                         #  s('%s') is o(%s) but should be o(%s)." % (
                         #     self.get_readable_name(other_graph, p),
                         #     self.get_readable_name(other_graph, s),
