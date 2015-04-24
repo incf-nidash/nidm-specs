@@ -253,9 +253,9 @@ def main():
 		"FSL_ExcursionSetMap": dict(
 			id="niiri:excursion_set_map_id_1",
 			label="Excursion Set Map",
-			location="file://./ExcursionSetMap.nii.gz",
+			location="file://./ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename_1="ExcursionSetMap.nii.gz",
+			filename_1="ExcursionSet.nii.gz",
 			filename_2="thresh_zstat1.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			png_id="niiri:excursion_set_png_id_1",

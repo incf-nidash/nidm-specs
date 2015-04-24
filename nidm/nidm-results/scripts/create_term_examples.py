@@ -202,9 +202,9 @@ def main():
 		"ExcursionSetMap": dict(
 			id="niiri:excursion_set_map_id",
 			label="Excursion Set Map",
-			location="file:///path/to/ExcursionSetMap.nii.gz",
+			location="file:///path/to/ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename="ExcursionSetMap.nii.gz",
+			filename="ExcursionSet.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			max_intensity_projection_id="niiri:maximum_intensity_projection_id",
 			coordinate_space_id="niiri:coordinate_space_id_1",
