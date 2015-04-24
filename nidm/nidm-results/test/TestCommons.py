@@ -8,6 +8,7 @@
 import os
 import sys
 import re
+import vcr
 import urllib2
 import rdflib
 from rdflib.graph import Graph
@@ -19,9 +20,10 @@ import ssl
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 
+NIDM_PATH = os.path.join(RELPATH, os.pardir, os.pardir, os.pardir)
+
 # Append parent script directory to path
-sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir,
-                             os.pardir, "scripts"))
+sys.path.append(os.path.join(NIDM_PATH, "scripts"))
 from Constants import NIDM_SOFTWARE_VERSION, FSL_FEAT_VERSION
 
 # Save debug info in a log file (debug.log)
@@ -50,6 +52,7 @@ example_filenames = import_test_filenames.union(set([
 # to check as README should be up to date but setting to False can be useful for local testing.
 ttl_from_readme = False
 
+
 def get_turtle(provn_file):
     if ttl_from_readme:
         # Get URL of turtle from README file
@@ -76,7 +79,12 @@ def get_turtle(provn_file):
         while retry <= MAX_RETRY:
             try:
                 logger.info(' urllib2 open ')
-                response = urllib2.urlopen(req, timeout=10)
+                with vcr.use_cassette(
+                    os.path.join(NIDM_PATH, 'vcr_cassettes/synopsis.yaml'),
+                    record_mode='new_episodes',
+                    match_on=['method', 'scheme', 'host', 'port', 'path',
+                                  'query', 'body']):
+                    response = urllib2.urlopen(req, timeout=10)
             except (socket.timeout, urllib2.URLError, ssl.SSLError):
                 # On timeout retry
                 retry = retry + 1 
@@ -178,7 +186,10 @@ def _get_ttl_doc_content(doc):
         while retry <= MAX_RETRY:
             try:
                 logger.info(' urllib2 open ')
-                ttl_doc_req = urllib2.urlopen(doc, timeout=TIMEOUT)
+                with vcr.use_cassette(
+                        os.path.join(NIDM_PATH, 'vcr_cassettes/synopsis.yaml'),
+                        record_mode='new_episodes'):
+                    ttl_doc_req = urllib2.urlopen(doc, timeout=TIMEOUT)
 
                 # There is no mechanism to handle timeout on read() in urllib2, 
                 # so we need to use a timer
