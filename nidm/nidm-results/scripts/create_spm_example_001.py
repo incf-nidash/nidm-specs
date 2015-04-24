@@ -87,11 +87,11 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
-			voxel_size="[3, 3, 3]",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_size="[ 3, 3, 3 ]",
 			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
-			dimensions="[53,63,52]"),
+			dimensions="[ 53, 63, 52 ]"),
 		"ResidualMeanSquaresMap": dict(
 			residual_mean_squares_map_id="niiri:residual_mean_squares_map_id",
 			label="Residual Mean Squares Map",
@@ -234,9 +234,9 @@ def main():
 		"ExcursionSetMap": dict(
 			id="niiri:excursion_set_map_id",
 			label="Excursion Set Map",
-			location="file://./ExcursionSetMap.nii.gz",
+			location="file://./ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename="ExcursionSetMap.nii.gz",
+			filename="ExcursionSet.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			max_intensity_projection_id="niiri:maximum_intensity_projection_id",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -314,7 +314,7 @@ def main():
 		"Coordinate-1": dict(
 			coordinate_id="niiri:coordinate_0001",
 			label="Coordinate: 0001",
-			coord="[-60, -25, 11]"
+			coord="[ -60, -25, 11 ]"
 			),
 		"Peak_ValueP-2": dict(
 			peak_id="niiri:peak_0002",
@@ -330,7 +330,7 @@ def main():
 		"Coordinate-2": dict(
 			coordinate_id="niiri:coordinate_0002",
 			label="Coordinate: 0002",
-			coord="[-42, -31, 11]"
+			coord="[ -42, -31, 11 ]"
 			),
 		"Peak_ValueP-3": dict(
 			peak_id="niiri:peak_0003",
@@ -346,7 +346,7 @@ def main():
 		"Coordinate-3": dict(
 			coordinate_id="niiri:coordinate_0003",
 			label="Coordinate: 0003",
-			coord="[-66, -31, -1]"
+			coord="[ -66, -31, -1 ]"
 			),
 		"Peak_ValueP-4": dict(
 			peak_id="niiri:peak_0004",
@@ -362,7 +362,7 @@ def main():
 		"Coordinate-4": dict(
 			coordinate_id="niiri:coordinate_0004",
 			label="Coordinate: 0004",
-			coord="[63, -13, -4]"
+			coord="[ 63, -13, -4 ]"
 			),
 		"Peak_ValueP-5": dict(
 			peak_id="niiri:peak_0005",
@@ -378,7 +378,7 @@ def main():
 		"Coordinate-5": dict(
 			coordinate_id="niiri:coordinate_0005",
 			label="Coordinate: 0005",
-			coord="[60, -22, 11]"
+			coord="[ 60, -22, 11 ]"
 			),
 		"Peak_ValueP-6": dict(
 			peak_id="niiri:peak_0006",
@@ -394,7 +394,7 @@ def main():
 		"Coordinate-6": dict(
 			coordinate_id="niiri:coordinate_0006",
 			label="Coordinate: 0006",
-			coord="[57, -40, 5]"
+			coord="[ 57, -40, 5 ]"
 			),
 		"Peak_ValueP-7": dict(
 			peak_id="niiri:peak_0007",
@@ -410,7 +410,7 @@ def main():
 		"Coordinate-7": dict(
 			coordinate_id="niiri:coordinate_0007",
 			label="Coordinate: 0007",
-			coord="[36, -28, -13]"
+			coord="[ 36, -28, -13 ]"
 			),
 		"Peak_ValueP-8": dict(
 			peak_id="niiri:peak_0008",
@@ -426,7 +426,7 @@ def main():
 		"Coordinate-8": dict(
 			coordinate_id="niiri:coordinate_0008",
 			label="Coordinate: 0008",
-			coord="[-33, -31, -16]"
+			coord="[ -33, -31, -16 ]"
 			),
 		"Peak_ValueP-9": dict(
 			peak_id="niiri:peak_0009",
@@ -442,7 +442,7 @@ def main():
 		"Coordinate-9": dict(
 			coordinate_id="niiri:coordinate_0009",
 			label="Coordinate: 0009",
-			coord="[45, -40, 32]"
+			coord="[ 45, -40, 32 ]"
 			),
 		"SearchSpaceMaskMap": dict( # The "search space"
 			search_space_id="niiri:search_space_mask_id",
@@ -463,8 +463,8 @@ def main():
 			resel_size="132.907586178202",
 			search_vol_resels="467.07642343881",
 			search_vol_resels_geom="[7, 42.96312274763, 269.40914815306, 467.07642343881]",
-			noise_fwhm_in_voxels="[5.41278985910694, 5.43638957240286, 4.51666658877481]",
-			noise_fwhm_in_units="[16.2383695773208, 16.3091687172086, 13.5499997663244]",
+			noise_fwhm_in_voxels="[ 5.41278985910694, 5.43638957240286, 4.51666658877481 ]",
+			noise_fwhm_in_units="[ 16.2383695773208, 16.3091687172086, 13.5499997663244 ]",
 			random_field_station="true",
 			sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
 			inference_id="niiri:inference_id"

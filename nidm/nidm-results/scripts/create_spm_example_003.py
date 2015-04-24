@@ -111,11 +111,11 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
-			voxel_size="[3, 3, 3]",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_size="[ 3, 3, 3 ]",
 			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
-			dimensions="[53,63,46]"),
+			dimensions="[ 53, 63, 46 ]"),
 		"ResidualMeanSquaresMap": dict(
 			residual_mean_squares_map_id="niiri:residual_mean_squares_map_id",
 			label="Residual Mean Squares Map",
@@ -147,7 +147,7 @@ def main():
 		"ContrastWeights-2": dict(
 			contrast_id="niiri:contrast_id_2",
 			label="Contrast: motor",
-			value="[0, 0, 1]",
+			value="[ 0, 0, 1 ]",
 			statistic_type=STATO_TSTATISTIC_STR,
 			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="motor"

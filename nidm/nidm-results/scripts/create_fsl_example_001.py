@@ -101,11 +101,11 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space",
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
-			voxel_size="[3.5, 3.5, 3.5]",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_size="[ 3.5, 3.5, 3.5 ]",
 			coord_system="nidm:NIDM_0000077",
 			number_of_dim="3",
-			dimensions="[64, 64, 42]"),
+			dimensions="[ 64, 64, 42 ]"),
 		"FSL_ResidualMeanSquaresMap": dict(
 			residual_mean_squares_map_id="niiri:residual_mean_squares_map_id",
 			label="Residual Mean Squares Map",
@@ -253,9 +253,9 @@ def main():
 		"FSL_ExcursionSetMap": dict(
 			id="niiri:excursion_set_map_id_1",
 			label="Excursion Set Map",
-			location="file://./ExcursionSetMap.nii.gz",
+			location="file://./ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename_1="ExcursionSetMap.nii.gz",
+			filename_1="ExcursionSet.nii.gz",
 			filename_2="thresh_zstat1.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			png_id="niiri:excursion_set_png_id_1",
@@ -287,8 +287,8 @@ def main():
 		"FSL_Coordinate-COG1": dict(
 			coordinate_id="niiri:COG_coordinate_0001",
 			label="Coordinate 0001",
-			coord="[-5.8, 19.1, 38.5]",
-			coord_in_vox="[32.3, 39.2, 31]",
+			coord="[ -5.8, 19.1, 38.5 ]",
+			coord_in_vox="[ 32.3, 39.2, 31.0 ]",
 			),
 		"FSL_SignificantCluster-2": dict(
 			cluster_id="niiri:significant_cluster_0002",
@@ -308,8 +308,8 @@ def main():
 		"FSL_Coordinate-COG2": dict(
 			coordinate_id="niiri:COG_coordinate_0002",
 			label="Coordinate 0002",
-			coord="[-56.9,-57.1,9.86]", 
-			coord_in_vox="[47.1,19.2, 19.7]",
+			coord="[ -56.9, -57.1, 9.86 ]", 
+			coord_in_vox="[ 47.1, 19.2, 19.7 ]",
 			),
 		"FSL_SignificantCluster-3": dict(
 			cluster_id="niiri:significant_cluster_0003 ",
@@ -329,8 +329,8 @@ def main():
 		"FSL_Coordinate-COG3 ": dict(
 			coordinate_id="niiri:COG_coordinate_0003 ",
 			label="Coordinate 0003",
-			coord="[-47.2,17.3,9.18]", 
-			coord_in_vox="[43.4,40.3, 23.9]",
+			coord="[ -47.2, 17.3, 9.18 ]", 
+			coord_in_vox="[ 43.4, 40.3, 23.9 ]",
 			),
 		"FSL_SignificantCluster-4": dict(
 			cluster_id="niiri:significant_cluster_0004 ",
@@ -349,8 +349,8 @@ def main():
 		"FSL_Coordinate-COG4  ": dict(
 			coordinate_id="niiri:COG_coordinate_0004  ",
 			label="Coordinate 0004",
-			coord="[-7.38,-72.5,-8.5]", 
-			coord_in_vox="[34,14.7, 14]",
+			coord="[ -7.38, -72.5, -8.5 ]", 
+			coord_in_vox="[ 34.0, 14.7, 14.0 ]",
 			),
 		"Peak-M4-1": dict(
 			peak_id="niiri:peak_0004_1",
@@ -363,8 +363,8 @@ def main():
 		"FSL_Coordinate-4-1": dict(
 			coordinate_id="niiri:coordinate_0004_1",
 			label="Coordinate 0004_1",
-			coord="[-33.7,-66.7,-14.7]", 
-			coord_in_vox="[41,17, 13]",
+			coord="[ -33.7, -66.7, -14.7 ]", 
+			coord_in_vox="[ 41, 17, 13 ]",
 			),
 		"Peak-4-2": dict(
 			peak_id="niiri:peak_0004_2",
@@ -377,8 +377,8 @@ def main():
 		"FSL_Coordinate-4-2": dict(
 			coordinate_id="niiri:coordinate_0004_2",
 			label="Coordinate 0004_2",
-			coord="[-38,-53.9,-21.9]", 
-			coord_in_vox="[42,21, 12]",
+			coord="[ -38.0, -53.9, -21.9 ]", 
+			coord_in_vox="[ 42, 21, 12 ]",
 			),
 		"Peak-4-3": dict(
 			peak_id="niiri:peak_0004_3",
@@ -391,8 +391,8 @@ def main():
 		"FSL_Coordinate-4-3": dict(
 			coordinate_id="niiri:coordinate_0004_3",
 			label="Coordinate 0004_3",
-			coord="[16.1, -96.6, 5.82]",
-			coord_in_vox="[28, 7, 16]",
+			coord="[ 16.1, -96.6, 5.82 ]",
+			coord_in_vox="[ 28, 7, 16 ]",
 			),
 		"Peak-4-4": dict(
 			peak_id="niiri:peak_0004_4",
@@ -405,8 +405,8 @@ def main():
 		"FSL_Coordinate-4-4": dict(
 			coordinate_id="niiri:coordinate_0004_4",
 			label="Coordinate 0004_4",
-			coord="[-48.1,-73.7,-9.24]", 
-			coord_in_vox="[45,15, 14]"
+			coord="[ -48.1, -73.7, -9.24 ]", 
+			coord_in_vox="[ 45, 15, 14 ]"
 			),
 		"Peak-4-5": dict(
 			peak_id="niiri:peak_0004_5",
@@ -419,8 +419,8 @@ def main():
 		"FSL_Coordinate-4-5": dict(
 			coordinate_id="niiri:coordinate_0004_5",
 			label="Coordinate 0004_5",
-			coord="[-25.5,-80.4,-15.3]", 
-			coord_in_vox="[39,13, 12]"
+			coord="[ -25.5, -80.4, -15.3 ]", 
+			coord_in_vox="[ 39, 13, 12 ]"
 			),
 		"Peak-4-6": dict(
 			peak_id="niiri:peak_0004_6",
@@ -433,8 +433,8 @@ def main():
 		"FSL_Coordinate-4-6": dict(
 			coordinate_id="niiri:coordinate_0004_6",
 			label="Coordinate 0004_6",
-			coord="[0.791,-87.2,3.23]", 
-			coord_in_vox="[32,10, 16]"
+			coord="[ 0.791, -87.2, 3.23 ]", 
+			coord_in_vox="[ 32, 10, 16 ]"
 			),
 		"Peak-M3-1": dict(
 			peak_id="niiri:peak_0003_1",
@@ -447,8 +447,8 @@ def main():
 		"FSL_Coordinate-3-1": dict(
 			coordinate_id="niiri:coordinate_0003_1",
 			label="Coordinate 0003_1",
-			coord="[-38.3,20.7,13.2]", 
-			coord_in_vox="[41,41, 25]"
+			coord="[ -38.3, 20.7, 13.2 ]", 
+			coord_in_vox="[ 41, 41, 25 ]"
 			),
 		"Peak-3-2": dict(
 			peak_id="niiri:peak_0003_2",
@@ -461,8 +461,8 @@ def main():
 		"FSL_Coordinate-3-2": dict(
 			coordinate_id="niiri:coordinate_0003_2",
 			label="Coordinate 0003_2",
-			coord="[-45.5,17.8,-6.65]", 
-			coord_in_vox="[43,41, 20]"
+			coord="[ -45.5, 17.8, -6.65 ]", 
+			coord_in_vox="[ 43, 41, 20 ]"
 			),
 		"Peak-3-3": dict(
 			peak_id="niiri:peak_0003_3",
@@ -475,8 +475,8 @@ def main():
 		"FSL_Coordinate-3-3": dict(
 			coordinate_id="niiri:coordinate_0003_3",
 			label="Coordinate 0003_3",
-			coord="[-63.4,3.78,0.366]", 
-			coord_in_vox="[48,37, 21]"
+			coord="[ -63.4, 3.78, 0.366 ]", 
+			coord_in_vox="[ 48, 37, 21 ]"
 			),
 		"Peak-3-4": dict(
 			peak_id="niiri:peak_0003_4",
@@ -489,8 +489,8 @@ def main():
 		"FSL_Coordinate-3-4": dict(
 			coordinate_id="niiri:coordinate_0003_4",
 			label="Coordinate 0003_4",
-			coord="[-57.4,31.8,-2.12]", 
-			coord_in_vox="[46,45, 22]"
+			coord="[ -57.4, 31.8, -2.12 ]", 
+			coord_in_vox="[ 46, 45, 22 ]"
 			),
 		"Peak-3-5": dict(
 			peak_id="niiri:peak_0003_5",
@@ -503,8 +503,8 @@ def main():
 		"FSL_Coordinate-3-5": dict(
 			coordinate_id="niiri:coordinate_0003_5",
 			label="Coordinate 0003_5",
-			coord="[-34,8.84,28.3]", 
-			coord_in_vox="[40,37, 28]"
+			coord="[ -34.0, 8.84, 28.3 ]", 
+			coord_in_vox="[ 40, 37, 28 ]"
 			),
 		"Peak-3-6": dict(
 			peak_id="niiri:peak_0003_6",
@@ -517,8 +517,8 @@ def main():
 		"FSL_Coordinate-3-6": dict(
 			coordinate_id="niiri:coordinate_0003_6",
 			label="Coordinate 0003_6",
-			coord="[-53.3,23.3,12.2]", 
-			coord_in_vox="[45,42, 25]"
+			coord="[ -53.3, 23.3, 12.2 ]", 
+			coord_in_vox="[ 45, 42, 25 ]"
 			),
 		"Peak-M2-1": dict(
 			peak_id="niiri:peak_0002_1",
@@ -531,8 +531,8 @@ def main():
 		"FSL_Coordinate-2-1": dict(
 			coordinate_id="niiri:coordinate_0002_1",
 			label="Coordinate 0002_1",
-			coord="[-56.2,-61.9,4.03]", 
-			coord_in_vox="[47,18, 18]"
+			coord="[ -56.2, -61.9, 4.03 ]", 
+			coord_in_vox="[ 47, 18, 18 ]"
 			),
 		"Peak-2-2": dict(
 			peak_id="niiri:peak_0002_2",
@@ -545,8 +545,8 @@ def main():
 		"FSL_Coordinate-2-2": dict(
 			coordinate_id="niiri:coordinate_0002_2",
 			label="Coordinate 0002_2",
-			coord="[-56.7,-53.1,18.2]", 
-			coord_in_vox="[47,20, 22]"
+			coord="[ -56.7, -53.1, 18.2 ]", 
+			coord_in_vox="[ 47, 20, 22 ]"
 			),
 		"Peak-M1-1": dict(
 			peak_id="niiri:peak_0001_1",
@@ -559,8 +559,8 @@ def main():
 		"FSL_Coordinate-1-1": dict(
 			coordinate_id="niiri:coordinate_0001_1",
 			label="Coordinate 0001_1",
-			coord="[-8.35,15.1,39.6]", 
-			coord_in_vox="[33,38, 31]"
+			coord="[ -8.35, 15.1, 39.6 ]", 
+			coord_in_vox="[ 33, 38, 31 ]"
 			),
 		"Peak-1-2": dict(
 			peak_id="niiri:peak_0001_2",
@@ -573,8 +573,8 @@ def main():
 		"FSL_Coordinate-1-2": dict(
 			coordinate_id="niiri:coordinate_0001_2",
 			label="Coordinate 0001_2",
-			coord="[-9.14,30.5,23.7]", 
-			coord_in_vox="[33,43, 28]"
+			coord="[ -9.14, 30.5, 23.7 ]", 
+			coord_in_vox="[ 33, 43, 28 ]"
 			),
 		"Peak-1-3": dict(
 			peak_id="niiri:peak_0001_3",
@@ -587,8 +587,8 @@ def main():
 		"FSL_Coordinate-1-3": dict(
 			coordinate_id="niiri:coordinate_0001_3",
 			label="Coordinate 0001_3",
-			coord="[-19.6,17.4,34.7]", 
-			coord_in_vox="[36,39, 30]"
+			coord="[ -19.6, 17.4, 34.7 ]", 
+			coord_in_vox="[ 36, 39, 30 ]"
 			),
 		"Peak-1-4": dict(
 			peak_id="niiri:peak_0001_4",
@@ -601,12 +601,12 @@ def main():
 		"FSL_Coordinate-1-4": dict(
 			coordinate_id="niiri:coordinate_0001_4",
 			label="Coordinate 0001_4",
-			coord="[-9.64,40.1,17.3]", 
-			coord_in_vox="[33,46, 27]"
+			coord="[ -9.64, 40.1, 17.3 ]", 
+			coord_in_vox="[ 33, 46, 27 ]"
 			),
 		"FSL_SearchSpaceMaskMap": dict(
 			search_space_id="niiri:search_space_mask_id",
-			location="file://./SearchSpace.nii.gz",
+			location="file://./SearchSpaceMask.nii.gz",
 			filename_1="SearchSpaceMask.nii.gz",
 			filename_2="mask.nii.gz",
 			label="Search Space Mask Map",

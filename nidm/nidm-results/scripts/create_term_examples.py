@@ -87,7 +87,7 @@ def main():
 		"ContrastWeights": dict(
 			contrast_id="niiri:contrast_id",
 			label="Contrast: Listening > Rest",
-			value="[1, 0, 0]",
+			value="[ 1, 0, 0 ]",
 			statistic_type=STATO_TSTATISTIC_STR,
 			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="listening > rest"),
@@ -202,9 +202,9 @@ def main():
 		"ExcursionSetMap": dict(
 			id="niiri:excursion_set_map_id",
 			label="Excursion Set Map",
-			location="file:///path/to/ExcursionSetMap.nii.gz",
+			location="file:///path/to/ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename="ExcursionSetMap.nii.gz",
+			filename="ExcursionSet.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			max_intensity_projection_id="niiri:maximum_intensity_projection_id",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -238,7 +238,7 @@ def main():
 		"Coordinate": dict(
 			coordinate_id="niiri:coordinate_0001",
 			label="Coordinate: 0001",
-			coord="[-60, -28, 13]"
+			coord="[ -60, -28, 13 ]"
 			),
 		"SearchSpaceMaskMap": dict(
 			search_space_id="niiri:search_space_mask_id",
@@ -258,8 +258,8 @@ def main():
 			resel_size="22.9229643140043",
 			search_vol_resels="2552.68032521656",
 			search_vol_resels_geom="[3, 72.3216126440484, 850.716735116472, 2552.68032521656]",
-			noise_fwhm_in_voxels="[2.95881189165801, 2.96628446669584, 2.61180425626264]",
-			noise_fwhm_in_units="[8.87643567497404, 8.89885340008753, 7.83541276878791]",
+			noise_fwhm_in_voxels="[ 2.95881189165801, 2.96628446669584, 2.61180425626264 ]",
+			noise_fwhm_in_units="[ 8.87643567497404, 8.89885340008753, 7.83541276878791 ]",
 			random_field_station="false",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			inference_id="niiri:inference_id"
@@ -274,11 +274,11 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
-			voxel_size="[3, 3, 3]",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_size="[ 3, 3, 3 ]",
 			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
-			dimensions="[53,63,46]"),
+			dimensions="[ 53, 63, 46 ]"),
 		"Image": dict(
 			image_id="niiri:maximum_intensity_projection_id",
 			location="file:///path/to/MaximumIntensityProjection.png",

@@ -386,11 +386,11 @@
 niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
 	rdfs:label "Coordinate space 1" ;
 	nidm_voxelToWorldMapping: "[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -50],[0, 0, 0, 1]]"^^xsd:string ;
-	nidm_voxelUnits: "['mm', 'mm', 'mm']"^^xsd:string ;
-	nidm_voxelSize: "[3, 3, 3]"^^xsd:string ;
+	nidm_voxelUnits: "[ 'mm', 'mm', 'mm' ]"^^xsd:string ;
+	nidm_voxelSize: "[ 3, 3, 3 ]"^^xsd:string ;
 	nidm_inWorldCoordinateSystem: nidm_MNICoordinateSystem: ;
 	nidm_numberOfDimensions: "3"^^xsd:int ;
-	nidm_dimensionsInVoxels: "[53,63,46]"^^xsd:string .</pre>
+	nidm_dimensionsInVoxels: "[ 53, 63, 46 ]"^^xsd:string .</pre>
             <!-- nidm:'Custom Coordinate System' (NIDM_0000017) -->
             <section id="section-nidm:'Custom Coordinate System'">
                 <h1 label="NIDM_0000017">nidm:'Custom Coordinate System'</h1>
@@ -1123,7 +1123,7 @@ niiri:contrast_estimation_id a prov:Activity , nidm_ContrastEstimation: ;
 
 niiri:contrast_id a prov:Entity , obo_contrastweightmatrix: ;
 	rdfs:label "Contrast: Listening &gt; Rest" ;
-	prov:value "[1, 0, 0]"^^xsd:string ;
+	prov:value "[ 1, 0, 0 ]"^^xsd:string ;
 	nidm_statisticType: obo_tstatistic: ; # obo:'t-statistic'
 	nidm_contrastName: "listening &gt; rest"^^xsd:string .</pre>
             </section>
@@ -1469,8 +1469,8 @@ niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
                 <div class="attributes" id="attributes-nidm:'Coordinate'"> A <a title="NIDM_0000015">nidm:'Coordinate'</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:'Coordinate'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000015">nidm:'Coordinate'</a>.</li>
-                        <li><a title="NIDM_0000086"><dfn title="NIDM_0000086">nidm:'coordinate Vector'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A vector with one number per dimension. The first element corresponds to the coordinate along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the coordinate along the second dimension etc (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000139"><dfn title="NIDM_0000139">nidm:'coordinate Vector In Voxels'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="NIDM_0000086"><dfn title="NIDM_0000086">nidm:'coordinate Vector'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A vector with one number per dimension. The first element corresponds to the coordinate along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the coordinate along the second dimension etc (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000139"><dfn title="NIDM_0000139">nidm:'coordinate Vector In Voxels'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270) (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_Coordinate: &lt;http://purl.org/nidash/nidm#NIDM_0000015&gt; .
@@ -1479,7 +1479,7 @@ niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
 
 niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate: 0001" ;
-	nidm_coordinateVector: "[-60, -28, 13]"^^xsd:string .</pre>
+	nidm_coordinateVector: "[ -60, -28, 13 ]"^^xsd:string .</pre>
             </section>
             <!-- nidm:'Display Mask Map' (NIDM_0000020) -->
             <section id="section-nidm:'Display Mask Map'">
@@ -1543,9 +1543,9 @@ niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
 
 niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
 	rdfs:label "Excursion Set Map" ;
-	prov:atLocation "file:///path/to/ExcursionSetMap.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "file:///path/to/ExcursionSet.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
-	nfo:fileName "ExcursionSetMap.nii.gz"^^xsd:string ;
+	nfo:fileName "ExcursionSet.nii.gz"^^xsd:string ;
 	nidm_hasClusterLabelsMap: niiri:cluster_label_map_id ;
 	nidm_hasMaximumIntensityProjection: niiri:maximum_intensity_projection_id ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
@@ -1747,8 +1747,8 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	nidm_reselSizeInVoxels: "22.9229643140043"^^xsd:float ;
 	nidm_searchVolumeInResels: "2552.68032521656"^^xsd:float ;
 	spm_searchVolumeReselsGeometry: "[3, 72.3216126440484, 850.716735116472, 2552.68032521656]"^^xsd:string ;
-	spm_noiseFWHMInVoxels: "[2.95881189165801, 2.96628446669584, 2.61180425626264]"^^xsd:string ;
-	spm_noiseFWHMInUnits: "[8.87643567497404, 8.89885340008753, 7.83541276878791]"^^xsd:string ;
+	spm_noiseFWHMInVoxels: "[ 2.95881189165801, 2.96628446669584, 2.61180425626264 ]"^^xsd:string ;
+	spm_noiseFWHMInUnits: "[ 8.87643567497404, 8.89885340008753, 7.83541276878791 ]"^^xsd:string ;
 	nidm_randomFieldStationarity: "false"^^xsd:boolean ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id .</pre>
