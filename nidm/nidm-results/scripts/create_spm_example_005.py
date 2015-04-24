@@ -25,7 +25,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
 			voxel_size="[ 3, 3, 3 ]",
 			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",

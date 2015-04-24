@@ -101,7 +101,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space",
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
-			voxel_units="['mm', 'mm', 'mm']",
+			voxel_units="[ 'mm', 'mm', 'mm' ]",
 			voxel_size="[ 3.5, 3.5, 3.5 ]",
 			coord_system="nidm:NIDM_0000077",
 			number_of_dim="3",
@@ -288,7 +288,7 @@ def main():
 			coordinate_id="niiri:COG_coordinate_0001",
 			label="Coordinate 0001",
 			coord="[ -5.8, 19.1, 38.5 ]",
-			coord_in_vox="[ 32.3, 39.2, 31 ]",
+			coord_in_vox="[ 32.3, 39.2, 31.0 ]",
 			),
 		"FSL_SignificantCluster-2": dict(
 			cluster_id="niiri:significant_cluster_0002",
@@ -350,7 +350,7 @@ def main():
 			coordinate_id="niiri:COG_coordinate_0004  ",
 			label="Coordinate 0004",
 			coord="[ -7.38, -72.5, -8.5 ]", 
-			coord_in_vox="[ 34, 14.7, 14 ]",
+			coord_in_vox="[ 34.0, 14.7, 14.0 ]",
 			),
 		"Peak-M4-1": dict(
 			peak_id="niiri:peak_0004_1",
@@ -377,7 +377,7 @@ def main():
 		"FSL_Coordinate-4-2": dict(
 			coordinate_id="niiri:coordinate_0004_2",
 			label="Coordinate 0004_2",
-			coord="[ -38, -53.9, -21.9 ]", 
+			coord="[ -38.0, -53.9, -21.9 ]", 
 			coord_in_vox="[ 42, 21, 12 ]",
 			),
 		"Peak-4-3": dict(
@@ -503,7 +503,7 @@ def main():
 		"FSL_Coordinate-3-5": dict(
 			coordinate_id="niiri:coordinate_0003_5",
 			label="Coordinate 0003_5",
-			coord="[ -34, 8.84, 28.3 ]", 
+			coord="[ -34.0, 8.84, 28.3 ]", 
 			coord_in_vox="[ 40, 37, 28 ]"
 			),
 		"Peak-3-6": dict(
