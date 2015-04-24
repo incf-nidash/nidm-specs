@@ -553,7 +553,9 @@ class OwlReader():
 
                         key = "\n Unrecognised range: " + \
                             found_range_line + \
-                            ' for '+ex_graph.qname(p)+' should be ' + \
+                            ' for '+self.get_name(p) + \
+                            " (i.e. " + self.get_label(p) + ")" + \
+                            ' should be ' + \
                             owl_range_line
                 else:
                     # No range found for current attribute
