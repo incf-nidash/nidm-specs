@@ -281,15 +281,25 @@ class TestResultDataModel(object):
                         #        self.get_readable_name(other_graph, o),
                         #        self.get_alternatives(gt_graph, s=s, p=p))
 
-                        exc_wrong_literal += "\nWrong o:\t %s should be %s?" \
-                            "\n\t\t ... in '%s %s %s'" \
-                            % (
-                                self.get_readable_name(other_graph, o),
-                                self.get_alternatives(gt_graph, s=s, p=p),
-                                self.get_readable_name(other_graph, s),
-                                self.get_readable_name(other_graph, p),
-                                self.get_readable_name(other_graph, o)
-                            )
+                        # If string represents a json-array, then spaces do not
+                        # matter
+                        same_json_array = False
+                        if o.startswith("[") and o.endswith("]"):
+                            for o_gt in gt_graph.objects(s,  p):
+                                if o.replace(" ", "") == o_gt.replace(" ", ""):
+                                    same_json_array = True
+
+                        if not same_json_array:
+                            exc_wrong_literal += \
+                                "\nWrong o:\t %s should be %s?" \
+                                "\n\t\t ... in '%s %s %s'" \
+                                % (
+                                    self.get_readable_name(other_graph, o),
+                                    self.get_alternatives(gt_graph, s=s, p=p),
+                                    self.get_readable_name(other_graph, s),
+                                    self.get_readable_name(other_graph, p),
+                                    self.get_readable_name(other_graph, o)
+                                )
 
                     elif not isinstance(o, rdflib.term.BNode):
                         exc_wrong += \
