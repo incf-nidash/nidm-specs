@@ -33,7 +33,7 @@ def main():
 		"SPM_DriftModel": dict(
 			id="niiri:drift_model_id",
 			label="SPM's DCT Drift Model",
-			cut_off="2"
+			cut_off="128"
 			),
 		"Image-DesignMatrix": dict(
 			image_id="niiri:design_matrix_png_id",

@@ -299,7 +299,7 @@ def main():
 		"SPM_DriftModel": dict(
 			id="niiri:drift_model_id",
 			label="SPM's DCT Drift Model",
-			cut_off="2"
+			cut_off="128"
 			),
 		"FSL_DriftModel": dict(
 			id="niiri:drift_model_id",
