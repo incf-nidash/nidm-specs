@@ -26,7 +26,8 @@ def main():
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
-			regressors="[\\\"Gen\\\", \\\"Gen_der\\\", \\\"Shad\\\", \\\"Shad_der\\\"]",
+			regressors="[\\\"Gen\\\", \\\"Gen*temporal_derivative\\\""
+			", \\\"Shad\\\", \\\"Shad*temporal_derivative\\\"]",
 			design="nidm:NIDM_0000152",
 			hrf_basis="fsl:FSL_0000001",
 			drift_model="niiri:drift_model_id"),
