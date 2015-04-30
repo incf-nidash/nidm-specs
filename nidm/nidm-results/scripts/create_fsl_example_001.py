@@ -102,7 +102,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space",
 			voxel_to_world_mapping="[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]",
-			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_units="[ \\\"mm\\\", \\\"mm\\\", \\\"mm\\\" ]",
 			voxel_size="[ 3.5, 3.5, 3.5 ]",
 			coord_system="nidm:NIDM_0000077",
 			number_of_dim="3",
