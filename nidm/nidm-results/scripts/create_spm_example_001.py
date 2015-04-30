@@ -27,7 +27,7 @@ def main():
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
 			regressors='[\\\"Sn(1) active*bf(1)\\\", \\\"Sn(1) constant\\\"]',
-			design="nidm:NIDM_0000153", # event-related design
+			design="nidm:NIDM_0000152", # block-based design
 			hrf_basis="spm:SPM_0000004",
 			drift_model="niiri:drift_model_id"),
 		"SPM_DriftModel": dict(
@@ -524,7 +524,7 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nlx:nif-0000-00343",
 			label="SPM",
-			version="12.12"
+			version="12.12.0"
 			),
 		"Image": dict(
 			image_id="niiri:maximum_intensity_projection_id",
