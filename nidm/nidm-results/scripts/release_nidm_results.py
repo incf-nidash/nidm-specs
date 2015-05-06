@@ -84,18 +84,20 @@ class NIDMRelease(object):
                     im_txt = im_txt.replace(" :", " "+name+":")
                     im_txt = im_txt.replace("\n:", "\n"+name+":")
 
+                # Remove base prefix
+                base_match = re.search(r'@base <.*>', im_txt)
+                if base_match:
+                    im_txt = im_txt.replace(base_match.group(), "")
+
                 # Copy missing prefixes in nidm-results owl file
-                prefixes = re.findall(r'@prefix \w+: <.*>', im_txt)
+                prefixes = re.findall(r'@prefix \w+: <.*> \.\n', im_txt)
                 for prefix in prefixes:
                     if not prefix in owl_txt:
-                        owl_txt = prefix+"\n"+owl_txt
+                        owl_txt = prefix+owl_txt
+                    im_txt = im_txt.replace(prefix, "")
 
-                body_match = re.search(
-                    r'#################################(.*\n*)*', im_txt)
-                if body_match:
-                    owl_txt = owl_txt + "\n\n##### Imports from %s #####" \
-                        % (name)
-                    owl_txt = owl_txt + body_match.group()
+                owl_txt = owl_txt + "\n\n##### Imports from %s #####" % (name)
+                owl_txt = owl_txt + im_txt
 
         # Remove AFNI-related terms (not ready for release yet)
         if int(self.nidm_version) <= 100:
