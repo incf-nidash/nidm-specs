@@ -67,6 +67,7 @@ class NIDMRelease(object):
             for im in owl_imports:
                 im = im.replace("<", "").replace(">", "")
                 im_name = self.get_import_name(im)
+                name = im_name.split("-")[0].replace("_import", "")
 
                 im_file = os.path.join(IMPORT_FOLDER, im_name+".ttl")
 
@@ -80,7 +81,6 @@ class NIDMRelease(object):
                 # Replace prefix ":" by named namespace in import
                 default_match = re.search(r'@prefix : <.*>', im_txt)
                 if default_match:
-                    name = im_name.split("-")[0].replace("_import", "")
                     im_txt = im_txt.replace(" :", " "+name+":")
                     im_txt = im_txt.replace("\n:", "\n"+name+":")
 
