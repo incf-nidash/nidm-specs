@@ -334,12 +334,16 @@ class OwlReader():
         examples = list(self.graph.objects(owl_term, OBO_EXAMPLE))
 
         for example in examples:
-            if base_repository is not None:
-                if example.startswith(base_repository):
-                    local_path = example.replace(base_repository, "./")
-                    fid_ex = open(local_path)
-                    example = fid_ex.read()
-                    fid_ex.close()
+            if (base_repository is not None) and \
+                    example.startswith(base_repository):
+                local_path = example.replace(base_repository, "./")
+                fid_ex = open(local_path)
+                example = fid_ex.read()
+                fid_ex.close()
+            elif example.startswith("http"):
+                # Read file from url
+                example = urllib.urlopen(example).read()
+
             example_list.append(example)
 
         return example_list
