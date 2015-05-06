@@ -64,10 +64,7 @@ class NIDMRelease(object):
 
             owl_imports = re.findall(r"<.*>", match.group("imports"))
 
-            # import_names = map(self.get_import_name, owl_imports)
-            # print import_names
-
-            for im in sorted(owl_imports, key=self.get_import_name):
+            for im in owl_imports:
                 im = im.replace("<", "").replace(">", "")
                 im_name = self.get_import_name(im)
 
@@ -100,11 +97,22 @@ class NIDMRelease(object):
                         % (name)
                     owl_txt = owl_txt + body_match.group()
 
+        # Remove AFNI-related terms (not ready for release yet)
+        if int(self.nidm_version) <= 100:
+            owl_txt = owl_txt.replace(
+                "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
+            # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
+            # afni:'GammaHRF' and afni:'LegendrePolynomialDriftModel'
+            terms_under_development = [
+                NIDM['NIDM_0000014'], AFNI['BLOCK'], AFNI['GammaHRF'],
+                AFNI['LegendrePolynomialDriftModel']]
+            for term in terms_under_development:
+                m = re.search(
+                    re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
+                owl_txt = owl_txt.replace(m.group(), "")
+
         with open(release_owl_file, 'w') as fp:
             owl_txt = fp.write(owl_txt)
-
-                # with open(release_owl_file, 'r') as fp:
-                #     owl_txt = fp.read()
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
