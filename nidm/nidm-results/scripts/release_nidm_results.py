@@ -11,9 +11,11 @@
 
 import logging
 import os
+import re
 from rdflib.compare import *
 import sys
 import shutil
+import urllib2
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -27,19 +29,81 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 TERMS_FOLDER = os.path.join(NIDMRESULTSPATH, 'terms')
+IMPORT_FOLDER = os.path.join(os.path.dirname(NIDMRESULTSPATH), "imports")
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
 
-def main(nidm_original_version):
-    nidm_version = nidm_original_version.replace(".", "")
+class NIDMRelease(object):
 
-    owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
-    assert os.path.exists(owl_file)
+    def get_import_name(self, import_url):
+        return import_url.split("/")[-1].replace(".owl", "")
 
-    # Copy the owl file to the release folder
-    release_owl_file = os.path.join(RELEASED_TERMS_FOLDER,
-                                    "nidm_results_%s.owl" % (nidm_version))
-    shutil.copyfile(owl_file, release_owl_file)
+    def __init__(self, nidm_original_version):
+        self.nidm_original_version = nidm_original_version
+        self.nidm_version = nidm_original_version.replace(".", "")
+
+    def create_release(self):
+        owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
+        assert os.path.exists(owl_file)
+
+        # Copy the owl file to the release folder
+        release_owl_file = os.path.join(
+            RELEASED_TERMS_FOLDER,
+            "nidm_results_%s.owl" % (self.nidm_version))
+        shutil.copyfile(owl_file, release_owl_file)
+
+        with open(release_owl_file, 'r') as fp:
+            owl_txt = fp.read()
+
+        # Remove imports and copy the import directly in the release file
+        match = re.search(r'\[[\w:;\n\s]' +
+                          r'*(?P<imports>(\s*<.*>\s*,?\s*\n)*)\s*\] \.', owl_txt)
+        if match:
+            owl_txt = owl_txt.replace(match.group(), "")
+
+            owl_imports = re.findall(r"<.*>", match.group("imports"))
+
+            # import_names = map(self.get_import_name, owl_imports)
+            # print import_names
+
+            for im in sorted(owl_imports, key=self.get_import_name):
+                im = im.replace("<", "").replace(">", "")
+                im_name = self.get_import_name(im)
+
+                im_file = os.path.join(IMPORT_FOLDER, im_name+".ttl")
+
+                if os.path.exists(im_file):
+                    with open(im_file, 'r') as fp:
+                        im_txt = fp.read()
+                else:
+                    response = urllib2.urlopen(im+'.ttl')
+                    im_txt = response.read()
+
+                # Replace prefix ":" by named namespace in import
+                default_match = re.search(r'@prefix : <.*>', im_txt)
+                if default_match:
+                    name = im_name.split("-")[0].replace("_import", "")
+                    im_txt = im_txt.replace(" :", " "+name+":")
+                    im_txt = im_txt.replace("\n:", "\n"+name+":")
+
+                # Copy missing prefixes in nidm-results release owl file
+                prefixes = re.findall(r'@prefix \w+: <.*>', im_txt)
+                for prefix in prefixes:
+                    if not prefix in owl_txt:
+                        owl_txt = prefix+"\n"+owl_txt
+
+                body_match = re.search(
+                    r'#################################(.*\n*)*', im_txt)
+                if body_match:
+                    owl_txt = owl_txt + "\n\n##### Imports from %s #####" % (name)
+                    owl_txt = owl_txt + body_match.group()
+
+        with open(release_owl_file, 'w') as fp:
+            owl_txt = fp.write(owl_txt)
+
+                # with open(release_owl_file, 'r') as fp:
+                #     owl_txt = fp.read()
+
 
 
 if __name__ == '__main__':
@@ -48,4 +112,5 @@ if __name__ == '__main__':
     else:
         raise Exception("Error: missing version number for NIDM release")
 
-    main(nidm_version)
+    nidm_release = NIDMRelease(nidm_version)
+    nidm_release.create_release()
