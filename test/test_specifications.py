@@ -23,8 +23,10 @@ sys.path.append(script_path)
 from create_results_specification import main as create_res_spec
 from create_expe_specification import main as create_expe_spec
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
+logger.info(' ---------- Debug log ----------')
+
 
 class TestSpecifications(unittest.TestCase):
 
