@@ -99,6 +99,13 @@ class NIDMRelease(object):
                 owl_txt = owl_txt + "\n\n##### Imports from %s #####" % (name)
                 owl_txt = owl_txt + im_txt
 
+                # Replace address of examples
+                owl_txt = owl_txt.replace(
+                    "https://raw.githubusercontent.com/incf-nidash/nidm/\
+master/",
+                    "https://raw.githubusercontent.com/incf-nidash/nidm/\
+NIDM-Results_"+self.nidm_original_version+"/")
+
         # Remove AFNI-related terms (not ready for release yet)
         if int(self.nidm_version) <= 100:
             owl_txt = owl_txt.replace(
