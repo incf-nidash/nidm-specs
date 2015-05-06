@@ -49,7 +49,7 @@ class NIDMRelease(object):
         # Copy the owl file to the release folder
         release_owl_file = os.path.join(
             RELEASED_TERMS_FOLDER,
-            "nidm_results_%s.owl" % (self.nidm_version))
+            "nidm-results_%s.owl" % (self.nidm_version))
         shutil.copyfile(owl_file, release_owl_file)
 
         with open(release_owl_file, 'r') as fp:
