@@ -56,8 +56,9 @@ class NIDMRelease(object):
             owl_txt = fp.read()
 
         # Remove imports and copy the import directly in the release file
-        match = re.search(r'\[[\w:;\n\s]' +
-                          r'*(?P<imports>(\s*<.*>\s*,?\s*\n)*)\s*\] \.', owl_txt)
+        match = re.search(
+            r'\[[\w:;\n\s]' +
+            r'*(?P<imports>(\s*<.*>\s*,?\s*\n)*)\s*\] \.', owl_txt)
         if match:
             owl_txt = owl_txt.replace(match.group(), "")
 
@@ -86,7 +87,7 @@ class NIDMRelease(object):
                     im_txt = im_txt.replace(" :", " "+name+":")
                     im_txt = im_txt.replace("\n:", "\n"+name+":")
 
-                # Copy missing prefixes in nidm-results release owl file
+                # Copy missing prefixes in nidm-results owl file
                 prefixes = re.findall(r'@prefix \w+: <.*>', im_txt)
                 for prefix in prefixes:
                     if not prefix in owl_txt:
@@ -95,7 +96,8 @@ class NIDMRelease(object):
                 body_match = re.search(
                     r'#################################(.*\n*)*', im_txt)
                 if body_match:
-                    owl_txt = owl_txt + "\n\n##### Imports from %s #####" % (name)
+                    owl_txt = owl_txt + "\n\n##### Imports from %s #####" \
+                        % (name)
                     owl_txt = owl_txt + body_match.group()
 
         with open(release_owl_file, 'w') as fp:
@@ -103,8 +105,6 @@ class NIDMRelease(object):
 
                 # with open(release_owl_file, 'r') as fp:
                 #     owl_txt = fp.read()
-
-
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
