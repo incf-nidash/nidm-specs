@@ -228,18 +228,6 @@ fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527",
             thresh_type="p-value FWE",
             p_fwe="0.05"
             ),
-        "DisplayMaskMap_fileName": dict(
-            display_map_id="niiri:display_map_id_1",
-            label="Display Mask Map",
-            location="file://./DisplayMask.nii.gz",
-            format="image/nifti",
-            user_defined="true",
-            filename="DisplayMask.nii.gz",
-            filename_2="mask.nii.gz",
-            coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642\
-fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"
-            ),
         "PeakDefinitionCriteria": dict(
             peak_definition_criteria_id="niiri:peak_definition_criteria_id_1",
             label="Peak Definition Criteria",
@@ -258,7 +246,6 @@ _id_1",
             stat_map_id="niiri:z_statistic_map_id_1",
             height_thresh_id="niiri:height_threshold_id",
             extent_thresh_id="niiri:extent_threshold_id",
-            display_mask_id="niiri:display_map_id_1",
             peak_def_id="niiri:peak_definition_criteria_id_1",
             cluster_def_id="niiri:cluster_definition_criteria_id_1",
             mask_id="niiri:mask_id_1",
