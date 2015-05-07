@@ -397,6 +397,8 @@ def main():
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			search_vol_voxels="45359",
+            search_vol_units="1.93808e+06",
+            search_vol_resels="3753.84",			
 			resel_size="12.2251",
 			noise_roughness="0.384676",
 			random_field_station="true",
