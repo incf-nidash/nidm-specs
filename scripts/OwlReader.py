@@ -8,8 +8,17 @@
 from rdflib import RDF, term
 from rdflib.graph import Graph
 from Constants import *
-import urllib
+import urllib2
 import warnings
+import vcr
+import os
+import logging
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDM_PATH = os.path.dirname(RELPATH)
+
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
+logger = logging.getLogger(__name__)
 
 
 class OwlReader():
@@ -200,7 +209,7 @@ class OwlReader():
         # Read owl (turtle) file
         owl_graph = Graph()
         if self.file[0:4] == "http":
-            owl_txt = urllib.urlopen(self.file).read()
+            owl_txt = urllib2.urlopen(self.file).read()
         else:
             owl_txt = open(self.file, 'r').read()
 
@@ -217,7 +226,7 @@ class OwlReader():
                 # Read owl (turtle) file
                 import_graph = Graph()
                 if self.file[0:4] == "http":
-                    import_txt = urllib.urlopen(import_file).read()
+                    import_txt = urllib2.urlopen(import_file).read()
                 else:
                     import_txt = open(import_file, 'r').read()
 
@@ -334,12 +343,19 @@ class OwlReader():
         examples = list(self.graph.objects(owl_term, OBO_EXAMPLE))
 
         for example in examples:
-            if base_repository is not None:
-                if example.startswith(base_repository):
-                    local_path = example.replace(base_repository, "./")
-                    fid_ex = open(local_path)
-                    example = fid_ex.read()
-                    fid_ex.close()
+            if (base_repository is not None) and \
+                    example.startswith(base_repository):
+                local_path = example.replace(base_repository, "./")
+                fid_ex = open(local_path)
+                example = fid_ex.read()
+                fid_ex.close()
+            elif example.startswith("http"):
+                with vcr.use_cassette(
+                        os.path.join(NIDM_PATH, 'vcr_cassettes/synopsis.yaml'),
+                        record_mode='new_episodes'):
+                    # Read file from url
+                    example = urllib2.urlopen(example).read()
+
             example_list.append(example)
 
         return example_list

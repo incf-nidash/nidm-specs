@@ -11,6 +11,7 @@ PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM = Namespace('http://purl.org/nidash/nidm#')
 
 NIIRI = Namespace('http://iri.nidash.org/')
+AFNI = Namespace('http://purl.org/nidash/afni#')
 SPM = Namespace('http://purl.org/nidash/spm#')
 FSL = Namespace('http://purl.org/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
