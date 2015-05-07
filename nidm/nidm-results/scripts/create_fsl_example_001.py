@@ -30,7 +30,7 @@ def main():
             design_matrix_png_id="niiri:design_matrix_png_id",
             regressors="[\\\"Gen\\\", \\\"Gen*temporal_derivative\\\""
             ", \\\"Shad\\\", \\\"Shad*temporal_derivative\\\"]",
-            design=str(NIDM_EVENT_RELATED_DESIGN),
+            design="nidm:"+str(NIDM_EVENT_RELATED_DESIGN).split("#")[1],
             hrf_basis="fsl:FSL_0000001",
             drift_model="niiri:drift_model_id"),
         "FSL_DriftModel": dict(
