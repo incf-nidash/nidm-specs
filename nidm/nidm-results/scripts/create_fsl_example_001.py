@@ -36,7 +36,7 @@ def main():
         "FSL_DriftModel": dict(
             id="niiri:drift_model_id",
             label="FSL's Gaussian Running Line Drift Model",
-            cut_off="2"
+            cut_off="1908"
             ),
         "Image-DesignMatrix": dict(
             image_id="niiri:design_matrix_png_id",
