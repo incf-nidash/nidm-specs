@@ -26,14 +26,14 @@ def main():
 			format="text/csv", 
 			filename="DesignMatrix.csv", 
 			design_matrix_png_id="niiri:design_matrix_png_id",
-			regressors="[\\\"Listening\\\"]",
-			design="nidm:NIDM_0000151",
+			regressors='[\\\"Sn(1) active*bf(1)\\\", \\\"Sn(1) constant\\\"]',
+			design="nidm:NIDM_0000152", # block-based design
 			hrf_basis="spm:SPM_0000004",
 			drift_model="niiri:drift_model_id"),
 		"SPM_DriftModel": dict(
 			id="niiri:drift_model_id",
 			label="SPM's DCT Drift Model",
-			cut_off="2"
+			cut_off="128"
 			),
 		"Image-DesignMatrix": dict(
 			image_id="niiri:design_matrix_png_id",
@@ -87,7 +87,7 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			label="Coordinate space 1",
 			voxel_to_world_mapping="[[-3, 0, 0, 78],[0, 3, 0, -112],[0, 0, 3, -70],[0, 0, 0, 1]]",
-			voxel_units="[ 'mm', 'mm', 'mm' ]",
+			voxel_units="[ \\\"mm\\\", \\\"mm\\\", \\\"mm\\\" ]",
 			voxel_size="[ 3, 3, 3 ]",
 			coord_system="nidm:NIDM_0000051",
 			number_of_dim="3",
@@ -524,7 +524,7 @@ def main():
 			software_id="niiri:software_id",
 			software_type="nlx:nif-0000-00343",
 			label="SPM",
-			version="12.12"
+			version="12.12.0"
 			),
 		"Image": dict(
 			image_id="niiri:maximum_intensity_projection_id",

@@ -38,10 +38,9 @@
 @prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
 @prefix nidm_regressorNames: <http://purl.org/nidash/nidm#NIDM_0000021> .
 @prefix nidm_hasfMRIDesign: <http://purl.org/nidash/nidm#NIDM_0000010> .
-@prefix nidm_BlockBasedDesign: <http://purl.org/nidash/nidm#NIDM_0000152> .
+@prefix nidm_EventRelatedDesign: <http://purl.org/nidash/nidm#NIDM_0000153> .
 @prefix nidm_hasHRFBasis: <http://purl.org/nidash/nidm#NIDM_0000102> .
 @prefix nidm_hasDriftModel: <http://purl.org/nidash/nidm#NIDM_0000088> .
-@prefix nidm_DisplayMaskMap: <http://purl.org/nidash/nidm#NIDM_0000020> .
 @prefix nidm_ErrorModel: <http://purl.org/nidash/nidm#NIDM_0000023> .
 @prefix nidm_hasErrorDistribution: <http://purl.org/nidash/nidm#NIDM_0000101> .
 @prefix nidm_GaussianDistribution: <http://purl.org/nidash/nidm#NIDM_0000032> .
@@ -67,6 +66,8 @@
 @prefix nidm_SearchSpaceMaskMap: <http://purl.org/nidash/nidm#NIDM_0000068> .
 @prefix nidm_randomFieldStationarity: <http://purl.org/nidash/nidm#NIDM_0000120> .
 @prefix nidm_searchVolumeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000121> .
+@prefix nidm_searchVolumeInUnits: <http://purl.org/nidash/nidm#NIDM_0000136> .
+@prefix nidm_searchVolumeInResels: <http://purl.org/nidash/nidm#NIDM_0000149> .
 @prefix nidm_reselSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000148> .
 @prefix nidm_noiseRoughnessInVoxels: <http://purl.org/nidash/nidm#NIDM_0000145> .
 @prefix nidm_SignificantCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
@@ -129,7 +130,7 @@ niiri:contrast_id_1 a prov:Entity , obo_contrastweightmatrix: ;
 niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
 	rdfs:label "Coordinate space" ;
 	nidm_voxelToWorldMapping: "[[ -3.5, 0, 0, 108.5], [ 0, 3.5, 0, -108.5], [ 0, 0, 3.5, -52.5], [ 0, 0, 0, 1]]"^^xsd:string ;
-	nidm_voxelUnits: "[ 'mm', 'mm', 'mm' ]"^^xsd:string ;
+	nidm_voxelUnits: "[ \"mm\", \"mm\", \"mm\" ]"^^xsd:string ;
 	nidm_voxelSize: "[ 3.5, 3.5, 3.5 ]"^^xsd:string ;
 	nidm_inWorldCoordinateSystem: nidm_SubjectCoordinateSystem: ;
 	nidm_numberOfDimensions: "3"^^xsd:int ;
@@ -153,20 +154,11 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
 	dct:format "text/csv"^^xsd:string ;
 	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
 	dc:description niiri:design_matrix_png_id ;
-    nidm_regressorNames: "[\"Gen\", \"Gen_der\", \"Shad\", \"Shad_der\"]"^^xsd:string ;
-    nidm_hasfMRIDesign: nidm_BlockBasedDesign: ;
+    nidm_regressorNames: "[\"Gen\", \"Gen*temporal_derivative\", \"Shad\", \"Shad*temporal_derivative\"]"^^xsd:string ;
+    nidm_hasfMRIDesign: nidm_EventRelatedDesign: ;
     nidm_hasHRFBasis: fsl_FSLsGammaDifferenceHRF: ;
     nidm_hasDriftModel: niiri:drift_model_id.
 
-
-niiri:display_map_id_1 a prov:Entity , nidm_DisplayMaskMap: ;
-	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file://./DisplayMask.nii.gz"^^xsd:anyURI ;
-	dct:format "image/nifti"^^xsd:string ;
-    nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
-	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
-	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
-    nfo:fileName "mask.nii.gz"^^xsd:string .
 
 niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_hasErrorDistribution: nidm_GaussianDistribution: ;
@@ -341,7 +333,7 @@ niiri:COG_coordinate_0004   a prov:Entity , prov:Location , nidm_Coordinate: ;
 
 niiri:drift_model_id a prov:Entity , fsl_GaussianRunningLineDriftModel: ;
 	rdfs:label "FSL's Gaussian Running Line Drift Model" ;
-	fsl_driftCutoffPeriod: 2 .
+	fsl_driftCutoffPeriod: "1908"^^xsd:float .
 
 niiri:excursion_set_map_id_1 a prov:Entity , nidm_ExcursionSetMap: ;
 	rdfs:label "Excursion Set Map" ;
@@ -413,6 +405,8 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
 	nidm_randomFieldStationarity: "true"^^xsd:boolean ;
 	nidm_searchVolumeInVoxels: "45203"^^xsd:int ;
+	nidm_searchVolumeInUnits: "1.93808e+06"^^xsd:float ;
+	nidm_searchVolumeInResels: "3753.84"^^xsd:float ;	
 	nidm_reselSizeInVoxels: "12.0418"^^xsd:float ;
 	nidm_noiseRoughnessInVoxels: "0.384676"^^xsd:float ;
 	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
