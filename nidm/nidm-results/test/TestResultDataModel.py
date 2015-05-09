@@ -10,6 +10,7 @@ import sys
 import rdflib
 import re
 import numpy as np
+import json
 
 import logging
 
@@ -287,7 +288,7 @@ class TestResultDataModel(object):
                         same_json_array = False
                         if o.startswith("[") and o.endswith("]"):
                             for o_gt in gt_graph.objects(s,  p):
-                                if o.replace(" ", "") == o_gt.replace(" ", ""):
+                                if json.loads(o) == json.loads(o_gt):
                                     same_json_array = True
 
                         # If literal is a float allow for a small tolerance to
