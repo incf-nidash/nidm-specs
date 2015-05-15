@@ -38,10 +38,11 @@ def main():
             label="FSL's Gaussian Running Line Drift Model",
             cut_off="1908"
             ),
-        "Image-DesignMatrix": dict(
+        "Image_fileName-DesignMatrix": dict(
             image_id="niiri:design_matrix_png_id",
             location="file://./DesignMatrix.png",
             filename="DesignMatrix.png",
+            filename_2="design.png",
             format="image/png"
             ),
         "Data": dict(
