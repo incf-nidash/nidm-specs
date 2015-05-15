@@ -20,6 +20,7 @@ sys.path.append(os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(RELPATH))), "scripts"))
 from Constants import *
 from rdflib.namespace import RDF
+from rdflib.graph import Graph
 from OwlReader import OwlReader
 
 logger = logging.getLogger(__name__)
@@ -85,9 +86,6 @@ class TestResultDataModel(object):
     '''
 
     def setUp(self, owl_file, owl_imports=None):
-        self.ground_truth_dir = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
         self.my_execption = ""
 
         self.owl = OwlReader(owl_file, owl_imports)
@@ -288,8 +286,12 @@ class TestResultDataModel(object):
                         same_json_array = False
                         if o.startswith("[") and o.endswith("]"):
                             for o_gt in gt_graph.objects(s,  p):
-                                if json.loads(o) == json.loads(o_gt):
-                                    same_json_array = True
+                                try:
+                                    if json.loads(o) == json.loads(o_gt):
+                                        same_json_array = True
+                                except ValueError:
+                                    # Actually this string was not json
+                                    same_json_array = False
 
                         # If literal is a float allow for a small tolerance to
                         # deal with possibly different roundings
@@ -444,3 +446,26 @@ class TestResultDataModel(object):
 
         self.my_execption += exc_missing + \
             exc_added + exc_wrong + exc_wrong_literal
+
+
+class ExampleGraph(object):
+    '''Class representing a NIDM-Results examples graph to be compared to some
+    ground truth graph'''
+
+    def __init__(self, ttl_file, gt_ttl_file, exact_comparison):
+        self.ttl_file = ttl_file
+
+        self.gt_ttl_file = gt_ttl_file
+        self.exact_comparison = exact_comparison
+        self.graph = Graph()
+        self.graph.parse(ttl_file, format='turtle')
+
+        # Get NIDM-Results version for each example
+        versions = self.graph.objects(None, NIDM_VERSION)
+        assert versions is not None
+        self.version = versions.next()
+
+        if self.version != "dev":
+            self.gt_ttl_file = gt_ttl_file.replace(
+                os.path.join("nidm", "nidm"),
+                os.path.join("nidm_releases", self.version, "nidm"))
