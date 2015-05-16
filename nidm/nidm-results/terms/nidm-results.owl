@@ -19,9 +19,9 @@
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
-  owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
+  owl:imports <http://purl.obolibrary.org/nidm/iao_import.owl> ,
+              <http://purl.org/nidash/nidm/crypto_import.owl> ,
               <http://purl.org/nidash/nidm/dc_import.owl> ,
-              <http://purl.obolibrary.org/nidm/iao_import.owl> ,
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
               <http://purl.org/nidash/nidm/nlx_import.owl> ,
               <http://purl.org/nidash/nidm/stato_import.owl> ,
@@ -1416,6 +1416,78 @@ nidm:NIDM_0000156 rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://purl.org/nidash/nidm#NIDM_0000157
+
+nidm:NIDM_0000157 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "noise FWHM In Units" ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                  
+                  obo:IAO_0000112 "[8.87, 8.89, 7.83]" ;
+                  
+                  rdfs:comment "Range: Vector of positive floats." ;
+                  
+                  obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in world units (e.g. mm^2 or mm^3, in subject or atlas space)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:string ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000158
+
+nidm:NIDM_0000158 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "noise FWHM In Vertices" ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                  
+                  rdfs:comment "Range: Vector of positive floats." ;
+                  
+                  obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices." ;
+                  
+                  obo:IAO_0000112 "[2.95, 2.96, 2.61]" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000054 ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000159
+
+nidm:NIDM_0000159 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "noise FWHM In Voxels" ;
+                  
+                  obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in voxels." ;
+                  
+                  obo:IAO_0000112 "[3.7 3.7 3.1]" ;
+                  
+                  obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
+                  
+                  rdfs:seeAlso "Synonyms of or close match with nidm:NoiseFWHM" ;
+                  
+                  rdfs:comment "Range: Vector of positive floats." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+                  
+                  rdfs:domain nidm:NIDM_0000068 ;
+                  
+                  rdfs:range xsd:string ;
+                  
+                  rdfs:subPropertyOf owl:topDataProperty .
+
+
+
 ###  http://purl.org/nidash/spm#SPM_0000001
 
 spm:SPM_0000001 rdf:type owl:DatatypeProperty ;
@@ -1433,11 +1505,14 @@ spm:SPM_0000001 rdf:type owl:DatatypeProperty ;
                 rdfs:range xsd:float .
 
 
-###  http://purl.org/nidash/spm:SPM_0000007
 
-spm:SPM_0000007 rdf:type owl:DeprecatedProperty ;
+###  http://purl.org/nidash/spm#SPM_0000007
+
+spm:SPM_0000007 rdf:type owl:DatatypeProperty ;
                 
                 rdfs:label "noise FWHM In Units" ;
+                
+                owl:deprecated "true"^^xsd:boolean ;
                 
                 rdfs:comment "Range: Vector of positive floats." ;
                 
@@ -1455,34 +1530,15 @@ spm:SPM_0000007 rdf:type owl:DeprecatedProperty ;
                 
                 rdfs:subPropertyOf owl:topDataProperty .
 
-###  http://purl.org/nidash/nidm#NIDM_0000157
-
-nidm:NIDM_0000157 rdf:type owl:DatatypeProperty ;
-                
-                rdfs:label "noise FWHM In Units" ;
-                
-                rdfs:comment "Range: Vector of positive floats." ;
-                
-                obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
-                
-                obo:IAO_0000112 "[8.87, 8.89, 7.83]" ;
-                
-                obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in world units (e.g. mm^2 or mm^3, in subject or atlas space)." ;
-                
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                
-                rdfs:domain nidm:NIDM_0000068 ;
-                
-                rdfs:range xsd:string ;
-                
-                rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  http://purl.org/nidash/spm#SPM_0000008
 
-spm:SPM_0000008 rdf:type owl:DeprecatedProperty ;
+spm:SPM_0000008 rdf:type owl:DatatypeProperty ;
                 
                 rdfs:label "noise FWHM In Vertices" ;
+                
+                owl:deprecated "true"^^xsd:boolean ;
                 
                 obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices." ;
                 
@@ -1498,58 +1554,15 @@ spm:SPM_0000008 rdf:type owl:DeprecatedProperty ;
                 
                 rdfs:subPropertyOf owl:topDataProperty .
 
-
-###  http://purl.org/nidash/nidm#NIDM_0000158
-
-nidm:NIDM_0000158 rdf:type owl:DatatypeProperty ;
-                
-                rdfs:label "noise FWHM In Vertices" ;
-                
-                obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices." ;
-                
-                rdfs:comment "Range: Vector of positive floats." ;
-                
-                obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
-                
-                obo:IAO_0000112 "[2.95, 2.96, 2.61]" ;
-                
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                
-                rdfs:domain nidm:NIDM_0000054 ;
-                
-                rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  http://purl.org/nidash/spm#SPM_0000009
 
-spm:SPM_0000009 rdf:type owl:DeprecatedProperty ;
+spm:SPM_0000009 rdf:type owl:DatatypeProperty ;
                 
                 rdfs:label "noise FWHM In Voxels" ;
                 
-                rdfs:comment "Range: Vector of positive floats." ;
-                
-                obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/pull/214" ;
-                
-                obo:IAO_0000115 "Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in voxels." ;
-                
-                obo:IAO_0000112 "[3.7 3.7 3.1]" ;
-                
-                rdfs:seeAlso "Synonyms of or close match with nidm:NoiseFWHM" ;
-                
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                
-                rdfs:domain nidm:NIDM_0000068 ;
-                
-                rdfs:range xsd:string ;
-                
-                rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://purl.org/nidash/spm#NIDM_0000159
-
-nidm:NIDM_0000159 rdf:type owl:DatatypeProperty ;
-                
-                rdfs:label "noise FWHM In Voxels" ;
+                owl:deprecated "true"^^xsd:boolean ;
                 
                 rdfs:comment "Range: Vector of positive floats." ;
                 
@@ -2065,9 +2078,9 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dc:description ;
-                                    owl:onClass dctype:Image ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
@@ -2075,9 +2088,9 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
@@ -2470,7 +2483,7 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2480,7 +2493,7 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
