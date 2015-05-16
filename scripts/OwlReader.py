@@ -7,6 +7,7 @@
 
 from rdflib import RDF, term
 from rdflib.graph import Graph
+from rdflib.term import Literal
 from Constants import *
 import urllib2
 import warnings
@@ -110,14 +111,22 @@ class OwlReader():
 
         return class_names
 
+    def is_deprecated(self, term):
+        deprecated = False
+        if (term, OWL['deprecated'], Literal(True)) in self.graph:
+            deprecated = True
+        return deprecated
+
     def get_property_names(self):
         properties = set()
         for class_name in self.graph.subjects(
                 RDF['type'], OWL['DatatypeProperty']):
-            properties.add(class_name)
+            if not self.is_deprecated(class_name):
+                properties.add(class_name)
         for class_name in self.graph.subjects(
                 RDF['type'], OWL['ObjectProperty']):
-            properties.add(class_name)
+            if not self.is_deprecated(class_name):
+                properties.add(class_name)
         return properties
 
     def get_individuals(self, uri=None):
@@ -146,62 +155,63 @@ class OwlReader():
             for class_restr in self.graph.objects(
                     class_name, RDFS['subClassOf']):
                 if isinstance(class_restr, term.BNode):
-                    for prop in self.graph.objects(
+                    for prp in self.graph.objects(
                             class_restr, OWL['onProperty']):
-                        attributes.setdefault(class_name, set()).add(prop)
+                        attributes.setdefault(class_name, set()).add(prp)
                         for child_class in self.graph.transitive_subjects(
                                 RDFS['subClassOf'], class_name):
-                            attributes.setdefault(child_class, set()).add(prop)
+                            attributes.setdefault(child_class, set()).add(prp)
 
         # Attributes that can be found in all classes
-        for prop, p, o in self.graph.triples((None, RDF['type'], None)):
-            if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
-                for class_name in self.graph.objects(prop, RDFS['domain']):
-                    # Add attribute to current class
-                    attributes.setdefault(class_name, set()).add(prop)
-
-                    # Add attribute to children of current class
-                    for child_class in self.graph.transitive_subjects(
-                            RDFS['subClassOf'], class_name):
+        for prp, p, o in self.graph.triples((None, RDF['type'], None)):
+            if not self.is_deprecated(prp):
+                if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
+                    for class_name in self.graph.objects(prp, RDFS['domain']):
                         # Add attribute to current class
-                        attributes.setdefault(child_class, set()).add(prop)
+                        attributes.setdefault(class_name, set()).add(prp)
 
-                for range_name in self.graph.objects(prop, RDFS['range']):
-                    # More complex type including restrictions
-                    if isinstance(range_name, term.BNode):
-                        for restriction_node in self.graph.objects(
-                                range_name, OWL['withRestrictions']):
-                            for first_restriction in self.graph.objects(
-                                    restriction_node, RDF['first']):
-                                xsd_restrictions = set(
-                                    ['minInclusive', 'minExclusive',
-                                     'maxInclusive', 'maxExclusive'])
-                                for restr in xsd_restrictions:
-                                    for min_incl in self.graph.objects(
-                                            first_restriction,
-                                            XSD[restr]):
-                                        if (prop in restrictions):
-                                            if (restr in restrictions[prop]):
-                                                restrictions[prop] = max(
-                                                    restrictions[prop][restr],
-                                                    min_incl)
+                        # Add attribute to children of current class
+                        for child_class in self.graph.transitive_subjects(
+                                RDFS['subClassOf'], class_name):
+                            # Add attribute to current class
+                            attributes.setdefault(child_class, set()).add(prp)
+
+                    for range_name in self.graph.objects(prp, RDFS['range']):
+                        # More complex type including restrictions
+                        if isinstance(range_name, term.BNode):
+                            for restriction_node in self.graph.objects(
+                                    range_name, OWL['withRestrictions']):
+                                for first_restriction in self.graph.objects(
+                                        restriction_node, RDF['first']):
+                                    xsd_restrictions = set(
+                                        ['minInclusive', 'minExclusive',
+                                         'maxInclusive', 'maxExclusive'])
+                                    for rct in xsd_restrictions:
+                                        for min_incl in self.graph.objects(
+                                                first_restriction,
+                                                XSD[rct]):
+                                            if (prp in restrictions):
+                                                if (rct in restrictions[prp]):
+                                                    restrictions[prp] = max(
+                                                        restrictions[prp][rct],
+                                                        min_incl)
+                                                else:
+                                                    restrictions[prp] = {
+                                                        rct: min_incl}
                                             else:
-                                                restrictions[prop] = {
-                                                    restr: min_incl}
-                                        else:
-                                            restrictions[prop] = {
-                                                restr: min_incl}
+                                                restrictions[prp] = {
+                                                    rct: min_incl}
 
-                        for sub_range_name in self.graph.objects(
-                                range_name, OWL['onDatatype']):
-                            range_name = sub_range_name
+                            for sub_range_name in self.graph.objects(
+                                    range_name, OWL['onDatatype']):
+                                range_name = sub_range_name
 
-                    parent_ranges.setdefault(prop, set()).add(range_name)
+                        parent_ranges.setdefault(prp, set()).add(range_name)
 
-                    # Add child_class to range (for ObjectProperty)
-                    for child in self.graph.transitive_subjects(
-                            RDFS['subClassOf'], range_name):
-                        ranges.setdefault(prop, set()).add(child)
+                        # Add child_class to range (for ObjectProperty)
+                        for child in self.graph.transitive_subjects(
+                                RDFS['subClassOf'], range_name):
+                            ranges.setdefault(prp, set()).add(child)
 
         return list((attributes, ranges, restrictions, parent_ranges))
 
@@ -428,11 +438,8 @@ class OwlReader():
 
         prov_types = set([PROV['Entity'], PROV['Activity'], PROV['Agent']])
         for prov_type in prov_types:
-            print prov_type
             for instance_id in self.graph.subjects(RDF.type, prov_type):
-                print instance_id
                 for class_name in self.graph.objects(instance_id, RDF.type):
-                    print class_name
                     if not class_name == prov_type:
                         sub_types.add(class_name)
 
