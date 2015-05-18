@@ -183,7 +183,7 @@ def main(nidm_original_version):
         owl_file, import_files, "NIDM-Results",
         components, used_by, generated_by, derived_from, prefix=str(NIDM))
 
-    owlspec._header_footer(component="nidm-results")
+    owlspec._header_footer(component="nidm-results", version=nidm_version)
 
     if not nidm_version == "dev":
         if nidm_version == "020":

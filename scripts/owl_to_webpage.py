@@ -147,18 +147,22 @@ class OwlSpecification(object):
         """
         self.section_open += 1
 
+    def _format_markdown(self, text):
+        # Replace links specified in markdown by html
+        match = re.search(r'\[(?P<name>.*)\]\((?P<link>.*)\)', text)
+        if match:
+            text = text.replace(
+                match.group(),
+                '<a href="'+match.group('link')+'">' +
+                match.group('name')+'</a>')
+
+        return text
+
     def format_definition(self, definition):
         # Capitalize first letter of definition
         if definition:
             definition = definition[0].upper() + definition[1:]
-
-        # Replace links specified in markdown by html
-        match = re.search(r'\[(?P<name>.*)\]\((?P<link>.*)\)', definition)
-        if match:
-            definition = definition.replace(
-                match.group(),
-                '<a href="'+match.group('link')+'">' +
-                match.group('name')+'</a>')
+            definition = self._format_markdown(definition)
 
         return definition
 
@@ -406,16 +410,29 @@ class OwlSpecification(object):
         spec_open.write(self.text)
         spec_open.close()
 
-    def _header_footer(self, prev_file=None, follow_file=None, component=None):
+    def _header_footer(self, prev_file=None, follow_file=None, component=None,
+                       version=None):
+
+        release_notes = None
         if component:
             prev_file = os.path.join(INCLUDE_FOLDER, component+"_head.html")
             follow_file = os.path.join(INCLUDE_FOLDER, component+"_foot.html")
+            if version:
+                release_notes = os.path.join(
+                    os.path.dirname(self.owl.file),
+                    component+"_"+version+"_notes.html")
+                if not os.path.isfile(release_notes):
+                    release_notes = None
 
-        if prev_file:
+        if prev_file is not None:
             prev_file_open = open(prev_file, 'r')
             self.text = prev_file_open.read().decode('utf-8')+self.text
             prev_file_open.close()
-        if follow_file:
+        if release_notes is not None:
+            release_note_open = open(release_notes, 'r')
+            self.text = self.text+release_note_open.read()
+            release_note_open.close()
+        if follow_file is not None:
             follow_file_open = open(follow_file, 'r')
             self.text = self.text+follow_file_open.read()
             follow_file_open.close()
