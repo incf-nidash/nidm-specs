@@ -1,6 +1,6 @@
 """
-Create minimal FSL example for an analysis thresholded at p<0.05 FWE 
-stored in nidm/nidm-results/fsl/example002 by using the class 
+Create minimal FSL example for an analysis thresholded at p<0.05 FWE
+stored in nidm/nidm-results/fsl/example002 by using the class
 templates available in nidm/nidm-results/terms/templates
 
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
@@ -9,31 +9,32 @@ templates available in nidm/nidm-results/terms/templates
 import os
 from create_example_from_templates import ExampleFromTemplate
 
-def main():
-	nidm_classes = {
-		"HeightThreshold_PFWE": dict(
-			height_threshold_id="niiri:height_threshold_id",
-			label="Height Threshold: p<0.05 (FWE)",
-			p_fwe="0.050000",
-			thresh_type="p-value FWE"
-			),
-		"FSL_ExtentThresholdNoType": dict(
-			extent_threshold_id="niiri:extent_threshold_id",
-			label="Extent Threshold: k>=0",
-			p_fwe="1.0"
-			),
-		"InferenceUsedThresh": dict(
-			inference_id="niiri:inference_id",
-			height_thresh_id="niiri:height_threshold_id", 
-			extent_thresh_id="niiri:extent_threshold_id", 
-			)
-		}
 
-	NIDM_FSL_DIR = os.path.join(os.path.dirname(
+def main():
+    nidm_classes = {
+        "HeightThreshold_PFWE": dict(
+            height_threshold_id="niiri:height_threshold_id",
+            label="Height Threshold: p<0.05 (FWE)",
+            p_fwe="0.050000",
+            thresh_type="p-value FWE"
+            ),
+        "FSL_ExtentThresholdNoType": dict(
+            extent_threshold_id="niiri:extent_threshold_id",
+            label="Extent Threshold: k>=0",
+            p_fwe="1.0"
+            ),
+        "InferenceUsedThresh": dict(
+            inference_id="niiri:inference_id",
+            height_thresh_id="niiri:height_threshold_id",
+            extent_thresh_id="niiri:extent_threshold_id",
+            )
+        }
+
+    NIDM_FSL_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'fsl', 'example002')
-	ttl_file = os.path.join(NIDM_FSL_DIR, 'fsl_nidm.ttl')
-	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
-	example.create_example()
-	
+    ttl_file = os.path.join(NIDM_FSL_DIR, 'fsl_nidm.ttl')
+    example = ExampleFromTemplate(nidm_classes, ttl_file, False)
+    example.create_example()
+
 if __name__ == '__main__':
-	main()
+    main()
