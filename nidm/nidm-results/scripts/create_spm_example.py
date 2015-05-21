@@ -15,7 +15,8 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR,\
-    STATO_TSTATISTIC_LABEL
+    STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER, OBO_STATISTIC, \
+    NIDM_P_VALUE_UNCORRECTED
 
 
 def main():
@@ -218,13 +219,25 @@ def main():
             sha_header="e43b6e01b0463fe7d40782137867a...",
             map_id="niiri:statistic_map_id"
             ),
-        "HeightThreshold_P": dict(
+        "HeightThreshold_equivThresh_equivThresh2": dict(
             height_threshold_id="niiri:height_threshold_id",
+            thresh_type=OBO_P_VALUE_FWER,
             label="Height Threshold: p<0.05 (FWE)",
-            value="5.23529984739211",
-            thresh_type="p-value FWE",
-            p_unc="7.62276079258051e-07",
-            p_fwe="0.05"
+            value="0.05",
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
+            ),
+        "HeightThreshold": dict(
+            height_threshold_id="niiri:height_threshold_id_2",
+            thresh_type=OBO_STATISTIC,
+            label="Height Threshold: p<5.23529984739211",
+            value="5.23529984739211"
+            ),
+        "HeightThreshold": dict(
+            height_threshold_id="niiri:height_threshold_id_3",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED,
+            label="Height Threshold: p<7.62276079258051e-07 (uncorrected)",
+            value="7.62276079258051e-07",
             ),
         "ExtentThreshold": dict(
             extent_threshold_id="niiri:extent_threshold_id",
