@@ -361,6 +361,24 @@ nidm:NIDM_0000138 rdf:type owl:ObjectProperty ;
 
 
 
+###  http://purl.org/nidash/nidm#NIDM_0000161
+
+nidm:NIDM_0000161 rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "equivalent Threshold" ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/329" ;
+                  
+                  obo:IAO_0000115 "Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 ;
+                  
+                  rdfs:range nidm:NIDM_0000162 ;    
+                  
+                  rdfs:domain nidm:NIDM_0000162 .
+
+
+
 
 
 #################################################################
@@ -1058,6 +1076,8 @@ nidm:NIDM_0000125 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:domain nidm:NIDM_0000026 ,
                               nidm:NIDM_0000034 ;
+
+                  owl:deprecated "true"^^xsd:boolean ;                                            
                   
                   rdfs:range xsd:string .
 
@@ -1722,6 +1742,18 @@ nlx:nif-0000-00343 rdfs:subClassOf prov:SoftwareAgent .
 
 
 
+###  http://purl.obolibrary.org/obo/OBI_0001265
+
+obo:OBI_0001265 rdfs:subClassOf prov:Entity .
+
+
+
+###  http://purl.obolibrary.org/obo/OBI_0001442
+
+obo:OBI_0001442 rdfs:subClassOf prov:Entity .
+
+
+
 ###  http://purl.obolibrary.org/obo/STATO_0000039
 
 obo:STATO_0000039 rdfs:subClassOf prov:Entity .
@@ -2200,7 +2232,7 @@ nidm:NIDM_0000026 rdf:type owl:Class ;
                   
                   rdfs:label "Extent Threshold" ;
                   
-                  rdfs:subClassOf prov:Entity ;
+                  rdfs:subClassOf nidm:NIDM_0000162 ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold.txt"^^xsd:anyURI ;
                   
@@ -2332,7 +2364,7 @@ nidm:NIDM_0000034 rdf:type owl:Class ;
                   
                   rdfs:label "Height Threshold" ;
                   
-                  rdfs:subClassOf prov:Entity ;
+                  rdfs:subClassOf nidm:NIDM_0000162 ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold_P.txt"^^xsd:anyURI ;
                   
@@ -3091,6 +3123,36 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
                   obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design event-related design or mixed design." ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000160
+
+nidm:NIDM_0000160 rdf:type owl:Class ;
+                  
+                  rdfs:label "P-Value Uncorrected" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000115 "A p-value reported without correction for multiple testing."^^xsd:string ;
+                  
+                  obo:IAO_0000116 "Discussed in [Neuroimaging terms spreadsheet](https://docs.google.com/spreadsheets/d/16pC2cDsdxlzv2CzlNMtStqt5-xHwDEsU6MjZVxWhrE4/edit?usp=sharing)"^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000162
+
+nidm:NIDM_0000162 rdf:type owl:Class ;
+                  
+                  rdfs:label "Threshold"^^xsd:string ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+
+                  obo:IAO_0000115 "A numerical value that establishes a bound on a set of statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value, FDR-corrected q-value or statistic value"^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
