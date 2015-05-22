@@ -53,14 +53,13 @@
 @prefix nidm_IndependentError: <http://purl.org/nidash/nidm#NIDM_0000048> .
 @prefix nidm_dependenceMapWiseDependence: <http://purl.org/nidash/nidm#NIDM_0000089> .
 @prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
+@prefix nidm_PValueUncorrected: <http://purl.org/nidash/nidm#NIDM_0000160> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
 @prefix nidm_clusterSizeInResels: <http://purl.org/nidash/nidm#NIDM_0000156> .
-@prefix nidm_pValueUncorrected: <http://purl.org/nidash/nidm#NIDM_0000116> .
-@prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
+@prefix nidm_equivalentThreshold: <http://purl.org/nidash/nidm#NIDM_0000161> .
 @prefix nidm_GrandMeanMap: <http://purl.org/nidash/nidm#NIDM_0000033> .
 @prefix nidm_maskedMedian: <http://purl.org/nidash/nidm#NIDM_0000107> .
 @prefix nidm_HeightThreshold: <http://purl.org/nidash/nidm#NIDM_0000034> .
-@prefix nidm_userSpecifiedThresholdType: <http://purl.org/nidash/nidm#NIDM_0000125> .
 @prefix nidm_Inference: <http://purl.org/nidash/nidm#NIDM_0000049> .
 @prefix nidm_MaskMap: <http://purl.org/nidash/nidm#NIDM_0000054> .
 @prefix nidm_isUserDefined: <http://purl.org/nidash/nidm#NIDM_0000106> .
@@ -77,7 +76,9 @@
 @prefix nidm_errorDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000093> .
 @prefix obo_contrastweightmatrix: <http://purl.obolibrary.org/obo/STATO_0000323> .
 @prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
+@prefix obo_statistic: <http://purl.obolibrary.org/obo/STATO_0000039> .
 @prefix obo_ordinaryleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000370> .
+@prefix obo_FWERadjustedpvalue: <http://purl.obolibrary.org/obo/OBI_0001265> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -272,26 +273,50 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .
 
-niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
-	rdfs:label "Extent Threshold: k>=0" ;
-	nidm_clusterSizeInVoxels: "0"^^xsd:int ;
-	nidm_clusterSizeInResels: "0"^^xsd:float ;
-	nidm_pValueUncorrected: "1"^^xsd:float ;
-	nidm_pValueFWER: "1"^^xsd:float .
+niiri:extent_threshold_id_12 a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
 
-niiri:extent_threshold_id_2 a prov:Entity , nidm_ExtentThreshold: ;
-	rdfs:label "Extent Threshold: k>=5" ;
-	nidm_clusterSizeInVoxels: "5"^^xsd:int ;
-	nidm_clusterSizeInResels: "1.6"^^xsd:float ;
-	nidm_pValueUncorrected: "1"^^xsd:float ;
-	nidm_pValueFWER: "1"^^xsd:float .
+niiri:extent_threshold_id_13 a prov:Entity, nidm_ExtentThreshold:, nidm_PValueUncorrected: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
 
-niiri:extent_threshold_id_3 a prov:Entity , nidm_ExtentThreshold: ;
-	rdfs:label "Extent Threshold: k>=10" ;
-	nidm_clusterSizeInVoxels: "10"^^xsd:int ;
-	nidm_clusterSizeInResels: "3.3"^^xsd:float ;
-	nidm_pValueUncorrected: "1"^^xsd:float ;
-	nidm_pValueFWER: "1"^^xsd:float .
+niiri:extent_threshold_id_22 a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
+
+niiri:extent_threshold_id_23 a prov:Entity, nidm_ExtentThreshold:, nidm_PValueUncorrected: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
+
+niiri:extent_threshold_id_32 a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
+
+niiri:extent_threshold_id_33 a prov:Entity, nidm_ExtentThreshold:, nidm_PValueUncorrected: ;
+    rdfs:label "Extent Threshold" ;
+    prov:value "1"^^xsd:float .
+
+niiri:extent_threshold_id a prov:Entity, nidm_ExtentThreshold:, obo_statistic: ;
+    rdfs:label "Extent Threshold: k>=0" ;
+    nidm_clusterSizeInVoxels: "0"^^xsd:int ;
+    nidm_clusterSizeInResels: "0"^^xsd:float ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 .
+
+niiri:extent_threshold_id_2 a prov:Entity, nidm_ExtentThreshold:, obo_statistic: ;
+    rdfs:label "Extent Threshold: k>=5" ;
+    nidm_clusterSizeInVoxels: "5"^^xsd:int ;
+    nidm_clusterSizeInResels: "1.6"^^xsd:float ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 .
+
+niiri:extent_threshold_id_3 a prov:Entity, nidm_ExtentThreshold:, obo_statistic: ;
+    rdfs:label "Extent Threshold: k>=10" ;
+    nidm_clusterSizeInVoxels: "10"^^xsd:int ;
+    nidm_clusterSizeInResels: "3.3"^^xsd:float ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 ;
+    nidm_equivalentThreshold: niiri:height_threshold_id_12 .
 
 niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
 	rdfs:label "Grand Mean Map" ;
@@ -303,26 +328,47 @@ niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a..."^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .
 
-niiri:height_threshold_id a prov:Entity , nidm_HeightThreshold: ;
+niiri:height_threshold_id_12 a prov:Entity, nidm_HeightThreshold:, obo_statistic: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "5.23529984739211"^^xsd:float .
+
+niiri:height_threshold_id_13 a prov:Entity, nidm_HeightThreshold:, nidm_PValueUncorrected: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "7.62276079258051e-07"^^xsd:float .
+
+niiri:height_threshold_id_22 a prov:Entity, nidm_HeightThreshold:, obo_statistic: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "5.23529984739211"^^xsd:float .
+
+niiri:height_threshold_id_23 a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "0.05"^^xsd:float .
+
+niiri:height_threshold_id_32 a prov:Entity, nidm_HeightThreshold:, obo_statistic: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "5.23529984739211"^^xsd:float .
+
+niiri:height_threshold_id_33 a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
+	rdfs:label "Height Threshold" ;
+	prov:value "0.05"^^xsd:float .
+
+niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
 	rdfs:label "Height Threshold: p<0.05 (FWE)" ;
-	nidm_userSpecifiedThresholdType: "p-value FWE"^^xsd:string ;
-	prov:value "5.23529984739211"^^xsd:float ;
-    nidm_pValueUncorrected: "7.62276079258051e-07"^^xsd:float ;
-	nidm_pValueFWER: "0.05"^^xsd:float .
+	prov:value "0.05"^^xsd:float ;
+nidm_equivalentThreshold: niiri:height_threshold_id_12 ;
+nidm_equivalentThreshold: niiri:height_threshold_id_12 .
 
-niiri:height_threshold_id_2 a prov:Entity , nidm_HeightThreshold: ;
+niiri:height_threshold_id_2 a prov:Entity, nidm_HeightThreshold:, nidm_PValueUncorrected: ;
 	rdfs:label "Height Threshold: p<0.001 (unc)" ;
-	nidm_userSpecifiedThresholdType: "p-value uncorrected"^^xsd:string ;
-	prov:value "5.23529984739211"^^xsd:float ;
-    nidm_pValueUncorrected: "7.62276079258051e-07"^^xsd:float ;
-	nidm_pValueFWER: "0.05"^^xsd:float .
+	prov:value "7.62276079258051e-07"^^xsd:float ;
+nidm_equivalentThreshold: niiri:height_threshold_id_22 ;
+nidm_equivalentThreshold: niiri:height_threshold_id_22 .
 
-niiri:height_threshold_id_3 a prov:Entity , nidm_HeightThreshold: ;
+niiri:height_threshold_id_3 a prov:Entity, nidm_HeightThreshold:, nidm_PValueUncorrected: ;
 	rdfs:label "Height Threshold: p<0.001 (unc)" ;
-	nidm_userSpecifiedThresholdType: "p-value uncorrected"^^xsd:string ;
-	prov:value "5.23529984739211"^^xsd:float ;
-    nidm_pValueUncorrected: "7.62276079258051e-07"^^xsd:float ;
-	nidm_pValueFWER: "0.05"^^xsd:float .
+	prov:value "7.62276079258051e-07"^^xsd:float ;
+nidm_equivalentThreshold: niiri:height_threshold_id_32 ;
+nidm_equivalentThreshold: niiri:height_threshold_id_32 .
 
 niiri:design_matrix_png_id a prov:Entity , dctype:Image ;
 	prov:atLocation "file:///path/to/DesignMatrix.png"^^xsd:anyURI ;
@@ -363,7 +409,7 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
 
 niiri:spm_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
-	nidm_version: "1.0.0"^^xsd:string .
+	nidm_version: "dev"^^xsd:string .
 
 _:blank1 a prov:Generation .
 

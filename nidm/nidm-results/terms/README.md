@@ -20,6 +20,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)</td>
 </tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Threshold'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Threshold': </b>A numerical value that establishes a bound on a set of statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value, FDR-corrected q-value or statistic value</td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/281">#281</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q=BLOCK"> [find issues/PR] </a></td>
     <td><b>afni:BLOCK: </b>&lt;undefined&gt;</td>
@@ -73,6 +78,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/329">#329</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='equivalent Threshold'"> [find issues/PR] </a></td>
+    <td><b>nidm:'equivalent Threshold': </b>Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)</td>
+    <td>nidm:NIDM_0000162 </td>
+    <td>nidm:NIDM_0000162 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='error Degrees Of Freedom'"> [more] </a></td>
     <td><b>nidm:'error Degrees Of Freedom': </b>In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the design matrix</td>
     <td>nidm:NIDM_0000076 </td>
@@ -98,13 +110,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='user Specified Threshold Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'user Specified Threshold Type': </b>Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (editor: Discussed in https://github.com/incf-nidash/nidm/pull/150)</td>
-    <td>nidm:NIDM_0000026 nidm:NIDM_0000034 </td>
-    <td>xsd:string </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>

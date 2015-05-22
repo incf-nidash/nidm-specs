@@ -25,6 +25,7 @@ prefix nidm_contrastName <http://purl.org/nidash/nidm#NIDM_0000085>
 prefix crypto <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#>
 prefix nidm_softwareVersion <http://purl.org/nidash/nidm#NIDM_0000122>
 prefix nidm_ParameterEstimateMap <http://purl.org/nidash/nidm#NIDM_0000061>
+prefix obo_statistic <http://purl.obolibrary.org/obo/STATO_0000039>
 prefix nidm_isUserDefined <http://purl.org/nidash/nidm#NIDM_0000106>
 prefix obo_Toeplitzcovariancestructure <http://purl.obolibrary.org/obo/STATO_0000357>
 prefix nidm_noiseRoughnessInVoxels <http://purl.org/nidash/nidm#NIDM_0000145>
@@ -36,6 +37,7 @@ prefix nidm_SignificantCluster <http://purl.org/nidash/nidm#NIDM_0000070>
 prefix nidm_NIDMResults <http://purl.org/nidash/nidm#NIDM_0000027>
 prefix nidm_ContrastStandardErrorMap <http://purl.org/nidash/nidm#NIDM_0000013>
 prefix nidm_Inference <http://purl.org/nidash/nidm#NIDM_0000049>
+prefix obo_FWERadjustedpvalue <http://purl.obolibrary.org/obo/OBI_0001265>
 prefix obo_Zstatistic <http://purl.obolibrary.org/obo/STATO_0000376>
 prefix nidm_version <http://purl.org/nidash/nidm#NIDM_0000127>
 prefix nidm_withEstimationMethod <http://purl.org/nidash/nidm#NIDM_0000134>
@@ -95,7 +97,6 @@ prefix nidm_randomFieldStationarity <http://purl.org/nidash/nidm#NIDM_0000120>
 prefix nidm_hasDriftModel <http://purl.org/nidash/nidm#NIDM_0000088>
 prefix nidm_voxelUnits <http://purl.org/nidash/nidm#NIDM_0000133>
 prefix nidm_varianceMapWiseDependence <http://purl.org/nidash/nidm#NIDM_0000126>
-prefix nidm_userSpecifiedThresholdType <http://purl.org/nidash/nidm#NIDM_0000125>
 prefix nidm_SubjectCoordinateSystem <http://purl.org/nidash/nidm#NIDM_0000077>
 prefix nidm_ErrorModel <http://purl.org/nidash/nidm#NIDM_0000023>
 prefix nidm_maskedMedian <http://purl.org/nidash/nidm#NIDM_0000107>
@@ -153,9 +154,9 @@ entity(niiri:coordinate_0002_2,[prov:type = 'nidm:NIDM_0000015', prov:label = "C
 entity(niiri:coordinate_0004_3,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0004_3", nidm:NIDM_0000086 = "[ 16.1, -96.6, 5.82 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 28, 7, 16 ]" %% xsd:string])
 entity(niiri:coordinate_0004_2,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0004_2", nidm:NIDM_0000086 = "[ -38.0, -53.9, -21.9 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 42, 21, 12 ]" %% xsd:string])
 entity(niiri:grand_mean_map_id,[prov:type = 'nidm:NIDM_0000033', prov:label = "Grand Mean Map", prov:location = "file://./GrandMean.nii.gz" %% xsd:anyURI, nfo:fileName = "GrandMean.nii.gz" %% xsd:string, nfo:fileName = "mean_func.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000107 = "9597.36" %% xsd:float, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "7a2703cea740e27a5170fb19e4a09b5e815e4b7e477bc75958404d675aa408f53f747892a2ef4472f933cf5f12cd21cea99d5f5e551938081636fb6d4049473e" %% xsd:string])
-entity(niiri:height_threshold_id,[prov:type = 'nidm:NIDM_0000034', prov:label = "Height Threshold: Z>2.3", prov:value = "2.3" %% xsd:float, nidm:NIDM_0000125 = "Z-Statistic" %% xsd:string])
+entity(niiri:height_threshold_id,[prov:type = 'nidm:NIDM_0000034', prov:type = 'obo:STATO_0000039', prov:label = "Height Threshold: Z>2.3", prov:value = "2.3" %% xsd:float])
 entity(niiri:peak_0004_4,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0004_4", prov:location = 'niiri:coordinate_0004_4', nidm:NIDM_0000116 = "1.01163e-08" %% xsd:float, nidm:NIDM_0000092 = "5.61" %% xsd:float])
-entity(niiri:extent_threshold_id,[prov:type = 'nidm:NIDM_0000026', prov:label = "Extent Threshold: p<0.05 (FWE)", nidm:NIDM_0000125 = "p-value FWE" %% xsd:string, nidm:NIDM_0000115 = "0.05" %% xsd:float])
+entity(niiri:extent_threshold_id,[prov:type = 'nidm:NIDM_0000026', prov:type = 'obo:OBI_0001265', prov:label = "Extent Threshold: p<0.05 (FWE)", prov:value = "0.05" %% xsd:float])
 entity(niiri:beta_map_id_1,[prov:type = 'nidm:NIDM_0000061', prov:label = "Parameter estimate 1", nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', nfo:fileName = "pe1.nii.gz" %% xsd:string])
 entity(niiri:peak_0004_3,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak 0004_3", prov:location = 'niiri:coordinate_0004_3', nidm:NIDM_0000116 = "9.54787e-09" %% xsd:float, nidm:NIDM_0000092 = "5.62" %% xsd:float])
 entity(niiri:coordinate_0002_1,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0002_1", nidm:NIDM_0000086 = "[ -56.2, -61.9, 4.03 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 47, 18, 18 ]" %% xsd:string])
@@ -175,7 +176,7 @@ entity(niiri:significant_cluster_0002,[prov:type = 'nidm:NIDM_0000070', prov:lab
 entity(niiri:center_of_gravity_3,[prov:type = 'nidm:NIDM_0000140', prov:label = "Center of gravity 3", prov:location = 'niiri:COG_coordinate_0003'])
 entity(niiri:center_of_gravity_4,[prov:type = 'nidm:NIDM_0000140', prov:label = "Center of gravity 4", prov:location = 'niiri:COG_coordinate_0004'])
 entity(niiri:coordinate_0004_5,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0004_5", nidm:NIDM_0000086 = "[ -25.5, -80.4, -15.3 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 39, 13, 12 ]" %% xsd:string])
-entity(niiri:fsl_results_id,[prov:type = 'prov:Bundle', prov:type = 'nidm:NIDM_0000027', prov:label = "NIDM-Results", nidm:NIDM_0000127 = "1.0.0" %% xsd:string])
+entity(niiri:fsl_results_id,[prov:type = 'prov:Bundle', prov:type = 'nidm:NIDM_0000027', prov:label = "NIDM-Results", nidm:NIDM_0000127 = "dev" %% xsd:string])
 entity(niiri:coordinate_0004_4,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0004_4", nidm:NIDM_0000086 = "[ -48.1, -73.7, -9.24 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 45, 15, 14 ]" %% xsd:string])
 entity(niiri:coordinate_0004_6,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate 0004_6", nidm:NIDM_0000086 = "[ 0.791, -87.2, 3.23 ]" %% xsd:string, nidm:NIDM_0000139 = "[ 32, 10, 16 ]" %% xsd:string])
 entity(niiri:error_model_id,[prov:type = 'nidm:NIDM_0000023', nidm:NIDM_0000101 = 'nidm:NIDM_0000032', nidm:NIDM_0000094 = "true" %% xsd:boolean, nidm:NIDM_0000126 = 'nidm:NIDM_0000073', nidm:NIDM_0000100 = 'obo:STATO_0000357', nidm:NIDM_0000089 = 'nidm:NIDM_0000074'])

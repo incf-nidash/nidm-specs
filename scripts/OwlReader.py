@@ -507,7 +507,8 @@ class OwlReader():
                         if p in attributes:
                             found_attributes = True
 
-                    class_names += ", "+ex_graph.qname(class_name)
+                    class_names += ", "+ex_graph.qname(class_name) + \
+                                   " (i.e. " + self.get_label(class_name) + ")"
 
                 # if not found_attributes:
                     # if attributes:
@@ -515,6 +516,7 @@ class OwlReader():
                 if not found_attributes:
                     key = "\n Unrecognised attribute: " + \
                           ex_graph.qname(p) + \
+                          " (i.e. " + self.get_label(p) + ")" + \
                           " in "+class_names[2:]
                     if not key in my_exception:
                         my_exception[key] = set([ex_name])

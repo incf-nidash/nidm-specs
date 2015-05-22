@@ -8,7 +8,8 @@
 from rdflib import Namespace
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
-NIDM = Namespace('http://purl.org/nidash/nidm#')
+NIDM_URL = 'http://purl.org/nidash/nidm#'
+NIDM = Namespace(NIDM_URL)
 
 NIIRI = Namespace('http://iri.nidash.org/')
 AFNI = Namespace('http://purl.org/nidash/afni#')
@@ -28,6 +29,11 @@ OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
 # NIDM constants
+NIDM_THRESHOLD = NIDM['NIDM_0000162']
+NIDM_EQUIVALENT_THRESHOLD = NIDM['NIDM_0000161']
+NIDM_P_VALUE_UNCORRECTED = NIDM['NIDM_0000160']
+NIDM_P_VALUE_UNCORRECTED_QNAME = \
+	str(NIDM_P_VALUE_UNCORRECTED).replace(NIDM_URL, "nidm:")
 NIDM_NOISE_FWHM_IN_VOXELS = NIDM['NIDM_0000159']
 NIDM_NOISE_FWHM_IN_VERTICES = NIDM['NIDM_0000158']
 NIDM_NOISE_FWHM_IN_UNITS = NIDM['NIDM_0000157']
@@ -218,6 +224,13 @@ OBO_UNCURATED = OBO['IAO_0000124']
 OBO_TO_BE_REPLACED = OBO['IAO_0000423']
 OBO_READY = OBO['IAO_0000122']
 OBO_DEFINITION = OBO['IAO_0000115']
+
+OBO_STATISTIC = OBO['STATO_0000039']
+OBO_STATISTIC_QNAME = str(OBO_STATISTIC).replace(OBO_URL, "obo:")
+OBO_P_VALUE_FWER = OBO['OBI_0001265']
+OBO_P_VALUE_FWER_QNAME = str(OBO_P_VALUE_FWER).replace(OBO_URL, "obo:")
+OBO_Q_VALUE_FDR = OBO['OBI_0001442']
+OBO_Q_VALUE_FDR_QNAME = str(OBO_Q_VALUE_FDR).replace(OBO_URL, "obo:")
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
 
