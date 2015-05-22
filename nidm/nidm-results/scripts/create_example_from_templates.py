@@ -125,6 +125,7 @@ class ExampleFromTemplate(object):
     def replace_alphanum_id_by_prefixes(self, example):
         alphanum_ids = re.findall('nidm:NIDM_\d*', example) + \
                        re.findall('obo:STATO_\d*', example) + \
+                       re.findall('obo:OBI_\d*', example) + \
                        re.findall('spm:SPM_\d*', example) + \
                        re.findall('fsl:FSL_\d*', example)
 
@@ -133,11 +134,11 @@ class ExampleFromTemplate(object):
             if idt.startswith("nidm:"):
                 term_uri = NIDM[idt.split(":")[1]]
             elif idt.startswith("obo:"):
-                term_uri = OBO[idt.split(":")[1]]
+                term_uri = OBO[idt.split(":")[1]]                
             elif idt.startswith("spm:"):
                 term_uri = SPM[idt.split(":")[1]]
             elif idt.startswith("fsl:"):
-                term_uri = FSL[idt.split(":")[1]]                
+                term_uri = FSL[idt.split(":")[1]]
 
             prefix_name = self.owl.get_label(term_uri).replace(" ", "")\
                                                       .replace(":", "_")\
