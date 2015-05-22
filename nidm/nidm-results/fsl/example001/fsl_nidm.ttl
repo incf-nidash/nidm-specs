@@ -50,15 +50,13 @@
 @prefix nidm_hasErrorDependence: <http://purl.org/nidash/nidm#NIDM_0000100> .
 @prefix nidm_dependenceMapWiseDependence: <http://purl.org/nidash/nidm#NIDM_0000089> .
 @prefix nidm_RegularizedParameter: <http://purl.org/nidash/nidm#NIDM_0000074> .
+@prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
 @prefix nidm_ClusterCenterOfGravity: <http://purl.org/nidash/nidm#NIDM_0000140> .
 @prefix nidm_ContrastMap: <http://purl.org/nidash/nidm#NIDM_0000002> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
 @prefix nidm_coordinateVector: <http://purl.org/nidash/nidm#NIDM_0000086> .
 @prefix nidm_coordinateVectorInVoxels: <http://purl.org/nidash/nidm#NIDM_0000139> .
 @prefix nidm_ExcursionSetMap: <http://purl.org/nidash/nidm#NIDM_0000025> .
-@prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
-@prefix nidm_userSpecifiedThresholdType: <http://purl.org/nidash/nidm#NIDM_0000125> .
-@prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
 @prefix nidm_GrandMeanMap: <http://purl.org/nidash/nidm#NIDM_0000033> .
 @prefix nidm_maskedMedian: <http://purl.org/nidash/nidm#NIDM_0000107> .
 @prefix nidm_ParameterEstimateMap: <http://purl.org/nidash/nidm#NIDM_0000061> .
@@ -73,6 +71,7 @@
 @prefix nidm_SignificantCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
 @prefix nidm_clusterLabelId: <http://purl.org/nidash/nidm#NIDM_0000082> .
+@prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
 @prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_StatisticMap: <http://purl.org/nidash/nidm#NIDM_0000076> .
 @prefix nidm_errorDegreesOfFreedom: <http://purl.org/nidash/nidm#NIDM_0000093> .
@@ -96,7 +95,9 @@
 @prefix obo_tstatistic: <http://purl.obolibrary.org/obo/STATO_0000176> .
 @prefix obo_Toeplitzcovariancestructure: <http://purl.obolibrary.org/obo/STATO_0000357> .
 @prefix obo_Zstatistic: <http://purl.obolibrary.org/obo/STATO_0000376> .
+@prefix obo_statistic: <http://purl.obolibrary.org/obo/STATO_0000039> .
 @prefix obo_generalizedleastsquaresestimation: <http://purl.obolibrary.org/obo/STATO_0000372> .
+@prefix obo_FWERadjustedpvalue: <http://purl.obolibrary.org/obo/OBI_0001265> .
 @prefix fsl_FSLsGammaDifferenceHRF: <http://purl.org/nidash/fsl#FSL_0000001> .
 @prefix fsl_GaussianRunningLineDriftModel: <http://purl.org/nidash/fsl#FSL_0000002> .
 @prefix fsl_driftCutoffPeriod: <http://purl.org/nidash/fsl#FSL_0000004> .
@@ -166,6 +167,10 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: obo_Toeplitzcovariancestructure: ;
     nidm_dependenceMapWiseDependence: nidm_RegularizedParameter: .
+
+niiri:extent_threshold_id a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Extent Threshold: p<0.05 (FWE)" ;
+    prov:value "0.05"^^xsd:float .
 
 niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 1" ;
@@ -346,11 +351,6 @@ niiri:excursion_set_map_id_1 a prov:Entity , nidm_ExcursionSetMap: ;
 	crypto:sha512 "c74e3c47e4308f27423a195c7c3e70b64b8fd362d612a2543da76bced67f666949b70272033ab3d4b7d0bbbfe22b7da13d56d25521664be0c96454fd180ee4cc"^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id_1 .
 
-niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
-	rdfs:label "Extent Threshold: p<0.05 (FWE)" ;
-    nidm_userSpecifiedThresholdType: "p-value FWE"^^xsd:string ;
-	nidm_pValueFWER: "0.05"^^xsd:float .
-
 niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
 	rdfs:label "Grand Mean Map" ;
 	prov:atLocation "file://./GrandMean.nii.gz"^^xsd:anyURI ;
@@ -473,9 +473,8 @@ niiri:z_statistic_map_id_1 a prov:Entity , nidm_StatisticMap: ;
 	crypto:sha512 "3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03"^^xsd:string ;
 	prov:wasGeneratedBy niiri:contrast_estimation_id_1.
 
-niiri:height_threshold_id a prov:Entity , nidm_HeightThreshold: ;
+niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, obo_statistic: ;
 	rdfs:label "Height Threshold: Z>2.3" ;
-	nidm_userSpecifiedThresholdType: "Z-Statistic"^^xsd:string ;
 	prov:value "2.3"^^xsd:float .
 
 niiri:excursion_set_png_id_1 a prov:Entity , dctype:Image ;
@@ -518,7 +517,7 @@ niiri:model_parameters_estimation_id prov:used niiri:error_model_id ;
 
 niiri:fsl_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
-	nidm_version: "1.0.0"^^xsd:string .
+	nidm_version: "dev"^^xsd:string .
 
 _:blank1 a prov:Generation .
 

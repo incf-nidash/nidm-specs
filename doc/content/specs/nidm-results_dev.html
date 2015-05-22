@@ -1545,8 +1545,8 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
                         <li><a title="NIDM_0000115"><dfn title="NIDM_0000115">nidm:'p Value FWER'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000116"><dfn title="NIDM_0000116">nidm:'p Value Uncorrected'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000119"><dfn title="NIDM_0000119">nidm:'q Value FDR'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000125"><dfn title="NIDM_0000125">nidm:'user Specified Threshold Type'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                         <li><a title="NIDM_0000156"><dfn title="NIDM_0000156">nidm:'cluster Size In Resels'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Size of cluster measured in resels (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="NIDM_0000161"><dfn title="NIDM_0000161">nidm:'equivalent Threshold'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value) (range <a title="NIDM_0000162">nidm:'Threshold'</a> such as <a title="NIDM_0000026">nidm:'Extent Threshold'</a>, <a title="NIDM_0000034">nidm:'Height Threshold'</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
@@ -1562,6 +1562,18 @@ niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
 	nidm_clusterSizeInResels: "0"^^xsd:float ;
 	nidm_pValueUncorrected: "1"^^xsd:float ;
 	nidm_pValueFWER: "1"^^xsd:float .</pre>
+            <!-- nidm:'Threshold' (NIDM_0000162) -->
+            <section id="section-nidm:'Threshold'">
+                <h1 label="NIDM_0000162">nidm:'Threshold'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000162"><dfn title="NIDM_0000162">nidm:'Threshold'</dfn></a>: A numerical value that establishes a bound on a set of statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value, FDR-corrected q-value or statistic value <a title="NIDM_0000162">nidm:'Threshold'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Threshold'"> A <a title="NIDM_0000162">nidm:'Threshold'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Threshold'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000162">nidm:'Threshold'</a>.</li>
+                        <li><a title="NIDM_0000161">nidm:'equivalent Threshold'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value) (range <a title="NIDM_0000162">nidm:'Threshold'</a> such as <a title="NIDM_0000026">nidm:'Extent Threshold'</a>, <a title="NIDM_0000034">nidm:'Height Threshold'</a>).</li>
+            </section>
             </section>
             <!-- nidm:'Height Threshold' (NIDM_0000034) -->
             <section id="section-nidm:'Height Threshold'">
@@ -1576,21 +1588,16 @@ niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
                         <li><a title="NIDM_0000115">nidm:'p Value FWER'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000116">nidm:'p Value Uncorrected'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000119">nidm:'q Value FDR'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000125">nidm:'user Specified Threshold Type'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Type of method used to define a threshold (e.g. statistic value, uncorrected P-value or corrected P-value) (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000161">nidm:'equivalent Threshold'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value) (range <a title="NIDM_0000162">nidm:'Threshold'</a> such as <a title="NIDM_0000026">nidm:'Extent Threshold'</a>, <a title="NIDM_0000034">nidm:'Height Threshold'</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
-@prefix nidm_userSpecifiedThresholdType: &lt;http://purl.org/nidash/nidm#NIDM_0000125&gt; .
-@prefix nidm_pValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000116&gt; .
-@prefix nidm_pValueFWER: &lt;http://purl.org/nidash/nidm#NIDM_0000115&gt; .
+@prefix obo_FWERadjustedpvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001265&gt; .
 
 
-niiri:height_threshold_id a prov:Entity , nidm_HeightThreshold: ;
+niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
 	rdfs:label "Height Threshold: p&lt;0.05 (FWE)" ;
-	nidm_userSpecifiedThresholdType: "p-value FWE"^^xsd:string ;
-	prov:value "5.23529984739211"^^xsd:float ;
-    nidm_pValueUncorrected: "7.62276079258051e-07"^^xsd:float ;
-	nidm_pValueFWER: "0.05"^^xsd:float .</pre>
+	prov:value "0.05"^^xsd:float .</pre>
             </section>
             <!-- nidm:'Peak' (NIDM_0000062) -->
             <section id="section-nidm:'Peak'">
@@ -1785,7 +1792,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                             <td><a title="NIDM_0000004">nidm:'Binary Map'</a>
                             </td>
                     
-                                <td rowspan="6" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
+                                <td rowspan="7" style="text-align: center;">NIDM-Results Types<br/>                                 (PROV Entity)</td>
                         
                                 <td><a title="NIDM_0000004">nidm:'Binary Map'</a></td>
                             </tr>
@@ -1823,6 +1830,13 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                             </td>
                     
                                 <td><a title="NIDM_0000140">nidm:'Cluster Center Of Gravity'</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="NIDM_0000160">nidm:'P-Value Uncorrected'</a>
+                            </td>
+                    
+                                <td><a title="NIDM_0000160">nidm:'P-Value Uncorrected'</a></td>
                             </tr>
                 
                 </tbody>
@@ -1893,6 +1907,12 @@ niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity" ;
 	prov:atLocation niiri:coordinate_0001 ;
 	prov:wasDerivedFrom niiri:significant_cluster_0001 .</pre>
+            </section>
+            <!-- nidm:'P-Value Uncorrected' (NIDM_0000160) -->
+            <section id="section-nidm:'P-Value Uncorrected'">
+                <h1 label="NIDM_0000160">nidm:'P-Value Uncorrected'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000160"><dfn title="NIDM_0000160">nidm:'P-Value Uncorrected'</dfn></a>: A p-value reported without correction for multiple testing <a title="NIDM_0000160">nidm:'P-Value Uncorrected'</a> is a prov:Entity.
             </section>
             </section></section>
 
