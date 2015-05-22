@@ -16,7 +16,7 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_GLS_STR, STATO_GLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_ZSTATISTIC_STR, STATO_TSTATISTIC_LABEL, STATO_ZSTATISTIC_LABEL, \
-    NIDM_EVENT_RELATED_DESIGN
+    NIDM_EVENT_RELATED_DESIGN, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME
 
 
 def main():
@@ -217,17 +217,17 @@ fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527",
 1acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03",
             coordinate_space_id="niiri:coordinate_space_id_1",
             contrast_est_id="niiri:contrast_estimation_id_1"),
-        "HeightThreshold_Value": dict(
+        "HeightThreshold": dict(
             height_threshold_id="niiri:height_threshold_id",
+            thresh_type=OBO_STATISTIC_QNAME,
             label="Height Threshold: Z>2.3",
             value="2.3",
-            thresh_type="Z-Statistic"
             ),
-        "FSL_ExtentThreshold": dict(
+        "ExtentThreshold": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: p<0.05 (FWE)",
-            thresh_type="p-value FWE",
-            p_fwe="0.05"
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="0.05",
             ),
         "PeakDefinitionCriteria": dict(
             peak_definition_criteria_id="niiri:peak_definition_criteria_id_1",

@@ -15,7 +15,8 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_GLS_STR, STATO_GLS_LABEL, STATO_TSTATISTIC_STR, \
-    STATO_TSTATISTIC_LABEL
+    STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME, \
+    NIDM_P_VALUE_UNCORRECTED_QNAME
 
 
 def main():
@@ -203,21 +204,45 @@ f1dd89befece07e73cf5bca5b3116f55ac4496751ca990db85e8377001a4be941b2",
 4c0b0ccf0b51fd8958c32ea3253d3122e9b31a54262bf910f8b5b646054ceb9a5825",
             map_id="niiri:statistic_map_id"
             ),
-        "HeightThreshold_P": dict(
+        "HeightThreshold_equivThresh_equivThresh2": dict(
             height_threshold_id="niiri:height_threshold_id",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
             label="Height Threshold: p<0.05 (FWE)",
-            value="4.85241745689539",
-            thresh_type="p-value FWE",
-            p_unc="2.7772578456986e-06",
-            p_fwe="0.0499999999999976"
+            value="0.0499999999999976",
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
             ),
-        "ExtentThreshold": dict(
+        "HeightThreshold-2": dict(
+            height_threshold_id="niiri:height_threshold_id_2",
+            thresh_type=OBO_STATISTIC_QNAME,
+            label="Height Threshold",
+            value="4.85241745689539"
+            ),
+        "HeightThreshold-3": dict(
+            height_threshold_id="niiri:height_threshold_id_3",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            label="Height Threshold",
+            value="2.7772578456986e-06",
+            ),
+        "ExtentThresholdStat_equivThresh_equivThresh2": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",
             cluster_size_resels="0",
-            p_unc="1",
-            p_fwe="1"
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
+            ),
+        "ExtentThreshold-2": dict(
+            extent_threshold_id="niiri:extent_threshold_id_2",
+            label="Extent Threshold",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
+            ),
+        "ExtentThreshold-3": dict(
+            extent_threshold_id="niiri:extent_threshold_id_3",
+            label="Extent Threshold",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            value="1",
             ),
         "PeakDefinitionCriteria_MaxPeaks": dict(
             peak_definition_criteria_id="niiri:peak_definition_criteria_id",

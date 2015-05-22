@@ -7,21 +7,30 @@ templates available in nidm/nidm-results/terms/templates
 @copyright: University of Warwick 2013-2014
 """
 import os
+import sys
 from create_example_from_templates import ExampleFromTemplate
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDMRESULTSPATH = os.path.dirname(RELPATH)
+# Append parent script directory to path
+sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
+from Constants import NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_P_VALUE_FWER_QNAME
+
 
 def main():
 	nidm_classes = {
-		"HeightThreshold_PUnc": dict(
-			height_threshold_id="niiri:height_threshold_id",
-			label="Height Threshold: p<0.05 (uncorrected)",
-			p_unc="0.050000",
-			thresh_type="p-value uncorrected"
-			),
-		"FSL_ExtentThresholdNoType": dict(
-			extent_threshold_id="niiri:extent_threshold_id",
-			label="Extent Threshold: k>=0",
-			p_fwe="1.0"
-			),
+        "HeightThreshold": dict(
+            height_threshold_id="niiri:height_threshold_id",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            label="Height Threshold: p<0.05 (uncorrected)",
+            value="0.050000",
+            ),
+        "ExtentThreshold": dict(
+            extent_threshold_id="niiri:extent_threshold_id",
+            label="Extent Threshold: k>=0",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
+            ),
 		"InferenceUsedThresh": dict(
 			inference_id="niiri:inference_id",
 			height_thresh_id="niiri:height_threshold_id", 

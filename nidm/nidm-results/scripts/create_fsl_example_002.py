@@ -7,21 +7,29 @@ templates available in nidm/nidm-results/terms/templates
 @copyright: University of Warwick 2013-2014
 """
 import os
+import sys
 from create_example_from_templates import ExampleFromTemplate
+
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDMRESULTSPATH = os.path.dirname(RELPATH)
+# Append parent script directory to path
+sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
+from Constants import OBO_P_VALUE_FWER_QNAME
 
 
 def main():
     nidm_classes = {
-        "HeightThreshold_PFWE": dict(
+        "HeightThreshold": dict(
             height_threshold_id="niiri:height_threshold_id",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
             label="Height Threshold: p<0.05 (FWE)",
-            p_fwe="0.050000",
-            thresh_type="p-value FWE"
+            value="0.050000",
             ),
-        "FSL_ExtentThresholdNoType": dict(
+        "ExtentThreshold": dict(
             extent_threshold_id="niiri:extent_threshold_id",
-            label="Extent Threshold: k>=0",
-            p_fwe="1.0"
+            label="Extent Threshold",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
             ),
         "InferenceUsedThresh": dict(
             inference_id="niiri:inference_id",

@@ -15,7 +15,8 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
-	STATO_ZSTATISTIC_STR, STATO_TSTATISTIC_LABEL
+	STATO_ZSTATISTIC_STR, STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, \
+	NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME
 
 def main():
 	nidm_classes = {
@@ -196,19 +197,33 @@ def main():
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"HeightThreshold_P": dict(
-			height_threshold_id="niiri:height_threshold_id",
-			label="Height Threshold: p<0.05 (FWE)",
-			p_unc="0.000001",
-			p_fwe="0.050000",
-			value="5.235300",
-			thresh_type="p-value FWE"
-			),
-		"FSL_ExtentThresholdNoType": dict(
-			extent_threshold_id="niiri:extent_threshold_id",
-			label="Cluster Threshold",
-			p_fwe="1.0"
-			),
+
+        "HeightThreshold_equivThresh_equivThresh2": dict(
+            height_threshold_id="niiri:height_threshold_id",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            label="Height Threshold: p<0.05 (FWE)",
+            value="0.05",
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
+            ),
+        "HeightThreshold-2": dict(
+            height_threshold_id="niiri:height_threshold_id_2",
+            thresh_type=OBO_STATISTIC_QNAME,
+            label="Height Threshold",
+            value="5.235300"
+            ),
+        "HeightThreshold-3": dict(
+            height_threshold_id="niiri:height_threshold_id_3",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            label="Height Threshold",
+            value="0.000001",
+            ),
+        "ExtentThreshold": dict(
+            extent_threshold_id="niiri:extent_threshold_id",
+            label="Cluster Threshold",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
+            ),
 		"DisplayMaskMap_fileName": dict(
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
