@@ -1,0 +1,35 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
+@prefix neurolex: <http://neurolex.org/wiki/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix spm: <http://purl.org/nidash/spm#> .
+@prefix fsl: <http://purl.org/nidash/fsl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix niiri: <http://iri.nidash.org/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix nlx: <http://neurolex.org/wiki/> .
+
+
+@prefix nidm_ModelParametersEstimation: <http://purl.org/nidash/nidm#NIDM_0000056> .
+@prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
+@prefix nidm_hasfMRIDesign: <http://purl.org/nidash/nidm#NIDM_0000010> .
+@prefix nidm_EventRelatedDesign: <http://purl.org/nidash/nidm#NIDM_0000153> .
+
+
+niiri:model_parameter_estimation_id a prov:Activity , nidm_ModelParametersEstimation: ;
+    prov:used niiri:design_matrix_id .
+
+niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
+	rdfs:label "Design Matrix" ;
+	prov:atLocation "file://./DesignMatrix.csv"^^xsd:anyURI ;
+	dct:format "text/csv"^^xsd:string ;
+	nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+	dc:description niiri:design_matrix_png_id ;
+    nidm_hasfMRIDesign: nidm_EventRelatedDesign: ;
+
+
