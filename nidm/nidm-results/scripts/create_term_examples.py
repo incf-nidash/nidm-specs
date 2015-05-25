@@ -16,7 +16,7 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_Q_VALUE_FDR_QNAME, \
-    NIDM_P_VALUE_UNCORRECTED_QNAME
+    NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME
 
 
 def main():
@@ -136,11 +136,30 @@ id",
             sha="e43b6e01b0463fe7d40782137867a...",
             coordinate_space_id="niiri:coordinate_space_id_1",
             contrast_est_id="niiri:contrast_estimation_id"),
-        "HeightThreshold": dict(
-            height_threshold_id="niiri:height_threshold_id",
-            label="Height Threshold: p<0.05 (FWE)",
+        "HeightThreshold_equivThresh-FWER": dict(
+            height_threshold_id="niiri:height_threshold_fwer_id",
+            label="Height Threshold: p<0.05 (FWER-corrected)",
             value="0.05",
             thresh_type=OBO_P_VALUE_FWER_QNAME,
+            equiv_thresh="niiri:height_threshold_stat_id"
+            ),
+        "HeightThreshold-Stat": dict(
+            height_threshold_id="niiri:height_threshold_stat_id",
+            label="Height Threshold: Z<0.0000000672357409",
+            value="0.0000000672357409",
+            thresh_type=OBO_STATISTIC_QNAME,
+            ),
+        "HeightThreshold-FDR": dict(
+            height_threshold_id="niiri:height_threshold_fdr_id",
+            label="Height Threshold: p<0.05 (FDR-corrected)",
+            value="0.05",
+            thresh_type=OBO_Q_VALUE_FDR_QNAME
+            ),
+        "HeightThreshold-Unc": dict(
+            height_threshold_id="niiri:height_threshold_unc_id",
+            label="Height Threshold: p<0.001 (uncorrected)",
+            value="0.001",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME
             ),
         "ExtentThresholdStat": dict(
             extent_threshold_id="niiri:extent_threshold_stat_id",
