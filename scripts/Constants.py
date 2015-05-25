@@ -18,6 +18,7 @@ FSL = Namespace('http://purl.org/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
 CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/\
 cryptographicHashFunctions#')
+DC = Namespace('http://purl.org/dc/elements/1.1/')
 DCT = Namespace('http://purl.org/dc/terms/')
 # This is a workaround to avoid issue with "#" in base prefix as
 # described in https://github.com/RDFLib/rdflib/issues/379,
@@ -29,6 +30,8 @@ XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
+NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
+
 namespaces = {
     "prov": PROV,
     "nidm": NIDM,
@@ -39,7 +42,9 @@ namespaces = {
     "rdfs": RDFS,
     "crypto": CRYPTO,
     "dct": DCT,
-    "obo": OBO
+    "obo": OBO,
+    "nfo": NFO,
+    "dc": DC
     }
 
 # Empty graph used to compute qnames
