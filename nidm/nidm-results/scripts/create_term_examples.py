@@ -15,7 +15,8 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
-	STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME
+	STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_Q_VALUE_FDR_QNAME, \
+	NIDM_P_VALUE_UNCORRECTED_QNAME
 
 def main():
 	nidm_classes = {
@@ -140,10 +141,29 @@ def main():
 			thresh_type=OBO_P_VALUE_FWER_QNAME,
 			),
 		"ExtentThresholdStat": dict(
-			extent_threshold_id="niiri:extent_threshold_id",
+			extent_threshold_id="niiri:extent_threshold_stat_id",
 			label="Extent Threshold: k>=0",
 			cluster_size_vox="0",
 			cluster_size_resels="0",
+			),
+		"ExtentThreshold_equivThresh-FWER": dict(
+			extent_threshold_id="niiri:extent_threshold_fwer_id",
+			thresh_type=OBO_P_VALUE_FWER_QNAME,
+			label="Extent Threshold: p<0.05 (FWER-corrected)",
+			value="0.05",
+			equiv_thresh="niiri:extent_threshold_stat_id"
+			),
+		"ExtentThreshold-FDR": dict(
+			extent_threshold_id="niiri:extent_threshold_fdr_id",
+			thresh_type=OBO_Q_VALUE_FDR_QNAME,
+			label="Extent Threshold: p<0.05 (FDR-corrected)",
+			value="0.05"
+			),
+		"ExtentThreshold-Unc": dict(
+			extent_threshold_id="niiri:extent_threshold_unc_id",
+			thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+			label="Extent Threshold: p<0.001 (uncorrected)",
+			value="0.001"
 			),
 		"SPM_ReselsPerVoxelMap": dict(
 			resels_per_voxel_map_id="niiri:resels_per_voxel_map_id",
