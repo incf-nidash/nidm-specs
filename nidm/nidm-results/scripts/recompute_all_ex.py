@@ -17,6 +17,7 @@ import create_fsl_example
 import create_fsl_example_001
 import create_fsl_example_002
 import create_fsl_example_003
+import create_min_ex_f_test
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
@@ -44,6 +45,8 @@ def main():
 	create_fsl_example_002.main()
 	logger.debug(" create_fsl_example_003")
 	create_fsl_example_003.main()
+	logger.debug(" create_min_ex_f_test")
+	create_min_ex_f_test.main()	
 
 if __name__ == '__main__':
 	main()	

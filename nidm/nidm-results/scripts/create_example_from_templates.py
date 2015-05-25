@@ -117,6 +117,8 @@ class ExampleFromTemplate(object):
                     example = self.replace_alphanum_id_by_prefixes(example)   
                 example = namespaces+"\n"+example
 
+                if not os.path.isdir(os.path.dirname(self.file)):
+                    os.mkdir(os.path.dirname(self.file))
                 example_fid = open(self.file, 'w')
                 example_fid.write(str(example))
                 example_fid.close()

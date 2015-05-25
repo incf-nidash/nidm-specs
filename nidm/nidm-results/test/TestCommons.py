@@ -34,7 +34,10 @@ logger.info(' ---------- Debug log ----------')
 # Examples used for unit testing
 import_test_filenames = set([
                                 os.path.join('spm', 'example001', 'example001_spm_results.provn'),
-                                os.path.join('fsl', 'example001', 'fsl_nidm.provn')
+                                os.path.join('fsl', 'example001', 'fsl_nidm.provn'),
+                                os.path.join('fsl', 'example002', 'fsl_nidm.provn'),    
+                                os.path.join('fsl', 'example003', 'fsl_nidm.provn'),    
+                                os.path.join('test', 'minimal_examples', 'f_test', 'nidm.provn'),                                    
                             ])
 # All examples
 example_filenames = import_test_filenames.union(set([
