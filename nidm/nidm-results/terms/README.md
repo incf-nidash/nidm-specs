@@ -136,14 +136,14 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/38">ISA-tools/stato#38</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='p Value FWER'"> [more] </a></td>
     <td><b>nidm:'p Value FWER': </b>"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests"(same as: <a href=This definition is from OBI. Please update this note if the definition is modified.>This definition is from OBI. Please update this note if the definition is modified.</a>)</td>
-    <td>nidm:NIDM_0000026 nidm:NIDM_0000034 nidm:NIDM_0000062 nidm:NIDM_0000070 </td>
+    <td>nidm:NIDM_0000062 nidm:NIDM_0000070 </td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/38">ISA-tools/stato#38</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='p Value Uncorrected'"> [more] </a></td>
     <td><b>nidm:'p Value Uncorrected': </b>A p-value reported without correction for multiple testing.        </td>
-    <td>nidm:NIDM_0000026 nidm:NIDM_0000034 nidm:NIDM_0000062 nidm:NIDM_0000070 </td>
+    <td>nidm:NIDM_0000062 nidm:NIDM_0000070 </td>
     <td></td>
 </tr>
 <tr>

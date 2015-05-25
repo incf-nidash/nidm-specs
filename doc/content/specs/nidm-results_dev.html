@@ -1542,26 +1542,49 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
                     <li><span class="attribute" id="nidm:'Extent Threshold'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000026">nidm:'Extent Threshold'</a>.</li>
                         <li><a title="NIDM_0000083"><dfn title="NIDM_0000083">nidm:'cluster Size In Vertices'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of vertices that make up the cluster (range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>).</li>
                         <li><a title="NIDM_0000084"><dfn title="NIDM_0000084">nidm:'cluster Size In Voxels'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of voxels that make up the cluster (range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>).</li>
-                        <li><a title="NIDM_0000115"><dfn title="NIDM_0000115">nidm:'p Value FWER'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000116"><dfn title="NIDM_0000116">nidm:'p Value Uncorrected'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000119"><dfn title="NIDM_0000119">nidm:'q Value FDR'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000156"><dfn title="NIDM_0000156">nidm:'cluster Size In Resels'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Size of cluster measured in resels (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000161"><dfn title="NIDM_0000161">nidm:'equivalent Threshold'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value) (range <a title="NIDM_0000162">nidm:'Threshold'</a> such as <a title="NIDM_0000026">nidm:'Extent Threshold'</a>, <a title="NIDM_0000034">nidm:'Height Threshold'</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+@prefix nidm_PValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000160&gt; .
+
+
+niiri:extent_threshold_unc_id a prov:Entity, nidm_ExtentThreshold:, nidm_PValueUncorrected: ;
+    rdfs:label "Extent Threshold: p&lt;0.001 (uncorrected)" ;
+    prov:value "0.001"^^xsd:float .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix nidm_clusterSizeInVoxels: &lt;http://purl.org/nidash/nidm#NIDM_0000084&gt; .
 @prefix nidm_clusterSizeInResels: &lt;http://purl.org/nidash/nidm#NIDM_0000156&gt; .
-@prefix nidm_pValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000116&gt; .
-@prefix nidm_pValueFWER: &lt;http://purl.org/nidash/nidm#NIDM_0000115&gt; .
+@prefix obo_statistic: &lt;http://purl.obolibrary.org/obo/STATO_0000039&gt; .
 
 
-niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
-	rdfs:label "Extent Threshold: k&gt;=0" ;
-	nidm_clusterSizeInVoxels: "0"^^xsd:int ;
-	nidm_clusterSizeInResels: "0"^^xsd:float ;
-	nidm_pValueUncorrected: "1"^^xsd:float ;
-	nidm_pValueFWER: "1"^^xsd:float .</pre>
+niiri:extent_threshold_stat_id a prov:Entity, nidm_ExtentThreshold:, obo_statistic: ;
+    rdfs:label "Extent Threshold: k&gt;=0" ;
+    nidm_clusterSizeInVoxels: "0"^^xsd:int ;
+    nidm_clusterSizeInResels: "0"^^xsd:float .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+@prefix nidm_equivalentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000161&gt; .
+@prefix obo_FWERadjustedpvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001265&gt; .
+
+
+niiri:extent_threshold_fwer_id a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Extent Threshold: p&lt;0.05 (FWER-corrected)" ;
+    prov:value "0.05"^^xsd:float ;
+    nidm_equivalentThreshold: niiri:extent_threshold_stat_id .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+@prefix obo_qvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001442&gt; .
+
+
+niiri:extent_threshold_fdr_id a prov:Entity, nidm_ExtentThreshold:, obo_qvalue: ;
+    rdfs:label "Extent Threshold: p&lt;0.05 (FDR-corrected)" ;
+    prov:value "0.05"^^xsd:float .</pre>
             <!-- nidm:'Threshold' (NIDM_0000162) -->
             <section id="section-nidm:'Threshold'">
                 <h1 label="NIDM_0000162">nidm:'Threshold'</h1>
@@ -1585,19 +1608,45 @@ niiri:extent_threshold_id a prov:Entity , nidm_ExtentThreshold: ;
                 <div class="attributes" id="attributes-nidm:'Height Threshold'"> A <a title="NIDM_0000034">nidm:'Height Threshold'</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:'Height Threshold'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000034">nidm:'Height Threshold'</a>.</li>
-                        <li><a title="NIDM_0000115">nidm:'p Value FWER'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000116">nidm:'p Value Uncorrected'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000119">nidm:'q Value FDR'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000161">nidm:'equivalent Threshold'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value) (range <a title="NIDM_0000162">nidm:'Threshold'</a> such as <a title="NIDM_0000026">nidm:'Extent Threshold'</a>, <a title="NIDM_0000034">nidm:'Height Threshold'</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+@prefix nidm_PValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000160&gt; .
+
+
+niiri:height_threshold_unc_id a prov:Entity, nidm_HeightThreshold:, nidm_PValueUncorrected: ;
+    rdfs:label "Height Threshold: p&lt;0.001 (uncorrected)" ;
+    prov:value "0.001"^^xsd:float .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+@prefix nidm_equivalentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000161&gt; .
 @prefix obo_FWERadjustedpvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001265&gt; .
 
 
-niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
-	rdfs:label "Height Threshold: p&lt;0.05 (FWE)" ;
-	prov:value "0.05"^^xsd:float .</pre>
+niiri:height_threshold_fwer_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadjustedpvalue: ;
+    rdfs:label "Height Threshold: p&lt;0.05 (FWER-corrected)" ;
+    prov:value "0.05"^^xsd:float ;
+    nidm_equivalentThreshold: niiri:height_threshold_stat_id .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+@prefix obo_qvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001442&gt; .
+
+
+niiri:height_threshold_fdr_id a prov:Entity, nidm_HeightThreshold:, obo_qvalue: ;
+    rdfs:label "Height Threshold: p&lt;0.05 (FDR-corrected)" ;
+    prov:value "0.05"^^xsd:float .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+@prefix obo_statistic: &lt;http://purl.obolibrary.org/obo/STATO_0000039&gt; .
+
+
+niiri:height_threshold_stat_id a prov:Entity, nidm_HeightThreshold:, obo_statistic: ;
+    rdfs:label "Height Threshold: Z&lt;0.0000000672357409" ;
+    prov:value "0.0000000672357409"^^xsd:float .</pre>
             </section>
             <!-- nidm:'Peak' (NIDM_0000062) -->
             <section id="section-nidm:'Peak'">
@@ -1610,9 +1659,9 @@ niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadjusted
                 <ul>
                     <li><span class="attribute" id="nidm:'Peak'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000062">nidm:'Peak'</a>.</li>
                         <li><a title="NIDM_0000092"><dfn title="NIDM_0000092">nidm:'equivalent ZStatistic'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Statistic value transformed into Z units; the output of a process which takes a non-normal statistic and transforms it to an equivalent z score (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000115">nidm:'p Value FWER'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000116">nidm:'p Value Uncorrected'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="NIDM_0000119">nidm:'q Value FDR'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="NIDM_0000115"><dfn title="NIDM_0000115">nidm:'p Value FWER'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) "A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests" (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="NIDM_0000116"><dfn title="NIDM_0000116">nidm:'p Value Uncorrected'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A p-value reported without correction for multiple testing.         (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="NIDM_0000119"><dfn title="NIDM_0000119">nidm:'q Value FDR'</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A quantitative confidence value that measures the minimum false discovery rate that is incurred when calling that test significant. To compute q-values, it is necessary to know the p-value produced by a test and possibly set a false discovery rate level (same as OBI_0001442) (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                 </ul>
                 </div>
                 <pre class='example highlight'>@prefix nidm_Peak: &lt;http://purl.org/nidash/nidm#NIDM_0000062&gt; .
