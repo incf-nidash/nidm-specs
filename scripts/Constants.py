@@ -5,7 +5,7 @@
 @copyright: University of Warwick 2014
 '''
 
-from rdflib import Namespace
+from rdflib import Namespace, Graph
 
 PROV = Namespace('http://www.w3.org/ns/prov#')
 NIDM_URL = 'http://purl.org/nidash/nidm#'
@@ -16,9 +16,10 @@ AFNI = Namespace('http://purl.org/nidash/afni#')
 SPM = Namespace('http://purl.org/nidash/spm#')
 FSL = Namespace('http://purl.org/nidash/fsl#')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
-CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#')
+CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/\
+cryptographicHashFunctions#')
 DCT = Namespace('http://purl.org/dc/terms/')
-# This is a workaround to avoid issue with "#" in base prefix as 
+# This is a workaround to avoid issue with "#" in base prefix as
 # described in https://github.com/RDFLib/rdflib/issues/379,
 # When the fix is introduced in rdflib this line will be replaced by:
 # OWL = Namespace('http://www.w3.org/2002/07/owl#')
@@ -28,13 +29,30 @@ XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
+namespaces = {
+    "prov": PROV,
+    "nidm": NIDM,
+    "niiri": NIIRI,
+    "afni": AFNI,
+    "spm": SPM,
+    "fsl": FSL,
+    "rdfs": RDFS,
+    "crypto": CRYPTO,
+    "dct": DCT,
+    "obo": OBO
+    }
+
+# Empty graph used to compute qnames
+q_graph = Graph()
+for name, namespace in namespaces.items():
+    q_graph.bind(name, namespace)
+
 # NIDM constants
 NIDM_CONTRAST_EXPLAINED_MEAN_SQUARE_MAP = NIDM['NIDM_0000163']
 NIDM_THRESHOLD = NIDM['NIDM_0000162']
 NIDM_EQUIVALENT_THRESHOLD = NIDM['NIDM_0000161']
 NIDM_P_VALUE_UNCORRECTED = NIDM['NIDM_0000160']
-NIDM_P_VALUE_UNCORRECTED_QNAME = \
-	str(NIDM_P_VALUE_UNCORRECTED).replace(NIDM_URL, "nidm:")
+NIDM_P_VALUE_UNCORRECTED_QNAME = q_graph.qname(NIDM_P_VALUE_UNCORRECTED)
 NIDM_NOISE_FWHM_IN_VOXELS = NIDM['NIDM_0000159']
 NIDM_NOISE_FWHM_IN_VERTICES = NIDM['NIDM_0000158']
 NIDM_NOISE_FWHM_IN_UNITS = NIDM['NIDM_0000157']
@@ -227,26 +245,26 @@ OBO_READY = OBO['IAO_0000122']
 OBO_DEFINITION = OBO['IAO_0000115']
 
 OBO_STATISTIC = OBO['STATO_0000039']
-OBO_STATISTIC_QNAME = str(OBO_STATISTIC).replace(OBO_URL, "obo:")
+OBO_STATISTIC_QNAME = q_graph.qname(OBO_STATISTIC)
 OBO_P_VALUE_FWER = OBO['OBI_0001265']
-OBO_P_VALUE_FWER_QNAME = str(OBO_P_VALUE_FWER).replace(OBO_URL, "obo:")
+OBO_P_VALUE_FWER_QNAME = q_graph.qname(OBO_P_VALUE_FWER)
 OBO_Q_VALUE_FDR = OBO['OBI_0001442']
-OBO_Q_VALUE_FDR_QNAME = str(OBO_Q_VALUE_FDR).replace(OBO_URL, "obo:")
+OBO_Q_VALUE_FDR_QNAME = q_graph.qname(OBO_Q_VALUE_FDR)
 
 HAS_CURATION_STATUS = OBO['IAO_0000114']
 
 STATO_OLS = OBO['STATO_0000370']
-STATO_OLS_STR = str(STATO_OLS).replace(OBO_URL, "obo:")
+STATO_OLS_STR = q_graph.qname(STATO_OLS)
 # TODO: labels should be grabbed automatically from the corresponding owl file
 STATO_OLS_LABEL = "obo:'ordinary least squares estimation'"
 STATO_GLS = OBO['STATO_0000372']
-STATO_GLS_STR = str(STATO_GLS).replace(OBO_URL, "obo:")
+STATO_GLS_STR = q_graph.qname(STATO_GLS)
 STATO_GLS_LABEL = "obo:'generalized least squares estimation'"
 STATO_TSTATISTIC = OBO['STATO_0000176']
-STATO_TSTATISTIC_STR = str(STATO_TSTATISTIC).replace(OBO_URL, "obo:")
+STATO_TSTATISTIC_STR = q_graph.qname(STATO_TSTATISTIC)
 STATO_TSTATISTIC_LABEL = "obo:'t-statistic'"
 STATO_ZSTATISTIC = OBO['STATO_0000376']
-STATO_ZSTATISTIC_STR = str(STATO_ZSTATISTIC).replace(OBO_URL, "obo:")
+STATO_ZSTATISTIC_STR = q_graph.qname(STATO_ZSTATISTIC)
 STATO_ZSTATISTIC_LABEL = "obo:'Z-statistic'"
 STATO_CONTRAST_WEIGHT_MATRIX = OBO['STATO_0000323']
 
