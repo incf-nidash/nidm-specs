@@ -88,7 +88,7 @@ class TestResultDataModel(object):
     def setUp(self, owl_file, owl_imports=None):
         self.my_execption = ""
 
-        self.owl = OwlReader(owl_file, owl_imports)
+        # self.owl = OwlReader(owl_file, owl_imports)
 
         # Current script directory is test directory (containing test data)
         # self.test_dir = os.path.dirname(os.path.abspath(
@@ -452,9 +452,10 @@ class ExampleGraph(object):
     '''Class representing a NIDM-Results examples graph to be compared to some
     ground truth graph'''
 
-    def __init__(self, ttl_file, gt_ttl_file, exact_comparison):
+    def __init__(self, owl_file, ttl_file, gt_ttl_file, exact_comparison):
         self.ttl_file = ttl_file
 
+        self.owl_file = owl_file
         self.gt_ttl_file = gt_ttl_file
         self.exact_comparison = exact_comparison
         self.graph = Graph()
@@ -469,3 +470,14 @@ class ExampleGraph(object):
             self.gt_ttl_file = gt_ttl_file.replace(
                 os.path.join("nidm", "nidm"),
                 os.path.join("nidm_releases", self.version, "nidm"))
+            self.owl_file = os.path.join(
+                os.path.dirname(owl_file),
+                "releases",
+                "nidm-results_"+self.version.replace(".", "")+".owl")
+
+        owl_imports = None
+        if self.version == "dev":
+            owl_imports = glob.glob(
+                os.path.join(os.path.dirname(owl_file),
+                             os.pardir, os.pardir, "imports", '*.ttl'))
+        self.owl = OwlReader(self.owl_file, owl_imports)
