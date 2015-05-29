@@ -445,8 +445,9 @@ class OwlReader():
 
         return sub_types
 
-    def check_class_names(self, ex_graph, ex_name):
+    def check_class_names(self, ex_graph, ex_name, raise_now=False):
         my_exception = dict()
+        error_msg = ""
         class_names = self.get_class_names()
 
         unrecognised_classes = list()
@@ -461,14 +462,19 @@ class OwlReader():
                 # key = ex_graph.qname(not_recognised_sub_type)
                 key = "\n Unrecognised sub-type: " + \
                     ex_graph.qname(unrecognised_class)
+                error_msg += key
                 if key in my_exception:
                     my_exception[key].add(ex_name)
                 else:
                     my_exception[key] = set([ex_name])
 
+        if raise_now:
+            if error_msg:
+                raise Exception(error_msg)
+
         return my_exception
 
-    def check_attributes(self, ex_graph, ex_name):
+    def check_attributes(self, ex_graph, ex_name, raise_now=False):
         ignored_attributes = set([
             RDFS['label'],
             RDF['type'],
@@ -618,6 +624,18 @@ class OwlReader():
                             my_restriction_exception[key] = set([ex_name])
                         else:
                             my_restriction_exception[key].add(ex_name)
+
+        if raise_now:
+            error_msg = ""
+            for exc in my_exception.keys():
+                error_msg += exc
+            for exc in my_range_exception.keys():
+                error_msg += exc
+            for exc in my_restriction_exception.keys():
+                error_msg += exc
+
+            if error_msg:
+                raise Exception(error_msg)
 
         return list((my_exception, my_range_exception,
                      my_restriction_exception))

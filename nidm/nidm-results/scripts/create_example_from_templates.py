@@ -28,9 +28,10 @@ logger = logging.getLogger(__name__)
 class ExampleFromTemplate(object):
     
     def __init__(self, nidm_classes, example_file, one_file_per_class=False, 
-        owl_file=None):
+        owl_file=None, remove_att=None):
         self.nidm_classes = nidm_classes
         self.one_file_per_class = one_file_per_class
+        self.remove_att = remove_att
 
         self.owl = None
         if owl_file is None:
@@ -103,6 +104,9 @@ class ExampleFromTemplate(object):
             if self.one_file_per_class:
                 example_file = os.path.join(self.dir, nidm_class+".txt")
                 example_fid = open(example_file, 'w')
+                if self.remove_att is not None:
+                    class_example = \
+                        self.remove_attributes(self.remove_att, class_example)
                 if self.owl:     
                     class_example = self.replace_alphanum_id_by_prefixes(class_example)   
                 example_fid.write(str(class_example))
@@ -112,15 +116,25 @@ class ExampleFromTemplate(object):
             else:
                 example += class_example+"\n\n"
 
-        if not self.one_file_per_class:  
+        if not self.one_file_per_class:
+                if self.remove_att is not None:
+                    example = self.remove_attributes(self.remove_att, example)            
                 if self.owl:     
                     example = self.replace_alphanum_id_by_prefixes(example)   
                 example = namespaces+"\n"+example
 
+                if not os.path.isdir(os.path.dirname(self.file)):
+                    os.mkdir(os.path.dirname(self.file))
                 example_fid = open(self.file, 'w')
                 example_fid.write(str(example))
                 example_fid.close()
 
+    def remove_attributes(self, terms, example):
+        for term in terms:
+            for att in re.findall(r"\s*"+q_graph.qname(term)+".*", example):
+                example = example.replace(att, "")
+
+        return example
 
     def replace_alphanum_id_by_prefixes(self, example):
         alphanum_ids = re.findall('nidm:NIDM_\d*', example) + \

@@ -85,10 +85,25 @@ class TestResultDataModel(object):
     @copyright: University of Warwick 2014
     '''
 
-    def setUp(self, owl_file, owl_imports=None):
+    def setUp(self, owl_file, owl_imports=None, test_files=None,
+              parent_test_dir=None, parent_gt_dir=None):
         self.my_execption = ""
 
         self.owl = OwlReader(owl_file, owl_imports)
+
+        self.ex_graphs = dict()
+        for ttl_name in test_files:
+            ttl = parent_test_dir+ttl_name
+            test_dir = os.path.dirname(ttl)
+            with open(os.path.join(test_dir, 'config.json')) as data_file:
+                metadata = json.load(data_file)
+            gt_file = [os.path.join(parent_gt_dir, x)
+                       for x in metadata["ground_truth"]]
+            inclusive = metadata["inclusive"]
+            name = ttl.replace(parent_test_dir, "")
+
+            self.ex_graphs[ttl_name] = ExampleGraph(
+                name, owl_file, ttl, gt_file, inclusive)
 
         # Current script directory is test directory (containing test data)
         # self.test_dir = os.path.dirname(os.path.abspath(
@@ -231,7 +246,8 @@ class TestResultDataModel(object):
 
         return list([graph1, graph2])
 
-    def compare_full_graphs(self, gt_graph, other_graph, include=False):
+    def compare_full_graphs(self, gt_graph, other_graph, include=False,
+                            raise_now=False):
         ''' Compare gt_graph and other_graph '''
 
         # We reconcile gt_graph with other_graph
@@ -447,15 +463,21 @@ class TestResultDataModel(object):
         self.my_execption += exc_missing + \
             exc_added + exc_wrong + exc_wrong_literal
 
+        if raise_now and self.my_execption:
+            raise Exception(self.my_execption)
+
 
 class ExampleGraph(object):
     '''Class representing a NIDM-Results examples graph to be compared to some
     ground truth graph'''
 
-    def __init__(self, ttl_file, gt_ttl_file, exact_comparison):
+    def __init__(self, name, owl_file, ttl_file, gt_ttl_files,
+                 exact_comparison):
+        self.name = name
         self.ttl_file = ttl_file
 
-        self.gt_ttl_file = gt_ttl_file
+        self.owl_file = owl_file
+        self.gt_ttl_files = gt_ttl_files
         self.exact_comparison = exact_comparison
         self.graph = Graph()
         self.graph.parse(ttl_file, format='turtle')
@@ -466,6 +488,18 @@ class ExampleGraph(object):
         self.version = versions.next()
 
         if self.version != "dev":
-            self.gt_ttl_file = gt_ttl_file.replace(
-                os.path.join("nidm", "nidm"),
-                os.path.join("nidm_releases", self.version, "nidm"))
+            self.gt_ttl_files = [
+                x.replace(os.path.join("nidm", "nidm"),
+                          os.path.join("nidm_releases", self.version, "nidm"))
+                for x in self.gt_ttl_files]
+            self.owl_file = os.path.join(
+                os.path.dirname(owl_file),
+                "releases",
+                "nidm-results_"+self.version.replace(".", "")+".owl")
+
+        owl_imports = None
+        if self.version == "dev":
+            owl_imports = glob.glob(
+                os.path.join(os.path.dirname(owl_file),
+                             os.pardir, os.pardir, "imports", '*.ttl'))
+        self.owl = OwlReader(self.owl_file, owl_imports)

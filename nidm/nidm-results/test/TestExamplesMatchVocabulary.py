@@ -56,6 +56,12 @@ class TestExamples(unittest.TestCase):
             term_dir = os.path.join(os.path.dirname(ttl_file), os.pardir, 'terms')
             if not os.path.isdir(term_dir):
                 term_dir = os.path.join(os.path.dirname(ttl_file), os.pardir, os.pardir, 'terms')
+
+            # Retreive owl file for minimal examples
+            if not os.path.isdir(term_dir):
+                term_dir = os.path.join(
+                    os.path.dirname(ttl_file), os.pardir, os.pardir,
+                    os.pardir, 'terms')
             owl_files = glob.glob(os.path.join(term_dir, '*.owl'))
             self.owl_files[example_file] = owl_files[0]
             self.owl_readers = dict()

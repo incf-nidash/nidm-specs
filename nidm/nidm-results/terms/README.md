@@ -16,6 +16,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
+    <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/235">#235</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Explained Mean Square Map'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Contrast Explained Mean Square Map': </b>A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the denumerator of an F-statistic)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/290">#290</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Coordinate Space'"> [more] </a></td>
     <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)</td>
 </tr>

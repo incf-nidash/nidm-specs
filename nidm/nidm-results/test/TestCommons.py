@@ -31,19 +31,22 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 logger.info(' ---------- Debug log ----------')
 
-# Examples used for unit testing
+# Complete examples (used for test queries)
 import_test_filenames = set([
                                 os.path.join('spm', 'example001', 'example001_spm_results.provn'),
-                                os.path.join('fsl', 'example001', 'fsl_nidm.provn')
+                                os.path.join('spm', 'spm_results.provn') , 
+                                os.path.join('fsl', 'fsl_results.provn'),
+                                os.path.join('fsl', 'example001', 'fsl_nidm.provn'),
                             ])
 # All examples
 example_filenames = import_test_filenames.union(set([
-                                os.path.join('spm', 'spm_results.provn') , 
                                 os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
                                 os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
                                 os.path.join('spm', 'example004', 'spm_inference_activities.provn'),
                                 os.path.join('spm', 'example005', 'nidm.provn'),
-                                os.path.join('fsl', 'fsl_results.provn')
+                                os.path.join('fsl', 'example002', 'fsl_nidm.provn'),    
+                                os.path.join('fsl', 'example003', 'fsl_nidm.provn'),                              
+                                os.path.join('test', 'minimal_examples', 'f_test', 'nidm.provn')                                                                
                             ]))
 
 
