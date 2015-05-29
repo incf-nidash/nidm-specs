@@ -231,7 +231,8 @@ class TestResultDataModel(object):
 
         return list([graph1, graph2])
 
-    def compare_full_graphs(self, gt_graph, other_graph, include=False):
+    def compare_full_graphs(self, gt_graph, other_graph, include=False,
+                            raise_now=False):
         ''' Compare gt_graph and other_graph '''
 
         # We reconcile gt_graph with other_graph
@@ -446,6 +447,9 @@ class TestResultDataModel(object):
 
         self.my_execption += exc_missing + \
             exc_added + exc_wrong + exc_wrong_literal
+
+        if raise_now and self.my_execption:
+            raise Exception(self.my_execption)
 
 
 class ExampleGraph(object):
