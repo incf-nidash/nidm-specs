@@ -85,10 +85,25 @@ class TestResultDataModel(object):
     @copyright: University of Warwick 2014
     '''
 
-    def setUp(self, owl_file, owl_imports=None):
+    def setUp(self, owl_file, owl_imports=None, test_files=None,
+              parent_test_dir=None, parent_gt_dir=None):
         self.my_execption = ""
 
         self.owl = OwlReader(owl_file, owl_imports)
+
+        self.ex_graphs = dict()
+        for ttl_name in test_files:
+            ttl = parent_test_dir+ttl_name
+            test_dir = os.path.dirname(ttl)
+            with open(os.path.join(test_dir, 'config.json')) as data_file:
+                metadata = json.load(data_file)
+            gt_file = [os.path.join(parent_gt_dir, x)
+                       for x in metadata["ground_truth"]]
+            inclusive = metadata["inclusive"]
+            name = ttl.replace(parent_test_dir, "")
+
+            self.ex_graphs[ttl_name] = ExampleGraph(
+                name, owl_file, ttl, gt_file, inclusive)
 
         # Current script directory is test directory (containing test data)
         # self.test_dir = os.path.dirname(os.path.abspath(
