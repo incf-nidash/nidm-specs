@@ -16,10 +16,12 @@ from rdflib.compare import *
 import sys
 import shutil
 import urllib2
+from create_results_specification import main as create_spec
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
+SPECSPATH = os.path.join(NIDMPATH, os.pardir, "doc", "content", "specs")
 
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
@@ -99,15 +101,8 @@ class NIDMRelease(object):
                 owl_txt = owl_txt + "\n\n##### Imports from %s #####" % (name)
                 owl_txt = owl_txt + im_txt
 
-                # Replace address of examples
-                owl_txt = owl_txt.replace(
-                    "https://raw.githubusercontent.com/incf-nidash/nidm/\
-master/",
-                    "https://raw.githubusercontent.com/incf-nidash/nidm/\
-NIDM-Results_"+self.nidm_original_version+"/")
-
         # Remove AFNI-related terms (not ready for release yet)
-        if int(self.nidm_version) <= 100:
+        if int(self.nidm_version) <= 110:
             owl_txt = owl_txt.replace(
                 "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
             # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
@@ -121,7 +116,28 @@ NIDM-Results_"+self.nidm_original_version+"/")
                 owl_txt = owl_txt.replace(m.group(), "")
 
         with open(release_owl_file, 'w') as fp:
-            owl_txt = fp.write(owl_txt)
+            fp.write(owl_txt)
+
+        # Create specification (before the address of examples are updated to
+        # avoid issue with examples pointing to tag not pushed yet)
+        create_spec(self.nidm_original_version)
+        if self.nidm_version == "100":
+            image_dir_prev = os.path.join(
+                SPECSPATH, "img", "nidm-results_100")
+        image_dir = os.path.join(
+            SPECSPATH, "img", "nidm-results_"+self.nidm_version)
+        if not os.path.isdir(image_dir):
+            shutil.copytree(image_dir_prev, image_dir)
+
+        # Replace address of examples
+        owl_txt = owl_txt.replace(
+            "https://raw.githubusercontent.com/incf-nidash/nidm/\
+master/",
+            "https://raw.githubusercontent.com/incf-nidash/nidm/\
+NIDM-Results_"+self.nidm_original_version+"/")
+
+        with open(release_owl_file, 'w') as fp:
+            fp.write(owl_txt)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
