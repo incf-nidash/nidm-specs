@@ -186,19 +186,29 @@ def main(nidm_original_version):
     owlspec._header_footer(component="nidm-results", version=nidm_version)
 
     if not nidm_version == "dev":
-        if nidm_version == "020":
+        if nidm_version == "110":
+            # Previous version
+            owlspec.text = owlspec.text.replace(
+                "nidm-results_020.html", "nidm-results_100.html")
+        elif nidm_version == "020":
             # Previous version
             owlspec.text = owlspec.text.replace(
                 "nidm-results_020.html", "nidm-results_010.html")
-        owlspec.text = owlspec.text.replace(
-            "(under development)", nidm_original_version)
-        owlspec.text = owlspec.text.replace(
-            "nidm-results_dev.html",
-            "nidm-results_" + nidm_version + ".html", 1)
-        owlspec.text = owlspec.text.replace(
-            "img/", "img/nidm-results_" + nidm_version + "/")
+        owlspec.text = dev_to_release(owlspec.text, nidm_original_version)
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
+
+
+def dev_to_release(text, full_version):
+    version = full_version.replace(".", "")
+    text = text.replace(
+        "(under development)", full_version)
+    text = text.replace(
+        "nidm-results_dev.html",
+        "nidm-results_" + version + ".html", 1)
+    text = text.replace(
+        "img/", "img/nidm-results_" + version + "/")
+    return text
 
 
 def _replace_term_by(renaming, components, used_by, generated_by,
