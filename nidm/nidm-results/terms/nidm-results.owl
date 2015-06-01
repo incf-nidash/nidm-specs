@@ -373,7 +373,7 @@ nidm:NIDM_0000161 rdf:type owl:ObjectProperty ;
                   
                   obo:IAO_0000114 obo:IAO_0000125 ;
                   
-                  rdfs:range nidm:NIDM_0000162 ;    
+                  rdfs:range nidm:NIDM_0000162 ;
                   
                   rdfs:domain nidm:NIDM_0000162 .
 
@@ -682,24 +682,8 @@ nidm:NIDM_0000095 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "partial Conjunction Degree" ;
                   
-                  obo:IAO_0000115 "The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference" ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/294" ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 ;
-                  
-                  rdfs:domain spm:SPM_0000005 ;
-
                   owl:deprecated "true"^^xsd:boolean ;
                   
-                  rdfs:range xsd:int .
-
-###  http://purl.org/nidash/spm#SPM_0000015
-
-spm:SPM_0000015 rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:label "partial Conjunction Degree" ;
-                  
                   obo:IAO_0000115 "The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference" ;
                   
                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/294" ;
@@ -708,7 +692,7 @@ spm:SPM_0000015 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:domain spm:SPM_0000005 ;
                   
-                  rdfs:range xsd:int .                  
+                  rdfs:range xsd:int .
 
 
 
@@ -901,11 +885,11 @@ nidm:NIDM_0000115 rdf:type owl:DatatypeProperty ;
                   
                   obo:IAO_0000112 "0.05" ;
                   
-                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
-                  
                   obo:IAO_0000115 "\"A quantitative confidence value resulting from a multiple testing error correction method which adjusts the p-value used as input to control for Type I error in the context of multiple pairwise tests\"" ;
                   
                   owl:sameAs "This definition is from OBI. Please update this note if the definition is modified." ;
+                  
+                  obo:IAO_0000116 "Under discussion at https://github.com/ISA-tools/stato/issues/38" ;
                   
                   rdfs:seeAlso "Synonym of \"nidm:pFWE\"" ;
                   
@@ -1076,6 +1060,8 @@ nidm:NIDM_0000125 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "user Specified Threshold Type" ;
                   
+                  owl:deprecated "true"^^xsd:boolean ;
+                  
                   obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/150" ;
                   
                   obo:IAO_0000112 "nidm:pValueFWER" ;
@@ -1088,8 +1074,6 @@ nidm:NIDM_0000125 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:domain nidm:NIDM_0000026 ,
                               nidm:NIDM_0000034 ;
-
-                  owl:deprecated "true"^^xsd:boolean ;                                            
                   
                   rdfs:range xsd:string .
 
@@ -1723,6 +1707,24 @@ spm:SPM_0000014 rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://purl.org/nidash/spm#SPM_0000015
+
+spm:SPM_0000015 rdf:type owl:DatatypeProperty ;
+                
+                rdfs:label "partial Conjunction Degree" ;
+                
+                obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/294" ;
+                
+                obo:IAO_0000115 "The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference" ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                
+                rdfs:domain spm:SPM_0000005 ;
+                
+                rdfs:range xsd:int .
+
+
+
 ###  http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName
 
 nfo:fileName rdf:type owl:DatatypeProperty ;
@@ -1800,12 +1802,12 @@ dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -1855,22 +1857,6 @@ fsl:FSL_0000002 rdf:type owl:Class ;
                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
                 
                 obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://purl.org/nidash/nidm#ContrastExplainedMeanSquareMap
-
-nidm:NIDM_0000163 rdf:type owl:Class ;
-                                    
-                                    rdfs:label "Contrast Explained Mean Square Map" ;
-                                    
-                                    rdfs:subClassOf nidm:NIDM_0000052 ;
-                                    
-                                    obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the denumerator of an F-statistic)." ;
-                                    
-                                    obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/235" ;
-                                    
-                                    obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2138,6 +2124,11 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty dc:description ;
+                                    owl:onClass dctype:Image ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
@@ -2146,11 +2137,6 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty dc:description ;
-                                    owl:onClass dctype:Image ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
@@ -2262,7 +2248,10 @@ nidm:NIDM_0000026 rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:NIDM_0000162 ;
                   
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThresholdStat.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold-FDR.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold_equivThresh-FWER.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold-Unc.txt"^^xsd:anyURI ;
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold-FDR.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold-Unc.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThresholdStat.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExtentThreshold_equivThresh-FWER.txt"^^xsd:anyURI ;
                   
                   obo:IAO_0000115 "A numerical value that establishes a lower bound on cluster-sizes and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum cluster size in voxels" ;
                   
@@ -2394,7 +2383,10 @@ nidm:NIDM_0000034 rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:NIDM_0000162 ;
                   
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold_equivThresh-FWER.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-Stat.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-FDR.txt"^^xsd:anyURI, "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-Unc.txt"^^xsd:anyURI ;
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-FDR.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-Stat.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold-Unc.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/HeightThreshold_equivThresh-FWER.txt"^^xsd:anyURI ;
                   
                   obo:IAO_0000115 "A numerical value that establishes a lower bound on statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value or minimum statistic value." ;
                   
@@ -2512,12 +2504,12 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2543,17 +2535,17 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -3177,8 +3169,24 @@ nidm:NIDM_0000162 rdf:type owl:Class ;
                   rdfs:label "Threshold"^^xsd:string ;
                   
                   rdfs:subClassOf prov:Entity ;
-
+                  
                   obo:IAO_0000115 "A numerical value that establishes a bound on a set of statistic values and can be specified by the user in terms of FWER-corrected p-value, uncorrected p-value, FDR-corrected q-value or statistic value"^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000163
+
+nidm:NIDM_0000163 rdf:type owl:Class ;
+                  
+                  rdfs:label "Contrast Explained Mean Square Map" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+                  
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the denumerator of an F-statistic)." ;
+                  
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/235" ;
                   
                   obo:IAO_0000114 obo:IAO_0000125 .
 
