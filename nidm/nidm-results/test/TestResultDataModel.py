@@ -11,6 +11,7 @@ import rdflib
 import re
 import numpy as np
 import json
+import glob
 
 import logging
 
@@ -485,7 +486,7 @@ class ExampleGraph(object):
         # Get NIDM-Results version for each example
         versions = self.graph.objects(None, NIDM_VERSION)
         assert versions is not None
-        self.version = versions.next()
+        self.version = str(versions.next())
 
         if self.version != "dev":
             self.gt_ttl_files = [
