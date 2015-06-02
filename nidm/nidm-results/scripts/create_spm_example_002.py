@@ -332,7 +332,7 @@ def main():
             value="0.05",
             ),
 
-        "ExtentThresholdStat_equivThresh_equivThresh2": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",
@@ -352,7 +352,7 @@ def main():
             thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
             value="1",
             ),
-        "ExtentThresholdStat_equivThresh_equivThresh2-2": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels-2": dict(
             extent_threshold_id="niiri:extent_threshold_id_2",
             label="Extent Threshold: k>=5",
             cluster_size_vox="5",
@@ -372,7 +372,7 @@ def main():
             thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
             value="1",
             ),
-        "ExtentThresholdStat_equivThresh_equivThresh2-3": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels-3": dict(
             extent_threshold_id="niiri:extent_threshold_id_3",
             label="Extent Threshold: k>=10",
             cluster_size_vox="10",

@@ -296,7 +296,7 @@ id_2",
             label="Height Threshold",
             value="0.05",
             ),
-        "ExtentThresholdStat_equivThresh_equivThresh2": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=10",
             cluster_size_vox="10",

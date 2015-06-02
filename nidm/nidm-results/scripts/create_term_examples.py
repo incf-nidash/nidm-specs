@@ -161,7 +161,7 @@ id",
             value="0.001",
             thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME
             ),
-        "ExtentThresholdStat": dict(
+        "ExtentThresholdStat_clusterSizeResels": dict(
             extent_threshold_id="niiri:extent_threshold_stat_id",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",

@@ -239,7 +239,7 @@ def main():
             label="Height Threshold: p<7.62276079258051e-07 (uncorrected)",
             value="7.62276079258051e-07",
             ),
-        "ExtentThresholdStat_equivThresh_equivThresh2": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",
