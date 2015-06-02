@@ -17,6 +17,7 @@ import sys
 import shutil
 import urllib2
 from create_results_specification import main as create_spec
+import glob
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -135,6 +136,21 @@ class NIDMRelease(object):
 master/",
             "https://raw.githubusercontent.com/incf-nidash/nidm/\
 NIDM-Results_"+self.nidm_original_version+"/")
+
+        # Update version number in examples
+        ex_files = glob.glob(
+            os.path.join(NIDMRESULTSPATH, "*", "ex*", "*.ttl"))
+        for ex in ex_files:
+            with open(ex, 'r') as fp:
+                ex_txt = fp.read()
+            with open(ex, 'w') as fp:
+                fp.write(ex_txt.replace("dev", self.nidm_original_version))
+            prov_ex = ex.replace(".ttl", ".provn")
+            if os.path.isfile(prov_ex):
+                with open(prov_ex, 'r') as fp:
+                    ex_txt = fp.read()
+                with open(prov_ex, 'w') as fp:
+                    fp.write(ex_txt.replace("dev", self.nidm_original_version))
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)
