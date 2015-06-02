@@ -624,7 +624,9 @@ _id_1",
             random_field_station="true",
             sha="cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642\
 fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
-            inference_id="niiri:inference_id_1"
+            inference_id="niiri:inference_id_1",
+            noise_fwhm_in_voxels="[2.38803, 2.43263, 2.07288]",
+            noise_fwhm_in_units="[8.35811, 8.5142, 7.2551]"
             ),
         "NIDMBundle": dict(
             bundle_id="niiri:fsl_results_id",
