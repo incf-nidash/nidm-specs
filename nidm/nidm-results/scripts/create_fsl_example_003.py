@@ -14,7 +14,7 @@ RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from Constants import NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_P_VALUE_FWER_QNAME
+from Constants import NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME
 
 
 def main():
@@ -25,11 +25,11 @@ def main():
             label="Height Threshold: p<0.05 (uncorrected)",
             value="0.050000",
             ),
-        "ExtentThreshold": dict(
+        "ExtentThresholdStat": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=0",
-            thresh_type=OBO_P_VALUE_FWER_QNAME,
-            value="1",
+            thresh_type=OBO_STATISTIC_QNAME,
+            cluster_size_vox="0",
             ),
 		"InferenceUsedThresh": dict(
 			inference_id="niiri:inference_id",

@@ -31,6 +31,7 @@ OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
 NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
+NLX = Namespace("http://neurolex.org/wiki/")
 
 namespaces = {
     "prov": PROV,
@@ -44,7 +45,8 @@ namespaces = {
     "dct": DCT,
     "obo": OBO,
     "nfo": NFO,
-    "dc": DC
+    "dc": DC,
+    "nlx": NLX
     }
 
 # Empty graph used to compute qnames

@@ -11,6 +11,7 @@ import rdflib
 import re
 import numpy as np
 import json
+import glob
 
 import logging
 
@@ -195,7 +196,8 @@ class TestResultDataModel(object):
                                           " is matched to " +
                                           graph2.qname(g2_term) +
                                           " and replaced by " +
-                                          graph2.qname(new_id))
+                                          graph2.qname(new_id) +
+                                          " (match=" + str(match_index) + ")")
 
                             for p, o in graph1.predicate_objects(g1_term):
                                 graph1.remove((g1_term, p, o))
@@ -215,7 +217,8 @@ class TestResultDataModel(object):
                         else:
                             logging.debug(graph1.qname(g1_term) +
                                           " is matched to " +
-                                          graph2.qname(g2_term))
+                                          graph2.qname(g2_term) +
+                                          " (match=" + str(match_index) + ")")
 
                         match_found = True
                         break
@@ -485,7 +488,7 @@ class ExampleGraph(object):
         # Get NIDM-Results version for each example
         versions = self.graph.objects(None, NIDM_VERSION)
         assert versions is not None
-        self.version = versions.next()
+        self.version = str(versions.next())
 
         if self.version != "dev":
             self.gt_ttl_files = [

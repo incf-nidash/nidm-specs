@@ -239,7 +239,7 @@ def main():
             label="Height Threshold: p<7.62276079258051e-07 (uncorrected)",
             value="7.62276079258051e-07",
             ),
-        "ExtentThresholdStat_equivThresh_equivThresh2": dict(
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels": dict(
             extent_threshold_id="niiri:extent_threshold_id",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",
@@ -544,7 +544,7 @@ def main():
             bundle_id="niiri:spm_results_id",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
-            version="dev",
+            version="1.1.0",
             time="2014-05-19T10:30:00.000+01:00"
             ),
         "SPM_ReselsPerVoxelMap": dict(

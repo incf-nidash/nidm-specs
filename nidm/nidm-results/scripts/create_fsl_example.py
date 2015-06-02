@@ -418,13 +418,15 @@ def main():
 			noise_roughness="0.384676",
 			random_field_station="true",
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
-			inference_id="niiri:inference_id"
+			inference_id="niiri:inference_id",
+            noise_fwhm_in_voxels="[2.38803, 2.43263, 2.07288]",
+            noise_fwhm_in_units="[8.35811, 8.5142, 7.2551]"
 			),
 		"NIDMBundle": dict(
 			bundle_id="niiri:fsl_results_id",
 			label="NIDM-Results",
 			object_model="nidm:NIDM_0000027",
-			version="dev",
+			version="1.1.0",
 			time="2014-05-19T10:30:00.000+01:00"
 			),
 		"FSL_Software": dict(
