@@ -27,7 +27,7 @@ def main():
             ),
         "ExtentThresholdStat": dict(
             extent_threshold_id="niiri:extent_threshold_id",
-            label="Extent Threshold",
+            label="Extent Threshold: k>=0",
             thresh_type=OBO_STATISTIC_QNAME,
             cluster_size_vox="0",
             ),
