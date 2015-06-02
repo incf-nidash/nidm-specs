@@ -50,11 +50,9 @@ class TestSpecifications(unittest.TestCase):
                   "1.0.0")
 
     def test_nidm_results_110(self):
-        print "NIDM-Results 1.1.0 not tested yet"
-        # FIXE: Uncomment once 1.1.0 is tagged
-        # component = "nidm-results"
-        # self._run(component, create_res_spec, "create_results_specification",
-                  # "1.1.0")
+        component = "nidm-results"
+        self._run(component, create_res_spec, "create_results_specification",
+                  "1.1.0")
 
     def test_nidm_experiment(self):
         component = "nidm-experiment"
