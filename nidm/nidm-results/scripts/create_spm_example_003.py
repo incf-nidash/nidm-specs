@@ -364,7 +364,7 @@ id",
             bundle_id="niiri:spm_results_id",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
-            version="dev",
+            version="1.1.0",
             time="2014-05-19T10:30:00.000+01:00"
             ),
         "SPM_ReselsPerVoxelMap": dict(
