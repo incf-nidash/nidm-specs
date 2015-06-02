@@ -19,7 +19,7 @@ import UpdateTermReadme
 import create_results_specification
 import create_expe_specification
 
-if __name__ == '__main__':
+def main():
 	# Re-create turtle examples from template
 	recompute_all_ex.main()
 	# Convert turtle to provn and upload to Prov Store
@@ -28,4 +28,7 @@ if __name__ == '__main__':
 	UpdateTermReadme.main()
 	# Update specifications
 	create_results_specification.main("dev")
-	create_expe_specification.main()
+	create_expe_specification.main()	
+
+if __name__ == '__main__':
+	main()
