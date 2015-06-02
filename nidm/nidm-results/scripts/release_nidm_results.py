@@ -18,14 +18,18 @@ import shutil
 import urllib2
 from create_results_specification import main as create_spec
 import glob
+import recompute_all_ex
+import UpdateExampleReadmes
+import UpdateTermReadme
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
 SPECSPATH = os.path.join(NIDMPATH, os.pardir, "doc", "content", "specs")
+SCRIPTPATH = os.path.join(NIDMPATH, os.pardir, "scripts")
 
 # Append parent script directory to path
-sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
+sys.path.append(SCRIPTPATH)
 from Constants import *
 
 logging.basicConfig(level=logging.DEBUG)
@@ -130,27 +134,33 @@ class NIDMRelease(object):
         if not os.path.isdir(image_dir):
             shutil.copytree(image_dir_prev, image_dir)
 
+        # Update version number in examples and in script files
+        script_files = glob.glob(
+            os.path.join(NIDMRESULTSPATH, "scripts", "*.py"))
+        for script in script_files:
+            if not script.endswith("release_nidm_results.py"):
+                with open(script, 'r') as fp:
+                    script_txt = fp.read()
+                with open(script, 'w') as fp:
+                        fp.write(
+                            script_txt.replace(
+                                'version="dev"',
+                                'version="' + self.nidm_original_version +
+                                '"'))
+        # Re-create turtle examples from template
+        recompute_all_ex.main()
+        # Convert turtle to provn and upload to Prov Store
+        UpdateExampleReadmes.main()
+        # Update terms README
+        UpdateTermReadme.main()
+        # Update specifications
+
         # Replace address of examples
         owl_txt = owl_txt.replace(
             "https://raw.githubusercontent.com/incf-nidash/nidm/\
 master/",
             "https://raw.githubusercontent.com/incf-nidash/nidm/\
 NIDM-Results_"+self.nidm_original_version+"/")
-
-        # Update version number in examples
-        ex_files = glob.glob(
-            os.path.join(NIDMRESULTSPATH, "*", "ex*", "*.ttl"))
-        for ex in ex_files:
-            with open(ex, 'r') as fp:
-                ex_txt = fp.read()
-            with open(ex, 'w') as fp:
-                fp.write(ex_txt.replace("dev", self.nidm_original_version))
-            prov_ex = ex.replace(".ttl", ".provn")
-            if os.path.isfile(prov_ex):
-                with open(prov_ex, 'r') as fp:
-                    ex_txt = fp.read()
-                with open(prov_ex, 'w') as fp:
-                    fp.write(ex_txt.replace("dev", self.nidm_original_version))
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)
