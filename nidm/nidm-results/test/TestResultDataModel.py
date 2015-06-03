@@ -175,9 +175,16 @@ class TestResultDataModel(object):
                 if p == NIDM_IN_COORDINATE_SPACE:
                     min_matching = MIN_MAP_MATCHING
 
-                if (not activity) or \
-                   (isinstance(o, rdflib.term.Literal) or p == RDF.type):
+                # FIXME: changed "not activity" to "activity" but maybe this
+                # could cause issues later on?
+                if activity or \
+                        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
                     for g2_term in graph2.subjects(p, o):
+                        g2_match[g2_term] += 1
+
+            if activity:
+                for s, p in graph1.subject_predicates(g1_term):
+                    for g2_term in graph2.objects(s, p):
                         g2_match[g2_term] += 1
 
             match_found = False
