@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NIDM-Experiment (under development)</title>
+    <meta charset='utf-8'>
+    <script src='stylesheet/respec-w3c-common.js' async class='remove'></script>
+    <link href="./stylesheet/nidm-w3c-unofficial.css" rel="stylesheet" type="text/css">
+    <script class='remove'>
+        var respecConfig = {
+            specStatus: "unofficial",
+            shortName: "nidm-p",
+            overrideCopyright: "<p class=copyright>NIDM © Free To Everyone!</p>",
+            editors: [
+                {   name: "B. Nolan Nichols",
+                    company: "University of Washington",
+                    companyURL: "http://www.ibic.washington.edu/" },
+                {   name: "Camille Maumet",
+                    company: "University of Warwick" }
+            ],
+            otherLinks: [
+                {
+                key: "Contributors",
+                data: []
+                }, {
+                key: "This version",
+                data: [{
+                      value: "http://nidm.nidash.org/specs/nidm-experiment_dev.html",
+                      href: "./nidm-experiment_dev.html"
+                      }]
+                }, {
+                key: "Latest published version",
+                data: [{
+                      value: "http://nidm.nidash.org/specs/nidm-experiment.html",
+                      href: "./nidm-experiment.html"
+                      }]
+                }, {
+                key: "Latest development version",
+                data: [{
+                      value: "http://nidm.nidash.org/specs/nidm-experiment_dev.html",
+                      href: "./nidm-experiment_dev.html"
+                      }]
+                }, {
+                key: "Previous version",
+                data: [{
+                      value: "http://nidm.nidash.org/specs/nidm-experiment_dev.html",
+                      href: "./nidm-experiment_dev.html"
+                      }]                            
+                }
+            ],
+			logos: [
+			   {
+			      src: 'stylesheet/nidm-text.png',
+			      url: "http://nidm.nidash.org",
+			      alt: "NIDM",
+			      width: 100,
+			      height: 50,
+			      id: 'logo-NIDM-WD'
+			   }
+			],
+            previousMaturity: "FPWD",
+            previousPublishDate: "2013-12-10",
+            wg: "NIDASH Working Group",
+			wgURI:        "http://nidm.nidash.org",
+			wgPublicList: "incf-nidash-nidm@googlegroups.com",
+			wgPatentURI:  "http://nidm.nidash.org",
+            afterEnd: function () {
+
+                var currentDate = new Date();
+                var date = currentDate.toString('dddd, MMMM ,yyyy');
+                $("#respecHeader h2").text("NIDM Specification " + date);
+                $("#respecHeader img").attr({ src: "./stylesheet/nidm-text.png", width: 100, height: 50 });
+            },
+            localBiblio: {
+                "KEATORNI13": {
+                    title: "Towards structured sharing of raw and derived neuroimaging data across existing resources",
+                    href: "http://www.sciencedirect.com/science/article/pii/S105381191300596X",
+                    authors: [
+                        "David B. Keator"
+                        , "Karl Helmer"
+                        , "Jason Steffener"
+                        , "Jessica A. Turner"
+                        , "Theodorus G.M. VanErp"
+                        , "Syam Gadde"
+                        , "Naveen Ashish"
+                        , "Gully A. Burns"
+                        , "B. Nolan Nichols"
+                    ], publisher: "	Elsevier"
+                },
+                "NIDM-Overview": {
+                    title: "NIDM Overview",
+                    href:  "./nidm-overview.html"
+                },
+                "NIDM-Primer": {
+                    title: "NIDM Primer",
+                    href:  "./nidm-primer.html"
+                },
+                "NIDM-Descriptor": {
+                    title: "NIDM Descriptor",
+                    href:  "./nidm-descriptor.html"
+                },
+                "NIDM-Experiment": {
+                    title: "NIDM Experiment",
+                    href:  "./nidm-experiment.html"
+                },
+                "NIDM-Results": {
+                    title: "NIDM Results",
+                    href:  "./nidm-results.html"
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <section id='abstract'>
+        <p>
+            This document provides an intuitive introduction and guide to the NIDASH Data Model for neuroimaging data
+            sharing. NIDASH defines a core vocabulary that extends the PROV Data Model for provenance with terms that
+            capture information about neuroimaging research, from data acquisition to analysis and results. This primer
+            explains the fundamental NIDASH concepts and provides examples of its use. The primer is intended as a
+            starting point for neuroimaging scientists or developers interested in using or creating apps with NIDM.
+        </p>
+    </section>
+
+    <section id="sodt">
+        <p>
+
+        </p>
+    </section>
+
+    <section class="introductory">
+        <h2>Overview</h2>
+        This section provides an overview of the NIDASH Family of Documents and suggestions to the neuroimaging community
+        for implementing these standards to support data sharing activities, as well as in reporting issues or comments.
+        <section>
+        <h4>NIDASH Family of Documents</h4>
+            <p>
+                This document is part of the NIDASH Family of Documents, a set of documents defining various aspects of
+                neuroimaging research that are necessary to achieve the vision of inter-operable interchange of information in
+                heterogeneous environments such as the Web, research consortia, and laboratories. A list of current <abbr
+                title="Neuroimaging Data Sharing">NIDASH</abbr> documents and the latest revision of this specification can be
+                found in the <a href="http://nidm.nidash.org/specs"><abbr title="NIDASH Data Model">NIDM </abbr>specification
+                index</a>. These documents are listed below.
+            </p>
+            <ul>
+                <li><a href="http://nidm.nidash.org/specs/nidm-overview.html">NIDM-OVERVIEW</a> (Draft), an overview of the
+                    NIDASH Model Specificatin Suite (this document);
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-primer.html">NIDM-PRIMER</a> (Draft), a primer for the NIDASH
+                    data model [[!NIDM-Primer]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-descriptor.html">NIDM-DESCRIPTOR</a> (Draft), the NIDM Dataset
+                    Descriptor is a high level description of neuroimaging data modeled using NIDM [[!NIDM-Descriptor]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/nidm-experiment.html">NIDM-EXPERIMENT</a> (Draft), a data model for
+                    describing the organization of raw neuroimaging experiment data [[!NIDM-Experiment]];
+                </li>
+                <li><a href="http://nidm.nidash.org/specs/Results_NIDM_Spec.html">NIDM-RESULTS</a> (Draft), a data model for
+                    describing the results of neuroimaging analyses.[[!NIDM-Results]].
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4>Implementations Encouraged</h4>
+            <p>
+                The NIDASH Working Group encourages implementation of the specifications overviewed in this document. Work on
+                this document by the NIDASH Working Group is ongoing, errors and suggestions may be reported in the <a
+                href="https://github.com/ni-/ni-dm/issues">issue tracker</a> and these may be addressed in future revisions.
+            </p>
+        </section>
+
+        <section>
+            <h4>Please Send Comments</h4>
+            <p>
+                This document was published by the NIDASH Working Group as a Working Draft. If you wish to make comments
+                regarding this document, please report using the <a href="https://github.com/ni-/ni-dm/issues">NIDM issue
+                tracker</a>. You can also ask questions at <a href="http://neurostars.org/">Neurostars Q&A.</a> All comments
+                are welcome.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This primer document provides ...
+        </p>
+    </section>
+
+    <section>
+        <h2>Overview of the NIDM Experiment Component</h2>
+        <p>
+            This section provides an explanation of ...
+            <figure id="fig-nidmexperiment-uml">
+                <img src="img/nidm-experiment-uml.png" width=600px/>
+                <figcaption>NIDM-experiment UML chart</figcaption>
+            </figure>
+        </p>
+        <section>
+            <h1>NIDM-Experiment: Types and relations</h1>
+        
+        <section><h1>Investigation</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-investigation">                <a class="internalDFN" href="#prov-mapping-investigation">                Table 3</a>:
+                Mapping of NIDM-Experiment Investigation Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="InvestigationProcess">nidm:InvestigationProcess</a>
+                            </td>
+                    
+                                <td rowspan="2" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Activity)</td>
+                        
+                                <td><a title="InvestigationProcess">nidm:InvestigationProcess</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="ModelSpecification">nidm:ModelSpecification</a>
+                            </td>
+                    
+                                <td><a title="ModelSpecification">nidm:ModelSpecification</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="Condition">nidm:Condition</a>
+                            </td>
+                    
+                                <td rowspan="6" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="Condition">nidm:Condition</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="Contrast">nidm:Contrast</a>
+                            </td>
+                    
+                                <td><a title="Contrast">nidm:Contrast</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="Group">nidm:Group</a>
+                            </td>
+                    
+                                <td><a title="Group">nidm:Group</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="InvestigationCollection">nidm:InvestigationCollection</a>
+                            </td>
+                    
+                                <td><a title="InvestigationCollection">nidm:InvestigationCollection</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="Model">nidm:Model</a>
+                            </td>
+                    
+                                <td><a title="Model">nidm:Model</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="Task">nidm:Task</a>
+                            </td>
+                    
+                                <td><a title="Task">nidm:Task</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:InvestigationProcess (InvestigationProcess) -->
+            <section id="section-nidm:InvestigationProcess">
+                <h1 label="InvestigationProcess">nidm:InvestigationProcess</h1>
+                <div class="glossary-ref">
+                    <a title="InvestigationProcess"><dfn title="InvestigationProcess">nidm:InvestigationProcess</dfn></a>:  <a title="InvestigationProcess">nidm:InvestigationProcess</a> is a prov:Activity.
+            </section>
+            <!-- nidm:ModelSpecification (ModelSpecification) -->
+            <section id="section-nidm:ModelSpecification">
+                <h1 label="ModelSpecification">nidm:ModelSpecification</h1>
+                <div class="glossary-ref">
+                    <a title="ModelSpecification"><dfn title="ModelSpecification">nidm:ModelSpecification</dfn></a>:  <a title="ModelSpecification">nidm:ModelSpecification</a> is a prov:Activity.
+            </section>
+            <!-- nidm:Condition (Condition) -->
+            <section id="section-nidm:Condition">
+                <h1 label="Condition">nidm:Condition</h1>
+                <div class="glossary-ref">
+                    <a title="Condition"><dfn title="Condition">nidm:Condition</dfn></a>:  <a title="Condition">nidm:Condition</a> is a prov:Entity.
+            </section>
+            <!-- nidm:Contrast (Contrast) -->
+            <section id="section-nidm:Contrast">
+                <h1 label="Contrast">nidm:Contrast</h1>
+                <div class="glossary-ref">
+                    <a title="Contrast"><dfn title="Contrast">nidm:Contrast</dfn></a>:  <a title="Contrast">nidm:Contrast</a> is a prov:Entity.
+            </section>
+            <!-- nidm:Group (Group) -->
+            <section id="section-nidm:Group">
+                <h1 label="Group">nidm:Group</h1>
+                <div class="glossary-ref">
+                    <a title="Group"><dfn title="Group">nidm:Group</dfn></a>:  <a title="Group">nidm:Group</a> is a prov:Entity.
+            </section>
+            <!-- nidm:InvestigationCollection (InvestigationCollection) -->
+            <section id="section-nidm:InvestigationCollection">
+                <h1 label="InvestigationCollection">nidm:InvestigationCollection</h1>
+                <div class="glossary-ref">
+                    <a title="InvestigationCollection"><dfn title="InvestigationCollection">nidm:InvestigationCollection</dfn></a>:  <a title="InvestigationCollection">nidm:InvestigationCollection</a> is a prov:Entity.
+            </section>
+            <!-- nidm:Model (Model) -->
+            <section id="section-nidm:Model">
+                <h1 label="Model">nidm:Model</h1>
+                <div class="glossary-ref">
+                    <a title="Model"><dfn title="Model">nidm:Model</dfn></a>:  <a title="Model">nidm:Model</a> is a prov:Entity.
+            </section>
+            <!-- nidm:Task (Task) -->
+            <section id="section-nidm:Task">
+                <h1 label="Task">nidm:Task</h1>
+                <div class="glossary-ref">
+                    <a title="Task"><dfn title="Task">nidm:Task</dfn></a>:  <a title="Task">nidm:Task</a> is a prov:Entity.
+            </section>
+            </section>
+        <section><h1>Session</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-session">                <a class="internalDFN" href="#prov-mapping-session">                Table 4</a>:
+                Mapping of NIDM-Experiment Session Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="SessionAcquisition">nidm:SessionAcquisition</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Activity)</td>
+                        
+                                <td><a title="SessionAcquisition">nidm:SessionAcquisition</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="DataCollection">nidm:DataCollection</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="DataCollection">nidm:DataCollection</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:SessionAcquisition (SessionAcquisition) -->
+            <section id="section-nidm:SessionAcquisition">
+                <h1 label="SessionAcquisition">nidm:SessionAcquisition</h1>
+                <div class="glossary-ref">
+                    <a title="SessionAcquisition"><dfn title="SessionAcquisition">nidm:SessionAcquisition</dfn></a>:  <a title="SessionAcquisition">nidm:SessionAcquisition</a> is a prov:Activity.
+            </section>
+            <!-- nidm:DataCollection (DataCollection) -->
+            <section id="section-nidm:DataCollection">
+                <h1 label="DataCollection">nidm:DataCollection</h1>
+                <div class="glossary-ref">
+                    <a title="DataCollection"><dfn title="DataCollection">nidm:DataCollection</dfn></a>:  <a title="DataCollection">nidm:DataCollection</a> is a prov:Entity.
+            </section>
+            </section>
+        <section><h1>Serie</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-serie">                <a class="internalDFN" href="#prov-mapping-serie">                Table 5</a>:
+                Mapping of NIDM-Experiment Serie Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="MRScanner">nidm:MRScanner</a>
+                            </td>
+                    
+                                <td rowspan="2" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Agent)</td>
+                        
+                                <td><a title="MRScanner">nidm:MRScanner</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="PresentationSoftware">nidm:PresentationSoftware</a>
+                            </td>
+                    
+                                <td><a title="PresentationSoftware">nidm:PresentationSoftware</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="AnatomyImagingAcquisition">nidm:AnatomyImagingAcquisition</a>
+                            </td>
+                    
+                                <td rowspan="2" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Activity)</td>
+                        
+                                <td><a title="AnatomyImagingAcquisition">nidm:AnatomyImagingAcquisition</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="TaskBasedImagingAcquisition">nidm:TaskBasedImagingAcquisition</a>
+                            </td>
+                    
+                                <td><a title="TaskBasedImagingAcquisition">nidm:TaskBasedImagingAcquisition</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="AnatomicalScan">nidm:AnatomicalScan</a>
+                            </td>
+                    
+                                <td rowspan="3" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="AnatomicalScan">nidm:AnatomicalScan</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="BehaviorAndConsitionOnsets">nidm:BehaviorAndConsitionOnsets</a>
+                            </td>
+                    
+                                <td><a title="BehaviorAndConsitionOnsets">nidm:BehaviorAndConsitionOnsets</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="FunctionalScan">nidm:FunctionalScan</a>
+                            </td>
+                    
+                                <td><a title="FunctionalScan">nidm:FunctionalScan</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:MRScanner (MRScanner) -->
+            <section id="section-nidm:MRScanner">
+                <h1 label="MRScanner">nidm:MRScanner</h1>
+                <div class="glossary-ref">
+                    <a title="MRScanner"><dfn title="MRScanner">nidm:MRScanner</dfn></a>:  <a title="MRScanner">nidm:MRScanner</a> is a prov:Agent.
+            </section>
+            <!-- nidm:PresentationSoftware (PresentationSoftware) -->
+            <section id="section-nidm:PresentationSoftware">
+                <h1 label="PresentationSoftware">nidm:PresentationSoftware</h1>
+                <div class="glossary-ref">
+                    <a title="PresentationSoftware"><dfn title="PresentationSoftware">nidm:PresentationSoftware</dfn></a>:  <a title="PresentationSoftware">nidm:PresentationSoftware</a> is a prov:Agent.
+            </section>
+            <!-- nidm:AnatomyImagingAcquisition (AnatomyImagingAcquisition) -->
+            <section id="section-nidm:AnatomyImagingAcquisition">
+                <h1 label="AnatomyImagingAcquisition">nidm:AnatomyImagingAcquisition</h1>
+                <div class="glossary-ref">
+                    <a title="AnatomyImagingAcquisition"><dfn title="AnatomyImagingAcquisition">nidm:AnatomyImagingAcquisition</dfn></a>:  <a title="AnatomyImagingAcquisition">nidm:AnatomyImagingAcquisition</a> is a prov:Activity.
+            </section>
+            <!-- nidm:TaskBasedImagingAcquisition (TaskBasedImagingAcquisition) -->
+            <section id="section-nidm:TaskBasedImagingAcquisition">
+                <h1 label="TaskBasedImagingAcquisition">nidm:TaskBasedImagingAcquisition</h1>
+                <div class="glossary-ref">
+                    <a title="TaskBasedImagingAcquisition"><dfn title="TaskBasedImagingAcquisition">nidm:TaskBasedImagingAcquisition</dfn></a>:  <a title="TaskBasedImagingAcquisition">nidm:TaskBasedImagingAcquisition</a> is a prov:Activity.
+            </section>
+            <!-- nidm:AnatomicalScan (AnatomicalScan) -->
+            <section id="section-nidm:AnatomicalScan">
+                <h1 label="AnatomicalScan">nidm:AnatomicalScan</h1>
+                <div class="glossary-ref">
+                    <a title="AnatomicalScan"><dfn title="AnatomicalScan">nidm:AnatomicalScan</dfn></a>:  <a title="AnatomicalScan">nidm:AnatomicalScan</a> is a prov:Entity.
+            </section>
+            <!-- nidm:BehaviorAndConsitionOnsets (BehaviorAndConsitionOnsets) -->
+            <section id="section-nidm:BehaviorAndConsitionOnsets">
+                <h1 label="BehaviorAndConsitionOnsets">nidm:BehaviorAndConsitionOnsets</h1>
+                <div class="glossary-ref">
+                    <a title="BehaviorAndConsitionOnsets"><dfn title="BehaviorAndConsitionOnsets">nidm:BehaviorAndConsitionOnsets</dfn></a>:  <a title="BehaviorAndConsitionOnsets">nidm:BehaviorAndConsitionOnsets</a> is a prov:Entity.
+            </section>
+            <!-- nidm:FunctionalScan (FunctionalScan) -->
+            <section id="section-nidm:FunctionalScan">
+                <h1 label="FunctionalScan">nidm:FunctionalScan</h1>
+                <div class="glossary-ref">
+                    <a title="FunctionalScan"><dfn title="FunctionalScan">nidm:FunctionalScan</dfn></a>:  <a title="FunctionalScan">nidm:FunctionalScan</a> is a prov:Entity.
+            </section>
+            </section>
+        <section><h1>Project</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-project">                <a class="internalDFN" href="#prov-mapping-project">                Table 6</a>:
+                Mapping of NIDM-Experiment Project Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="ProjectObject">nidm:'Project Object'</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="ProjectObject">nidm:'Project Object'</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:'Project Object' (ProjectObject) -->
+            <section id="section-nidm:'Project Object'">
+                <h1 label="ProjectObject">nidm:'Project Object'</h1>
+                <div class="glossary-ref">
+                    <a title="ProjectObject"><dfn title="ProjectObject">nidm:'Project Object'</dfn></a>: A project object is an entity that represents administrative information about one or more studies <a title="ProjectObject">nidm:'Project Object'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Project Object'"> A <a title="ProjectObject">nidm:'Project Object'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Project Object'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="ProjectObject">nidm:'Project Object'</a>.</li>
+                        <li><a title="hasPart" href ="http://purl.org/dc/terms/hasPart"><dfn title="hasPart" href ="http://purl.org/dc/terms/hasPart">dct:hasPart</dfn></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) 
+            </section>
+            </section>
+        <section><h1>Study</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-study">                <a class="internalDFN" href="#prov-mapping-study">                Table 7</a>:
+                Mapping of NIDM-Experiment Study Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="StudyObject">nidm:'Study Object'</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="StudyObject">nidm:'Study Object'</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:'Study Object' (StudyObject) -->
+            <section id="section-nidm:'Study Object'">
+                <h1 label="StudyObject">nidm:'Study Object'</h1>
+                <div class="glossary-ref">
+                    <a title="StudyObject"><dfn title="StudyObject">nidm:'Study Object'</dfn></a>: A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch <a title="StudyObject">nidm:'Study Object'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Study Object'"> A <a title="StudyObject">nidm:'Study Object'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Study Object'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="StudyObject">nidm:'Study Object'</a>.</li>
+                        <li><a title="hasPart" href ="http://purl.org/dc/terms/hasPart">dct:hasPart</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) 
+            </section>
+            </section>
+        <section><h1>Acquisition</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-acquisition">                <a class="internalDFN" href="#prov-mapping-acquisition">                Table 8</a>:
+                Mapping of NIDM-Experiment Acquisition Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="AcquisitionObject">nidm:'Acquisition Object'</a>
+                            </td>
+                    
+                                <td rowspan="1" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="AcquisitionObject">nidm:'Acquisition Object'</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:'Acquisition Object' (AcquisitionObject) -->
+            <section id="section-nidm:'Acquisition Object'">
+                <h1 label="AcquisitionObject">nidm:'Acquisition Object'</h1>
+                <div class="glossary-ref">
+                    <a title="AcquisitionObject"><dfn title="AcquisitionObject">nidm:'Acquisition Object'</dfn></a>: An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings <a title="AcquisitionObject">nidm:'Acquisition Object'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Acquisition Object'"> A <a title="AcquisitionObject">nidm:'Acquisition Object'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Acquisition Object'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="AcquisitionObject">nidm:'Acquisition Object'</a>.</li>
+            </section>
+            </section>
+        <section><h1>Other</h1>
+        <div style="text-align: left;">
+            <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
+                <caption id="prov-mapping-other">                <a class="internalDFN" href="#prov-mapping-other">                Table 9</a>:
+                Mapping of NIDM-Experiment Other Core Concepts to types and relations                 and PROV core concepts</caption>                 <tbody>
+                    <tr>
+                        <td><b>NIDM-Experiment Concepts</b></td>
+                        <td><b>Types or Relation (PROV concepts)</b></td>
+                        <td><b>Name</b></td>
+                    </tr>
+        
+        <!-- HERE ------------- Beginning of PROV Entities ------------- -->
+        
+                        <tr>
+                            <td><a title="BaselineProtocol">nidm:'Baseline Protocol'</a>
+                            </td>
+                    
+                                <td rowspan="3" style="text-align: center;">NIDM-Experiment Types<br/>                                 (PROV Entity)</td>
+                        
+                                <td><a title="BaselineProtocol">nidm:'Baseline Protocol'</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</a>
+                            </td>
+                    
+                                <td><a title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</a></td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</a>
+                            </td>
+                    
+                                <td><a title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</a></td>
+                            </tr>
+                
+                </tbody>
+                </table>
+            </div>
+            <!-- nidm:'Baseline Protocol' (BaselineProtocol) -->
+            <section id="section-nidm:'Baseline Protocol'">
+                <h1 label="BaselineProtocol">nidm:'Baseline Protocol'</h1>
+                <div class="glossary-ref">
+                    <a title="BaselineProtocol"><dfn title="BaselineProtocol">nidm:'Baseline Protocol'</dfn></a>: A baseline protocol is a plan that represents the study design for a given project <a title="BaselineProtocol">nidm:'Baseline Protocol'</a> is a prov:Entity.
+            </section>
+            <!-- nidm:'Demographics Acquisition Object' (DemographicsAcquisitionObject) -->
+            <section id="section-nidm:'Demographics Acquisition Object'">
+                <h1 label="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</h1>
+                <div class="glossary-ref">
+                    <a title="DemographicsAcquisitionObject"><dfn title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</dfn></a>: A demographics acquisition object is an entity that represents the demographics information acquired from a person in the participant role <a title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Demographics Acquisition Object'"> A <a title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Demographics Acquisition Object'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="DemographicsAcquisitionObject">nidm:'Demographics Acquisition Object'</a>.</li>
+            </section>
+            <!-- nidm:'MRI Acquisition Object' (MRIAcquisitionObject) -->
+            <section id="section-nidm:'MRI Acquisition Object'">
+                <h1 label="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</h1>
+                <div class="glossary-ref">
+                    <a title="MRIAcquisitionObject"><dfn title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</dfn></a>: An MRI acquisition object represents a specific series or scan during an MRI study <a title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</a> is a prov:Entity.
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'MRI Acquisition Object'"> A <a title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'MRI Acquisition Object'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="MRIAcquisitionObject">nidm:'MRI Acquisition Object'</a>.</li>
+            </section>
+            </section></section>
+</section>
+
+    <section>
+
+    </section>
+
+    <section>
+        <h4>Summary</h4>
+        <p>
+            TBD
+        </p>
+    </section>
+
+    <section>
+        <h4>Additional Information</h4>
+        <p>
+            TBD
+        </p>
+    </section>
+    <section class="appendix">
+        <h4>Acknowledgements</h4>
+        <p>
+            This document has been produced by the NIDASH Working Group, and its contents reflect extensive discussion
+            within the Working Group as a whole.
+        </p>
+        <p>
+            Members of the NIDASH Working Group at the time of publication of this document were:
+        </p>
+    </section>
+</body>
+</html>
