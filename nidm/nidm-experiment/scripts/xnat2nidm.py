@@ -9,12 +9,11 @@ import glob
 import json
 import hashlib
 import tempfile
-import argparse
 
 import rdflib
-import dateutil
 import requests
 import pandas as pd
+import dateutil.parser
 from lxml import etree
 
 # Verbose setting for cli
@@ -290,8 +289,8 @@ def get_experiments_dir_scan_info(config, experiments_dir):
         results.append(get_scans_info(config, path))
     return results
 
-# Start conversion to NIDM
 
+# Start conversion to NIDM
 def initialize_graph():
     # Create a graph and add namespaces
     g = rdflib.Graph()
@@ -352,7 +351,7 @@ def create_investigation_level(experiment, graph):
     graph.add([project_uri,
                namespace.prov['wasGeneratedBy'],
                activity_uri])
-    # Add the type information for the acuisition site.
+    # Add the type information for the acquisition site.
     graph.add([agent_uri,
                rdflib.RDF['type'],
                namespace.prov['Agent']])
@@ -515,6 +514,7 @@ def create_run_level(scan, graph):
                scanner_uri])
     return graph
 
+
 def main(args=None):
     if args.update:
         config = get_config(args.config)
@@ -523,8 +523,9 @@ def main(args=None):
                                args.experimentsdir, args.num_extract)
 
     # extract info from the experiment XML files
-    experiment = get_experiments_dir_info(args.experimentsdir)
-    scan = get_experiments_dir_scan_info(args.experimentsdir)
+    experiment = get_experiments_dir_info(args.config, args.experimentsdir)
+    scan = get_experiments_dir_scan_info(args.config, args.experimentsdir)
+    print experiment, scan
 
 
 if __name__ == "__main__":
