@@ -58,9 +58,6 @@ def row_to_instance(rows):
         term = nidm_term(row[0])
         for idx, column in enumerate(row):
             prop = nidm_term(hdr[idx])
-            if str(prop) == "http://purl.org/nidash/nidm/nidm_d4ecf12e1a235b22db731e58600b6d84d8f470b0":
-                print hdr[idx]
-
             g.add([term, prop, rdflib.Literal(column)])
             g.add([term, rdflib.RDF.term('type'), nidm_term('DataElement')])
             g.add(rdfs_label(term, row[0]))
