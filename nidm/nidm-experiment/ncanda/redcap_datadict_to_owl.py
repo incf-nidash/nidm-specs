@@ -7,6 +7,7 @@ Dictionaries as an OWL Ontology, where instances are specific implementations
 of a given REDCap Form.
 """
 __author__ = 'Nolan Nichols <https://orcid.org/0000-0003-1099-3328>'
+
 import os
 import csv
 import sys
@@ -57,9 +58,12 @@ def row_to_instance(rows):
         term = nidm_term(row[0])
         for idx, column in enumerate(row):
             prop = nidm_term(hdr[idx])
+            if str(prop) == "http://purl.org/nidash/nidm/nidm_d4ecf12e1a235b22db731e58600b6d84d8f470b0":
+                print hdr[idx]
+
             g.add([term, prop, rdflib.Literal(column)])
             g.add([term, rdflib.RDF.term('type'), nidm_term('DataElement')])
-            g.add([term, rdflib.RDFS.term('label'), rdflib.Literal(row[0])])
+            g.add(rdfs_label(term, row[0]))
     return g
 
 
@@ -67,7 +71,7 @@ def owl_class():
     g = rdflib.Graph()
     [g.bind(k, v) for k, v in ns.iteritems()]
     g.add([nidm_term('DataElement'), rdflib.RDF.term('type'), rdflib.OWL.term('Class')])
-    g.add([nidm_term('DataElement'), rdflib.RDFS.term('label'), rdflib.Literal('Data Element')])
+    g.add(rdfs_label(nidm_term('DataElement'), 'Data Element'))
     return g
 
 
@@ -75,11 +79,11 @@ def main(args=None):
     with open(args.input, mode='rb') as fi:
         csvreader = csv.reader(fi)
         rows = list(csvreader)
-        hdr = rows.pop(0)
+        hdr = rows[0]
         fi.close()
-    g = header_to_owl(hdr)
+    g = owl_class()
+    g += header_to_owl(hdr)
     g += row_to_instance(rows)
-    g += owl_class()
     print g.serialize(args.output, format='turtle')
 
 
@@ -100,6 +104,6 @@ if __name__ == "__main__":
     parser.add_argument('-v', '--verbose',
                         action='store_true',
                         help='Enable verbose {}'.format(default))
-    args = parser.parse_args()
-    verbose = args.verbose
-    sys.exit(main(args=args))
+    argv = parser.parse_args()
+    verbose = argv.verbose
+    sys.exit(main(args=argv))
