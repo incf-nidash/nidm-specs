@@ -34,14 +34,40 @@ def rdfs_label(term, label):
     return triple
 
 
-def header_to_owl(header):
+def nidm_term(term):
     nidm = ns.get('nidm')
+    return nidm.term('nidm_{}'.format(hashlib.sha1(term).hexdigest()))
+
+
+def header_to_owl(header):
     g = rdflib.Graph()
     [g.bind(k, v) for k, v in ns.iteritems()]
     for idx, prop in enumerate(header):
-        term = nidm.term('nidm_{}'.format(hashlib.sha1(prop).hexdigest()))
+        term = nidm_term(prop)
         g.add(datatype_property(term))
         g.add(rdfs_label(term, prop))
+    return g
+
+
+def row_to_instance(rows):
+    g = rdflib.Graph()
+    [g.bind(k, v) for k, v in ns.iteritems()]
+    hdr = rows.pop(0)
+    for row in rows:
+        term = nidm_term(row[0])
+        for idx, column in enumerate(row):
+            prop = nidm_term(hdr[idx])
+            g.add([term, prop, rdflib.Literal(column)])
+            g.add([term, rdflib.RDF.term('type'), nidm_term('DataElement')])
+            g.add([term, rdflib.RDFS.term('label'), rdflib.Literal(row[0])])
+    return g
+
+
+def owl_class():
+    g = rdflib.Graph()
+    [g.bind(k, v) for k, v in ns.iteritems()]
+    g.add([nidm_term('DataElement'), rdflib.RDF.term('type'), rdflib.OWL.term('Class')])
+    g.add([nidm_term('DataElement'), rdflib.RDFS.term('label'), rdflib.Literal('Data Element')])
     return g
 
 
@@ -52,6 +78,8 @@ def main(args=None):
         hdr = rows.pop(0)
         fi.close()
     g = header_to_owl(hdr)
+    g += row_to_instance(rows)
+    g += owl_class()
     print g.serialize(args.output, format='turtle')
 
 
@@ -60,7 +88,7 @@ if __name__ == "__main__":
 
     formatter = argparse.RawDescriptionHelpFormatter
     default = 'default: %(default)s'
-    parser = argparse.ArgumentParser(prog="file_name.py",
+    parser = argparse.ArgumentParser(prog="redcap_datadict_to_owl.py",
                                      description=__doc__,
                                      formatter_class=formatter)
     parser.add_argument('-i', '--input',
