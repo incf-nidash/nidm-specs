@@ -683,6 +683,7 @@ class OwlReader():
     def prefixes_as_csv(self, csvfile):
         with open(csvfile, 'wb') as fid:
             writer = csv.writer(fid)
+            writer.writerow(["qname", "Preferred prefix"])
 
             # For anything that has a label
             for s, o in sorted(self.graph.subject_objects(RDFS['label'])):
