@@ -19,6 +19,7 @@ import UpdateExampleReadmes
 import UpdateTermReadme
 import create_results_specification
 import create_expe_specification
+import create_prefixes
 
 
 def main():
@@ -31,6 +32,8 @@ def main():
     # Update specifications
     create_results_specification.main("dev")
     create_expe_specification.main()
+    # Update csv file of preferred prefixes
+    create_prefixes.main()
 
 if __name__ == '__main__':
     main()
