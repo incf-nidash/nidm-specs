@@ -670,7 +670,7 @@ class OwlReader():
         prefix_name = self.get_label(uri).replace(" ", "")\
                                          .replace(":", "_")\
                                          .replace("'", "")\
-                                         .replace("-", "")+":"
+                                         .replace("-", "")
         return prefix_name
 
     def sorted_by_labels(self, term_list):
