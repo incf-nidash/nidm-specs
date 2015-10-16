@@ -171,8 +171,14 @@ class TestResultDataModel(object):
 
             # Look for a match in g2 corresponding to g1_term from g1
             g2_match = dict.fromkeys(g2_terms, 0)
+            coord_space_found = False
+            format_found = False
             for p, o in graph1.predicate_objects(g1_term):
                 if p == NIDM_IN_COORDINATE_SPACE:
+                    coord_space_found = True
+                if p == DCT['format']:
+                    format_found = True
+                if coord_space_found and format_found:
                     min_matching = MIN_MAP_MATCHING
 
                 # FIXME: changed "not activity" to "activity" but maybe this
