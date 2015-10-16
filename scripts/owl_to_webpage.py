@@ -15,13 +15,14 @@ class OwlSpecification(object):
 
     def __init__(self, owl_file, import_files, spec_name, subcomponents=None,
                  used_by=None, generated_by=None, derived_from=None,
-                 prefix=None):
+                 prefix=None, commentable=False):
         self.owl = OwlReader(owl_file, import_files)
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
         self.already_defined_classes = list()
+        self.commentable = commentable
 
         self.attributes_done = set()
         self.text = ""
@@ -208,8 +209,16 @@ class OwlSpecification(object):
         #             "\"" + href + ">" + text + "</" + tag + ">"
 
         if tag is "dfn":
+            issue_url = "https://github.com/incf-nidash/nidm/issues"
+
             # Add link to current definition
             term_link = self.term_link(term_uri, text=term_link)
+
+            if self.commentable:
+                term_link = term_link + \
+                    " <a href=\""+issue_url+"?&q=is%3Aopen+'" + text + \
+                    "'\"\"><sup>&#9734;</sup></a>" + \
+                    "<a href=\""+issue_url+"/new\";\"><sup>+</sup></a>"
 
         return term_link
 

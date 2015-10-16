@@ -179,9 +179,14 @@ def main(nidm_original_version):
         components, used_by, generated_by, derived_from = _replace_term_by(
             renaming, components, used_by, generated_by, derived_from)
 
+    commentable = False
+    if nidm_version == "dev":
+        commentable = True
+
     owlspec = OwlSpecification(
         owl_file, import_files, "NIDM-Results",
-        components, used_by, generated_by, derived_from, prefix=str(NIDM))
+        components, used_by, generated_by, derived_from, prefix=str(NIDM),
+        commentable=commentable)
 
     owlspec._header_footer(component="nidm-results", version=nidm_version)
 
