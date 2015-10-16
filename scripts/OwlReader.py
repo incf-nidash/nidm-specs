@@ -14,6 +14,7 @@ import warnings
 import vcr
 import os
 import logging
+import csv
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_PATH = os.path.dirname(RELPATH)
@@ -665,9 +666,26 @@ class OwlReader():
         name = self.graph.qname(uri).split(":")[1]
         return name
 
+    def get_preferred_prefix(self, uri):
+        prefix_name = self.get_label(uri).replace(" ", "")\
+                                         .replace(":", "_")\
+                                         .replace("'", "")\
+                                         .replace("-", "")+":"
+        return prefix_name
+
     def sorted_by_labels(self, term_list):
         class_labels = map(self.get_label, term_list)
         sorted_term_list = [x for (y, x) in
                             sorted(zip(class_labels, term_list))]
 
         return sorted_term_list
+
+    def prefixes_as_csv(self, csvfile):
+        with open(csvfile, 'wb') as fid:
+            writer = csv.writer(fid)
+
+            # For anything that has a label
+            for s, o in sorted(self.graph.subject_objects(RDFS['label'])):
+                writer.writerow([
+                    self.graph.qname(s),
+                    self.get_preferred_prefix(s)])
