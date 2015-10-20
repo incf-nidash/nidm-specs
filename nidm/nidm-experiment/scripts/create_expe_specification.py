@@ -33,6 +33,7 @@ def main():
         nidm_original_version = sys.argv[1]
         nidm_version = nidm_original_version.replace(".", "")
     else:
+        nidm_original_version = "dev"
         nidm_version = 'dev'
 
     # Retreive owl file for NIDM-Results
@@ -83,7 +84,7 @@ def main():
         owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
 
     component_name = "nidm-experiment"
-    owlspec._header_footer(component=component_name)
+    owlspec._header_footer(component=component_name, version=nidm_version)
     owlspec.write_specification(component=component_name, version=nidm_version)
 
 
