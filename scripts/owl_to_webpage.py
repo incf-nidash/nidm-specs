@@ -424,8 +424,16 @@ class OwlSpecification(object):
 
         release_notes = None
         if component:
-            prev_file = os.path.join(INCLUDE_FOLDER, component+"_head.html")
-            follow_file = os.path.join(INCLUDE_FOLDER, component+"_foot.html")
+            prev_file = os.path.join(
+                INCLUDE_FOLDER, component+"_"+version+"_head.html")
+            if not os.path.isfile(prev_file):
+                prev_file = os.path.join(
+                    INCLUDE_FOLDER, component+"_head.html")
+            follow_file = os.path.join(
+                INCLUDE_FOLDER, component+"_"+version+"_foot.html")
+            if not os.path.isfile(follow_file):
+                follow_file = os.path.join(
+                    INCLUDE_FOLDER, component+"_foot.html")
             if version:
                 release_notes = os.path.join(
                     os.path.dirname(self.owl.file),
