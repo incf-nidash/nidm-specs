@@ -39,20 +39,20 @@ class TestSpecifications(unittest.TestCase):
         self._run(component, create_res_spec, "create_results_specification",
                   "dev")
 
-    def test_nidm_results_020(self):
-        component = "nidm-results"
-        self._run(component, create_res_spec, "create_results_specification",
-                  "0.2.0")
+    # def test_nidm_results_020(self):
+    #     component = "nidm-results"
+    #     self._run(component, create_res_spec, "create_results_specification",
+    #               "0.2.0")
 
-    def test_nidm_results_100(self):
-        component = "nidm-results"
-        self._run(component, create_res_spec, "create_results_specification",
-                  "1.0.0")
+    # def test_nidm_results_100(self):
+    #     component = "nidm-results"
+    #     self._run(component, create_res_spec, "create_results_specification",
+    #               "1.0.0")
 
-    def test_nidm_results_110(self):
-        component = "nidm-results"
-        self._run(component, create_res_spec, "create_results_specification",
-                  "1.1.0")
+    # def test_nidm_results_110(self):
+    #     component = "nidm-results"
+    #     self._run(component, create_res_spec, "create_results_specification",
+    #               "1.1.0")
 
     def test_nidm_experiment(self):
         component = "nidm-experiment"
