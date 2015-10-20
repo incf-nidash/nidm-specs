@@ -572,7 +572,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             software_id="niiri:software_id",
             software_type="nlx:nif-0000-00343",
             label="SPM",
-            version="12.12.0"
+            version="12.12.1"
             ),
         "Image": dict(
             image_id="niiri:maximum_intensity_projection_id",
