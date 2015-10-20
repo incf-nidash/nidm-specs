@@ -229,8 +229,8 @@ f1dd89befece07e73cf5bca5b3116f55ac4496751ca990db85e8377001a4be941b2",
             label="Extent Threshold: k>=0",
             cluster_size_vox="0",
             cluster_size_resels="0",
-            equiv_thresh="niiri:height_threshold_id_2",
-            equiv_thresh2="niiri:height_threshold_id_3"
+            equiv_thresh="niiri:extent_threshold_id_2",
+            equiv_thresh2="niiri:extent_threshold_id_3"
             ),
         "ExtentThreshold-2": dict(
             extent_threshold_id="niiri:extent_threshold_id_2",
@@ -572,7 +572,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             software_id="niiri:software_id",
             software_type="nlx:nif-0000-00343",
             label="SPM",
-            version="12.12.0"
+            version="12.12.1"
             ),
         "Image": dict(
             image_id="niiri:maximum_intensity_projection_id",
