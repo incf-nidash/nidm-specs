@@ -15,7 +15,7 @@ class OwlSpecification(object):
 
     def __init__(self, owl_file, import_files, spec_name, subcomponents=None,
                  used_by=None, generated_by=None, derived_from=None,
-                 prefix=None, commentable=False):
+                 prefix=None, commentable=False, intro=None):
         self.owl = OwlReader(owl_file, import_files)
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
         self.name = spec_name
@@ -27,11 +27,14 @@ class OwlSpecification(object):
         self.attributes_done = set()
         self.text = ""
         self.create_specification(subcomponents, used_by, generated_by,
-                                  derived_from, prefix)
+                                  derived_from, prefix, intro)
 
     def create_specification(self, subcomponents, used_by, generated_by,
-                             derived_from, prefix):
-        self.create_title(self.name+": Types and relations")
+                             derived_from, prefix, intro=None):
+        self.create_title(self.name+": Types and relations", "definitions")
+
+        if intro is not None:
+            self.text += intro
 
         # If no subcomponents are defined display all classes
         if not subcomponents:
@@ -141,9 +144,16 @@ class OwlSpecification(object):
                 </table>
             </div>"""
 
-    def create_title(self, title):
-        self.text += """
+    def create_title(self, title, id=None):
+        if id is None:
+            self.text += """
         <section>
+        """
+        else:
+            self.text += """
+        <section id=\""""+id+"""\">
+        """
+        self.text += """
             <h1>"""+title+"""</h1>
         """
         self.section_open += 1

@@ -183,10 +183,17 @@ def main(nidm_original_version):
     if nidm_version == "dev":
         commentable = True
 
+    intro = ""
+    if nidm_version == "dev":
+        intro = """
+                <p>This section introduces neuroimaging results concepts with \
+definitions and illustrative examples.</p>
+            """
+
     owlspec = OwlSpecification(
         owl_file, import_files, "NIDM-Results",
         components, used_by, generated_by, derived_from, prefix=str(NIDM),
-        commentable=commentable)
+        commentable=commentable, intro=intro)
 
     owlspec._header_footer(component="nidm-results", version=nidm_version)
 
