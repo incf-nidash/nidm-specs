@@ -170,10 +170,11 @@ class OwlSpecification(object):
         return text
 
     def format_definition(self, definition):
-        # Capitalize first letter of definition
+        # Capitalize first letter, format markdown and end with dot
         if definition:
             definition = definition[0].upper() + definition[1:]
             definition = self._format_markdown(definition)
+            definition += "."
 
         return definition
 
@@ -247,7 +248,7 @@ class OwlSpecification(object):
                 <div class="glossary-ref">
                     """+self.term_link(class_uri, "dfn") + ": " + definition
 
-        self.text += " "+self.term_link(class_uri)+" is"
+        self.text += "<p> "+self.term_link(class_uri)+" is"
 
         prov_class = self.owl.get_prov_class(class_uri)
         if prov_class:
@@ -301,6 +302,7 @@ class OwlSpecification(object):
                     list([derived_from[class_uri]]), " derived from ")
 
         self.text += "."
+        self.text += "</p>"
 
         range_classes = list()
 
