@@ -61,7 +61,9 @@ class OwlSpecification(object):
                     class_name,
                     self.owl.get_definition(class_name),
                     self.owl.attributes.setdefault(class_name, None),
-                    used_by, generated_by, derived_from)
+                    used_by, generated_by, derived_from,
+                    children=not (
+                        self.owl.get_prov_class(class_name) == PROV['Entity']))
 
             if subcomponent_name:
                 self.text += """
