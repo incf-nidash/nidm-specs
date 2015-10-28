@@ -45,15 +45,16 @@ class OwlSpecification(object):
             classes_by_types = self.owl.get_class_names_by_prov_type(
                 classes,
                 prefix=prefix, but=self.already_defined_classes)
+
             self.already_defined_classes += classes
 
             self.create_subcomponent_table(classes_by_types, table_num,
                                            subcomponent_name)
             table_num = table_num + 1
-            all_classes = sorted(classes_by_types[PROV['Agent']]) + \
-                sorted(classes_by_types[PROV['Activity']]) + \
-                sorted(classes_by_types[PROV['Entity']]) + \
-                sorted(classes_by_types[None])
+            all_classes = classes_by_types[PROV['Agent']] + \
+                classes_by_types[PROV['Activity']] + \
+                classes_by_types[PROV['Entity']] + \
+                classes_by_types[None]
 
             for class_name in all_classes:
                 self.create_class_section(
@@ -114,7 +115,7 @@ class OwlSpecification(object):
                 PROV['Agent'],
                 PROV['Activity'],
                 PROV['Entity']]):
-            sorted_classes = sorted(classes[prov_class])
+            sorted_classes = classes[prov_class]
             for class_uri in sorted_classes:
                 self.text += """
                         <tr>
@@ -176,10 +177,13 @@ class OwlSpecification(object):
 
         return definition
 
-    def linked_listing(self, uri_list, prefix="", suffix=""):
+    def linked_listing(self, uri_list, prefix="", suffix="", sort=True):
         linked_listing = prefix
 
-        for i, uri in enumerate(self.owl.sorted_by_labels(uri_list)):
+        if sort:
+            uri_list = self.owl.sorted_by_labels(uri_list)
+
+        for i, uri in enumerate(uri_list):
             if i == 0:
                 sep = ""
             elif i == len(uri_list):

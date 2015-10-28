@@ -114,8 +114,7 @@ class OwlReader():
                                .append(class_name)
                 else:
                     prov_type_found = False
-                    parent_classes = list(
-                        self.graph.objects(class_name, RDFS['subClassOf']))
+                    parent_classes = self.get_direct_parents(class_name)
                     for parent_class in parent_classes:
                         prov_type = self.get_prov_class(parent_class,
                                                         recursive=3)
