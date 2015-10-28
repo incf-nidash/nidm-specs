@@ -59,6 +59,25 @@ class OwlReader():
 
         return children
 
+    def get_direct_parents(self, term):
+        # Find all direct parents of 'term'
+        parents = set()
+
+        for parent_name in self.graph.objects(term, RDFS['subClassOf']):
+            parents.add(parent_name)
+
+        return parents
+
+    def get_nidm_parent(self, term):
+        # Find direct nidm parent of 'term'
+        parents = self.get_direct_parents(term)
+
+        for parent in parents:
+            if not self.is_external_namespace(parent):
+                return parent
+
+        return None
+
     def is_class(self, uri):
         return (uri, RDF['type'], OWL['Class']) in self.graph
 
@@ -642,7 +661,10 @@ class OwlReader():
                      my_restriction_exception))
 
     def get_label(self, uri):
-        name = self.graph.qname(uri)
+        if not isinstance(uri, term.BNode):
+            name = self.graph.qname(uri)
+        else:
+            name = uri
 
         # If a label is available, use the namespace:label, otherwise qname
         label = list(self.graph.objects(uri, RDFS['label']))

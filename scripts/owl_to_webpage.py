@@ -249,9 +249,13 @@ class OwlSpecification(object):
 
         self.text += "<p> "+self.term_link(class_uri)+" is"
 
-        prov_class = self.owl.get_prov_class(class_uri)
-        if prov_class:
-            self.text += " a "+self.owl.get_label(prov_class)
+        nidm_class = self.owl.get_nidm_parent(class_uri)
+        if nidm_class:
+            self.text += " a "+self.term_link(nidm_class)
+        else:
+            prov_class = self.owl.get_prov_class(class_uri)
+            if prov_class:
+                self.text += " a "+self.owl.get_label(prov_class)
 
         found_used_by = False
         if used_by:
@@ -299,6 +303,18 @@ class OwlSpecification(object):
 
                 self.text += self.linked_listing(
                     list([derived_from[class_uri]]), " derived from ")
+
+        class_children = self.owl.get_direct_children(class_uri)
+        if class_children:
+            if found_used_by or found_generated_by:
+                self.text += ". It "
+            else:
+                self.text += " and "
+            self.text += " has the following child"
+            if len(class_children) > 1:
+                self.text += "ren"
+            self.text += ": " + \
+                         self.linked_listing(class_children)
 
         self.text += "."
         self.text += "</p>"
