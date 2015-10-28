@@ -1,0 +1,18 @@
+@prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
+@prefix nidm_regressorNames: <http://purl.org/nidash/nidm#NIDM_0000021> .
+@prefix nidm_hasfMRIDesign: <http://purl.org/nidash/nidm#NIDM_0000010> .
+@prefix nidm_BlockBasedDesign: <http://purl.org/nidash/nidm#NIDM_0000152> .
+@prefix nidm_hasHRFBasis: <http://purl.org/nidash/nidm#NIDM_0000102> .
+@prefix nidm_hasDriftModel: <http://purl.org/nidash/nidm#NIDM_0000088> .
+
+
+niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
+    rdfs:label "First-Level Design Matrix" ;
+    prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
+    dct:format "text/csv"^^xsd:string ;
+    nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+    dc:description niiri:design_matrix_png_id ;
+    nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
+    nidm_hasfMRIDesign: nidm_BlockBasedDesign: ;
+    nidm_hasHRFBasis: niiri:hrf_basis_id ;
+    nidm_hasDriftModel: niiri:drift_model_id.
