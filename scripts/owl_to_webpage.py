@@ -95,15 +95,14 @@ class OwlSpecification(object):
             style="margin-left: auto; margin-right: auto;">
                 <caption id=\""""+table_id+"""\">\
                 <a class="internalDFN" href=\"#"""+table_id+"""\">\
-                Table """+str(table_num)+"""</a>:
-                Mapping of """+self.name+""" """+subcomponent_name + \
-            """ Core Concepts to types and relations \
-                and PROV core concepts</caption> \
+                Table """+str(table_num)+"""</a>:"""+self.name+"""\
+                """+subcomponent_name + """ Concepts</caption> \
                 <tbody>
                     <tr>
-                        <td><b>"""+self.name+""" Concepts</b></td>
-                        <td><b>Types or Relation (PROV concepts)</b></td>
-                        <td><b>Name</b></td>
+                        <th align="center"><b>"""+self.name+""" Concept</b>\
+</th>
+                        <th align="center"><b>PROV type</b></th>
+                        <th align="center"><b>Identifier</b></th>
                     </tr>
         """
 
@@ -127,15 +126,14 @@ class OwlSpecification(object):
                 if class_uri is sorted_classes[0]:
                     self.text += """
                                 <td rowspan=\""""+str(len(sorted_classes)) + \
-                        """\" style="text-align: center;">""" + \
-                        self.name+""" Types<br/> \
-                                (PROV """ + \
-                        self.owl.get_label(prov_class).replace('prov:', '') + \
-                        """)</td>
+                        """\" style="text-align: center;"> """ + \
+                        self.owl.get_label(prov_class) + \
+                        """</td>
                         """
 
                 self.text += """
-                                <td>"""+self.term_link(class_uri)+"""</td>
+                                <td>"""+self.owl.graph.qname(class_uri) + \
+                             """</td>
                             </tr>
                 """
 
