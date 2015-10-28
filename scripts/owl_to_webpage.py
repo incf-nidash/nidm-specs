@@ -36,16 +36,11 @@ class OwlSpecification(object):
         if intro is not None:
             self.text += intro
 
-        # If no subcomponents are defined display all classes
-        if not subcomponents:
-            subcomponents = dict([(None, self.owl.classes)])
-
         table_num = 3
         for subcomponent_name, classes in subcomponents.items():
             classes_by_types = self.owl.get_class_names_by_prov_type(
                 classes,
                 prefix=prefix, but=self.already_defined_classes)
-
             self.already_defined_classes += classes
 
             self.create_subcomponent_table(classes_by_types, table_num,
@@ -434,7 +429,7 @@ class OwlSpecification(object):
             self.text += """
                 </section>"""
 
-        for range_name in range_classes:
+        for range_name in self.owl.sorted_by_labels(range_classes):
             if not range_name in self.already_defined_classes:
                 self.already_defined_classes.append(range_name)
                 self.create_class_section(

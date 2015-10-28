@@ -93,6 +93,7 @@ class OwlReader():
 
         if not classes:
             classes = self.graph.subjects(RDF['type'], OWL['Class'])
+
             # FIXME: Is there a more efficient way?
             if prefix:
                 original_classes = classes
@@ -102,6 +103,8 @@ class OwlReader():
                         classes.append(class_name)
             if but:
                 classes = list(set(classes) - set(but))
+
+            classes = sorted(classes)
 
         for class_name in classes:
             if not self.is_class(class_name):
