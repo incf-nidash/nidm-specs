@@ -233,7 +233,8 @@ class OwlSpecification(object):
 
     def create_class_section(self, class_uri, definition, attributes,
                              used_by=None, generated_by=None,
-                             derived_from=None, children=False):
+                             derived_from=None, children=False,
+                             is_range=False):
         class_label = self.owl.get_label(class_uri)
         class_name = self.owl.get_name(class_uri)
 
@@ -304,9 +305,11 @@ class OwlSpecification(object):
 
         range_classes = list()
 
+        self.text += """
+                </div>"""
+
         if attributes and (attributes != set([CRYPTO['sha512']])):
             self.text += """
-                </div>
                 <p></p>
                 <div class="attributes" id="attributes-"""+class_label + \
                 """"> A """ + \
@@ -343,6 +346,9 @@ class OwlSpecification(object):
                         for parent_range in self.owl.parent_ranges[att]:
                             child_ranges += self.owl.get_direct_children(
                                 parent_range)
+                            if self.owl.get_label(parent_range).\
+                                    startswith('nidm'):
+                                range_classes.append(parent_range)
                         child_ranges = sorted(child_ranges)
 
                         # if nidm_namespace:
@@ -357,12 +363,11 @@ class OwlSpecification(object):
                             " (range ", child_range_txt+")")
                         self.text += "."
 
-                        for range_class in sorted(self.owl.ranges[att]):
-                            if self.owl.get_label(range_class).\
-                                    startswith('nidm'):
-                                range_classes.append(range_class)
-
                         self.text += "</li>"
+
+            self.text += """
+                </ul>
+                </div>"""
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/" + \
             "incf-nidash/nidm/master/"
@@ -373,15 +378,6 @@ class OwlSpecification(object):
                 </div>
                 <pre class='example highlight'>"""+cgi.escape(example) + \
                 """</pre>"""
-
-        for range_name in range_classes:
-            if not range_name in self.already_defined_classes:
-                self.already_defined_classes.append(range_name)
-                self.create_class_section(
-                    range_name,
-                    self.owl.get_definition(range_name),
-                    self.owl.attributes.setdefault(range_name, None),
-                    children=True)
 
         # For object property list also children (in sub-sections)
         if children:
@@ -412,8 +408,22 @@ class OwlSpecification(object):
 
             self.text += "</ul>"
 
-        self.text += """
-            </section>"""
+        if is_range:
+            self.text += """
+                </section>"""
+
+        for range_name in range_classes:
+            if not range_name in self.already_defined_classes:
+                self.already_defined_classes.append(range_name)
+                self.create_class_section(
+                    range_name,
+                    self.owl.get_definition(range_name),
+                    self.owl.attributes.setdefault(range_name, None),
+                    children=True, is_range=True)
+
+        if not is_range:
+            self.text += """
+                </section>"""
 
     def close_sections(self):
         for x in range(0, self.section_open):
