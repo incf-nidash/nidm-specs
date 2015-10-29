@@ -342,7 +342,7 @@ class OwlSpecification(object):
 
                 # Do not display prov relations (used, wasGeneratedBy...) as
                 # attributes
-                if not self.owl.get_label(att).startswith("prov"):
+                if not (att == PROV['used'] or att == PROV['wasGeneratedBy']):
                     if att not in self.attributes_done:
                         # First definition of this attribute
                         att_tag = "dfn"
