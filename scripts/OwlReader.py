@@ -388,9 +388,14 @@ class OwlReader():
                     # Read file from url
                     example = urllib2.urlopen(example).read()
 
-            example_list.append(example)
+            title = ""
+            if example.startswith("#"):
+                title = (example.split('\n', 1)[0]).replace("#", "")
+                example = example.replace("#" + title, "")
 
-        return example_list
+            example_list.append([title, example])
+
+        return sorted(example_list)
 
     def get_range(self, owl_term):
         ranges = list(self.graph.objects(owl_term, RDFS['range']))

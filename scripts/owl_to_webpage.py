@@ -388,12 +388,11 @@ class OwlSpecification(object):
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/" + \
             "incf-nidash/nidm/master/"
-        examples = self.owl.get_example(class_uri, BASE_REPOSITORY)
-        for example in sorted(examples):
+        for title, example in self.owl.get_example(class_uri, BASE_REPOSITORY):
             self.text += """
                 </ul>
                 </div>
-                <pre class='example highlight'>"""+cgi.escape(example) + \
+                <pre class='example highlight' title=\""""+title+"""\">"""+cgi.escape(example) + \
                 """</pre>"""
 
         # For object property list also children (in sub-sections)
