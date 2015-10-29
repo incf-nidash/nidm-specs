@@ -52,8 +52,13 @@ def main():
             filename='image.img',
             coordinate_space_id="niiri:coordinate_space_id",
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
-            map_header="map_header_id",
+            map_header="niiri:map_header_id",
             location="file://./image.img"),
+        "MapHeader": dict(
+            map_header_id="niiri:map_header_id",
+            filename='image.hdr',
+            sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
+            location="file://./image.hdr"),
         "Image-DesignMatrix": dict(
             image_id="niiri:design_matrix_png_id",
             location="file://./DesignMatrix.png",
