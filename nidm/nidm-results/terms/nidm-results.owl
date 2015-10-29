@@ -206,9 +206,9 @@ nidm:NIDM_0000102 rdf:type owl:ObjectProperty ;
                   
                   rdfs:label "has HRF Basis" ;
                   
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
-                  
                   obo:IAO_0000115 "A property that associates a set of functions that, when convolved with the anticipated neural responses, yields a set of regressors to model the anticipated hemodynamic responses in a design matrix." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 ;
                   
@@ -578,9 +578,9 @@ nidm:NIDM_0000090 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:label "dimensions In Voxels" ;
                   
-                  obo:IAO_0000115 "Number of voxels in each of the dimensions of the data array. For example, \"[91, 109, 91]\" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension." ;
-                  
                   obo:IAO_0000116 "Discussed at: https://github.com/incf-nidash/nidm/issues/146" ;
+                  
+                  obo:IAO_0000115 "Number of voxels in each of the dimensions of the data array. For example, \"[91, 109, 91]\" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension." ;
                   
                   obo:IAO_0000112 "[64, 64, 20]" ;
                   
@@ -1145,11 +1145,11 @@ nidm:NIDM_0000133 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:comment "Range: Vector of strings." ;
                   
-                  obo:IAO_0000112 """'["mm", "mm", "s"]'""" ;
-                  
                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/295 and https://github.com/incf-nidash/nidm/issues/147" ;
                   
-                  obo:IAO_0000115 """Set of units associated with the dimensions of some N-dimensional data (e.g. '["mm", "mm", "mm"]')""" ;
+                  obo:IAO_0000112 "'[\"mm\", \"mm\", \"s\"]'" ;
+                  
+                  obo:IAO_0000115 "Set of units associated with the dimensions of some N-dimensional data (e.g. '[\"mm\", \"mm\", \"mm\"]')" ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 ;
                   
@@ -1758,13 +1758,17 @@ nlx:nif-0000-00343 rdfs:subClassOf prov:SoftwareAgent .
 
 ###  http://purl.obolibrary.org/obo/OBI_0001265
 
-obo:OBI_0001265 rdfs:subClassOf prov:Entity .
+obo:OBI_0001265 rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity .
 
 
 
 ###  http://purl.obolibrary.org/obo/OBI_0001442
 
-obo:OBI_0001442 rdfs:subClassOf prov:Entity .
+obo:OBI_0001442 rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity .
 
 
 
@@ -1852,11 +1856,11 @@ fsl:FSL_0000002 rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDM_0000087 ;
                 
+                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_DriftModel.txt"^^xsd:anyURI ;
+                
                 obo:IAO_0000115 "A drift model in which the drifts are modeled with a Gaussian-weighted running line smoother, fit to and subtracted from the data and each column of the design matrix." ;
                 
                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
-
-                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_DriftModel.txt"^^xsd:anyURI ;
                 
                 obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2141,15 +2145,14 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ;
                   
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ;
-
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix_1stLevel.txt"^^xsd:anyURI ;
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/DesignMatrix_1stLevel.txt"^^xsd:anyURI ;
                   
                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/274" ;
                   
-                  rdfs:seeAlso "stato:design matrix" ;
-                  
                   obo:IAO_0000115 "A [stato:design matrix](http://purl.obolibrary.org/obo/STATO_0000289), with additional neuroimaging attributes, including HRF and drift for first-level fMRI models" ;
+                  
+                  rdfs:seeAlso "stato:design matrix" ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2508,17 +2511,17 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -3139,9 +3142,9 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
-                  
                   obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design." ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -3201,12 +3204,12 @@ spm:SPM_0000002 rdf:type owl:Class ;
                 
                 rdfs:subClassOf nidm:NIDM_0000087 ;
                 
+                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_DriftModel.txt"^^xsd:anyURI ;
+                
                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
                 
                 obo:IAO_0000115 "A drift model in which the drifts are modeled by a Discrete Cosine Transform basis added to regression model" ;
                 
-                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_DriftModel.txt"^^xsd:anyURI ;
-
                 obo:IAO_0000114 obo:IAO_0000122 .
 
 
