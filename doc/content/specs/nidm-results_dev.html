@@ -268,7 +268,7 @@
 					<section id="sec-reuse-prov">
 					<h3>Re-use of PROV-DM Structures</h3>
 					<p>
-						PROV relations used in NIDM-Results are summarized in  <a class="internalDFN" href="#overview-types-and-relations">Table 2</a>.
+						NIDM-Results is based on the PROV family of specifications. PROV relations used in NIDM-Results are summarized in  <a class="internalDFN" href="#overview-types-and-relations">Table 2</a>.
 					</p>
 					<div style="text-align: left;">
 						<table class="thinborder" style="margin-left: auto; margin-right: auto;">
@@ -294,6 +294,12 @@
 							</tbody>
 						</table>
 					</div>
+					</section>
+					<section id="values">
+					<h3>Value formatting and types</h3>
+					<p>
+						When possible, values are formatted using types defined as part of the XML Schema Namespace [[XMLSCHEMA11-2]].Vectors and matrices are encoded using json with an xsd:string type.
+					</p>
 					</section>
 				</section>
 			</section>
@@ -351,8 +357,37 @@
                         <li><a title="NIDM_0000103"><dfn title="NIDM_0000103">nidm:'has Map Header'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Map Header''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104"><dfn title="NIDM_0000104">nidm:'in Coordinate Space'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'in Coordinate Space''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"><dfn title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nfo:'fileName''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation"><dfn title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'prov:atLocation'""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Map: Nifti (.img)">
+
+@prefix nidm_Map: &lt;http://purl.org/nidash/nidm#NIDM_0000052&gt; .
+@prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
+@prefix nidm_hasMapHeader: &lt;http://purl.org/nidash/nidm#NIDM_0000103&gt; .
+
+
+niiri:map_id a prov:Entity , nidm_Map: ;
+    nfo:fileName "image.img"^^xsd:string ;
+    nidm_inCoordinateSpace: niiri:coordinate_space_id ;
+    crypto:sha512 "e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a"^^xsd:string ;
+    prov:atLocation "file://./image.img"^^xsd:anyURI ;
+    nidm_hasMapHeader: niiri:map_header_id .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Map: One-file Nifti (.nii)">
+
+@prefix nidm_Map: &lt;http://purl.org/nidash/nidm#NIDM_0000052&gt; .
+@prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
+
+
+niiri:map_id a prov:Entity , nidm_Map: ;
+    nfo:fileName "image.nii"^^xsd:string ;
+    nidm_inCoordinateSpace: niiri:coordinate_space_id ;
+    crypto:sha512 "e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a"^^xsd:string ;
+    prov:atLocation "file://./image.nii"^^xsd:anyURI .</pre>
             <!-- nidm:'Map Header' (NIDM_0000053) -->
             <section id="section-nidm:'Map Header'">
                 <h1 label="NIDM_0000053">nidm:'Map Header'</h1>
@@ -366,8 +401,20 @@
                         <li><a title="sha512" href ="http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512">crypto:sha512</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Secure Hash Algorithm 512.
                         <li><a title="format" href ="http://purl.org/dc/terms/format">dct:format</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The file format, physical medium, or dimensions of the resource. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Map: Nifti header (.hdr)">
+
+@prefix nidm_MapHeader: &lt;http://purl.org/nidash/nidm#NIDM_0000053&gt; .
+
+
+niiri:map_header_id a prov:Entity , nidm_MapHeader: ;
+    nfo:fileName "image.hdr"^^xsd:string ;
+    crypto:sha512 "e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a"^^xsd:string ;
+    prov:atLocation "file://./image.hdr"^^xsd:anyURI .</pre>
                 </section>
                 </section>
             <!-- nidm:'Coordinate Space' (NIDM_0000016) -->
@@ -380,17 +427,17 @@
                 <div class="attributes" id="attributes-nidm:'Coordinate Space'"> A <a title="NIDM_0000016">nidm:'Coordinate Space'</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="nidm:'Coordinate Space'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000016">nidm:'Coordinate Space'</a>.</li>
-                        <li><a title="NIDM_0000090"><dfn title="NIDM_0000090">nidm:'dimensions In Voxels'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'dimensions In Voxels''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of voxels in each of the dimensions of the data array. For example, "91 109 91" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000090"><dfn title="NIDM_0000090">nidm:'dimensions In Voxels'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'dimensions In Voxels''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of voxels in each of the dimensions of the data array. For example, "[91, 109, 91]" indicates there are 91 voxels in the first dimension, 109 in the second dimension, and 91 in the third dimension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                         <li><a title="NIDM_0000105"><dfn title="NIDM_0000105">nidm:'in World Coordinate System'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'in World Coordinate System''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a world coordinate system to the coordinate space. (range <a title="NIDM_0000081">nidm:'World Coordinate System'</a> such as <a title="NIDM_0000075">nidm:'Standardized Coordinate System'</a>, <a title="NIDM_0000077">nidm:'Subject Coordinate System'</a>).</li>
                         <li><a title="NIDM_0000112"><dfn title="NIDM_0000112">nidm:'number Of Dimensions'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'number Of Dimensions''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of dimensions of the data matrix (e.g. 3 for volumetric data). (range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>).</li>
                         <li><a title="NIDM_0000131"><dfn title="NIDM_0000131">nidm:'voxel Size'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'voxel Size''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) 3D size of a voxel measured in voxel units (e.g. [2, 2, 4]). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                         <li><a title="NIDM_0000132"><dfn title="NIDM_0000132">nidm:'voxel To World Mapping'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'voxel To World Mapping''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Homogeneous transformation matrix to map from voxel coordinate system to world coordinate system. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="NIDM_0000133"><dfn title="NIDM_0000133">nidm:'voxel Units'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'voxel Units''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Set of units associated with the dimensions of some N-dimensional data (e.g. [mm, mm, mm]). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000133"><dfn title="NIDM_0000133">nidm:'voxel Units'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'voxel Units''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Set of units associated with the dimensions of some N-dimensional data (e.g. '["mm", "mm", "mm"]'). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_CoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000016&gt; .
+                <pre class='example highlight' title="">@prefix nidm_CoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000016&gt; .
 @prefix nidm_voxelToWorldMapping: &lt;http://purl.org/nidash/nidm#NIDM_0000132&gt; .
 @prefix nidm_voxelUnits: &lt;http://purl.org/nidash/nidm#NIDM_0000133&gt; .
 @prefix nidm_voxelSize: &lt;http://purl.org/nidash/nidm#NIDM_0000131&gt; .
@@ -555,7 +602,7 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ModelParametersEstimation: &lt;http://purl.org/nidash/nidm#NIDM_0000056&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ModelParametersEstimation: &lt;http://purl.org/nidash/nidm#NIDM_0000056&gt; .
 @prefix nidm_withEstimationMethod: &lt;http://purl.org/nidash/nidm#NIDM_0000134&gt; .
 @prefix obo_ordinaryleastsquaresestimation: &lt;http://purl.obolibrary.org/obo/STATO_0000370&gt; .
 
@@ -585,7 +632,7 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_DataScaling: &lt;http://purl.org/nidash/nidm#NIDM_0000018&gt; .
+                <pre class='example highlight' title="">@prefix nidm_DataScaling: &lt;http://purl.org/nidash/nidm#NIDM_0000018&gt; .
 @prefix nidm_grandMeanScaling: &lt;http://purl.org/nidash/nidm#NIDM_0000096&gt; .
 @prefix nidm_targetIntensity: &lt;http://purl.org/nidash/nidm#NIDM_0000124&gt; .
 
@@ -616,7 +663,7 @@ niiri:data_id a prov:Entity , nidm_DataScaling: , prov:Collection ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
+                <pre class='example highlight' title="">@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
 
 
 niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
@@ -627,7 +674,7 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
     dc:description niiri:design_matrix_png_id .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
+                <pre class='example highlight' title="">@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
 @prefix nidm_regressorNames: &lt;http://purl.org/nidash/nidm#NIDM_0000021&gt; .
 @prefix nidm_hasfMRIDesign: &lt;http://purl.org/nidash/nidm#NIDM_0000010&gt; .
 @prefix nidm_BlockBasedDesign: &lt;http://purl.org/nidash/nidm#NIDM_0000152&gt; .
@@ -772,7 +819,7 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix fsl_GaussianRunningLineDriftModel: &lt;http://purl.org/nidash/fsl#FSL_0000002&gt; .
+                <pre class='example highlight' title="">@prefix fsl_GaussianRunningLineDriftModel: &lt;http://purl.org/nidash/fsl#FSL_0000002&gt; .
 @prefix fsl_driftCutoffPeriod: &lt;http://purl.org/nidash/fsl#FSL_0000004&gt; .
 
 
@@ -795,7 +842,7 @@ niiri:drift_model_id a prov:Entity , fsl_GaussianRunningLineDriftModel: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix spm_DCTDriftModel: &lt;http://purl.org/nidash/spm#SPM_0000002&gt; .
+                <pre class='example highlight' title="">@prefix spm_DCTDriftModel: &lt;http://purl.org/nidash/spm#SPM_0000002&gt; .
 @prefix spm_SPMsDriftCutoffPeriod: &lt;http://purl.org/nidash/spm#SPM_0000001&gt; .
 
 
@@ -831,7 +878,7 @@ niiri:drift_model_id a prov:Entity , spm_DCTDriftModel: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
 @prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
 @prefix nidm_GaussianDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000032&gt; .
 @prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
@@ -935,11 +982,12 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="NIDM_0000107"><dfn title="NIDM_0000107">nidm:'masked Median'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'masked Median''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Median value considering only in-mask voxels. Useful diagnostic when computed on grand mean image when grandMeanScaling is TRUE, as the median should be close to targetIntensity. (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_GrandMeanMap: &lt;http://purl.org/nidash/nidm#NIDM_0000033&gt; .
+                <pre class='example highlight' title="">@prefix nidm_GrandMeanMap: &lt;http://purl.org/nidash/nidm#NIDM_0000033&gt; .
 @prefix nidm_maskedMedian: &lt;http://purl.org/nidash/nidm#NIDM_0000107&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
@@ -971,11 +1019,12 @@ niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
                         <li><a title="NIDM_0000106"><dfn title="NIDM_0000106">nidm:'is User Defined'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'is User Defined''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
                         <li><a title="NIDM_0000158"><dfn title="NIDM_0000158">nidm:'noise FWHM In Vertices'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'noise FWHM In Vertices''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Estimated Full Width at Half Maximum of the spatial smoothness of the noise process in vertices.
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_MaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000054&gt; .
+                <pre class='example highlight' title="">@prefix nidm_MaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000054&gt; .
 @prefix nidm_isUserDefined: &lt;http://purl.org/nidash/nidm#NIDM_0000106&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
@@ -1005,11 +1054,12 @@ niiri:mask_id_2 a prov:Entity , nidm_MaskMap: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ParameterEstimateMap: &lt;http://purl.org/nidash/nidm#NIDM_0000061&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ParameterEstimateMap: &lt;http://purl.org/nidash/nidm#NIDM_0000061&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
@@ -1033,11 +1083,12 @@ niiri:beta_map_id_1 a prov:Entity , nidm_ParameterEstimateMap: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ReselsPerVoxelMap: &lt;http://purl.org/nidash/nidm#NIDM_0000144&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ReselsPerVoxelMap: &lt;http://purl.org/nidash/nidm#NIDM_0000144&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
@@ -1065,11 +1116,12 @@ niiri:resels_per_voxel_map_id a prov:Entity , nidm_ReselsPerVoxelMap: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ResidualMeanSquaresMap: &lt;http://purl.org/nidash/nidm#NIDM_0000066&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ResidualMeanSquaresMap: &lt;http://purl.org/nidash/nidm#NIDM_0000066&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
@@ -1150,7 +1202,7 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm_ResidualMeanSquaresMap: 
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ContrastEstimation: &lt;http://purl.org/nidash/nidm#NIDM_0000001&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ContrastEstimation: &lt;http://purl.org/nidash/nidm#NIDM_0000001&gt; .
 
 
 niiri:contrast_estimation_id a prov:Activity , nidm_ContrastEstimation: ;
@@ -1174,10 +1226,10 @@ niiri:contrast_estimation_id a prov:Activity , nidm_ContrastEstimation: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>[1,0,0]</pre>
+                <pre class='example highlight' title="">[1,0,0]</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_statisticType: &lt;http://purl.org/nidash/nidm#NIDM_0000123&gt; .
+                <pre class='example highlight' title="">@prefix nidm_statisticType: &lt;http://purl.org/nidash/nidm#NIDM_0000123&gt; .
 @prefix nidm_contrastName: &lt;http://purl.org/nidash/nidm#NIDM_0000085&gt; .
 @prefix obo_contrastweightmatrix: &lt;http://purl.obolibrary.org/obo/STATO_0000323&gt; .
 @prefix obo_tstatistic: &lt;http://purl.obolibrary.org/obo/STATO_0000176&gt; .
@@ -1205,11 +1257,12 @@ niiri:contrast_id a prov:Entity , obo_contrastweightmatrix: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ContrastMap: &lt;http://purl.org/nidash/nidm#NIDM_0000002&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ContrastMap: &lt;http://purl.org/nidash/nidm#NIDM_0000002&gt; .
 @prefix nidm_contrastName: &lt;http://purl.org/nidash/nidm#NIDM_0000085&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
@@ -1240,11 +1293,12 @@ niiri:contrast_map_id a prov:Entity , nidm_ContrastMap: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ContrastStandardErrorMap: &lt;http://purl.org/nidash/nidm#NIDM_0000013&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ContrastStandardErrorMap: &lt;http://purl.org/nidash/nidm#NIDM_0000013&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
@@ -1276,11 +1330,12 @@ niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorM
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="NIDM_0000123">nidm:'statistic Type'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a  <a href="http://purl.obolibrary.org/obo/STATO_0000039">stato:"statistic"</a> with a StatisticMap or a ContrastWeights entity. (range <a title="STATO_0000039" href ="http://purl.obolibrary.org/obo/STATO_0000039">obo:'statistic'</a> such as <a title="STATO_0000030" href ="http://purl.obolibrary.org/obo/STATO_0000030">obo:'Chi-Squared statistic'</a>, <a title="STATO_0000282" href ="http://purl.obolibrary.org/obo/STATO_0000282">obo:'F-statistic'</a>, <a title="STATO_0000376" href ="http://purl.obolibrary.org/obo/STATO_0000376">obo:'Z-statistic'</a>, <a title="STATO_0000176" href ="http://purl.obolibrary.org/obo/STATO_0000176">obo:'t-statistic'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_StatisticMap: &lt;http://purl.org/nidash/nidm#NIDM_0000076&gt; .
+                <pre class='example highlight' title="">@prefix nidm_StatisticMap: &lt;http://purl.org/nidash/nidm#NIDM_0000076&gt; .
 @prefix nidm_statisticType: &lt;http://purl.org/nidash/nidm#NIDM_0000123&gt; .
 @prefix nidm_contrastName: &lt;http://purl.org/nidash/nidm#NIDM_0000085&gt; .
 @prefix nidm_effectDegreesOfFreedom: &lt;http://purl.org/nidash/nidm#NIDM_0000091&gt; .
@@ -1426,7 +1481,7 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_Inference: &lt;http://purl.org/nidash/nidm#NIDM_0000049&gt; .
+                <pre class='example highlight' title="">@prefix nidm_Inference: &lt;http://purl.org/nidash/nidm#NIDM_0000049&gt; .
 @prefix nidm_hasAlternativeHypothesis: &lt;http://purl.org/nidash/nidm#NIDM_0000097&gt; .
 @prefix nidm_OneTailedTest: &lt;http://purl.org/nidash/nidm#NIDM_0000060&gt; .
 
@@ -1495,7 +1550,7 @@ niiri:inference_id a prov:Activity , nidm_Inference: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ClusterDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000007&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ClusterDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000007&gt; .
 @prefix nidm_hasConnectivityCriterion: &lt;http://purl.org/nidash/nidm#NIDM_0000099&gt; .
 @prefix nidm_voxel18connected: &lt;http://purl.org/nidash/nidm#NIDM_0000128&gt; .
 
@@ -1540,11 +1595,12 @@ niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCrite
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ClusterLabelsMap: &lt;http://purl.org/nidash/nidm#NIDM_0000008&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ClusterLabelsMap: &lt;http://purl.org/nidash/nidm#NIDM_0000008&gt; .
 
 
 niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
@@ -1568,7 +1624,7 @@ niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_Coordinate: &lt;http://purl.org/nidash/nidm#NIDM_0000015&gt; .
+                <pre class='example highlight' title="">@prefix nidm_Coordinate: &lt;http://purl.org/nidash/nidm#NIDM_0000015&gt; .
 @prefix nidm_coordinateVector: &lt;http://purl.org/nidash/nidm#NIDM_0000086&gt; .
 
 
@@ -1592,11 +1648,12 @@ niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="NIDM_0000106">nidm:'is User Defined'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_DisplayMaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000020&gt; .
+                <pre class='example highlight' title="">@prefix nidm_DisplayMaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000020&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
@@ -1628,11 +1685,12 @@ niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
                         <li><a title="NIDM_0000114"><dfn title="NIDM_0000114">nidm:'p Value'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'p Value''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>)  (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000138"><dfn title="NIDM_0000138">nidm:'has Maximum Intensity Projection'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Maximum Intensity Projection''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an image of the maximum intensity projection with an excursion set map. (range <a title="Image" href ="http://purl.org/dc/dcmitype/Image">dctype:Image</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ExcursionSetMap: &lt;http://purl.org/nidash/nidm#NIDM_0000025&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ExcursionSetMap: &lt;http://purl.org/nidash/nidm#NIDM_0000025&gt; .
 @prefix nidm_hasClusterLabelsMap: &lt;http://purl.org/nidash/nidm#NIDM_0000098&gt; .
 @prefix nidm_hasMaximumIntensityProjection: &lt;http://purl.org/nidash/nidm#NIDM_0000138&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
@@ -1671,7 +1729,7 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix nidm_PValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000160&gt; .
 
 
@@ -1680,7 +1738,7 @@ niiri:extent_threshold_unc_id a prov:Entity, nidm_ExtentThreshold:, nidm_PValueU
     prov:value "0.001"^^xsd:float .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix nidm_clusterSizeInVoxels: &lt;http://purl.org/nidash/nidm#NIDM_0000084&gt; .
 @prefix nidm_clusterSizeInResels: &lt;http://purl.org/nidash/nidm#NIDM_0000156&gt; .
 @prefix obo_statistic: &lt;http://purl.obolibrary.org/obo/STATO_0000039&gt; .
@@ -1692,7 +1750,7 @@ niiri:extent_threshold_stat_id a prov:Entity, nidm_ExtentThreshold:, obo_statist
     nidm_clusterSizeInResels: "0"^^xsd:float .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix nidm_equivalentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000161&gt; .
 @prefix obo_FWERadjustedpvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001265&gt; .
 
@@ -1703,7 +1761,7 @@ niiri:extent_threshold_fwer_id a prov:Entity, nidm_ExtentThreshold:, obo_FWERadj
     nidm_equivalentThreshold: niiri:extent_threshold_stat_id .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix obo_qvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001442&gt; .
 
 
@@ -1740,7 +1798,7 @@ niiri:extent_threshold_fdr_id a prov:Entity, nidm_ExtentThreshold:, obo_qvalue: 
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+                <pre class='example highlight' title="">@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
 @prefix nidm_PValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000160&gt; .
 
 
@@ -1749,7 +1807,7 @@ niiri:height_threshold_unc_id a prov:Entity, nidm_HeightThreshold:, nidm_PValueU
     prov:value "0.001"^^xsd:float .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+                <pre class='example highlight' title="">@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
 @prefix nidm_equivalentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000161&gt; .
 @prefix obo_FWERadjustedpvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001265&gt; .
 
@@ -1760,7 +1818,7 @@ niiri:height_threshold_fwer_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadj
     nidm_equivalentThreshold: niiri:height_threshold_stat_id .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+                <pre class='example highlight' title="">@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
 @prefix obo_qvalue: &lt;http://purl.obolibrary.org/obo/OBI_0001442&gt; .
 
 
@@ -1769,7 +1827,7 @@ niiri:height_threshold_fdr_id a prov:Entity, nidm_HeightThreshold:, obo_qvalue: 
     prov:value "0.05"^^xsd:float .</pre>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
+                <pre class='example highlight' title="">@prefix nidm_HeightThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000034&gt; .
 @prefix obo_statistic: &lt;http://purl.obolibrary.org/obo/STATO_0000039&gt; .
 
 
@@ -1795,7 +1853,7 @@ niiri:height_threshold_stat_id a prov:Entity, nidm_HeightThreshold:, obo_statist
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_Peak: &lt;http://purl.org/nidash/nidm#NIDM_0000062&gt; .
+                <pre class='example highlight' title="">@prefix nidm_Peak: &lt;http://purl.org/nidash/nidm#NIDM_0000062&gt; .
 @prefix nidm_pValueUncorrected: &lt;http://purl.org/nidash/nidm#NIDM_0000116&gt; .
 @prefix nidm_equivalentZStatistic: &lt;http://purl.org/nidash/nidm#NIDM_0000092&gt; .
 @prefix nidm_pValueFWER: &lt;http://purl.org/nidash/nidm#NIDM_0000115&gt; .
@@ -1828,7 +1886,7 @@ niiri:peak_0001 a prov:Entity , nidm_Peak: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_PeakDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000063&gt; .
+                <pre class='example highlight' title="">@prefix nidm_PeakDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000063&gt; .
 @prefix nidm_minDistanceBetweenPeaks: &lt;http://purl.org/nidash/nidm#NIDM_0000109&gt; .
 @prefix nidm_maxNumberOfPeaksPerCluster: &lt;http://purl.org/nidash/nidm#NIDM_0000108&gt; .
 
@@ -1875,11 +1933,12 @@ niiri:peak_definition_criteria_id a prov:Entity , nidm_PeakDefinitionCriteria: ;
                         <li><a title="SPM_0000014"><dfn title="SPM_0000014">spm:'smallest Significant Cluster Size In Voxels FWE 05'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'smallest Significant Cluster Size In Voxels FWE 05''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Smallest cluster size in voxels that is significant at the family-wise error corrected type I error rate (alpha value) of 0.05. 
 . (range <a title="positiveInteger" href ="http://www.w3.org/2001/XMLSchema#positiveInteger">xsd:positiveInteger</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_SearchSpaceMaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000068&gt; .
+                <pre class='example highlight' title="">@prefix nidm_SearchSpaceMaskMap: &lt;http://purl.org/nidash/nidm#NIDM_0000068&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 @prefix nidm_expectedNumberOfVoxelsPerCluster: &lt;http://purl.org/nidash/nidm#NIDM_0000143&gt; .
 @prefix nidm_expectedNumberOfClusters: &lt;http://purl.org/nidash/nidm#NIDM_0000141&gt; .
@@ -1941,7 +2000,7 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_SignificantCluster: &lt;http://purl.org/nidash/nidm#NIDM_0000070&gt; .
+                <pre class='example highlight' title="">@prefix nidm_SignificantCluster: &lt;http://purl.org/nidash/nidm#NIDM_0000070&gt; .
 @prefix nidm_clusterSizeInVoxels: &lt;http://purl.org/nidash/nidm#NIDM_0000084&gt; .
 @prefix nidm_clusterLabelId: &lt;http://purl.org/nidash/nidm#NIDM_0000082&gt; .
 @prefix nidm_clusterSizeInResels: &lt;http://purl.org/nidash/nidm#NIDM_0000156&gt; .
@@ -2078,6 +2137,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="NIDM_0000106">nidm:'is User Defined'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </section>
@@ -2131,6 +2191,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </section>
@@ -2142,7 +2203,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight'>@prefix nidm_ClusterCenterOfGravity: &lt;http://purl.org/nidash/nidm#NIDM_0000140&gt; .
+                <pre class='example highlight' title="">@prefix nidm_ClusterCenterOfGravity: &lt;http://purl.org/nidash/nidm#NIDM_0000140&gt; .
 
 
 niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
@@ -2172,6 +2233,7 @@ niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the map header with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a CoordinateSpace with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
                 </ul>
                 </div>
                 </section>
