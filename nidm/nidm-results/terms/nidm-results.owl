@@ -379,6 +379,14 @@ nidm:NIDM_0000161 rdf:type owl:ObjectProperty ;
 
 
 
+###  http://www.w3.org/ns/prov#atLocation
+
+prov:atLocation prov:definition "The Location of any resource" ;
+                
+                obo:IAO_0000115 "The Location of any resource." .
+
+
+
 
 
 #################################################################
@@ -2135,12 +2143,12 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2511,7 +2519,12 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2521,12 +2534,7 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2552,12 +2560,17 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty prov:atLocation ;
+                                    owl:onClass prov:Location ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
