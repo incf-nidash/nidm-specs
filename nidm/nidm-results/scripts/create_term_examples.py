@@ -40,6 +40,7 @@ def main():
             drift_model="niiri:drift_model_id",
             regressors="[\\\"Sn(1) active*bf(1)\\\",\\\"Sn(1) constant\\\"]"),
         "Map_atLocation-nii": dict(
+            comment="Map: One-file Nifti (.nii)",
             map_type="nidm:NIDM_0000052",
             map_id="niiri:map_id",
             filename='image.nii',
@@ -47,6 +48,7 @@ def main():
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
             location="file://./image.nii"),
         "Map_atLocation_hasMapHeader-img": dict(
+            comment="Map: Nifti (.img)",
             map_type="nidm:NIDM_0000052",
             map_id="niiri:map_id",
             filename='image.img',
@@ -55,6 +57,7 @@ def main():
             map_header="niiri:map_header_id",
             location="file://./image.img"),
         "MapHeader": dict(
+            comment="Map: Nifti header (.hdr)",
             map_header_id="niiri:map_header_id",
             filename='image.hdr',
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
