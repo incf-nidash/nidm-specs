@@ -39,6 +39,21 @@ def main():
             hrf_basis="niiri:hrf_basis_id",
             drift_model="niiri:drift_model_id",
             regressors="[\\\"Sn(1) active*bf(1)\\\",\\\"Sn(1) constant\\\"]"),
+        "Map_atLocation-nii": dict(
+            map_type="nidm:NIDM_0000052",
+            map_id="niiri:map_id",
+            filename='image.nii',
+            coordinate_space_id="niiri:coordinate_space_id",
+            sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
+            location="file://./image.nii"),
+        "Map_atLocation_hasMapHeader-img": dict(
+            map_type="nidm:NIDM_0000052",
+            map_id="niiri:map_id",
+            filename='image.img',
+            coordinate_space_id="niiri:coordinate_space_id",
+            sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
+            map_header="map_header_id",
+            location="file://./image.img"),
         "Image-DesignMatrix": dict(
             image_id="niiri:design_matrix_png_id",
             location="file://./DesignMatrix.png",
