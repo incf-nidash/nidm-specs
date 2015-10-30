@@ -17,7 +17,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/235">#235</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Explained Mean Square Map'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Contrast Explained Mean Square Map': </b>A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the denumerator of an F-statistic)</td>
+    <td><b>nidm:'Contrast Explained Mean Square Map': </b>A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the numerator of an F-statistic)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
