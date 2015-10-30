@@ -71,9 +71,10 @@ class ExampleFromTemplate(object):
                 templates = ["", nidm_class]
 
             class_example = ""
+
             if nidm_base_tpm:
                 try:
-                    class_example = nidm_base_tpm.substitute(**substitutes)
+                    class_example += nidm_base_tpm.substitute(**substitutes)
                 except KeyError, k:
                     logger.debug(nidm_class)
                     logger.debug(base_template_name)
@@ -100,7 +101,6 @@ class ExampleFromTemplate(object):
                     logger.debug(substitutes)
                     raise KeyError(k);
 
-
             if self.one_file_per_class:
                 example_file = os.path.join(self.dir, nidm_class+".txt")
                 example_fid = open(example_file, 'w')
@@ -109,6 +109,9 @@ class ExampleFromTemplate(object):
                         self.remove_attributes(self.remove_att, class_example)
                 if self.owl:     
                     class_example = self.replace_alphanum_id_by_prefixes(class_example)   
+                if "comment" in substitutes.keys():
+                    class_example = "#  " + substitutes['comment'] + "\n\n" + \
+                                    class_example
                 example_fid.write(str(class_example))
                 example_fid.close()
 
@@ -122,7 +125,9 @@ class ExampleFromTemplate(object):
                 if self.owl:     
                     example = self.replace_alphanum_id_by_prefixes(example)   
                 example = namespaces+"\n"+example
-
+                if "comment" in substitutes.keys():
+                    class_example = "#  " + substitutes['comment'] + "\n\n" + \
+                                    class_example
                 if not os.path.isdir(os.path.dirname(self.file)):
                     os.mkdir(os.path.dirname(self.file))
                 example_fid = open(self.file, 'w')

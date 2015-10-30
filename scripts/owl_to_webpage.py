@@ -15,7 +15,7 @@ class OwlSpecification(object):
 
     def __init__(self, owl_file, import_files, spec_name, subcomponents=None,
                  used_by=None, generated_by=None, derived_from=None,
-                 prefix=None, commentable=False):
+                 prefix=None, commentable=False, intro=None):
         self.owl = OwlReader(owl_file, import_files)
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
         self.name = spec_name
@@ -27,15 +27,14 @@ class OwlSpecification(object):
         self.attributes_done = set()
         self.text = ""
         self.create_specification(subcomponents, used_by, generated_by,
-                                  derived_from, prefix)
+                                  derived_from, prefix, intro)
 
     def create_specification(self, subcomponents, used_by, generated_by,
-                             derived_from, prefix):
-        self.create_title(self.name+": Types and relations")
+                             derived_from, prefix, intro=None):
+        self.create_title(self.name+": Types and relations", "definitions")
 
-        # If no subcomponents are defined display all classes
-        if not subcomponents:
-            subcomponents = dict([(None, self.owl.classes)])
+        if intro is not None:
+            self.text += intro
 
         table_num = 3
         for subcomponent_name, classes in subcomponents.items():
@@ -47,17 +46,19 @@ class OwlSpecification(object):
             self.create_subcomponent_table(classes_by_types, table_num,
                                            subcomponent_name)
             table_num = table_num + 1
-            all_classes = sorted(classes_by_types[PROV['Agent']]) + \
-                sorted(classes_by_types[PROV['Activity']]) + \
-                sorted(classes_by_types[PROV['Entity']]) + \
-                sorted(classes_by_types[None])
+            all_classes = classes_by_types[PROV['Agent']] + \
+                classes_by_types[PROV['Activity']] + \
+                classes_by_types[PROV['Entity']] + \
+                classes_by_types[None]
 
             for class_name in all_classes:
                 self.create_class_section(
                     class_name,
                     self.owl.get_definition(class_name),
                     self.owl.attributes.setdefault(class_name, None),
-                    used_by, generated_by, derived_from)
+                    used_by, generated_by, derived_from,
+                    children=not (
+                        self.owl.get_prov_class(class_name) == PROV['Entity']))
 
             if subcomponent_name:
                 self.text += """
@@ -92,15 +93,14 @@ class OwlSpecification(object):
             style="margin-left: auto; margin-right: auto;">
                 <caption id=\""""+table_id+"""\">\
                 <a class="internalDFN" href=\"#"""+table_id+"""\">\
-                Table """+str(table_num)+"""</a>:
-                Mapping of """+self.name+""" """+subcomponent_name + \
-            """ Core Concepts to types and relations \
-                and PROV core concepts</caption> \
+                Table """+str(table_num)+"""</a>:"""+self.name+"""\
+                """+subcomponent_name + """ Concepts</caption> \
                 <tbody>
                     <tr>
-                        <td><b>"""+self.name+""" Concepts</b></td>
-                        <td><b>Types or Relation (PROV concepts)</b></td>
-                        <td><b>Name</b></td>
+                        <th align="center"><b>"""+self.name+""" Concept</b>\
+</th>
+                        <th align="center"><b>PROV type</b></th>
+                        <th align="center"><b>Identifier</b></th>
                     </tr>
         """
 
@@ -112,7 +112,7 @@ class OwlSpecification(object):
                 PROV['Agent'],
                 PROV['Activity'],
                 PROV['Entity']]):
-            sorted_classes = sorted(classes[prov_class])
+            sorted_classes = classes[prov_class]
             for class_uri in sorted_classes:
                 self.text += """
                         <tr>
@@ -124,15 +124,14 @@ class OwlSpecification(object):
                 if class_uri is sorted_classes[0]:
                     self.text += """
                                 <td rowspan=\""""+str(len(sorted_classes)) + \
-                        """\" style="text-align: center;">""" + \
-                        self.name+""" Types<br/> \
-                                (PROV """ + \
-                        self.owl.get_label(prov_class).replace('prov:', '') + \
-                        """)</td>
+                        """\" style="text-align: center;"> """ + \
+                        self.owl.get_label(prov_class) + \
+                        """</td>
                         """
 
                 self.text += """
-                                <td>"""+self.term_link(class_uri)+"""</td>
+                                <td>"""+self.owl.graph.qname(class_uri) + \
+                             """</td>
                             </tr>
                 """
 
@@ -141,9 +140,16 @@ class OwlSpecification(object):
                 </table>
             </div>"""
 
-    def create_title(self, title):
-        self.text += """
+    def create_title(self, title, id=None):
+        if id is None:
+            self.text += """
         <section>
+        """
+        else:
+            self.text += """
+        <section id=\""""+id+"""\">
+        """
+        self.text += """
             <h1>"""+title+"""</h1>
         """
         self.section_open += 1
@@ -160,17 +166,21 @@ class OwlSpecification(object):
         return text
 
     def format_definition(self, definition):
-        # Capitalize first letter of definition
+        # Capitalize first letter, format markdown and end with dot
         if definition:
             definition = definition[0].upper() + definition[1:]
             definition = self._format_markdown(definition)
+            definition += "."
 
         return definition
 
-    def linked_listing(self, uri_list, prefix="", suffix=""):
+    def linked_listing(self, uri_list, prefix="", suffix="", sort=True):
         linked_listing = prefix
 
-        for i, uri in enumerate(self.owl.sorted_by_labels(uri_list)):
+        if sort:
+            uri_list = self.owl.sorted_by_labels(uri_list)
+
+        for i, uri in enumerate(uri_list):
             if i == 0:
                 sep = ""
             elif i == len(uri_list):
@@ -224,7 +234,8 @@ class OwlSpecification(object):
 
     def create_class_section(self, class_uri, definition, attributes,
                              used_by=None, generated_by=None,
-                             derived_from=None, children=False):
+                             derived_from=None, children=False,
+                             is_range=False):
         class_label = self.owl.get_label(class_uri)
         class_name = self.owl.get_name(class_uri)
 
@@ -237,11 +248,15 @@ class OwlSpecification(object):
                 <div class="glossary-ref">
                     """+self.term_link(class_uri, "dfn") + ": " + definition
 
-        self.text += " "+self.term_link(class_uri)+" is"
+        self.text += "<p> "+self.term_link(class_uri)+" is"
 
-        prov_class = self.owl.get_prov_class(class_uri)
-        if prov_class:
-            self.text += " a "+self.owl.get_label(prov_class)
+        nidm_class = self.owl.get_nidm_parent(class_uri)
+        if nidm_class:
+            self.text += " a "+self.term_link(nidm_class)
+        else:
+            prov_class = self.owl.get_prov_class(class_uri)
+            if prov_class:
+                self.text += " a "+self.owl.get_label(prov_class)
 
         found_used_by = False
         if used_by:
@@ -290,13 +305,28 @@ class OwlSpecification(object):
                 self.text += self.linked_listing(
                     list([derived_from[class_uri]]), " derived from ")
 
+        class_children = self.owl.get_direct_children(class_uri)
+        if class_children:
+            if found_used_by or found_generated_by:
+                self.text += ". It "
+            else:
+                self.text += " and "
+            self.text += " has the following child"
+            if len(class_children) > 1:
+                self.text += "ren"
+            self.text += ": " + \
+                         self.linked_listing(class_children)
+
         self.text += "."
+        self.text += "</p>"
 
         range_classes = list()
 
+        self.text += """
+                </div>"""
+
         if attributes and (attributes != set([CRYPTO['sha512']])):
             self.text += """
-                </div>
                 <p></p>
                 <div class="attributes" id="attributes-"""+class_label + \
                 """"> A """ + \
@@ -312,7 +342,7 @@ class OwlSpecification(object):
 
                 # Do not display prov relations (used, wasGeneratedBy...) as
                 # attributes
-                if not self.owl.get_label(att).startswith("prov"):
+                if not (att == PROV['used'] or att == PROV['wasGeneratedBy']):
                     if att not in self.attributes_done:
                         # First definition of this attribute
                         att_tag = "dfn"
@@ -333,6 +363,9 @@ class OwlSpecification(object):
                         for parent_range in self.owl.parent_ranges[att]:
                             child_ranges += self.owl.get_direct_children(
                                 parent_range)
+                            if self.owl.get_label(parent_range).\
+                                    startswith('nidm'):
+                                range_classes.append(parent_range)
                         child_ranges = sorted(child_ranges)
 
                         # if nidm_namespace:
@@ -347,31 +380,20 @@ class OwlSpecification(object):
                             " (range ", child_range_txt+")")
                         self.text += "."
 
-                        for range_class in sorted(self.owl.ranges[att]):
-                            if self.owl.get_label(range_class).\
-                                    startswith('nidm'):
-                                range_classes.append(range_class)
-
                         self.text += "</li>"
+
+            self.text += """
+                </ul>
+                </div>"""
 
         BASE_REPOSITORY = "https://raw.githubusercontent.com/" + \
             "incf-nidash/nidm/master/"
-        examples = self.owl.get_example(class_uri, BASE_REPOSITORY)
-        for example in sorted(examples):
+        for title, example in self.owl.get_example(class_uri, BASE_REPOSITORY):
             self.text += """
                 </ul>
                 </div>
-                <pre class='example highlight'>"""+cgi.escape(example) + \
+                <pre class='example highlight' title=\""""+title+"""\">"""+cgi.escape(example) + \
                 """</pre>"""
-
-        for range_name in range_classes:
-            if not range_name in self.already_defined_classes:
-                self.already_defined_classes.append(range_name)
-                self.create_class_section(
-                    range_name,
-                    self.owl.get_definition(range_name),
-                    self.owl.attributes.setdefault(range_name, None),
-                    children=True)
 
         # For object property list also children (in sub-sections)
         if children:
@@ -402,8 +424,22 @@ class OwlSpecification(object):
 
             self.text += "</ul>"
 
-        self.text += """
-            </section>"""
+        if is_range:
+            self.text += """
+                </section>"""
+
+        for range_name in self.owl.sorted_by_labels(range_classes):
+            if not range_name in self.already_defined_classes:
+                self.already_defined_classes.append(range_name)
+                self.create_class_section(
+                    range_name,
+                    self.owl.get_definition(range_name),
+                    self.owl.attributes.setdefault(range_name, None),
+                    children=True, is_range=True)
+
+        if not is_range:
+            self.text += """
+                </section>"""
 
     def close_sections(self):
         for x in range(0, self.section_open):
@@ -424,8 +460,16 @@ class OwlSpecification(object):
 
         release_notes = None
         if component:
-            prev_file = os.path.join(INCLUDE_FOLDER, component+"_head.html")
-            follow_file = os.path.join(INCLUDE_FOLDER, component+"_foot.html")
+            prev_file = os.path.join(
+                INCLUDE_FOLDER, component+"_"+version+"_head.html")
+            if not os.path.isfile(prev_file):
+                prev_file = os.path.join(
+                    INCLUDE_FOLDER, component+"_head.html")
+            follow_file = os.path.join(
+                INCLUDE_FOLDER, component+"_"+version+"_foot.html")
+            if not os.path.isfile(follow_file):
+                follow_file = os.path.join(
+                    INCLUDE_FOLDER, component+"_foot.html")
             if version:
                 release_notes = os.path.join(
                     os.path.dirname(self.owl.file),

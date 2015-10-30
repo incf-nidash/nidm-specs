@@ -59,6 +59,25 @@ class OwlReader():
 
         return children
 
+    def get_direct_parents(self, term):
+        # Find all direct parents of 'term'
+        parents = set()
+
+        for parent_name in self.graph.objects(term, RDFS['subClassOf']):
+            parents.add(parent_name)
+
+        return parents
+
+    def get_nidm_parent(self, term):
+        # Find direct nidm parent of 'term'
+        parents = self.get_direct_parents(term)
+
+        for parent in parents:
+            if not self.is_external_namespace(parent):
+                return parent
+
+        return None
+
     def is_class(self, uri):
         return (uri, RDF['type'], OWL['Class']) in self.graph
 
@@ -74,6 +93,7 @@ class OwlReader():
 
         if not classes:
             classes = self.graph.subjects(RDF['type'], OWL['Class'])
+
             # FIXME: Is there a more efficient way?
             if prefix:
                 original_classes = classes
@@ -83,6 +103,8 @@ class OwlReader():
                         classes.append(class_name)
             if but:
                 classes = list(set(classes) - set(but))
+
+            classes = sorted(classes)
 
         for class_name in classes:
             if not self.is_class(class_name):
@@ -95,8 +117,7 @@ class OwlReader():
                                .append(class_name)
                 else:
                     prov_type_found = False
-                    parent_classes = list(
-                        self.graph.objects(class_name, RDFS['subClassOf']))
+                    parent_classes = self.get_direct_parents(class_name)
                     for parent_class in parent_classes:
                         prov_type = self.get_prov_class(parent_class,
                                                         recursive=3)
@@ -367,9 +388,14 @@ class OwlReader():
                     # Read file from url
                     example = urllib2.urlopen(example).read()
 
-            example_list.append(example)
+            title = ""
+            if example.startswith("#"):
+                title = (example.split('\n', 1)[0]).replace("#", "")
+                example = example.replace("#" + title, "")
 
-        return example_list
+            example_list.append([title, example])
+
+        return sorted(example_list)
 
     def get_range(self, owl_term):
         ranges = list(self.graph.objects(owl_term, RDFS['range']))
@@ -642,7 +668,10 @@ class OwlReader():
                      my_restriction_exception))
 
     def get_label(self, uri):
-        name = self.graph.qname(uri)
+        if not isinstance(uri, term.BNode):
+            name = self.graph.qname(uri)
+        else:
+            name = uri
 
         # If a label is available, use the namespace:label, otherwise qname
         label = list(self.graph.objects(uri, RDFS['label']))

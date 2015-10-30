@@ -47,24 +47,24 @@ def main(nidm_original_version):
     assert os.path.exists(owl_file)
 
     components = collections.OrderedDict()
-    components["General"] = [NIDM_MAP]
+    components["General"] = [NIDM_MAP, NIDM_COORDINATE_SPACE]
     components["Parameters estimation"] = [
-        NIDM_DATA, NIDM_ERROR_MODEL, NIDM_DESIGN_MATRIX,
         NIDM_MODEL_PARAMETERS_ESTIMATION,
-        NIDM_PARAMETER_ESTIMATE_MAP,
-        NIDM_GRAND_MEAN_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP,
-        NIDM_MASK_MAP, NIDM_RESELS_PER_VOXEL_MAP]
+        NIDM_DATA, NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
+        NIDM_GRAND_MEAN_MAP, NIDM_MASK_MAP, NIDM_PARAMETER_ESTIMATE_MAP,
+        NIDM_RESELS_PER_VOXEL_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP]
     components["Contrast estimation"] = [
         NIDM_CONTRAST_ESTIMATION,
-        STATO_CONTRAST_WEIGHT_MATRIX, NIDM_CONTRAST_MAP, NIDM_STATISTIC_MAP,
-        NIDM_CONTRAST_STANDARD_ERROR_MAP]
+        STATO_CONTRAST_WEIGHT_MATRIX, NIDM_CONTRAST_MAP,
+        NIDM_CONTRAST_STANDARD_ERROR_MAP, NIDM_STATISTIC_MAP]
     components["Inference"] = [
-        NIDM_INFERENCE, NIDM_HEIGHT_THRESHOLD, NIDM_EXTENT_THRESHOLD,
-        NIDM_EXCURSION_SET_MAP, NIDM_CLUSTER_LABELS_MAP,
-        NIDM_SEARCH_SPACE_MASK_MAP,
-        NIDM_SIGNIFICANT_CLUSTER, NIDM_PEAK, NIDM_COORDINATE,
-        NIDM_CONJUNCTION_INFERENCE, NIDM_CLUSTER_DEFINITION_CRITERIA,
-        NIDM_DISPLAY_MASK_MAP, NIDM_PEAK_DEFINITION_CRITERIA]
+        NIDM_INFERENCE,
+        NIDM_CLUSTER_DEFINITION_CRITERIA, NIDM_CLUSTER_LABELS_MAP,
+        NIDM_COORDINATE, NIDM_DISPLAY_MASK_MAP,
+        NIDM_EXCURSION_SET_MAP, NIDM_EXTENT_THRESHOLD,
+        NIDM_HEIGHT_THRESHOLD, NIDM_PEAK,
+        NIDM_PEAK_DEFINITION_CRITERIA, NIDM_SEARCH_SPACE_MASK_MAP,
+        NIDM_SIGNIFICANT_CLUSTER]
 
     if nidm_version == 'dev':
         # For the developement version only list all terms that were not
@@ -98,6 +98,7 @@ def main(nidm_original_version):
         NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION,
         NIDM_STATISTIC_MAP: NIDM_CONTRAST_ESTIMATION,
         NIDM_CONTRAST_STANDARD_ERROR_MAP: NIDM_CONTRAST_ESTIMATION,
+        NIDM_GRAND_MEAN_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
     }
 
     derived_from = {
@@ -183,10 +184,17 @@ def main(nidm_original_version):
     if nidm_version == "dev":
         commentable = True
 
+    intro = ""
+    if nidm_version == "dev":
+        intro = """
+                <p>This section introduces neuroimaging results concepts with \
+definitions and illustrative examples.</p>
+            """
+
     owlspec = OwlSpecification(
         owl_file, import_files, "NIDM-Results",
         components, used_by, generated_by, derived_from, prefix=str(NIDM),
-        commentable=commentable)
+        commentable=commentable, intro=intro)
 
     owlspec._header_footer(component="nidm-results", version=nidm_version)
 
