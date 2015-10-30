@@ -94,6 +94,10 @@ class OwlReader():
         if not classes:
             classes = self.graph.subjects(RDF['type'], OWL['Class'])
 
+            deprecated = self.graph.subjects(
+                OWL['deprecated'], term.Literal(True))
+            but = set(but).union(set(deprecated))
+
             # FIXME: Is there a more efficient way?
             if prefix:
                 original_classes = classes
