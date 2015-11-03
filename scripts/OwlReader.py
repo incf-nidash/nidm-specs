@@ -834,7 +834,7 @@ class OwlReader():
     def prefixes_as_csv(self, csvfile):
         with open(csvfile, 'wb') as fid:
             writer = csv.writer(fid)
-            writer.writerow(["qname", "Preferred prefix"])
+            writer.writerow(["qname", "Preferred prefix", "URI"])
 
             # For anything that has a label
             for s, o in sorted(self.graph.subject_objects(RDFS['label'])):
@@ -847,4 +847,4 @@ class OwlReader():
                 prefix = self.get_preferred_prefix(s)
 
                 if prefix is not None and not self.is_deprecated(s):
-                    writer.writerow([self.graph.qname(s), prefix])
+                    writer.writerow([self.graph.qname(s), prefix, s])
