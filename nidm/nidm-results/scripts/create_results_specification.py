@@ -47,7 +47,8 @@ def main(nidm_original_version):
     assert os.path.exists(owl_file)
 
     components = collections.OrderedDict()
-    components["General"] = [NIDM_RESULTS, NIDM_MAP, NIDM_COORDINATE_SPACE]
+    components["General"] = [NIDM_RESULTS, NIDM_MAP, NIDM_COORDINATE_SPACE,
+                             SPM_SOFTWARE, FSL_SOFTWARE]
     components["Parameters estimation"] = [
         NIDM_MODEL_PARAMETERS_ESTIMATION,
         NIDM_DATA, NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
