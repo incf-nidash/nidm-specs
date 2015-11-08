@@ -1,0 +1,32 @@
+prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl:      <http://www.w3.org/2002/07/owl#>
+prefix xsd:      <http://www.w3.org/2001/XMLSchema#>
+prefix skos:     <http://www.w3.org/2004/02/skos/core#>
+prefix void:     <http://rdfs.org/ns/void#>
+prefix dct:      <http://purl.org/dc/terms/>
+prefix foaf:     <http://xmlns.com/foaf/0.1/>
+
+prefix qb:       <http://purl.org/linked-data/cube#>
+
+prefix ncanda:   <http://ncanda.sri.com/terms.ttl#>
+prefix fma:      <http://purl.org/sig/fma#>
+prefix prov:     <http://w3c.org/ns/prov#>
+prefix nidm:     <http://purl.org/nidash/nidm#>
+prefix fs:       <http://www.incf.org/ns/nidash/fs#>
+
+ASK {
+  FILTER( ?allEqual )
+  {
+    # For each pair of observations test if all the dimension values are the same
+    SELECT (MIN(?equal) AS ?allEqual) WHERE {
+        ?obs1 qb:dataSet ?dataset .
+        ?obs2 qb:dataSet ?dataset .
+        FILTER (?obs1 != ?obs2)
+        ?dataset qb:structure/qb:component/qb:componentProperty ?dim .
+        ?dim a qb:DimensionProperty .
+        ?obs1 ?dim ?value1 .
+        ?obs2 ?dim ?value2 .
+        BIND( ?value1 = ?value2 AS ?equal)
+    } GROUP BY ?obs1 ?obs2
+  }
+}
