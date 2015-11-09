@@ -886,7 +886,7 @@ niiri:drift_model_id a prov:Entity , spm_DCTDriftModel: ;
                         <li><a title="NIDM_0000089"><dfn title="NIDM_0000089">nidm:'dependence Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'dependence Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an Error Parameter Map-Wise Dependence to the dependence of an error model. (range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>).</li>
                         <li><a title="NIDM_0000094"><dfn title="NIDM_0000094">nidm:'error Variance Homogeneous'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'error Variance Homogeneous''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance. (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
                         <li><a title="NIDM_0000100"><dfn title="NIDM_0000100">nidm:'has Error Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a covariance structure representing the dependence structure of the error, used as part of model estimation with an Error Model. (range <a title="STATO_0000346" href ="http://purl.obolibrary.org/obo/STATO_0000346">obo:'covariance structure'</a> such as <a title="NIDM_0000003">nidm:'Arbitrarily Correlated Error'</a>, <a title="NIDM_0000024">nidm:'Exchangeable Error'</a>, <a title="NIDM_0000048">nidm:'Independent Error'</a>, <a title="STATO_0000357" href ="http://purl.obolibrary.org/obo/STATO_0000357">obo:'Toeplitz covariance structure'</a>, <a title="STATO_0000362" href ="http://purl.obolibrary.org/obo/STATO_0000362">obo:'compound symmetry covariance structure'</a>).</li>
-                        <li><a title="NIDM_0000101"><dfn title="NIDM_0000101">nidm:'has Error Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an ErrorDistribution with an ErrorModel. (range <a title="NIDM_0000022">nidm:'Error Distribution'</a> such as <a title="NIDM_0000005">nidm:'Binomial Distribution'</a>, <a title="NIDM_0000032">nidm:'Gaussian Distribution'</a>, <a title="NIDM_0000058">nidm:'Non Parametric Distribution'</a>, <a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a>, <a title="NIDM_0000065">nidm:'Poisson Distribution'</a>).</li>
+                        <li><a title="NIDM_0000101"><dfn title="NIDM_0000101">nidm:'has Error Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a Probability distribution used to model the error with an ErrorModel. (range <a title="STATO_0000225" href ="http://purl.obolibrary.org/obo/STATO_0000225">obo:'probability distribution'</a> such as <a title="STATO_0000067" href ="http://purl.obolibrary.org/obo/STATO_0000067">obo:'continuous probability distribution'</a>, <a title="STATO_0000117" href ="http://purl.obolibrary.org/obo/STATO_0000117">obo:'discrete probability distribution'</a>).</li>
                         <li><a title="NIDM_0000126"><dfn title="NIDM_0000126">nidm:'variance Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'variance Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an Error Parameter Map-Wise Dependence to the variance of an error model. (range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>).</li>
                 </ul>
                 </div>
@@ -896,63 +896,21 @@ niiri:drift_model_id a prov:Entity , spm_DCTDriftModel: ;
 
 @prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
 @prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
-@prefix nidm_GaussianDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000032&gt; .
 @prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
 @prefix nidm_varianceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
 @prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
 @prefix nidm_hasErrorDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000100&gt; .
 @prefix nidm_IndependentError: &lt;http://purl.org/nidash/nidm#NIDM_0000048&gt; .
 @prefix nidm_dependenceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
+@prefix obo_normaldistribution: &lt;http://purl.obolibrary.org/obo/STATO_0000227&gt; .
 
 
 niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
-    nidm_hasErrorDistribution: nidm_GaussianDistribution: ;
+    nidm_hasErrorDistribution: obo_normaldistribution: ;
     nidm_errorVarianceHomogeneous: "true"^^xsd:boolean ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .</pre>
-            <!-- nidm:'Error Distribution' (NIDM_0000022) -->
-            <section id="section-nidm:'Error Distribution'">
-                <h1 label="NIDM_0000022">nidm:'Error Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000022"><dfn title="NIDM_0000022">nidm:'Error Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Error Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Probability distribution used to model the error.<p> <a title="NIDM_0000022">nidm:'Error Distribution'</a> is a prov:Entity and  has the following children: <a title="NIDM_0000005">nidm:'Binomial Distribution'</a>, <a title="NIDM_0000032">nidm:'Gaussian Distribution'</a>, <a title="NIDM_0000058">nidm:'Non Parametric Distribution'</a>, <a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a>, <a title="NIDM_0000065">nidm:'Poisson Distribution'</a>.</p>
-                </div>
-            <!-- nidm:'Binomial Distribution' (NIDM_0000005) -->
-            <section id="section-nidm:'Binomial Distribution'">
-                <h1 label="NIDM_0000005">nidm:'Binomial Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000005"><dfn title="NIDM_0000005">nidm:'Binomial Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Binomial Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The binomial distribution is a discrete probability distribution which describes the probability of k successes in n draws with replacement from a finite population of size N. The binomial distribution is frequently used to model the number of successes in a sample of size n drawn with replacement from a population of size N. The binomial distribution gives the discrete probability distribution of obtaining exactly n successes out of N Bernoulli trials (where the result of each Bernoulli trial is true with probability p and false with probability q=1-p ) notation: B(n,p) The mean is N*p The variance is N*p*q. (Definition from STATO).<p> <a title="NIDM_0000005">nidm:'Binomial Distribution'</a> is a <a title="NIDM_0000022">nidm:'Error Distribution'</a>.</p>
-                </div>
-                </section>
-            <!-- nidm:'Gaussian Distribution' (NIDM_0000032) -->
-            <section id="section-nidm:'Gaussian Distribution'">
-                <h1 label="NIDM_0000032">nidm:'Gaussian Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000032"><dfn title="NIDM_0000032">nidm:'Gaussian Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Gaussian Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A normal distribution is a continuous probability distribution described by a probability distribution function described here: http://mathworld.wolfram.com/NormalDistribution.html (Definition from STATO).<p> <a title="NIDM_0000032">nidm:'Gaussian Distribution'</a> is a <a title="NIDM_0000022">nidm:'Error Distribution'</a>.</p>
-                </div>
-                </section>
-            <!-- nidm:'Non Parametric Distribution' (NIDM_0000058) -->
-            <section id="section-nidm:'Non Parametric Distribution'">
-                <h1 label="NIDM_0000058">nidm:'Non Parametric Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000058"><dfn title="NIDM_0000058">nidm:'Non Parametric Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Non Parametric Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Probability distribution estimated empirically on the data without assumptions on the shape of the probability distribution.<p> <a title="NIDM_0000058">nidm:'Non Parametric Distribution'</a> is a <a title="NIDM_0000022">nidm:'Error Distribution'</a>.</p>
-                </div>
-                </section>
-            <!-- nidm:'Non Parametric Symmetric Distribution' (NIDM_0000059) -->
-            <section id="section-nidm:'Non Parametric Symmetric Distribution'">
-                <h1 label="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000059"><dfn title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Non Parametric Symmetric Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution.<p> <a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a> is a <a title="NIDM_0000022">nidm:'Error Distribution'</a>.</p>
-                </div>
-                </section>
-            <!-- nidm:'Poisson Distribution' (NIDM_0000065) -->
-            <section id="section-nidm:'Poisson Distribution'">
-                <h1 label="NIDM_0000065">nidm:'Poisson Distribution'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000065"><dfn title="NIDM_0000065">nidm:'Poisson Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Poisson Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Poisson distribution is a probability distribution used to model the number of events occurring within a given time interval. It is defined by a real number (λ) and an integer k representing the number of events and a function. The expected value of a Poisson-distributed random variable is equal to λ and so is its variance. (Definition from STATO).<p> <a title="NIDM_0000065">nidm:'Poisson Distribution'</a> is a <a title="NIDM_0000022">nidm:'Error Distribution'</a>.</p>
-                </div>
-                </section>
-                </section>
             <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
             <section id="section-nidm:'Error Parameter Map-Wise Dependence'">
                 <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
@@ -2106,7 +2064,7 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                             <td><a title="NIDM_0000003">nidm:'Arbitrarily Correlated Error'</a>
                             </td>
                     
-                                <td rowspan="11" style="text-align: center;"> prov:Entity</td>
+                                <td rowspan="12" style="text-align: center;"> prov:Entity</td>
                         
                                 <td>nidm:NIDM_0000003</td>
                             </tr>
@@ -2151,6 +2109,13 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                             </td>
                     
                                 <td>nidm:NIDM_0000057</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a>
+                            </td>
+                    
+                                <td>nidm:NIDM_0000059</td>
                             </tr>
                 
                         <tr>
@@ -2244,6 +2209,13 @@ niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
                 <h1 label="NIDM_0000057">nidm:'NIDM Object Model'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000057"><dfn title="NIDM_0000057">nidm:'NIDM Object Model'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM Object Model''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault).<p> <a title="NIDM_0000057">nidm:'NIDM Object Model'</a> is a prov:Entity and  has the following child: <a title="NIDM_0000027">nidm:'NIDM-Results'</a>.</p>
+                </div>
+                </section>
+            <!-- nidm:'Non Parametric Symmetric Distribution' (NIDM_0000059) -->
+            <section id="section-nidm:'Non Parametric Symmetric Distribution'">
+                <h1 label="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000059"><dfn title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Non Parametric Symmetric Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Probability distribution estimated empirically on the data assuming only symmetry of the probability distribution.<p> <a title="NIDM_0000059">nidm:'Non Parametric Symmetric Distribution'</a> is a prov:Entity.</p>
                 </div>
                 </section>
             <!-- nidm:'Contrast Variance Map' (NIDM_0000135) -->

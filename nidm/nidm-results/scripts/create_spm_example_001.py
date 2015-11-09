@@ -51,7 +51,7 @@ def main():
             ),
         "ErrorModel": dict(
             error_model_id="niiri:error_model_id",
-            noise_distribution="nidm:NIDM_0000032",
+            noise_distribution="obo:STATO_0000227",
             variance_homo="true",
             variance_spatial="nidm:NIDM_0000073",
             dependence="obo:STATO_0000357",
