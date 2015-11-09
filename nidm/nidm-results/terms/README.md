@@ -132,9 +132,9 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='version'"> [more] </a></td>
-    <td><b>nidm:'version': </b>&lt;undefined&gt;</td>
-    <td>prov:Bundle </td>
+    <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/137">#137</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='version'"> [find issues/PR] </a></td>
+    <td><b>nidm:'version': </b>Version of NIDM in use in the document</td>
+    <td>nidm:NIDM_0000057 </td>
     <td>xsd:string </td>
 </tr>
 <tr>
