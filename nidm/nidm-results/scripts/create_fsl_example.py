@@ -57,22 +57,20 @@ def main():
 			error_model_id="niiri:error_model_id",
 			software_id="niiri:software_id"
 			),
-		"FSL_ParameterEstimateMap-1": dict(
+		"ParameterEstimateMap_Location-1": dict(
 			beta_map_id="niiri:beta_map_id_1",
 			label="Parameter estimate 1",
 			location="file://path/to/ParameterEstimate_0001.nii.gz",
-			filename_1="pe1.nii.gz",
-			filename_2="ParameterEstimate_0001.nii.gz",
+			filename="ParameterEstimate_0001.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="f51b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_pe_id"),
-		"FSL_ParameterEstimateMap-2": dict(
+		"ParameterEstimateMap_Location-2": dict(
 			beta_map_id="niiri:beta_map_id_2",
 			label="Parameter estimate 2",
 			location="file://path/to/ParameterEstimate_0002.nii.gz",
-			filename_1="pe2.nii.gz",
-			filename_2="ParameterEstimate_0002.nii.gz",
+			filename="ParameterEstimate_0002.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="p89b6e01b0463fe7d40782137867a...",
@@ -95,22 +93,20 @@ def main():
 			coord_system="nidm:NIDM_0000047",
 			number_of_dim="3",
 			dimensions="[ 53, 63, 46 ]"),
-		"FSL_ResidualMeanSquaresMap": dict(
+		"ResidualMeanSquaresMap": dict(
 			residual_mean_squares_map_id="niiri:residual_mean_squares_map_id",
 			label="Residual Mean Squares Map",
 			location="file://path/to/ResidualMeanSquares.nii.gz",
-			filename_1="ResidualMeanSquares.nii.gz",
-			filename_2="sigmasquareds.nii.gz",
+			filename="ResidualMeanSquares.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			param_est_id="niiri:model_pe_id"),
-		"MaskMap_Analysis_fileName": dict( # The analysis mask
+		"MaskMap_Analysis": dict( # The analysis mask
 			mask_id="niiri:mask_id_1",
 			label="Mask",
 			location="file://path/to/Mask.nii.gz",
 			filename="Mask.nii.gz", 
-			filename_2="mask.nii.gz", 
 			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -139,13 +135,12 @@ def main():
 			contrast_estimation_id="niiri:contrast_estimation_id",
 			param_est_map="niiri:beta_map_id_2"
 			),
-		"FSL_ContrastMap": dict(
+		"ContrastMap": dict(
 			contrast_map_id="niiri:contrast_map_id",
 			label="Contrast Map: listening > rest",
 			location="file://path/to/Contrast.nii.gz",
 			format="image/nifti",
-			filename_1="Contrast.nii.gz",
-			filename_2="cope1.nii.gz",
+			filename="Contrast.nii.gz",
 			contrast_name="listening > rest",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
@@ -168,13 +163,12 @@ def main():
 			sha="e43b6e01b0463fe7d40782137867a...",
 			map_id="niiri:contrast_standard_error_map_id"
 			),
-		"FSL_StatisticMap": dict(
+		"StatisticMap": dict(
 			statistic_map_id="niiri:statistic_map_id",
 			label="Statistic Map: listening > rest",
 			location="file://path/to/TStatistic_0001.nii.gz",
 			format="image/nifti",
-			filename_1="TStatistic_0001.nii.gz",
-			filename_2="tstat1.nii.gz",
+			filename="TStatistic_0001.nii.gz",
 			statistic_type=STATO_TSTATISTIC_STR,
 			stat_type_comment=STATO_TSTATISTIC_LABEL,
 			contrast_name="listening > rest",
@@ -183,13 +177,12 @@ def main():
 			sha="400a2f07d99ed9be06577e6ecc89222cf4b688c654bc89067da558e88b73b97dd1b25e6c98f2a735fa0a1409598cff7e6025bda55abb6b9f5ef65d8d307eeba8",
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			contrast_est_id="niiri:contrast_estimation_id"),
-		"FSL_StatisticMap-Z": dict(
+		"StatisticMap-Z": dict(
 			statistic_map_id="niiri:z_statistic_map_id",
 			label="Z-Statistic Map: listening > rest",
 			location="file://path/to/ZStatistic_0001.nii.gz",
 			format="image/nifti",
-			filename_1="ZStatistic_0001.nii.gz",
-			filename_2="zstat1.nii.gz",
+			filename="ZStatistic_0001.nii.gz",
 			statistic_type=STATO_ZSTATISTIC_STR,
 			contrast_name="listening > rest",
 			error_dof="INF",
@@ -224,14 +217,13 @@ def main():
             thresh_type=OBO_P_VALUE_FWER_QNAME,
             value="1",
             ),
-		"DisplayMaskMap_fileName": dict(
+		"DisplayMaskMap": dict(
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
 			location="file://path/to/DisplayMask.nii.gz",
 			format="image/nifti",
 			user_defined="true",
 			filename="DisplayMask.nii.gz",
-			filename_2="mask.nii.gz",
 			coordinate_space_id="niiri:coordinate_space_id_2",
 			sha="e43b6e01b0463fe7d40782137867a..."
 			),
@@ -264,8 +256,7 @@ def main():
 			label="Excursion Set Map",
 			location="file://path/to/ExcursionSet.nii.gz",
 			format="image/nifti",
-			filename_1="ExcursionSet.nii.gz",
-			filename_2="thresh_zstat1.nii.gz",
+			filename="ExcursionSet.nii.gz",
 			cluster_label_map_id="niiri:cluster_label_map_id",
 			png_id="niiri:excursion_set_png_id_1",
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -405,8 +396,7 @@ def main():
 		"FSL_SearchSpaceMaskMap": dict(
 			search_space_id="niiri:search_space_mask_id",
 			location="file://path/to/SearchSpaceMask.nii.gz",
-			filename_1="SearchSpaceMask.nii.gz",
-			filename_2="mask.nii.gz",
+			filename="SearchSpaceMask.nii.gz",
 			label="Search Space Mask Map",
 			user_defined="false",
 			format="image/nifti",
@@ -436,12 +426,11 @@ def main():
 			version="5.0.x",
 			feat_version="6.00"
 			),
-		"FSL_GrandMeanMap": dict(
+		"GrandMeanMap": dict(
 			grand_mean_map_id="niiri:grand_mean_map_id",
 			label="Grand Mean Map",
 			location="file://path/to/GrandMean.nii.gz",
-			filename_1="GrandMean.nii.gz",
-			filename_2="mean_func.nii.gz",
+			filename="GrandMean.nii.gz",
 			format="image/nifti",
 			masked_median="115",
 			coordinate_space_id="niiri:coordinate_space_id_1",
