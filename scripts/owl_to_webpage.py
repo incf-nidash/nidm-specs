@@ -340,9 +340,9 @@ class OwlSpecification(object):
 
             for att in sorted(attributes):
 
-                # Do not display prov relations (used, wasGeneratedBy...) as
-                # attributes
-                if not (att == PROV['used'] or att == PROV['wasGeneratedBy']):
+                # Do not display prov relations as attributes
+                # (except prov:atLocation...)
+                if not self.owl.is_prov(att) or (att == PROV['atLocation']):
                     if att not in self.attributes_done:
                         # First definition of this attribute
                         att_tag = "dfn"
@@ -392,8 +392,8 @@ class OwlSpecification(object):
             self.text += """
                 </ul>
                 </div>
-                <pre class='example highlight' title=\""""+title+"""\">"""+cgi.escape(example) + \
-                """</pre>"""
+                <pre class='example highlight' title=\""""+title+"""\">""" + \
+                cgi.escape(example) + """</pre>"""
 
         # For object property list also children (in sub-sections)
         if children:

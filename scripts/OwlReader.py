@@ -695,6 +695,11 @@ class OwlReader():
                     or term_label.startswith("spm")
                     or term_label.startswith("afni"))
 
+    def is_prov(self, term_uri):
+        term_label = self.get_label(term_uri)
+
+        return term_label.startswith("prov")
+
     def get_name(self, uri):
         name = self.graph.qname(uri).split(":")[1]
         return name

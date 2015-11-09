@@ -47,7 +47,8 @@ def main(nidm_original_version):
     assert os.path.exists(owl_file)
 
     components = collections.OrderedDict()
-    components["General"] = [NIDM_MAP, NIDM_COORDINATE_SPACE]
+    components["General"] = [NIDM_RESULTS, NIDM_MAP, NIDM_COORDINATE_SPACE,
+                             SPM_SOFTWARE, FSL_SOFTWARE]
     components["Parameters estimation"] = [
         NIDM_MODEL_PARAMETERS_ESTIMATION,
         NIDM_DATA, NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
@@ -56,7 +57,8 @@ def main(nidm_original_version):
     components["Contrast estimation"] = [
         NIDM_CONTRAST_ESTIMATION,
         STATO_CONTRAST_WEIGHT_MATRIX, NIDM_CONTRAST_MAP,
-        NIDM_CONTRAST_STANDARD_ERROR_MAP, NIDM_STATISTIC_MAP]
+        NIDM_CONTRAST_STANDARD_ERROR_MAP,
+        NIDM_CONTRAST_EXPLAINED_MEAN_SQUARE_MAP, NIDM_STATISTIC_MAP]
     components["Inference"] = [
         NIDM_INFERENCE,
         NIDM_CLUSTER_DEFINITION_CRITERIA, NIDM_CLUSTER_LABELS_MAP,
@@ -97,6 +99,7 @@ def main(nidm_original_version):
         NIDM_MASK_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
         NIDM_CONTRAST_MAP: NIDM_CONTRAST_ESTIMATION,
         NIDM_STATISTIC_MAP: NIDM_CONTRAST_ESTIMATION,
+        NIDM_CONTRAST_EXPLAINED_MEAN_SQUARE_MAP: NIDM_CONTRAST_ESTIMATION,
         NIDM_CONTRAST_STANDARD_ERROR_MAP: NIDM_CONTRAST_ESTIMATION,
         NIDM_GRAND_MEAN_MAP: NIDM_MODEL_PARAMETERS_ESTIMATION,
     }

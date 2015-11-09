@@ -21,6 +21,27 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
 
 def main():
     nidm_classes = {
+        "NIDMBundle": dict(
+            comment="NIDM-Results Bundle",
+            bundle_id="niiri:nidm_results_id",
+            label="NIDM-Results",
+            object_model="nidm:NIDM_0000027",
+            version="1.1.0",
+            time="2014-05-19T10:30:00.000+01:00"
+            ),
+        "SPM_Software": dict(
+            software_id="niiri:spm_software_id",
+            software_type="nlx:nif-0000-00343",
+            label="SPM",
+            version="8.6225"
+            ),
+        "FSL_Software": dict(
+            software_id="niiri:software_id",
+            software_type="nlx:birnlex_2067",
+            label="FSL",
+            version="5.0.1",
+            feat_version="6.00"
+            ),
         "DesignMatrix": dict(
             comment="Design Matrix: Group Level",
             design_matrix_id='niiri:design_matrix_id',
