@@ -1,0 +1,267 @@
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix void:     <http://rdfs.org/ns/void#> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix org:      <http://www.w3.org/ns/org#> .
+@prefix admingeo: <http://data.ordnancesurvey.co.uk/ontology/admingeo/> .
+@prefix interval: <http://reference.data.gov.uk/def/intervals/> .
+
+@prefix qb:       <http://purl.org/linked-data/cube#> .
+
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+
+@prefix ncanda:   <http://ncanda.sri.com/terms.ttl#> .
+@prefix fma:      <http://purl.org/sig/fma#> .
+@prefix prov:     <http://w3c.org/ns/prov#> .
+@prefix nidm:     <http://purl.org/nidash/nidm#> .
+@prefix fs:       <http://www.incf.org/ns/nidash/fs#> .
+
+# -- Data Set --------------------------------------------
+
+ncanda:ncanda_release_001 a qb:DataSet, prov:Entity, prov:Collection, prov:Bundle ;
+    dct:title              "NCANDA Release 001"@en ;
+    rdfs:label             "NCANDA Release 001"@en ;
+    rdfs:comment           "Average cortical thickness across NCANDA participants."@en ;
+    dct:description        "Average cortical thickness across NCANDA participants."@en ;
+    dct:publisher          ncanda:sri_international ;
+    prov:wasAttributedTo   ncanda:sri_international ;
+    dct:issued             "2015-11-05"^^xsd:date ;
+    dct:subject            nidm:freesurfer ;
+    qb:structure           ncanda:freesurfer-dsd ;
+    nidm:unitMeasure       nidm:milimeters ;
+    qb:slice               ncanda:slice1, ncanda:slice2, ncanda:slice3, ncanda:slice4, ncanda:slice5, ncanda:slice6 ;
+    prov:hadMember         ncanda:slice1, ncanda:slice2, ncanda:slice3, ncanda:slice4, ncanda:slice5, ncanda:slice6 ;
+    .
+
+ncanda:sri_international a org:Organization, foaf:Agent, prov:Agent, prov:Organization ;
+    rdfs:label "SRI International"@en .
+
+# -- Data structure definition ----------------------------
+
+ncanda:freesurfer-dsd a qb:DataStructureDefinition ;
+    qb:component
+    # The dimensions
+        [ qb:dimension ncanda:participant ; qb:order 1 ],
+        [ qb:dimension ncanda:studyEvent ;  qb:order 2 ; qb:componentAttachment qb:Slice ],
+        [ qb:dimension ncanda:hemisphere ;  qb:order 3 ; qb:componentAttachment qb:Slice ],
+        [ qb:dimension ncanda:brainRegion ;  qb:order 4 ; qb:componentAttachment qb:Slice ] ;
+
+    # The measure(s)
+    qb:component [ qb:measure fs:meanThickness],
+                 [ qb:measure fs:thickSTD] ;
+
+    # The attributes
+    qb:component [ qb:attribute nidm:unitMeasure ;
+                   qb:componentRequired "true"^^xsd:boolean ;
+                   qb:componentAttachment qb:DataSet; ] ;
+
+    # slices
+    qb:sliceKey ncanda:sliceByParticipant ;
+    .
+
+# Slice Key
+ncanda:sliceByParticipant a qb:SliceKey;
+    rdfs:label "slice by participant"@en;
+    rdfs:comment "Slice by grouping particpants together, fixing studyEvent, hemisphere, and brain region values"@en;
+    qb:componentProperty nidm:studyEvent, fs:hemisphere, fs:brainRegion ;
+    .
+
+# -- Dimensions  ----------------------------------------
+
+ncanda:participant a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "study participant"@en ;
+    rdfs:subPropertyOf nidm:participant ;
+    rdfs:range xsd:string ;
+    qb:concept nidm:Participant ;
+    .
+
+ncanda:studyEvent  a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "study event"@en ;
+    rdfs:subPropertyOf nidm:studyEvent ;
+    rdfs:range xsd:string ;
+    qb:concept nidm:StudyEvent ;
+    .
+
+ncanda:hemisphere  a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "hemisphere"@en ;
+    rdfs:subPropertyOf fs:hemisphere ;
+    rdfs:range xsd:string ;
+    qb:concept fma:Hemisphere ;
+    .
+
+ncanda:brainRegion  a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "brain region"@en ;
+    rdfs:subPropertyOf fs:brainRegion ;
+    rdfs:range xsd:string ;
+    qb:concept fma:BrainRegion ;
+    .
+
+# -- Measure(s) -------------------------------------------
+
+fs:meanThickness  a rdf:Property, qb:MeasureProperty ;
+    rdfs:label "mean thickness"@en ;
+    rdfs:subPropertyOf prov:value ;
+    rdfs:range xsd:float ;
+    .
+
+fs:thickSTD  a rdf:Property, qb:MeasureProperty ;
+    rdfs:label "thickness standard deviation"@en ;
+    rdfs:subPropertyOf prov:value ;
+    rdfs:range xsd:float ;
+    .
+
+# -- Observations -----------------------------------------
+
+# Column 1
+
+ncanda:slice1 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "baseline" ;
+    ncanda:hemisphere  fma:RightHemisphere ;
+    ncanda:brainRegion fma:Precuneus ;
+    qb:observation ncanda:obs1 ;
+    prov:hadMember ncanda:obs1 ;
+    .
+
+ncanda:obs1 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.583 ;
+    fs:thickSTD           0.698 ;
+    .
+
+# Column 2
+
+ncanda:slice2 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "baseline" ;
+    ncanda:hemisphere  fma:RightHemisphere ;
+    ncanda:brainRegion fma:Precentral ;
+    qb:observation ncanda:obs2 ;
+    prov:hadMember ncanda:obs2 ;
+    .
+
+ncanda:obs2 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.552 ;
+    fs:thickSTD           0.578 ;
+    .
+
+# Column 3
+
+ncanda:slice3 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "baseline" ;
+    ncanda:hemisphere  fma:LeftHemisphere ;
+    ncanda:brainRegion fma:Precuneus ;
+    qb:observation ncanda:obs3 ;
+    prov:hadMember ncanda:obs3 ;
+    .
+
+ncanda:obs3 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.481 ;
+    fs:thickSTD           0.498 ;
+    .
+
+# Column 4
+
+ncanda:slice4 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "baseline" ;
+    ncanda:hemisphere  fma:LeftHemisphere ;
+    ncanda:brainRegion fma:Precentral ;
+    qb:observation ncanda:obs4 ;
+    prov:hadMember ncanda:obs4 ;
+    .
+
+ncanda:obs4 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.473 ;
+    fs:thickSTD           0.670 ;
+    .
+
+# Column 5
+
+ncanda:slice5 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "followup_1yr" ;
+    ncanda:hemisphere  fma:RightHemisphere ;
+    ncanda:brainRegion fma:Precuneus ;
+    qb:observation ncanda:obs5 ;
+    prov:hadMember ncanda:obs5 ;
+    .
+
+ncanda:obs5 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.451 ;
+    fs:thickSTD           0.701 ;
+    .
+
+# Column 6
+
+ncanda:slice6 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "followup_1yr" ;
+    ncanda:hemisphere  fma:RightHemisphere ;
+    ncanda:brainRegion fma:Precentral ;
+    qb:observation ncanda:obs6 ;
+    prov:hadMember ncanda:obs6 ;
+    .
+
+ncanda:obs6 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.567 ;
+    fs:thickSTD           0.456 ;
+    .
+
+# Column 7
+
+ncanda:slice7 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "followup_1yr" ;
+    ncanda:hemisphere  fma:LeftHemisphere ;
+    ncanda:brainRegion fma:Precuneus ;
+    qb:observation ncanda:obs7 ;
+    prov:hadMember ncanda:obs7 ;
+    .
+
+ncanda:obs7 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.356 ;
+    fs:thickSTD           0.765 ;
+    .
+
+# Column 8
+
+ncanda:slice8 a qb:Slice, prov:Entity, prov:Collection ;
+    qb:sliceStructure  ncanda:sliceByParticipant ;
+    ncanda:studyEvent  "followup_1yr" ;
+    ncanda:hemisphere  fma:LeftHemisphere ;
+    ncanda:brainRegion fma:Precentral ;
+    qb:observation ncanda:obs8 ;
+    prov:hadMember ncanda:obs8 ;
+    .
+
+ncanda:obs8 a qb:Observation, prov:Entity ;
+    qb:dataSet            ncanda:ncanda_release_001 ;
+    ncanda:participant    "NCANDA_S00033"   ;
+    fs:meanThickness      2.456 ;
+    fs:thickSTD           0.432 ;
+    .
