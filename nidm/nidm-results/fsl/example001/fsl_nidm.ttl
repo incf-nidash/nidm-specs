@@ -65,11 +65,11 @@
 @prefix nidm_noiseRoughnessInVoxels: <http://purl.org/nidash/nidm#NIDM_0000145> .
 @prefix nidm_noiseFWHMInVoxels: <http://purl.org/nidash/nidm#NIDM_0000159> .
 @prefix nidm_noiseFWHMInUnits: <http://purl.org/nidash/nidm#NIDM_0000157> .
-@prefix nidm_SignificantCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
+@prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
+@prefix nidm_SupraThresholdCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
 @prefix nidm_clusterLabelId: <http://purl.org/nidash/nidm#NIDM_0000082> .
 @prefix nidm_pValueFWER: <http://purl.org/nidash/nidm#NIDM_0000115> .
-@prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_GrandMeanMap: <http://purl.org/nidash/nidm#NIDM_0000033> .
 @prefix nidm_maskedMedian: <http://purl.org/nidash/nidm#NIDM_0000107> .
 @prefix nidm_HeightThreshold: <http://purl.org/nidash/nidm#NIDM_0000034> .
@@ -188,22 +188,22 @@ niiri:extent_threshold_id a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjusted
 niiri:center_of_gravity_1 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 1" ;
 	prov:atLocation niiri:COG_coordinate_0001 ;
-	prov:wasDerivedFrom niiri:significant_cluster_0001 .
+	prov:wasDerivedFrom niiri:supra_threshold_cluster_0001 .
 
 niiri:center_of_gravity_2 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 2" ;
 	prov:atLocation niiri:COG_coordinate_0002 ;
-	prov:wasDerivedFrom niiri:significant_cluster_0002 .
+	prov:wasDerivedFrom niiri:supra_threshold_cluster_0002 .
 
 niiri:center_of_gravity_3  a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 3" ;
 	prov:atLocation niiri:COG_coordinate_0003  ;
-	prov:wasDerivedFrom niiri:significant_cluster_0003  .
+	prov:wasDerivedFrom niiri:supra_threshold_cluster_0003  .
 
 niiri:center_of_gravity_4 a prov:Entity , nidm_ClusterCenterOfGravity: ;
 	rdfs:label "Center of gravity 4" ;
 	prov:atLocation niiri:COG_coordinate_0004   ;
-	prov:wasDerivedFrom niiri:significant_cluster_0004   .
+	prov:wasDerivedFrom niiri:supra_threshold_cluster_0004   .
 
 niiri:coordinate_0001_1 a prov:Entity , prov:Location , nidm_Coordinate: ;
 	rdfs:label "Coordinate 0001_1" ;
@@ -368,38 +368,38 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	crypto:sha512 "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b"^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id_1 .
 
-niiri:significant_cluster_0001 a prov:Entity , nidm_SignificantCluster: ;
-	rdfs:label "Significant Cluster 0001" ;
+niiri:software_id a prov:Agent , nlx_FSL: , prov:SoftwareAgent ;
+	rdfs:label "FSL" ;
+	nidm_softwareVersion: "5.0.x"^^xsd:string ;
+	fsl_featVersion: "6.00"^^xsd:string .
+
+niiri:supra_threshold_cluster_0001 a prov:Entity , nidm_SupraThresholdCluster: ;
+	rdfs:label "Supra-Threshold Cluster 0001" ;
 	nidm_clusterSizeInVoxels: "81"^^xsd:int ;
 	nidm_clusterLabelId: "1"^^xsd:int ;
 	nidm_pValueFWER: "0.00894"^^xsd:float ;
 	prov:wasDerivedFrom niiri:excursion_set_map_id_1 .
 
-niiri:significant_cluster_0002 a prov:Entity , nidm_SignificantCluster: ;
-	rdfs:label "Significant Cluster 0002" ;
+niiri:supra_threshold_cluster_0002 a prov:Entity , nidm_SupraThresholdCluster: ;
+	rdfs:label "Supra-Threshold Cluster 0002" ;
 	nidm_clusterSizeInVoxels: "117"^^xsd:int ;
 	nidm_clusterLabelId: "2"^^xsd:int ;
 	nidm_pValueFWER: "0.000621"^^xsd:float ;
 	prov:wasDerivedFrom niiri:excursion_set_map_id_1 .
 
-niiri:significant_cluster_0003  a prov:Entity , nidm_SignificantCluster: ;
-	rdfs:label "Significant Cluster 0003" ;
+niiri:supra_threshold_cluster_0003  a prov:Entity , nidm_SupraThresholdCluster: ;
+	rdfs:label "Supra-Threshold Cluster 0003" ;
 	nidm_clusterSizeInVoxels: "499"^^xsd:int ;
 	nidm_clusterLabelId: "3"^^xsd:int ;
 	nidm_pValueFWER: "1.26e-12"^^xsd:float ;
 	prov:wasDerivedFrom niiri:excursion_set_map_id_1 .
 
-niiri:significant_cluster_0004  a prov:Entity , nidm_SignificantCluster: ;
-	rdfs:label "Significant Cluster 0004" ;
+niiri:supra_threshold_cluster_0004  a prov:Entity , nidm_SupraThresholdCluster: ;
+	rdfs:label "Supra-Threshold Cluster 0004" ;
 	nidm_clusterSizeInVoxels: "1203"^^xsd:int ;
 	nidm_clusterLabelId: "4"^^xsd:int ;
 	nidm_pValueFWER: "8.02e-24"^^xsd:float ;
 	prov:wasDerivedFrom niiri:excursion_set_map_id_1 .
-
-niiri:software_id a prov:Agent , nlx_FSL: , prov:SoftwareAgent ;
-	rdfs:label "FSL" ;
-	nidm_softwareVersion: "5.0.x"^^xsd:string ;
-	fsl_featVersion: "6.00"^^xsd:string .
 
 niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
 	rdfs:label "Grand Mean Map" ;
@@ -486,126 +486,126 @@ niiri:peak_0001_2 a prov:Entity , nidm_Peak: ;
     prov:atLocation niiri:coordinate_0001_2 ;
     nidm_pValueUncorrected: "0.000788846"^^xsd:float ;
     nidm_equivalentZStatistic: "3.16"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0001 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0001 .
 
 niiri:peak_0001_3 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0001_3" ;
     prov:atLocation niiri:coordinate_0001_3 ;
     nidm_pValueUncorrected: "0.00122277"^^xsd:float ;
     nidm_equivalentZStatistic: "3.03"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0001 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0001 .
 
 niiri:peak_0001_4 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0001_4" ;
     prov:atLocation niiri:coordinate_0001_4 ;
     nidm_pValueUncorrected: "0.00554262"^^xsd:float ;
     nidm_equivalentZStatistic: "2.54"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0001 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0001 .
 
 niiri:peak_0002_2 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0002_2" ;
     prov:atLocation niiri:coordinate_0002_2 ;
     nidm_pValueUncorrected: "4.71165e-06"^^xsd:float ;
     nidm_equivalentZStatistic: "4.43"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0002 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0002 .
 
 niiri:peak_0003_2 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_2" ;
     prov:atLocation niiri:coordinate_0003_2 ;
     nidm_pValueUncorrected: "1.52768e-07"^^xsd:float ;
     nidm_equivalentZStatistic: "5.12"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0003_3 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_3" ;
     prov:atLocation niiri:coordinate_0003_3 ;
     nidm_pValueUncorrected: "1.82833e-06"^^xsd:float ;
     nidm_equivalentZStatistic: "4.63"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0003_4 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_4" ;
     prov:atLocation niiri:coordinate_0003_4 ;
     nidm_pValueUncorrected: "9.77365e-06"^^xsd:float ;
     nidm_equivalentZStatistic: "4.27"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0003_5 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_5" ;
     prov:atLocation niiri:coordinate_0003_5 ;
     nidm_pValueUncorrected: "1.22151e-05"^^xsd:float ;
     nidm_equivalentZStatistic: "4.22"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0003_6 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_6" ;
     prov:atLocation niiri:coordinate_0003_6 ;
     nidm_pValueUncorrected: "1.89436e-05"^^xsd:float ;
     nidm_equivalentZStatistic: "4.12"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0004_2 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_2" ;
     prov:atLocation niiri:coordinate_0004_2 ;
     nidm_pValueUncorrected: "9.01048e-09"^^xsd:float ;
     nidm_equivalentZStatistic: "5.63"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_0004_3 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_3" ;
     prov:atLocation niiri:coordinate_0004_3 ;
     nidm_pValueUncorrected: "9.54787e-09"^^xsd:float ;
     nidm_equivalentZStatistic: "5.62"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_0004_4 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_4" ;
     prov:atLocation niiri:coordinate_0004_4 ;
     nidm_pValueUncorrected: "1.01163e-08"^^xsd:float ;
     nidm_equivalentZStatistic: "5.61"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_0004_5 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_5" ;
     prov:atLocation niiri:coordinate_0004_5 ;
     nidm_pValueUncorrected: "1.07176e-08"^^xsd:float ;
     nidm_equivalentZStatistic: "5.6"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_0004_6 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_6" ;
     prov:atLocation niiri:coordinate_0004_6 ;
     nidm_pValueUncorrected: "1.34887e-08"^^xsd:float ;
     nidm_equivalentZStatistic: "5.56"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_0001_1 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0001_1" ;
     prov:atLocation niiri:coordinate_0001_1 ;
     nidm_pValueUncorrected: "2.01334e-06"^^xsd:float ;
     nidm_equivalentZStatistic: "4.61"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0001 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0001 .
 
 niiri:peak_0002_1 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0002_1" ;
     prov:atLocation niiri:coordinate_0002_1 ;
     nidm_pValueUncorrected: "1.74205e-06"^^xsd:float ;
     nidm_equivalentZStatistic: "4.64"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0002 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0002 .
 
 niiri:peak_0003_1 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0003_1" ;
     prov:atLocation niiri:coordinate_0003_1 ;
     nidm_pValueUncorrected: "1.01163e-08"^^xsd:float ;
     nidm_equivalentZStatistic: "5.61"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0003 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0003 .
 
 niiri:peak_0004_1 a prov:Entity , nidm_Peak: ;
     rdfs:label "Peak 0004_1" ;
     prov:atLocation niiri:coordinate_0004_1 ;
     nidm_pValueUncorrected: "3.51932e-09"^^xsd:float ;
     nidm_equivalentZStatistic: "5.79"^^xsd:float ;
-    prov:wasDerivedFrom niiri:significant_cluster_0004 .
+    prov:wasDerivedFrom niiri:supra_threshold_cluster_0004 .
 
 niiri:peak_definition_criteria_id_1 a prov:Entity , nidm_PeakDefinitionCriteria: ;
 	rdfs:label "Peak Definition Criteria" ;
