@@ -66,7 +66,7 @@ def main(nidm_original_version):
         NIDM_EXCURSION_SET_MAP, NIDM_EXTENT_THRESHOLD,
         NIDM_HEIGHT_THRESHOLD, NIDM_PEAK,
         NIDM_PEAK_DEFINITION_CRITERIA, NIDM_SEARCH_SPACE_MASK_MAP,
-        NIDM_SIGNIFICANT_CLUSTER]
+        NIDM_SUPRA_THRESHOLD_CLUSTER]
 
     if nidm_version == 'dev':
         # For the developement version only list all terms that were not
@@ -105,9 +105,9 @@ def main(nidm_original_version):
     }
 
     derived_from = {
-        NIDM_SIGNIFICANT_CLUSTER: NIDM_EXCURSION_SET_MAP,
-        NIDM_PEAK: NIDM_SIGNIFICANT_CLUSTER,
-        NIDM_CLUSTER_CENTER_OF_GRAVITY: NIDM_SIGNIFICANT_CLUSTER
+        NIDM_SUPRA_THRESHOLD_CLUSTER: NIDM_EXCURSION_SET_MAP,
+        NIDM_PEAK: NIDM_SUPRA_THRESHOLD_CLUSTER,
+        NIDM_CLUSTER_CENTER_OF_GRAVITY: NIDM_SUPRA_THRESHOLD_CLUSTER
     }
 
     if nidm_version == "020":
@@ -119,7 +119,7 @@ def main(nidm_original_version):
         # The following classes were named differently in 0.2.0
         renaming = [(NIDM_EXCURSION_SET_MAP, NIDM_INCF['ExcursionSet']),
                     (NIDM_SEARCH_SPACE_MASK_MAP, NIDM_INCF['SearchSpaceMap']),
-                    (NIDM_SIGNIFICANT_CLUSTER, NIDM_INCF['Cluster']),
+                    (NIDM_SUPRA_THRESHOLD_CLUSTER, NIDM_INCF['Cluster']),
                     (NIDM_ERROR_MODEL, NIDM_INCF['NoiseModel']),
                     (NIDM_CONTRAST_ESTIMATION,
                      NIDM_INCF['ContrastEstimation']),
