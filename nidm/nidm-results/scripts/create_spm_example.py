@@ -330,9 +330,9 @@ def main():
             p_value="8.95949980872501e-14",
             inference_id="niiri:inference_id"
             ),
-        "SignificantCluster-1": dict(
-            cluster_id="niiri:significant_cluster_0001",
-            label="Significant Cluster 0001",
+        "SupraThresholdCluster-1": dict(
+            cluster_id="niiri:supra_threshold_cluster_0001",
+            label="Supra-Threshold Cluster 0001",
             cluster_size_in_voxels="530",
             cluster_label_id="1",
             cluster_size_in_resels="23.1209189500945",
@@ -341,9 +341,9 @@ def main():
             p_value_fdr="7.65021389184909e-51",
             excursion_set_id="niiri:excursion_set_map_id"
             ),
-        "SignificantCluster-2": dict(
-            cluster_id="niiri:significant_cluster_0002",
-            label="Significant Cluster 0002",
+        "SupraThresholdCluster-2": dict(
+            cluster_id="niiri:supra_threshold_cluster_0002",
+            label="Supra-Threshold Cluster 0002",
             cluster_size_in_voxels="445",
             cluster_label_id="2",
             cluster_size_in_resels="19.4128470430038",
@@ -352,9 +352,9 @@ def main():
             p_value_fdr="1.56617371144723e-45",
             excursion_set_id="niiri:excursion_set_map_id"
             ),
-        "SignificantCluster-3": dict(
-            cluster_id="niiri:significant_cluster_0003",
-            label="Significant Cluster 0003",
+        "SupraThresholdCluster-3": dict(
+            cluster_id="niiri:supra_threshold_cluster_0003",
+            label="Supra-Threshold Cluster 0003",
             cluster_size_in_voxels="38",
             cluster_label_id="3",
             cluster_size_in_resels="1.6577262643464",
@@ -372,7 +372,7 @@ def main():
             p_uncorr="4.44089209850063e-16",
             p_value_fwe="0",
             p_value_fdr="6.3705194444993e-11",
-            cluster_id="niiri:significant_cluster_0001"
+            cluster_id="niiri:supra_threshold_cluster_0001"
             ),
         "Coordinate-1": dict(
             coordinate_id="niiri:coordinate_0001",
@@ -388,7 +388,7 @@ def main():
             p_uncorr="4.44089209850063e-16",
             p_value_fwe="0",
             p_value_fdr="3.12855975726156e-10",
-            cluster_id="niiri:significant_cluster_0001"
+            cluster_id="niiri:supra_threshold_cluster_0001"
             ),
         "Coordinate-2": dict(
             coordinate_id="niiri:coordinate_0002",
@@ -404,7 +404,7 @@ def main():
             p_uncorr="2.99760216648792e-15",
             p_value_fwe="1.82057147135595e-10",
             p_value_fdr="9.95383070867767e-08",
-            cluster_id="niiri:significant_cluster_0001"
+            cluster_id="niiri:supra_threshold_cluster_0001"
             ),
         "Coordinate-3": dict(
             coordinate_id="niiri:coordinate_0003",
@@ -420,7 +420,7 @@ def main():
             p_uncorr="4.44089209850063e-16",
             p_value_fwe="0",
             p_value_fdr="6.3705194444993e-11",
-            cluster_id="niiri:significant_cluster_0002"
+            cluster_id="niiri:supra_threshold_cluster_0002"
             ),
         "Coordinate-4": dict(
             coordinate_id="niiri:coordinate_0004",
@@ -436,7 +436,7 @@ def main():
             p_uncorr="4.44089209850063e-16",
             p_value_fwe="0",
             p_value_fdr="6.3705194444993e-11",
-            cluster_id="niiri:significant_cluster_0002"
+            cluster_id="niiri:supra_threshold_cluster_0002"
             ),
         "Coordinate-5": dict(
             coordinate_id="niiri:coordinate_0005",
@@ -452,7 +452,7 @@ def main():
             p_uncorr="6.66133814775094e-15",
             p_value_fwe="4.2237258135458e-10",
             p_value_fdr="1.58195372181651e-07",
-            cluster_id="niiri:significant_cluster_0002"
+            cluster_id="niiri:supra_threshold_cluster_0002"
             ),
         "Coordinate-6": dict(
             coordinate_id="niiri:coordinate_0006",
@@ -468,7 +468,7 @@ def main():
             p_uncorr="6.17598194807556e-11",
             p_value_fwe="4.05099727462943e-06",
             p_value_fdr="0.000463130517859672",
-            cluster_id="niiri:significant_cluster_0003"
+            cluster_id="niiri:supra_threshold_cluster_0003"
             ),
         "Coordinate-7": dict(
             coordinate_id="niiri:coordinate_0007",

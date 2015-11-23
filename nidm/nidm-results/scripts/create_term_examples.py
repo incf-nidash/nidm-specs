@@ -336,10 +336,10 @@ id",
             p_value="8.95949980872501e-14",
             inference_id="niiri:inference_id"
             ),
-        "SignificantCluster": dict(
-            comment="Significant Cluster",
-            cluster_id="niiri:significant_cluster_0001",
-            label="Significant Cluster 0001",
+        "SupraThresholdCluster": dict(
+            comment="Supra-Threshold Cluster",
+            cluster_id="niiri:supra_threshold_cluster_0001",
+            label="Supra-Threshold Cluster 0001",
             cluster_size_in_voxels="530",
             cluster_label_id="1",
             cluster_size_in_resels="23.1209189500945",
@@ -358,7 +358,7 @@ id",
             p_uncorr="4.44089209850063e-16",
             p_value_fwe="0",
             p_value_fdr="6.3705194444993e-11",
-            cluster_id="niiri:significant_cluster_0001"
+            cluster_id="niiri:supra_threshold_cluster_0001"
             ),
         "Coordinate": dict(
             comment="Coordinate",
@@ -399,7 +399,7 @@ id",
             center_of_gravity_id="niiri:center_of_gravity_1",
             location="niiri:coordinate_0001",
             label="Center of gravity",
-            cluster_id="niiri:significant_cluster_0001",
+            cluster_id="niiri:supra_threshold_cluster_0001",
             ),
         "CoordinateSpace": dict(
             comment="Coordinate Space",

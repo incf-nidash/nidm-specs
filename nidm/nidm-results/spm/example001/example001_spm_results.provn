@@ -36,7 +36,6 @@ prefix nidm_coordinateVector <http://purl.org/nidash/nidm#NIDM_0000086>
 prefix nidm_numberOfSignificantClusters <http://purl.org/nidash/nidm#NIDM_0000111>
 prefix nidm_pValueUncorrected <http://purl.org/nidash/nidm#NIDM_0000116>
 prefix nidm_voxelToWorldMapping <http://purl.org/nidash/nidm#NIDM_0000132>
-prefix nidm_SignificantCluster <http://purl.org/nidash/nidm#NIDM_0000070>
 prefix nidm_NIDMResults <http://purl.org/nidash/nidm#NIDM_0000027>
 prefix nidm_ContrastStandardErrorMap <http://purl.org/nidash/nidm#NIDM_0000013>
 prefix nidm_Inference <http://purl.org/nidash/nidm#NIDM_0000049>
@@ -92,6 +91,7 @@ prefix nidm_ContrastMap <http://purl.org/nidash/nidm#NIDM_0000002>
 prefix nidm_pValueFWER <http://purl.org/nidash/nidm#NIDM_0000115>
 prefix nidm_noiseFWHMInUnits <http://purl.org/nidash/nidm#NIDM_0000157>
 prefix nidm_DataScaling <http://purl.org/nidash/nidm#NIDM_0000018>
+prefix nidm_SupraThresholdCluster <http://purl.org/nidash/nidm#NIDM_0000070>
 prefix nidm_hasErrorDependence <http://purl.org/nidash/nidm#NIDM_0000100>
 prefix obo_contrastweightmatrix <http://purl.obolibrary.org/obo/STATO_0000323>
 prefix nidm_clusterLabelId <http://purl.org/nidash/nidm#NIDM_0000082>
@@ -123,6 +123,7 @@ activity(niiri:contrast_estimation_id,-,-,[prov:type = 'nidm:NIDM_0000001', prov
 agent(niiri:software_id,[prov:type = 'neurolex:nif-0000-00343', prov:type = 'prov:SoftwareAgent', prov:label = "SPM", nidm:NIDM_0000122 = "12.12.1" %% xsd:string])
 entity(niiri:residual_mean_squares_map_id_der,[prov:type = 'nidm:NIDM_0000066', nfo:fileName = "ResMS.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "1635e0ae420cac1b5989fbc753b95f504dd957ff2986367fc4cd13ff35c44b4ee60994a9cdcab93a7d247fc5a8decb7578fa4c553b0ac905af8c7041db9b4acd" %% xsd:string])
 entity(niiri:coordinate_0009,[prov:type = 'nidm:NIDM_0000015', prov:label = "Coordinate: 0009", nidm:NIDM_0000086 = "[ 45, -40, 32 ]" %% xsd:string])
+entity(niiri:supra_threshold_cluster_0005,[prov:type = 'nidm:NIDM_0000070', prov:label = "Supra-Threshold Cluster: 0005", nidm:NIDM_0000084 = "12" %% xsd:int, nidm:NIDM_0000082 = "5" %% xsd:int, nidm:NIDM_0000156 = "0.0902882999011843" %% xsd:float, nidm:NIDM_0000116 = "0.0818393184514307" %% xsd:float, nidm:NIDM_0000115 = "0.00418900977248904" %% xsd:float, nidm:NIDM_0000119 = "0.0818393184514307" %% xsd:float])
 entity(niiri:mask_id_1_der,[prov:type = 'nidm:NIDM_0000054', nfo:fileName = "mask.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "fbc254cab29db5532feccce554ec9d3c845197eca9013ec9f0efd5d8d56e3aa008ccee4038fb3651d30447fa0f316938b07c3ad961b623458dcd9b46968a8e11" %% xsd:string])
 entity(niiri:mask_id_1,[prov:type = 'nidm:NIDM_0000054', prov:label = "Mask", prov:location = "file://./Mask.nii.gz" %% xsd:anyURI, nidm:NIDM_0000106 = "false" %% xsd:boolean, nfo:fileName = "Mask.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875" %% xsd:string])
 entity(niiri:drift_model_id,[prov:type = 'spm:SPM_0000002', prov:label = "SPM's DCT Drift Model", spm:SPM_0000001 = "128" %% xsd:float])
@@ -158,15 +159,10 @@ entity(niiri:height_threshold_id_2,[prov:type = 'nidm:NIDM_0000034', prov:type =
 entity(niiri:extent_threshold_id_3,[prov:type = 'nidm:NIDM_0000026', prov:type = 'nidm:NIDM_0000160', prov:label = "Extent Threshold", prov:value = "1" %% xsd:float])
 entity(niiri:resels_per_voxel_map_id_der,[prov:type = 'nidm:NIDM_0000144', nfo:fileName = "RPV.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "963283cdde607c40e4640c27453867bd0d70133b6d61482933862487c0f4a5acdb2e338a12a2605ee044b1aa47b5717f0c520b90ed3c49b5227f0483bd48512d" %% xsd:string])
 entity(niiri:peak_0001,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0001", prov:location = 'niiri:coordinate_0001', prov:value = "17.5207633972168" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.19156591713838e-11" %% xsd:float])
-entity(niiri:significant_cluster_0005,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster: 0005", nidm:NIDM_0000084 = "12" %% xsd:int, nidm:NIDM_0000082 = "5" %% xsd:int, nidm:NIDM_0000156 = "0.0902882999011843" %% xsd:float, nidm:NIDM_0000116 = "0.0818393184514307" %% xsd:float, nidm:NIDM_0000115 = "0.00418900977248904" %% xsd:float, nidm:NIDM_0000119 = "0.0818393184514307" %% xsd:float])
 entity(niiri:peak_0003,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0003", prov:location = 'niiri:coordinate_0003', prov:value = "10.2856016159058" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "7.69451169446711e-12" %% xsd:float, nidm:NIDM_0000119 = "6.84121260274992e-10" %% xsd:float])
-entity(niiri:significant_cluster_0003,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster: 0003", nidm:NIDM_0000084 = "37" %% xsd:int, nidm:NIDM_0000082 = "3" %% xsd:int, nidm:NIDM_0000156 = "0.278388924695318" %% xsd:float, nidm:NIDM_0000116 = "0.00497953247554004" %% xsd:float, nidm:NIDM_0000115 = "0.000255384009130943" %% xsd:float, nidm:NIDM_0000119 = "0.00829922079256674" %% xsd:float])
 entity(niiri:peak_0002,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0002", prov:location = 'niiri:coordinate_0002', prov:value = "13.0321407318" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.19156591714e-11" %% xsd:float])
-entity(niiri:significant_cluster_0004,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster: 0004", nidm:NIDM_0000084 = "29" %% xsd:int, nidm:NIDM_0000082 = "4" %% xsd:int, nidm:NIDM_0000156 = "0.218196724761195" %% xsd:float, nidm:NIDM_0000116 = "0.0110257032104773" %% xsd:float, nidm:NIDM_0000115 = "0.000565384750377596" %% xsd:float, nidm:NIDM_0000119 = "0.0137821290130967" %% xsd:float])
 entity(niiri:peak_0005,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0005", prov:location = 'niiri:coordinate_0005', prov:value = "12.4728717803955" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.19156591713838e-11" %% xsd:float])
-entity(niiri:significant_cluster_0001,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster: 0001", nidm:NIDM_0000084 = "839" %% xsd:int, nidm:NIDM_0000082 = "1" %% xsd:int, nidm:NIDM_0000156 = "6.31265696809113" %% xsd:float, nidm:NIDM_0000116 = "3.55896824480477e-19" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.77948412240239e-18" %% xsd:float])
 entity(niiri:peak_0004,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0004", prov:location = 'niiri:coordinate_0004', prov:value = "13.5425577163696" %% xsd:float, nidm:NIDM_0000116 = "4.44089209850063e-16" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.19156591713838e-11" %% xsd:float])
-entity(niiri:significant_cluster_0002,[prov:type = 'nidm:NIDM_0000070', prov:label = "Significant Cluster: 0002", nidm:NIDM_0000084 = "695" %% xsd:int, nidm:NIDM_0000082 = "2" %% xsd:int, nidm:NIDM_0000156 = "5.22919736927692" %% xsd:float, nidm:NIDM_0000116 = "5.34280282632073e-17" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.33570070658018e-16" %% xsd:float])
 entity(niiri:peak_0007,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0007", prov:location = 'niiri:coordinate_0007', prov:value = "6.55745935440063" %% xsd:float, nidm:NIDM_0000116 = "2.10478867668229e-09" %% xsd:float, nidm:NIDM_0000092 = "5.87574033699266" %% xsd:float, nidm:NIDM_0000115 = "9.17574302586877e-05" %% xsd:float, nidm:NIDM_0000119 = "0.00257605396646668" %% xsd:float])
 entity(niiri:peak_0006,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0006", prov:location = 'niiri:coordinate_0006', prov:value = "9.72103404998779" %% xsd:float, nidm:NIDM_0000116 = "1.22124532708767e-15" %% xsd:float, nidm:NIDM_0000092 = "INF" %% xsd:float, nidm:NIDM_0000115 = "6.9250605250204e-11" %% xsd:float, nidm:NIDM_0000119 = "6.52169693024352e-09" %% xsd:float])
 entity(niiri:peak_0009,[prov:type = 'nidm:NIDM_0000062', prov:label = "Peak: 0009", prov:location = 'niiri:coordinate_0009', prov:value = "5.27320194244385" %% xsd:float, nidm:NIDM_0000116 = "5.12386299833523e-07" %% xsd:float, nidm:NIDM_0000092 = "4.88682085490477" %% xsd:float, nidm:NIDM_0000115 = "0.0119099090973821" %% xsd:float, nidm:NIDM_0000119 = "0.251554254717758" %% xsd:float])
@@ -177,13 +173,18 @@ entity(niiri:contrast_map_id,[prov:type = 'nidm:NIDM_0000002', prov:label = "Con
 entity(niiri:error_model_id,[prov:type = 'nidm:NIDM_0000023', nidm:NIDM_0000101 = 'obo:STATO_0000227', nidm:NIDM_0000094 = "true" %% xsd:boolean, nidm:NIDM_0000126 = 'nidm:NIDM_0000073', nidm:NIDM_0000100 = 'obo:STATO_0000357', nidm:NIDM_0000089 = 'nidm:NIDM_0000072'])
 entity(niiri:cluster_definition_criteria_id,[prov:type = 'nidm:NIDM_0000007', prov:label = "Cluster Connectivity Criterion: 18", nidm:NIDM_0000099 = 'nidm:NIDM_0000128'])
 entity(niiri:excursion_set_map_id,[prov:type = 'nidm:NIDM_0000025', prov:label = "Excursion Set Map", prov:location = "file://./ExcursionSet.nii.gz" %% xsd:anyURI, dct:format = "image/nifti" %% xsd:string, nfo:fileName = "ExcursionSet.nii.gz" %% xsd:string, nidm:NIDM_0000098 = 'niiri:cluster_label_map_id', nidm:NIDM_0000138 = 'niiri:maximum_intensity_projection_id', nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "d96b82761c299a66978893cab6034f3f8aed25d0a135636b0ffe79f4cf11becce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652" %% xsd:string, nidm:NIDM_0000111 = "5" %% xsd:int, nidm:NIDM_0000114 = "2.83510681598e-09" %% xsd:float])
+entity(niiri:supra_threshold_cluster_0003,[prov:type = 'nidm:NIDM_0000070', prov:label = "Supra-Threshold Cluster: 0003", nidm:NIDM_0000084 = "37" %% xsd:int, nidm:NIDM_0000082 = "3" %% xsd:int, nidm:NIDM_0000156 = "0.278388924695318" %% xsd:float, nidm:NIDM_0000116 = "0.00497953247554004" %% xsd:float, nidm:NIDM_0000115 = "0.000255384009130943" %% xsd:float, nidm:NIDM_0000119 = "0.00829922079256674" %% xsd:float])
+entity(niiri:supra_threshold_cluster_0004,[prov:type = 'nidm:NIDM_0000070', prov:label = "Supra-Threshold Cluster: 0004", nidm:NIDM_0000084 = "29" %% xsd:int, nidm:NIDM_0000082 = "4" %% xsd:int, nidm:NIDM_0000156 = "0.218196724761195" %% xsd:float, nidm:NIDM_0000116 = "0.0110257032104773" %% xsd:float, nidm:NIDM_0000115 = "0.000565384750377596" %% xsd:float, nidm:NIDM_0000119 = "0.0137821290130967" %% xsd:float])
 entity(niiri:beta_map_id_2_der,[prov:type = 'nidm:NIDM_0000061', nfo:fileName = "beta_0002.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008" %% xsd:string])
+entity(niiri:supra_threshold_cluster_0001,[prov:type = 'nidm:NIDM_0000070', prov:label = "Supra-Threshold Cluster: 0001", nidm:NIDM_0000084 = "839" %% xsd:int, nidm:NIDM_0000082 = "1" %% xsd:int, nidm:NIDM_0000156 = "6.31265696809113" %% xsd:float, nidm:NIDM_0000116 = "3.55896824480477e-19" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.77948412240239e-18" %% xsd:float])
 entity(niiri:spm_results_id,[prov:type = 'prov:Bundle', prov:type = 'nidm:NIDM_0000027', prov:label = "NIDM-Results", nidm:NIDM_0000127 = "1.1.0" %% xsd:string])
+entity(niiri:supra_threshold_cluster_0002,[prov:type = 'nidm:NIDM_0000070', prov:label = "Supra-Threshold Cluster: 0002", nidm:NIDM_0000084 = "695" %% xsd:int, nidm:NIDM_0000082 = "2" %% xsd:int, nidm:NIDM_0000156 = "5.22919736927692" %% xsd:float, nidm:NIDM_0000116 = "5.34280282632073e-17" %% xsd:float, nidm:NIDM_0000115 = "0" %% xsd:float, nidm:NIDM_0000119 = "1.33570070658018e-16" %% xsd:float])
 entity(niiri:beta_map_id_1_der,[prov:type = 'nidm:NIDM_0000061', nfo:fileName = "beta_0001.nii" %% xsd:string, dct:format = "image/nifti" %% xsd:string, crypto:sha512 = "fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c17412731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f" %% xsd:string])
 used(niiri:model_pe_id,niiri:error_model_id,-)
 used(niiri:model_pe_id,niiri:design_matrix_id,-)
 used(niiri:model_pe_id,niiri:data_id,-)
 wasAssociatedWith(niiri:model_pe_id,niiri:software_id,-)
+wasDerivedFrom(niiri:supra_threshold_cluster_0005, niiri:excursion_set_map_id)
 wasDerivedFrom(niiri:mask_id_1, niiri:mask_id_1_der)
 wasGeneratedBy(niiri:mask_id_1,niiri:model_pe_id,-)
 wasGeneratedBy(niiri:contrast_standard_error_map_id,niiri:contrast_estimation_id,-)
@@ -214,22 +215,21 @@ used(niiri:contrast_estimation_id,niiri:design_matrix_id,-)
 used(niiri:contrast_estimation_id,niiri:contrast_id,-)
 used(niiri:contrast_estimation_id,niiri:beta_map_id_1,-)
 wasAssociatedWith(niiri:contrast_estimation_id,niiri:software_id,-)
-wasDerivedFrom(niiri:peak_0001, niiri:significant_cluster_0001)
-wasDerivedFrom(niiri:significant_cluster_0005, niiri:excursion_set_map_id)
-wasDerivedFrom(niiri:peak_0003, niiri:significant_cluster_0001)
-wasDerivedFrom(niiri:significant_cluster_0003, niiri:excursion_set_map_id)
-wasDerivedFrom(niiri:peak_0002, niiri:significant_cluster_0001)
-wasDerivedFrom(niiri:significant_cluster_0004, niiri:excursion_set_map_id)
-wasDerivedFrom(niiri:peak_0005, niiri:significant_cluster_0002)
-wasDerivedFrom(niiri:significant_cluster_0001, niiri:excursion_set_map_id)
-wasDerivedFrom(niiri:peak_0004, niiri:significant_cluster_0002)
-wasDerivedFrom(niiri:significant_cluster_0002, niiri:excursion_set_map_id)
-wasDerivedFrom(niiri:peak_0007, niiri:significant_cluster_0003)
-wasDerivedFrom(niiri:peak_0006, niiri:significant_cluster_0002)
-wasDerivedFrom(niiri:peak_0009, niiri:significant_cluster_0005)
-wasDerivedFrom(niiri:peak_0008, niiri:significant_cluster_0004)
+wasDerivedFrom(niiri:peak_0001, niiri:supra_threshold_cluster_0001)
+wasDerivedFrom(niiri:peak_0003, niiri:supra_threshold_cluster_0001)
+wasDerivedFrom(niiri:peak_0002, niiri:supra_threshold_cluster_0001)
+wasDerivedFrom(niiri:peak_0005, niiri:supra_threshold_cluster_0002)
+wasDerivedFrom(niiri:peak_0004, niiri:supra_threshold_cluster_0002)
+wasDerivedFrom(niiri:peak_0007, niiri:supra_threshold_cluster_0003)
+wasDerivedFrom(niiri:peak_0006, niiri:supra_threshold_cluster_0002)
+wasDerivedFrom(niiri:peak_0009, niiri:supra_threshold_cluster_0005)
+wasDerivedFrom(niiri:peak_0008, niiri:supra_threshold_cluster_0004)
 wasGeneratedBy(niiri:contrast_map_id,niiri:contrast_estimation_id,-)
 wasDerivedFrom(niiri:contrast_map_id, niiri:contrast_map_id_der)
 wasGeneratedBy(niiri:excursion_set_map_id,niiri:inference_id,-)
+wasDerivedFrom(niiri:supra_threshold_cluster_0003, niiri:excursion_set_map_id)
+wasDerivedFrom(niiri:supra_threshold_cluster_0004, niiri:excursion_set_map_id)
+wasDerivedFrom(niiri:supra_threshold_cluster_0001, niiri:excursion_set_map_id)
+wasDerivedFrom(niiri:supra_threshold_cluster_0002, niiri:excursion_set_map_id)
 wasGeneratedBy(niiri:spm_results_id,-,2014-05-19T10:30:00.000+01:00)
 endDocument
