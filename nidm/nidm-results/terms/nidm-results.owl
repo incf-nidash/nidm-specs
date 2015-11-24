@@ -19,12 +19,12 @@
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
-  owl:imports <http://purl.org/nidash/nidm/iao_import.owl> ,
-              <http://purl.org/nidash/nidm/obi_import.owl> ,  
-              <http://purl.org/nidash/nidm/crypto_import.owl> ,
+  owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
               <http://purl.org/nidash/nidm/dc_import.owl> ,
+              <http://purl.org/nidash/nidm/iao_import.owl> ,
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
               <http://purl.org/nidash/nidm/nlx_import.owl> ,
+              <http://purl.org/nidash/nidm/obi_import.owl> ,
               <http://purl.org/nidash/nidm/stato_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
 ] .
@@ -1757,15 +1757,25 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 
 ###  http://neurolex.org/wiki/birnlex_2067
 
-nlx:birnlex_2067 rdfs:subClassOf prov:SoftwareAgent ;
-obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_Software.txt"^^xsd:anyURI .
+nlx:birnlex_2067 rdfs:subClassOf nidm:NIDM_0000164 ;
+                 
+                 obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_Software.txt"^^xsd:anyURI .
 
 
 
 ###  http://neurolex.org/wiki/nif-0000-00343
 
-nlx:nif-0000-00343 rdfs:subClassOf prov:SoftwareAgent ;
-obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_Software.txt"^^xsd:anyURI .
+nlx:nif-0000-00343 rdfs:subClassOf nidm:NIDM_0000164 ;
+                   
+                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_Software.txt"^^xsd:anyURI .
+
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000251
+
+obo:OBI_0000251 rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity .
 
 
 
@@ -1774,13 +1784,6 @@ obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/
 obo:OBI_0001265 rdf:type owl:Class ;
                 
                 rdfs:subClassOf prov:Entity .
-
-###  http://purl.obolibrary.org/obo/OBI_0001265
-
-obo:OBI_0000251 rdf:type owl:Class ;
-                
-                rdfs:subClassOf prov:Entity .
-
 
 
 
@@ -1832,12 +1835,12 @@ dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -1983,14 +1986,14 @@ nidm:NIDM_0000005 rdf:type owl:Class ;
 nidm:NIDM_0000006 rdf:type owl:Class ;
                   
                   rdfs:label "Cluster" ;
-
-                  owl:deprecated "true"^^xsd:boolean ;                  
                   
                   rdfs:subClassOf prov:Entity ;
                   
                   obo:IAO_0000115 "A collection of elements related by one or more criteria."^^xsd:string ;
                   
                   prov:editorialNote "Discussed in https://github.com/incf-nidash/nidm/issues/71."^^xsd:string ;
+                  
+                  owl:deprecated "true"^^xsd:boolean ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -2308,9 +2311,9 @@ nidm:NIDM_0000027 rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:NIDM_0000057 ;
                   
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/NIDMBundle.txt"^^xsd:anyURI ;
+                  
                   obo:IAO_0000115 "NIDM Object model representing the results of a mass univariate neuroimaging study and targeting the application of meta-analysis. The  specification is available at: http://nidm.nidash.org/specs/nidm-results.html" ;
-
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/NIDMBundle.txt"^^xsd:anyURI ;                  
                   
                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/pull/137" ;
                   
@@ -2547,9 +2550,9 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
+                                    owl:onProperty prov:atLocation ;
+                                    owl:onClass prov:Location ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
@@ -2557,9 +2560,9 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty prov:atLocation ;
-                                    owl:onClass prov:Location ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
@@ -2569,7 +2572,7 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Map_atLocation-nii.txt"^^xsd:anyURI ,
                                   "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Map_atLocation_hasMapHeader-img.txt"^^xsd:anyURI ;
-
+                  
                   obo:IAO_0000115 "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." ;
                   
                   obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" ;
@@ -2591,11 +2594,6 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty prov:atLocation ;
                                     owl:onClass prov:Location ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
@@ -2604,11 +2602,16 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ;
                   
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/289" ;
-
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/MapHeader.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/289" ;
                   
                   obo:IAO_0000115 "A file associated with a Map to provide header information (e.g. NIfTI header file)" ;
                   
@@ -3248,6 +3251,76 @@ nidm:NIDM_0000163 rdf:type owl:Class ;
                   obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/235" ;
                   
                   obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000164
+
+nidm:NIDM_0000164 rdf:type owl:Class ;
+                  
+                  rdfs:label "Neuroimaging Analysis Software" ;
+                  
+                  rdfs:subClassOf prov:SoftwareAgent ;
+                  
+                  obo:IAO_0000115 "Tool used to process neuroimaging data." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000165
+
+nidm:NIDM_0000165 rdf:type owl:Class ;
+                  
+                  rdfs:label "NIDM-Results Exporter" ;
+                  
+                  rdfs:subClassOf prov:SoftwareAgent ;
+                  
+                  obo:IAO_0000115 "Tool used to export results produced by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000166
+
+nidm:NIDM_0000166 rdf:type owl:Class ;
+                  
+                  rdfs:label "NIDM-Results Export" ;
+                  
+                  rdfs:subClassOf prov:Activity ;
+                  
+                  obo:IAO_0000115 "The process of exporting results created by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000167
+
+nidm:NIDM_0000167 rdf:type owl:Class ;
+                  
+                  rdfs:label "nidmfsl" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000165 ;
+                  
+                  obo:IAO_0000115 "Python library for the export of feat folders (generated by FSL) to NIDM-Results. Source available at: https://github.com/incf-nidash/nidm-results_fsl/." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000168
+
+nidm:NIDM_0000168 rdf:type owl:Class ;
+                  
+                  rdfs:label "spm_results_nidm" ;
+                  
+                  rdfs:subClassOf nidm:NIDM_0000165 ;
+                  
+                  obo:IAO_0000115 "Matlab m file for the export of SPM results to NIDM-Results. Source available at: http://www.fil.ion.ucl.ac.uk/spm/download/toolbox/NIDM/spm_nidm.zip/." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
