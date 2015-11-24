@@ -96,7 +96,13 @@ class TestResultDataModel(object):
         for ttl_name in test_files:
             ttl = parent_test_dir+ttl_name
             test_dir = os.path.dirname(ttl)
-            with open(os.path.join(test_dir, 'config.json')) as data_file:
+
+            configfile = os.path.join(test_dir, 'config.json')
+            if not os.path.isfile(configfile):
+                configfile = os.path.join(
+                    os.path.abspath(os.path.join(test_dir, os.pardir)), 'config.json')
+
+            with open(configfile) as data_file:
                 metadata = json.load(data_file)
             gt_file = [os.path.join(parent_gt_dir, x)
                        for x in metadata["ground_truth"]]
