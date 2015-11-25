@@ -621,7 +621,8 @@ fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
             version="1.1.0",
-            time="2014-05-19T10:30:00.000+01:00"
+            time="2014-05-19T10:30:00.000+01:00",
+            export_id="niiri:export_id"
             ),
         "FSL_Software": dict(
             software_id="niiri:software_id",
@@ -641,6 +642,17 @@ fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
             sha="7a2703cea740e27a5170fb19e4a09b5e815e4b7e477bc75958404d675aa40\
 8f53f747892a2ef4472f933cf5f12cd21cea99d5f5e551938081636fb6d4049473e",
             model_pe_id="niiri:model_parameters_estimation_id"
+            ),
+        "ExporterSoftware": dict(
+            software_id="niiri:exporter_id",
+            software_type="nidm:NIDM_0000167",
+            label="nidmfsl",
+            version="0.2.0"
+            ),
+        "Export": dict(
+            export_id="niiri:export_id",
+            label="NIDM-Results export",
+            exporter_id="niiri:exporter_id"
             )
         }
 

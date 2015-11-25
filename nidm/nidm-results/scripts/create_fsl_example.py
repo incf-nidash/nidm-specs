@@ -417,7 +417,8 @@ def main():
 			label="NIDM-Results",
 			object_model="nidm:NIDM_0000027",
 			version="1.1.0",
-			time="2014-05-19T10:30:00.000+01:00"
+			time="2014-05-19T10:30:00.000+01:00",
+			export_id="niiri:export_id"
 			),
 		"FSL_Software": dict(
 			software_id="niiri:software_id",
@@ -425,6 +426,17 @@ def main():
 			label="FSL",
 			version="5.0.x",
 			feat_version="6.00"
+			),
+		"ExporterSoftware": dict(
+			software_id="niiri:exporter_id",
+			software_type="nidm:NIDM_0000167",
+			label="nidmfsl",
+			version="0.2.0"
+			),
+		"Export": dict(
+			export_id="niiri:export_id",
+			label="NIDM-Results export",
+			exporter_id="niiri:exporter_id"
 			),
 		"GrandMeanMap": dict(
 			grand_mean_map_id="niiri:grand_mean_map_id",

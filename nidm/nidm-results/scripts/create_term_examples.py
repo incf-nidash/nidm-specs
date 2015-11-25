@@ -27,7 +27,8 @@ def main():
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
             version="1.1.0",
-            time="2014-05-19T10:30:00.000+01:00"
+            time="2014-05-19T10:30:00.000+01:00",
+            export_id="niiri:export_id"
             ),
         "SPM_Software": dict(
             software_id="niiri:spm_software_id",
@@ -41,6 +42,23 @@ def main():
             label="FSL",
             version="5.0.1",
             feat_version="6.00"
+            ),
+        "ExporterSoftware-FSL": dict(
+            software_id="niiri:exporter_id",
+            software_type="nidm:NIDM_0000167",
+            label="nidmfsl",
+            version="0.2.0"
+            ),
+        "Export": dict(
+            export_id="niiri:export_id",
+            label="NIDM-Results export",
+            exporter_id="niiri:exporter_id"
+            ),
+        "ExporterSoftware-SPM": dict(
+            software_id="niiri:exporter_id",
+            software_type="nidm:NIDM_0000168",
+            label="spm_results_nidm",
+            version="12b.5858"
             ),
         "DesignMatrix": dict(
             comment="Design Matrix: Group Level",
