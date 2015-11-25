@@ -8,6 +8,7 @@ prefix nidm_grandMeanScaling <http://purl.org/nidash/nidm#NIDM_0000096>
 prefix xsd <http://www.w3.org/2001/XMLSchema>
 prefix nidm_PeakDefinitionCriteria <http://purl.org/nidash/nidm#NIDM_0000063>
 prefix obo_tstatistic <http://purl.obolibrary.org/obo/STATO_0000176>
+prefix nidm_spm_results_nidm <http://purl.org/nidash/nidm#NIDM_0000168>
 prefix nidm_ConjunctionInference <http://purl.org/nidash/nidm#NIDM_0000011>
 prefix nidm_dimensionsInVoxels <http://purl.org/nidash/nidm#NIDM_0000090>
 prefix nidm_numberOfDimensions <http://purl.org/nidash/nidm#NIDM_0000112>
@@ -33,8 +34,8 @@ prefix nidm_version <http://purl.org/nidash/nidm#NIDM_0000127>
 prefix nidm_withEstimationMethod <http://purl.org/nidash/nidm#NIDM_0000134>
 prefix nidm_StatisticMap <http://purl.org/nidash/nidm#NIDM_0000076>
 prefix nidm_PValueUncorrected <http://purl.org/nidash/nidm#NIDM_0000160>
-prefix nlx <http://neurolex.org/wiki/>
 prefix nidm_minDistanceBetweenPeaks <http://purl.org/nidash/nidm#NIDM_0000109>
+prefix nlx <http://neurolex.org/wiki/>
 prefix nidm_ModelParametersEstimation <http://purl.org/nidash/nidm#NIDM_0000056>
 prefix nidm_inCoordinateSpace <http://purl.org/nidash/nidm#NIDM_0000104>
 prefix nidm_hasConnectivityCriterion <http://purl.org/nidash/nidm#NIDM_0000099>
@@ -53,6 +54,7 @@ prefix nidm_DesignMatrix <http://purl.org/nidash/nidm#NIDM_0000019>
 prefix nidm_clusterSizeInResels <http://purl.org/nidash/nidm#NIDM_0000156>
 prefix nidm_errorVarianceHomogeneous <http://purl.org/nidash/nidm#NIDM_0000094>
 prefix neurolex <http://neurolex.org/wiki/>
+prefix nidm_NIDMResultsExport <http://purl.org/nidash/nidm#NIDM_0000166>
 prefix nidm_maxNumberOfPeaksPerCluster <http://purl.org/nidash/nidm#NIDM_0000108>
 prefix spm <http://purl.org/nidash/spm#>
 prefix niiri <http://iri.nidash.org/>
@@ -84,8 +86,10 @@ activity(niiri:model_pe_id,-,-,[prov:type = 'nidm:NIDM_0000056', prov:label = "M
 activity(niiri:inference_id_2,-,-,[prov:type = 'nidm:NIDM_0000049', prov:label = "Inference 2", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
 activity(niiri:inference_id_3,-,-,[prov:type = 'nidm:NIDM_0000011', prov:label = "Conjunction Inference 3", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
 activity(niiri:inference_id,-,-,[prov:type = 'nidm:NIDM_0000049', prov:label = "Inference 1", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
+activity(niiri:export_id,-,-,[prov:type = 'nidm:NIDM_0000166', prov:label = "NIDM-Results export"])
 activity(niiri:contrast_estimation_id,-,-,[prov:type = 'nidm:NIDM_0000001', prov:label = "Contrast estimation 1"])
 activity(niiri:contrast_estimation_id_2,-,-,[prov:type = 'nidm:NIDM_0000001', prov:label = "Contrast estimation 2"])
+agent(niiri:exporter_id,[prov:type = 'nidm:NIDM_0000168', prov:type = 'prov:SoftwareAgent', prov:label = "spm_results_nidm", nidm:NIDM_0000122 = "12b.5858" %% xsd:string])
 agent(niiri:software_id,[prov:type = 'neurolex:nif-0000-00343', prov:type = 'prov:SoftwareAgent', prov:label = "SPM", nidm:NIDM_0000122 = "12b.5853" %% xsd:string])
 entity(niiri:cluster_definition_criteria_id_2,[prov:type = 'nidm:NIDM_0000007', prov:label = "Cluster Connectivity Criterion: 18", nidm:NIDM_0000099 = 'nidm:NIDM_0000128'])
 entity(niiri:contrast_standard_error_map_id_2,[prov:type = 'nidm:NIDM_0000013', prov:label = "Contrast 2 Standard Error Map", prov:location = "file:///path/to/ContrastStandardError_0002.nii.gz" %% xsd:anyURI, nfo:fileName = "ContrastStandardError_0002.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "e43b6e01b0463fe7d40782137867a..." %% xsd:string])
@@ -187,6 +191,7 @@ used(niiri:inference_id,niiri:cluster_definition_criteria_id,-)
 used(niiri:inference_id,niiri:mask_id_1,-)
 wasAssociatedWith(niiri:inference_id,niiri:software_id,-)
 used(niiri:inference_id,niiri:resels_per_voxel_map_id,-)
+wasAssociatedWith(niiri:export_id,niiri:exporter_id,-)
 wasDerivedFrom(niiri:resels_per_voxel_map_id, niiri:resels_per_voxel_map_id_der)
 wasGeneratedBy(niiri:resels_per_voxel_map_id,niiri:model_pe_id,-)
 wasGeneratedBy(niiri:grand_mean_map_id,niiri:model_pe_id,-)
@@ -207,5 +212,6 @@ used(niiri:contrast_estimation_id_2,niiri:residual_mean_squares_map_id,-)
 used(niiri:contrast_estimation_id_2,niiri:design_matrix_id,-)
 used(niiri:contrast_estimation_id_2,niiri:contrast_id_2,-)
 wasAssociatedWith(niiri:contrast_estimation_id_2,niiri:software_id,-)
+wasGeneratedBy(niiri:spm_results_id,niiri:export_id,-)
 wasGeneratedBy(niiri:spm_results_id,-,2014-05-19T10:30:00.000+01:00)
 endDocument
