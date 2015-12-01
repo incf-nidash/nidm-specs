@@ -536,7 +536,8 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
             version="1.1.0",
-            time="2014-05-19T10:30:00.000+01:00"
+            time="2014-05-19T10:30:00.000+01:00",
+            export_id="niiri:export_id"
             ),
         "SPM_ReselsPerVoxelMap": dict(
             resels_per_voxel_map_id="niiri:resels_per_voxel_map_id",
@@ -591,6 +592,17 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             sha="4d3528031bce4a9c1b994b8124e6e0eddb9df90b49c84787652ed94df8c14\
 c04ec92100a2d8ea86a8df24ba44617aca7457ddcb2f42253fc17e33296a1aea1cb",
             model_pe_id="niiri:model_pe_id"
+            ),
+        "ExporterSoftware": dict(
+            software_id="niiri:exporter_id",
+            software_type="nidm:NIDM_0000168",
+            label="spm_results_nidm",
+            version="12b.5858"
+            ),
+        "Export": dict(
+            export_id="niiri:export_id",
+            label="NIDM-Results export",
+            exporter_id="niiri:exporter_id"
             )
         }
 

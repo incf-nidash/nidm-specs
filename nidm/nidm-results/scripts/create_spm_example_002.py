@@ -508,8 +508,9 @@ def main():
 			label="NIDM-Results",
 			object_model="nidm:NIDM_0000027",
 			version="1.1.0",
-			time="2014-05-19T10:30:00.000+01:00"
-			),
+			time="2014-05-19T10:30:00.000+01:00",
+            export_id="niiri:export_id"
+            ),
 		"SPM_ReselsPerVoxelMap": dict(
 			resels_per_voxel_map_id="niiri:resels_per_voxel_map_id",
 			label="Resels per Voxel Map",
@@ -556,8 +557,19 @@ def main():
 			coordinate_space_id="niiri:coordinate_space_id_1",
 			sha="e43b6e01b0463fe7d40782137867a...",
 			model_pe_id="niiri:model_pe_id"
-			)
-		}
+			),
+        "ExporterSoftware": dict(
+            software_id="niiri:exporter_id",
+            software_type="nidm:NIDM_0000168",
+            label="spm_results_nidm",
+            version="12b.5858"
+            ),
+        "Export": dict(
+            export_id="niiri:export_id",
+            label="NIDM-Results export",
+            exporter_id="niiri:exporter_id"
+            )
+        }
 
 	NIDM_SPM_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'spm', "example002")

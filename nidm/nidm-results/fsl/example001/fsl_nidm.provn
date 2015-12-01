@@ -52,6 +52,7 @@ prefix nfo <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
 prefix fsl_GaussianRunningLineDriftModel <http://purl.org/nidash/fsl#FSL_0000002>
 prefix nidm_Peak <http://purl.org/nidash/nidm#NIDM_0000062>
 prefix nidm_hasHRFBasis <http://purl.org/nidash/nidm#NIDM_0000102>
+prefix nidm_nidmfsl <http://purl.org/nidash/nidm#NIDM_0000167>
 prefix fsl_featVersion <http://purl.org/nidash/fsl#FSL_0000005>
 prefix fsl_FSLsGammaDifferenceHRF <http://purl.org/nidash/fsl#FSL_0000001>
 prefix nidm_clusterSizeInVoxels <http://purl.org/nidash/nidm#NIDM_0000084>
@@ -68,6 +69,7 @@ prefix fsl <http://purl.org/nidash/fsl#>
 prefix nidm_DesignMatrix <http://purl.org/nidash/nidm#NIDM_0000019>
 prefix nidm_errorVarianceHomogeneous <http://purl.org/nidash/nidm#NIDM_0000094>
 prefix neurolex <http://neurolex.org/wiki/>
+prefix nidm_NIDMResultsExport <http://purl.org/nidash/nidm#NIDM_0000166>
 prefix nidm_coordinateVectorInVoxels <http://purl.org/nidash/nidm#NIDM_0000139>
 prefix nidm_ExcursionSetMap <http://purl.org/nidash/nidm#NIDM_0000025>
 prefix spm <http://purl.org/nidash/spm#>
@@ -106,7 +108,9 @@ prefix nidm_hasErrorDistribution <http://purl.org/nidash/nidm#NIDM_0000101>
 prefix nidm_ClusterDefinitionCriteria <http://purl.org/nidash/nidm#NIDM_0000007>
 activity(niiri:model_parameters_estimation_id,-,-,[prov:type = 'nidm:NIDM_0000056', prov:label = "Model Parameters Estimation", nidm:NIDM_0000134 = 'obo:STATO_0000372'])
 activity(niiri:inference_id_1,-,-,[prov:type = 'nidm:NIDM_0000049', prov:label = "Inference: Generation", nidm:NIDM_0000097 = 'nidm:NIDM_0000060'])
+activity(niiri:export_id,-,-,[prov:type = 'nidm:NIDM_0000166', prov:label = "NIDM-Results export"])
 activity(niiri:contrast_estimation_id_1,-,-,[prov:type = 'nidm:NIDM_0000001', prov:label = "Contrast estimation: Generation"])
+agent(niiri:exporter_id,[prov:type = 'nidm:NIDM_0000167', prov:type = 'prov:SoftwareAgent', prov:label = "nidmfsl", nidm:NIDM_0000122 = "0.2.0" %% xsd:string])
 agent(niiri:software_id,[prov:type = 'neurolex:birnlex_2067', prov:type = 'prov:SoftwareAgent', prov:label = "FSL", nidm:NIDM_0000122 = "5.0.x" %% xsd:string, fsl:FSL_0000005 = "6.00" %% xsd:string])
 entity(niiri:cluster_definition_criteria_id_1,[prov:type = 'nidm:NIDM_0000007', prov:label = "Cluster Connectivity Criterion: 26", nidm:NIDM_0000099 = 'nidm:NIDM_0000129'])
 entity(niiri:contrast_standard_error_map_id_1,[prov:type = 'nidm:NIDM_0000013', prov:label = "Contrast Standard Error Map", prov:location = "file://./ContrastStandardError.nii.gz" %% xsd:anyURI, nfo:fileName = "ContrastStandardError.nii.gz" %% xsd:string, dct:format = "image/nifti" %% xsd:string, nidm:NIDM_0000104 = 'niiri:coordinate_space_id_1', crypto:sha512 = "8529f3ff9f10da8f332ced9d579990321475c1498b56d79ede560ba2eccf6d68718757dc7af78eb1e86617a41e6c9f55161f756d184e2b0fb06c3d419dc99856" %% xsd:string])
@@ -215,6 +219,7 @@ wasGeneratedBy(niiri:beta_map_id_2,niiri:model_parameters_estimation_id,-)
 wasGeneratedBy(niiri:beta_map_id_3,niiri:model_parameters_estimation_id,-)
 wasGeneratedBy(niiri:residual_mean_squares_map_id,niiri:model_parameters_estimation_id,-)
 wasGeneratedBy(niiri:statistic_map_id_1,niiri:contrast_estimation_id_1,-)
+wasAssociatedWith(niiri:export_id,niiri:exporter_id,-)
 wasGeneratedBy(niiri:grand_mean_map_id,niiri:model_parameters_estimation_id,-)
 wasDerivedFrom(niiri:peak_0004_4, niiri:supra_threshold_cluster_0004)
 wasGeneratedBy(niiri:beta_map_id_1,niiri:model_parameters_estimation_id,-)
@@ -229,6 +234,7 @@ wasDerivedFrom(niiri:center_of_gravity_1, niiri:supra_threshold_cluster_0001)
 wasDerivedFrom(niiri:center_of_gravity_2, niiri:supra_threshold_cluster_0002)
 wasDerivedFrom(niiri:center_of_gravity_3, niiri:supra_threshold_cluster_0003)
 wasDerivedFrom(niiri:center_of_gravity_4, niiri:supra_threshold_cluster_0004)
+wasGeneratedBy(niiri:fsl_results_id,niiri:export_id,-)
 wasGeneratedBy(niiri:z_statistic_map_id_1,niiri:contrast_estimation_id_1,-)
 wasDerivedFrom(niiri:supra_threshold_cluster_0003, niiri:excursion_set_map_id_1)
 wasDerivedFrom(niiri:supra_threshold_cluster_0004, niiri:excursion_set_map_id_1)

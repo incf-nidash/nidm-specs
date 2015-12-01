@@ -45,6 +45,9 @@
 @prefix nidm_hasErrorDependence: <http://purl.org/nidash/nidm#NIDM_0000100> .
 @prefix nidm_IndependentError: <http://purl.org/nidash/nidm#NIDM_0000048> .
 @prefix nidm_dependenceMapWiseDependence: <http://purl.org/nidash/nidm#NIDM_0000089> .
+@prefix nidm_NIDMResultsExport: <http://purl.org/nidash/nidm#NIDM_0000166> .
+@prefix nidm_nidmfsl: <http://purl.org/nidash/nidm#NIDM_0000167> .
+@prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_ExtentThreshold: <http://purl.org/nidash/nidm#NIDM_0000026> .
 @prefix nidm_ClusterCenterOfGravity: <http://purl.org/nidash/nidm#NIDM_0000140> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
@@ -61,7 +64,6 @@
 @prefix nidm_noiseRoughnessInVoxels: <http://purl.org/nidash/nidm#NIDM_0000145> .
 @prefix nidm_noiseFWHMInVoxels: <http://purl.org/nidash/nidm#NIDM_0000159> .
 @prefix nidm_noiseFWHMInUnits: <http://purl.org/nidash/nidm#NIDM_0000157> .
-@prefix nidm_softwareVersion: <http://purl.org/nidash/nidm#NIDM_0000122> .
 @prefix nidm_SupraThresholdCluster: <http://purl.org/nidash/nidm#NIDM_0000070> .
 @prefix nidm_clusterSizeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000084> .
 @prefix nidm_clusterLabelId: <http://purl.org/nidash/nidm#NIDM_0000082> .
@@ -182,6 +184,15 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .
+
+niiri:export_id a prov:Activity , nidm_NIDMResultsExport: ;
+	rdfs:label "NIDM-Results export" .
+
+niiri:export_id prov:wasAssociatedWith niiri:exporter_id .
+
+niiri:exporter_id a prov:Agent, nidm_nidmfsl: , prov:SoftwareAgent ;
+	rdfs:label "nidmfsl" ;
+	nidm_softwareVersion: "0.2.0"^^xsd:string .
 
 niiri:extent_threshold_id a prov:Entity, nidm_ExtentThreshold:, obo_FWERadjustedpvalue: ;
     rdfs:label "Cluster Threshold" ;
@@ -363,10 +374,10 @@ niiri:fsl_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
 	nidm_version: "1.1.0"^^xsd:string .
 
+niiri:fsl_results_id prov:wasGeneratedBy niiri:export_id .
+
 _:blank1 a prov:Generation .
-
 niiri:fsl_results_id prov:qualifiedGeneration _:blank1 .
-
 _:blank1 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
 
 niiri:beta_map_id_1 a prov:Entity , nidm_ParameterEstimateMap: ;
