@@ -14,7 +14,7 @@ def main():
 		"DisplayMaskMap": dict(
 			display_map_id="niiri:display_map_id",
 			label="Display Mask Map",
-			location="file://./DisplayMask.nii.gz",
+			location="DisplayMask.nii.gz",
 			user_defined="true",
 			filename="DisplayMask.nii.gz",
 			format="image/nifti",

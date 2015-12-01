@@ -86,7 +86,7 @@ def main():
             filename='image.nii',
             coordinate_space_id="niiri:coordinate_space_id",
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
-            location="file://./image.nii"),
+            location="image.nii"),
         "Map_atLocation_hasMapHeader-img": dict(
             comment="Map: Nifti (.img)",
             map_type="nidm:NIDM_0000052",
@@ -95,17 +95,17 @@ def main():
             coordinate_space_id="niiri:coordinate_space_id",
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
             map_header="niiri:map_header_id",
-            location="file://./image.img"),
+            location="image.img"),
         "MapHeader": dict(
             comment="Map Header: Nifti header (.hdr)",
             map_header_id="niiri:map_header_id",
             filename='image.hdr',
             sha="e43b6e01b0463fe7d40782137867ae43b6e01b0463fe7d40782137867a",
-            location="file://./image.hdr"),
+            location="image.hdr"),
         "Image-DesignMatrix": dict(
             comment="Image: Design Matrix",
             image_id="niiri:design_matrix_png_id",
-            location="file://./DesignMatrix.png",
+            location="DesignMatrix.png",
             filename="DesignMatrix.png",
             format="image/png"
             ),
