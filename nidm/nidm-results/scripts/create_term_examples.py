@@ -144,7 +144,7 @@ def main():
             filename="ParameterEstimate_0001.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             param_est_id="niiri:model_pe_id"),
         "ResidualMeanSquaresMap": dict(
             comment="Residual Mean Squares Map",
@@ -154,7 +154,7 @@ def main():
             filename="ResidualMeanSquares.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             param_est_id="niiri:model_pe_id"),
         "MaskMap": dict(
             comment="Mask Map",
@@ -165,7 +165,7 @@ def main():
             filename="Mask.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             used_by_act_id="niiri:model_pe_id"),
         "ContrastWeights": dict(
             comment="Contrast Weights",
@@ -194,7 +194,7 @@ def main():
             filename="Contrast.nii.gz",
             contrast_name="listening > rest",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             contrast_est_id="niiri:contrast_estimation_id"),
         "ContrastStandardErrorMap": dict(
             comment="Contrast Standard Error Map",
@@ -205,7 +205,7 @@ id",
             format="image/nifti",
             filename="ContrastStandardError.nii.gz",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             contrast_est_id="niiri:contrast_estimation_id"),
         "StatisticMap_T": dict(
             comment="Statistic Map: T",
@@ -219,7 +219,7 @@ id",
             contrast_name="listening > rest",
             error_dof="72.9999999990787",
             effect_dof="1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             coordinate_space_id="niiri:coordinate_space_id_1",
             contrast_est_id="niiri:contrast_estimation_id"),
         "HeightThreshold_equivThresh-FWER": dict(
@@ -288,7 +288,7 @@ id",
             filename="ReselsPerVoxel.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             model_pe_id="niiri:model_pe_id"
             ),
         "ClusterLabelsMap": dict(
@@ -306,7 +306,7 @@ id",
             filename="DisplayMask.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_2",
-            sha="e43b6e01b0463fe7d40782137867a..."
+            sha="e43b6e01b0463fe7d40782137867a"
             ),
         "PeakDefinitionCriteria_MaxPeaks": dict(
             comment="Peak Definition Criteria",
@@ -348,7 +348,7 @@ id",
             max_intensity_projection_id="niiri:maximum_intensity_projection_\
 id",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             num_of_clusters="8",
             p_value="8.95949980872501e-14",
             inference_id="niiri:inference_id"
@@ -408,7 +408,7 @@ id",
             noise_fwhm_in_units="[ 8.87643567497404, 8.89885340008753, \
 7.83541276878791 ]",
             random_field_station="false",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             inference_id="niiri:inference_id"
             ),
         "FSL_ClusterCenterOfGravity": dict(
@@ -445,7 +445,7 @@ id",
             format="image/nifti",
             masked_median="115",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a...",
+            sha="e43b6e01b0463fe7d40782137867a",
             model_pe_id="niiri:model_pe_id"
             ),
         "SPM_DriftModel": dict(

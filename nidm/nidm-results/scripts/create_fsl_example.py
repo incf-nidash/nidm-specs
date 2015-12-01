@@ -64,7 +64,7 @@ def main():
 			filename="ParameterEstimate_0001.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="f51b6e01b0463fe7d40782137867a...",
+			sha="f51b6e01b0463fe7d40782137867a",
 			param_est_id="niiri:model_pe_id"),
 		"ParameterEstimateMap_Location-2": dict(
 			beta_map_id="niiri:beta_map_id_2",
@@ -73,7 +73,7 @@ def main():
 			filename="ParameterEstimate_0002.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="p89b6e01b0463fe7d40782137867a...",
+			sha="p89b6e01b0463fe7d40782137867a",
 			param_est_id="niiri:model_pe_id"),
 		"CoordinateSpace-1": dict(
 			coordinate_space_id="niiri:coordinate_space_id_1",
@@ -100,7 +100,7 @@ def main():
 			filename="ResidualMeanSquares.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="e43b6e01b0463fe7d40782137867a",
 			param_est_id="niiri:model_pe_id"),
 		"MaskMap_Analysis": dict( # The analysis mask
 			mask_id="niiri:mask_id_1",
@@ -110,7 +110,7 @@ def main():
 			user_defined="false",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="e43b6e01b0463fe7d40782137867a",
 			generated_by_act_id="niiri:model_pe_id",
 			used_by_act_id="niiri:contrast_estimation_id"),
 		"ContrastWeights": dict(
@@ -152,7 +152,7 @@ def main():
 			format="image/nifti",
 			filename="ContrastStandardError.nii.gz",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="e43b6e01b0463fe7d40782137867a",
 			contrast_est_id="niiri:contrast_estimation_id"),
 		"FSL_DerivedMap-ContrastVariance": dict(
 			derived_from_map_id="niiri:contrast_variance_map_id",
@@ -160,7 +160,7 @@ def main():
 			filename="varcope1.nii.gz",
 			format="image/nifti",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="e43b6e01b0463fe7d40782137867a",
 			map_id="niiri:contrast_standard_error_map_id"
 			),
 		"StatisticMap": dict(
@@ -225,7 +225,7 @@ def main():
 			user_defined="true",
 			filename="DisplayMask.nii.gz",
 			coordinate_space_id="niiri:coordinate_space_id_2",
-			sha="e43b6e01b0463fe7d40782137867a..."
+			sha="e43b6e01b0463fe7d40782137867a"
 			),
 		"PeakDefinitionCriteria_MaxPeaks": dict(
 			peak_definition_criteria_id="niiri:peak_definition_criteria_id",
@@ -446,7 +446,7 @@ def main():
 			format="image/nifti",
 			masked_median="115",
 			coordinate_space_id="niiri:coordinate_space_id_1",
-			sha="e43b6e01b0463fe7d40782137867a...",
+			sha="e43b6e01b0463fe7d40782137867a",
 			model_pe_id="niiri:model_pe_id"
 			)
 		}
