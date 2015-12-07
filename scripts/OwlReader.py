@@ -513,6 +513,7 @@ class OwlReader():
             PROV['wasAssociatedWith'],
             PROV['qualifiedGeneration'], PROV['wasGeneratedBy'],
             PROV['atLocation'],
+            PROV['activity'],
             PROV['wasDerivedFrom'],
             CRYPTO['sha512']
             ])
