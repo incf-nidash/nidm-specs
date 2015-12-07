@@ -15,6 +15,8 @@ import vcr
 import os
 import logging
 import csv
+import collections
+import re
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_PATH = os.path.dirname(RELPATH)
@@ -38,6 +40,10 @@ class OwlReader():
         # attributes
         self.attributes, self.ranges, \
             self.type_restrictions, self.parent_ranges = self.get_attributes()
+
+        labels = dict(self.graph.subject_objects(RDFS['label']))
+        self.labels = collections.OrderedDict(
+            zip(labels.values(), labels.keys()))
 
     def get_class_names(self):
         # Add PROV sub-types
@@ -327,7 +333,7 @@ class OwlReader():
 
         return prov_class
 
-    def get_definition(self, owl_term):
+    def get_definition(self, owl_term, add_links=True):
         definition = list(self.graph.objects(owl_term, OBO_DEFINITION))
         if definition:
             if len(definition) > 1:
@@ -337,6 +343,23 @@ class OwlReader():
             definition = unicode(definition[0])
         else:
             definition = ""
+
+        # Add link to term in document if the definition refer to a term
+        if add_links:
+            # definition = re.sub(
+                # "("+"|".join(self.labels.keys())+")", "[\\1]", definition)
+            terms = re.findall(r'\[.*?\]', definition)
+            for mterm in sorted(set(terms), key=len, reverse=True):
+                literal = Literal(mterm.replace("[", "").replace("]", ""))
+                if literal in self.labels:
+                    purl = self.labels[literal]
+
+                    if "#" in purl:
+                        definition = definition.replace(
+                            mterm,
+                            "<a title=" +
+                            purl.split("#")[1] + ">" +
+                            mterm.replace("[", "").replace("]", "")+"</a>")
 
         # Remove final dot if present
         if definition:
