@@ -2,8 +2,8 @@ import os
 import codecs
 from OwlReader import OwlReader
 from Constants import *
-import re
 import cgi
+import markdown2
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_ROOT = os.path.dirname(RELPATH)
@@ -156,13 +156,9 @@ class OwlSpecification(object):
 
     def _format_markdown(self, text):
         # Replace links specified in markdown by html
-        match = re.search(r'\[(?P<name>.*)\]\((?P<link>.*)\)', text)
-        if match:
-            text = text.replace(
-                match.group(),
-                '<a href="'+match.group('link')+'">' +
-                match.group('name')+'</a>')
-
+        text = markdown2.markdown(text).replace("<p>", "").replace("</p>", "")
+        # Remove trailing new line
+        text = text[0:-1]
         return text
 
     def format_definition(self, definition):
