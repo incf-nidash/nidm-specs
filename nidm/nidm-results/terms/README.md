@@ -22,7 +22,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/290">#290</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Coordinate Space'"> [more] </a></td>
-    <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)</td>
+    <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a <a title=NIDM_0000052>'Map'</a> (e.g., a <a title=NIDM_0000076>'Statistic Map'</a>, a Contrast Map...)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
