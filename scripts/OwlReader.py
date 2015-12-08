@@ -348,9 +348,9 @@ class OwlReader():
         if add_links:
             # definition = re.sub(
                 # "("+"|".join(self.labels.keys())+")", "[\\1]", definition)
-            terms = re.findall(r'\[.*?\]', definition)
+            terms = re.findall(r'\'.*?\'', definition)
             for mterm in sorted(set(terms), key=len, reverse=True):
-                literal = Literal(mterm.replace("[", "").replace("]", ""))
+                literal = Literal(mterm.replace("'", ""))
                 if literal in self.labels:
                     purl = self.labels[literal]
 
