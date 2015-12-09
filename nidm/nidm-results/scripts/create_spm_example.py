@@ -24,13 +24,13 @@ def main():
         "DesignMatrix": dict(
             design_matrix_id='niiri:design_matrix_id',
             label="Design Matrix",
-            location="file:///path/to/DesignMatrix.csv",
+            location="DesignMatrix.csv",
             format="text/csv",
             filename="DesignMatrix.csv",
             design_matrix_png_id="niiri:design_matrix_png_id"),
         "Image-DesignMatrix": dict(
             image_id="niiri:design_matrix_png_id",
-            location="file:///path/to/DesignMatrix.png",
+            location="DesignMatrix.png",
             filename="DesignMatrix.png",
             format="image/png"
             ),
@@ -51,7 +51,7 @@ def main():
         "MaskMap-1": dict(  # Explicit mask used by Model Param. Est.
             mask_id="niiri:mask_id_1",
             label="Mask Map 1",
-            location="file:///path/to/Mask_1.nii.gz",
+            location="Mask_1.nii.gz",
             filename="Mask_1.nii.gz",
             user_defined="true",
             format="image/nifti",
@@ -80,7 +80,7 @@ def main():
         "ParameterEstimateMap_Location-1": dict(
             beta_map_id="niiri:beta_map_id_1",
             label="Beta Map 1",
-            location="file:///path/to/ParameterEstimate_0001.nii.gz",
+            location="ParameterEstimate_0001.nii.gz",
             filename="ParameterEstimate_0001.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -101,7 +101,7 @@ def main():
         "ParameterEstimateMap_Location-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Beta Map 2",
-            location="file:///path/to/ParameterEstimate_0002.nii",
+            location="ParameterEstimate_0002.nii",
             filename="ParameterEstimate_0002.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -120,7 +120,7 @@ def main():
         "ResidualMeanSquaresMap": dict(
             residual_mean_squares_map_id="niiri:residual_mean_squares_map_id",
             label="Residual Mean Squares Map",
-            location="file:///path/to/ResidualMeanSquares.nii.gz",
+            location="ResidualMeanSquares.nii.gz",
             filename="ResidualMeanSquares.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -130,7 +130,7 @@ def main():
             # (analysis mask)
             mask_id="niiri:mask_id_2",
             label="Mask Map 2",
-            location="file:///path/to/Mask.nii.gz",
+            location="Mask.nii.gz",
             filename="Mask.nii.gz",
             user_defined="false",
             format="image/nifti",
@@ -175,7 +175,7 @@ def main():
         "ContrastMap": dict(
             contrast_map_id="niiri:contrast_map_id",
             label="Contrast Map: listening > rest",
-            location="file:///path/to/Contrast.nii.gz",
+            location="Contrast.nii.gz",
             format="image/nifti",
             filename="Contrast.nii.gz",
             contrast_name="listening > rest",
@@ -186,7 +186,7 @@ def main():
             contrast_standard_error_map_id=
             "niiri:contrast_standard_error_map_id",
             label="Contrast Standard Error Map",
-            location="file:///path/to/ContrastStandardError.nii.gz",
+            location="ContrastStandardError.nii.gz",
             format="image/nifti",
             filename="ContrastStandardError.nii.gz",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -195,7 +195,7 @@ def main():
         "StatisticMap_T": dict(
             statistic_map_id="niiri:statistic_map_id",
             label="Statistic Map: listening > rest",
-            location="file:///path/to/TStatistic.nii.gz",
+            location="TStatistic.nii.gz",
             format="image/nifti",
             filename="TStatistic.nii.gz",
             statistic_type=STATO_TSTATISTIC_STR,
@@ -262,7 +262,7 @@ def main():
         "DisplayMaskMap": dict(
             display_map_id="niiri:display_map_id",
             label="Display Mask Map",
-            location="file:///path/to/DisplayMask.nii.gz",
+            location="DisplayMask.nii.gz",
             format="image/nifti",
             user_defined="true",
             filename="DisplayMask.nii.gz",
@@ -284,7 +284,7 @@ def main():
         "MaskMap-2": dict(  # Explicit mask used by Inference
             mask_id="niiri:mask_id_3",
             label="Mask Map",
-            location="file:///path/to/Mask_3.nii.gz",
+            location="Mask_3.nii.gz",
             filename="Mask_3.nii.gz",
             user_defined="true",
             format="image/nifti",
@@ -318,7 +318,7 @@ def main():
         "ExcursionSetMap": dict(
             id="niiri:excursion_set_map_id",
             label="Excursion Set Map",
-            location="file:///path/to/ExcursionSet.nii.gz",
+            location="ExcursionSet.nii.gz",
             format="image/nifti",
             filename="ExcursionSet.nii.gz",
             cluster_label_map_id="niiri:cluster_label_map_id",
@@ -477,7 +477,7 @@ def main():
             ),
         "SearchSpaceMaskMap": dict(
             search_space_id="niiri:search_space_mask_id",
-            location="file:///path/to/SearchSpaceMask.nii.gz",
+            location="SearchSpaceMask.nii.gz",
             filename="SearchSpaceMask.nii.gz",
             label="Search Space Mask Map",
             format="image/nifti",
@@ -551,7 +551,7 @@ def main():
         "SPM_ReselsPerVoxelMap": dict(
             resels_per_voxel_map_id="niiri:resels_per_voxel_map_id",
             label="Resels per Voxel Map",
-            location="file:///path/to/ReselsPerVoxel.nii.gz",
+            location="ReselsPerVoxel.nii.gz",
             filename="ReselsPerVoxel.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -576,7 +576,7 @@ def main():
             ),
         "ClusterLabelsMap": dict(
             cluster_label_map_id="niiri:cluster_label_map_id",
-            location="file:///path/to/ClusterLabels.nii.gz",
+            location="ClusterLabels.nii.gz",
             filename="ClusterLabels.nii.gz",
             format="image/nifti"
             ),
@@ -588,14 +588,14 @@ def main():
             ),
         "Image": dict(
             image_id="niiri:maximum_intensity_projection_id",
-            location="file:///path/to/MaximumIntensityProjection.png",
+            location="MaximumIntensityProjection.png",
             filename="MaximumIntensityProjection.png",
             format="image/png"
             ),
         "GrandMeanMap": dict(
             grand_mean_map_id="niiri:grand_mean_map_id",
             label="Grand Mean Map",
-            location="file:///path/to/GrandMean.nii.gz",
+            location="GrandMean.nii.gz",
             filename="GrandMean.nii.gz",
             format="image/nifti",
             masked_median="115",
