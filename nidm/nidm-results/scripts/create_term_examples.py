@@ -363,6 +363,20 @@ id",
             peak_def_id="niiri:peak_definition_criteria_id",
             cluster_def_id="niiri:cluster_definition_criteria_id"
             ),
+        "ConjunctionInference": dict(
+            conj_inference_id="niiri:inference_id",
+            label="Conjunction Inference",
+            alternative_hyp="nidm:NIDM_0000060",
+            stat_map_id_1="niiri:statistic_map_id",
+            stat_map_id_2="niiri:statistic_map_id_2",
+            height_thresh_id="niiri:height_threshold_id",
+            extent_thresh_id="niiri:extent_threshold_id",
+            display_mask_id="niiri:display_map_id",
+            peak_def_id="niiri:peak_definition_criteria_id",
+            cluster_def_id="niiri:cluster_definition_criteria_id",
+            mask_id="niiri:mask_id_1",
+            software_id="niiri:software_id"
+            ),        
         "ExcursionSetMap": dict(
             comment="Excursion Set Map",
             id="niiri:excursion_set_map_id",
