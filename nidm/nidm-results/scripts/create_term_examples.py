@@ -16,7 +16,8 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_Q_VALUE_FDR_QNAME, \
-    NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME
+    NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME, \
+    NIDM_FINITE_IMPULSE_RESPONSE_HRB
 
 
 def main():
@@ -77,6 +78,17 @@ def main():
             filename="DesignMatrix.csv",
             design_matrix_png_id="niiri:design_matrix_png_id",
             hrf_basis="niiri:hrf_basis_id",
+            drift_model="niiri:drift_model_id",
+            regressors="[\\\"Sn(1) active*bf(1)\\\",\\\"Sn(1) constant\\\"]"),
+        "DesignMatrix_1stLevel-FIR": dict(
+            comment="HRF: FIR Basis Set",
+            design_matrix_id='niiri:first_level_design_matrix_id',
+            label="First-Level Design Matrix",
+            location="DesignMatrix.csv",
+            format="text/csv",
+            filename="DesignMatrix.csv",
+            design_matrix_png_id="niiri:design_matrix_png_id",
+            hrf_basis=NIDM_FINITE_IMPULSE_RESPONSE_HRB,
             drift_model="niiri:drift_model_id",
             regressors="[\\\"Sn(1) active*bf(1)\\\",\\\"Sn(1) constant\\\"]"),
         "Map_atLocation-nii": dict(
