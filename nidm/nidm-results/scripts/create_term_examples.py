@@ -18,7 +18,9 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_Q_VALUE_FDR_QNAME, \
     NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME, \
     NIDM_FINITE_IMPULSE_RESPONSE_HRB, SPM_CANONICAL_HRF, \
-    SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE
+    SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
+    NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
+    STATO_UNSTRUCTURED_COVARIANCE
 
 
 def main():
@@ -150,6 +152,15 @@ def main():
             variance_spatial="nidm:NIDM_0000073",
             dependence="nidm:NIDM_0000048",
             dependence_spatial="nidm:NIDM_0000073"
+            ),
+        "ErrorModel-SPMnonSphericity": dict(
+            comment="Error Model: SPM non sphericity",
+            error_model_id="niiri:error_model_id",
+            noise_distribution="obo:STATO_0000227",
+            variance_homo="false",
+            variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
+            dependence=STATO_UNSTRUCTURED_COVARIANCE,
+            dependence_spatial=NIDM_SPATIALLY_GLOBAL_MODEL
             ),
         "ModelParametersEstimation": dict(
             comment="Model Parameters Estimation",
@@ -376,7 +387,7 @@ id",
             cluster_def_id="niiri:cluster_definition_criteria_id",
             mask_id="niiri:mask_id_1",
             software_id="niiri:software_id"
-            ),        
+            ),
         "ExcursionSetMap": dict(
             comment="Excursion Set Map",
             id="niiri:excursion_set_map_id",
