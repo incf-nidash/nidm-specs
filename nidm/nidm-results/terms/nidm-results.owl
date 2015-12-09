@@ -58,24 +58,6 @@ dc:description rdfs:range dctype:Image .
 
 
 
-###  http://purl.org/nidash/nidm#NIDM_0000010
-
-nidm:NIDM_0000010 rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:label "has fMRI Design" ;
-                  
-                  obo:IAO_0000115 "A property that associates an fMRI design to a design matrix in first-level fMRI analyses." ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 ;
-                  
-                  rdfs:domain nidm:NIDM_0000019 ;
-                  
-                  rdfs:range nidm:NIDM_0000155 .
-
-
-
 ###  http://purl.org/nidash/nidm#NIDM_0000088
 
 nidm:NIDM_0000088 rdf:type owl:ObjectProperty ;
@@ -877,9 +859,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -909,9 +891,9 @@ nidm:NIDM_0000115 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -939,9 +921,9 @@ nidm:NIDM_0000116 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -969,9 +951,9 @@ nidm:NIDM_0000119 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -1835,12 +1817,12 @@ dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -2168,12 +2150,12 @@ nidm:NIDM_0000019 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2550,22 +2532,22 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty prov:atLocation ;
-                                    owl:onClass prov:Location ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
+                                    owl:onProperty prov:atLocation ;
+                                    owl:onClass prov:Location ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2589,7 +2571,7 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2599,12 +2581,12 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -3192,22 +3174,6 @@ nidm:NIDM_0000151 rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#NIDM_0000155
-
-nidm:NIDM_0000155 rdf:type owl:Class ;
-                  
-                  rdfs:label "fMRI Design Type" ;
-                  
-                  rdfs:subClassOf prov:Entity ;
-                  
-                  obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design." ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
 ###  http://purl.org/nidash/nidm#NIDM_0000160
 
 nidm:NIDM_0000160 rdf:type owl:Class ;
@@ -3290,9 +3256,9 @@ nidm:NIDM_0000166 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Activity ;
                   
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Export.txt"^^xsd:anyURI ;
+                  
                   obo:IAO_0000115 "The process of exporting results created by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive." ;
-
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Export.txt"^^xsd:anyURI ;                      
                   
                   obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -3306,9 +3272,9 @@ nidm:NIDM_0000167 rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:NIDM_0000165 ;
                   
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExporterSoftware-FSL.txt"^^xsd:anyURI ;
+                  
                   obo:IAO_0000115 "Python library for the export of feat folders (generated by FSL) to NIDM-Results. Source available at: https://github.com/incf-nidash/nidm-results_fsl/." ;
-
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExporterSoftware-FSL.txt"^^xsd:anyURI ;    
                   
                   obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -3322,9 +3288,9 @@ nidm:NIDM_0000168 rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:NIDM_0000165 ;
                   
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExporterSoftware-SPM.txt"^^xsd:anyURI ;
+                  
                   obo:IAO_0000115 "Matlab m file for the export of SPM results to NIDM-Results. Source available at: http://www.fil.ion.ucl.ac.uk/spm/download/toolbox/NIDM/spm_nidm.zip/." ;
-
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ExporterSoftware-SPM.txt"^^xsd:anyURI ;                       
                   
                   obo:IAO_0000114 obo:IAO_0000124 .
 
@@ -3719,51 +3685,6 @@ nidm:NIDM_0000130 rdf:type nidm:NIDM_0000080 ,
                   obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                   
                   obo:IAO_0000115 "A pair of voxels are 6-Connected if they share a face." ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://purl.org/nidash/nidm#NIDM_0000152
-
-nidm:NIDM_0000152 rdf:type nidm:NIDM_0000155 ,
-                           owl:NamedIndividual ;
-                  
-                  rdfs:label "Block-Based Design" ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
-                  
-                  obo:IAO_0000115 "An fMRI design comprised of epochs of stimulus and/or behavior." ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://purl.org/nidash/nidm#NIDM_0000153
-
-nidm:NIDM_0000153 rdf:type nidm:NIDM_0000155 ,
-                           owl:NamedIndividual ;
-                  
-                  rdfs:label "Event-Related Design" ;
-                  
-                  obo:IAO_0000115 "An fMRI design comprised of discrete events of stimulus and/or behavior." ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://purl.org/nidash/nidm#NIDM_0000154
-
-nidm:NIDM_0000154 rdf:type nidm:NIDM_0000155 ,
-                           owl:NamedIndividual ;
-                  
-                  rdfs:label "Mixed Design" ;
-                  
-                  obo:IAO_0000115 "An fMRI design comprised of both epochs & discrete events of stimulus and/or behavior." ;
-                  
-                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299" ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
 

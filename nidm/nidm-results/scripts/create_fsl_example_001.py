@@ -16,7 +16,7 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_GLS_STR, STATO_GLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_ZSTATISTIC_STR, STATO_TSTATISTIC_LABEL, STATO_ZSTATISTIC_LABEL, \
-    NIDM_EVENT_RELATED_DESIGN, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME
+    OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME
 
 
 def main():
@@ -30,7 +30,6 @@ def main():
             design_matrix_png_id="niiri:design_matrix_png_id",
             regressors="[\\\"Gen\\\", \\\"Gen*temporal_derivative\\\""
             ", \\\"Shad\\\", \\\"Shad*temporal_derivative\\\"]",
-            design="nidm:"+str(NIDM_EVENT_RELATED_DESIGN).split("#")[1],
             hrf_basis="fsl:FSL_0000001",
             drift_model="niiri:drift_model_id"),
         "FSL_DriftModel": dict(

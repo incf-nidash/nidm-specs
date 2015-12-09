@@ -29,7 +29,6 @@ def main():
             filename="DesignMatrix.csv",
             design_matrix_png_id="niiri:design_matrix_png_id",
             regressors='[\\\"Sn(1) active*bf(1)\\\", \\\"Sn(1) constant\\\"]',
-            design="nidm:NIDM_0000152",  # block-based design
             hrf_basis="spm:SPM_0000004",
             drift_model="niiri:drift_model_id"),
         "SPM_DriftModel": dict(

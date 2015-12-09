@@ -762,7 +762,6 @@ niiri:data_id a prov:Entity , nidm_DataScaling: , prov:Collection ;
                     <li><span class="attribute" id="nidm:'Design Matrix'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000019">nidm:'Design Matrix'</a>.</li>
                         <li><a title="description" href ="http://purl.org/dc/elements/1.1/description"><dfn title="description" href ="http://purl.org/dc/elements/1.1/description">dc:description</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'dc:description'""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) An account of the resource. (range <a title="Image" href ="http://purl.org/dc/dcmitype/Image">dctype:Image</a>).</li>
                         <li><a title="format" href ="http://purl.org/dc/terms/format">dct:format</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The file format, physical medium, or dimensions of the resource. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="NIDM_0000010"><dfn title="NIDM_0000010">nidm:'has fMRI Design'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has fMRI Design''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A property that associates an fMRI design to a design matrix in first-level fMRI analyses. (range <a title="NIDM_0000155">nidm:'fMRI Design Type'</a>).</li>
                         <li><a title="NIDM_0000021"><dfn title="NIDM_0000021">nidm:'regressor Names'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'regressor Names''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A list of abstract names associated with each column of the design matrix (e.g. ["motor_left", "motor_right"]). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                         <li><a title="NIDM_0000088"><dfn title="NIDM_0000088">nidm:'has Drift Model'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Drift Model''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A property that associates a drift model to a design matrix (only used for first-level fMRI experiments). (range <a title="NIDM_0000087">nidm:'Drift Model'</a> such as <a title="LegendrePolynomialDriftModel">afni:'AFNI's Legendre Polinomial Drift Model'</a>, <a title="FSL_0000002">fsl:'Gaussian Running Line Drift Model'</a>, <a title="SPM_0000002">spm:'DCT Drift Model'</a>).</li>
                         <li><a title="NIDM_0000102"><dfn title="NIDM_0000102">nidm:'has HRF Basis'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has HRF Basis''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A property that associates a set of functions that, when convolved with the anticipated neural responses, yields a set of regressors to model the anticipated hemodynamic responses in a design matrix. (range <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a> such as <a title="BLOCK">afni:BLOCK</a>, <a title="NIDM_0000067">nidm:'Custom Basis Set'</a>, <a title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</a>, <a title="NIDM_0000069">nidm:'Fourier Basis Set'</a>, <a title="NIDM_0000030">nidm:'Gamma Basis Set'</a>, <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a>, <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a>, <a title="NIDM_0000150">nidm:'Linear Spline Basis Set'</a>, <a title="NIDM_0000151">nidm:'Sine Basis Set'</a>).</li>
@@ -788,8 +787,6 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
 
 @prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
 @prefix nidm_regressorNames: &lt;http://purl.org/nidash/nidm#NIDM_0000021&gt; .
-@prefix nidm_hasfMRIDesign: &lt;http://purl.org/nidash/nidm#NIDM_0000010&gt; .
-@prefix nidm_BlockBasedDesign: &lt;http://purl.org/nidash/nidm#NIDM_0000152&gt; .
 @prefix nidm_hasHRFBasis: &lt;http://purl.org/nidash/nidm#NIDM_0000102&gt; .
 @prefix nidm_hasDriftModel: &lt;http://purl.org/nidash/nidm#NIDM_0000088&gt; .
 
@@ -801,7 +798,6 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
     nfo:fileName "DesignMatrix.csv"^^xsd:string ;
     dc:description niiri:design_matrix_png_id ;
     nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
-    nidm_hasfMRIDesign: nidm_BlockBasedDesign: ;
     nidm_hasHRFBasis: niiri:hrf_basis_id ;
     nidm_hasDriftModel: niiri:drift_model_id.
 </pre>
@@ -966,13 +962,6 @@ niiri:drift_model_id a prov:Entity , spm_DCTDriftModel: ;
 	rdfs:label "SPM's DCT Drift Model" ;
 	spm_SPMsDriftCutoffPeriod: "128"^^xsd:float .</pre>
                 </section>
-                </section>
-            <!-- nidm:'fMRI Design Type' (NIDM_0000155) -->
-            <section id="section-nidm:'fMRI Design Type'">
-                <h1 label="NIDM_0000155">nidm:'fMRI Design Type'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000155"><dfn title="NIDM_0000155">nidm:'fMRI Design Type'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'fMRI Design Type''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design.<p> <a title="NIDM_0000155">nidm:'fMRI Design Type'</a> is a prov:Entity.</p>
-                </div> Examples of <a title="NIDM_0000155">nidm:'fMRI Design Type'</a> includes <ul><li><a title="NIDM_0000152"><dfn title="NIDM_0000152">nidm:'Block-Based Design'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Block-Based Design''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: An fMRI design comprised of epochs of stimulus and/or behavior.</li><li><a title="NIDM_0000153"><dfn title="NIDM_0000153">nidm:'Event-Related Design'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Event-Related Design''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: An fMRI design comprised of discrete events of stimulus and/or behavior.</li><li><a title="NIDM_0000154"><dfn title="NIDM_0000154">nidm:'Mixed Design'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Mixed Design''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: An fMRI design comprised of both epochs & discrete events of stimulus and/or behavior.</li></ul>
                 </section>
                 </section>
             <!-- nidm:'Error Model' (NIDM_0000023) -->

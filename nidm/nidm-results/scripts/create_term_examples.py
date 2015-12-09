@@ -76,7 +76,6 @@ def main():
             format="text/csv",
             filename="DesignMatrix.csv",
             design_matrix_png_id="niiri:design_matrix_png_id",
-            design="nidm:NIDM_0000152",  # block-based design
             hrf_basis="niiri:hrf_basis_id",
             drift_model="niiri:drift_model_id",
             regressors="[\\\"Sn(1) active*bf(1)\\\",\\\"Sn(1) constant\\\"]"),

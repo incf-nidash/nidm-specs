@@ -60,7 +60,6 @@ def design_matrix_event_related():
             filename="DesignMatrix.csv",
             design_matrix_png_id="niiri:design_matrix_png_id",
             regressors="",
-            design=q_graph.qname(NIDM_EVENT_RELATED_DESIGN),
             hrf_basis="",
             drift_model=""),
         "ActivityUsedEntity": dict(
