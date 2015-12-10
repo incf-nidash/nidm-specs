@@ -866,7 +866,31 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <h1 label="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000037"><dfn title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Hemodynamic Response Function Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis which is the derivative of an hemodynamic response function.<p> <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> is a <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a>.</p>
-                </div> Examples of <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> includes <ul><li><a title="FSL_0000003"><dfn title="FSL_0000003">fsl:'FSL's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function.</li><li><a title="SPM_0000003"><dfn title="SPM_0000003">spm:'SPM's Dispersion Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Dispersion Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function.</li><li><a title="SPM_0000006"><dfn title="SPM_0000006">spm:'SPM's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function.</li></ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  HRF: SPM's Informed Basis Set">
+
+@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
+@prefix nidm_regressorNames: &lt;http://purl.org/nidash/nidm#NIDM_0000021&gt; .
+@prefix nidm_hasHRFBasis: &lt;http://purl.org/nidash/nidm#NIDM_0000102&gt; .
+@prefix nidm_hasDriftModel: &lt;http://purl.org/nidash/nidm#NIDM_0000088&gt; .
+@prefix spm_SPMsCanonicalHRF: &lt;http://purl.org/nidash/spm#SPM_0000004&gt; .
+@prefix spm_SPMsTemporalDerivative: &lt;http://purl.org/nidash/spm#SPM_0000006&gt; .
+@prefix spm_SPMsDispersionDerivative: &lt;http://purl.org/nidash/spm#SPM_0000003&gt; .
+
+
+niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
+    rdfs:label "First-Level Design Matrix" ;
+    prov:atLocation "DesignMatrix.csv"^^xsd:anyURI ;
+    dct:format "text/csv"^^xsd:string ;
+    nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+    dc:description niiri:design_matrix_png_id ;
+    nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
+    nidm_hasHRFBasis: spm_SPMsCanonicalHRF: ;
+    nidm_hasDriftModel: niiri:drift_model_id ;
+    nidm_hasHRFBasis: spm_SPMsTemporalDerivative: ;
+    nidm_hasHRFBasis: spm_SPMsDispersionDerivative: .</pre> Examples of <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> includes <ul><li><a title="FSL_0000003"><dfn title="FSL_0000003">fsl:'FSL's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function.</li><li><a title="SPM_0000003"><dfn title="SPM_0000003">spm:'SPM's Dispersion Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Dispersion Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function.</li><li><a title="SPM_0000006"><dfn title="SPM_0000006">spm:'SPM's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function.</li></ul>
                 </section>
             <!-- nidm:'Hemodynamic Response Function' (NIDM_0000035) -->
             <section id="section-nidm:'Hemodynamic Response Function'">
@@ -1021,12 +1045,6 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .</pre>
-            <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
-            <section id="section-nidm:'Error Parameter Map-Wise Dependence'">
-                <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000071"><dfn title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Error Parameter Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Map-wise dependence structure of a parameter in the error model (i.e. variance or dependence parameter). For example, whether a temporal autocorrelation parameter is estimated at each element separately, estimated using data in a local neighbourhood, or estimated using all elements in the map.<p> <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> is a prov:Entity and  has the following children: <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>.</p>
-                </div>
                 </ul>
                 </div>
                 <pre class='example highlight' title="  Error Model: SPM non sphericity">
@@ -1049,6 +1067,12 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: obo_unstructuredcovariancestructure: ;
     nidm_dependenceMapWiseDependence: nidm_ConstantParameter: .</pre>
+            <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
+            <section id="section-nidm:'Error Parameter Map-Wise Dependence'">
+                <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000071"><dfn title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Error Parameter Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Map-wise dependence structure of a parameter in the error model (i.e. variance or dependence parameter). For example, whether a temporal autocorrelation parameter is estimated at each element separately, estimated using data in a local neighbourhood, or estimated using all elements in the map.<p> <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> is a prov:Entity and  has the following children: <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>.</p>
+                </div>
             <!-- nidm:'Constant Parameter' (NIDM_0000072) -->
             <section id="section-nidm:'Constant Parameter'">
                 <h1 label="NIDM_0000072">nidm:'Constant Parameter'</h1>
