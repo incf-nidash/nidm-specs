@@ -223,7 +223,7 @@ def dev_to_release(text, full_version):
         "nidm-results_dev.html",
         "nidm-results_" + version + ".html", 1)
     text = text.replace(
-        "img/", "img/nidm-results_" + version + "/")
+        "img/nidm-results_dev/", "img/nidm-results_" + version + "/")
     return text
 
 
