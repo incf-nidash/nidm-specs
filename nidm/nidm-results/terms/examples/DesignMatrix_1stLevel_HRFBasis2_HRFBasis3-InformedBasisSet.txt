@@ -1,9 +1,12 @@
-#  Design Matrix: Subject Level
+#  HRF: SPM's Informed Basis Set
 
 @prefix nidm_DesignMatrix: <http://purl.org/nidash/nidm#NIDM_0000019> .
 @prefix nidm_regressorNames: <http://purl.org/nidash/nidm#NIDM_0000021> .
 @prefix nidm_hasHRFBasis: <http://purl.org/nidash/nidm#NIDM_0000102> .
 @prefix nidm_hasDriftModel: <http://purl.org/nidash/nidm#NIDM_0000088> .
+@prefix spm_SPMsCanonicalHRF: <http://purl.org/nidash/spm#SPM_0000004> .
+@prefix spm_SPMsTemporalDerivative: <http://purl.org/nidash/spm#SPM_0000006> .
+@prefix spm_SPMsDispersionDerivative: <http://purl.org/nidash/spm#SPM_0000003> .
 
 
 niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
@@ -13,5 +16,7 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
     nfo:fileName "DesignMatrix.csv"^^xsd:string ;
     dc:description niiri:design_matrix_png_id ;
     nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
-    nidm_hasHRFBasis: niiri:hrf_basis_id ;
-    nidm_hasDriftModel: niiri:drift_model_id .
+    nidm_hasHRFBasis: spm_SPMsCanonicalHRF: ;
+    nidm_hasDriftModel: niiri:drift_model_id ;
+    nidm_hasHRFBasis: spm_SPMsTemporalDerivative: ;
+    nidm_hasHRFBasis: spm_SPMsDispersionDerivative: .

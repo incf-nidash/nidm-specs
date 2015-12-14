@@ -142,23 +142,40 @@ class ExampleFromTemplate(object):
         return example
 
     def replace_alphanum_id_by_prefixes(self, example):
+        # FIXME: This should be done automatically using prefixes.csv
         alphanum_ids = re.findall('nidm:NIDM_\d*', example) + \
+                       re.findall(
+                        'http://purl.org/nidash/nidm#NIDM_\d*', example) + \
                        re.findall('obo:STATO_\d*', example) + \
+                       re.findall(
+                        'http://purl.obolibrary.org/obo/STATO_\d*', example) +\
                        re.findall('obo:OBI_\d*', example) + \
                        re.findall('spm:SPM_\d*', example) + \
+                       re.findall(
+                        'http://purl.org/nidash/spm#SPM_\d*', example) + \
                        re.findall('fsl:FSL_\d*', example) + \
+                       re.findall(
+                        'http://purl.org/nidash/fsl#FSL_\d*', example) + \
                        re.findall('nlx:[\w-]*', example)
 
         prefix_definitions = ""
         for idt in alphanum_ids:
             if idt.startswith("nidm:"):
                 term_uri = NIDM[idt.split(":")[1]]
+            elif idt.startswith("http://purl.org/nidash/nidm"):
+                term_uri = NIDM[idt.split("#")[1]]
             elif idt.startswith("obo:"):
                 term_uri = OBO[idt.split(":")[1]]
+            elif idt.startswith("http://purl.obolibrary.org/obo/STATO_"):
+                term_uri = OBO[idt.split("/")[-1]]
             elif idt.startswith("spm:"):
                 term_uri = SPM[idt.split(":")[1]]
+            elif idt.startswith("http://purl.org/nidash/spm"):
+                term_uri = SPM[idt.split("#")[1]]
             elif idt.startswith("fsl:"):
                 term_uri = FSL[idt.split(":")[1]]
+            elif idt.startswith("http://purl.org/nidash/fsl"):
+                term_uri = FSL[idt.split("#")[1]]
             elif idt.startswith("nlx:"):
                 term_uri = NLX[idt.split(":")[1]]
 

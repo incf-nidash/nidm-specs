@@ -777,7 +777,7 @@ niiri:data_id a prov:Entity , nidm_DataScaling: , prov:Collection ;
 
 niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
     rdfs:label "Design Matrix" ;
-    prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
+    prov:atLocation "DesignMatrix.csv"^^xsd:anyURI ;
     dct:format "text/csv"^^xsd:string ;
     nfo:fileName "DesignMatrix.csv"^^xsd:string ;
     dc:description niiri:design_matrix_png_id .</pre>
@@ -793,14 +793,13 @@ niiri:design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
 
 niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
     rdfs:label "First-Level Design Matrix" ;
-    prov:atLocation "file:///path/to/DesignMatrix.csv"^^xsd:anyURI ;
+    prov:atLocation "DesignMatrix.csv"^^xsd:anyURI ;
     dct:format "text/csv"^^xsd:string ;
     nfo:fileName "DesignMatrix.csv"^^xsd:string ;
     dc:description niiri:design_matrix_png_id ;
     nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
     nidm_hasHRFBasis: niiri:hrf_basis_id ;
-    nidm_hasDriftModel: niiri:drift_model_id.
-</pre>
+    nidm_hasDriftModel: niiri:drift_model_id .</pre>
             <!-- nidm:'Convolution Basis Set' (NIDM_0000036) -->
             <section id="section-nidm:'Convolution Basis Set'">
                 <h1 label="NIDM_0000036">nidm:'Convolution Basis Set'</h1>
@@ -827,6 +826,26 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <div class="glossary-ref">
                     <a title="NIDM_0000028"><dfn title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Finite Impulse Response Basis Set''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Set of Finite impulse response (FIR) filters, with FIR the convolution kernel is represented as a set of discrete fixed-width "impulses" (definition adapted from <a href="http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)">FSL wiki</a>.<p> <a title="NIDM_0000028">nidm:'Finite Impulse Response Basis Set'</a> is a <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a>.</p>
                 </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  HRF: FIR Basis Set">
+
+@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
+@prefix nidm_regressorNames: &lt;http://purl.org/nidash/nidm#NIDM_0000021&gt; .
+@prefix nidm_hasHRFBasis: &lt;http://purl.org/nidash/nidm#NIDM_0000102&gt; .
+@prefix nidm_hasDriftModel: &lt;http://purl.org/nidash/nidm#NIDM_0000088&gt; .
+@prefix nidm_FiniteImpulseResponseBasisSet: &lt;http://purl.org/nidash/nidm#NIDM_0000028&gt; .
+
+
+niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
+    rdfs:label "First-Level Design Matrix" ;
+    prov:atLocation "DesignMatrix.csv"^^xsd:anyURI ;
+    dct:format "text/csv"^^xsd:string ;
+    nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+    dc:description niiri:design_matrix_png_id ;
+    nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
+    nidm_hasHRFBasis: nidm_FiniteImpulseResponseBasisSet: ;
+    nidm_hasDriftModel: niiri:drift_model_id .</pre>
                 </section>
             <!-- nidm:'Fourier Basis Set' (NIDM_0000069) -->
             <section id="section-nidm:'Fourier Basis Set'">
@@ -847,7 +866,31 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <h1 label="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000037"><dfn title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Hemodynamic Response Function Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis which is the derivative of an hemodynamic response function.<p> <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> is a <a title="NIDM_0000036">nidm:'Convolution Basis Set'</a>.</p>
-                </div> Examples of <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> includes <ul><li><a title="FSL_0000003"><dfn title="FSL_0000003">fsl:'FSL's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function.</li><li><a title="SPM_0000003"><dfn title="SPM_0000003">spm:'SPM's Dispersion Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Dispersion Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function.</li><li><a title="SPM_0000006"><dfn title="SPM_0000006">spm:'SPM's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function.</li></ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  HRF: SPM's Informed Basis Set">
+
+@prefix nidm_DesignMatrix: &lt;http://purl.org/nidash/nidm#NIDM_0000019&gt; .
+@prefix nidm_regressorNames: &lt;http://purl.org/nidash/nidm#NIDM_0000021&gt; .
+@prefix nidm_hasHRFBasis: &lt;http://purl.org/nidash/nidm#NIDM_0000102&gt; .
+@prefix nidm_hasDriftModel: &lt;http://purl.org/nidash/nidm#NIDM_0000088&gt; .
+@prefix spm_SPMsCanonicalHRF: &lt;http://purl.org/nidash/spm#SPM_0000004&gt; .
+@prefix spm_SPMsTemporalDerivative: &lt;http://purl.org/nidash/spm#SPM_0000006&gt; .
+@prefix spm_SPMsDispersionDerivative: &lt;http://purl.org/nidash/spm#SPM_0000003&gt; .
+
+
+niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
+    rdfs:label "First-Level Design Matrix" ;
+    prov:atLocation "DesignMatrix.csv"^^xsd:anyURI ;
+    dct:format "text/csv"^^xsd:string ;
+    nfo:fileName "DesignMatrix.csv"^^xsd:string ;
+    dc:description niiri:design_matrix_png_id ;
+    nidm_regressorNames: "[\"Sn(1) active*bf(1)\",\"Sn(1) constant\"]"^^xsd:string ;
+    nidm_hasHRFBasis: spm_SPMsCanonicalHRF: ;
+    nidm_hasDriftModel: niiri:drift_model_id ;
+    nidm_hasHRFBasis: spm_SPMsTemporalDerivative: ;
+    nidm_hasHRFBasis: spm_SPMsDispersionDerivative: .</pre> Examples of <a title="NIDM_0000037">nidm:'Hemodynamic Response Function Derivative'</a> includes <ul><li><a title="FSL_0000003"><dfn title="FSL_0000003">fsl:'FSL's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function.</li><li><a title="SPM_0000003"><dfn title="SPM_0000003">spm:'SPM's Dispersion Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Dispersion Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to spatial dispersion of the SPM's Canonical heamodynamic response function.</li><li><a title="SPM_0000006"><dfn title="SPM_0000006">spm:'SPM's Temporal Derivative'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Temporal Derivative''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Hemodynamic response function basis that is the derivative with respect to time of the SPM's Canonical heamodynamic response function.</li></ul>
                 </section>
             <!-- nidm:'Hemodynamic Response Function' (NIDM_0000035) -->
             <section id="section-nidm:'Hemodynamic Response Function'">
@@ -1002,6 +1045,28 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: nidm_IndependentError: ;
     nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Error Model: SPM non sphericity">
+
+@prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
+@prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
+@prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
+@prefix nidm_varianceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
+@prefix nidm_hasErrorDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000100&gt; .
+@prefix nidm_dependenceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
+@prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
+@prefix nidm_ConstantParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000072&gt; .
+@prefix obo_normaldistribution: &lt;http://purl.obolibrary.org/obo/STATO_0000227&gt; .
+@prefix obo_unstructuredcovariancestructure: &lt;http://purl.obolibrary.org/obo/STATO_0000405&gt; .
+
+
+niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
+    nidm_hasErrorDistribution: obo_normaldistribution: ;
+    nidm_errorVarianceHomogeneous: "false"^^xsd:boolean ;
+    nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
+    nidm_hasErrorDependence: obo_unstructuredcovariancestructure: ;
+    nidm_dependenceMapWiseDependence: nidm_ConstantParameter: .</pre>
             <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
             <section id="section-nidm:'Error Parameter Map-Wise Dependence'">
                 <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
@@ -1061,7 +1126,7 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
 
 niiri:grand_mean_map_id a prov:Entity , nidm_GrandMeanMap: ;
 	rdfs:label "Grand Mean Map" ;
-	prov:atLocation "file:///path/to/GrandMean.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "GrandMean.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "GrandMean.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_maskedMedian: "115"^^xsd:float ;
@@ -1102,7 +1167,7 @@ niiri:model_pe_id prov:used niiri:mask_id_2 .
 niiri:mask_id_2 a prov:Entity , nidm_MaskMap: ;
 	rdfs:label "Mask" ;
     nidm_isUserDefined: "false"^^xsd:boolean ;
-	prov:atLocation "file:///path/to/Mask.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "Mask.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "Mask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
@@ -1167,7 +1232,7 @@ niiri:beta_map_id_1 a prov:Entity , nidm_ParameterEstimateMap: ;
 
 niiri:resels_per_voxel_map_id a prov:Entity , nidm_ReselsPerVoxelMap: ;
 	rdfs:label "Resels per Voxel Map" ;
-	prov:atLocation "file:///path/to/ReselsPerVoxel.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "ReselsPerVoxel.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ReselsPerVoxel.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
@@ -1202,7 +1267,7 @@ niiri:resels_per_voxel_map_id a prov:Entity , nidm_ReselsPerVoxelMap: ;
 
 niiri:residual_mean_squares_map_id a prov:Entity , nidm_ResidualMeanSquaresMap: ;
 	rdfs:label "Residual Mean Squares Map" ;
-	prov:atLocation "file:///path/to/ResidualMeanSquares.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "ResidualMeanSquares.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ResidualMeanSquares.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
@@ -1357,7 +1422,7 @@ niiri:contrast_id a prov:Entity , obo_contrastweightmatrix: ;
 
 niiri:contrast_map_id a prov:Entity , nidm_ContrastMap: ;
 	rdfs:label "Contrast Map: listening &gt; rest" ;
-	prov:atLocation "file:///path/to/Contrast.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "Contrast.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
 	nfo:fileName "Contrast.nii.gz"^^xsd:string ;
 	nidm_contrastName: "listening &gt; rest"^^xsd:string ;
@@ -1394,7 +1459,7 @@ niiri:contrast_map_id a prov:Entity , nidm_ContrastMap: ;
 
 niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorMap: ;
 	rdfs:label "Contrast Standard Error Map" ;
-	prov:atLocation "file:///path/to/ContrastStandardError.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "ContrastStandardError.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ContrastStandardError.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
@@ -1457,7 +1522,7 @@ niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorM
 
 niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	rdfs:label "Statistic Map: listening &gt; rest" ;
-	prov:atLocation "file:///path/to/TStatistic.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "TStatistic.nii.gz"^^xsd:anyURI ;
 	nidm_statisticType: obo_tstatistic: ;
 	nfo:fileName "TStatistic.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
@@ -1617,6 +1682,20 @@ niiri:inference_id a prov:Activity , nidm_Inference: ;
                         <li><a title="NIDM_0000097">nidm:'has Alternative Hypothesis'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>)  (range <a title="NIDM_0000060">nidm:'One Tailed Test'</a>, <a title="NIDM_0000079">nidm:'Two Tailed Test'</a>).</li>
                 </ul>
                 </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Conjunction Inference">
+
+@prefix nidm_ConjunctionInference: &lt;http://purl.org/nidash/nidm#NIDM_0000011&gt; .
+@prefix nidm_hasAlternativeHypothesis: &lt;http://purl.org/nidash/nidm#NIDM_0000097&gt; .
+@prefix nidm_OneTailedTest: &lt;http://purl.org/nidash/nidm#NIDM_0000060&gt; .
+
+
+niiri:inference_id a prov:Activity , nidm_ConjunctionInference: ;
+	rdfs:label "Conjunction Inference" ;
+	nidm_hasAlternativeHypothesis: nidm_OneTailedTest: ;
+    prov:used niiri:statistic_map_id, niiri:statistic_map_id_2, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:display_map_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
+    prov:wasAssociatedWith niiri:software_id .</pre>
             <!-- nidm:'One Tailed Test' (NIDM_0000060) -->
             <section id="section-nidm:'One Tailed Test'">
                 <h1 label="NIDM_0000060">nidm:'One Tailed Test'</h1>
@@ -1646,6 +1725,22 @@ niiri:inference_id a prov:Activity , nidm_Inference: ;
                         <li><a title="SPM_0000015"><dfn title="SPM_0000015">spm:'partial Conjunction Degree'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'partial Conjunction Degree''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The number of non-null effects permitted in a partial conjunction null, as part of a partial conjunction inference. (range <a title="int" href ="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>).</li>
                 </ul>
                 </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  SPM's Partial Conjunction Inference">
+
+@prefix nidm_hasAlternativeHypothesis: &lt;http://purl.org/nidash/nidm#NIDM_0000097&gt; .
+@prefix nidm_OneTailedTest: &lt;http://purl.org/nidash/nidm#NIDM_0000060&gt; .
+@prefix spm_PartialConjunctionInference: &lt;http://purl.org/nidash/spm#SPM_0000005&gt; .
+@prefix spm_partialConjunctionDegree: &lt;http://purl.org/nidash/spm#SPM_0000015&gt; .
+
+
+niiri:conjunction_id_2 a prov:Activity , spm_PartialConjunctionInference: ;
+	rdfs:label "SPM's Partial Conjunction Inference" ;
+	nidm_hasAlternativeHypothesis: nidm_OneTailedTest: ;
+	spm_partialConjunctionDegree: "1"^^xsd:int ;
+    prov:used niiri:statistic_map_id_1, niiri:statistic_map_id_2, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:display_map_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id_1 ;
+    prov:wasAssociatedWith niiri:software_id .</pre>
                 </section>
                 </section>
             <!-- nidm:'Cluster Definition Criteria' (NIDM_0000007) -->
@@ -1721,7 +1816,7 @@ niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCrite
 
 
 niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
-	prov:atLocation "file:///path/to/ClusterLabels.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "ClusterLabels.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string .</pre>
                 </section>
@@ -1780,7 +1875,7 @@ niiri:coordinate_0001 a prov:Entity , prov:Location , nidm_Coordinate: ;
 
 niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
 	rdfs:label "Display Mask Map" ;
-	prov:atLocation "file:///path/to/DisplayMask.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "DisplayMask.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
     nfo:fileName "DisplayMask.nii.gz"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_2 ;
@@ -1823,7 +1918,7 @@ niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
 
 niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
 	rdfs:label "Excursion Set Map" ;
-	prov:atLocation "file:///path/to/ExcursionSet.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "ExcursionSet.nii.gz"^^xsd:anyURI ;
 	dct:format "image/nifti"^^xsd:string ;
 	nfo:fileName "ExcursionSet.nii.gz"^^xsd:string ;
 	nidm_hasClusterLabelsMap: niiri:cluster_label_map_id ;
@@ -2101,7 +2196,7 @@ niiri:peak_definition_criteria_id a prov:Entity , nidm_PeakDefinitionCriteria: ;
 
 niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	rdfs:label "Search Space Mask Map" ;
-	prov:atLocation "file:///path/to/SearchSpaceMask.nii.gz"^^xsd:anyURI ;
+	prov:atLocation "SearchSpaceMask.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "SearchSpaceMask.nii.gz"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_2 ;
