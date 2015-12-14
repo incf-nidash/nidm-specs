@@ -17,12 +17,12 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/235">#235</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Explained Mean Square Map'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Contrast Explained Mean Square Map': </b>A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the effect degrees of freedom (i.e. the numerator of an F-statistic)</td>
+    <td><b>nidm:'Contrast Explained Mean Square Map': </b>A map whose value at each element (e.g., pixel, voxel, vertex, or face) is the extra sum of squares divided by the 'effect Degrees of Freedom' (i.e. the numerator of an F-statistic)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/290">#290</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Coordinate Space'"> [more] </a></td>
-    <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a Map (e.g., a Statistic Map, a Contrast Map...)</td>
+    <td><b>nidm:'Coordinate Space': </b>An entity with spatial attributes (e.g., dimensions, units, and voxel-to-world mapping) that provides context to a <a title=NIDM_0000052>'Map'</a> (e.g., a <a title=NIDM_0000076>'Statistic Map'</a>, a <a title=NIDM_0000002>'Contrast Map'</a>...)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -95,7 +95,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate Vector'"> [more] </a></td>
-    <td><b>nidm:'coordinate Vector': </b>A vector with one number per dimension. The first element corresponds to the coordinate along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the coordinate along the second dimension etc</td>
+    <td><b>nidm:'coordinate Vector': </b>A vector with one number per dimension. The first element corresponds to the <a title=NIDM_0000015>'Coordinate'</a> along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the <a title=NIDM_0000015>'Coordinate'</a> along the second dimension etc</td>
     <td>nidm:NIDM_0000015 </td>
     <td>xsd:string </td>
 </tr>
@@ -109,14 +109,14 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/329">#329</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='equivalent Threshold'"> [find issues/PR] </a></td>
-    <td><b>nidm:'equivalent Threshold': </b>Property that associates another Threshold that is equivalent (e.g. if the user specified a threshold in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)</td>
+    <td><b>nidm:'equivalent Threshold': </b>Property that associates another 'Threshold' that is equivalent (e.g. if the user specified a 'Threshold' in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)</td>
     <td>nidm:NIDM_0000162 </td>
     <td>nidm:NIDM_0000162 </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/incf-nidash/nidm/pull/277">#277</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='error Degrees Of Freedom'"> [more] </a></td>
-    <td><b>nidm:'error Degrees Of Freedom': </b>In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the design matrix</td>
+    <td><b>nidm:'error Degrees Of Freedom': </b>In the context of a general linear model, the error degrees of freedom are the number of observations less the rank of the <a title=NIDM_0000019>'Design Matrix'</a></td>
     <td>nidm:NIDM_0000076 </td>
     <td></td>
 </tr>
