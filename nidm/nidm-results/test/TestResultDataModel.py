@@ -90,27 +90,34 @@ class TestResultDataModel(object):
               parent_test_dir=None, parent_gt_dir=None):
         self.my_execption = ""
 
+        self.owl_file = owl_file
         self.owl = OwlReader(owl_file, owl_imports)
+        self.gt_dir = parent_gt_dir
 
         self.ex_graphs = dict()
-        for ttl_name in test_files:
-            ttl = parent_test_dir+ttl_name
+
+    def load_graph(self, ttl_name):
+        if ttl_name not in self.ex_graphs:
+            ttl = ttl_name
             test_dir = os.path.dirname(ttl)
 
             configfile = os.path.join(test_dir, 'config.json')
             if not os.path.isfile(configfile):
                 configfile = os.path.join(
-                    os.path.abspath(os.path.join(test_dir, os.pardir)), 'config.json')
+                    os.path.abspath(
+                        os.path.join(test_dir, os.pardir)), 'config.json')
 
             with open(configfile) as data_file:
                 metadata = json.load(data_file)
-            gt_file = [os.path.join(parent_gt_dir, x)
+            gt_file = [os.path.join(self.gt_dir, x)
                        for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
-            name = ttl.replace(parent_test_dir, "")
+            name = ttl.replace(test_dir, "")
 
             self.ex_graphs[ttl_name] = ExampleGraph(
-                name, owl_file, ttl, gt_file, inclusive)
+                name, self.owl_file, ttl, gt_file, inclusive)
+
+        return self.ex_graphs[ttl_name]
 
         # Current script directory is test directory (containing test data)
         # self.test_dir = os.path.dirname(os.path.abspath(
