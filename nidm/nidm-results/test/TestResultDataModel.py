@@ -344,8 +344,10 @@ class TestResultDataModel(object):
                         if o.datatype == XSD.float:
                             for o_gt in gt_graph.objects(s,  p):
                                 if o_gt.datatype == XSD.float:
-                                    close_float = np.isclose(
-                                        o.value, o_gt.value)
+                                    # Avoid None
+                                    if o.value and o_gt.value:
+                                        close_float = np.isclose(
+                                            o.value, o_gt.value)
 
                         if not same_json_array and not close_float:
                             exc_wrong_literal += \
@@ -427,16 +429,32 @@ class TestResultDataModel(object):
             elif (s,  p, o) in gt_graph:
                 if include and (s,  p, None) in other_graph:
                     if isinstance(o, rdflib.term.Literal):
-                        exc_wrong_literal += \
-                            "\nWrong o:\t %s should be %s?" \
-                            "\n\t\t ... in '%s %s %s'" \
-                            % (
-                                self.get_alternatives(other_graph, s=s, p=p),
-                                self.get_readable_name(gt_graph, o),
-                                self.get_readable_name(other_graph, s),
-                                self.get_readable_name(other_graph, p),
-                                self.get_alternatives(other_graph, s=s, p=p)
-                            )
+
+                        # If string represents a json-array, then spaces do not
+                        # matter
+                        same_json_array = False
+                        if o.startswith("[") and o.endswith("]"):
+                            for o_gt in gt_graph.objects(s,  p):
+                                try:
+                                    if json.loads(o) == json.loads(o_gt):
+                                        same_json_array = True
+                                except ValueError:
+                                    # Actually this string was not json
+                                    same_json_array = False
+
+                        if not same_json_array:
+                            exc_wrong_literal += \
+                                "\nWrong o:\t %s should be %s?" \
+                                "\n\t\t ... in '%s %s %s'" \
+                                % (
+                                    self.get_alternatives(
+                                        other_graph, s=s, p=p),
+                                    self.get_readable_name(gt_graph, o),
+                                    self.get_readable_name(other_graph, s),
+                                    self.get_readable_name(other_graph, p),
+                                    self.get_alternatives(
+                                        other_graph, s=s, p=p)
+                                )
 
                         # exc_wrong_literal += "\nWrong literal o:\t p('%s') of
                         #  s('%s') is o(%s) but should be o(%s)." % (
