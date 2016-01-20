@@ -17,10 +17,12 @@ import logging
 import signal
 import socket
 import ssl
+import glob
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 
-NIDM_PATH = os.path.join(RELPATH, os.pardir, os.pardir, os.pardir)
+NIDM_RESULTS_PATH = os.path.join(RELPATH, os.pardir)
+NIDM_PATH = os.path.join(NIDM_RESULTS_PATH, os.pardir, os.pardir)
 
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDM_PATH, "scripts"))
@@ -32,23 +34,14 @@ logger = logging.getLogger(__name__)
 logger.info(' ---------- Debug log ----------')
 
 # Complete examples (used for test queries)
-import_test_filenames = set([
-                                os.path.join('spm', 'example001', 'example001_spm_results.provn'),
-                                os.path.join('spm', 'spm_results.provn') , 
-                                os.path.join('fsl', 'fsl_results.provn'),
-                                os.path.join('fsl', 'example001', 'fsl_nidm.provn'),
-                            ])
-# All examples
-example_filenames = import_test_filenames.union(set([
-                                os.path.join('spm', 'example002', 'spm_results_2contrasts.provn'),
-                                os.path.join('spm', 'example003', 'spm_results_conjunction.provn'),
-                                os.path.join('spm', 'example004', 'spm_inference_activities.provn'),
-                                os.path.join('spm', 'example005', 'nidm.provn'),
-                                os.path.join('fsl', 'example002', 'fsl_nidm.provn'),    
-                                os.path.join('fsl', 'example003', 'fsl_nidm.provn'),                              
-                                os.path.join('test', 'minimal_examples', 'f_test', 'nidm.provn')                                                                
-                            ]))
+import_test_filenames = set(
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*', '*.provn')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*', '*.provn')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'afni', '*', '*.provn')))
 
+# All examples
+example_filenames = import_test_filenames.union(set(glob.glob(
+    os.path.join(NIDM_RESULTS_PATH, 'test', 'ground_truth', '*', '*.provn'))))
 
 # If True turtle file will be downloaded from the prov store using the address specified in the README. 
 # If False the turtle version will be retreived on the fly using the prov translator. By default set to True
