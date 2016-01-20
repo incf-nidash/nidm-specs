@@ -352,6 +352,35 @@ id",
             mask_id="niiri:mask_id_1",
             software_id="niiri:software_id"
             ),
+        "SearchSpaceMaskMap": dict(  # The "search space"
+            search_space_id="niiri:search_space_mask_id",
+            location="SearchSpaceMask.nii.gz",
+            filename="SearchSpaceMask.nii.gz",
+            label="Search Space Mask Map",
+            format="image/nifti",
+            user_defined="false",
+            coordinate_space_id="niiri:coordinate_space_id_1",
+            expected_num_voxels="4.02834655908613",
+            expected_num_clusters="0.0512932943875478",
+            height_critical_fwe05="4.85241745689539",
+            height_critical_fdr05="5.7639536857605",
+            smallest_size_fwe05="12",
+            smallest_size_fdr05="29",
+            search_vol_voxels="69306",
+            search_vol_units="1871262",
+            resel_size="132.907586178202",
+            search_vol_resels="467.07642343881",
+            search_vol_resels_geom="[7, 42.96312274763, 269.40914815306, \
+467.07642343881]",
+            noise_fwhm_in_voxels="[ 5.41278985910694, 5.43638957240286, \
+4.51666658877481 ]",
+            noise_fwhm_in_units="[ 16.2383695773208, 16.3091687172086, \
+13.5499997663244 ]",
+            random_field_station="true",
+            sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938\
+df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
+            inference_id="niiri:inference_id"
+            ),
         "DerivedMap-Contrast": dict(
             derived_from_map_id="niiri:contrast_map_id_der",
             derived_map_type="nidm:NIDM_0000002",
