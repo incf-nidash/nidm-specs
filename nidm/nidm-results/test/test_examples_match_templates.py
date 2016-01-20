@@ -20,7 +20,6 @@ import create_spm_example
 import create_spm_example_001
 import create_spm_example_002
 import create_spm_example_003
-import create_spm_example_004
 import create_fsl_example
 import create_fsl_example_001
 import create_fsl_example_002
@@ -169,21 +168,6 @@ Please use nidm/nidm-results/scripts/create_term_examples.py."
             raise Exception("example003/spm_results_conjunction.ttl is not up \
                 to date with templates. Please use \
                 nidm/nidm-results/scripts/create_spm_example_003.py.")    
-
-    def test_spm_ex004(self):
-        spm_example_file = os.path.join(NIDM_RESULTS_DIR, "spm", \
-            "example004", 'spm_inference_activities.ttl')
-
-        current_graph, spm_current = self._parse_graph(spm_example_file)
-        create_spm_example_004.main()
-        updated_graph, unused = self._parse_graph(spm_example_file, spm_current)
-
-        found_difference = self._compare_graphs(current_graph, updated_graph)
-
-        if found_difference:
-            raise Exception("example004/spm_inference_activities.ttl is not up \
-                to date with templates. Please use \
-                nidm/nidm-results/scripts/create_spm_example_003.py.")         
 
     def test_fsl_ex001(self):
         example_file = os.path.join(NIDM_RESULTS_DIR, "fsl", "example001", "fsl_nidm.ttl")
