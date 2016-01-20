@@ -38,7 +38,8 @@ def main():
 		}
 
 	NIDM_SPM_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'spm', 'example005')
+        os.path.dirname(
+        	os.path.abspath(__file__))), 'test', 'ground_truth', 'display_mask')
 	ttl_file = os.path.join(NIDM_SPM_DIR, 'nidm.ttl')
 	example = ExampleFromTemplate(nidm_classes, ttl_file, False)
 	example.create_example()
