@@ -41,7 +41,7 @@ def f_test():
 
     MIN_EX_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'test',
-        'minimal_examples', 'f_test')
+        'ground_truth', 'f_test')
     ttl_file = os.path.join(MIN_EX_DIR, 'nidm.ttl')
     example = ExampleFromTemplate(nidm_classes, ttl_file, False,
                                   remove_att=[
@@ -71,7 +71,7 @@ def design_matrix_event_related():
 
     MIN_EX_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'test',
-        'minimal_examples', 'event_related_design')
+        'ground_truth', 'event_related_design')
     ttl_file = os.path.join(MIN_EX_DIR, 'nidm.ttl')
     example = ExampleFromTemplate(
         nidm_classes, ttl_file, False,
@@ -102,7 +102,7 @@ def explicit_mask():
 
     MIN_EX_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'test',
-        'minimal_examples', 'explicit_mask')
+        'ground_truth', 'explicit_mask')
     ttl_file = os.path.join(MIN_EX_DIR, 'nidm.ttl')
     example = ExampleFromTemplate(
         nidm_classes, ttl_file, False, remove_att=[
