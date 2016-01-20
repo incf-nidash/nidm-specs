@@ -185,7 +185,7 @@ Please use nidm/nidm-results/scripts/create_term_examples.py."
                 Please use nidm/nidm-results/scripts/create_fsl_example001.py.")
 
     def test_fsl_ex002(self):
-        example_file = os.path.join(NIDM_RESULTS_DIR, "fsl", "example002", "fsl_nidm.ttl")
+        example_file = os.path.join(NIDM_RESULTS_DIR, "test", "ground_truth", "voxelwise_p001_unc", "nidm.ttl")
 
         current_graph, fsl_current = self._parse_graph(example_file)
         create_fsl_example_002.main()
@@ -198,7 +198,7 @@ Please use nidm/nidm-results/scripts/create_term_examples.py."
                 Please use nidm/nidm-results/scripts/create_fsl_example002.py.")
 
     def test_fsl_ex003(self):
-        example_file = os.path.join(NIDM_RESULTS_DIR, "fsl", "example003", "fsl_nidm.ttl")
+        example_file = os.path.join(NIDM_RESULTS_DIR, "test", "ground_truth", "voxelwise_p050_fwe", "nidm.ttl")
 
         current_graph, fsl_current = self._parse_graph(example_file)
         create_fsl_example_003.main()
