@@ -460,8 +460,8 @@ def main():
 			label="Inference 1",
 			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:statistic_map_id", 
-			height_thresh_id="niiri:height_threshold_id", 
-			extent_thresh_id="niiri:extent_threshold_id", 
+			height_thresh_id="niiri:height_threshold_id_1_1", 
+			extent_thresh_id="niiri:extent_threshold_id_1_1", 
 			display_mask_id="niiri:display_map_id", 
 			peak_def_id="niiri:peak_definition_criteria_id", 
 			cluster_def_id="niiri:cluster_definition_criteria_id",
@@ -473,14 +473,94 @@ def main():
 			label="Inference 2",
 			alternative_hyp="nidm:NIDM_0000060",
 			stat_map_id="niiri:statistic_map_id_2", 
-			height_thresh_id="niiri:height_threshold_id_2", 
-			extent_thresh_id="niiri:extent_threshold_id_2", 
+			height_thresh_id="niiri:height_threshold_id_1_2", 
+			extent_thresh_id="niiri:extent_threshold_id_1_2", 
 			display_mask_id="niiri:display_map_id_2", 
 			peak_def_id="niiri:peak_definition_criteria_id_2", 
 			cluster_def_id="niiri:cluster_definition_criteria_id_2",
 			mask_id="niiri:mask_id_1",
 			software_id="niiri:software_id"
 			),
+        "HeightThreshold_equivThresh_equivThresh2-1": dict(
+            height_threshold_id="niiri:height_threshold_id_1_1",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            label="Height Threshold: p<0.05 (FWE)",
+            value="0.0499999999999976",
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
+            ),
+        "HeightThreshold-2-1": dict(
+            height_threshold_id="niiri:height_threshold_id_2_1",
+            thresh_type=OBO_STATISTIC_QNAME,
+            label="Height Threshold",
+            value="4.85241745689539"
+            ),
+        "HeightThreshold-3-1": dict(
+            height_threshold_id="niiri:height_threshold_id_3_1",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            label="Height Threshold",
+            value="2.7772578456986e-06",
+            ),
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels-1": dict(
+            extent_threshold_id="niiri:extent_threshold_id_1_1",
+            label="Extent Threshold: k>=0",
+            cluster_size_vox="0",
+            cluster_size_resels="0",
+            equiv_thresh="niiri:extent_threshold_id_2",
+            equiv_thresh2="niiri:extent_threshold_id_3"
+            ),
+        "ExtentThreshold-2-1": dict(
+            extent_threshold_id="niiri:extent_threshold_id_2_1",
+            label="Extent Threshold",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
+            ),
+        "ExtentThreshold-3-1": dict(
+            extent_threshold_id="niiri:extent_threshold_id_3_1",
+            label="Extent Threshold",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            value="1",
+            ),
+        "HeightThreshold_equivThresh_equivThresh2-2": dict(
+            height_threshold_id="niiri:height_threshold_id_1_2",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            label="Height Threshold: p<0.05 (FWE)",
+            value="0.0499999999999976",
+            equiv_thresh="niiri:height_threshold_id_2",
+            equiv_thresh2="niiri:height_threshold_id_3"
+            ),
+        "HeightThreshold-2-2": dict(
+            height_threshold_id="niiri:height_threshold_id_2_2",
+            thresh_type=OBO_STATISTIC_QNAME,
+            label="Height Threshold",
+            value="4.85241745689539"
+            ),
+        "HeightThreshold-3-2": dict(
+            height_threshold_id="niiri:height_threshold_id_3_2",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            label="Height Threshold",
+            value="2.7772578456986e-06",
+            ),
+        "ExtentThresholdStat_equivThresh_equivThresh2_clusterSizeResels-2": dict(
+            extent_threshold_id="niiri:extent_threshold_id_1_2",
+            label="Extent Threshold: k>=0",
+            cluster_size_vox="0",
+            cluster_size_resels="0",
+            equiv_thresh="niiri:extent_threshold_id_2",
+            equiv_thresh2="niiri:extent_threshold_id_3"
+            ),
+        "ExtentThreshold-2-2": dict(
+            extent_threshold_id="niiri:extent_threshold_id_2_2",
+            label="Extent Threshold",
+            thresh_type=OBO_P_VALUE_FWER_QNAME,
+            value="1",
+            ),
+        "ExtentThreshold-3-2": dict(
+            extent_threshold_id="niiri:extent_threshold_id_3_2",
+            label="Extent Threshold",
+            thresh_type=NIDM_P_VALUE_UNCORRECTED_QNAME,
+            value="1",
+            ),        
 		"ConjunctionInference": dict(
 			conj_inference_id="niiri:inference_id_3",
 			label="Conjunction Inference 3",
