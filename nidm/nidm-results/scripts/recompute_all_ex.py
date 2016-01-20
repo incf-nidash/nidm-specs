@@ -11,7 +11,6 @@ import create_spm_example
 import create_spm_example_001
 import create_spm_example_002
 import create_spm_example_003
-import create_spm_example_004
 import create_spm_example_005
 import create_fsl_example
 import create_fsl_example_001
@@ -33,8 +32,6 @@ def main():
 	create_spm_example_002.main()
 	logger.debug(" create_spm_example_003")
 	create_spm_example_003.main()
-	logger.debug(" create_spm_example_004")
-	create_spm_example_004.main()
 	logger.debug(" create_spm_example_005")
 	create_spm_example_005.main()
 	logger.debug(" create_fsl_example")

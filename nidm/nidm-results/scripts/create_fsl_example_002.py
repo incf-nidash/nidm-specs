@@ -39,8 +39,10 @@ def main():
         }
 
     NIDM_FSL_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'fsl', 'example002')
-    ttl_file = os.path.join(NIDM_FSL_DIR, 'fsl_nidm.ttl')
+        os.path.dirname(
+            os.path.abspath(__file__))), 'test', 'ground_truth',
+        'voxelwise_p050_fwe')
+    ttl_file = os.path.join(NIDM_FSL_DIR, 'nidm.ttl')
     example = ExampleFromTemplate(nidm_classes, ttl_file, False)
     example.create_example()
 

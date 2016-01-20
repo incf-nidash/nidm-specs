@@ -138,7 +138,10 @@ class ExampleFromTemplate(object):
         for term in terms:
             for att in re.findall(r"\s*"+q_graph.qname(term)+".*", example):
                 example = example.replace(att, "")
-
+                # If we removed the final dot then put it back
+                if att.rsplit(None, 1)[-1] == ".":
+                    example = example[::-1].replace(
+                        ";"[::-1], "."[::-1], 1)[::-1]
         return example
 
     def replace_alphanum_id_by_prefixes(self, example):
