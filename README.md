@@ -11,7 +11,7 @@ by the [INCF](http://www.incf.org) <b>N</b>euro <b>I</b>maging <b>DA</b>ta <b>SH
 The goals of this repo are to foster collaboration among the standards developers working on NIDM, and to provide a common location where users of NIDM can find related information and resources.
 
 #### Latest release
-* NIDM-Results 1.2.0: [specification](nidm.nidash.org/specs/nidm-results.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/nidm-results.owl)
+* NIDM-Results 1.2.0: [specification](http://nidm.nidash.org/specs/nidm-results.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/nidm-results.owl)
 
 
 #### User Resources (use a NIDM document)
