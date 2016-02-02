@@ -631,16 +631,16 @@ class OwlReader():
                         # "if found_range"
                         if not None in found_range:
                             found_range_line = ', '.join(
-                                map(ex_graph.qname, sorted(found_range)))
+                                map(self.get_name_label, sorted(found_range)))
                         owl_range_line = ""
                         if p in owl_ranges:
                             owl_range_line = ', '.join(
-                                map(ex_graph.qname, sorted(owl_ranges[p])))
+                                map(self.get_name_label, sorted(owl_ranges[p]))
+                                )
 
                         key = "\n Unrecognised range: " + \
                             found_range_line + \
-                            ' for '+self.get_name(p) + \
-                            " (i.e. " + self.get_label(p) + ")" + \
+                            ' for '+self.get_name_label(p) + \
                             ' should be ' + \
                             owl_range_line
                 else:
@@ -727,6 +727,12 @@ class OwlReader():
     def get_name(self, uri):
         name = self.graph.qname(uri).split(":")[1]
         return name
+
+    def get_name_label(self, uri):
+        if self.get_name(uri) == self.get_label(uri):
+            return self.get_name(uri)
+        else:
+            return self.get_name(uri) + " (i.e. " + self.get_label(uri) + ")"
 
     def get_preferred_prefix(self, uri):
         prefix_name = self.get_label(uri).replace(" ", "")\
