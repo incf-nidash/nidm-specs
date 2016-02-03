@@ -109,7 +109,7 @@ class TestResultDataModel(object):
 
             with open(configfile) as data_file:
                 metadata = json.load(data_file)
-            gt_file = [os.path.join(self.gt_dir, x)
+            gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
                        for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
             name = ttl.replace(test_dir, "")
@@ -186,6 +186,7 @@ class TestResultDataModel(object):
             g2_match = dict.fromkeys(g2_terms, 0)
             coord_space_found = False
             format_found = False
+
             for p, o in graph1.predicate_objects(g1_term):
                 if p == NIDM_IN_COORDINATE_SPACE:
                     coord_space_found = True
@@ -195,11 +196,11 @@ class TestResultDataModel(object):
                     min_matching = MIN_MAP_MATCHING
 
                 # FIXME: changed "not activity" to "activity" but maybe this
-                # could cause issues later on?
-                if activity or \
-                        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
-                    for g2_term in graph2.subjects(p, o):
-                        g2_match[g2_term] += 1
+                # could cause issues later on? and condition removed altogether
+                # if activity or \
+                #        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
+                for g2_term in graph2.subjects(p, o):
+                    g2_match[g2_term] += 1
 
             if activity:
                 for s, p in graph1.subject_predicates(g1_term):
