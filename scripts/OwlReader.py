@@ -184,29 +184,35 @@ class OwlReader():
 
         # Check owl restrictions on classes
         for class_name in self.graph.subjects(RDF['type'], OWL['Class']):
-            for class_restr in self.graph.objects(
-                    class_name, RDFS['subClassOf']):
-                if isinstance(class_restr, term.BNode):
-                    for prp in self.graph.objects(
-                            class_restr, OWL['onProperty']):
-                        attributes.setdefault(class_name, set()).add(prp)
-                        for child_class in self.graph.transitive_subjects(
-                                RDFS['subClassOf'], class_name):
-                            attributes.setdefault(child_class, set()).add(prp)
+            if not self.is_deprecated(class_name):
+                for class_restr in self.graph.objects(
+                        class_name, RDFS['subClassOf']):
+                    if isinstance(class_restr, term.BNode):
+                        for prp in self.graph.objects(
+                                class_restr, OWL['onProperty']):
+                            attributes.setdefault(class_name, set()).add(prp)
+                            for child_class in self.graph.transitive_subjects(
+                                    RDFS['subClassOf'], class_name):
+                                if not self.is_deprecated(child_class):
+                                    attributes.setdefault(
+                                        child_class, set()).add(prp)
 
         # Attributes that can be found in all classes
         for prp, p, o in self.graph.triples((None, RDF['type'], None)):
             if not self.is_deprecated(prp):
                 if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
                     for class_name in self.graph.objects(prp, RDFS['domain']):
-                        # Add attribute to current class
-                        attributes.setdefault(class_name, set()).add(prp)
+                        if not self.is_deprecated(class_name):
+                            # Add attribute to current class
+                            attributes.setdefault(class_name, set()).add(prp)
 
                         # Add attribute to children of current class
                         for child_class in self.graph.transitive_subjects(
                                 RDFS['subClassOf'], class_name):
-                            # Add attribute to current class
-                            attributes.setdefault(child_class, set()).add(prp)
+                            if not self.is_deprecated(child_class):
+                                # Add attribute to current class
+                                attributes.setdefault(
+                                    child_class, set()).add(prp)
 
                     for range_name in self.graph.objects(prp, RDFS['range']):
                         # More complex type including restrictions
@@ -243,7 +249,8 @@ class OwlReader():
                         # Add child_class to range (for ObjectProperty)
                         for child in self.graph.transitive_subjects(
                                 RDFS['subClassOf'], range_name):
-                            ranges.setdefault(prp, set()).add(child)
+                            if not self.is_deprecated(child):
+                                ranges.setdefault(prp, set()).add(child)
 
         return list((attributes, ranges, restrictions, parent_ranges))
 
