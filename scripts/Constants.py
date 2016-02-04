@@ -31,7 +31,8 @@ OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
 NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
-NLX = Namespace("http://neurolex.org/wiki/")
+SCR = Namespace("http://scicrunch.org/resolver/")
+NLX = Namespace("http://uri.neuinfo.org/nif/nifstd/")
 
 namespaces = {
     "prov": PROV,
@@ -46,7 +47,8 @@ namespaces = {
     "obo": OBO,
     "nfo": NFO,
     "dc": DC,
-    "nlx": NLX
+    "nlx": NLX,
+    "scr": SCR
     }
 
 # Empty graph used to compute qnames
@@ -280,5 +282,5 @@ STATO_CONTRAST_WEIGHT_MATRIX = OBO['STATO_0000323']
 STATO_GAUSSIAN_DISTRIBUTION = OBO['STATO_0000227']
 STATO_UNSTRUCTURED_COVARIANCE = OBO['STATO_0000405']
 
-SPM_SOFTWARE = NLX['nif-0000-00343']
-FSL_SOFTWARE = NLX['birnlex_2067']
+SPM_SOFTWARE = SCR['SCR_007037']
+FSL_SOFTWARE = SCR['SCR_002823']

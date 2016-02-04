@@ -422,7 +422,7 @@ def main():
 			),
 		"FSL_Software": dict(
 			software_id="niiri:software_id",
-			software_type="nlx:birnlex_2067",
+			software_type="scr:SCR_002823",
 			label="FSL",
 			version="5.0.x",
 			feat_version="6.00"

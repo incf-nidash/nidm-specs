@@ -36,13 +36,13 @@ def main():
             ),
         "SPM_Software": dict(
             software_id="niiri:spm_software_id",
-            software_type="nlx:nif-0000-00343",
+            software_type="scr:SCR_007037",
             label="SPM",
             version="8.6225"
             ),
         "FSL_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:birnlex_2067",
+            software_type="scr:SCR_002823",
             label="FSL",
             version="5.0.1",
             feat_version="6.00"

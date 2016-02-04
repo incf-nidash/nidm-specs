@@ -582,7 +582,7 @@ def main():
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:nif-0000-00343",
+            software_type="scr:SCR_007037",
             label="SPM",
             version="12b.5853"
             ),

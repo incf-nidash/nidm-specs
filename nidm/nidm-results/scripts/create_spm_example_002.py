@@ -692,7 +692,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:nif-0000-00343",
+            software_type="scr:SCR_007037",
             label="SPM",
             version="12b.5853"
             ),

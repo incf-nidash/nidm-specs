@@ -625,7 +625,7 @@ fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
             ),
         "FSL_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:birnlex_2067",
+            software_type="scr:SCR_002823",
             label="FSL",
             version="5.0.x",
             feat_version="6.00"
