@@ -142,7 +142,8 @@ def main():
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
-            target=100
+            target=100,
+            numsubjects="[21, 23]"
             ),
         "ErrorModel": dict(
             comment="Error Model",

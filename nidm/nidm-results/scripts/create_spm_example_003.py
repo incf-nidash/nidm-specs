@@ -38,7 +38,8 @@ def main():
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
-            target=100
+            target=100,
+            numsubjects="[21, 23]"
             ),
         "ErrorModel": dict(
             error_model_id="niiri:error_model_id",
@@ -581,7 +582,7 @@ ecce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652",
             coordinate_id="niiri:coordinate_0004",
             label="Coordinate: 0004",
             coord="[ 63, -13, -4 ]"
-            )        
+            )
         }
 
     NIDM_SPM_DIR = os.path.join(os.path.dirname(

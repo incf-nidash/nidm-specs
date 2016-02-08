@@ -38,7 +38,8 @@ def main():
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
-            target=100
+            target=100,
+            numsubjects="[21, 23]"
             ),
         "ErrorModel": dict(
             error_model_id="niiri:error_model_id",
@@ -505,7 +506,7 @@ id_3",
             sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938\
 df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             inference_id="niiri:inference_id"
-            ),        
+            ),
         "Inference-2": dict(
             inference_id="niiri:inference_id_2",
             label="Inference 2",
@@ -547,7 +548,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             sha="932fd9f0d55e9822748f4a9b35a0a7f0fe442f3e061e2eda48c2617a2938\
 df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             inference_id="niiri:inference_id"
-            ),        
+            ),
         "HeightThreshold_equivThresh_equivThresh2-1": dict(
             height_threshold_id="niiri:height_threshold_id_1_1",
             thresh_type=OBO_P_VALUE_FWER_QNAME,

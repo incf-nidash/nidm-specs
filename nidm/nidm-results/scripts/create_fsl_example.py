@@ -37,7 +37,8 @@ def main():
 			data_id='niiri:data_id',
 			label="Data",
 			scaling="true",
-			target="10000"
+			target="10000",
+			numsubjects="[21, 23]"
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
