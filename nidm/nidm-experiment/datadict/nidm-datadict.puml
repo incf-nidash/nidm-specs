@@ -1,0 +1,37 @@
+@startuml
+
+object DataStructureCollection {
+    dct:title = "Data Structure Title"
+    dct:description = "Data Structure Description"
+}
+
+object DataElement {
+    dct:title = "Data Element Title"
+    dct:description = "Data Element Description"
+    dct:downloadURL = "http://www.example.com"
+    nidm:dataType = xsd:float
+}
+
+object CodedDataElemment {
+    dct:title = "Coded Data Element"
+}
+
+object CodeList {
+    nidm:code = "1"
+    nidm:label = "Code Label"
+    nidm:concept = http://some.ontology.com#Concept
+}
+
+object MeasurementDataElemment {
+    dct:title = "Measurement Data Element"
+}
+
+DataElement <|- DataStructureCollection : hadMember
+
+DataElement <|.. CodedDataElemment : subClassOf
+
+CodeList <|-- CodedDataElemment : code
+
+DataElement <|.. MeasurementDataElemment : subClassOf
+
+@enduml
