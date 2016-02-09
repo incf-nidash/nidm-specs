@@ -302,7 +302,7 @@ class TestResultDataModel(object):
 
         for s, p, o in diff_graph.triples((None,  None, None)):
             # If triple is found in other_graph
-            if (s,  p, o) in other_graph:
+            if (s,  p, o) in other_graph and (not p == NIDM_SOFTWARE_VERSION):
                 # If subject is *not* found in gt_graph
                 if (s,  None, None) not in gt_graph:
                     if not s in exlude:
@@ -321,7 +321,7 @@ class TestResultDataModel(object):
                 # is correct and the other wrong)
                 # Alternatives are o_gt such as (s,p,o_gt) in gt and
                 # (s,p,o_gt) *not* in other
-                elif (s,  p, None) in gt_m_other:
+                elif ((s,  p, None) in gt_m_other):
                     if isinstance(o, rdflib.term.Literal):
                         same_json_array = False
                         close_float = False
@@ -426,7 +426,7 @@ class TestResultDataModel(object):
                            self.get_readable_name(other_graph, o))
 
             # If subject and predicate are found in gt_graph
-            elif (s,  p, o) in gt_graph:
+            elif (s,  p, o) in gt_graph and (not p == NIDM_SOFTWARE_VERSION):
                 if include and (s,  p, None) in other_graph:
                     if isinstance(o, rdflib.term.Literal):
 
