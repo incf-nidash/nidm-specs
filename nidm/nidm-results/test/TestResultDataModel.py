@@ -109,7 +109,7 @@ class TestResultDataModel(object):
 
             with open(configfile) as data_file:
                 metadata = json.load(data_file)
-            gt_file = [os.path.join(self.gt_dir, x)
+            gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
                        for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
             name = ttl.replace(test_dir, "")
@@ -186,6 +186,7 @@ class TestResultDataModel(object):
             g2_match = dict.fromkeys(g2_terms, 0)
             coord_space_found = False
             format_found = False
+
             for p, o in graph1.predicate_objects(g1_term):
                 if p == NIDM_IN_COORDINATE_SPACE:
                     coord_space_found = True
@@ -195,11 +196,11 @@ class TestResultDataModel(object):
                     min_matching = MIN_MAP_MATCHING
 
                 # FIXME: changed "not activity" to "activity" but maybe this
-                # could cause issues later on?
-                if activity or \
-                        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
-                    for g2_term in graph2.subjects(p, o):
-                        g2_match[g2_term] += 1
+                # could cause issues later on? and condition removed altogether
+                # if activity or \
+                #        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
+                for g2_term in graph2.subjects(p, o):
+                    g2_match[g2_term] += 1
 
             if activity:
                 for s, p in graph1.subject_predicates(g1_term):
@@ -282,11 +283,12 @@ class TestResultDataModel(object):
         # We reconcile gt_graph with other_graph
         gt_graph, other_graph = self._reconcile_graphs(gt_graph, other_graph)
 
+        gt_m_other = gt_graph - other_graph
         if not include:
             # Check for predicates which are not in common to both graphs (XOR)
             diff_graph = gt_graph ^ other_graph
         else:
-            diff_graph = gt_graph - other_graph
+            diff_graph = gt_m_other
 
         # FIXME: There is probably something better than using os.path.basename
         # to remove namespaces
@@ -300,7 +302,7 @@ class TestResultDataModel(object):
 
         for s, p, o in diff_graph.triples((None,  None, None)):
             # If triple is found in other_graph
-            if (s,  p, o) in other_graph:
+            if (s,  p, o) in other_graph and (not p == NIDM_SOFTWARE_VERSION):
                 # If subject is *not* found in gt_graph
                 if (s,  None, None) not in gt_graph:
                     if not s in exlude:
@@ -315,22 +317,18 @@ class TestResultDataModel(object):
                             % (self.get_readable_name(other_graph, p))
                         exlude.append(p)
                 # If subject and predicate found in gt_graph, then object is
-                # wrong
-                elif (s,  p, None) in gt_graph:
+                # wrong (unless there is twice the same attribute and one value
+                # is correct and the other wrong)
+                # Alternatives are o_gt such as (s,p,o_gt) in gt and
+                # (s,p,o_gt) *not* in other
+                elif ((s,  p, None) in gt_m_other):
                     if isinstance(o, rdflib.term.Literal):
-                        # exc_wrong_literal += \
-                        #     "\nWrong literal o:\t p('%s') of s('%s')" \
-                        #     " is o(%s) but should be o(%s)." \
-                        #     % (self.get_readable_name(other_graph, p),
-                        #        self.get_readable_name(other_graph, s),
-                        #        self.get_readable_name(other_graph, o),
-                        #        self.get_alternatives(gt_graph, s=s, p=p))
-
-                        # If string represents a json-array, then spaces do not
-                        # matter
                         same_json_array = False
-                        if o.startswith("[") and o.endswith("]"):
-                            for o_gt in gt_graph.objects(s,  p):
+                        close_float = False
+                        for o_gt in gt_m_other.objects(s,  p):
+                            # If string represents a json-array, then
+                            # compare as json data
+                            if o.startswith("[") and o.endswith("]"):
                                 try:
                                     if json.loads(o) == json.loads(o_gt):
                                         same_json_array = True
@@ -338,11 +336,10 @@ class TestResultDataModel(object):
                                     # Actually this string was not json
                                     same_json_array = False
 
-                        # If literal is a float allow for a small tolerance to
-                        # deal with possibly different roundings
-                        close_float = False
-                        if o.datatype == XSD.float:
-                            for o_gt in gt_graph.objects(s,  p):
+                            # If literal is a float allow for a small
+                            # tolerance to deal with possibly different
+                            # roundings
+                            if o.datatype == XSD.float:
                                 if o_gt.datatype == XSD.float:
                                     # Avoid None
                                     if o.value and o_gt.value:
@@ -350,12 +347,15 @@ class TestResultDataModel(object):
                                             o.value, o_gt.value)
 
                         if not same_json_array and not close_float:
+                            # Alternatives are o such as (s,p,o) in gt and
+                            # (s,p,o) *not* in other
                             exc_wrong_literal += \
                                 "\nWrong o:\t %s should be %s?" \
                                 "\n\t\t ... in '%s %s %s'" \
                                 % (
                                     self.get_readable_name(other_graph, o),
-                                    self.get_alternatives(gt_graph, s=s, p=p),
+                                    self.get_alternatives(
+                                        gt_m_other, s=s, p=p),
                                     self.get_readable_name(other_graph, s),
                                     self.get_readable_name(other_graph, p),
                                     self.get_readable_name(other_graph, o)
@@ -426,7 +426,7 @@ class TestResultDataModel(object):
                            self.get_readable_name(other_graph, o))
 
             # If subject and predicate are found in gt_graph
-            elif (s,  p, o) in gt_graph:
+            elif (s,  p, o) in gt_graph and (not p == NIDM_SOFTWARE_VERSION):
                 if include and (s,  p, None) in other_graph:
                     if isinstance(o, rdflib.term.Literal):
 
