@@ -16,7 +16,7 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME, \
-    NIDM_P_VALUE_UNCORRECTED_QNAME, NLX_MRI_SCANNER, q_graph
+    NIDM_P_VALUE_UNCORRECTED_QNAME, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
 
 
 def main():
@@ -45,7 +45,8 @@ def main():
             scaling="true",
             target=100,
             numsubjects="[21, 23]",
-            scanner_id="niiri:mr_scanner_id"
+            scanner_id="niiri:mr_scanner_id",
+            mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL)            
             ),
         "ErrorModel": dict(
             error_model_id="niiri:error_model_id",

@@ -20,7 +20,7 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     NIDM_FINITE_IMPULSE_RESPONSE_HRB, SPM_CANONICAL_HRF, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
-    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph
+    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
 
 
 def main():
@@ -144,7 +144,8 @@ def main():
             scaling="true",
             target=100,
             numsubjects="[21, 23]",
-            scanner_id="niiri:my_scanner_id"
+            scanner_id="niiri:my_scanner_id",
+            mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL),
             ),
         "ImagingInstrument": dict(
             id="niiri:mr_scanner_id",
