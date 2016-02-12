@@ -1,37 +1,61 @@
 @startuml
 
-object DataStructureCollection {
-    dct:title = "Data Structure Title"
-    dct:description = "Data Structure Description"
+class DataStructure_Demographics << (C, yellow) >> {
+    rdf:type = skos:ConceptScheme
+    skos:prefLabel = "Demographics"
+    skos:notation = "demographics"
+    skos:note = "A REDCap demographics form."
+    nidm:platform = nidm:redcap
 }
 
-object DataElement {
-    dct:title = "Data Element Title"
-    dct:description = "Data Element Description"
-    dct:downloadURL = "http://www.example.com"
-    nidm:dataType = xsd:float
+class MeasurementDataElement_Age << (E, cyan) >> {
+    rdf:type = qb:MeasureProperty, rdf:Property
+    qb:concept = nidm:Age
+    skos:prefLabel = "Visit Age"
+    skos:notation = "visit_age"
+    skos:note = "Data element for visit age."
 }
 
-object CodedDataElemment {
-    dct:title = "Coded Data Element"
+class CodedDataElement_Sex << (E, cyan) >> {
+    rdf:type = qb:MeasureProperty, qb:CodedProperty, rdf:Property
+    rdfs:range = nidm:Sex
+    qb:concept = nidm:Sex
+    skos:prefLabel = "Sex"
+    skos:notation = "sex"
+    skos:note = "Data element for sex."
 }
 
-object CodeList {
-    nidm:code = "1"
-    nidm:label = "Code Label"
-    nidm:concept = http://some.ontology.com#Concept
+class CodeList_Sex << (E, cyan) >> {
+    rdf:type = nidm:CodeList, skos:ConceptScheme
+    skos:prefLabel = "Code list for Sex"
+    skos:notation = "codelist_sex"
+    skos:note = "Code list for participant sex."
 }
 
-object MeasurementDataElemment {
-    dct:title = "Measurement Data Element"
+class Code_Female << (E, cyan) >> {
+    rdf:type = nidm:CodeList, skos:ConceptScheme
+    skos:topConceptOf = CodeList_Sex
+    skos:inScheme = CodeList_Sex
+    skos:prefLabel = "Female"
+    skos:notation = "F"
 }
 
-DataElement <|- DataStructureCollection : hadMember
+class Code_Male << (E, cyan) >> {
+    rdf:type = nidm:CodeList, skos:ConceptScheme
+    skos:topConceptOf = CodeList_Sex
+    skos:inScheme = CodeList_Sex
+    skos:prefLabel = "Male"
+    skos:notation = "M"
+}
 
-DataElement <|.. CodedDataElemment : subClassOf
+DataStructure_Demographics --|> MeasurementDataElement_Age : hadMember
 
-CodeList <|-- CodedDataElemment : code
+DataStructure_Demographics --|> CodedDataElement_Sex : hadMember
 
-DataElement <|.. MeasurementDataElemment : subClassOf
+CodedDataElement_Sex --|> CodeList_Sex  : qb:codeList
+
+Code_Female -|> CodeList_Sex  : skos:inScheme
+
+CodeList_Sex <|- Code_Male : skos:inScheme
 
 @enduml
