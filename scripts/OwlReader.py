@@ -360,8 +360,8 @@ class OwlReader():
                 literal = Literal(mterm.replace("'", ""))
                 if literal in self.labels:
                     purl = self.labels[literal]
-
-                    if "#" in purl:
+                    if "#" in purl and \
+                            not self.is_deprecated(term.URIRef(mterm)):
                         definition = definition.replace(
                             mterm,
                             "<a title=" +
