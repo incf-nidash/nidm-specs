@@ -16,10 +16,16 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
 	STATO_ZSTATISTIC_STR, STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, \
-	NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME
+	NIDM_P_VALUE_UNCORRECTED_QNAME, OBO_STATISTIC_QNAME, NLX_MRI_SCANNER, \
+	q_graph
 
 def main():
 	nidm_classes = {
+        "ImagingInstrument": dict(
+            id="niiri:mr_scanner_id",
+            label="MRI Scanner",
+            type=q_graph.qname(NLX_MRI_SCANNER),
+            ),
 		"DesignMatrix": dict(
 			design_matrix_id='niiri:design_matrix_id', 
 			label="Design Matrix", 
@@ -38,7 +44,9 @@ def main():
 			label="Data",
 			scaling="true",
 			target="10000",
-			numsubjects="[21, 23]"
+			numsubjects="[21, 23]",
+			scanner_id="niiri:mr_scanner_id",
+			mri_protocol=NLX_FMRI_PROTOCOL
 			),
 		"ErrorModel": dict(
 			error_model_id="niiri:error_model_id",
