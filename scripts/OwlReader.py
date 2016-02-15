@@ -41,9 +41,11 @@ class OwlReader():
         self.attributes, self.ranges, \
             self.type_restrictions, self.parent_ranges = self.get_attributes()
 
-        labels = dict(self.graph.subject_objects(RDFS['label']))
+        labels = self.graph.subject_objects(RDFS['label'])
+        # Ignore deprecated
         self.labels = collections.OrderedDict(
-            zip(labels.values(), labels.keys()))
+            (str(key), value) for (value, key) in labels
+            if not self.is_deprecated(key))
 
     def get_class_names(self):
         # Add PROV sub-types
@@ -358,8 +360,8 @@ class OwlReader():
             terms = re.findall(r'\'.*?\'', definition)
             for mterm in sorted(set(terms), key=len, reverse=True):
                 literal = Literal(mterm.replace("'", ""))
-                if literal in self.labels:
-                    purl = self.labels[literal]
+                if str(literal) in self.labels:
+                    purl = self.labels[str(literal)]
                     if "#" in purl and \
                             not self.is_deprecated(term.URIRef(mterm)):
                         definition = definition.replace(
