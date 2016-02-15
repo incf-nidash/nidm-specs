@@ -41,6 +41,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Discussed at ...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Data'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data': </b>Information about the input Data, including scaling applied to the data before parameter estimation.</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='NIDM-Results Export'"> [find issues/PR] </a></td>
     <td><b>nidm:'NIDM-Results Export': </b>The process of exporting results created by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive</td>
 </tr>
@@ -109,7 +114,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Discussed in <a href="https://github.com/incf-nidash/nidm/pull/329">#329</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='equivalent Threshold'"> [find issues/PR] </a></td>
-    <td><b>nidm:'equivalent Threshold': </b>Property that associates another 'Threshold' that is equivalent (e.g. if the user specified a 'Threshold' in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)</td>
+    <td><b>nidm:'equivalent Threshold': </b>Property that associates another <a title=NIDM_0000162>'Threshold'</a> that is equivalent (e.g. if the user specified a <a title=NIDM_0000162>'Threshold'</a> in terms of FWE-corrected p-value, this property can be used to associate the corresponding uncorrected p-value)</td>
     <td>nidm:NIDM_0000162 </td>
     <td>nidm:NIDM_0000162 </td>
 </tr>
@@ -140,6 +145,27 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><b>nidm:'expected Number Of Voxels Per Cluster': </b>Expected number of voxels in a cluster under the null hypothesis</td>
     <td>nidm:NIDM_0000068 </td>
     <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>Discussed in ...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has Data Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'has Data Type': </b>..</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='has MRI Protocol'"> [find issues/PR] </a></td>
+    <td><b>nidm:'has MRI Protocol': </b>'MRI Protocol' used to acquire these <a title=Data>'Data'</a></td>
+    <td>nidm:Data </td>
+    <td>nlx:birnlex_2177 </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='number Of Subjects Per Group'"> [find issues/PR] </a></td>
+    <td><b>nidm:'number Of Subjects Per Group': </b>Number of subjects in each group as a json vector described as a string</td>
+    <td>nidm:Data </td>
+    <td>xsd:int </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
