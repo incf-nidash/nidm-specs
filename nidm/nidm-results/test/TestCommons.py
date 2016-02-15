@@ -35,8 +35,10 @@ logger.info(' ---------- Debug log ----------')
 
 # Complete examples (used for test queries)
 import_test_filenames = set(
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*.provn')) +
     glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*', '*.provn')) +
     glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*', '*.provn')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*.provn')) +
     glob.glob(os.path.join(NIDM_RESULTS_PATH, 'afni', '*', '*.provn')))
 
 # All examples
