@@ -45,7 +45,7 @@ class OwlReader():
         # Ignore deprecated
         self.labels = collections.OrderedDict(
             (str(key), value) for (value, key) in labels
-            if not self.is_deprecated(key))
+            if not self.is_deprecated(value))
 
     def get_class_names(self):
         # Add PROV sub-types
