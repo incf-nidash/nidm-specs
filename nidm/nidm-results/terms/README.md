@@ -162,9 +162,9 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='number Of Subjects Per Group'"> [find issues/PR] </a></td>
-    <td><b>nidm:'number Of Subjects Per Group': </b>Number of subjects in each group as a json vector described as a string</td>
-    <td>nidm:Data </td>
+    <td>Linked with http://purl.obolibrary.org/obo/STATO_0000088 to be discussed.<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='number Of Subjects'"> [find issues/PR] </a></td>
+    <td><b>nidm:'number Of Subjects': </b>Number of subjects in the group</td>
+    <td>obo:STATO_0000193 </td>
     <td>xsd:int </td>
 </tr>
 <tr>
