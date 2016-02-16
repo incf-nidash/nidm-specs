@@ -47,12 +47,15 @@ def main():
             filename="DesignMatrix.png",
             format="image/png"
             ),
+        "Person": dict(
+            id='niiri:subject_id',
+            label="Person"
+            ),
         "Data": dict(
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
             target=100,
-            numsubjects="[1]",
             scanner_id="niiri:mr_scanner_id",
             sub_or_group_id="niiri:subject_id",
             mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL)

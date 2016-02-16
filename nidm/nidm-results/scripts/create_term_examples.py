@@ -137,15 +137,25 @@ def main():
             filename="DesignMatrix.png",
             format="image/png"
             ),
-        "Data": dict(
+        "Group": dict(
+            id="niiri:group_id",
+            label="Group: Control",
+            numsubjects="23"
+            ),
+        "Group-2": dict(
+            id="niiri:group2_id",
+            label="Group: Patient",
+            numsubjects="21"
+            ),
+        "Data_wasAttributedTo": dict(
             comment="Data",
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
             target=100,
-            numsubjects="[21, 23]",
             scanner_id="niiri:my_scanner_id",
             sub_or_group_id="niiri:group_id",
+            group2_id="niiri:group2_id",
             mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL),
             ),
         "ImagingInstrument": dict(
