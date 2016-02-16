@@ -1,0 +1,401 @@
+@prefix fbirn: <http://www.birncommunity.org/collaborators/function-birn/> .
+@prefix ncit: <http://ncitt.ncit.nih.gov/> .
+@prefix nidash: <http://purl.org/nidash/nidm/> .
+@prefix nidm: <http://nidm.nidash.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nidash:FBIRNPhaseIIDemographics prov:hadMember nidash:FBIRNPhaseIIDemographicsAge,
+        nidash:FBIRNPhaseIIDemographicsEducation,
+        nidash:FBIRNPhaseIIDemographicsEthnicity,
+        nidash:FBIRNPhaseIIDemographicsFathersEducation,
+        nidash:FBIRNPhaseIIDemographicsFathersOccupation,
+        nidash:FBIRNPhaseIIDemographicsGender,
+        nidash:FBIRNPhaseIIDemographicsHandedness,
+        nidash:FBIRNPhaseIIDemographicsLivingArrangement,
+        nidash:FBIRNPhaseIIDemographicsMaritalStatus,
+        nidash:FBIRNPhaseIIDemographicsMothersEducation,
+        nidash:FBIRNPhaseIIDemographicsMothersOccupation,
+        nidash:FBIRNPhaseIIDemographicsNumberofChildren,
+        nidash:FBIRNPhaseIIDemographicsOccupation,
+        nidash:FBIRNPhaseIIDemographicsRace .
+
+nidash:Ethnicity_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "HispanicorLatino" .
+
+nidash:Ethnicity_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "NotHispanicorLatino" .
+
+nidash:Ethnicity_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Unknown(Individualsnotreportingethnicity)" .
+
+nidash:FBIRNPhaseIIDemographicsAge a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "integer" ;
+    nidash:Question "Age_years_" ;
+    nidash:Sequence 9 ;
+    prov:label "Age" .
+
+nidash:FBIRNPhaseIIDemographicsEducation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "integer" ;
+    nidash:Question "Education_years_" ;
+    nidash:Sequence 3 ;
+    prov:label "Education" .
+
+nidash:FBIRNPhaseIIDemographicsEthnicity a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "Ethnicity" ;
+    nidash:Sequence 2 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsEthnicityValueSet ;
+    prov:label "Ethnicity" .
+
+nidash:FBIRNPhaseIIDemographicsEthnicityValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:Ethnicity_1,
+        nidash:Ethnicity_2,
+        nidash:Ethnicity_3 .
+
+nidash:FBIRNPhaseIIDemographicsFathersEducation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "integer" ;
+    nidash:Question "FathersEducation_years_" ;
+    nidash:Sequence 5 ;
+    prov:label "FathersEducation" .
+
+nidash:FBIRNPhaseIIDemographicsFathersOccupation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "FathersOccupation" ;
+    nidash:Sequence 8 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsFathersOccupationValueSet ;
+    prov:label "FathersOccupation" .
+
+nidash:FBIRNPhaseIIDemographicsFathersOccupationValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:FathersOccupation_0,
+        nidash:FathersOccupation_1,
+        nidash:FathersOccupation_2,
+        nidash:FathersOccupation_3,
+        nidash:FathersOccupation_4,
+        nidash:FathersOccupation_5,
+        nidash:FathersOccupation_6 .
+
+nidash:FBIRNPhaseIIDemographicsGender a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "Gender" ;
+    nidash:Sequence 13 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsGenderValueSet ;
+    prov:label "Gender" .
+
+nidash:FBIRNPhaseIIDemographicsGenderValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:Gender_F,
+        nidash:Gender_M .
+
+nidash:FBIRNPhaseIIDemographicsHandedness a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "Handedness" ;
+    nidash:Sequence 14 ;
+    prov:label "Handedness" .
+
+nidash:FBIRNPhaseIIDemographicsLivingArrangement a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "LivingArrangement" ;
+    nidash:Sequence 11 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsLivingArrangementValueSet ;
+    prov:label "LivingArrangement" .
+
+nidash:FBIRNPhaseIIDemographicsLivingArrangementValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:LivingArrangement_1,
+        nidash:LivingArrangement_2,
+        nidash:LivingArrangement_3 .
+
+nidash:FBIRNPhaseIIDemographicsMaritalStatus a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "MaritalStatus" ;
+    nidash:Sequence 10 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsMaritalStatusValueSet ;
+    prov:label "MaritalStatus" .
+
+nidash:FBIRNPhaseIIDemographicsMaritalStatusValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:MaritalStatus_1,
+        nidash:MaritalStatus_2,
+        nidash:MaritalStatus_3,
+        nidash:MaritalStatus_4,
+        nidash:MaritalStatus_5 .
+
+nidash:FBIRNPhaseIIDemographicsMothersEducation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "integer" ;
+    nidash:Question "MothersEducation_years_" ;
+    nidash:Sequence 4 ;
+    prov:label "MothersEducation" .
+
+nidash:FBIRNPhaseIIDemographicsMothersOccupation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "MothersOccupation" ;
+    nidash:Sequence 7 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsMothersOccupationValueSet ;
+    prov:label "MothersOccupation" .
+
+nidash:FBIRNPhaseIIDemographicsMothersOccupationValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:MothersOccupation_0,
+        nidash:MothersOccupation_1,
+        nidash:MothersOccupation_2,
+        nidash:MothersOccupation_3,
+        nidash:MothersOccupation_4,
+        nidash:MothersOccupation_5,
+        nidash:MothersOccupation_6 .
+
+nidash:FBIRNPhaseIIDemographicsNumberofChildren a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "integer" ;
+    nidash:Question "NumberofChildren" ;
+    nidash:Sequence 12 ;
+    prov:label "NumberofChildren" .
+
+nidash:FBIRNPhaseIIDemographicsOccupation a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "Occupation" ;
+    nidash:Sequence 6 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsOccupationValueSet ;
+    prov:label "Occupation" .
+
+nidash:FBIRNPhaseIIDemographicsOccupationValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:Occupation_0,
+        nidash:Occupation_1,
+        nidash:Occupation_2,
+        nidash:Occupation_3,
+        nidash:Occupation_4,
+        nidash:Occupation_5,
+        nidash:Occupation_6 .
+
+nidash:FBIRNPhaseIIDemographicsRace a nidash:DataElement,
+        rdf:Property ;
+    nidash:DataType "varchar" ;
+    nidash:Question "Race" ;
+    nidash:Sequence 1 ;
+    nidash:ValueSet nidash:FBIRNPhaseIIDemographicsRaceValueSet ;
+    prov:label "Race" .
+
+nidash:FBIRNPhaseIIDemographicsRaceValueSet a nidash:ValueSet,
+        prov:Collection ;
+    prov:hadMember nidash:Race_1,
+        nidash:Race_2,
+        nidash:Race_3,
+        nidash:Race_4,
+        nidash:Race_5,
+        nidash:Race_6,
+        nidash:Race_7 .
+
+nidash:FathersOccupation_0 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "0" ;
+    prov:label "Unemployed" .
+
+nidash:FathersOccupation_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "Professional,andTechnical" .
+
+nidash:FathersOccupation_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Business,Finance,andManagerial" .
+
+nidash:FathersOccupation_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Clerical,Sales,andService" .
+
+nidash:FathersOccupation_4 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "4" ;
+    prov:label "Agricultural,Fishery,Forestry,,andRelated" .
+
+nidash:FathersOccupation_5 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "5" ;
+    prov:label "Processing,Manufacturing,andUtilities" .
+
+nidash:FathersOccupation_6 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "6" ;
+    prov:label "Trades,andEquipmentOperators" .
+
+nidash:Gender_F a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "F" ;
+    prov:label "Female" .
+
+nidash:Gender_M a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "M" ;
+    prov:label "Male" .
+
+nidash:LivingArrangement_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "Livealone" .
+
+nidash:LivingArrangement_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Livewithfamilymembers" .
+
+nidash:LivingArrangement_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Livewithroommates" .
+
+nidash:MaritalStatus_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "Marriedorlivingwithsomeone" .
+
+nidash:MaritalStatus_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Widowed" .
+
+nidash:MaritalStatus_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Divorcedorannulledordissolved" .
+
+nidash:MaritalStatus_4 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "4" ;
+    prov:label "Separated" .
+
+nidash:MaritalStatus_5 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "5" ;
+    prov:label "Nevermarried" .
+
+nidash:MothersOccupation_0 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "0" ;
+    prov:label "Unemployed" .
+
+nidash:MothersOccupation_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "Professional,andTechnical" .
+
+nidash:MothersOccupation_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Business,Finance,andManagerial" .
+
+nidash:MothersOccupation_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Clerical,Sales,andService" .
+
+nidash:MothersOccupation_4 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "4" ;
+    prov:label "Agricultural,Fishery,Forestry,,andRelated" .
+
+nidash:MothersOccupation_5 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "5" ;
+    prov:label "Processing,Manufacturing,andUtilities" .
+
+nidash:MothersOccupation_6 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "6" ;
+    prov:label "Trades,andEquipmentOperators" .
+
+nidash:Occupation_0 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "0" ;
+    prov:label "Unemployed" .
+
+nidash:Occupation_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "Professional,andTechnical" .
+
+nidash:Occupation_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Business,Finance,andManagerial" .
+
+nidash:Occupation_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "Clerical,Sales,andService" .
+
+nidash:Occupation_4 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "4" ;
+    prov:label "Agricultural,Fishery,Forestry,,andRelated" .
+
+nidash:Occupation_5 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "5" ;
+    prov:label "Processing,Manufacturing,andUtilities" .
+
+nidash:Occupation_6 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "6" ;
+    prov:label "Trades,andEquipmentOperators" .
+
+nidash:Race_1 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "1" ;
+    prov:label "AmericanIndian/AlaskaNative" .
+
+nidash:Race_2 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "2" ;
+    prov:label "Asian" .
+
+nidash:Race_3 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "3" ;
+    prov:label "NativeHawaiianorOtherPacificIsl,ander" .
+
+nidash:Race_4 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "4" ;
+    prov:label "BlackorAfricanAmerican" .
+
+nidash:Race_5 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "5" ;
+    prov:label "White" .
+
+nidash:Race_6 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "6" ;
+    prov:label "Morethanonerace" .
+
+nidash:Race_7 a nidash:CodedProperty,
+        rdf:Property ;
+    nidash:code "7" ;
+    prov:label "Unknownornotreported" .
+
