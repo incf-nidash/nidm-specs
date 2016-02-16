@@ -140,11 +140,13 @@ def main():
         "Group": dict(
             id="niiri:group_id",
             label="Group: Control",
+            name="Control",
             numsubjects="23"
             ),
         "Group-2": dict(
             id="niiri:group2_id",
             label="Group: Patient",
+            name="Patient",
             numsubjects="21"
             ),
         "Data_wasAttributedTo": dict(
