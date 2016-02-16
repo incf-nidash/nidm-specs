@@ -56,6 +56,7 @@ def main():
             target="10000",
             numsubjects="[1]",
             scanner_id="niiri:mr_scanner_id",
+            sub_or_group_id="niiri:subject_id",
             mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL)
             ),
         "ErrorModel": dict(

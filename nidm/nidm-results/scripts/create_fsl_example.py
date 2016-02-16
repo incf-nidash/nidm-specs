@@ -47,6 +47,7 @@ def main():
             target="10000",
             numsubjects="[21, 23]",
             scanner_id="niiri:mr_scanner_id",
+            sub_or_group_id="niiri:group_id",
             mri_protocol=NLX_FMRI_PROTOCOL,
             mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL)
             ),
