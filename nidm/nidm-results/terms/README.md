@@ -148,6 +148,13 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='group Name'"> [find issues/PR] </a></td>
+    <td><b>nidm:'group Name': </b>Name of the group</td>
+    <td>obo:STATO_0000193 </td>
+    <td>xsd:string </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>Discussed in ...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has Data Type'"> [find issues/PR] </a></td>
     <td><b>nidm:'has Data Type': </b>..</td>
     <td></td>
