@@ -49,6 +49,7 @@ def main(nidm_original_version):
     components = collections.OrderedDict()
     components["General"] = [NIDM_RESULTS, NIDM_MAP, NIDM_COORDINATE_SPACE,
                              SPM_SOFTWARE, FSL_SOFTWARE]
+    components["Data"] = [STATO_GROUP, NLX_IMAGING_INSTRUMENT]
     components["Parameters estimation"] = [
         NIDM_MODEL_PARAMETERS_ESTIMATION,
         NIDM_DATA, NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
@@ -108,6 +109,10 @@ def main(nidm_original_version):
         NIDM_SUPRA_THRESHOLD_CLUSTER: NIDM_EXCURSION_SET_MAP,
         NIDM_PEAK: NIDM_SUPRA_THRESHOLD_CLUSTER,
         NIDM_CLUSTER_CENTER_OF_GRAVITY: NIDM_SUPRA_THRESHOLD_CLUSTER
+    }
+
+    attributed_to = {
+        NIDM_DATA: [STATO_GROUP, PROV['Person'], NLX_IMAGING_INSTRUMENT]
     }
 
     if nidm_version == "020":
@@ -180,8 +185,10 @@ def main(nidm_original_version):
         used_by[NIDM_MASK_MAP] = [NIDM_CONTRAST_ESTIMATION]
 
         # In version 0.2.0 "ErrorModel" was called "NoiseModel"
-        components, used_by, generated_by, derived_from = _replace_term_by(
-            renaming, components, used_by, generated_by, derived_from)
+        components, used_by, generated_by, derived_from, attributed_to = \
+            _replace_term_by(
+                renaming, components, used_by, generated_by,
+                derived_from, attributed_to)
 
     commentable = False
     if nidm_version == "dev":
@@ -228,7 +235,7 @@ def dev_to_release(text, full_version):
 
 
 def _replace_term_by(renaming, components, used_by, generated_by,
-                     derived_from):
+                     derived_from, attributed_to):
     for original_term, renamed_term in renaming:
         generated_by = dict((k if k != original_term else renamed_term,
                              v if v != original_term else renamed_term)
@@ -241,6 +248,11 @@ def _replace_term_by(renaming, components, used_by, generated_by,
             (k if k != original_term else renamed_term,
              list(el if el != original_term else renamed_term for el in v))
             for (k, v) in used_by.items())
+
+        attributed_to = dict(
+            (k if k != original_term else renamed_term,
+             list(el if el != original_term else renamed_term for el in v))
+            for (k, v) in attributed_to.items())
 
         components = collections.OrderedDict(
             (k if k != original_term else renamed_term,
