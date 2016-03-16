@@ -203,8 +203,8 @@ definitions and illustrative examples.</p>
 
     owlspec = OwlSpecification(
         owl_file, import_files, "NIDM-Results",
-        components, used_by, generated_by, derived_from, prefix=str(NIDM),
-        commentable=commentable, intro=intro)
+        components, used_by, generated_by, derived_from, attributed_to,
+        prefix=str(NIDM), commentable=commentable, intro=intro)
 
     owlspec._header_footer(component="nidm-results", version=nidm_version)
 
