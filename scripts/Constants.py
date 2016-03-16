@@ -33,6 +33,7 @@ OBO = Namespace(OBO_URL)
 NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
 SCR = Namespace("http://scicrunch.org/resolver/")
 NLX = Namespace("http://uri.neuinfo.org/nif/nifstd/")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 
 namespaces = {
     "prov": PROV,
@@ -289,3 +290,5 @@ FSL_SOFTWARE = SCR['SCR_002823']
 NLX_MRI_SCANNER = NLX['birnlex_2100']
 NLX_FMRI_PROTOCOL = NLX['birnlex_2250']
 NLX_IMAGING_INSTRUMENT = NLX['birnlex_2094']
+
+SKOS_DEFINITION = SKOS['definition']

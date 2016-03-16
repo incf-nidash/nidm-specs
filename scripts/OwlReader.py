@@ -344,6 +344,9 @@ class OwlReader():
 
     def get_definition(self, owl_term, add_links=True):
         definition = list(self.graph.objects(owl_term, OBO_DEFINITION))
+        definition = definition + \
+            list(self.graph.objects(owl_term, SKOS_DEFINITION))
+
         if definition:
             if len(definition) > 1:
                 warnings.warn('Multiple definitions for '
