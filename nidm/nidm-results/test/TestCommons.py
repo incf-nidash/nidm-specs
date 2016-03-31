@@ -35,15 +35,15 @@ logger.info(' ---------- Debug log ----------')
 
 # Complete examples (used for test queries)
 import_test_filenames = set(
-    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*.provn')) +
-    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*', '*.provn')) +
-    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*', '*.provn')) +
-    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*.provn')) +
-    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'afni', '*', '*.provn')))
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*.ttl')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'spm', '*', '*.ttl')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*', '*.ttl')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'fsl', '*.ttl')) +
+    glob.glob(os.path.join(NIDM_RESULTS_PATH, 'afni', '*', '*.ttl')))
 
 # All examples
 example_filenames = import_test_filenames.union(set(glob.glob(
-    os.path.join(NIDM_RESULTS_PATH, 'test', 'ground_truth', '*', '*.provn'))))
+    os.path.join(NIDM_RESULTS_PATH, 'test', 'ground_truth', '*', '*.ttl'))))
 
 # If True turtle file will be downloaded from the prov store using the address specified in the README. 
 # If False the turtle version will be retreived on the fly using the prov translator. By default set to True

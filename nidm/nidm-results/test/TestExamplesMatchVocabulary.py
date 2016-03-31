@@ -37,10 +37,10 @@ class TestExamples(unittest.TestCase):
         self.owl_files = dict()
 
         for example_file in self.example_files:
-            provn_file = os.path.join(os.path.dirname(os.path.dirname(
+            ttl_file = os.path.join(os.path.dirname(os.path.dirname(
                                 os.path.abspath(__file__))), example_file)
             # ttl_file_url = get_turtle(provn_file)
-            ttl_file = provn_file.replace(".provn", ".ttl")
+            # ttl_file = provn_file.replace(".provn", ".ttl")
 
             # Read turtle
             self.examples[example_file] = Graph()

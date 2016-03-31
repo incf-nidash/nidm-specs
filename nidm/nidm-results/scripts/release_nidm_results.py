@@ -147,7 +147,7 @@ class NIDMRelease(object):
                                 '"'))
         # Re-create turtle examples from template
         recompute_all_ex.main()
-        # Convert turtle to provn and upload to Prov Store
+        # Upload to Prov Store
         UpdateExampleReadmes.main()
         # Update terms README
         UpdateTermReadme.main()

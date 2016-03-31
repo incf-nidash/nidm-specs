@@ -17,7 +17,7 @@ import logging
 import os
 from rdflib.compare import *
 import sys
-from subprocess import call
+# from subprocess import call
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(SCRIPT_PATH)
@@ -33,20 +33,20 @@ logger = logging.getLogger(__name__)
 # Define title for all examples
 doc_titles = dict()
 doc_titles[os.path.join(
-    'spm', 'example001', 'example001_spm_results.provn')] = "SPM example 001"
+    'spm', 'example001', 'example001_spm_results.ttl')] = "SPM example 001"
 doc_titles[os.path.join(
-    'fsl', 'example001', 'fsl_nidm.provn')] = "FSL example 001"
+    'fsl', 'example001', 'fsl_nidm.ttl')] = "FSL example 001"
 doc_titles[os.path.join(
-    'spm', 'spm_results.provn')] = "SPM"
+    'spm', 'spm_results.ttl')] = "SPM"
 doc_titles[os.path.join(
-    'spm', 'example002', 'spm_results_2contrasts.provn')] = "SPM example 002"
+    'spm', 'example002', 'spm_results_2contrasts.ttl')] = "SPM example 002"
 doc_titles[os.path.join(
-    'spm', 'example003', 'spm_results_conjunction.provn')] = \
+    'spm', 'example003', 'spm_results_conjunction.ttl')] = \
     "SPM example 003: Conjunction"
 doc_titles[os.path.join(
-    'spm', 'example004', 'spm_inference_activities.provn')] = \
+    'spm', 'example004', 'spm_inference_activities.ttl')] = \
     "SPM example 004: Inference"
-doc_titles[os.path.join('fsl', 'fsl_results.provn')] = "FSL"
+doc_titles[os.path.join('fsl', 'fsl_results.ttl')] = "FSL"
 
 
 def get_doc_from_title(doc_title):
@@ -148,25 +148,19 @@ def main():
         doc_title = "NIDM-Results: "+doc_title
         logger.info('Document entitled: '+'"'+doc_title+'"')
 
-        doc_provn_file = os.path.join(NIDMRESULTSPATH, example_file)
+        doc_ttl_file = os.path.join(NIDMRESULTSPATH, example_file)
 
-        # Update provn file from ttl
-        doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
-        call("provconvert -infile "+doc_ttl_file+" -outfile "+doc_provn_file,
-             shell=True)
+        # No more provn serialisation
+        # # Update provn file from ttl
+        # doc_ttl_file = doc_provn_file.replace(".provn", ".ttl")
+        # call("provconvert -infile "+doc_ttl_file+" -outfile "+doc_provn_file,
+        #      shell=True)
 
-        # Get provn of current document
-        if os.path.isfile(doc_provn_file):
-            doc_provn_file_open = open(doc_provn_file, 'r')
-            doc_provn = doc_provn_file_open.read()
-            doc_provn_file_open.close()
-
-            # response = urllib2.urlopen(same_doc_ttl_url)
-            # doc_ttl = response.read()
-            # ttl_fid.write(doc_ttl)
-
-            # Find most recent document with same title on the ProvStore
-            # same_doc_url = get_doc_from_title(doc_title)
+        # Compare current document with prov store
+        if os.path.isfile(doc_ttl_file):
+            doc_ttl_file_open = open(doc_ttl_file, 'r')
+            doc_ttl = doc_ttl_file_open.read()
+            doc_ttl_file_open.close()
 
             # Find corresponding document on the ProvStore by looking at README
             # Read README
@@ -205,16 +199,19 @@ def main():
                 logger.info('\tNo README.')
                 found_difference = True
         else:
-            logger.info('\tNo provn file.')
+            logger.info('\tNo ttl file.')
             found_difference = True
 
         if found_difference:
-            # Convert provn to json using Prov Translator APIs
+            # Convert ttl to json using Prov Translator APIs
+            # FIXME: Do we still need this conversion now that we are starting
+            # from ttl not provn?
             url = "https://provenance.ecs.soton.ac.uk/validator/" + \
                   "provapi/documents/"
-            headers = {'Content-type': "text/provenance-notation",
+            headers = {'Content-type': "text/turtle",
                        'Accept': "application/json"}
-            req = urllib2.Request(url, doc_provn, headers)
+            req = urllib2.Request(url, doc_ttl, headers)
+
             response = urllib2.urlopen(req)
             doc_json_url = response.geturl()
             logger.info('\tDocument in json: '+'"'+doc_json_url+'"')
