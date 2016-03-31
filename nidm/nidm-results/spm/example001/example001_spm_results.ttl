@@ -1,6 +1,5 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
-@prefix neurolex: <http://neurolex.org/wiki/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dctype: <http://purl.org/dc/dcmitype/> .
@@ -12,7 +11,8 @@
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
-@prefix nlx: <http://neurolex.org/wiki/> .
+@prefix nlx: <http://uri.neuinfo.org/nif/nifstd/> .
+@prefix scr: <http://scicrunch.org/resolver/>.
 
 
 @prefix nidm_ClusterDefinitionCriteria: <http://purl.org/nidash/nidm#NIDM_0000007> .
@@ -35,7 +35,6 @@
 @prefix nidm_MNICoordinateSystem: <http://purl.org/nidash/nidm#NIDM_0000051> .
 @prefix nidm_numberOfDimensions: <http://purl.org/nidash/nidm#NIDM_0000112> .
 @prefix nidm_dimensionsInVoxels: <http://purl.org/nidash/nidm#NIDM_0000090> .
-@prefix nidm_DataScaling: <http://purl.org/nidash/nidm#NIDM_0000018> .
 @prefix nidm_grandMeanScaling: <http://purl.org/nidash/nidm#NIDM_0000096> .
 @prefix nidm_targetIntensity: <http://purl.org/nidash/nidm#NIDM_0000124> .
 @prefix nidm_ParameterEstimateMap: <http://purl.org/nidash/nidm#NIDM_0000061> .
@@ -116,7 +115,10 @@
 @prefix spm_smallestSignificantClusterSizeInVoxelsFWE05: <http://purl.org/nidash/spm#SPM_0000014> .
 @prefix spm_smallestSignificantClusterSizeInVoxelsFDR05: <http://purl.org/nidash/spm#SPM_0000013> .
 @prefix spm_searchVolumeReselsGeometry: <http://purl.org/nidash/spm#SPM_0000010> .
-@prefix nlx_SPM: <http://neurolex.org/wiki/nif-0000-00343> .
+@prefix nlx_FunctionalMRIprotocol: <http://uri.neuinfo.org/nif/nifstd/birnlex_2250> .
+@prefix nlx_Imaginginstrument: <http://uri.neuinfo.org/nif/nifstd/birnlex_2094> .
+@prefix nlx_Magneticresonanceimagingscanner: <http://uri.neuinfo.org/nif/nifstd/birnlex_2100> .
+@prefix src_SPM: <http://scicrunch.org/resolver/SCR_007037> .
 
 
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
@@ -206,10 +208,13 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
 	nidm_numberOfDimensions: "3"^^xsd:int ;
 	nidm_dimensionsInVoxels: "[ 53, 63, 52 ]"^^xsd:string .
 
-niiri:data_id a prov:Entity , nidm_DataScaling: , prov:Collection ;
+niiri:data_id a prov:Entity , nidm:Data , prov:Collection ;
     rdfs:label "Data" ;
     nidm_grandMeanScaling: "true"^^xsd:boolean ;
-    nidm_targetIntensity: "100"^^xsd:float .
+    nidm_targetIntensity: "100"^^xsd:float ;
+    nidm:hasMRIProtocol nlx_FunctionalMRIprotocol: ;
+    prov:wasAttributedTo niiri:mr_scanner_id ;
+    prov:wasAttributedTo niiri:subject_id .
 
 niiri:contrast_map_id_der a prov:Entity , nidm_ContrastMap: ;
     nfo:fileName "con_0001.nii"^^xsd:string ;
@@ -347,6 +352,9 @@ niiri:design_matrix_png_id a prov:Entity , dctype:Image ;
 	prov:atLocation "DesignMatrix.png"^^xsd:anyURI ;
 	nfo:fileName "DesignMatrix.png"^^xsd:string ;
 	dct:format "image/png"^^xsd:string .
+
+niiri:mr_scanner_id a prov:Entity, nlx_Imaginginstrument:, nlx_Magneticresonanceimagingscanner:;
+    rdfs:label "MRI Scanner" .
 
 niiri:inference_id a prov:Activity , nidm_Inference: ;
 	rdfs:label "Inference" ;
@@ -488,6 +496,9 @@ niiri:peak_0009 a prov:Entity , nidm_Peak: ;
 	nidm_pValueFWER: "0.0119099090973821"^^xsd:float ;
 	nidm_qValueFDR: "0.251554254717758"^^xsd:float .
 
+niiri:subject_id a prov:Agent , prov:Person ;
+    rdfs:label "Person" .
+
 niiri:residual_mean_squares_map_id a prov:Entity , nidm_ResidualMeanSquaresMap: ;
 	rdfs:label "Residual Mean Squares Map" ;
 	prov:atLocation "ResidualMeanSquares.nii.gz"^^xsd:anyURI ;
@@ -512,7 +523,7 @@ niiri:resels_per_voxel_map_id a prov:Entity , nidm_ReselsPerVoxelMap: ;
 	crypto:sha512 "2025dc6c33708b80708c2eba3215fb1149df236fb558a8e8f8f6cf34595fb54734fe5e436db3e192a424d99699dd7feb2f4a9020ceae8e7bcbd881b17825256a"^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id.
 
-niiri:software_id a prov:Agent , nlx_SPM: , prov:SoftwareAgent ;
+niiri:software_id a prov:Agent , src_SPM: , prov:SoftwareAgent ;
 	rdfs:label "SPM" ;
 	nidm_softwareVersion: "12.12.1"^^xsd:string .
 

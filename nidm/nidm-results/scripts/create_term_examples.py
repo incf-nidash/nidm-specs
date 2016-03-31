@@ -20,7 +20,7 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     NIDM_FINITE_IMPULSE_RESPONSE_HRB, SPM_CANONICAL_HRF, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
-    STATO_UNSTRUCTURED_COVARIANCE
+    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
 
 
 def main():
@@ -36,13 +36,13 @@ def main():
             ),
         "SPM_Software": dict(
             software_id="niiri:spm_software_id",
-            software_type="nlx:nif-0000-00343",
+            software_type="scr:SCR_007037",
             label="SPM",
             version="8.6225"
             ),
         "FSL_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:birnlex_2067",
+            software_type="scr:SCR_002823",
             label="FSL",
             version="5.0.1",
             feat_version="6.00"
@@ -137,12 +137,33 @@ def main():
             filename="DesignMatrix.png",
             format="image/png"
             ),
-        "Data": dict(
+        "Group": dict(
+            id="niiri:group_id",
+            label="Group: Control",
+            name="Control",
+            numsubjects="23"
+            ),
+        "Group-2": dict(
+            id="niiri:group2_id",
+            label="Group: Patient",
+            name="Patient",
+            numsubjects="21"
+            ),
+        "Data_wasAttributedTo": dict(
             comment="Data",
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
-            target=100
+            target=100,
+            scanner_id="niiri:my_scanner_id",
+            sub_or_group_id="niiri:group_id",
+            group2_id="niiri:group2_id",
+            mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL),
+            ),
+        "ImagingInstrument": dict(
+            id="niiri:mr_scanner_id",
+            label="MRI Scanner",
+            type=q_graph.qname(NLX_MRI_SCANNER),
             ),
         "ErrorModel": dict(
             comment="Error Model",

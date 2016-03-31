@@ -16,11 +16,16 @@ NIDMRESULTSPATH = os.path.dirname(RELPATH)
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from Constants import STATO_GLS_STR, STATO_GLS_LABEL, STATO_TSTATISTIC_STR, \
     STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME, \
-    NIDM_P_VALUE_UNCORRECTED_QNAME
+    NIDM_P_VALUE_UNCORRECTED_QNAME, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
 
 
 def main():
     nidm_classes = {
+        "ImagingInstrument": dict(
+            id="niiri:mr_scanner_id",
+            label="MRI Scanner",
+            type=q_graph.qname(NLX_MRI_SCANNER),
+            ),
         "DesignMatrix_1stLevel": dict(
             design_matrix_id='niiri:design_matrix_id',
             label="Design Matrix",
@@ -42,11 +47,18 @@ def main():
             filename="DesignMatrix.png",
             format="image/png"
             ),
+        "Person": dict(
+            id='niiri:subject_id',
+            label="Person"
+            ),
         "Data": dict(
             data_id='niiri:data_id',
             label="Data",
             scaling="true",
-            target=100
+            target=100,
+            scanner_id="niiri:mr_scanner_id",
+            sub_or_group_id="niiri:subject_id",
+            mr_protocol=q_graph.qname(NLX_FMRI_PROTOCOL)
             ),
         "ErrorModel": dict(
             error_model_id="niiri:error_model_id",
@@ -570,7 +582,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",
-            software_type="nlx:nif-0000-00343",
+            software_type="scr:SCR_007037",
             label="SPM",
             version="12.12.1"
             ),

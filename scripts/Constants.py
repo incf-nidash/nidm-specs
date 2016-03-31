@@ -31,7 +31,9 @@ OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
 
 NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
-NLX = Namespace("http://neurolex.org/wiki/")
+SCR = Namespace("http://scicrunch.org/resolver/")
+NLX = Namespace("http://uri.neuinfo.org/nif/nifstd/")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 
 namespaces = {
     "prov": PROV,
@@ -46,7 +48,8 @@ namespaces = {
     "obo": OBO,
     "nfo": NFO,
     "dc": DC,
-    "nlx": NLX
+    "nlx": NLX,
+    "scr": SCR
     }
 
 # Empty graph used to compute qnames
@@ -221,7 +224,7 @@ NIDM_ERROR_DISTRIBUTION = NIDM['NIDM_0000022']
 NIDM_REGRESSOR_NAMES = NIDM['NIDM_0000021']
 NIDM_DISPLAY_MASK_MAP = NIDM['NIDM_0000020']
 NIDM_DESIGN_MATRIX = NIDM['NIDM_0000019']
-NIDM_DATA = NIDM['NIDM_0000018']
+NIDM_DATA = NIDM['Data']
 NIDM_CUSTOM_COORDINATE_SYSTEM = NIDM['NIDM_0000017']
 NIDM_COORDINATE_SPACE = NIDM['NIDM_0000016']
 NIDM_COORDINATE = NIDM['NIDM_0000015']
@@ -279,6 +282,13 @@ STATO_ZSTATISTIC_LABEL = "obo:'Z-statistic'"
 STATO_CONTRAST_WEIGHT_MATRIX = OBO['STATO_0000323']
 STATO_GAUSSIAN_DISTRIBUTION = OBO['STATO_0000227']
 STATO_UNSTRUCTURED_COVARIANCE = OBO['STATO_0000405']
+STATO_GROUP = OBO['STATO_0000193']
 
-SPM_SOFTWARE = NLX['nif-0000-00343']
-FSL_SOFTWARE = NLX['birnlex_2067']
+SPM_SOFTWARE = SCR['SCR_007037']
+FSL_SOFTWARE = SCR['SCR_002823']
+
+NLX_MRI_SCANNER = NLX['birnlex_2100']
+NLX_FMRI_PROTOCOL = NLX['birnlex_2250']
+NLX_IMAGING_INSTRUMENT = NLX['birnlex_2094']
+
+SKOS_DEFINITION = SKOS['definition']

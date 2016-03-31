@@ -41,9 +41,11 @@ class OwlReader():
         self.attributes, self.ranges, \
             self.type_restrictions, self.parent_ranges = self.get_attributes()
 
-        labels = dict(self.graph.subject_objects(RDFS['label']))
+        labels = self.graph.subject_objects(RDFS['label'])
+        # Ignore deprecated
         self.labels = collections.OrderedDict(
-            zip(labels.values(), labels.keys()))
+            (str(key), value) for (value, key) in labels
+            if not self.is_deprecated(value))
 
     def get_class_names(self):
         # Add PROV sub-types
@@ -184,29 +186,35 @@ class OwlReader():
 
         # Check owl restrictions on classes
         for class_name in self.graph.subjects(RDF['type'], OWL['Class']):
-            for class_restr in self.graph.objects(
-                    class_name, RDFS['subClassOf']):
-                if isinstance(class_restr, term.BNode):
-                    for prp in self.graph.objects(
-                            class_restr, OWL['onProperty']):
-                        attributes.setdefault(class_name, set()).add(prp)
-                        for child_class in self.graph.transitive_subjects(
-                                RDFS['subClassOf'], class_name):
-                            attributes.setdefault(child_class, set()).add(prp)
+            if not self.is_deprecated(class_name):
+                for class_restr in self.graph.objects(
+                        class_name, RDFS['subClassOf']):
+                    if isinstance(class_restr, term.BNode):
+                        for prp in self.graph.objects(
+                                class_restr, OWL['onProperty']):
+                            attributes.setdefault(class_name, set()).add(prp)
+                            for child_class in self.graph.transitive_subjects(
+                                    RDFS['subClassOf'], class_name):
+                                if not self.is_deprecated(child_class):
+                                    attributes.setdefault(
+                                        child_class, set()).add(prp)
 
         # Attributes that can be found in all classes
         for prp, p, o in self.graph.triples((None, RDF['type'], None)):
             if not self.is_deprecated(prp):
                 if o == OWL['DatatypeProperty'] or o == OWL['ObjectProperty']:
                     for class_name in self.graph.objects(prp, RDFS['domain']):
-                        # Add attribute to current class
-                        attributes.setdefault(class_name, set()).add(prp)
+                        if not self.is_deprecated(class_name):
+                            # Add attribute to current class
+                            attributes.setdefault(class_name, set()).add(prp)
 
                         # Add attribute to children of current class
                         for child_class in self.graph.transitive_subjects(
                                 RDFS['subClassOf'], class_name):
-                            # Add attribute to current class
-                            attributes.setdefault(child_class, set()).add(prp)
+                            if not self.is_deprecated(child_class):
+                                # Add attribute to current class
+                                attributes.setdefault(
+                                    child_class, set()).add(prp)
 
                     for range_name in self.graph.objects(prp, RDFS['range']):
                         # More complex type including restrictions
@@ -243,7 +251,8 @@ class OwlReader():
                         # Add child_class to range (for ObjectProperty)
                         for child in self.graph.transitive_subjects(
                                 RDFS['subClassOf'], range_name):
-                            ranges.setdefault(prp, set()).add(child)
+                            if not self.is_deprecated(child):
+                                ranges.setdefault(prp, set()).add(child)
 
         return list((attributes, ranges, restrictions, parent_ranges))
 
@@ -335,6 +344,9 @@ class OwlReader():
 
     def get_definition(self, owl_term, add_links=True):
         definition = list(self.graph.objects(owl_term, OBO_DEFINITION))
+        definition = definition + \
+            list(self.graph.objects(owl_term, SKOS_DEFINITION))
+
         if definition:
             if len(definition) > 1:
                 warnings.warn('Multiple definitions for '
@@ -351,10 +363,10 @@ class OwlReader():
             terms = re.findall(r'\'.*?\'', definition)
             for mterm in sorted(set(terms), key=len, reverse=True):
                 literal = Literal(mterm.replace("'", ""))
-                if literal in self.labels:
-                    purl = self.labels[literal]
-
-                    if "#" in purl:
+                if str(literal) in self.labels:
+                    purl = self.labels[str(literal)]
+                    if "#" in purl and \
+                            not self.is_deprecated(term.URIRef(mterm)):
                         definition = definition.replace(
                             mterm,
                             "<a title=" +
@@ -536,6 +548,7 @@ class OwlReader():
             PROV['wasAssociatedWith'],
             PROV['qualifiedGeneration'], PROV['wasGeneratedBy'],
             PROV['atLocation'],
+            PROV['wasAttributedTo'],
             PROV['activity'],
             PROV['wasDerivedFrom'],
             CRYPTO['sha512']

@@ -15,7 +15,8 @@ class OwlSpecification(object):
 
     def __init__(self, owl_file, import_files, spec_name, subcomponents=None,
                  used_by=None, generated_by=None, derived_from=None,
-                 prefix=None, commentable=False, intro=None):
+                 attributed_to=None, prefix=None, commentable=False,
+                 intro=None):
         self.owl = OwlReader(owl_file, import_files)
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
         self.name = spec_name
@@ -27,10 +28,10 @@ class OwlSpecification(object):
         self.attributes_done = set()
         self.text = ""
         self.create_specification(subcomponents, used_by, generated_by,
-                                  derived_from, prefix, intro)
+                                  derived_from, attributed_to, prefix, intro)
 
     def create_specification(self, subcomponents, used_by, generated_by,
-                             derived_from, prefix, intro=None):
+                             derived_from, attributed_to, prefix, intro=None):
         self.create_title(self.name+": Types and relations", "definitions")
 
         if intro is not None:
@@ -56,7 +57,7 @@ class OwlSpecification(object):
                     class_name,
                     self.owl.get_definition(class_name),
                     self.owl.attributes.setdefault(class_name, None),
-                    used_by, generated_by, derived_from,
+                    used_by, generated_by, derived_from, attributed_to,
                     children=not (
                         self.owl.get_prov_class(class_name) == PROV['Entity']))
 
@@ -230,7 +231,8 @@ class OwlSpecification(object):
 
     def create_class_section(self, class_uri, definition, attributes,
                              used_by=None, generated_by=None,
-                             derived_from=None, children=False,
+                             derived_from=None, attributed_to=None,
+                             children=False,
                              is_range=False):
         class_label = self.owl.get_label(class_uri)
         class_name = self.owl.get_name(class_uri)
@@ -271,10 +273,19 @@ class OwlSpecification(object):
                                                  " that uses ",
                                                  " entities")
 
+        found_attr_to = False
+        if attributed_to:
+            if class_uri in attributed_to:
+                if found_used_by:
+                    self.text += " and "
+                self.text += self.linked_listing(attributed_to[class_uri],
+                                                 " attributed to ")
+                found_attr_to = True
+
         found_generated_by = False
         if generated_by:
             if class_uri in generated_by:
-                if found_used_by:
+                if found_used_by or found_generated_by:
                     self.text += " and "
 
                 self.text += self.linked_listing(
@@ -295,7 +306,7 @@ class OwlSpecification(object):
 
         if derived_from:
             if class_uri in derived_from:
-                if found_used_by or found_generated_by:
+                if found_used_by or found_generated_by or found_attr_to:
                     self.text += " and "
 
                 self.text += self.linked_listing(
@@ -303,7 +314,7 @@ class OwlSpecification(object):
 
         class_children = self.owl.get_direct_children(class_uri)
         if class_children:
-            if found_used_by or found_generated_by:
+            if found_used_by or found_generated_by or found_attr_to:
                 self.text += ". It "
             else:
                 self.text += " and "

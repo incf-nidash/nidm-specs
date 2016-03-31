@@ -159,7 +159,10 @@ class ExampleFromTemplate(object):
                        re.findall('fsl:FSL_\d*', example) + \
                        re.findall(
                         'http://purl.org/nidash/fsl#FSL_\d*', example) + \
-                       re.findall('nlx:[\w-]*', example)
+                       re.findall('nlx:[\w-]*', example) + \
+                       re.findall(
+                        'http://scicrunch.org/resolver/SCR_\d*', example) + \
+                       re.findall('scr:SCR_\w*', example)
 
         prefix_definitions = ""
         for idt in alphanum_ids:
@@ -181,6 +184,12 @@ class ExampleFromTemplate(object):
                 term_uri = FSL[idt.split("#")[1]]
             elif idt.startswith("nlx:"):
                 term_uri = NLX[idt.split(":")[1]]
+            elif idt.startswith("scr:"):
+                term_uri = SCR[idt.split(":")[1]]
+            elif idt.startswith("http://scicrunch.org/resolver/SCR_"):
+                term_uri = SCR[idt.split("/")[1]]
+            else:
+                raise Exception('Unknown alphanumeric id: ' + idt)
 
             prefix_name = self.owl.get_label(term_uri).replace(" ", "")\
                                                       .replace(":", "_")\
