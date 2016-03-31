@@ -485,6 +485,18 @@ ecce86ba261f7aeb43717f5d0e47ad0b14cfb0402786251e3f2c507890c83b27652",
             p_value="2.83510681598e-09",
             inference_id="niiri:inference_id"
             ),
+        "Image": dict(
+            image_id="niiri:maximum_intensity_projection_id",
+            location="MaximumIntensityProjection.png",
+            filename="MaximumIntensityProjection.png",
+            format="image/png"
+            ),
+        "ClusterLabelsMap": dict(
+            cluster_label_map_id="niiri:cluster_label_map_id",
+            location="ClusterLabels.nii.gz",
+            filename="ClusterLabels.nii.gz",
+            format="image/nifti"
+            ),
         "SupraThresholdCluster-1": dict(
             cluster_id="niiri:supra_threshold_cluster_0001",
             label="Supra-Threshold Cluster: 0001",
