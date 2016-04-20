@@ -6,6 +6,7 @@ by using the class templates available in nidm/nidm-results/terms/templates
 @copyright: University of Warwick 2013-2014
 """
 import os
+import shutil
 from create_example_from_templates import ExampleFromTemplate
 
 import sys
@@ -21,6 +22,10 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
     STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
+
+NIDM_TERMS_DIR = os.path.join(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))), 'terms')
+EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
 
 def main():
@@ -551,9 +556,9 @@ id",
             )
         }
 
-    NIDM_TERMS_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'terms')
-    EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
+    # Delete old examples
+    shutil.rmtree(EX_DIR)
+    os.mkdir(EX_DIR)
     example = ExampleFromTemplate(nidm_classes, EX_DIR, True)
     example.create_example()
 
