@@ -47,7 +47,8 @@ class NIDMRelease(object):
 
     def __init__(self, nidm_original_version):
         self.nidm_original_version = nidm_original_version
-        self.nidm_version = nidm_original_version.replace(".", "")
+        self.nidm_version = \
+            nidm_original_version.replace(".", "")
 
     def create_release(self):
         owl_file = os.path.join(TERMS_FOLDER, 'nidm-results.owl')
@@ -107,7 +108,7 @@ class NIDMRelease(object):
                 owl_txt = owl_txt + im_txt
 
         # Remove AFNI-related terms (not ready for release yet)
-        if int(self.nidm_version) <= 110:
+        if int(self.nidm_version.split("-rc")[0]) <= 110:
             owl_txt = owl_txt.replace(
                 "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
             # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
