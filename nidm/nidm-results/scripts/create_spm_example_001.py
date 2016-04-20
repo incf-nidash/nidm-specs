@@ -191,7 +191,7 @@ id",
             sha="f4e3616579fe8b0812469409b1501e391bb17ca6e364f37d622b37fa9014c\
 f1dd89befece07e73cf5bca5b3116f55ac4496751ca990db85e8377001a4be941b2",
             contrast_est_id="niiri:contrast_estimation_id"),
-        "StatisticMap_T": dict(
+        "StatisticMap-T": dict(
             statistic_map_id="niiri:statistic_map_id",
             label="Statistic Map: passive listening > rest",
             location="TStatistic.nii.gz",

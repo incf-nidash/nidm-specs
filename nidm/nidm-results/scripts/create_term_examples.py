@@ -265,7 +265,7 @@ id",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
             contrast_est_id="niiri:contrast_estimation_id"),
-        "StatisticMap_T": dict(
+        "StatisticMap-T": dict(
             comment="Statistic Map: T",
             statistic_map_id="niiri:statistic_map_id",
             label="Statistic Map: listening > rest",
