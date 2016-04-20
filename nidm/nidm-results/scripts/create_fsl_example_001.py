@@ -86,6 +86,7 @@ def main():
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
+            filename="pe1.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
@@ -93,6 +94,7 @@ def main():
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
+            filename="pe2.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-3": dict(
             beta_map_id="niiri:beta_map_id_3",
@@ -100,6 +102,7 @@ def main():
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
+            filename="pe3.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-4": dict(
             beta_map_id="niiri:beta_map_id_4",
@@ -107,6 +110,7 @@ def main():
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
+            filename="pe4.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "CoordinateSpace": dict(
             coordinate_space_id="niiri:coordinate_space_id_1",
