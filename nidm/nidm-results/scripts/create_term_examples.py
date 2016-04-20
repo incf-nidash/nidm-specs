@@ -378,13 +378,6 @@ id",
             max_num_peaks="3",
             min_dist_peaks="8.0"
             ),
-        "ClusterDefinitionCriteria": dict(
-            comment="Cluster Definition Criteria",
-            cluster_definition_criteria_id="niiri:cluster_definition_criteria_\
-id",
-            label="Cluster Connectivity Criterion: 18",
-            connectivity="nidm:NIDM_0000128"
-            ),
         "Inference": dict(
             comment="Inference",
             inference_id="niiri:inference_id",
@@ -553,6 +546,27 @@ id",
             id="niiri:drift_model_id",
             label="FSL's Gaussian Running Line Drift Model",
             cut_off="2"
+            ),
+        "ClusterDefinitionCriteria-06": dict(
+            comment="Cluster connectivity: face",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 6",
+            connectivity="nidm:NIDM_0000130"
+            ),
+        "ClusterDefinitionCriteria-18": dict(
+            comment="Cluster connectivity: face or edge",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 18",
+            connectivity="nidm:NIDM_0000128"
+            ),
+        "ClusterDefinitionCriteria-26": dict(
+            comment="Cluster connectivity: face, edge or corner",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 26",
+            connectivity="nidm:NIDM_0000129"
             )
         }
 
