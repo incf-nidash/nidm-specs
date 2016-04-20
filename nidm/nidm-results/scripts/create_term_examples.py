@@ -21,7 +21,8 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     NIDM_FINITE_IMPULSE_RESPONSE_HRB, SPM_CANONICAL_HRF, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
-    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
+    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, \
+    NLX_FMRI_PROTOCOL, NIDM_ONE_TAILED_TEST, NIDM_TWO_TAILED_TEST
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))), 'terms')
@@ -378,11 +379,26 @@ id",
             max_num_peaks="3",
             min_dist_peaks="8.0"
             ),
-        "Inference": dict(
-            comment="Inference",
+        "Inference-OneTailed": dict(
+            comment="Inference: one-tailed",
             inference_id="niiri:inference_id",
             label="Inference",
-            alternative_hyp="nidm:NIDM_0000060",
+            alternative_hyp=NIDM_ONE_TAILED_TEST,
+            stat_map_id="niiri:statistic_map_id",
+            height_thresh_id="niiri:height_threshold_id",
+            extent_thresh_id="niiri:extent_threshold_id",
+            inference_mask_id="niiri:mask_id_3",
+            display_mask_id="niiri:display_map_id",
+            mask_id="niiri:mask_id",
+            software_id="niiri:software_id",
+            peak_def_id="niiri:peak_definition_criteria_id",
+            cluster_def_id="niiri:cluster_definition_criteria_id"
+            ),
+        "Inference-TwoTailed": dict(
+            comment="Inference: two-tailed",
+            inference_id="niiri:inference_id",
+            label="Inference",
+            alternative_hyp=NIDM_TWO_TAILED_TEST,
             stat_map_id="niiri:statistic_map_id",
             height_thresh_id="niiri:height_threshold_id",
             extent_thresh_id="niiri:extent_threshold_id",
