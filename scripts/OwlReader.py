@@ -63,7 +63,8 @@ class OwlReader():
         children = set()
 
         for class_name in self.graph.subjects(RDFS['subClassOf'], term):
-            children.add(class_name)
+            if not self.is_deprecated(class_name):
+                children.add(class_name)
 
         return children
 
