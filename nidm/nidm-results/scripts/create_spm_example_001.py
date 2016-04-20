@@ -82,20 +82,19 @@ def main():
             beta_map_id="niiri:beta_map_id_1",
             label="Beta Map 1",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            param_est_id="niiri:model_pe_id"),
-        "DerivedMap-PE1": dict(
-            derived_from_map_id="niiri:beta_map_id_1_der",
-            derived_map_type="nidm:NIDM_0000061",
             filename="beta_0001.nii",
             format="image/nifti",
             sha="fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c174\
 12731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f",
-            map_id="niiri:beta_map_id_1"
-            ),
+            param_est_id="niiri:model_pe_id"),
         "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Beta Map 2",
             coordinate_space_id="niiri:coordinate_space_id_1",
+            filename="beta_0002.nii",
+            format="image/nifti",
+            sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f\
+784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
             param_est_id="niiri:model_pe_id"),
         "CoordinateSpace-1": dict(
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -532,15 +531,6 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             sha="277dd1da13d391c33c172fb8c71060008cc66e173de6362eb857b0055b41e\
 9bae57911f7ec4b45659905103b1139ebf3da0c2d04cf105bbce0cdc3004b643c22",
             map_id="niiri:contrast_map_id"
-            ),
-        "DerivedMap-2": dict(
-            derived_from_map_id="niiri:beta_map_id_2_der",
-            derived_map_type="nidm:NIDM_0000061",
-            filename="beta_0002.nii",
-            format="image/nifti",
-            sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f\
-784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
-            map_id="niiri:beta_map_id_2"
             ),
         "NIDMBundle": dict(
             bundle_id="niiri:spm_results_id",
