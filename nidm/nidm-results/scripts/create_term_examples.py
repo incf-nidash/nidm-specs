@@ -22,7 +22,9 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
     STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, \
-    NLX_FMRI_PROTOCOL, NIDM_ONE_TAILED_TEST, NIDM_TWO_TAILED_TEST
+    NLX_FMRI_PROTOCOL, NIDM_ONE_TAILED_TEST, NIDM_TWO_TAILED_TEST, \
+    STATO_GAUSSIAN_DISTRIBUTION, NIDM_SPATIALLY_LOCAL_MODEL, \
+    NIDM_INDEPENDENT_ERROR
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))), 'terms')
@@ -171,19 +173,28 @@ def main():
             label="MRI Scanner",
             type=q_graph.qname(NLX_MRI_SCANNER),
             ),
-        "ErrorModel": dict(
-            comment="Error Model",
+        "ErrorModel-OLS": dict(
+            comment="Error Model: Ordinary least squares",
             error_model_id="niiri:error_model_id",
-            noise_distribution="obo:STATO_0000227",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
             variance_homo="true",
-            variance_spatial="nidm:NIDM_0000073",
-            dependence="nidm:NIDM_0000048",
-            dependence_spatial="nidm:NIDM_0000073"
+            variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
+            dependence=NIDM_INDEPENDENT_ERROR,
+            dependence_spatial=NIDM_SPATIALLY_LOCAL_MODEL
+            ),
+        "ErrorModel-WLS": dict(
+            comment="Error Model: Weighted least squares",
+            error_model_id="niiri:error_model_id",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
+            variance_homo="false",
+            variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
+            dependence=NIDM_INDEPENDENT_ERROR,
+            dependence_spatial=NIDM_SPATIALLY_LOCAL_MODEL
             ),
         "ErrorModel-SPMnonSphericity": dict(
             comment="Error Model: SPM non sphericity",
             error_model_id="niiri:error_model_id",
-            noise_distribution="obo:STATO_0000227",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
             variance_homo="false",
             variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
             dependence=STATO_UNSTRUCTURED_COVARIANCE,
