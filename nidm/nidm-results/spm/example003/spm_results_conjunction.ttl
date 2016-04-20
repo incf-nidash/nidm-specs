@@ -18,6 +18,7 @@
 @prefix nidm_ClusterDefinitionCriteria: <http://purl.org/nidash/nidm#NIDM_0000007> .
 @prefix nidm_hasConnectivityCriterion: <http://purl.org/nidash/nidm#NIDM_0000099> .
 @prefix nidm_voxel18connected: <http://purl.org/nidash/nidm#NIDM_0000128> .
+@prefix nidm_ClusterLabelsMap: <http://purl.org/nidash/nidm#NIDM_0000008> .
 @prefix nidm_ConjunctionInference: <http://purl.org/nidash/nidm#NIDM_0000011> .
 @prefix nidm_hasAlternativeHypothesis: <http://purl.org/nidash/nidm#NIDM_0000097> .
 @prefix nidm_OneTailedTest: <http://purl.org/nidash/nidm#NIDM_0000060> .
@@ -118,6 +119,11 @@
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
 	rdfs:label "Cluster Connectivity Criterion: 18" ;
 	nidm_hasConnectivityCriterion: nidm_voxel18connected: .
+
+niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
+	prov:atLocation "ClusterLabels.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string .
 
 niiri:inference_id a prov:Activity , nidm_ConjunctionInference: ;
 	rdfs:label "Conjunction Inference" ;
@@ -373,6 +379,11 @@ niiri:height_threshold_id a prov:Entity, nidm_HeightThreshold:, nidm_PValueUncor
     prov:value "7.62276079258051e-07"^^xsd:float ;
     nidm_equivalentThreshold: niiri:height_threshold_id_2 ;
     nidm_equivalentThreshold: niiri:height_threshold_id_3 .
+
+niiri:maximum_intensity_projection_id a prov:Entity , dctype:Image ;
+	prov:atLocation "MaximumIntensityProjection.png"^^xsd:anyURI ;
+	nfo:fileName "MaximumIntensityProjection.png"^^xsd:string ;
+	dct:format "image/png"^^xsd:string .
 
 niiri:design_matrix_png_id a prov:Entity , dctype:Image ;
 	prov:atLocation "DesignMatrix.png"^^xsd:anyURI ;

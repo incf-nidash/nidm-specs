@@ -21,16 +21,17 @@ class TestProvStoreLinks(unittest.TestCase):
         super(TestProvStoreLinks, self).__init__(*args, **kwargs)
 
         self.provstore_url = dict()
-        self.ttl_from_provn_file_url = dict()
+        # self.ttl_from_provn_file_url = dict()
         self.ttl_file = dict()
         for example_file in example_filenames:
-            # Read provn
-            provn_file = os.path.join(RELPATH, example_file)
+            # Read ttl
+            ttl_file = os.path.join(RELPATH, example_file)
             # Get corresponding turtle
-            ttl_from_provn_file_url = get_turtle(provn_file)
-            self.ttl_from_provn_file_url[example_file] = \
-                ttl_from_provn_file_url
-            self.ttl_file[example_file] = provn_file.replace(".provn", ".ttl")
+            # ttl_from_provn_file_url = get_turtle(provn_file)
+            # self.ttl_from_provn_file_url[example_file] = \
+            #     ttl_from_provn_file_url
+            self.ttl_file[example_file] = ttl_file
+            #provn_file.replace(".provn", ".ttl")
 
             # Read README
             readme_file = os.path.join(
@@ -64,7 +65,7 @@ class TestProvStoreLinks(unittest.TestCase):
                 logger.info('\tProv store URL: '+self.provstore_url[
                     example_file])
                 found_difference = compare_ttl_documents(
-                    self.ttl_from_provn_file_url[example_file],
+                    self.ttl_file[example_file],
                     self.provstore_url[example_file])
 
                 if found_difference:
@@ -78,9 +79,13 @@ sing nidm/nidm-results/scripts/UpdateExampleReadmes.py")
 
             if self.ttl_file[example_file]:
                 if os.path.isfile(self.ttl_file[example_file]):
-                    found_difference = compare_ttl_documents(
-                        self.ttl_from_provn_file_url[example_file],
-                        self.ttl_file[example_file])
+                    # We keep this here (even now that provn is not stored
+                    # anymore) so that if we want to introduce other
+                    # serialisations we can re-use this code
+                    # found_difference = compare_ttl_documents(
+                    #     self.ttl_from_provn_file_url[example_file],
+                    #     self.ttl_file[example_file])
+                    found_difference = False
 
                     if found_difference:
                         error_msg.append(
