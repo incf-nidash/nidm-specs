@@ -49,8 +49,13 @@ def main(nidm_original_version):
     components = collections.OrderedDict()
     components["General"] = [NIDM_RESULTS, NIDM_MAP, NIDM_COORDINATE_SPACE,
                              NIDM_NEUROIMAGING_ANALYSIS_SOFTWARE,
-                             SPM_SOFTWARE, FSL_SOFTWARE,
-                             NIDM_NIDM_OBJECT_MODEL]
+                             SPM_SOFTWARE, FSL_SOFTWARE
+                             ]
+    components["Export"] = [NIDM_NIDM_RESULTS_EXPORT,
+                            NIDM_NIDM_RESULTS_EXPORTER, NIDM_NIDMFSL,
+                            NIDM_SPM_RESULTS_NIDM,
+                            NIDM_NIDM_OBJECT_MODEL
+                            ]
     components["Data"] = [STATO_GROUP, NLX_IMAGING_INSTRUMENT]
     components["Parameters estimation"] = [
         NIDM_MODEL_PARAMETERS_ESTIMATION,
