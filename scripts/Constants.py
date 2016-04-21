@@ -58,6 +58,7 @@ for name, namespace in namespaces.items():
     q_graph.bind(name, namespace)
 
 # NIDM constants
+NIDM_GROUP_NAME = NIDM['NIDM_0000170']
 NIDM_DATA = NIDM['NIDM_0000169']
 NIDM_SPM_RESULTS_NIDM = NIDM['NIDM_0000168']
 NIDM_NIDMFSL = NIDM['NIDM_0000167']
