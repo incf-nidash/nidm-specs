@@ -159,6 +159,7 @@ class TestResultDataModel(object):
         g2_terms = set(graph2.subjects(RDF.type, rdf_type))
 
         activity = False
+        agent = False
         MIN_MATCHING = 2
         # For maps at least 4 attributes in common are needed for
         # matching (to deal with nifti files where format and
@@ -182,6 +183,8 @@ class TestResultDataModel(object):
                 set(graph2.subjects(RDF.type, PROV['Coordinate'])))
             g2_terms = g2_terms.union(
                 set(graph2.subjects(RDF.type, PROV['Person'])))
+        elif rdf_type == PROV['Agent']:
+            agent = True
 
         for g1_term in g1_terms:
             min_matching = MIN_MATCHING
@@ -208,7 +211,7 @@ class TestResultDataModel(object):
                         if g2_term in g2_match:
                             g2_match[g2_term] += 1
 
-            if activity:
+            if activity or agent:
                 for s, p in graph1.subject_predicates(g1_term):
                     for g2_term in graph2.objects(s, p):
                         # We don't want to match agents to activities
