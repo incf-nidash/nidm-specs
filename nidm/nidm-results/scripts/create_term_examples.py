@@ -146,16 +146,11 @@ def main():
             format="image/png"
             ),
         "Group": dict(
+            comment="Group: Control group with 23 subjects",
             id="niiri:group_id",
             label="Group: Control",
             name="Control",
             numsubjects="23"
-            ),
-        "Group-2": dict(
-            id="niiri:group2_id",
-            label="Group: Patient",
-            name="Patient",
-            numsubjects="21"
             ),
         "Data_wasAttributedTo": dict(
             comment="Data",
