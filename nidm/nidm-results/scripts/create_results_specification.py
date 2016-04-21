@@ -56,10 +56,10 @@ def main(nidm_original_version):
                             NIDM_SPM_RESULTS_NIDM,
                             NIDM_NIDM_OBJECT_MODEL
                             ]
-    components["Data"] = [STATO_GROUP, NLX_IMAGING_INSTRUMENT]
     components["Parameters estimation"] = [
         NIDM_MODEL_PARAMETERS_ESTIMATION,
-        NIDM_DATA, NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
+        NIDM_DATA, STATO_GROUP, NLX_IMAGING_INSTRUMENT,
+        NIDM_DESIGN_MATRIX, NIDM_ERROR_MODEL,
         NIDM_GRAND_MEAN_MAP, NIDM_MASK_MAP, NIDM_BINARY_MAP,
         NIDM_PARAMETER_ESTIMATE_MAP,
         NIDM_RESELS_PER_VOXEL_MAP, NIDM_RESIDUAL_MEAN_SQUARES_MAP]
