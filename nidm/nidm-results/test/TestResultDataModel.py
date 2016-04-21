@@ -178,6 +178,8 @@ class TestResultDataModel(object):
                 graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(
                 set(graph2.subjects(RDF.type, PROV['Coordinate'])))
+            g2_terms = g2_terms.union(
+                set(graph2.subjects(RDF.type, PROV['Person'])))            
 
         for g1_term in g1_terms:
             min_matching = MIN_MATCHING
