@@ -47,9 +47,10 @@ class OwlSpecification(object):
             self.create_subcomponent_table(classes_by_types, table_num,
                                            subcomponent_name)
             table_num = table_num + 1
-            all_classes = classes_by_types[PROV['Agent']] + \
+            all_classes = \
                 classes_by_types[PROV['Activity']] + \
                 classes_by_types[PROV['Entity']] + \
+                classes_by_types[PROV['Agent']] + \
                 classes_by_types[None]
 
             for class_name in all_classes:
@@ -110,9 +111,9 @@ class OwlSpecification(object):
         """
 
         for prov_class in list([
-                PROV['Agent'],
                 PROV['Activity'],
-                PROV['Entity']]):
+                PROV['Entity'],
+                PROV['Agent']]):
             sorted_classes = classes[prov_class]
             for class_uri in sorted_classes:
                 self.text += """
