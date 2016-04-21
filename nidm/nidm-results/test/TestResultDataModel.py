@@ -174,12 +174,14 @@ class TestResultDataModel(object):
                 graph1.subjects(RDF.type, PROV['Bundles'])))
             g1_terms = g1_terms.union(set(
                 graph1.subjects(RDF.type, PROV['Coordinate'])))
+            g1_terms = g1_terms.union(set(
+                graph1.subjects(RDF.type, PROV['Person'])))
             g2_terms = g2_terms.union(set(
                 graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(
                 set(graph2.subjects(RDF.type, PROV['Coordinate'])))
             g2_terms = g2_terms.union(
-                set(graph2.subjects(RDF.type, PROV['Person'])))            
+                set(graph2.subjects(RDF.type, PROV['Person'])))
 
         for g1_term in g1_terms:
             min_matching = MIN_MATCHING
@@ -202,12 +204,16 @@ class TestResultDataModel(object):
                 # if activity or \
                 #        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
                 for g2_term in graph2.subjects(p, o):
-                    g2_match[g2_term] += 1
+                    # We don't want to match agents to activities
+                        if g2_term in g2_match:
+                            g2_match[g2_term] += 1
 
             if activity:
                 for s, p in graph1.subject_predicates(g1_term):
                     for g2_term in graph2.objects(s, p):
-                        g2_match[g2_term] += 1
+                        # We don't want to match agents to activities
+                        if g2_term in g2_match:
+                            g2_match[g2_term] += 1
 
             match_found = False
             g2_matched = set()
