@@ -109,8 +109,14 @@ class TestResultDataModel(object):
 
             with open(configfile) as data_file:
                 metadata = json.load(data_file)
-            gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
-                       for x in metadata["ground_truth"]]
+            try:
+                gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
+                           for x in metadata["ground_truth"]]
+            except:
+                # This part should be removed once SPM can modify json files
+                gt_file = [os.path.join(self.gt_dir, metadata["versions"][0],
+                           x)
+                           for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
             name = ttl.replace(test_dir, "")
 
