@@ -114,9 +114,13 @@ class NIDMRelease(object):
                 "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
             # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
             # afni:'GammaHRF' and afni:'LegendrePolynomialDriftModel'
+            # and 'vertices' terms not yet in use
             terms_under_development = [
                 NIDM['NIDM_0000014'], AFNI['BLOCK'], AFNI['GammaHRF'],
-                AFNI['LegendrePolynomialDriftModel']]
+                AFNI['LegendrePolynomialDriftModel'],
+                NIDM['NIDM_0000083'], NIDM['NIDM_0000137'],
+                NIDM['NIDM_0000142'], NIDM['NIDM_0000158'],
+                SPM['SPM_0000011'], SPM['SPM_0000012']]
             for term in terms_under_development:
                 m = re.search(
                     re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
