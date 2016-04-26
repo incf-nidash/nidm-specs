@@ -783,5 +783,5 @@ class OwlReader():
                     continue
                 prefix = self.get_preferred_prefix(s)
 
-                if prefix is not None:
+                if prefix is not None and not self.is_deprecated(s):
                     writer.writerow([self.graph.qname(s), prefix])
