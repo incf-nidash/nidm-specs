@@ -20,11 +20,7 @@ CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/\
 cryptographicHashFunctions#')
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 DCT = Namespace('http://purl.org/dc/terms/')
-# This is a workaround to avoid issue with "#" in base prefix as
-# described in https://github.com/RDFLib/rdflib/issues/379,
-# When the fix is introduced in rdflib this line will be replaced by:
-# OWL = Namespace('http://www.w3.org/2002/07/owl#')
-OWL = Namespace('http://www.w3.org/2002/07/owl')
+OWL = Namespace('http://www.w3.org/2002/07/owl#')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
 OBO_URL = "http://purl.obolibrary.org/obo/"
