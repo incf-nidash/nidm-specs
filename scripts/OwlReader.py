@@ -747,10 +747,18 @@ class OwlReader():
             return self.get_name(uri) + " (i.e. " + self.get_label(uri) + ")"
 
     def get_preferred_prefix(self, uri):
-        prefix_name = self.get_label(uri).replace(" ", "")\
-                                         .replace(":", "_")\
-                                         .replace("'", "")\
-                                         .replace("-", "")
+        label = str(self.graph.label(uri))
+        idt = str(self.graph.qname(uri).split(":")[1])
+
+        if label == idt:
+            # For text identifiers there is no preferred prefix (we can just
+            # keep the id directly)
+            prefix_name = None
+        else:
+            prefix_name = self.get_label(uri).replace(" ", "")\
+                                             .replace(":", "_")\
+                                             .replace("'", "")\
+                                             .replace("-", "")
         return prefix_name
 
     def sorted_by_labels(self, term_list):
@@ -773,7 +781,7 @@ class OwlReader():
                     # Some URIs don't have qname
                     # (e.g. http://www.w3.org/ns/prov-o#)
                     continue
+                prefix = self.get_preferred_prefix(s)
 
-                writer.writerow([
-                    self.graph.qname(s),
-                    self.get_preferred_prefix(s)])
+                if prefix is not None:
+                    writer.writerow([self.graph.qname(s), prefix])
