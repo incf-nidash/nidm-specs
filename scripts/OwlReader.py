@@ -17,6 +17,7 @@ import logging
 import csv
 import collections
 import re
+import warnings
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_PATH = os.path.dirname(RELPATH)
@@ -90,6 +91,81 @@ class OwlReader():
     def is_class(self, uri):
         return (uri, RDF['type'], OWL['Class']) in self.graph
 
+    def all_of_rdf_type(self, rdf_type, prefix=None, but=set(),
+                        but_type=OWL['AnnotationProperty']):
+        classes = self.graph.subjects(RDF['type'], rdf_type)
+
+        deprecated = self.graph.subjects(
+            OWL['deprecated'], term.Literal(True))
+        but = but.union(set(deprecated))
+        annotations = self.graph.subjects(RDF['type'], but_type)
+        but = but.union(set(annotations))
+
+        # FIXME: Is there a more efficient way?
+        if prefix:
+            original_classes = classes
+            classes = list()
+            for class_name in original_classes:
+                if class_name.startswith(prefix):
+                    classes.append(class_name)
+        if but:
+            classes = list(set(classes) - set(but))
+
+        classes = sorted(classes)
+        return classes
+
+    def get_classes(self, prefix=None, but=set(OWL['Thing'])):
+        return self.all_of_rdf_type(OWL['Class'], prefix, but)
+
+    def get_by_namespaces(self, term_list,
+                          but=("rdf", "prv", "protege", "xsd")):
+        by_nsp = dict()
+        ignored = []
+
+        for uri in term_list:
+            if not isinstance(uri, term.BNode):
+                try:
+                    qname = self.graph.qname(uri)
+                    nsp = qname.split(":")[0]
+                except:
+                    qname = None
+                    nsp = None
+
+                if (str(nsp) not in but) and \
+                        ((qname is None) or (not qname.startswith(but))):
+                    by_nsp.setdefault(str(nsp), list()).append(uri)
+                else:
+                    ignored.append(uri)
+
+        if ignored:
+            warnings.warn("Ignoring... " + "\n\t".join(ignored))
+
+        return by_nsp
+
+    def count_by_namespaces(self):
+        owl_types = list([OWL['Class'], OWL['DatatypeProperty'],
+                          OWL['ObjectProperty'], OWL['NamedIndividual'], None])
+
+        counter = 0
+        for owl_type in owl_types:
+            terms = self.get_by_namespaces(self.all_of_rdf_type(owl_type))
+            len_dict = {key: len(value) for key, value in terms.items()}
+            num = sum(len_dict.values())
+            if owl_type is not None:
+                type_id = self.graph.qname(owl_type).split(":")[1]
+                counter = counter + num
+                comp_to = ""
+            else:
+                type_id = 'all'
+                comp_to = " (" + str(num) + ")"
+
+            print str(num) + " " + type_id + comp_to
+            for nsp, length in len_dict.items():
+                print "\t" + nsp + ": " + str(length)
+                # if owl_type is None:
+                print "\t\t" + ", ".join(map(str, terms[nsp]))
+            print "\n\n-------------"
+
     def get_class_names_by_prov_type(self, classes=None, prefix=None,
                                      but=None):
         class_names = dict()
@@ -101,23 +177,7 @@ class OwlReader():
         class_names[None] = list()
 
         if not classes:
-            classes = self.graph.subjects(RDF['type'], OWL['Class'])
-
-            deprecated = self.graph.subjects(
-                OWL['deprecated'], term.Literal(True))
-            but = set(but).union(set(deprecated))
-
-            # FIXME: Is there a more efficient way?
-            if prefix:
-                original_classes = classes
-                classes = list()
-                for class_name in original_classes:
-                    if class_name.startswith(prefix):
-                        classes.append(class_name)
-            if but:
-                classes = list(set(classes) - set(but))
-
-            classes = sorted(classes)
+            classes = self.get_classes(prefix)
 
         for class_name in classes:
             if not self.is_class(class_name):
@@ -277,20 +337,20 @@ class OwlReader():
             for import_file in self.import_files:
                 # Read owl (turtle) file
                 import_graph = Graph()
-                if self.file[0:4] == "http":
-                    import_txt = urllib2.urlopen(import_file).read()
-                else:
-                    import_txt = open(import_file, 'r').read()
+                # if self.file[0:4] == "http":
+                #     import_txt = urllib2.urlopen(import_file).read()
+                # else:
+                #     import_txt = open(import_file, 'r').read()
 
                 # This is a workaround to avoid issue with "#" in base prefix
                 # as described in https://github.com/RDFLib/rdflib/issues/379,
                 # When the fix is introduced in rdflib these 2 lines will be
                 # replaced by:
-                # self.owl.parse(owl_file, format='turtle')
-                import_txt = import_txt.replace(
-                    "http://www.w3.org/2002/07/owl#",
-                    "http://www.w3.org/2002/07/owl")
-                import_graph.parse(data=import_txt, format='turtle')
+                self.owl.parse(import_file, format='turtle')
+                # import_txt = import_txt.replace(
+                #     "http://www.w3.org/2002/07/owl#",
+                #     "http://www.w3.org/2002/07/owl")
+                # import_graph.parse(data=import_txt, format='turtle')
 
                 owl_graph = owl_graph + import_graph
 
@@ -711,7 +771,11 @@ class OwlReader():
 
     def get_label(self, uri):
         if not isinstance(uri, term.BNode):
-            name = self.graph.qname(uri)
+            try:
+                name = self.graph.qname(uri)
+            except:
+                # For ontology names, qname fails not sure if this is a bug
+                name = uri
         else:
             name = uri
 
