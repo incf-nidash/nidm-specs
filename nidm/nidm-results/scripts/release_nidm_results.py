@@ -100,9 +100,9 @@ class NIDMRelease(object):
 
                 # Remove description of subset ontology
                 this_ontology_match = re.search(
-                    r'<http://.*>  rdf:type owl:Ontology .', im_txt)
+                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###', im_txt, re.DOTALL)
                 if this_ontology_match:
-                    im_txt = im_txt.replace(this_ontology_match.group(), "")
+                    im_txt = im_txt.replace(this_ontology_match.group(), "###")
 
                 # Copy missing prefixes in nidm-results owl file
                 prefixes = re.findall(r'@prefix \w+: <.*> \.\n', im_txt)
