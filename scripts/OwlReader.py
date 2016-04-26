@@ -97,7 +97,7 @@ class OwlReader():
 
         deprecated = self.graph.subjects(
             OWL['deprecated'], term.Literal(True))
-        but = but.union(set(deprecated))
+        but = set(but).union(set(deprecated))
         annotations = self.graph.subjects(RDF['type'], but_type)
         but = but.union(set(annotations))
 
@@ -177,7 +177,7 @@ class OwlReader():
         class_names[None] = list()
 
         if not classes:
-            classes = self.get_classes(prefix)
+            classes = self.get_classes(prefix, but)
 
         for class_name in classes:
             if not self.is_class(class_name):
