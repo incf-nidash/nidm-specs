@@ -132,7 +132,7 @@ class OwlReader():
 
                 if (str(nsp) not in but) and \
                         ((qname is None) or (not qname.startswith(but))):
-                    by_nsp.setdefault(str(nsp), list()).append(uri)
+                    by_nsp.setdefault(nsp, list()).append(uri)
                 else:
                     ignored.append(uri)
 
@@ -153,7 +153,7 @@ class OwlReader():
         counter = 0
         for owl_type in owl_types:
             terms = self.get_by_namespaces(self.all_of_rdf_type(owl_type), but)
-            len_dict = {key: len(value) for key, value in terms.items()}
+            len_dict = {key: len(value) for (key, value) in terms.items() if key is not None}
             num = sum(len_dict.values())
             if owl_type is not None:
                 type_id = self.graph.qname(owl_type).split(":")[1]
