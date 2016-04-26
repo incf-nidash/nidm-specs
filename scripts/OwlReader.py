@@ -320,18 +320,12 @@ class OwlReader():
     def get_graph(self):
         # Read owl (turtle) file
         owl_graph = Graph()
-        if self.file[0:4] == "http":
-            owl_txt = urllib2.urlopen(self.file).read()
-        else:
-            owl_txt = open(self.file, 'r').read()
-
-        # This is a workaround to avoid issue with "#" in base prefix as
-        # described in https://github.com/RDFLib/rdflib/issues/379. When
-        # the fix is introduced in rdflib these 2 lines will be replaced by:
-        # self.owl.parse(owl_file, format='turtle')
-        owl_txt = owl_txt.replace("http://www.w3.org/2002/07/owl#",
-                                  "http://www.w3.org/2002/07/owl")
-        owl_graph.parse(data=owl_txt, format='turtle')
+        # if self.file[0:4] == "http":
+        #     owl_txt = urllib2.urlopen(self.file).read()
+        # else:
+        #     owl_txt = open(self.file, 'r').read()
+        owl_graph.parse(self.file, format='turtle')
+        # owl_graph.parse(data=owl_txt, format='turtle')
 
         if self.import_files:
             for import_file in self.import_files:
@@ -346,7 +340,7 @@ class OwlReader():
                 # as described in https://github.com/RDFLib/rdflib/issues/379,
                 # When the fix is introduced in rdflib these 2 lines will be
                 # replaced by:
-                self.owl.parse(import_file, format='turtle')
+                import_graph.parse(import_file, format='turtle')
                 # import_txt = import_txt.replace(
                 #     "http://www.w3.org/2002/07/owl#",
                 #     "http://www.w3.org/2002/07/owl")
