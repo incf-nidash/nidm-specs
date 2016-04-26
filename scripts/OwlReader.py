@@ -718,7 +718,7 @@ class OwlReader():
         # If a label is available, use the namespace:label, otherwise qname
         label = list(self.graph.objects(uri, RDFS['label']))
         if label:
-            if len(label) > 1:
+            if len(label) > 1 and not self.is_external_namespace(uri):
                 warnings.warn('Multiple labels for '+name+': '+",".join(label))
             label = sorted(label)[0]
             name = name.split(":")[0]+":'"+label+"'"
@@ -726,12 +726,10 @@ class OwlReader():
         return name
 
     def is_external_namespace(self, term_uri):
-        term_label = self.get_label(term_uri)
-
-        return not (term_label.startswith("nidm")
-                    or term_label.startswith("fsl")
-                    or term_label.startswith("spm")
-                    or term_label.startswith("afni"))
+        return not (term_uri.startswith(NIDM)
+                    or term_uri.startswith(FSL)
+                    or term_uri.startswith(SPM)
+                    or term_uri.startswith(AFNI))
 
     def is_prov(self, term_uri):
         term_label = self.get_label(term_uri)
@@ -769,6 +767,13 @@ class OwlReader():
 
             # For anything that has a label
             for s, o in sorted(self.graph.subject_objects(RDFS['label'])):
+                try:
+                    self.graph.qname(s)
+                except:
+                    # Some URIs don't have qname
+                    # (e.g. http://www.w3.org/ns/prov-o#)
+                    continue
+
                 writer.writerow([
                     self.graph.qname(s),
                     self.get_preferred_prefix(s)])

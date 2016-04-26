@@ -21,6 +21,7 @@ import glob
 import recompute_all_ex
 import UpdateExampleReadmes
 import UpdateTermReadme
+from create_prefixes import main as create_pref
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -163,6 +164,8 @@ NIDM-Results_"+self.nidm_original_version+"/")
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)
+
+        create_pref(release_owl_file)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

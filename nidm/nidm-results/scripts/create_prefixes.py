@@ -20,11 +20,26 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
 
-def main():
-    owl_reader = OwlReader(os.path.join(NIDMRESULTSPATH, "terms",
-                           "nidm-results.owl"))
-    owl_reader.prefixes_as_csv(os.path.join(NIDMRESULTSPATH, "terms",
-                               "prefixes.csv"))
+def main(owl=None):
+    if owl is None:
+        owl = os.path.join(NIDMRESULTSPATH, "terms",
+                           "nidm-results.owl")
+
+    owl_reader = OwlReader(owl)
+
+    owl_file = os.path.basename(owl)
+    if "_" in owl_file:
+        version = "_" + owl_file.split("_")[1].replace(".owl", "")
+    else:
+        version = ""
+
+    owl_reader.prefixes_as_csv(os.path.join(os.path.dirname(owl),
+                               "prefixes" + version + ".csv"))
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1:
+        owl = sys.argv[1]
+    else:
+        owl = None
+
+    main(owl)
