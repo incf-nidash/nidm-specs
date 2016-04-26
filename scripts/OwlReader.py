@@ -114,11 +114,10 @@ class OwlReader():
         classes = sorted(classes)
         return classes
 
-    def get_classes(self, prefix=None, but=set(OWL['Thing'])):
+    def get_classes(self, prefix=None, but=None):
         return self.all_of_rdf_type(OWL['Class'], prefix, but)
 
-    def get_by_namespaces(self, term_list,
-                          but=("rdf", "prv", "protege", "xsd")):
+    def get_by_namespaces(self, term_list, but=None):
         by_nsp = dict()
         ignored = []
 
@@ -146,9 +145,14 @@ class OwlReader():
         owl_types = list([OWL['Class'], OWL['DatatypeProperty'],
                           OWL['ObjectProperty'], OWL['NamedIndividual'], None])
 
+        # Ignore the following namespaces/terms (not part of the model) from
+        # the count
+        but = ("owl", "rdf", "prv", "protege", "xsd", "obo:IAO_", "iao",
+               "obo:iao.owl")
+
         counter = 0
         for owl_type in owl_types:
-            terms = self.get_by_namespaces(self.all_of_rdf_type(owl_type))
+            terms = self.get_by_namespaces(self.all_of_rdf_type(owl_type), but)
             len_dict = {key: len(value) for key, value in terms.items()}
             num = sum(len_dict.values())
             if owl_type is not None:
@@ -162,8 +166,8 @@ class OwlReader():
             print str(num) + " " + type_id + comp_to
             for nsp, length in len_dict.items():
                 print "\t" + nsp + ": " + str(length)
-                # if owl_type is None:
-                print "\t\t" + ", ".join(map(str, terms[nsp]))
+                if owl_type is None:
+                    print "\t\t" + ", ".join(map(self.get_label, terms[nsp]))
             print "\n\n-------------"
 
     def get_class_names_by_prov_type(self, classes=None, prefix=None,
