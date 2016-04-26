@@ -109,7 +109,7 @@ class NIDMRelease(object):
                 owl_txt = owl_txt + im_txt
 
         # Remove AFNI-related terms (not ready for release yet)
-        if int(self.nidm_version.split("-rc")[0]) <= 110:
+        if int(self.nidm_version.split("-rc")[0]) <= 130:
             owl_txt = owl_txt.replace(
                 "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
             # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
