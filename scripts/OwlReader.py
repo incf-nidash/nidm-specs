@@ -136,8 +136,8 @@ class OwlReader():
                 else:
                     ignored.append(uri)
 
-        if ignored:
-            warnings.warn("Ignoring... " + "\n\t".join(ignored))
+        # if ignored:
+        #     warnings.warn("Ignoring... " + "\n\t".join(ignored))
 
         return by_nsp
 
@@ -148,7 +148,7 @@ class OwlReader():
         # Ignore the following namespaces/terms (not part of the model) from
         # the count
         but = ("owl", "rdf", "prv", "protege", "xsd", "obo:IAO_", "iao",
-               "obo:iao.owl")
+               "obo:iao.owl", "prov")
 
         counter = 0
         for owl_type in owl_types:
@@ -158,10 +158,11 @@ class OwlReader():
             if owl_type is not None:
                 type_id = self.graph.qname(owl_type).split(":")[1]
                 counter = counter + num
+                print counter
                 comp_to = ""
             else:
                 type_id = 'all'
-                comp_to = " (" + str(num) + ")"
+                comp_to = " (" + str(counter) + ")"
 
             print str(num) + " " + type_id + comp_to
             for nsp, length in len_dict.items():
