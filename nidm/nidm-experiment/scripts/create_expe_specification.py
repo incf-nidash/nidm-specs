@@ -58,7 +58,7 @@ def main():
     subcomponents["Session"] = [NIDM['DataCollection'],NIDM['SessionAcquisition']]
     subcomponents["Serie"] = [NIDM['AnatomyImagingAcquisition'],
         NIDM['TaskBasedImagingAcquisition'], NIDM['AnatomicalScan'],
-        NIDM['FunctionalScan'], NIDM['BehaviorAndConsitionOnsets'],
+        NIDM['FunctionalScan'], NIDM['BehaviorAndConditionOnsets'],
         NIDM['MRScanner'], NIDM['PresentationSoftware']]
 
     subcomponents["Project"] = [NIDM['ProjectObject']]
