@@ -118,10 +118,11 @@ class TestResultDataModel(object):
                            x)
                            for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
+            version = metadata["version"]
             name = ttl.replace(test_dir, "")
 
             self.ex_graphs[ttl_name] = ExampleGraph(
-                name, self.owl_file, ttl, gt_file, inclusive)
+                name, self.owl_file, ttl, gt_file, inclusive, version)
 
         return self.ex_graphs[ttl_name]
 
@@ -536,7 +537,7 @@ class ExampleGraph(object):
     ground truth graph'''
 
     def __init__(self, name, owl_file, ttl_file, gt_ttl_files,
-                 exact_comparison):
+                 exact_comparison, version):
         self.name = name
         self.ttl_file = ttl_file
 
@@ -547,9 +548,7 @@ class ExampleGraph(object):
         self.graph.parse(ttl_file, format='turtle')
 
         # Get NIDM-Results version for each example
-        versions = self.graph.objects(None, NIDM_VERSION)
-        assert versions is not None
-        self.version = str(versions.next())
+        self.version = version
 
         if self.version != "dev":
             self.gt_ttl_files = [
