@@ -118,7 +118,11 @@ class TestResultDataModel(object):
                            x)
                            for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
-            version = metadata["version"]
+            if "version" in metadata:
+                version = metadata["version"]
+            else:
+                # FIXME: this will be removed once spm json reader is fixed
+                version = metadata["versions"][0]
             name = ttl.replace(test_dir, "")
 
             self.ex_graphs[ttl_name] = ExampleGraph(
