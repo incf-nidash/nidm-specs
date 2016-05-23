@@ -240,4 +240,10 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=NumberOfSubjectsReification"> [find issues/PR] </a></td>
+    <td><b>nidm:NumberOfSubjectsReification: </b>&lt;undefined&gt;</td>
+    <td>prv:PropertyReification</td>
+</tr>
 </table>
