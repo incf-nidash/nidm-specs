@@ -54,6 +54,8 @@ for name, namespace in namespaces.items():
     q_graph.bind(name, namespace)
 
 # NIDM constants
+FSL_GAMMAHRF = FSL['FSL_0000007']
+FSL_FSLS_GAMMA_HRF = FSL['fsl:FSL_0000006']
 NIDM_HAS_MRI_PROTOCOL = NIDM['NIDM_0000172']
 NIDM_NUMBER_OF_SUBJECTS = NIDM['NIDM_0000171']
 NIDM_GROUP_NAME = NIDM['NIDM_0000170']
