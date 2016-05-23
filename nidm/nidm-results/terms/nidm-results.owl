@@ -6,6 +6,7 @@
 @prefix nlx: <http://uri.neuinfo.org/nif/nifstd/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prv: <http://purl.org/ontology/prv/core#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix spm: <http://purl.org/nidash/spm#> .
 @prefix src: <http://scicrunch.org/resolver/> .
@@ -17,7 +18,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
 @prefix dctype: <http://purl.org/dc/dcmitype/> .
-@prefix prv: <http://purl.org/ontology/prv/core#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
@@ -27,7 +27,7 @@
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
               <http://purl.org/nidash/nidm/nlx_import.owl> ,
               <http://purl.org/nidash/nidm/obi_import.owl> ,
-              <http://purl.org/nidash/nidm/prv_import.owl> ,              
+              <http://purl.org/nidash/nidm/prv_import.owl> ,
               <http://purl.org/nidash/nidm/stato_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
 ] .
@@ -365,19 +365,26 @@ nidm:NIDM_0000161 rdf:type owl:ObjectProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#hasMRIProtocol
+###  http://purl.org/nidash/nidm#NIDM_0000172
 
 nidm:NIDM_0000172 rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:label "has MRI Protocol" ;
-                    
-                    obo:IAO_0000115 "'MRI Protocol' used to acquire these 'Data'." ;
-                    
-                    obo:IAO_0000114 obo:IAO_0000124 ;
-                    
-                    rdfs:domain nidm:NIDM_0000169 ;
-                    
-                    rdfs:range nlx:birnlex_2177 .
+                  
+                  rdfs:label "has MRI Protocol" ;
+                  
+                  obo:IAO_0000115 "'MRI Protocol' used to acquire these 'Data'." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  
+                  rdfs:domain nidm:NIDM_0000169 ;
+                  
+                  rdfs:range nlx:birnlex_2177 .
+
+
+
+###  http://purl.org/ontology/prv/core#reification_class
+
+prv:reification_class rdfs:range owl:Class .
+
 
 
 ###  http://www.w3.org/ns/prov#atLocation
@@ -877,9 +884,9 @@ http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#P-Value""" ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -909,9 +916,9 @@ nidm:NIDM_0000115 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -939,9 +946,9 @@ nidm:NIDM_0000116 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -969,9 +976,9 @@ nidm:NIDM_0000119 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:range [ rdf:type rdfs:Datatype ;
                                owl:onDatatype xsd:float ;
-                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                               owl:withRestrictions ( [ xsd:maxInclusive "1.0"^^xsd:float
                                                       ]
-                                                      [ xsd:maxInclusive "1.0"^^xsd:float
+                                                      [ xsd:minInclusive "0.0"^^xsd:float
                                                       ]
                                                     )
                              ] .
@@ -1513,38 +1520,37 @@ nidm:NIDM_0000159 rdf:type owl:DatatypeProperty ;
                   
                   rdfs:subPropertyOf owl:topDataProperty .
 
-obo:STATO_0000193 obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Group.txt".
 
 
-###  http://purl.org/nidash/nidm#groupName
+###  http://purl.org/nidash/nidm#NIDM_0000170
 
 nidm:NIDM_0000170 rdf:type owl:DatatypeProperty ;
-               
-               rdfs:label "group Name" ;
-               
-               obo:IAO_0000115 "Name of the group" ;
-               
-               obo:IAO_0000114 obo:IAO_0000124 ;
-               
-               rdfs:domain obo:STATO_0000193 ;
-               
-               rdfs:range xsd:string .
+                  
+                  rdfs:label "group Name" ;
+                  
+                  obo:IAO_0000115 "Name of the group" ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 ;
+                  
+                  rdfs:domain obo:STATO_0000193 ;
+                  
+                  rdfs:range xsd:string .
 
 
 
-###  http://purl.org/nidash/nidm#numberOfSubjects
+###  http://purl.org/nidash/nidm#NIDM_0000171
 
 nidm:NIDM_0000171 rdf:type owl:DatatypeProperty ;
-                      
-                      rdfs:label "number Of Subjects" ;
-                      
-                      obo:IAO_0000115 "Number of subjects in the group." ;
-                      
-                      obo:IAO_0000116 "Linked with http://purl.obolibrary.org/obo/STATO_0000088 to be discussed." ;
-                      
-                      rdfs:domain obo:STATO_0000193 ;
-                      
-                      rdfs:range xsd:int .
+                  
+                  rdfs:label "number Of Subjects" ;
+                  
+                  obo:IAO_0000115 "Number of subjects in the group." ;
+                  
+                  obo:IAO_0000116 "Linked with http://purl.obolibrary.org/obo/STATO_0000088 to be discussed." ;
+                  
+                  rdfs:domain obo:STATO_0000193 ;
+                  
+                  rdfs:range xsd:int .
 
 
 
@@ -1787,7 +1793,6 @@ nfo:fileName rdf:type owl:DatatypeProperty ;
 #
 #################################################################
 
-prv:reification_class rdfs:range owl:Class .
 
 ###  http://purl.obolibrary.org/obo/OBI_0000251
 
@@ -1829,7 +1834,9 @@ obo:STATO_0000119 rdfs:subClassOf prov:Activity .
 
 obo:STATO_0000193 rdf:type owl:Class ;
                   
-                  rdfs:subClassOf prov:Agent .
+                  rdfs:subClassOf prov:Agent ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Group.txt" .
 
 
 
@@ -1861,12 +1868,12 @@ dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -1918,24 +1925,6 @@ fsl:FSL_0000002 rdf:type owl:Class ;
                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/298" ;
                 
                 obo:IAO_0000114 obo:IAO_0000122 .
-
-
-
-###  http://purl.org/nidash/nidm#Data
-
-nidm:NIDM_0000169 rdf:type owl:Class ;
-          
-          rdfs:label "Data" ;
-          
-          rdfs:subClassOf prov:Entity ;
-          
-          obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Data_wasAttributedTo.txt"^^xsd:anyURI ;
-          
-          obo:IAO_0000116 "Discussed at ..." ;
-          
-          obo:IAO_0000115 "Information about the input Data, including scaling applied to the data before parameter estimation.." ;
-          
-          obo:IAO_0000114 obo:IAO_0000124 .
 
 
 
@@ -2570,9 +2559,9 @@ nidm:NIDM_0000049 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Activity ;
                   
-                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Inference-OneTailed.txt"^^xsd:anyURI,
-                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Inference-TwoTailed.txt"^^xsd:anyURI ;
-                 
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Inference-OneTailed.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Inference-TwoTailed.txt"^^xsd:anyURI ;
+                  
                   owl:sameAs "http://purl.obolibrary.org/obo/STATO_0000299" ;
                   
                   obo:IAO_0000115 "Statistical 'Inference' is a process of drawing conclusions following data analysis using statistical methods (statistical tests) and evaluating whether to reject or accept null hypothesis. (definition from STATO)." ;
@@ -2607,12 +2596,12 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
+                                    owl:onProperty prov:atLocation ;
+                                    owl:onClass prov:Location ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2622,9 +2611,9 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty prov:atLocation ;
-                                    owl:onClass prov:Location ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
                                   ] ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Map_atLocation-nii.txt"^^xsd:anyURI ,
@@ -2646,22 +2635,22 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty prov:atLocation ;
-                                    owl:onClass prov:Location ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
+                                    owl:onProperty prov:atLocation ;
+                                    owl:onClass prov:Location ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2800,9 +2789,9 @@ nidm:NIDM_0000062 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ;
                   
-                  obo:IAO_0000115 "A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the supra-threshold cluster and complies with the 'Peak definition criteria'." ;
-                  
                   obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/283" ;
+                  
+                  obo:IAO_0000115 "A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the supra-threshold cluster and complies with the 'Peak definition criteria'." ;
                   
                   obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Peak_ValueP.txt" ;
                   
@@ -3110,7 +3099,7 @@ nidm:NIDM_0000080 rdf:type owl:Class ;
                   
                   obo:IAO_0000117 "Discussed in https://github.com/incf-nidash/nidm/pull/201" ;
                   
-                  obo:IAO_0000115 "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;            
+                  obo:IAO_0000115 "The criterion used to characterize two voxels as 'connected'. In three dimensions voxels that are connected can share a voxel face (6-connected), face or edge (18-connectec), or face, edge, or corner (26-connected)." ;
                   
                   obo:IAO_0000114 obo:IAO_0000122 .
 
@@ -3371,6 +3360,24 @@ nidm:NIDM_0000168 rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#NIDM_0000169
+
+nidm:NIDM_0000169 rdf:type owl:Class ;
+                  
+                  rdfs:label "Data" ;
+                  
+                  rdfs:subClassOf prov:Entity ;
+                  
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Data_wasAttributedTo.txt"^^xsd:anyURI ;
+                  
+                  obo:IAO_0000116 "Discussed at ..." ;
+                  
+                  obo:IAO_0000115 "Information about the input Data, including scaling applied to the data before parameter estimation.." ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000124 .
+
+
+
 ###  http://purl.org/nidash/spm#SPM_0000002
 
 spm:SPM_0000002 rdf:type owl:Class ;
@@ -3410,7 +3417,7 @@ spm:SPM_0000005 rdf:type owl:Class ;
 ###  http://scicrunch.org/resolver/SCR_002823
 
 src:SCR_002823 rdf:type owl:Class ;
-                 
+               
                rdfs:subClassOf nidm:NIDM_0000164 ;
                
                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/FSL_Software.txt"^^xsd:anyURI .
@@ -3420,10 +3427,18 @@ src:SCR_002823 rdf:type owl:Class ;
 ###  http://scicrunch.org/resolver/SCR_007037
 
 src:SCR_007037 rdf:type owl:Class ;
-                 
+               
                rdfs:subClassOf nidm:NIDM_0000164 ;
                
                obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/SPM_Software.txt"^^xsd:anyURI .
+
+
+
+###  http://uri.neuinfo.org/nif/nifstd/birnlex_2094
+
+nlx:birnlex_2094 rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf prov:Agent .
 
 
 
@@ -3434,15 +3449,38 @@ nlx:birnlex_2177 rdf:type owl:Class ;
                  rdfs:subClassOf prov:Entity .
 
 
-nlx:birnlex_2094 rdf:type owl:Class ;
 
-                 rdfs:subClassOf prov:Agent .
+###  http://www.w3.org/2002/07/owl#Class
+
+owl:Class rdf:type owl:Class .
+
+
+
+
 
 #################################################################
 #
 #    Individuals
 #
 #################################################################
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000136
+
+obo:IAO_0000136 rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000088
+
+obo:STATO_0000088 rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.obolibrary.org/obo/STATO_0000129
+
+obo:STATO_0000129 rdf:type owl:NamedIndividual .
+
 
 
 ###  http://purl.org/nidash/afni#GammaHRF
@@ -3467,7 +3505,7 @@ fsl:FSL_0000001 rdf:type nidm:NIDM_0000029 ,
                 
                 rdfs:label "FSL's Gamma Difference HRF" ;
                 
-                obo:IAO_0000115 "'Hemodynamic Response Function' which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html)). This is the default in FSL." ;
+                obo:IAO_0000115 "'Hemodynamic Response Function' which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted [FSL wiki](http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html))" ;
                 
                 obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/281" ;
                 
@@ -3487,6 +3525,19 @@ fsl:FSL_0000003 rdf:type nidm:NIDM_0000037 ,
                 obo:IAO_0000115 "'Hemodynamic Response Function' basis that is the derivative with respect to time of the FSL's Gamma Difference heamodynamic response function." ;
                 
                 obo:IAO_0000114 obo:IAO_0000122 .
+
+
+
+###  http://purl.org/nidash/fsl#GammaHRF
+
+fsl:GammaHRF rdf:type nidm:NIDM_0000031 ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "FSL's Gamma HRF" ;
+             
+             obo:IAO_0000115 "'Hemodynamic Response Function' which is a fixed gamma probability density function. This is the default in FSL." ;
+             
+             obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -3796,6 +3847,31 @@ nidm:NIDM_0000130 rdf:type nidm:NIDM_0000080 ,
 
 
 
+###  http://purl.org/nidash/nidm#NIDM_0000171
+
+nidm:NIDM_0000171 rdfs:label "number Of Subjects" ;
+                  
+                  obo:IAO_0000115 "Number of subjects in the group." ;
+                  
+                  obo:IAO_0000116 "Linked with http://purl.obolibrary.org/obo/STATO_0000088 to be discussed." .
+
+
+
+###  http://purl.org/nidash/nidm#NumberOfSubjectsReification
+
+nidm:NumberOfSubjectsReification rdf:type prv:PropertyReification ,
+                                          owl:NamedIndividual ;
+                                 
+                                 prv:subject_property obo:IAO_0000136 ;
+                                 
+                                 prv:reification_class obo:STATO_0000088 ;
+                                 
+                                 prv:object_property obo:STATO_0000129 ;
+                                 
+                                 prv:shortcut nidm:NIDM_0000171 .
+
+
+
 ###  http://purl.org/nidash/spm#SPM_0000003
 
 spm:SPM_0000003 rdf:type nidm:NIDM_0000037 ,
@@ -3844,10 +3920,3 @@ spm:SPM_0000006 rdf:type nidm:NIDM_0000037 ,
 
 ###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
 
-
-
-nidm:NumberOfSubjectsReification a prv:PropertyReification ;
-   prv:shortcut nidm:NIDM_0000171 ;
-   prv:reification_class obo:STATO_0000088 ;
-   prv:subject_property obo:IAO_0000136 ;
-   prv:object_property obo:STATO_0000129 .
