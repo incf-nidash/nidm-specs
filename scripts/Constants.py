@@ -20,11 +20,7 @@ CRYPTO = Namespace('http://id.loc.gov/vocabulary/preservation/\
 cryptographicHashFunctions#')
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 DCT = Namespace('http://purl.org/dc/terms/')
-# This is a workaround to avoid issue with "#" in base prefix as
-# described in https://github.com/RDFLib/rdflib/issues/379,
-# When the fix is introduced in rdflib this line will be replaced by:
-# OWL = Namespace('http://www.w3.org/2002/07/owl#')
-OWL = Namespace('http://www.w3.org/2002/07/owl')
+OWL = Namespace('http://www.w3.org/2002/07/owl#')
 XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
 OBO_URL = "http://purl.obolibrary.org/obo/"
@@ -58,6 +54,12 @@ for name, namespace in namespaces.items():
     q_graph.bind(name, namespace)
 
 # NIDM constants
+FSL_GAMMAHRF = FSL['FSL_0000007']
+FSL_FSLS_GAMMA_HRF = FSL['FSL_0000006']
+NIDM_HAS_MRI_PROTOCOL = NIDM['NIDM_0000172']
+NIDM_NUMBER_OF_SUBJECTS = NIDM['NIDM_0000171']
+NIDM_GROUP_NAME = NIDM['NIDM_0000170']
+NIDM_DATA = NIDM['NIDM_0000169']
 NIDM_SPM_RESULTS_NIDM = NIDM['NIDM_0000168']
 NIDM_NIDMFSL = NIDM['NIDM_0000167']
 NIDM_NIDM_RESULTS_EXPORT = NIDM['NIDM_0000166']
@@ -224,7 +226,6 @@ NIDM_ERROR_DISTRIBUTION = NIDM['NIDM_0000022']
 NIDM_REGRESSOR_NAMES = NIDM['NIDM_0000021']
 NIDM_DISPLAY_MASK_MAP = NIDM['NIDM_0000020']
 NIDM_DESIGN_MATRIX = NIDM['NIDM_0000019']
-NIDM_DATA = NIDM['Data']
 NIDM_CUSTOM_COORDINATE_SYSTEM = NIDM['NIDM_0000017']
 NIDM_COORDINATE_SPACE = NIDM['NIDM_0000016']
 NIDM_COORDINATE = NIDM['NIDM_0000015']

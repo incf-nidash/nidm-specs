@@ -6,6 +6,7 @@ by using the class templates available in nidm/nidm-results/terms/templates
 @copyright: University of Warwick 2013-2014
 """
 import os
+import shutil
 from create_example_from_templates import ExampleFromTemplate
 
 import sys
@@ -20,7 +21,14 @@ from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR, \
     NIDM_FINITE_IMPULSE_RESPONSE_HRB, SPM_CANONICAL_HRF, \
     SPM_TEMPORAL_DERIVATIVE, SPM_DISPERSION_DERIVATIVE, \
     NIDM_SPATIALLY_LOCAL_MODEL, NIDM_SPATIALLY_GLOBAL_MODEL, \
-    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, NLX_FMRI_PROTOCOL
+    STATO_UNSTRUCTURED_COVARIANCE, NLX_MRI_SCANNER, q_graph, \
+    NLX_FMRI_PROTOCOL, NIDM_ONE_TAILED_TEST, NIDM_TWO_TAILED_TEST, \
+    STATO_GAUSSIAN_DISTRIBUTION, NIDM_SPATIALLY_LOCAL_MODEL, \
+    NIDM_INDEPENDENT_ERROR
+
+NIDM_TERMS_DIR = os.path.join(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))), 'terms')
+EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
 
 def main():
@@ -138,16 +146,11 @@ def main():
             format="image/png"
             ),
         "Group": dict(
+            comment="Group: Control group with 23 subjects",
             id="niiri:group_id",
             label="Group: Control",
             name="Control",
             numsubjects="23"
-            ),
-        "Group-2": dict(
-            id="niiri:group2_id",
-            label="Group: Patient",
-            name="Patient",
-            numsubjects="21"
             ),
         "Data_wasAttributedTo": dict(
             comment="Data",
@@ -165,19 +168,28 @@ def main():
             label="MRI Scanner",
             type=q_graph.qname(NLX_MRI_SCANNER),
             ),
-        "ErrorModel": dict(
-            comment="Error Model",
+        "ErrorModel-OLS": dict(
+            comment="Error Model: Ordinary least squares",
             error_model_id="niiri:error_model_id",
-            noise_distribution="obo:STATO_0000227",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
             variance_homo="true",
-            variance_spatial="nidm:NIDM_0000073",
-            dependence="nidm:NIDM_0000048",
-            dependence_spatial="nidm:NIDM_0000073"
+            variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
+            dependence=NIDM_INDEPENDENT_ERROR,
+            dependence_spatial=NIDM_SPATIALLY_LOCAL_MODEL
+            ),
+        "ErrorModel-WLS": dict(
+            comment="Error Model: Weighted least squares",
+            error_model_id="niiri:error_model_id",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
+            variance_homo="false",
+            variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
+            dependence=NIDM_INDEPENDENT_ERROR,
+            dependence_spatial=NIDM_SPATIALLY_LOCAL_MODEL
             ),
         "ErrorModel-SPMnonSphericity": dict(
             comment="Error Model: SPM non sphericity",
             error_model_id="niiri:error_model_id",
-            noise_distribution="obo:STATO_0000227",
+            noise_distribution=STATO_GAUSSIAN_DISTRIBUTION,
             variance_homo="false",
             variance_spatial=NIDM_SPATIALLY_LOCAL_MODEL,
             dependence=STATO_UNSTRUCTURED_COVARIANCE,
@@ -265,7 +277,7 @@ id",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
             contrast_est_id="niiri:contrast_estimation_id"),
-        "StatisticMap_T": dict(
+        "StatisticMap-T": dict(
             comment="Statistic Map: T",
             statistic_map_id="niiri:statistic_map_id",
             label="Statistic Map: listening > rest",
@@ -373,18 +385,26 @@ id",
             max_num_peaks="3",
             min_dist_peaks="8.0"
             ),
-        "ClusterDefinitionCriteria": dict(
-            comment="Cluster Definition Criteria",
-            cluster_definition_criteria_id="niiri:cluster_definition_criteria_\
-id",
-            label="Cluster Connectivity Criterion: 18",
-            connectivity="nidm:NIDM_0000128"
-            ),
-        "Inference": dict(
-            comment="Inference",
+        "Inference-OneTailed": dict(
+            comment="Inference: one-tailed",
             inference_id="niiri:inference_id",
             label="Inference",
-            alternative_hyp="nidm:NIDM_0000060",
+            alternative_hyp=NIDM_ONE_TAILED_TEST,
+            stat_map_id="niiri:statistic_map_id",
+            height_thresh_id="niiri:height_threshold_id",
+            extent_thresh_id="niiri:extent_threshold_id",
+            inference_mask_id="niiri:mask_id_3",
+            display_mask_id="niiri:display_map_id",
+            mask_id="niiri:mask_id",
+            software_id="niiri:software_id",
+            peak_def_id="niiri:peak_definition_criteria_id",
+            cluster_def_id="niiri:cluster_definition_criteria_id"
+            ),
+        "Inference-TwoTailed": dict(
+            comment="Inference: two-tailed",
+            inference_id="niiri:inference_id",
+            label="Inference",
+            alternative_hyp=NIDM_TWO_TAILED_TEST,
             stat_map_id="niiri:statistic_map_id",
             height_thresh_id="niiri:height_threshold_id",
             extent_thresh_id="niiri:extent_threshold_id",
@@ -548,12 +568,33 @@ id",
             id="niiri:drift_model_id",
             label="FSL's Gaussian Running Line Drift Model",
             cut_off="2"
+            ),
+        "ClusterDefinitionCriteria-06": dict(
+            comment="Cluster connectivity: face",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 6",
+            connectivity="nidm:NIDM_0000130"
+            ),
+        "ClusterDefinitionCriteria-18": dict(
+            comment="Cluster connectivity: face or edge",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 18",
+            connectivity="nidm:NIDM_0000128"
+            ),
+        "ClusterDefinitionCriteria-26": dict(
+            comment="Cluster connectivity: face, edge or corner",
+            cluster_definition_criteria_id="niiri:cluster_definition_criteria\
+_id",
+            label="Cluster Connectivity Criterion: 26",
+            connectivity="nidm:NIDM_0000129"
             )
         }
 
-    NIDM_TERMS_DIR = os.path.join(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))), 'terms')
-    EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
+    # Delete old examples
+    shutil.rmtree(EX_DIR)
+    os.mkdir(EX_DIR)
     example = ExampleFromTemplate(nidm_classes, EX_DIR, True)
     example.create_example()
 

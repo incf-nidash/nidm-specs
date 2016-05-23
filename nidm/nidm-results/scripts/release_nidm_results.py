@@ -21,6 +21,7 @@ import glob
 import recompute_all_ex
 import UpdateExampleReadmes
 import UpdateTermReadme
+from create_prefixes import main as create_pref
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -97,6 +98,12 @@ class NIDMRelease(object):
                 if base_match:
                     im_txt = im_txt.replace(base_match.group(), "")
 
+                # Remove description of subset ontology
+                this_ontology_match = re.search(
+                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###', im_txt, re.DOTALL)
+                if this_ontology_match:
+                    im_txt = im_txt.replace(this_ontology_match.group(), "###")
+
                 # Copy missing prefixes in nidm-results owl file
                 prefixes = re.findall(r'@prefix \w+: <.*> \.\n', im_txt)
                 for prefix in prefixes:
@@ -108,14 +115,18 @@ class NIDMRelease(object):
                 owl_txt = owl_txt + im_txt
 
         # Remove AFNI-related terms (not ready for release yet)
-        if int(self.nidm_version.split("-rc")[0]) <= 110:
+        if int(self.nidm_version.split("-rc")[0]) <= 130:
             owl_txt = owl_txt.replace(
                 "@prefix afni: <http://purl.org/nidash/afni#> .\n", "")
             # Remove terms: nidm:'Legendre Polynomial Order', afni:'BLOCK',
             # afni:'GammaHRF' and afni:'LegendrePolynomialDriftModel'
+            # and 'vertices' terms not yet in use
             terms_under_development = [
                 NIDM['NIDM_0000014'], AFNI['BLOCK'], AFNI['GammaHRF'],
-                AFNI['LegendrePolynomialDriftModel']]
+                AFNI['LegendrePolynomialDriftModel'],
+                NIDM['NIDM_0000083'], NIDM['NIDM_0000137'],
+                NIDM['NIDM_0000142'], NIDM['NIDM_0000158'],
+                SPM['SPM_0000011'], SPM['SPM_0000012']]
             for term in terms_under_development:
                 m = re.search(
                     re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
@@ -163,6 +174,8 @@ NIDM-Results_"+self.nidm_original_version+"/")
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)
+
+        create_pref(release_owl_file)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

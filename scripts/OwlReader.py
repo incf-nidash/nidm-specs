@@ -17,6 +17,7 @@ import logging
 import csv
 import collections
 import re
+import warnings
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_PATH = os.path.dirname(RELPATH)
@@ -63,7 +64,8 @@ class OwlReader():
         children = set()
 
         for class_name in self.graph.subjects(RDFS['subClassOf'], term):
-            children.add(class_name)
+            if not self.is_deprecated(class_name):
+                children.add(class_name)
 
         return children
 
@@ -89,6 +91,86 @@ class OwlReader():
     def is_class(self, uri):
         return (uri, RDF['type'], OWL['Class']) in self.graph
 
+    def all_of_rdf_type(self, rdf_type, prefix=None, but=set(),
+                        but_type=OWL['AnnotationProperty']):
+        classes = self.graph.subjects(RDF['type'], rdf_type)
+
+        deprecated = self.graph.subjects(
+            OWL['deprecated'], term.Literal(True))
+        but = set(but).union(set(deprecated))
+        annotations = self.graph.subjects(RDF['type'], but_type)
+        but = but.union(set(annotations))
+
+        # FIXME: Is there a more efficient way?
+        if prefix:
+            original_classes = classes
+            classes = list()
+            for class_name in original_classes:
+                if class_name.startswith(prefix):
+                    classes.append(class_name)
+        if but:
+            classes = list(set(classes) - set(but))
+
+        classes = sorted(classes)
+        return classes
+
+    def get_classes(self, prefix=None, but=None):
+        return self.all_of_rdf_type(OWL['Class'], prefix, but)
+
+    def get_by_namespaces(self, term_list, but=None):
+        by_nsp = dict()
+        ignored = []
+
+        for uri in term_list:
+            if not isinstance(uri, term.BNode):
+                try:
+                    qname = self.graph.qname(uri)
+                    nsp = qname.split(":")[0]
+                except:
+                    qname = None
+                    nsp = None
+
+                if (str(nsp) not in but) and \
+                        ((qname is None) or (not qname.startswith(but))):
+                    by_nsp.setdefault(nsp, list()).append(uri)
+                else:
+                    ignored.append(uri)
+
+        # if ignored:
+        #     warnings.warn("Ignoring... " + "\n\t".join(ignored))
+
+        return by_nsp
+
+    def count_by_namespaces(self):
+        owl_types = list([OWL['Class'], OWL['DatatypeProperty'],
+                          OWL['ObjectProperty'], OWL['NamedIndividual'], None])
+
+        # Ignore the following namespaces/terms (not part of the model) from
+        # the count
+        but = ("owl", "rdf", "prv", "protege", "xsd", "obo:IAO_", "iao",
+               "obo:iao.owl", "prov")
+
+        counter = 0
+        for owl_type in owl_types:
+            terms = self.get_by_namespaces(self.all_of_rdf_type(owl_type), but)
+            len_dict = {key: len(value) for (key, value) in terms.items() if key is not None}
+            num = sum(len_dict.values())
+            if owl_type is not None:
+                type_id = self.graph.qname(owl_type).split(":")[1]
+                counter = counter + num
+                print counter
+                comp_to = ""
+            else:
+                type_id = 'all'
+                comp_to = " (" + str(counter) + ")"
+
+            print str(num) + " " + type_id + comp_to
+            for nsp, length in len_dict.items():
+                print "\t" + nsp + ": " + str(length)
+                if owl_type is None:
+                    print "\t\t" + ", ".join(map(self.get_label, terms[nsp]))
+            print "\n\n-------------"
+
     def get_class_names_by_prov_type(self, classes=None, prefix=None,
                                      but=None):
         class_names = dict()
@@ -100,23 +182,7 @@ class OwlReader():
         class_names[None] = list()
 
         if not classes:
-            classes = self.graph.subjects(RDF['type'], OWL['Class'])
-
-            deprecated = self.graph.subjects(
-                OWL['deprecated'], term.Literal(True))
-            but = set(but).union(set(deprecated))
-
-            # FIXME: Is there a more efficient way?
-            if prefix:
-                original_classes = classes
-                classes = list()
-                for class_name in original_classes:
-                    if class_name.startswith(prefix):
-                        classes.append(class_name)
-            if but:
-                classes = list(set(classes) - set(but))
-
-            classes = sorted(classes)
+            classes = self.get_classes(prefix, but)
 
         for class_name in classes:
             if not self.is_class(class_name):
@@ -259,37 +325,31 @@ class OwlReader():
     def get_graph(self):
         # Read owl (turtle) file
         owl_graph = Graph()
-        if self.file[0:4] == "http":
-            owl_txt = urllib2.urlopen(self.file).read()
-        else:
-            owl_txt = open(self.file, 'r').read()
-
-        # This is a workaround to avoid issue with "#" in base prefix as
-        # described in https://github.com/RDFLib/rdflib/issues/379. When
-        # the fix is introduced in rdflib these 2 lines will be replaced by:
-        # self.owl.parse(owl_file, format='turtle')
-        owl_txt = owl_txt.replace("http://www.w3.org/2002/07/owl#",
-                                  "http://www.w3.org/2002/07/owl")
-        owl_graph.parse(data=owl_txt, format='turtle')
+        # if self.file[0:4] == "http":
+        #     owl_txt = urllib2.urlopen(self.file).read()
+        # else:
+        #     owl_txt = open(self.file, 'r').read()
+        owl_graph.parse(self.file, format='turtle')
+        # owl_graph.parse(data=owl_txt, format='turtle')
 
         if self.import_files:
             for import_file in self.import_files:
                 # Read owl (turtle) file
                 import_graph = Graph()
-                if self.file[0:4] == "http":
-                    import_txt = urllib2.urlopen(import_file).read()
-                else:
-                    import_txt = open(import_file, 'r').read()
+                # if self.file[0:4] == "http":
+                #     import_txt = urllib2.urlopen(import_file).read()
+                # else:
+                #     import_txt = open(import_file, 'r').read()
 
                 # This is a workaround to avoid issue with "#" in base prefix
                 # as described in https://github.com/RDFLib/rdflib/issues/379,
                 # When the fix is introduced in rdflib these 2 lines will be
                 # replaced by:
-                # self.owl.parse(owl_file, format='turtle')
-                import_txt = import_txt.replace(
-                    "http://www.w3.org/2002/07/owl#",
-                    "http://www.w3.org/2002/07/owl")
-                import_graph.parse(data=import_txt, format='turtle')
+                import_graph.parse(import_file, format='turtle')
+                # import_txt = import_txt.replace(
+                #     "http://www.w3.org/2002/07/owl#",
+                #     "http://www.w3.org/2002/07/owl")
+                # import_graph.parse(data=import_txt, format='turtle')
 
                 owl_graph = owl_graph + import_graph
 
@@ -710,14 +770,18 @@ class OwlReader():
 
     def get_label(self, uri):
         if not isinstance(uri, term.BNode):
-            name = self.graph.qname(uri)
+            try:
+                name = self.graph.qname(uri)
+            except:
+                # For ontology names, qname fails not sure if this is a bug
+                name = uri
         else:
             name = uri
 
         # If a label is available, use the namespace:label, otherwise qname
         label = list(self.graph.objects(uri, RDFS['label']))
         if label:
-            if len(label) > 1:
+            if len(label) > 1 and not self.is_external_namespace(uri):
                 warnings.warn('Multiple labels for '+name+': '+",".join(label))
             label = sorted(label)[0]
             name = name.split(":")[0]+":'"+label+"'"
@@ -725,12 +789,10 @@ class OwlReader():
         return name
 
     def is_external_namespace(self, term_uri):
-        term_label = self.get_label(term_uri)
-
-        return not (term_label.startswith("nidm")
-                    or term_label.startswith("fsl")
-                    or term_label.startswith("spm")
-                    or term_label.startswith("afni"))
+        return not (term_uri.startswith(NIDM)
+                    or term_uri.startswith(FSL)
+                    or term_uri.startswith(SPM)
+                    or term_uri.startswith(AFNI))
 
     def is_prov(self, term_uri):
         term_label = self.get_label(term_uri)
@@ -748,10 +810,18 @@ class OwlReader():
             return self.get_name(uri) + " (i.e. " + self.get_label(uri) + ")"
 
     def get_preferred_prefix(self, uri):
-        prefix_name = self.get_label(uri).replace(" ", "")\
-                                         .replace(":", "_")\
-                                         .replace("'", "")\
-                                         .replace("-", "")
+        label = str(self.graph.label(uri))
+        idt = str(self.graph.qname(uri).split(":")[1])
+
+        if label == idt:
+            # For text identifiers there is no preferred prefix (we can just
+            # keep the id directly)
+            prefix_name = None
+        else:
+            prefix_name = self.get_label(uri).replace(" ", "")\
+                                             .replace(":", "_")\
+                                             .replace("'", "")\
+                                             .replace("-", "")
         return prefix_name
 
     def sorted_by_labels(self, term_list):
@@ -764,10 +834,17 @@ class OwlReader():
     def prefixes_as_csv(self, csvfile):
         with open(csvfile, 'wb') as fid:
             writer = csv.writer(fid)
-            writer.writerow(["qname", "Preferred prefix"])
+            writer.writerow(["qname", "Preferred prefix", "URI"])
 
             # For anything that has a label
             for s, o in sorted(self.graph.subject_objects(RDFS['label'])):
-                writer.writerow([
-                    self.graph.qname(s),
-                    self.get_preferred_prefix(s)])
+                try:
+                    self.graph.qname(s)
+                except:
+                    # Some URIs don't have qname
+                    # (e.g. http://www.w3.org/ns/prov-o#)
+                    continue
+                prefix = self.get_preferred_prefix(s)
+
+                if prefix is not None and not self.is_deprecated(s):
+                    writer.writerow([self.graph.qname(s), prefix, s])

@@ -109,13 +109,24 @@ class TestResultDataModel(object):
 
             with open(configfile) as data_file:
                 metadata = json.load(data_file)
-            gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
-                       for x in metadata["ground_truth"]]
+            try:
+                gt_file = [os.path.join(self.gt_dir, metadata["version"], x)
+                           for x in metadata["ground_truth"]]
+            except:
+                # This part should be removed once SPM can modify json files
+                gt_file = [os.path.join(self.gt_dir, metadata["versions"][0],
+                           x)
+                           for x in metadata["ground_truth"]]
             inclusive = metadata["inclusive"]
+            if "version" in metadata:
+                version = metadata["version"]
+            else:
+                # FIXME: this will be removed once spm json reader is fixed
+                version = metadata["versions"][0]
             name = ttl.replace(test_dir, "")
 
             self.ex_graphs[ttl_name] = ExampleGraph(
-                name, self.owl_file, ttl, gt_file, inclusive)
+                name, self.owl_file, ttl, gt_file, inclusive, version)
 
         return self.ex_graphs[ttl_name]
 
@@ -159,6 +170,7 @@ class TestResultDataModel(object):
         g2_terms = set(graph2.subjects(RDF.type, rdf_type))
 
         activity = False
+        agent = False
         MIN_MATCHING = 2
         # For maps at least 4 attributes in common are needed for
         # matching (to deal with nifti files where format and
@@ -174,10 +186,16 @@ class TestResultDataModel(object):
                 graph1.subjects(RDF.type, PROV['Bundles'])))
             g1_terms = g1_terms.union(set(
                 graph1.subjects(RDF.type, PROV['Coordinate'])))
+            g1_terms = g1_terms.union(set(
+                graph1.subjects(RDF.type, PROV['Person'])))
             g2_terms = g2_terms.union(set(
                 graph2.subjects(RDF.type, PROV['Bundles'])))
             g2_terms = g2_terms.union(
                 set(graph2.subjects(RDF.type, PROV['Coordinate'])))
+            g2_terms = g2_terms.union(
+                set(graph2.subjects(RDF.type, PROV['Person'])))
+        elif rdf_type == PROV['Agent']:
+            agent = True
 
         for g1_term in g1_terms:
             min_matching = MIN_MATCHING
@@ -200,12 +218,16 @@ class TestResultDataModel(object):
                 # if activity or \
                 #        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
                 for g2_term in graph2.subjects(p, o):
-                    g2_match[g2_term] += 1
+                    # We don't want to match agents to activities
+                        if g2_term in g2_match:
+                            g2_match[g2_term] += 1
 
-            if activity:
+            if activity or agent:
                 for s, p in graph1.subject_predicates(g1_term):
                     for g2_term in graph2.objects(s, p):
-                        g2_match[g2_term] += 1
+                        # We don't want to match agents to activities
+                        if g2_term in g2_match:
+                            g2_match[g2_term] += 1
 
             match_found = False
             g2_matched = set()
@@ -519,7 +541,7 @@ class ExampleGraph(object):
     ground truth graph'''
 
     def __init__(self, name, owl_file, ttl_file, gt_ttl_files,
-                 exact_comparison):
+                 exact_comparison, version):
         self.name = name
         self.ttl_file = ttl_file
 
@@ -530,9 +552,7 @@ class ExampleGraph(object):
         self.graph.parse(ttl_file, format='turtle')
 
         # Get NIDM-Results version for each example
-        versions = self.graph.objects(None, NIDM_VERSION)
-        assert versions is not None
-        self.version = str(versions.next())
+        self.version = version
 
         if self.version != "dev":
             self.gt_ttl_files = [

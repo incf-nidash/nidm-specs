@@ -85,28 +85,36 @@ def main():
             label="Parameter estimate 1",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a",
+            sha="4c755c0ae6088f8001e0458f89e51fea0e2719b5dc747fed6f617ae12ad5c\
+6a643e1afcb886bcabaaac7911f5e69086c1bd084af9f75dae75913d44a783151f6",
+            filename="pe1.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Parameter estimate 2",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a",
+            sha="b6146d013976c471fe43a083a56b8852c39a13e0566b2d04e172275bd2fc7\
+b7ffb0c0ae99fac11337d3c27f131c4a00e92f5df15d32723148639a3cc9ffd7c1f",
+            filename="pe2.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-3": dict(
             beta_map_id="niiri:beta_map_id_3",
             label="Parameter estimate 3",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a",
+            sha="f5dd8123b389fe755086f7ad3becb5b79f39d70cf0095b08ed8c3e5cb7179\
+42711264528f08fa99e58aaaf24e03581c64567864110518247d95031ef3fe2e761",
+            filename="pe3.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "ParameterEstimateMap-4": dict(
             beta_map_id="niiri:beta_map_id_4",
             label="Parameter estimate 4",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="e43b6e01b0463fe7d40782137867a",
+            sha="aca2503769bfb6ee3801bc50c2e033755cd9844d13ee78a38aa23140ad558\
+b5c6f0517c4748f84acac27cf6608222553003f418097c18f254312b49b5522b831",
+            filename="pe4.nii.gz",
             param_est_id="niiri:model_parameters_estimation_id"),
         "CoordinateSpace": dict(
             coordinate_space_id="niiri:coordinate_space_id_1",

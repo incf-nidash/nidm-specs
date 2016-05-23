@@ -254,7 +254,7 @@ id_2",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="e43b6e01b0463fe7d40782137867a",
             contrast_est_id="niiri:contrast_estimation_id_2"),
-        "StatisticMap_T": dict(
+        "StatisticMap-T": dict(
             statistic_map_id="niiri:statistic_map_id",
             label="Statistic Map: listening > reading",
             location="TStatistic_0001.nii.gz",
@@ -276,7 +276,7 @@ id_2",
             sha="e43b6e01b0463fe7d40782137867a",
             map_id="niiri:statistic_map_id"
             ),
-        "StatisticMap_T-2": dict(
+        "StatisticMap-T-2": dict(
             statistic_map_id="niiri:statistic_map_id_2",
             label="Statistic Map: motor",
             location="TStatistic_0002.nii.gz",

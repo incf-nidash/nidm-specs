@@ -155,16 +155,9 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>Discussed in ...<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='has Data Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'has Data Type': </b>..</td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='has MRI Protocol'"> [find issues/PR] </a></td>
-    <td><b>nidm:'has MRI Protocol': </b>'MRI Protocol' used to acquire these <a title=Data>'Data'</a></td>
-    <td>nidm:Data </td>
+    <td><b>nidm:'has MRI Protocol': </b>'MRI Protocol' used to acquire these <a title=NIDM_0000169>'Data'</a></td>
+    <td>nidm:NIDM_0000169 </td>
     <td>nlx:birnlex_2177 </td>
 </tr>
 <tr>
@@ -247,4 +240,10 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </table><h2>Individuals</h2>
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Type</th></tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q=NumberOfSubjectsReification"> [find issues/PR] </a></td>
+    <td><b>nidm:NumberOfSubjectsReification: </b>&lt;undefined&gt;</td>
+    <td>prv:PropertyReification</td>
+</tr>
 </table>

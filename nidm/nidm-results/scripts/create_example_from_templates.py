@@ -76,8 +76,9 @@ class ExampleFromTemplate(object):
                 try:
                     class_example += nidm_base_tpm.substitute(**substitutes)
                 except KeyError, k:
+                    logger.debug("--- Key error on ---")
+                    logger.debug(self.file)
                     logger.debug(nidm_class)
-                    logger.debug(base_template_name)
                     logger.debug(substitutes)
                     raise KeyError(k);
 
@@ -96,10 +97,11 @@ class ExampleFromTemplate(object):
                 try:
                     class_example += nidm_tpm.substitute(**substitutes)
                 except KeyError, k:
+                    logger.debug("--- Key error on ---")
+                    logger.debug(self.file)
                     logger.debug(nidm_class)
-                    logger.debug(template_name)
                     logger.debug(substitutes)
-                    raise KeyError(k);
+                    raise KeyError(k)
 
             if self.one_file_per_class:
                 example_file = os.path.join(self.dir, nidm_class+".txt")

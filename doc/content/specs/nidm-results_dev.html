@@ -261,7 +261,7 @@
 						The core NIDM-Results structures are presented in <a href="#fig-nidmresults-core-uml"></a>. NIDM-Results has three main activities: <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a>, <a title="NIDM_0000001">nidm:'Contrast Estimation'</a> and <a title="NIDM_0000049">nidm:'Inference'</a>. Each activity along with its inputs and outputs are presented in details in the following sections <a href="#parameters-estimation"></a>, <a href="#contrast-estimation"></a> and <a href="#inference"></a>.
 						<div align="center">
 							<figure id="fig-nidmresults-core-uml">
-								<img src="img/nidm-results_dev/nidm-results-core-uml.svg" onerror="this.src='img/nidm-results_dev/nidm-results-core-uml.png'" width="600px" />
+								<img src="img/nidm-results_dev/nidm-results-core-uml.svg" onerror="this.src='img/nidm-results_dev/nidm-results-core-uml.png'" width="700px" />
 								<figcaption>Core structures overview. Color-coding indicates prov:type (blue: prov:Entity, red: prov:Activity, green:prov:agent). </figcaption>
 							</figure>
 						</div>
@@ -326,22 +326,6 @@
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
-                            <td><a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>
-                            </td>
-                    
-                                <td rowspan="2" style="text-align: center;"> prov:Agent</td>
-                        
-                                <td>src:SCR_007037</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>
-                            </td>
-                    
-                                <td>src:SCR_002823</td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="NIDM_0000027">nidm:'NIDM-Results'</a>
                             </td>
                     
@@ -364,58 +348,32 @@
                                 <td>nidm:NIDM_0000016</td>
                             </tr>
                 
+                        <tr>
+                            <td><a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>
+                            </td>
+                    
+                                <td rowspan="3" style="text-align: center;"> prov:Agent</td>
+                        
+                                <td>nidm:NIDM_0000164</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>
+                            </td>
+                    
+                                <td>src:SCR_007037</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>
+                            </td>
+                    
+                                <td>src:SCR_002823</td>
+                            </tr>
+                
                 </tbody>
                 </table>
             </div>
-            <!-- src:'SPM' (SCR_007037) -->
-            <section id="section-src:'SPM'">
-                <h1 label="SCR_007037">src:'SPM'</h1>
-                <div class="glossary-ref">
-                    <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037"><dfn title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'src:'SPM''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Software package for the analysis of brain imaging data sequences. The sequences can be a series of images from different cohorts, or time-series from the same subject. The current release is designed for the analysis of fMRI, PET, SPECT, EEG and MEG.<p> <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a> is a <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-src:'SPM'"> A <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="src:'SPM'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>.</li>
-                        <li><a title="NIDM_0000122"><dfn title="NIDM_0000122">nidm:'software Version'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'software Version''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-@prefix src_SPM: &lt;http://scicrunch.org/resolver/SCR_007037&gt; .
-
-
-niiri:spm_software_id a prov:Agent , src_SPM: , prov:SoftwareAgent ;
-	rdfs:label "SPM" ;
-	nidm_softwareVersion: "8.6225"^^xsd:string .</pre>
-                </section>
-            <!-- src:'FSL' (SCR_002823) -->
-            <section id="section-src:'FSL'">
-                <h1 label="SCR_002823">src:'FSL'</h1>
-                <div class="glossary-ref">
-                    <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823"><dfn title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'src:'FSL''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A comprehensive library of image analysis and statistical tools for fMRI, MRI and DTI brain imaging data. The tools include registration, atlases, Diffusion MRI tools for parameter reconstruction and probabilistic taractography, and a viewer. FSL runs on Apple and PCs (Linux and Windows), and is very easy to install. Most of the tools can be run both from the command line and as GUIs ('point-and-click' graphical user interfaces). Several complementary brain atlases, integrated into FSLView and Featquery, allowing viewing of structural and cytoarchitectonic standard space labels and probability maps for cortical and subcortical structures and white matter tracts. Atlases included with FSL: * Harvard-Oxford cortical and subcortical structural atlases * Julich histological atlas * JHU DTI-based white-matter atlases * Oxford thalamic connectivity atlas * Talairach atlas * MNI structural atlas * Cerebellum atlas FSL is written mainly by members of the Analysis Group, FMRIB, Oxford, UK.<p> <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a> is a <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-src:'FSL'"> A <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="src:'FSL'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>.</li>
-                        <li><a title="FSL_0000005"><dfn title="FSL_0000005">fsl:'feat Version'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'feat Version''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Version of the FEAT software. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-@prefix fsl_featVersion: &lt;http://purl.org/nidash/fsl#FSL_0000005&gt; .
-@prefix src_FSL: &lt;http://scicrunch.org/resolver/SCR_002823&gt; .
-
-
-niiri:software_id a prov:Agent , src_FSL: , prov:SoftwareAgent ;
-	rdfs:label "FSL" ;
-	nidm_softwareVersion: "5.0.1"^^xsd:string ;
-	fsl_featVersion: "6.00"^^xsd:string .</pre>
-                </section>
             <!-- nidm:'NIDM-Results' (NIDM_0000027) -->
             <section id="section-nidm:'NIDM-Results'">
                 <h1 label="NIDM_0000027">nidm:'NIDM-Results'</h1>
@@ -605,11 +563,74 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
                 </section>
                 </section>
                 </section>
+            <!-- nidm:'Neuroimaging Analysis Software' (NIDM_0000164) -->
+            <section id="section-nidm:'Neuroimaging Analysis Software'">
+                <h1 label="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000164"><dfn title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Neuroimaging Analysis Software''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Tool used to process neuroimaging data.<p> <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a> is a prov:Agent and  has the following children: <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>, <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>.</p>
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Neuroimaging Analysis Software'"> A <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Neuroimaging Analysis Software'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</li>
+                        <li><a title="NIDM_0000122"><dfn title="NIDM_0000122">nidm:'software Version'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'software Version''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
+                </div>
+                </section>
+            <!-- src:'SPM' (SCR_007037) -->
+            <section id="section-src:'SPM'">
+                <h1 label="SCR_007037">src:'SPM'</h1>
+                <div class="glossary-ref">
+                    <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037"><dfn title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'src:'SPM''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Software package for the analysis of brain imaging data sequences. The sequences can be a series of images from different cohorts, or time-series from the same subject. The current release is designed for the analysis of fMRI, PET, SPECT, EEG and MEG.<p> <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a> is a <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</p>
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-src:'SPM'"> A <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="src:'SPM'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>.</li>
+                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="">@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
+@prefix src_SPM: &lt;http://scicrunch.org/resolver/SCR_007037&gt; .
+
+
+niiri:spm_software_id a prov:Agent , src_SPM: , prov:SoftwareAgent ;
+	rdfs:label "SPM" ;
+	nidm_softwareVersion: "8.6225"^^xsd:string .</pre>
+                </section>
+            <!-- src:'FSL' (SCR_002823) -->
+            <section id="section-src:'FSL'">
+                <h1 label="SCR_002823">src:'FSL'</h1>
+                <div class="glossary-ref">
+                    <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823"><dfn title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'src:'FSL''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A comprehensive library of image analysis and statistical tools for fMRI, MRI and DTI brain imaging data. The tools include registration, atlases, Diffusion MRI tools for parameter reconstruction and probabilistic taractography, and a viewer. FSL runs on Apple and PCs (Linux and Windows), and is very easy to install. Most of the tools can be run both from the command line and as GUIs ('point-and-click' graphical user interfaces). Several complementary brain atlases, integrated into FSLView and Featquery, allowing viewing of structural and cytoarchitectonic standard space labels and probability maps for cortical and subcortical structures and white matter tracts. Atlases included with FSL: * Harvard-Oxford cortical and subcortical structural atlases * Julich histological atlas * JHU DTI-based white-matter atlases * Oxford thalamic connectivity atlas * Talairach atlas * MNI structural atlas * Cerebellum atlas FSL is written mainly by members of the Analysis Group, FMRIB, Oxford, UK.<p> <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a> is a <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</p>
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-src:'FSL'"> A <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="src:'FSL'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>.</li>
+                        <li><a title="FSL_0000005"><dfn title="FSL_0000005">fsl:'feat Version'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'feat Version''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Version of the FEAT software. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="">@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
+@prefix fsl_featVersion: &lt;http://purl.org/nidash/fsl#FSL_0000005&gt; .
+@prefix src_FSL: &lt;http://scicrunch.org/resolver/SCR_002823&gt; .
+
+
+niiri:software_id a prov:Agent , src_FSL: , prov:SoftwareAgent ;
+	rdfs:label "FSL" ;
+	nidm_softwareVersion: "5.0.1"^^xsd:string ;
+	fsl_featVersion: "6.00"^^xsd:string .</pre>
+                </section>
             </section>
-        <section><h1>Data</h1>
+        <section><h1>Export</h1>
         <div style="text-align: left;">
             <table class="thinborder"             style="margin-left: auto; margin-right: auto;">
-                <caption id="prov-mapping-data">                <a class="internalDFN" href="#prov-mapping-data">                Table 4</a>:NIDM-Results                Data Concepts</caption>                 <tbody>
+                <caption id="prov-mapping-export">                <a class="internalDFN" href="#prov-mapping-export">                Table 4</a>:NIDM-Results                Export Concepts</caption>                 <tbody>
                     <tr>
                         <th align="center"><b>NIDM-Results Concept</b></th>
                         <th align="center"><b>PROV type</b></th>
@@ -619,85 +640,143 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
-                            <td><a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>
+                            <td><a title="NIDM_0000166">nidm:'NIDM-Results Export'</a>
                             </td>
                     
-                                <td rowspan="2" style="text-align: center;"> prov:Agent</td>
+                                <td rowspan="1" style="text-align: center;"> prov:Activity</td>
                         
-                                <td>obo:STATO_0000193</td>
+                                <td>nidm:NIDM_0000166</td>
                             </tr>
                 
                         <tr>
-                            <td><a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a>
+                            <td><a title="NIDM_0000057">nidm:'NIDM Object Model'</a>
                             </td>
                     
-                                <td>nlx:birnlex_2094</td>
+                                <td rowspan="1" style="text-align: center;"> prov:Entity</td>
+                        
+                                <td>nidm:NIDM_0000057</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>
+                            </td>
+                    
+                                <td rowspan="3" style="text-align: center;"> prov:Agent</td>
+                        
+                                <td>nidm:NIDM_0000165</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="NIDM_0000167">nidm:'nidmfsl'</a>
+                            </td>
+                    
+                                <td>nidm:NIDM_0000167</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="NIDM_0000168">nidm:'spm_results_nidm'</a>
+                            </td>
+                    
+                                <td>nidm:NIDM_0000168</td>
                             </tr>
                 
                 </tbody>
                 </table>
             </div>
-            <!-- obo:'study group population' (STATO_0000193) -->
-            <section id="section-obo:'study group population'">
-                <h1 label="STATO_0000193">obo:'study group population'</h1>
+            <!-- nidm:'NIDM-Results Export' (NIDM_0000166) -->
+            <section id="section-nidm:'NIDM-Results Export'">
+                <h1 label="NIDM_0000166">nidm:'NIDM-Results Export'</h1>
                 <div class="glossary-ref">
-                    <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193"><dfn title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'obo:'study group population''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Is a population whose individual members realize (may be expressed as) a combination of  inclusion rule values specifications or resulting from a sampling process (e.g. recruitment followed by randomization to group) on which a number of measurements will be carried out, which may be used as input to statistical tests and statistical inference.<p> <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a> is a prov:Agent.</p>
+                    <a title="NIDM_0000166"><dfn title="NIDM_0000166">nidm:'NIDM-Results Export'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM-Results Export''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The process of exporting results created by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive.<p> <a title="NIDM_0000166">nidm:'NIDM-Results Export'</a> is a prov:Activity.</p>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="">@prefix nidm_NIDMResultsExport: &lt;http://purl.org/nidash/nidm#NIDM_0000166&gt; .
+
+
+niiri:export_id a prov:Activity , nidm_NIDMResultsExport: ;
+	rdfs:label "NIDM-Results export" .
+
+niiri:export_id prov:wasAssociatedWith niiri:exporter_id .</pre>
+                </section>
+            <!-- nidm:'NIDM Object Model' (NIDM_0000057) -->
+            <section id="section-nidm:'NIDM Object Model'">
+                <h1 label="NIDM_0000057">nidm:'NIDM Object Model'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000057"><dfn title="NIDM_0000057">nidm:'NIDM Object Model'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM Object Model''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault).<p> <a title="NIDM_0000057">nidm:'NIDM Object Model'</a> is a prov:Entity and  has the following child: <a title="NIDM_0000027">nidm:'NIDM-Results'</a>.</p>
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-obo:'study group population'"> A <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'NIDM Object Model'"> A <a title="NIDM_0000057">nidm:'NIDM Object Model'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="obo:'study group population'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>.</li>
-                        <li><a title="groupName"><dfn title="groupName">nidm:'group Name'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'group Name''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the group. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="numberOfSubjects"><dfn title="numberOfSubjects">nidm:'number Of Subjects'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'number Of Subjects''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of subjects in the group. (range <a title="int" href ="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>).</li>
+                    <li><span class="attribute" id="nidm:'NIDM Object Model'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000057">nidm:'NIDM Object Model'</a>.</li>
+                        <li><a title="NIDM_0000127">nidm:'version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Version of NIDM in use in the document. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
                 </ul>
                 </div>
                 </section>
-            <!-- nlx:'Imaging instrument' (birnlex_2094) -->
-            <section id="section-nlx:'Imaging instrument'">
-                <h1 label="birnlex_2094">nlx:'Imaging instrument'</h1>
+            <!-- nidm:'NIDM-Results Exporter' (NIDM_0000165) -->
+            <section id="section-nidm:'NIDM-Results Exporter'">
+                <h1 label="NIDM_0000165">nidm:'NIDM-Results Exporter'</h1>
                 <div class="glossary-ref">
-                    <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094"><dfn title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Imaging instrument''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <p> <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a> is a prov:Agent and  has the following children: <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</a>, <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</a>, <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</a>, <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</a>, <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</a>.</p>
+                    <a title="NIDM_0000165"><dfn title="NIDM_0000165">nidm:'NIDM-Results Exporter'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM-Results Exporter''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Tool used to export results produced by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive.<p> <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a> is a prov:Agent and  has the following children: <a title="NIDM_0000167">nidm:'nidmfsl'</a>, <a title="NIDM_0000168">nidm:'spm_results_nidm'</a>.</p>
                 </div>
-            <!-- nlx:'Electroencephalography machine' (ixl_0050003) -->
-            <section id="section-nlx:'Electroencephalography machine'">
-                <h1 label="ixl_0050003">nlx:'Electroencephalography machine'</h1>
-                <div class="glossary-ref">
-                    <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003"><dfn title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Electroencephalography machine''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Electroencephalography machine is a device used in electrophysiology to record electrical activity of the brain..<p> <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</a> is a prov:Agent.</p>
-                </div>
-                </section>
-            <!-- nlx:'Magnetic resonance imaging scanner' (birnlex_2100) -->
-            <section id="section-nlx:'Magnetic resonance imaging scanner'">
-                <h1 label="birnlex_2100">nlx:'Magnetic resonance imaging scanner'</h1>
-                <div class="glossary-ref">
-                    <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100"><dfn title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Magnetic resonance imaging scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <p> <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</a> is a prov:Agent.</p>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'NIDM-Results Exporter'"> A <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'NIDM-Results Exporter'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</li>
+                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
                 </div>
                 </section>
-            <!-- nlx:'Magnetoencephalography machine' (ixl_0050002) -->
-            <section id="section-nlx:'Magnetoencephalography machine'">
-                <h1 label="ixl_0050002">nlx:'Magnetoencephalography machine'</h1>
+            <!-- nidm:'nidmfsl' (NIDM_0000167) -->
+            <section id="section-nidm:'nidmfsl'">
+                <h1 label="NIDM_0000167">nidm:'nidmfsl'</h1>
                 <div class="glossary-ref">
-                    <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002"><dfn title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Magnetoencephalography machine''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Magnetoencephalography machine is a device used in functional neuroimaging for mapping brain activity by recording magnetic fields produced by electrical currents occurring naturally in the brain, using very sensitive magnetometers..<p> <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</a> is a prov:Agent.</p>
+                    <a title="NIDM_0000167"><dfn title="NIDM_0000167">nidm:'nidmfsl'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'nidmfsl''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Python library for the export of feat folders (generated by FSL) to NIDM-Results. Source available at: https://github.com/incf-nidash/nidm-results_fsl/.<p> <a title="NIDM_0000167">nidm:'nidmfsl'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
                 </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'nidmfsl'"> A <a title="NIDM_0000167">nidm:'nidmfsl'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'nidmfsl'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000167">nidm:'nidmfsl'</a>.</li>
+                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="">@prefix nidm_nidmfsl: &lt;http://purl.org/nidash/nidm#NIDM_0000167&gt; .
+@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
+
+
+niiri:exporter_id a prov:Agent, nidm_nidmfsl: , prov:SoftwareAgent ;
+	rdfs:label "nidmfsl" ;
+	nidm_softwareVersion: "0.2.0"^^xsd:string .</pre>
                 </section>
-            <!-- nlx:'Positron emission tomography scanner' (ixl_0050000) -->
-            <section id="section-nlx:'Positron emission tomography scanner'">
-                <h1 label="ixl_0050000">nlx:'Positron emission tomography scanner'</h1>
+            <!-- nidm:'spm_results_nidm' (NIDM_0000168) -->
+            <section id="section-nidm:'spm_results_nidm'">
+                <h1 label="NIDM_0000168">nidm:'spm_results_nidm'</h1>
                 <div class="glossary-ref">
-                    <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000"><dfn title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Positron emission tomography scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Positron emission tomography scanner is a device used in a nuclear medicine to observe metabolic processes in the body.<p> <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</a> is a prov:Agent.</p>
+                    <a title="NIDM_0000168"><dfn title="NIDM_0000168">nidm:'spm_results_nidm'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'spm_results_nidm''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Matlab m file for the export of SPM results to NIDM-Results. Source available at: http://www.fil.ion.ucl.ac.uk/spm/download/toolbox/NIDM/spm_nidm.zip/.<p> <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
                 </div>
-                </section>
-            <!-- nlx:'Single-photon emission computed tomography scanner' (ixl_0050001) -->
-            <section id="section-nlx:'Single-photon emission computed tomography scanner'">
-                <h1 label="ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</h1>
-                <div class="glossary-ref">
-                    <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001"><dfn title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Single-photon emission computed tomography scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Single-photon emission computed tomography scanner is a device used in nuclear medicine tomographic imaging to measure perfusion in the body using gamma rays.<p> <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</a> is a prov:Agent.</p>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'spm_results_nidm'"> A <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'spm_results_nidm'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000168">nidm:'spm_results_nidm'</a>.</li>
+                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                </ul>
                 </div>
-                </section>
+                </ul>
+                </div>
+                <pre class='example highlight' title="">@prefix nidm_spm_results_nidm: &lt;http://purl.org/nidash/nidm#NIDM_0000168&gt; .
+@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
+
+
+niiri:exporter_id a prov:Agent, nidm_spm_results_nidm: , prov:SoftwareAgent ;
+	rdfs:label "spm_results_nidm" ;
+	nidm_softwareVersion: "12b.5858"^^xsd:string .</pre>
                 </section>
             </section>
         <section><h1>Parameters estimation</h1>            <div align="center">
 	            <figure id="fig-nidmresults-MPE">
-	              <img src="img/nidm-results_dev/nidm-results-MPE.svg" onerror="this.src='img/nidm-results_dev/nidm-results-MPE.png'" width="600px" />
+	              <img src="img/nidm-results_dev/nidm-results-MPE.svg" onerror="this.src='img/nidm-results_dev/nidm-results-MPE.png'" width="700px" />
 	              <figcaption>NIDM-Results Parameters Estimation</figcaption>
 	            </figure>
         	</div>
@@ -722,12 +801,12 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
                             </tr>
                 
                         <tr>
-                            <td><a title="Data">nidm:'Data'</a>
+                            <td><a title="NIDM_0000169">nidm:'Data'</a>
                             </td>
                     
-                                <td rowspan="8" style="text-align: center;"> prov:Entity</td>
+                                <td rowspan="9" style="text-align: center;"> prov:Entity</td>
                         
-                                <td>nidm:Data</td>
+                                <td>nidm:NIDM_0000169</td>
                             </tr>
                 
                         <tr>
@@ -759,6 +838,13 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
                             </tr>
                 
                         <tr>
+                            <td><a title="NIDM_0000004">nidm:'Binary Map'</a>
+                            </td>
+                    
+                                <td>nidm:NIDM_0000004</td>
+                            </tr>
+                
+                        <tr>
                             <td><a title="NIDM_0000061">nidm:'Parameter Estimate Map'</a>
                             </td>
                     
@@ -779,6 +865,22 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
                                 <td>nidm:NIDM_0000066</td>
                             </tr>
                 
+                        <tr>
+                            <td><a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>
+                            </td>
+                    
+                                <td rowspan="2" style="text-align: center;"> prov:Agent</td>
+                        
+                                <td>obo:STATO_0000193</td>
+                            </tr>
+                
+                        <tr>
+                            <td><a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a>
+                            </td>
+                    
+                                <td>nlx:birnlex_2094</td>
+                            </tr>
+                
                 </tbody>
                 </table>
             </div>
@@ -786,7 +888,7 @@ niiri:coordinate_space_id_1 a prov:Entity , nidm_CoordinateSpace: ;
             <section id="section-nidm:'Model Parameters Estimation'">
                 <h1 label="NIDM_0000056">nidm:'Model Parameters Estimation'</h1>
                 <div class="glossary-ref">
-                    <a title="NIDM_0000056"><dfn title="NIDM_0000056">nidm:'Model Parameters Estimation'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Model Parameters Estimation''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The process of performing a <a href="http://purl.obolibrary.org/obo/STATO_0000119">obo:model parameter estimation</a> at each element (e.g., pixel, voxel, vertex, or face) of a map.<p> <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a> is a prov:Activity that uses <a title="Data">nidm:'Data'</a>, <a title="NIDM_0000019">nidm:'Design Matrix'</a>, <a title="NIDM_0000023">nidm:'Error Model'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a> entities. This activity generates <a title="NIDM_0000033">nidm:'Grand Mean Map'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a>, <a title="NIDM_0000061">nidm:'Parameter Estimate Map'</a>, <a title="NIDM_0000144">nidm:'Resels Per Voxel Map'</a>, <a title="NIDM_0000066">nidm:'Residual Mean Squares Map'</a> entities.</p>
+                    <a title="NIDM_0000056"><dfn title="NIDM_0000056">nidm:'Model Parameters Estimation'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Model Parameters Estimation''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The process of performing a <a href="http://purl.obolibrary.org/obo/STATO_0000119">obo:model parameter estimation</a> at each element (e.g., pixel, voxel, vertex, or face) of a map.<p> <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a> is a prov:Activity that uses <a title="NIDM_0000169">nidm:'Data'</a>, <a title="NIDM_0000019">nidm:'Design Matrix'</a>, <a title="NIDM_0000023">nidm:'Error Model'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a> entities. This activity generates <a title="NIDM_0000033">nidm:'Grand Mean Map'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a>, <a title="NIDM_0000061">nidm:'Parameter Estimate Map'</a>, <a title="NIDM_0000144">nidm:'Resels Per Voxel Map'</a>, <a title="NIDM_0000066">nidm:'Residual Mean Squares Map'</a> entities.</p>
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Model Parameters Estimation'"> A <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a> has attributes:
@@ -813,35 +915,37 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
     prov:used niiri:error_model_id ;
     prov:wasAssociatedWith niiri:software_id .</pre>
                 </section>
-            <!-- nidm:'Data' (Data) -->
+            <!-- nidm:'Data' (NIDM_0000169) -->
             <section id="section-nidm:'Data'">
-                <h1 label="Data">nidm:'Data'</h1>
+                <h1 label="NIDM_0000169">nidm:'Data'</h1>
                 <div class="glossary-ref">
-                    <a title="Data"><dfn title="Data">nidm:'Data'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Data''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Information about the input Data, including scaling applied to the data before parameter estimation..<p> <a title="Data">nidm:'Data'</a> is a prov:Entity used by <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a> and  attributed to <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a>, <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>, <a title="Person" href ="http://www.w3.org/ns/prov#Person">prov:Person</a>.</p>
+                    <a title="NIDM_0000169"><dfn title="NIDM_0000169">nidm:'Data'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Data''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Information about the input Data, including scaling applied to the data before parameter estimation..<p> <a title="NIDM_0000169">nidm:'Data'</a> is a prov:Entity used by <a title="NIDM_0000056">nidm:'Model Parameters Estimation'</a> and  attributed to <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a>, <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>, <a title="Person" href ="http://www.w3.org/ns/prov#Person">prov:Person</a>.</p>
                 </div>
                 <p></p>
-                <div class="attributes" id="attributes-nidm:'Data'"> A <a title="Data">nidm:'Data'</a> has attributes:
+                <div class="attributes" id="attributes-nidm:'Data'"> A <a title="NIDM_0000169">nidm:'Data'</a> has attributes:
                 <ul>
-                    <li><span class="attribute" id="nidm:'Data'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="Data">nidm:'Data'</a>.</li>
+                    <li><span class="attribute" id="nidm:'Data'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000169">nidm:'Data'</a>.</li>
                         <li><a title="NIDM_0000096"><dfn title="NIDM_0000096">nidm:'grand Mean Scaling'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'grand Mean Scaling''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Binary flag defining whether the data was scaled (true for scaled). Specifically, "grand mean scaling" refers to multiplication of every voxel in every scan by a common (or session-specific) value. (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
                         <li><a title="NIDM_0000124"><dfn title="NIDM_0000124">nidm:'target Intensity'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'target Intensity''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Value to which the grand mean of the Data was scaled (applies only if <a title=NIDM_0000096>'grand Mean Scaling'</a> is true). (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
-                        <li><a title="hasMRIProtocol"><dfn title="hasMRIProtocol">nidm:'has MRI Protocol'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has MRI Protocol''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) 'MRI Protocol' used to acquire these <a title=Data>'Data'</a>. (range <a title="birnlex_2177" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2177">nlx:'MRI protocol'</a> such as <a title="birnlex_2250" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2250">nlx:'Functional MRI protocol'</a>, <a title="birnlex_2251" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2251">nlx:'Structural MRI protocol'</a>).</li>
+                        <li><a title="NIDM_0000172"><dfn title="NIDM_0000172">nidm:'has MRI Protocol'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has MRI Protocol''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) 'MRI Protocol' used to acquire these <a title=NIDM_0000169>'Data'</a>. (range <a title="birnlex_2177" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2177">nlx:'MRI protocol'</a> such as <a title="birnlex_2250" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2250">nlx:'Functional MRI protocol'</a>, <a title="birnlex_2251" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2251">nlx:'Structural MRI protocol'</a>).</li>
                 </ul>
                 </div>
                 </ul>
                 </div>
                 <pre class='example highlight' title="  Data">
 
+@prefix nidm_Data: &lt;http://purl.org/nidash/nidm#NIDM_0000169&gt; .
 @prefix nidm_grandMeanScaling: &lt;http://purl.org/nidash/nidm#NIDM_0000096&gt; .
 @prefix nidm_targetIntensity: &lt;http://purl.org/nidash/nidm#NIDM_0000124&gt; .
+@prefix nidm_hasMRIProtocol: &lt;http://purl.org/nidash/nidm#NIDM_0000172&gt; .
 @prefix nlx_FunctionalMRIprotocol: &lt;http://uri.neuinfo.org/nif/nifstd/birnlex_2250&gt; .
 
 
-niiri:data_id a prov:Entity , nidm:Data , prov:Collection ;
+niiri:data_id a prov:Entity , nidm_Data: , prov:Collection ;
     rdfs:label "Data" ;
     nidm_grandMeanScaling: "true"^^xsd:boolean ;
     nidm_targetIntensity: "100"^^xsd:float ;
-    nidm:hasMRIProtocol nlx_FunctionalMRIprotocol: ;
+    nidm_hasMRIProtocol: nlx_FunctionalMRIprotocol: ;
     prov:wasAttributedTo niiri:my_scanner_id ;
     prov:wasAttributedTo niiri:group_id ;
     prov:wasAttributedTo niiri:group2_id .</pre>
@@ -999,14 +1103,14 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <h1 label="NIDM_0000029">nidm:'Gamma Difference HRF'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000029"><dfn title="NIDM_0000029">nidm:'Gamma Difference HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Gamma Difference HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a difference of two gamma probability density functions.<p> <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> is a <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a>.</p>
-                </div> Examples of <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> includes <ul><li><a title="FSL_0000001"><dfn title="FSL_0000001">fsl:'FSL's Gamma Difference HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Gamma Difference HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted <a href="http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html">FSL wiki</a>). This is the default in FSL.</li><li><a title="SPM_0000004"><dfn title="SPM_0000004">spm:'SPM's Canonical HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Canonical HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed difference of two gamma probability density functions and is denoted by "canonical HRF" in SPM. This is the default in SPM.</li></ul>
+                </div> Examples of <a title="NIDM_0000029">nidm:'Gamma Difference HRF'</a> includes <ul><li><a title="FSL_0000001"><dfn title="FSL_0000001">fsl:'FSL's Gamma Difference HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Gamma Difference HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed difference of two gamma probability density functions - a standard positive function at normal lag, and a small, delayed, negated gamma probability density function, which attempts to model the late undershoot (definition adapted <a href="http://fsl.fmrib.ox.ac.uk/fsl/fsl4.0/feat5/detail.html">FSL wiki</a>).</li><li><a title="SPM_0000004"><dfn title="SPM_0000004">spm:'SPM's Canonical HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'spm:'SPM's Canonical HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed difference of two gamma probability density functions and is denoted by "canonical HRF" in SPM. This is the default in SPM.</li></ul>
                 </section>
             <!-- nidm:'Gamma HRF' (NIDM_0000031) -->
             <section id="section-nidm:'Gamma HRF'">
                 <h1 label="NIDM_0000031">nidm:'Gamma HRF'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000031"><dfn title="NIDM_0000031">nidm:'Gamma HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Gamma HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a gamma probability density function.<p> <a title="NIDM_0000031">nidm:'Gamma HRF'</a> is a <a title="NIDM_0000035">nidm:'Hemodynamic Response Function'</a>.</p>
-                </div> Examples of <a title="NIDM_0000031">nidm:'Gamma HRF'</a> includes <ul><li><a title="GammaHRF"><dfn title="GammaHRF">afni:'AFNI's Gamma HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'afni:'AFNI's Gamma HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py).</li></ul>
+                </div> Examples of <a title="NIDM_0000031">nidm:'Gamma HRF'</a> includes <ul><li><a title="GammaHRF"><dfn title="GammaHRF">afni:'AFNI's Gamma HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'afni:'AFNI's Gamma HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed gamma probability density function. This is the default in AFNI (-GAM option to 3ddeconvolve, or implied via afni_proc.py).</li><li><a title="FSL_0000006"><dfn title="FSL_0000006">fsl:'FSL's Gamma HRF'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'FSL's Gamma HRF''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <a title=NIDM_0000035>'Hemodynamic Response Function'</a> which is a fixed gamma probability density function. This is the default in FSL.</li></ul>
                 </section>
             <!-- nidm:'Gaussian HRF' (NIDM_0000110) -->
             <section id="section-nidm:'Gaussian HRF'">
@@ -1061,7 +1165,7 @@ niiri:first_level_design_matrix_id a prov:Entity , nidm_DesignMatrix: ;
                 <div class="attributes" id="attributes-fsl:'Gaussian Running Line Drift Model'"> A <a title="FSL_0000002">fsl:'Gaussian Running Line Drift Model'</a> has attributes:
                 <ul>
                     <li><span class="attribute" id="fsl:'Gaussian Running Line Drift Model'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="FSL_0000002">fsl:'Gaussian Running Line Drift Model'</a>.</li>
-                        <li><a title="FSL_0000004"><dfn title="FSL_0000004">fsl:'drift Cutoff Period'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'drift Cutoff Period''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Full Width at Half Maximum in seconds of the Gaussian weight function used in the running line smoother. (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
+                        <li><a title="FSL_0000004"><dfn title="FSL_0000004">fsl:'drift Cutoff Period'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'fsl:'drift Cutoff Period''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Doubled standard deviation in seconds of the Gaussian weight function used in the running line smoother. (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                 </ul>
                 </div>
                 </ul>
@@ -1115,23 +1219,23 @@ niiri:drift_model_id a prov:Entity , spm_DCTDriftModel: ;
                     <li><span class="attribute" id="nidm:'Error Model'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000023">nidm:'Error Model'</a>.</li>
                         <li><a title="NIDM_0000089"><dfn title="NIDM_0000089">nidm:'dependence Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'dependence Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an <a title=NIDM_0000071>'Error Parameter Map-Wise Dependence'</a> to the dependence of an <a title=NIDM_0000023>'Error Model'</a>. (range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>).</li>
                         <li><a title="NIDM_0000094"><dfn title="NIDM_0000094">nidm:'error Variance Homogeneous'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'error Variance Homogeneous''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A boolean value reflecting how the variance of the error is modeled during parameter estimation; TRUE for constant variance over all observations in the model, FALSE for heterogeneous variance. (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
-                        <li><a title="NIDM_0000100"><dfn title="NIDM_0000100">nidm:'has Error Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a covariance structure representing the dependence structure of the error, used as part of model estimation with an <a title=NIDM_0000023>'Error Model'</a>. (range <a title="STATO_0000346" href ="http://purl.obolibrary.org/obo/STATO_0000346">obo:'covariance structure'</a> such as <a title="NIDM_0000003">nidm:'Arbitrarily Correlated Error'</a>, <a title="NIDM_0000024">nidm:'Exchangeable Error'</a>, <a title="NIDM_0000048">nidm:'Independent Error'</a>, <a title="STATO_0000357" href ="http://purl.obolibrary.org/obo/STATO_0000357">obo:'Toeplitz covariance structure'</a>, <a title="STATO_0000362" href ="http://purl.obolibrary.org/obo/STATO_0000362">obo:'compound symmetry covariance structure'</a>, <a title="STATO_0000405" href ="http://purl.obolibrary.org/obo/STATO_0000405">obo:'unstructured covariance structure'</a>).</li>
+                        <li><a title="NIDM_0000100"><dfn title="NIDM_0000100">nidm:'has Error Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a covariance structure representing the dependence structure of the error, used as part of model estimation with an <a title=NIDM_0000023>'Error Model'</a>. (range <a title="STATO_0000346" href ="http://purl.obolibrary.org/obo/STATO_0000346">obo:'covariance structure'</a> such as <a title="NIDM_0000024">nidm:'Exchangeable Error'</a>, <a title="NIDM_0000048">nidm:'Independent Error'</a>, <a title="STATO_0000357" href ="http://purl.obolibrary.org/obo/STATO_0000357">obo:'Toeplitz covariance structure'</a>, <a title="STATO_0000362" href ="http://purl.obolibrary.org/obo/STATO_0000362">obo:'compound symmetry covariance structure'</a>, <a title="STATO_0000405" href ="http://purl.obolibrary.org/obo/STATO_0000405">obo:'unstructured covariance structure'</a>).</li>
                         <li><a title="NIDM_0000101"><dfn title="NIDM_0000101">nidm:'has Error Distribution'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Error Distribution''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates a Probability distribution used to model the error with an ErrorModel. (range <a title="STATO_0000225" href ="http://purl.obolibrary.org/obo/STATO_0000225">obo:'probability distribution'</a> such as <a title="STATO_0000067" href ="http://purl.obolibrary.org/obo/STATO_0000067">obo:'continuous probability distribution'</a>, <a title="STATO_0000117" href ="http://purl.obolibrary.org/obo/STATO_0000117">obo:'discrete probability distribution'</a>).</li>
                         <li><a title="NIDM_0000126"><dfn title="NIDM_0000126">nidm:'variance Map-Wise Dependence'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'variance Map-Wise Dependence''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an <a title=NIDM_0000071>'Error Parameter Map-Wise Dependence'</a> to the variance of an <a title=NIDM_0000023>'Error Model'</a>. (range <a title="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</a> such as <a title="NIDM_0000072">nidm:'Constant Parameter'</a>, <a title="NIDM_0000073">nidm:'Independent Parameter'</a>, <a title="NIDM_0000074">nidm:'Regularized Parameter'</a>).</li>
                 </ul>
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight' title="  Error Model">
+                <pre class='example highlight' title="  Error Model: Ordinary least squares">
 
 @prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
 @prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
 @prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
 @prefix nidm_varianceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
-@prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
 @prefix nidm_hasErrorDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000100&gt; .
-@prefix nidm_IndependentError: &lt;http://purl.org/nidash/nidm#NIDM_0000048&gt; .
 @prefix nidm_dependenceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
+@prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
+@prefix nidm_IndependentError: &lt;http://purl.org/nidash/nidm#NIDM_0000048&gt; .
 @prefix obo_normaldistribution: &lt;http://purl.obolibrary.org/obo/STATO_0000227&gt; .
 
 
@@ -1163,6 +1267,27 @@ niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
     nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
     nidm_hasErrorDependence: obo_unstructuredcovariancestructure: ;
     nidm_dependenceMapWiseDependence: nidm_ConstantParameter: .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Error Model: Weighted least squares">
+
+@prefix nidm_ErrorModel: &lt;http://purl.org/nidash/nidm#NIDM_0000023&gt; .
+@prefix nidm_hasErrorDistribution: &lt;http://purl.org/nidash/nidm#NIDM_0000101&gt; .
+@prefix nidm_errorVarianceHomogeneous: &lt;http://purl.org/nidash/nidm#NIDM_0000094&gt; .
+@prefix nidm_varianceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000126&gt; .
+@prefix nidm_hasErrorDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000100&gt; .
+@prefix nidm_dependenceMapWiseDependence: &lt;http://purl.org/nidash/nidm#NIDM_0000089&gt; .
+@prefix nidm_IndependentParameter: &lt;http://purl.org/nidash/nidm#NIDM_0000073&gt; .
+@prefix nidm_IndependentError: &lt;http://purl.org/nidash/nidm#NIDM_0000048&gt; .
+@prefix obo_normaldistribution: &lt;http://purl.obolibrary.org/obo/STATO_0000227&gt; .
+
+
+niiri:error_model_id a prov:Entity , nidm_ErrorModel: ;
+    nidm_hasErrorDistribution: obo_normaldistribution: ;
+    nidm_errorVarianceHomogeneous: "false"^^xsd:boolean ;
+    nidm_varianceMapWiseDependence: nidm_IndependentParameter: ;
+    nidm_hasErrorDependence: nidm_IndependentError: ;
+    nidm_dependenceMapWiseDependence: nidm_IndependentParameter: .</pre>
             <!-- nidm:'Error Parameter Map-Wise Dependence' (NIDM_0000071) -->
             <section id="section-nidm:'Error Parameter Map-Wise Dependence'">
                 <h1 label="NIDM_0000071">nidm:'Error Parameter Map-Wise Dependence'</h1>
@@ -1269,6 +1394,26 @@ niiri:mask_id_2 a prov:Entity , nidm_MaskMap: ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a"^^xsd:string .</pre>
                 </section>
+            <!-- nidm:'Binary Map' (NIDM_0000004) -->
+            <section id="section-nidm:'Binary Map'">
+                <h1 label="NIDM_0000004">nidm:'Binary Map'</h1>
+                <div class="glossary-ref">
+                    <a title="NIDM_0000004"><dfn title="NIDM_0000004">nidm:'Binary Map'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Binary Map''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, or faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN.<p> <a title="NIDM_0000004">nidm:'Binary Map'</a> is a <a title="NIDM_0000052">nidm:'Map'</a> and  has the following children: <a title="NIDM_0000020">nidm:'Display Mask Map'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a>.</p>
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-nidm:'Binary Map'"> A <a title="NIDM_0000004">nidm:'Binary Map'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="nidm:'Binary Map'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000004">nidm:'Binary Map'</a>.</li>
+                        <li><a title="sha512" href ="http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512">crypto:sha512</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Secure Hash Algorithm 512.
+                        <li><a title="format" href ="http://purl.org/dc/terms/format">dct:format</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The file format, physical medium, or dimensions of the resource. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the <a title=NIDM_0000053>'Map Header'</a> with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
+                        <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a <a title=NIDM_0000016>'Coordinate Space'</a> with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
+                        <li><a title="NIDM_0000106">nidm:'is User Defined'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
+                        <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
+                </ul>
+                </div>
+                </section>
             <!-- nidm:'Parameter Estimate Map' (NIDM_0000061) -->
             <section id="section-nidm:'Parameter Estimate Map'">
                 <h1 label="NIDM_0000061">nidm:'Parameter Estimate Map'</h1>
@@ -1295,10 +1440,14 @@ niiri:mask_id_2 a prov:Entity , nidm_MaskMap: ;
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 
 
+niiri:beta_map_id_1 prov:wasGeneratedBy niiri:model_pe_id .
+
 niiri:beta_map_id_1 a prov:Entity , nidm_ParameterEstimateMap: ;
     rdfs:label "Beta Map 1" ;
+    nfo:fileName "ParameterEstimate_0001.nii.gz"^^xsd:string ;
     nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
-    prov:wasGeneratedBy niiri:model_pe_id .</pre>
+    crypto:sha512 "e43b6e01b0463fe7d40782137867a"^^xsd:string ;
+    dct:format "image/nifti"^^xsd:string .</pre>
                 </section>
             <!-- nidm:'Resels Per Voxel Map' (NIDM_0000144) -->
             <section id="section-nidm:'Resels Per Voxel Map'">
@@ -1370,10 +1519,80 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm_ResidualMeanSquaresMap: 
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a"^^xsd:string ;
     prov:wasGeneratedBy niiri:model_pe_id .</pre>
                 </section>
+            <!-- obo:'study group population' (STATO_0000193) -->
+            <section id="section-obo:'study group population'">
+                <h1 label="STATO_0000193">obo:'study group population'</h1>
+                <div class="glossary-ref">
+                    <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193"><dfn title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'obo:'study group population''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Is a population whose individual members realize (may be expressed as) a combination of  inclusion rule values specifications or resulting from a sampling process (e.g. recruitment followed by randomization to group) on which a number of measurements will be carried out, which may be used as input to statistical tests and statistical inference.<p> <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a> is a prov:Agent.</p>
+                </div>
+                <p></p>
+                <div class="attributes" id="attributes-obo:'study group population'"> A <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a> has attributes:
+                <ul>
+                    <li><span class="attribute" id="obo:'study group population'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="STATO_0000193" href ="http://purl.obolibrary.org/obo/STATO_0000193">obo:'study group population'</a>.</li>
+                        <li><a title="NIDM_0000170"><dfn title="NIDM_0000170">nidm:'group Name'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'group Name''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the group. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
+                        <li><a title="NIDM_0000171"><dfn title="NIDM_0000171">nidm:'number Of Subjects'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'number Of Subjects''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of subjects in the group. (range <a title="int" href ="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>).</li>
+                </ul>
+                </div>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Group: Control group with 23 subjects">
+
+@prefix nidm_groupName: &lt;http://purl.org/nidash/nidm#NIDM_0000170&gt; .
+@prefix nidm_numberOfSubjects: &lt;http://purl.org/nidash/nidm#NIDM_0000171&gt; .
+@prefix obo_studygrouppopulation: &lt;http://purl.obolibrary.org/obo/STATO_0000193&gt; .
+
+
+niiri:group_id a prov:Entity , obo_studygrouppopulation: ;
+    rdfs:label "Group: Control" ;
+    nidm_groupName: "Control"^^xsd:string ;
+    nidm_numberOfSubjects: "23"^^xsd:int .</pre>
+                </section>
+            <!-- nlx:'Imaging instrument' (birnlex_2094) -->
+            <section id="section-nlx:'Imaging instrument'">
+                <h1 label="birnlex_2094">nlx:'Imaging instrument'</h1>
+                <div class="glossary-ref">
+                    <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094"><dfn title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Imaging instrument''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <p> <a title="birnlex_2094" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2094">nlx:'Imaging instrument'</a> is a prov:Agent and  has the following children: <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</a>, <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</a>, <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</a>, <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</a>, <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</a>.</p>
+                </div>
+            <!-- nlx:'Electroencephalography machine' (ixl_0050003) -->
+            <section id="section-nlx:'Electroencephalography machine'">
+                <h1 label="ixl_0050003">nlx:'Electroencephalography machine'</h1>
+                <div class="glossary-ref">
+                    <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003"><dfn title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Electroencephalography machine''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Electroencephalography machine is a device used in electrophysiology to record electrical activity of the brain..<p> <a title="ixl_0050003" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050003">nlx:'Electroencephalography machine'</a> is a prov:Agent.</p>
+                </div>
+                </section>
+            <!-- nlx:'Magnetic resonance imaging scanner' (birnlex_2100) -->
+            <section id="section-nlx:'Magnetic resonance imaging scanner'">
+                <h1 label="birnlex_2100">nlx:'Magnetic resonance imaging scanner'</h1>
+                <div class="glossary-ref">
+                    <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100"><dfn title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Magnetic resonance imaging scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <p> <a title="birnlex_2100" href ="http://uri.neuinfo.org/nif/nifstd/birnlex_2100">nlx:'Magnetic resonance imaging scanner'</a> is a prov:Agent.</p>
+                </div>
+                </section>
+            <!-- nlx:'Magnetoencephalography machine' (ixl_0050002) -->
+            <section id="section-nlx:'Magnetoencephalography machine'">
+                <h1 label="ixl_0050002">nlx:'Magnetoencephalography machine'</h1>
+                <div class="glossary-ref">
+                    <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002"><dfn title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Magnetoencephalography machine''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Magnetoencephalography machine is a device used in functional neuroimaging for mapping brain activity by recording magnetic fields produced by electrical currents occurring naturally in the brain, using very sensitive magnetometers..<p> <a title="ixl_0050002" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050002">nlx:'Magnetoencephalography machine'</a> is a prov:Agent.</p>
+                </div>
+                </section>
+            <!-- nlx:'Positron emission tomography scanner' (ixl_0050000) -->
+            <section id="section-nlx:'Positron emission tomography scanner'">
+                <h1 label="ixl_0050000">nlx:'Positron emission tomography scanner'</h1>
+                <div class="glossary-ref">
+                    <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000"><dfn title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Positron emission tomography scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Positron emission tomography scanner is a device used in a nuclear medicine to observe metabolic processes in the body.<p> <a title="ixl_0050000" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050000">nlx:'Positron emission tomography scanner'</a> is a prov:Agent.</p>
+                </div>
+                </section>
+            <!-- nlx:'Single-photon emission computed tomography scanner' (ixl_0050001) -->
+            <section id="section-nlx:'Single-photon emission computed tomography scanner'">
+                <h1 label="ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</h1>
+                <div class="glossary-ref">
+                    <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001"><dfn title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nlx:'Single-photon emission computed tomography scanner''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A Single-photon emission computed tomography scanner is a device used in nuclear medicine tomographic imaging to measure perfusion in the body using gamma rays.<p> <a title="ixl_0050001" href ="http://uri.neuinfo.org/nif/nifstd/ixl_0050001">nlx:'Single-photon emission computed tomography scanner'</a> is a prov:Agent.</p>
+                </div>
+                </section>
+                </section>
             </section>
         <section><h1>Contrast estimation</h1>            <div align="center">
 	            <figure id="fig-nidmresults-CE">
-	              <img src="img/nidm-results_dev/nidm-results-CE.svg" onerror="this.src='img/nidm-results_dev/nidm-results-CE.png'" width="600px" />
+	              <img src="img/nidm-results_dev/nidm-results-CE.svg" onerror="this.src='img/nidm-results_dev/nidm-results-CE.png'" width="700px" />
 	              <figcaption>NIDM-Results Contrast Estimation</figcaption>
 	            </figure>
         	</div>
@@ -1611,8 +1830,8 @@ niiri:contrast_standard_error_map_id a prov:Entity , nidm_ContrastStandardErrorM
 @prefix nidm_statisticType: &lt;http://purl.org/nidash/nidm#NIDM_0000123&gt; .
 @prefix nidm_contrastName: &lt;http://purl.org/nidash/nidm#NIDM_0000085&gt; .
 @prefix nidm_effectDegreesOfFreedom: &lt;http://purl.org/nidash/nidm#NIDM_0000091&gt; .
-@prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 @prefix nidm_errorDegreesOfFreedom: &lt;http://purl.org/nidash/nidm#NIDM_0000093&gt; .
+@prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
 @prefix obo_tstatistic: &lt;http://purl.obolibrary.org/obo/STATO_0000176&gt; .
 
 
@@ -1624,15 +1843,15 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	dct:format "image/nifti"^^xsd:string ;
 	nidm_contrastName: "listening &gt; rest"^^xsd:string ;
 	nidm_effectDegreesOfFreedom: "1"^^xsd:float ;
+	nidm_errorDegreesOfFreedom: "72.9999999990787"^^xsd:float ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a"^^xsd:string ;
-	prov:wasGeneratedBy niiri:contrast_estimation_id;
-    nidm_errorDegreesOfFreedom: "72.9999999990787"^^xsd:float .</pre>
+	prov:wasGeneratedBy niiri:contrast_estimation_id.</pre>
                 </section>
             </section>
         <section><h1>Inference</h1>            <div align="center">
 	            <figure id="fig-nidmresults-I">
-	              <img src="img/nidm-results_dev/nidm-results-I.svg" onerror="this.src='img/nidm-results_dev/nidm-results-I.png'" width="600px" />
+	              <img src="img/nidm-results_dev/nidm-results-I.svg" onerror="this.src='img/nidm-results_dev/nidm-results-I.png'" width="700px" />
 	              <figcaption>NIDM-Results Inference</figcaption>
 	            </figure>
         	</div>
@@ -1753,7 +1972,7 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight' title="  Inference">
+                <pre class='example highlight' title="  Inference: one-tailed">
 
 @prefix nidm_Inference: &lt;http://purl.org/nidash/nidm#NIDM_0000049&gt; .
 @prefix nidm_hasAlternativeHypothesis: &lt;http://purl.org/nidash/nidm#NIDM_0000097&gt; .
@@ -1763,6 +1982,20 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 niiri:inference_id a prov:Activity , nidm_Inference: ;
 	rdfs:label "Inference" ;
 	nidm_hasAlternativeHypothesis: nidm_OneTailedTest: ;
+    prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id ;
+    prov:wasAssociatedWith niiri:software_id .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Inference: two-tailed">
+
+@prefix nidm_Inference: &lt;http://purl.org/nidash/nidm#NIDM_0000049&gt; .
+@prefix nidm_hasAlternativeHypothesis: &lt;http://purl.org/nidash/nidm#NIDM_0000097&gt; .
+@prefix nidm_TwoTailedTest: &lt;http://purl.org/nidash/nidm#NIDM_0000079&gt; .
+
+
+niiri:inference_id a prov:Activity , nidm_Inference: ;
+	rdfs:label "Inference" ;
+	nidm_hasAlternativeHypothesis: nidm_TwoTailedTest: ;
     prov:used niiri:statistic_map_id, niiri:height_threshold_id, niiri:extent_threshold_id, niiri:peak_definition_criteria_id, niiri:cluster_definition_criteria_id, niiri:mask_id ;
     prov:wasAssociatedWith niiri:software_id .</pre>
             <!-- nidm:'Conjunction Inference' (NIDM_0000011) -->
@@ -1854,7 +2087,19 @@ niiri:conjunction_id_2 a prov:Activity , spm_PartialConjunctionInference: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight' title="  Cluster Definition Criteria">
+                <pre class='example highlight' title="  Cluster connectivity: face">
+
+@prefix nidm_ClusterDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000007&gt; .
+@prefix nidm_hasConnectivityCriterion: &lt;http://purl.org/nidash/nidm#NIDM_0000099&gt; .
+@prefix nidm_voxel6connected: &lt;http://purl.org/nidash/nidm#NIDM_0000130&gt; .
+
+
+niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
+	rdfs:label "Cluster Connectivity Criterion: 6" ;
+	nidm_hasConnectivityCriterion: nidm_voxel6connected: .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Cluster connectivity: face or edge">
 
 @prefix nidm_ClusterDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000007&gt; .
 @prefix nidm_hasConnectivityCriterion: &lt;http://purl.org/nidash/nidm#NIDM_0000099&gt; .
@@ -1864,6 +2109,18 @@ niiri:conjunction_id_2 a prov:Activity , spm_PartialConjunctionInference: ;
 niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
 	rdfs:label "Cluster Connectivity Criterion: 18" ;
 	nidm_hasConnectivityCriterion: nidm_voxel18connected: .</pre>
+                </ul>
+                </div>
+                <pre class='example highlight' title="  Cluster connectivity: face, edge or corner">
+
+@prefix nidm_ClusterDefinitionCriteria: &lt;http://purl.org/nidash/nidm#NIDM_0000007&gt; .
+@prefix nidm_hasConnectivityCriterion: &lt;http://purl.org/nidash/nidm#NIDM_0000099&gt; .
+@prefix nidm_voxel26connected: &lt;http://purl.org/nidash/nidm#NIDM_0000129&gt; .
+
+
+niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCriteria: ;
+	rdfs:label "Cluster Connectivity Criterion: 26" ;
+	nidm_hasConnectivityCriterion: nidm_voxel26connected: .</pre>
             <!-- nidm:'Connectivity Criterion' (NIDM_0000012) -->
             <section id="section-nidm:'Connectivity Criterion'">
                 <h1 label="NIDM_0000012">nidm:'Connectivity Criterion'</h1>
@@ -1993,7 +2250,7 @@ niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
                         <li><a title="NIDM_0000098"><dfn title="NIDM_0000098">nidm:'has Cluster Labels Map'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Cluster Labels Map''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A property that associates a clusters label map to the excursion set. (range <a title="NIDM_0000008">nidm:'Cluster Labels Map'</a>).</li>
                         <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the <a title=NIDM_0000053>'Map Header'</a> with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
                         <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a <a title=NIDM_0000016>'Coordinate Space'</a> with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
-                        <li><a title="NIDM_0000111"><dfn title="NIDM_0000111">nidm:'number Of Significant Clusters'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'number Of Significant Clusters''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of significant clusters found by the <a title=NIDM_0000049>'Inference'</a> activity. This is SPM's set level statistic. (range <a title="int" href ="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>).</li>
+                        <li><a title="NIDM_0000111"><dfn title="NIDM_0000111">nidm:'number Of Supra-Threshold Clusters'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'number Of Supra-Threshold Clusters''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Number of 'Supra-Threshold Clusters' found by the <a title=NIDM_0000049>'Inference'</a> activity. This is SPM's set level statistic. (range <a title="int" href ="http://www.w3.org/2001/XMLSchema#int">xsd:int</a>).</li>
                         <li><a title="NIDM_0000114"><dfn title="NIDM_0000114">nidm:'p Value'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'p Value''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>)  (range <a title="float" href ="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>).</li>
                         <li><a title="NIDM_0000138"><dfn title="NIDM_0000138">nidm:'has Maximum Intensity Projection'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'has Maximum Intensity Projection''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property that associates an image of the maximum intensity projection with an <a title=NIDM_0000025>'Excursion Set Map'</a>. (range <a title="Image" href ="http://purl.org/dc/dcmitype/Image">dctype:Image</a>).</li>
                         <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
@@ -2008,7 +2265,7 @@ niiri:display_map_id a prov:Entity , nidm_DisplayMaskMap: ;
 @prefix nidm_hasClusterLabelsMap: &lt;http://purl.org/nidash/nidm#NIDM_0000098&gt; .
 @prefix nidm_hasMaximumIntensityProjection: &lt;http://purl.org/nidash/nidm#NIDM_0000138&gt; .
 @prefix nidm_inCoordinateSpace: &lt;http://purl.org/nidash/nidm#NIDM_0000104&gt; .
-@prefix nidm_numberOfSignificantClusters: &lt;http://purl.org/nidash/nidm#NIDM_0000111&gt; .
+@prefix nidm_numberOfSupraThresholdClusters: &lt;http://purl.org/nidash/nidm#NIDM_0000111&gt; .
 @prefix nidm_pValue: &lt;http://purl.org/nidash/nidm#NIDM_0000114&gt; .
 
 
@@ -2021,7 +2278,7 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
 	nidm_hasMaximumIntensityProjection: niiri:maximum_intensity_projection_id ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
 	crypto:sha512 "e43b6e01b0463fe7d40782137867a"^^xsd:string ;
-	nidm_numberOfSignificantClusters: "8"^^xsd:int ;
+	nidm_numberOfSupraThresholdClusters: "8"^^xsd:int ;
 	nidm_pValue: "8.95949980872501e-14"^^xsd:float ;
 	prov:wasGeneratedBy niiri:inference_id .</pre>
                 </section>
@@ -2043,7 +2300,9 @@ niiri:excursion_set_map_id a prov:Entity , nidm_ExcursionSetMap: ;
                 </div>
                 </ul>
                 </div>
-                <pre class='example highlight' title="">@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
+                <pre class='example highlight' title="  Extent Threshold: k>=0">
+
+@prefix nidm_ExtentThreshold: &lt;http://purl.org/nidash/nidm#NIDM_0000026&gt; .
 @prefix nidm_clusterSizeInVoxels: &lt;http://purl.org/nidash/nidm#NIDM_0000084&gt; .
 @prefix nidm_clusterSizeInResels: &lt;http://purl.org/nidash/nidm#NIDM_0000156&gt; .
 @prefix obo_statistic: &lt;http://purl.obolibrary.org/obo/STATO_0000039&gt; .
@@ -2167,7 +2426,7 @@ niiri:height_threshold_fwer_id a prov:Entity, nidm_HeightThreshold:, obo_FWERadj
             <section id="section-nidm:'Peak'">
                 <h1 label="NIDM_0000062">nidm:'Peak'</h1>
                 <div class="glossary-ref">
-                    <a title="NIDM_0000062"><dfn title="NIDM_0000062">nidm:'Peak'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Peak''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the significant cluster and complies with the <a title=NIDM_0000062>'Peak'</a> definition criteria.<p> <a title="NIDM_0000062">nidm:'Peak'</a> is a prov:Entity derived from <a title="NIDM_0000070">nidm:'Supra-Threshold Cluster'</a>.</p>
+                    <a title="NIDM_0000062"><dfn title="NIDM_0000062">nidm:'Peak'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Peak''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A map element (e.g., pixel, voxel, vertex, or face) which is a local maximum in the supra-threshold cluster and complies with the 'Peak definition criteria'.<p> <a title="NIDM_0000062">nidm:'Peak'</a> is a prov:Entity derived from <a title="NIDM_0000070">nidm:'Supra-Threshold Cluster'</a>.</p>
                 </div>
                 <p></p>
                 <div class="attributes" id="attributes-nidm:'Peak'"> A <a title="NIDM_0000062">nidm:'Peak'</a> has attributes:
@@ -2368,57 +2627,11 @@ niiri:supra_threshold_cluster_0001 a prov:Entity , nidm_SupraThresholdCluster: ;
         <!-- HERE ------------- Beginning of PROV Entities ------------- -->
         
                         <tr>
-                            <td><a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>
-                            </td>
-                    
-                                <td rowspan="4" style="text-align: center;"> prov:Agent</td>
-                        
-                                <td>nidm:NIDM_0000164</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>
-                            </td>
-                    
-                                <td>nidm:NIDM_0000165</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000167">nidm:'nidmfsl'</a>
-                            </td>
-                    
-                                <td>nidm:NIDM_0000167</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000168">nidm:'spm_results_nidm'</a>
-                            </td>
-                    
-                                <td>nidm:NIDM_0000168</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000166">nidm:'NIDM-Results Export'</a>
-                            </td>
-                    
-                                <td rowspan="1" style="text-align: center;"> prov:Activity</td>
-                        
-                                <td>nidm:NIDM_0000166</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000004">nidm:'Binary Map'</a>
-                            </td>
-                    
-                                <td rowspan="8" style="text-align: center;"> prov:Entity</td>
-                        
-                                <td>nidm:NIDM_0000004</td>
-                            </tr>
-                
-                        <tr>
                             <td><a title="NIDM_0000024">nidm:'Exchangeable Error'</a>
                             </td>
                     
+                                <td rowspan="6" style="text-align: center;"> prov:Entity</td>
+                        
                                 <td>nidm:NIDM_0000024</td>
                             </tr>
                 
@@ -2427,13 +2640,6 @@ niiri:supra_threshold_cluster_0001 a prov:Entity , nidm_SupraThresholdCluster: ;
                             </td>
                     
                                 <td>nidm:NIDM_0000048</td>
-                            </tr>
-                
-                        <tr>
-                            <td><a title="NIDM_0000057">nidm:'NIDM Object Model'</a>
-                            </td>
-                    
-                                <td>nidm:NIDM_0000057</td>
                             </tr>
                 
                         <tr>
@@ -2467,162 +2673,6 @@ niiri:supra_threshold_cluster_0001 a prov:Entity , nidm_SupraThresholdCluster: ;
                 </tbody>
                 </table>
             </div>
-            <!-- nidm:'Neuroimaging Analysis Software' (NIDM_0000164) -->
-            <section id="section-nidm:'Neuroimaging Analysis Software'">
-                <h1 label="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000164"><dfn title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Neuroimaging Analysis Software''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Tool used to process neuroimaging data.<p> <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a> is a prov:Agent and  has the following children: <a title="SCR_002823" href ="http://scicrunch.org/resolver/SCR_002823">src:'FSL'</a>, <a title="SCR_007037" href ="http://scicrunch.org/resolver/SCR_007037">src:'SPM'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'Neuroimaging Analysis Software'"> A <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'Neuroimaging Analysis Software'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000164">nidm:'Neuroimaging Analysis Software'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </section>
-            <!-- nidm:'NIDM-Results Exporter' (NIDM_0000165) -->
-            <section id="section-nidm:'NIDM-Results Exporter'">
-                <h1 label="NIDM_0000165">nidm:'NIDM-Results Exporter'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000165"><dfn title="NIDM_0000165">nidm:'NIDM-Results Exporter'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM-Results Exporter''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Tool used to export results produced by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive.<p> <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a> is a prov:Agent and  has the following children: <a title="NIDM_0000167">nidm:'nidmfsl'</a>, <a title="NIDM_0000168">nidm:'spm_results_nidm'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'NIDM-Results Exporter'"> A <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'NIDM-Results Exporter'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-            <!-- nidm:'nidmfsl' (NIDM_0000167) -->
-            <section id="section-nidm:'nidmfsl'">
-                <h1 label="NIDM_0000167">nidm:'nidmfsl'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000167"><dfn title="NIDM_0000167">nidm:'nidmfsl'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'nidmfsl''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Python library for the export of feat folders (generated by FSL) to NIDM-Results. Source available at: https://github.com/incf-nidash/nidm-results_fsl/.<p> <a title="NIDM_0000167">nidm:'nidmfsl'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'nidmfsl'"> A <a title="NIDM_0000167">nidm:'nidmfsl'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'nidmfsl'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000167">nidm:'nidmfsl'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_nidmfsl: &lt;http://purl.org/nidash/nidm#NIDM_0000167&gt; .
-@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-
-
-niiri:exporter_id a prov:Agent, nidm_nidmfsl: , prov:SoftwareAgent ;
-	rdfs:label "nidmfsl" ;
-	nidm_softwareVersion: "0.2.0"^^xsd:string .</pre>
-                </section>
-            <!-- nidm:'spm_results_nidm' (NIDM_0000168) -->
-            <section id="section-nidm:'spm_results_nidm'">
-                <h1 label="NIDM_0000168">nidm:'spm_results_nidm'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000168"><dfn title="NIDM_0000168">nidm:'spm_results_nidm'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'spm_results_nidm''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Matlab m file for the export of SPM results to NIDM-Results. Source available at: http://www.fil.ion.ucl.ac.uk/spm/download/toolbox/NIDM/spm_nidm.zip/.<p> <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'spm_results_nidm'"> A <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'spm_results_nidm'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000168">nidm:'spm_results_nidm'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_spm_results_nidm: &lt;http://purl.org/nidash/nidm#NIDM_0000168&gt; .
-@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-
-
-niiri:exporter_id a prov:Agent, nidm_spm_results_nidm: , prov:SoftwareAgent ;
-	rdfs:label "spm_results_nidm" ;
-	nidm_softwareVersion: "12b.5858"^^xsd:string .</pre>
-                </section>
-                </section>
-            <!-- nidm:'nidmfsl' (NIDM_0000167) -->
-            <section id="section-nidm:'nidmfsl'">
-                <h1 label="NIDM_0000167">nidm:'nidmfsl'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000167"><dfn title="NIDM_0000167">nidm:'nidmfsl'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'nidmfsl''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Python library for the export of feat folders (generated by FSL) to NIDM-Results. Source available at: https://github.com/incf-nidash/nidm-results_fsl/.<p> <a title="NIDM_0000167">nidm:'nidmfsl'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'nidmfsl'"> A <a title="NIDM_0000167">nidm:'nidmfsl'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'nidmfsl'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000167">nidm:'nidmfsl'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_nidmfsl: &lt;http://purl.org/nidash/nidm#NIDM_0000167&gt; .
-@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-
-
-niiri:exporter_id a prov:Agent, nidm_nidmfsl: , prov:SoftwareAgent ;
-	rdfs:label "nidmfsl" ;
-	nidm_softwareVersion: "0.2.0"^^xsd:string .</pre>
-                </section>
-            <!-- nidm:'spm_results_nidm' (NIDM_0000168) -->
-            <section id="section-nidm:'spm_results_nidm'">
-                <h1 label="NIDM_0000168">nidm:'spm_results_nidm'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000168"><dfn title="NIDM_0000168">nidm:'spm_results_nidm'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'spm_results_nidm''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Matlab m file for the export of SPM results to NIDM-Results. Source available at: http://www.fil.ion.ucl.ac.uk/spm/download/toolbox/NIDM/spm_nidm.zip/.<p> <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> is a <a title="NIDM_0000165">nidm:'NIDM-Results Exporter'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'spm_results_nidm'"> A <a title="NIDM_0000168">nidm:'spm_results_nidm'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'spm_results_nidm'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000168">nidm:'spm_results_nidm'</a>.</li>
-                        <li><a title="NIDM_0000122">nidm:'software Version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name and number that specifies the software version. For SPM, this includes the main software version followed by the revision number (e.g. 8.6225 for SPM8 revision 6225). (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_spm_results_nidm: &lt;http://purl.org/nidash/nidm#NIDM_0000168&gt; .
-@prefix nidm_softwareVersion: &lt;http://purl.org/nidash/nidm#NIDM_0000122&gt; .
-
-
-niiri:exporter_id a prov:Agent, nidm_spm_results_nidm: , prov:SoftwareAgent ;
-	rdfs:label "spm_results_nidm" ;
-	nidm_softwareVersion: "12b.5858"^^xsd:string .</pre>
-                </section>
-            <!-- nidm:'NIDM-Results Export' (NIDM_0000166) -->
-            <section id="section-nidm:'NIDM-Results Export'">
-                <h1 label="NIDM_0000166">nidm:'NIDM-Results Export'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000166"><dfn title="NIDM_0000166">nidm:'NIDM-Results Export'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM-Results Export''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: The process of exporting results created by a neuroimaging software (SPM, FSL, AFNI...) into a NIDM-Results archive.<p> <a title="NIDM_0000166">nidm:'NIDM-Results Export'</a> is a prov:Activity.</p>
-                </div>
-                </ul>
-                </div>
-                <pre class='example highlight' title="">@prefix nidm_NIDMResultsExport: &lt;http://purl.org/nidash/nidm#NIDM_0000166&gt; .
-
-
-niiri:export_id a prov:Activity , nidm_NIDMResultsExport: ;
-	rdfs:label "NIDM-Results export" .
-
-niiri:export_id prov:wasAssociatedWith niiri:exporter_id .</pre>
-                </section>
-            <!-- nidm:'Binary Map' (NIDM_0000004) -->
-            <section id="section-nidm:'Binary Map'">
-                <h1 label="NIDM_0000004">nidm:'Binary Map'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000004"><dfn title="NIDM_0000004">nidm:'Binary Map'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Binary Map''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: A map in which all values are 0, 1 or NaN. Usually, selected elements (e.g., pixels, voxels, vertices, or faces) have a value of 1 and excluded elements (i.e. the background) have a value of 0 or NaN.<p> <a title="NIDM_0000004">nidm:'Binary Map'</a> is a <a title="NIDM_0000052">nidm:'Map'</a> and  has the following children: <a title="NIDM_0000020">nidm:'Display Mask Map'</a>, <a title="NIDM_0000054">nidm:'Mask Map'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'Binary Map'"> A <a title="NIDM_0000004">nidm:'Binary Map'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'Binary Map'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000004">nidm:'Binary Map'</a>.</li>
-                        <li><a title="sha512" href ="http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512">crypto:sha512</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Secure Hash Algorithm 512.
-                        <li><a title="format" href ="http://purl.org/dc/terms/format">dct:format</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The file format, physical medium, or dimensions of the resource. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="NIDM_0000103">nidm:'has Map Header'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A Property that associates an additional file containing the <a title=NIDM_0000053>'Map Header'</a> with a map. (range <a title="NIDM_0000053">nidm:'Map Header'</a>).</li>
-                        <li><a title="NIDM_0000104">nidm:'in Coordinate Space'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Property of a DataArray to associate a <a title=NIDM_0000016>'Coordinate Space'</a> with a physical file. (range <a title="NIDM_0000016">nidm:'Coordinate Space'</a>).</li>
-                        <li><a title="NIDM_0000106">nidm:'is User Defined'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) A binary flag defining whether the mask was specified by the user (true) or automatically generated during the analysis (false). (range <a title="boolean" href ="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>).</li>
-                        <li><a title="fileName" href ="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName">nfo:'fileName'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Name of the file, together with the extension. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                        <li><a title="atLocation" href ="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) The Location of any resource.
-                </ul>
-                </div>
-                </section>
             <!-- nidm:'Exchangeable Error' (NIDM_0000024) -->
             <section id="section-nidm:'Exchangeable Error'">
                 <h1 label="NIDM_0000024">nidm:'Exchangeable Error'</h1>
@@ -2635,20 +2685,6 @@ niiri:export_id prov:wasAssociatedWith niiri:exporter_id .</pre>
                 <h1 label="NIDM_0000048">nidm:'Independent Error'</h1>
                 <div class="glossary-ref">
                     <a title="NIDM_0000048"><dfn title="NIDM_0000048">nidm:'Independent Error'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'Independent Error''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: <p> <a title="NIDM_0000048">nidm:'Independent Error'</a> is a prov:Entity.</p>
-                </div>
-                </section>
-            <!-- nidm:'NIDM Object Model' (NIDM_0000057) -->
-            <section id="section-nidm:'NIDM Object Model'">
-                <h1 label="NIDM_0000057">nidm:'NIDM Object Model'</h1>
-                <div class="glossary-ref">
-                    <a title="NIDM_0000057"><dfn title="NIDM_0000057">nidm:'NIDM Object Model'</dfn></a> <a href="https://github.com/incf-nidash/nidm/issues?&q=is%3Aopen+'nidm:'NIDM Object Model''""><sup>&#9734;</sup></a><a href="https://github.com/incf-nidash/nidm/issues/new";"><sup>+</sup></a>: Abstraction on the data model, developed for a specific application/use-case/task at hand,  that specifies the components and relations necessary for use by these applications. The same object model can be reused by multiple applications (e.g., meta-analysis, Neurovault).<p> <a title="NIDM_0000057">nidm:'NIDM Object Model'</a> is a prov:Entity and  has the following child: <a title="NIDM_0000027">nidm:'NIDM-Results'</a>.</p>
-                </div>
-                <p></p>
-                <div class="attributes" id="attributes-nidm:'NIDM Object Model'"> A <a title="NIDM_0000057">nidm:'NIDM Object Model'</a> has attributes:
-                <ul>
-                    <li><span class="attribute" id="nidm:'NIDM Object Model'.label">rdfs:label</span>:                     (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Human readable description of the <a title="NIDM_0000057">nidm:'NIDM Object Model'</a>.</li>
-                        <li><a title="NIDM_0000127">nidm:'version'</a></span>: (<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>) Version of NIDM in use in the document. (range <a title="string" href ="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>).</li>
-                </ul>
                 </div>
                 </section>
             <!-- nidm:'Non Parametric Symmetric Distribution' (NIDM_0000059) -->
