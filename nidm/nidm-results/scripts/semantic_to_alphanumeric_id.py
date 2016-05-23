@@ -38,9 +38,21 @@ def main(sid, aid, owl_file, template_files, script_files,
 
     cst_txt = get_file_text(constants_file)
 
+    sid_name = sid.split(":")[1]
+    sid_namespace = sid.split(":")[0]
+    if sid_namespace == "nidm":
+        uri = NIDM[sid_name]
+        pref = "NIDM"
+    elif sid_namespace == "fsl":
+        uri = FSL[sid_name]
+        pref = "FSL"
+    elif sid_namespace == "spm":
+        uri = SPM[sid_name]
+        pref = "SPM"
+
     # If alphanumeric identifier was not defined, find the next available
     if aid is None:
-        before_alnum = "nidm:NIDM_"
+        before_alnum = sid_namespace + ":" + pref + "_"
 
         # Find all alphanumeric identifiers in the owl file
         alphanum_ids = set(re.findall("("+before_alnum+'\d+)\s+', owl_txt))
@@ -52,15 +64,6 @@ def main(sid, aid, owl_file, template_files, script_files,
         aid = before_alnum+"{0:0>7}".format(new_id_num)
 
     owl = OwlReader
-    sid_name = sid.split(":")[1]
-    sid_namespace = sid.split(":")[0]
-
-    if sid_namespace == "nidm":
-        uri = NIDM[sid_name]
-    elif sid_namespace == "fsl":
-        uri = FSL[sid_name]
-    elif sid_namespace == "spm":
-        uri = SPM[sid_name]
 
     owl = OwlReader(owl_file)
     label = owl.get_label(uri).split(":")[1].replace("'", "")
@@ -73,9 +76,9 @@ def main(sid, aid, owl_file, template_files, script_files,
     for scr, scr_txt in scripts_txt.items():
         scripts_txt[scr] = scr_txt.replace('"'+sid+'"', '"'+aid+'"')
 
-    new_constant = "NIDM_" + \
-                   label.upper().replace(" ", "_").replace("-", "_") + \
-                   " = NIDM['"+aid.replace("nidm:", "")+"']"
+    new_constant = pref + "_" + \
+        label.upper().replace(" ", "_").replace("-", "_") + \
+        " = " + pref + "['"+aid.replace(sid_namespace + ":", "")+"']"
     cst_txt = cst_txt.replace("# NIDM constants",
                               "# NIDM constants\n"+new_constant)
 
