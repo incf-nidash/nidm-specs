@@ -219,8 +219,8 @@ class TestResultDataModel(object):
                 #        (isinstance(o, rdflib.term.Literal) or p == RDF.type):
                 for g2_term in graph2.subjects(p, o):
                     # We don't want to match agents to activities
-                        if g2_term in g2_match:
-                            g2_match[g2_term] += 1
+                    if g2_term in g2_match:
+                        g2_match[g2_term] += 1
 
             if activity or agent:
                 for s, p in graph1.subject_predicates(g1_term):
