@@ -103,7 +103,7 @@ def main():
 -70],[0, 0, 0, 1]]",
             voxel_units="[ \\\"mm\\\", \\\"mm\\\", \\\"mm\\\" ]",
             voxel_size="[ 3, 3, 3 ]",
-            coord_system="nidm:NIDM_0000051",
+            coord_system="nidm:NIDM_0000050",
             number_of_dim="3",
             dimensions="[ 53, 63, 52 ]"),
         "ResidualMeanSquaresMap": dict(
