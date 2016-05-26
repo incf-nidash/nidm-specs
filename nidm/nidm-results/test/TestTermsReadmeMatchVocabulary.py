@@ -16,7 +16,7 @@ NIDM_RESULTS_PATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
-from Constants import *
+from nidmresults.objects.constants_rdflib import *
 
 
 # Add scripts folder

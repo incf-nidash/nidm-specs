@@ -20,7 +20,7 @@ NIDMPATH = os.path.join(NIDM_EXPE_PATH, os.pardir)
 sys.path.append(os.path.join( os.path.dirname(os.path.dirname(\
     os.path.dirname(RELPATH))), "scripts"))
 from owl_to_webpage import OwlSpecification
-from Constants import *
+from nidmresults.objects.constants_rdflib import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

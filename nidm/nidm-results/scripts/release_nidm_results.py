@@ -31,7 +31,7 @@ SCRIPTPATH = os.path.join(NIDMPATH, os.pardir, "scripts")
 
 # Append parent script directory to path
 sys.path.append(SCRIPTPATH)
-from Constants import *
+from nidmresults.objects.constants_rdflib import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

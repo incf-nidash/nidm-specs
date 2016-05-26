@@ -20,7 +20,7 @@ EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
 from nidmresults.owl.owl_reader import OwlReader
-from nidmresults.objects.constants import *
+from nidmresults.objects.constants_rdflib import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
