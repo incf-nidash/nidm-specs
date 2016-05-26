@@ -217,7 +217,7 @@ f1dd89befece07e73cf5bca5b3116f55ac4496751ca990db85e8377001a4be941b2",
         "HeightThreshold_equivThresh_equivThresh2": dict(
             height_threshold_id="niiri:height_threshold_id",
             thresh_type=OBO_P_VALUE_FWER_QNAME,
-            label="Height Threshold: p<0.05 (FWE)",
+            label="Height Threshold: p<0.050000 (FWE)",
             value="0.05",
             equiv_thresh="niiri:height_threshold_id_2",
             equiv_thresh2="niiri:height_threshold_id_3"
