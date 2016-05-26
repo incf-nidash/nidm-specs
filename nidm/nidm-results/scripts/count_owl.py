@@ -13,7 +13,7 @@ NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
 
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from OwlReader import *
+from nidmresults.owl.owl_reader import *
 from Constants import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')

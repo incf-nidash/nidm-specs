@@ -6,7 +6,7 @@
 '''
 import unittest
 from rdflib.graph import Graph
-from TestCommons import *
+from nidmresults.test.test_commons import *
 import logging
 
 logging.basicConfig(level=logging.DEBUG)

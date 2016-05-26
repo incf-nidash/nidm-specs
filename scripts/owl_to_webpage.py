@@ -1,6 +1,6 @@
 import os
 import codecs
-from OwlReader import OwlReader
+from nidmresults.owl.owl_reader import OwlReader
 from Constants import *
 import cgi
 import markdown2

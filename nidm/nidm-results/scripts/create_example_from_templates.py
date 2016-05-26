@@ -19,8 +19,8 @@ EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 # Append parent script directory to path
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
-from OwlReader import OwlReader
-from Constants import *
+from nidmresults.owl.owl_reader import OwlReader
+from nidmresults.objects.constants import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)

@@ -7,7 +7,7 @@
 import unittest
 import os
 import sys
-from TestCommons import *
+from nidmresults.test.test_commons import *
 import difflib
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))

@@ -24,7 +24,7 @@ import create_fsl_example
 import create_fsl_example_001
 import create_fsl_example_002
 import create_fsl_example_003
-from TestCommons import *
+from nidmresults.test.test_commons import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
