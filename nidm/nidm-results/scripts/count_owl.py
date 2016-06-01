@@ -26,8 +26,20 @@ def main(owl=None):
                            "nidm-results.owl")
 
     owl_reader = OwlReader(owl)
-    classes_by_nsp = owl_reader.count_by_namespaces()
-    print classes_by_nsp
+    num_terms, num_classes, num_attributes, num_reused, all_terms = \
+        owl_reader.count_by_namespaces()
+
+    print "---"
+    print str(num_terms) + " terms."
+    print str(num_attributes) + " attributes and " + str(num_classes) + \
+        " classes."
+    print str(num_reused) + " re-used terms."
+    print "---"
+
+    for term_nsp, len_terms in all_terms.iteritems():
+        length, term_list = len_terms
+        print "\n" + str(length) + " terms in " + term_nsp + " namespace."
+        print "\t\t" + ", ".join(map(owl_reader.get_label, term_list))
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
