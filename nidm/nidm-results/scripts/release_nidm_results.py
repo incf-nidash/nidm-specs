@@ -100,7 +100,8 @@ class NIDMRelease(object):
 
                 # Remove description of subset ontology
                 this_ontology_match = re.search(
-                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###', im_txt, re.DOTALL)
+                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###',
+                    im_txt, re.DOTALL)
                 if this_ontology_match:
                     im_txt = im_txt.replace(this_ontology_match.group(), "###")
 
@@ -127,9 +128,19 @@ class NIDMRelease(object):
                 NIDM['NIDM_0000083'], NIDM['NIDM_0000137'],
                 NIDM['NIDM_0000142'], NIDM['NIDM_0000158'],
                 SPM['SPM_0000011'], SPM['SPM_0000012']]
+
+            # Remove the reification property (to be further discussed with
+            # STATO)
+            terms_under_development += [
+                OBO['IAO_0000136'], OBO['STATO_0000088'], OBO['STATO_0000129'],
+                NIDM['NumberOfSubjectsReification']
+                ]
             for term in terms_under_development:
                 m = re.search(
                     re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
+                if not m:
+                    raise Exception(str(term) + " not found")
+
                 owl_txt = owl_txt.replace(m.group(), "")
 
         with open(release_owl_file, 'w') as fp:
