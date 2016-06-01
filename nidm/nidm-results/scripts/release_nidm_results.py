@@ -135,13 +135,21 @@ class NIDMRelease(object):
                 OBO['IAO_0000136'], OBO['STATO_0000088'], OBO['STATO_0000129'],
                 NIDM['NumberOfSubjectsReification']
                 ]
+            it = 0
             for term in terms_under_development:
-                m = re.search(
-                    re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
-                if not m:
-                    raise Exception(str(term) + " not found")
+                m = True
+                # For loop to insure that we replace all occurences of the term
+                # (this can happen if a term is defined in an import and
+                # further relations are added in the nidm-results.owl file)
+                while m:
+                    m = re.search(
+                        re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
 
-                owl_txt = owl_txt.replace(m.group(), "")
+                    if m:
+                        owl_txt = owl_txt.replace(m.group(), "")
+                        it = it + 1
+                    elif it == 0:
+                        raise Exception(str(term) + " not found")
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)
