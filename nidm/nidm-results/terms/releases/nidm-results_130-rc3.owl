@@ -1754,12 +1754,12 @@ dctype:Image rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Entity ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty dct:format ;
+                               owl:onProperty nfo:fileName ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty nfo:fileName ;
+                               owl:onProperty dct:format ;
                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                owl:onDataRange xsd:string
                              ] .
@@ -2465,17 +2465,17 @@ nidm:NIDM_0000052 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty crypto:sha512 ;
-                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                    owl:onDataRange xsd:string
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
                                     owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -2499,7 +2499,7 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                   
                   rdfs:subClassOf prov:Entity ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty nfo:fileName ;
+                                    owl:onProperty dct:format ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ,
@@ -2514,7 +2514,7 @@ nidm:NIDM_0000053 rdf:type owl:Class ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger
                                   ] ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:format ;
+                                    owl:onProperty nfo:fileName ;
                                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:onDataRange xsd:string
                                   ] ;
@@ -3329,21 +3329,15 @@ owl:Class rdf:type owl:Class .
 #################################################################
 
 
-###  http://purl.obolibrary.org/obo/IAO_0000136
-
-obo:IAO_0000136 rdf:type owl:NamedIndividual .
 
 
 
-###  http://purl.obolibrary.org/obo/STATO_0000088
-
-obo:STATO_0000088 rdf:type owl:NamedIndividual .
 
 
 
-###  http://purl.obolibrary.org/obo/STATO_0000129
 
-obo:STATO_0000129 rdf:type owl:NamedIndividual .
+
+
 
 
 
@@ -3381,16 +3375,16 @@ fsl:FSL_0000003 rdf:type nidm:NIDM_0000037 ,
 
 
 
-###  http://purl.org/nidash/fsl#GammaHRF
+###  http://purl.org/nidash/fsl#FSL_0000006
 
 fsl:FSL_0000006 rdf:type nidm:NIDM_0000031 ,
-                      owl:NamedIndividual ;
-             
-             rdfs:label "FSL's Gamma HRF" ;
-             
-             obo:IAO_0000115 "'Hemodynamic Response Function' which is a fixed gamma probability density function. This is the default in FSL." ;
-             
-             obo:IAO_0000114 obo:IAO_0000122 .
+                         owl:NamedIndividual ;
+                
+                rdfs:label "FSL's Gamma HRF" ;
+                
+                obo:IAO_0000115 "'Hemodynamic Response Function' which is a fixed gamma probability density function. This is the default in FSL." ;
+                
+                obo:IAO_0000114 obo:IAO_0000122 .
 
 
 
@@ -3710,18 +3704,7 @@ nidm:NIDM_0000171 rdfs:label "number Of Subjects" ;
 
 
 
-###  http://purl.org/nidash/nidm#NumberOfSubjectsReification
 
-nidm:NumberOfSubjectsReification rdf:type prv:PropertyReification ,
-                                          owl:NamedIndividual ;
-                                 
-                                 prv:subject_property obo:IAO_0000136 ;
-                                 
-                                 prv:reification_class obo:STATO_0000088 ;
-                                 
-                                 prv:object_property obo:STATO_0000129 ;
-                                 
-                                 prv:shortcut nidm:NIDM_0000171 .
 
 
 
