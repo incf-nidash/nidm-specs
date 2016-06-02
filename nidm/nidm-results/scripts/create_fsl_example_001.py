@@ -277,8 +277,8 @@ _id_1",
             ),
         "Image": dict(
             image_id="niiri:excursion_set_png_id_1",
-            location="rendered_thresh_zstat1.png",
-            filename="rendered_thresh_zstat1.png",
+            location="ExcursionSet.png",
+            filename="ExcursionSet.png",
             format="image/png"
             ),
         "FSL_SupraThresholdCluster-1": dict(
