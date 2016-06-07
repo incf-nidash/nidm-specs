@@ -11,9 +11,8 @@ by the [INCF](http://www.incf.org) <b>N</b>euro <b>I</b>maging <b>DA</b>ta <b>SH
 The goals of this repo are to foster collaboration among the standards developers working on NIDM, and to provide a common location where users of NIDM can find related information and resources.
 
 #### Releases
-* Release Candidate: NIDM-Results 1.3.0-rc1: [specification](http://nidm.nidash.org/specs/nidm-results_130-rc1.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/releases/nidm-results_130-rc1.owl)
-* Stable: NIDM-Results 1.2.0: [specification](http://nidm.nidash.org/specs/nidm-results.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/nidm-results.owl)
-
+* Stable: NIDM-Results 1.3.0: [specification](http://nidm.nidash.org/specs/nidm-results.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/releases/nidm-results_130.owl)
+* Development: NIDM-Results [specification](http://nidm.nidash.org/specs/nidm-results_dev.html), [owl](https://github.com/incf-nidash/nidm/blob/master/nidm/nidm-results/terms/nidm-results.owl)
 
 #### User Resources (use a NIDM document)
 * [NIDASH page](http://incf.org/programs/datasharing/neuroimaging-task-force)
