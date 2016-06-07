@@ -225,6 +225,13 @@ definitions and illustrative examples.</p>
             # Previous version
             owlspec.text = owlspec.text.replace(
                 "nidm-results_020.html", "nidm-results_010.html")
+        elif nidm_version == "130":
+            # Previous version
+            owlspec.text = owlspec.text.replace(
+                "nidm-results_020.html", "nidm-results_120.html")
+        else:
+            raise Exception(
+                'Unknown previous specification for ' + nidm_version)
         owlspec.text = dev_to_release(owlspec.text, nidm_original_version)
 
     owlspec.write_specification(component="nidm-results", version=nidm_version)
