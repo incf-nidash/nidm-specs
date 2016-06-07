@@ -8,7 +8,7 @@ import unittest
 import os, sys
 
 from rdflib.graph import Graph
-from TestCommons import *
+from nidmresults.test.test_commons import *
 import glob
 
 RELPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,7 +18,7 @@ SCRIPTSPATH = os.path.join(NIDMPATH, os.pardir, "scripts")
 
 # Append parent script directory to path
 sys.path.append(SCRIPTSPATH)
-from OwlReader import OwlReader
+from nidmresults.owl.owl_reader import OwlReader
 
 class TestExamples(unittest.TestCase):
 

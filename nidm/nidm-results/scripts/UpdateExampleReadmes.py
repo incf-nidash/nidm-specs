@@ -24,7 +24,7 @@ NIDMRESULTSPATH = os.path.dirname(SCRIPT_PATH)
 
 # Append test directory to path
 sys.path.append(os.path.join(SCRIPT_PATH, "..", "test"))
-from TestCommons import *
+from nidmresults.test.test_commons import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)

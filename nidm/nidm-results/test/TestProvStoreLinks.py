@@ -5,7 +5,7 @@
 @copyright: University of Warwick 2014
 '''
 import unittest
-from TestCommons import *
+from nidmresults.test.test_commons import *
 import logging
 import re
 

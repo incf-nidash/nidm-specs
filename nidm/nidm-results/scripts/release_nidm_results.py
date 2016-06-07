@@ -31,7 +31,7 @@ SCRIPTPATH = os.path.join(NIDMPATH, os.pardir, "scripts")
 
 # Append parent script directory to path
 sys.path.append(SCRIPTPATH)
-from Constants import *
+from nidmresults.objects.constants_rdflib import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -100,7 +100,8 @@ class NIDMRelease(object):
 
                 # Remove description of subset ontology
                 this_ontology_match = re.search(
-                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###', im_txt, re.DOTALL)
+                    r'<http://[^\n]*?> rdf:type owl:Ontology .*?\..*?###',
+                    im_txt, re.DOTALL)
                 if this_ontology_match:
                     im_txt = im_txt.replace(this_ontology_match.group(), "###")
 
@@ -127,10 +128,28 @@ class NIDMRelease(object):
                 NIDM['NIDM_0000083'], NIDM['NIDM_0000137'],
                 NIDM['NIDM_0000142'], NIDM['NIDM_0000158'],
                 SPM['SPM_0000011'], SPM['SPM_0000012']]
+
+            # Remove the reification property (to be further discussed with
+            # STATO)
+            terms_under_development += [
+                OBO['IAO_0000136'], OBO['STATO_0000088'], OBO['STATO_0000129'],
+                NIDM['NumberOfSubjectsReification']
+                ]
+            it = 0
             for term in terms_under_development:
-                m = re.search(
-                    re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
-                owl_txt = owl_txt.replace(m.group(), "")
+                m = True
+                # For loop to insure that we replace all occurences of the term
+                # (this can happen if a term is defined in an import and
+                # further relations are added in the nidm-results.owl file)
+                while m:
+                    m = re.search(
+                        re.escape("###  "+str(term))+r"[^\#]*\.", owl_txt)
+
+                    if m:
+                        owl_txt = owl_txt.replace(m.group(), "")
+                        it = it + 1
+                    elif it == 0:
+                        raise Exception(str(term) + " not found")
 
         with open(release_owl_file, 'w') as fp:
             fp.write(owl_txt)

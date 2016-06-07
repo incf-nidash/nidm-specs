@@ -20,7 +20,7 @@ TERMS_PATH = os.path.join(os.path.dirname(os.path.dirname(
 # Append parent script directory to path
 sys.path.append(
     os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
-from OwlReader import OwlReader
+from nidmresults.owl.owl_reader import OwlReader
 from Constants import NIDM, SPM, FSL
 
 

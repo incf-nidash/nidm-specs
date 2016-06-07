@@ -1,7 +1,7 @@
 import os
 import codecs
-from OwlReader import OwlReader
-from Constants import *
+from nidmresults.owl.owl_reader import OwlReader
+from nidmresults.objects.constants_rdflib import *
 import cgi
 import markdown2
 
