@@ -1,3 +1,6 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
 @prefix dicom: <http://neurolex.org/wiki/Category:DICOM_term/> .
 @prefix ncit: <http://ncitt.ncit.nih.gov/> .
 @prefix nidash: <http://purl.org/nidash/nidm/> .
@@ -8,95 +11,97 @@
 @prefix xnat: <https://www.nitrc.org/projects/fcon_1000/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-nidash:Investigation_3a498126-4539-11e6-9c60-6c4008b8f03e a nidash:Investigation,
+nidash:Investigation_1d0a7342-5147-11e6-974e-6c4008b8f03e a dctypes:Dataset,
+        nidash:Investigation,
         prov:Entity ;
-    rdfs:comment "1000 Functional Connectomes Project (FCP)" ;
-    prov:atLocation "http://fcon_1000.projects.nitrc.org/" ;
-    prov:label "fcon_1000" ;
-    prov:wasAssociatedWith nidash:InvestigationCollection_3a499223-4539-11e6-b279-6c4008b8f03e ;
-    xnat:ProjectID "fcon_1000" .
+    dct:description "1000 Functional Connectomes Project (FCP)"@en ;
+    dct:publisher <http://fcon_1000.projects.nitrc.org/> ;
+    dct:title "fcon_1000"@en ;
+    dcat:accessURL <http://fcon_1000.projects.nitrc.org/> ;
+    prov:wasAssociatedWith nidash:InvestigationCollection_1d0a89eb-5147-11e6-ad36-6c4008b8f03e ;
+    xnat:ProjectID "fcon_1000"@en .
 
-nidash:MRImage_3a49d354-4539-11e6-8f8e-6c4008b8f03e a prov:Entity ;
+nidash:MRImage_1d0acd4f-5147-11e6-b64b-6c4008b8f03e a prov:Entity ;
     prov:atLocation <http://www.nitrc.org/ir/data/experiments/xnat_E00005/scans/anat_mprage_anonymized/resources/11924/files/scan_mprage_anonymized.nii.gz> ;
-    prov:wasGeneratedBy nidash:ImagingCollectionActivity_3a49c051-4539-11e6-91db-6c4008b8f03e .
+    prov:wasGeneratedBy nidash:ImagingCollectionActivity_1d0aba14-5147-11e6-bbad-6c4008b8f03e .
 
-nidash:AnnArbor_3T_3a49c6a3-4539-11e6-870b-6c4008b8f03e a prov:Agent ;
+nidash:AnnArbor_3T_1d0ac091-5147-11e6-ad7c-6c4008b8f03e a prov:Agent ;
     ncit:SiteID "AnnArbor" ;
     dicom:MagneticFieldStrength "3T" .
 
-nidash:InvestigationCollection_3a499223-4539-11e6-b279-6c4008b8f03e a prov:Collection ;
-    prov:hadMember nidash:AssessmentCollectionActivity_3a4998d1-4539-11e6-bef5-6c4008b8f03e,
-        nidash:ImagingCollectionActivity_3a49c051-4539-11e6-91db-6c4008b8f03e,
-        nidash:SimpleData_3a499f4f-4539-11e6-8943-6c4008b8f03e ;
+nidash:InvestigationCollection_1d0a89eb-5147-11e6-ad36-6c4008b8f03e a prov:Collection ;
+    prov:hadMember nidash:AssessmentCollectionActivity_1d0a90c2-5147-11e6-8ac6-6c4008b8f03e,
+        nidash:ImagingCollectionActivity_1d0aba14-5147-11e6-bbad-6c4008b8f03e,
+        nidash:SimpleData_1d0a9747-5147-11e6-b96c-6c4008b8f03e ;
     prov:label "Investigation Collection" ;
-    prov:wasAttributedTo nidash:AnnArbor_sub16960_3a49af3d-4539-11e6-a457-6c4008b8f03e .
+    prov:wasAttributedTo nidash:AnnArbor_sub16960_1d0aa7cc-5147-11e6-908f-6c4008b8f03e .
 
 nidash:Participant a prov:Role ;
     prov:label "Participant" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e a nidash:DataStructure,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e a nidash:DataStructure,
         prov:Collection ;
     prov:description "XNAT query response document" ;
-    prov:hadMember nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Age,
-        nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender,
-        nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand ;
+    prov:hadMember nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Age,
+        nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender,
+        nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand ;
     prov:label "SimpleData" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Age a ncit:Age,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Age a ncit:Age,
         nidash:DataElement,
         rdf:Property ;
     nidash:DataType "http://www.w3.org/2001/XMLSchema#integer" ;
     prov:label "Age" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender a ncit:Gender,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender a ncit:Gender,
         nidash:CodedDataElement,
         rdf:Property ;
     nidash:DataType "http://www.w3.org/2001/XMLSchema#string" ;
-    nidash:ValueSet nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender_ValueSet ;
+    nidash:ValueSet nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender_ValueSet ;
     prov:label "Gender" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender_M a nidash:CodedProperty,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender_M a nidash:CodedProperty,
         rdf:Property ;
     nidash:code "M" ;
     prov:label "Male" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender_ValueSet a nidash:ValueSet,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender_ValueSet a nidash:ValueSet,
         prov:Collection ;
-    prov:hadMember nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender_M .
+    prov:hadMember nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender_M .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand a ncit:HandDom,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand a ncit:HandDom,
         nidash:CodedDataElement,
         rdf:Property ;
     nidash:DataType "http://www.w3.org/2001/XMLSchema#string" ;
-    nidash:ValueSet nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand_ValueSet ;
+    nidash:ValueSet nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand_ValueSet ;
     prov:label "Handedness" .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand_ValueSet a nidash:ValueSet,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand_ValueSet a nidash:ValueSet,
         prov:Collection ;
-    prov:hadMember nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand_right .
+    prov:hadMember nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand_right .
 
-nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand_right a nidash:CodedProperty,
+nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand_right a nidash:CodedProperty,
         rdf:Property ;
     nidash:code "right" ;
     prov:label "right" .
 
-nidash:SimpleData_3a499f4f-4539-11e6-8943-6c4008b8f03e a nidash:AssessmentAcquisitionObject,
-        nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e,
+nidash:SimpleData_1d0a9747-5147-11e6-b96c-6c4008b8f03e a nidash:AssessmentAcquisitionObject,
+        nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e,
         prov:Entity ;
-    nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Age 13 ;
-    nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Gender "M" ;
-    nidash:SimpleData_3a38ed47-4539-11e6-8b25-6c4008b8f03e_Hand "right" ;
-    prov:wasGeneratedBy nidash:AssessmentCollectionActivity_3a4998d1-4539-11e6-bef5-6c4008b8f03e .
+    nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Age 13 ;
+    nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Gender "M" ;
+    nidash:SimpleData_1cf613fd-5147-11e6-8513-6c4008b8f03e_Hand "right" ;
+    prov:wasGeneratedBy nidash:AssessmentCollectionActivity_1d0a90c2-5147-11e6-8ac6-6c4008b8f03e .
 
-nidash:AssessmentCollectionActivity_3a4998d1-4539-11e6-bef5-6c4008b8f03e a prov:Activity ;
+nidash:AssessmentCollectionActivity_1d0a90c2-5147-11e6-8ac6-6c4008b8f03e a prov:Activity ;
     prov:label "Assessment Data Collection Activity" ;
-    prov:wasAssociatedWith nidash:AnnArbor_sub16960_3a49af3d-4539-11e6-a457-6c4008b8f03e .
+    prov:wasAssociatedWith nidash:AnnArbor_sub16960_1d0aa7cc-5147-11e6-908f-6c4008b8f03e .
 
-nidash:ImagingCollectionActivity_3a49c051-4539-11e6-91db-6c4008b8f03e a prov:Activity ;
-    prov:Used nidash:AnnArbor_3T_3a49c6a3-4539-11e6-870b-6c4008b8f03e ;
-    prov:wasAssociatedWith nidash:AnnArbor_sub16960_3a49af3d-4539-11e6-a457-6c4008b8f03e .
+nidash:ImagingCollectionActivity_1d0aba14-5147-11e6-bbad-6c4008b8f03e a prov:Activity ;
+    prov:Used nidash:AnnArbor_3T_1d0ac091-5147-11e6-ad7c-6c4008b8f03e ;
+    prov:wasAssociatedWith nidash:AnnArbor_sub16960_1d0aa7cc-5147-11e6-908f-6c4008b8f03e .
 
-nidash:AnnArbor_sub16960_3a49af3d-4539-11e6-a457-6c4008b8f03e a prov:Person ;
+nidash:AnnArbor_sub16960_1d0aa7cc-5147-11e6-908f-6c4008b8f03e a prov:Person ;
     ncit:subjectID "AnnArbor_sub16960" ;
     prov:hadRole nidash:Participant .
 
