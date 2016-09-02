@@ -4,7 +4,9 @@ sudo: false
 python:
   - "2.7"
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements.txt
+install: 
+ - pip install --upgrade setuptools
+ - pip install -r requirements.txt
 # command to run tests, e.g. python setup.py test
 script:  
 - python -m unittest discover -s ./nidm/nidm-results/test/ -p '[t|T]est*.py'
