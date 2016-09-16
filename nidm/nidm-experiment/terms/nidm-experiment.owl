@@ -23,22 +23,16 @@
 @prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
-@base <http://purl.org/nidash/nidm/nidm-experiment.owl> .
+@base <http://www.w3.org/2002/07/owl#> .
 
-<http://purl.org/nidash/nidm/nidm-experiment.owl> rdf:type owl:Ontology ;
-                                                 
-                         rdfs:label "INCF Neuroimaging Data Model Experiment (NIDM-Experiment) Terms"@en ;
-                                                 
-                         rdfs:comment """This document is published by the NIDM Working Group (http://nidm.nidash.org). If you wish to make comments regarding this document, please raise an issue on GitHub at https://github.com/incf-nidash/nidm/issue."""@en ;
-                                                 
-                                                 rdfs:isDefinedBy <http://nidm.nidash.org/spec/nidm-experiment.html> ;
-                                                 
-                                                 rdfs:seeAlso <http://purl.org/nidash/nidm> ;
-                                                 
-                                                 ###owl:imports <http://purl.org/nidash/nidm/qibo_import.ttl> ,
-						 ###            <http://purl.org/nidash/nidm/sio_import.owl> ,
-                                                 owl:imports <http://purl.org/nidm/iao_import.owl> ,
-                                                             <http://www.w3.org/ns/prov-o-20130430> .
+[ rdf:type owl:Ontology ;
+  owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
+              <http://purl.org/nidash/nidm/dc_import.owl> ,
+              <http://purl.org/nidash/nidm/iao_import.owl> ,
+	      <http://purl.org/nidash/nidm/qibo_import.ttl> ,
+	      <http://purl.org/nidash/nidm/sio_import.owl> ,
+              <http://www.w3.org/ns/prov-o-20130430>
+] .
 
 
 #################################################################
@@ -210,7 +204,7 @@ nidm:hasImageUsageType rdf:type owl:DatatypeProperty ;
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
 
 nidm:ImagingStudyParticipant rdf:type owl:Class ;
-                 ###owl:sameAs qibo:Imaging_Subject ;
+                 owl:sameAs qibo:Imaging_Subject ;
                  rdfs:label "Imaging Study Participant"^^xsd:string ;
 
 		     rdfs:subClassOf nidm:StudyParticipant .
@@ -220,7 +214,7 @@ nidm:ImagingStudyParticipant rdf:type owl:Class ;
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#Ex_vivo_subject
 
 nidm:ExVivoParticipant rdf:type owl:Class ;
-                 ###owl:sameAs qibo:Ex_vivo_subject ;
+                 owl:sameAs qibo:Ex_vivo_subject ;
                  rdfs:label "Ex Vivo Participant"^^xsd:string ;
 
                  rdfs:subClassOf nidm:ImagingStudyParticipant .
@@ -230,7 +224,7 @@ nidm:ExVivoParticipant rdf:type owl:Class ;
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vitro_subject
 
 nidm:InVitroParticipant rdf:type owl:Class ;
-                  ###owl:sameAs qibo:In_vitro_subject ;
+                  owl:sameAs qibo:In_vitro_subject ;
                   rdfs:label "In Vivo Participant"^^xsd:string ;
 
                   rdfs:subClassOf nidm:ImagingStudyParticipant .
@@ -240,7 +234,7 @@ nidm:InVitroParticipant rdf:type owl:Class ;
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vivo_subject
 
 nidm:InVivoParticipant rdf:type owl:Class ;
-                  ###owl:sameAs qibo:In_vivo_subject ;
+                  owl:sameAs qibo:In_vivo_subject ;
                   rdfs:label "In Vivo Subject"^^xsd:string ;
                   
                   rdfs:subClassOf nidm:ImagingStudyParticipant .
@@ -250,12 +244,10 @@ nidm:InVivoParticipant rdf:type owl:Class ;
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#Phantom_experimental_subject
 
 nidm:PhantomParticipant rdf:type owl:Class ;
-                  ###owl:sameAs qibo:Phantom_experimental_subject ;
+                  owl:sameAs qibo:Phantom_experimental_subject ;
                   rdfs:label "Phantom Participant"^^xsd:string ;
                               
                               rdfs:subClassOf nidm:Imaging_Subject .
-
-
 
 
 ###  http://purl.org/nidash/nidm#AcquisitionObject
@@ -707,7 +699,7 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#Rectilinear
 
      nidm:Rectilinear rdf:type owl:Class ;
-      owl:sameAs nidm:Cartestian ;
+     owl:sameAs nidm:Cartestian ;
 
      		       obo:IAO_0000115 "A method used to acquire the k-space in MRI in which a single linear sampling of k-space is performed for each repetition of the pulse sequence."^^xsd:string ;
      		       obo:IAO_0000116 "To be discussed"^^xsd:string ;
@@ -737,20 +729,18 @@ nidm:Outside-inSpiral rdf:type owl:Class ;
  		      obo:IAO_0000116 "To be discussed"^^xsd:string ;
 		      rdfs:label "Outside-in Spiral"^^xsd:string ;
                       obo:IAO_0000114 obo:IAO_0000125 ;
-           
-           rdfs:subClassOf prov:k-spaceTraversalScheme .
+                      rdfs:subClassOf prov:k-spaceTraversalScheme .
 
 
 ###  http://purl.org/nidash/nidm#Cartesian
 
-nidm:Cartesian rdf:type owl:Class ;
-    owl:sameAs nidm:Rectilinear ;
-
+                nidm:Cartesian rdf:type owl:Class ;
+                owl:sameAs nidm:Rectilinear ;
                 obo:IAO_0000115 "A method used to acquire the k-space in MRI in which a single linear sampling of k-space is performed for each repetition of the pulse sequence."^^xsd:string ;
      		obo:IAO_0000116 "To be discussed"^^xsd:string ;
-		 rdfs:label "Cartesian"^^xsd:string ;
-                 obo:IAO_0000114 obo:IAO_0000125 ;  
-           rdfs:subClassOf prov:k-spaceTraversalScheme .
+		rdfs:label "Cartesian"^^xsd:string ;
+                obo:IAO_0000114 obo:IAO_0000125 ;  
+                rdfs:subClassOf prov:k-spaceTraversalScheme .
 
 
 ###  http://purl.org/nidash/nidm#EchoPlanar
@@ -793,8 +783,7 @@ nidm:DICOMTagCollection rdf:type owl:Class ;
                      obo:IAO_0000116 "To be discussed."^^xsd:string ;
 		     rdfs:label "DICOM Tag Collection"^^xsd:string ;
                      obo:IAO_0000114 obo:IAO_0000125 ;
-           
-                     prov:wasAssociatedWith nidm:AcquisitionObject ;
+                     prov:wasAssociatedWith nidm:AcquisitionObject ; 
                      rdfs:subClassOf prov:Collection .
 
 
