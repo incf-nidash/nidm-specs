@@ -600,7 +600,11 @@ def main():
             cluster_label_map_id="niiri:cluster_label_map_id",
             location="ClusterLabels.nii.gz",
             filename="ClusterLabels.nii.gz",
-            format="image/nifti"
+            format="image/nifti",
+            label="Cluster Labels Map",
+            coordinate_space_id="niiri:coordinate_space_id_1",
+            sha="13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93\
+506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",
