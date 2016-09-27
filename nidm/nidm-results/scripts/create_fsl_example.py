@@ -193,7 +193,7 @@ id",
             ),
         "StatisticMap": dict(
             statistic_map_id="niiri:statistic_map_id",
-            label="Statistic Map: listening > rest",
+            label="T-Statistic Map: listening > rest",
             location="file://path/to/TStatistic_0001.nii.gz",
             format="image/nifti",
             filename="TStatistic_0001.nii.gz",

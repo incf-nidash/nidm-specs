@@ -280,7 +280,7 @@ id",
         "StatisticMap-T": dict(
             comment="Statistic Map: T",
             statistic_map_id="niiri:statistic_map_id",
-            label="Statistic Map: listening > rest",
+            label="T-Statistic Map: listening > rest",
             location="TStatistic.nii.gz",
             format="image/nifti",
             filename="TStatistic.nii.gz",

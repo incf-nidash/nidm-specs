@@ -216,7 +216,7 @@ def main():
             contrast_est_id="niiri:contrast_estimation_id"),
         "StatisticMap-T": dict(
             statistic_map_id="niiri:statistic_map_id",
-            label="Statistic Map: listening > rest",
+            label="T-Statistic Map: listening > rest",
             location="TStatistic.nii.gz",
             format="image/nifti",
             filename="TStatistic.nii.gz",
