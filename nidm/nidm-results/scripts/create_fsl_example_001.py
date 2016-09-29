@@ -49,6 +49,16 @@ def main():
             filename="DesignMatrix.png",
             format="image/png"
             ),
+        "ClusterLabelsMap": dict(
+            cluster_label_map_id="niiri:cluster_label_map_id",
+            label="Cluster Labels Map",
+            location="ClusterLabels.nii.gz",
+            filename="ClusterLabels.nii.gz",
+            format="image/nifti",
+            coordinate_space_id="niiri:coordinate_space_id_1",
+            sha="13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93\
+506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"
+            ),
         "Person": dict(
             id='niiri:subject_id',
             label="Person"
@@ -199,7 +209,7 @@ d68718757dc7af78eb1e86617a41e6c9f55161f756d184e2b0fb06c3d419dc99856",
             ),
         "StatisticMap": dict(
             statistic_map_id="niiri:statistic_map_id_1",
-            label="Statistic Map: Generation",
+            label="T-Statistic Map: Generation",
             location="TStatistic.nii.gz",
             format="image/nifti",
             filename="TStatistic.nii.gz",
@@ -640,7 +650,7 @@ fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b",
             bundle_id="niiri:fsl_results_id",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
-            version="1.1.0",
+            version="1.3.0",
             time="2014-05-19T10:30:00.000+01:00",
             export_id="niiri:export_id"
             ),
