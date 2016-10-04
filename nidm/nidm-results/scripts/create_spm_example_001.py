@@ -571,8 +571,8 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             format="image/nifti",
             label="Cluster Labels Map",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            sha="13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93\
-506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"
+            sha="a132bb284da461fd9e20eb2986373a9171c90a342c1e694297bc02f5674a3\
+11a560b7ff34bdf045dc191d4afff8c690a373db6408c1fe93f7c25e23707ce65c3"
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",
