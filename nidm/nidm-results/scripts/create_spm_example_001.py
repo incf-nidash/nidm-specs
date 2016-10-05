@@ -80,7 +80,7 @@ def main():
             ),
         "ParameterEstimateMap_Location-1": dict(
             beta_map_id="niiri:beta_map_id_1",
-            label="Beta Map 1",
+            label="Parameter Estimate Map 1",
             coordinate_space_id="niiri:coordinate_space_id_1",
             filename="ParameterEstimate_0001.nii.gz",
             location="ParameterEstimate_0001.nii.gz",
@@ -90,7 +90,7 @@ def main():
             param_est_id="niiri:model_pe_id"),
         "ParameterEstimateMap_Location-2": dict(
             beta_map_id="niiri:beta_map_id_2",
-            label="Beta Map 2",
+            label="Parameter Estimate Map 2",
             coordinate_space_id="niiri:coordinate_space_id_1",
             filename="ParameterEstimate_0002.nii.gz",
             location="ParameterEstimate_0002.nii.gz",
