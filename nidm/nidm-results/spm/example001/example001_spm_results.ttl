@@ -40,6 +40,7 @@
 @prefix nidm_targetIntensity: <http://purl.org/nidash/nidm#NIDM_0000124> .
 @prefix nidm_hasMRIProtocol: <http://purl.org/nidash/nidm#NIDM_0000172> .
 @prefix nidm_MaskMap: <http://purl.org/nidash/nidm#NIDM_0000054> .
+@prefix nidm_ParameterEstimateMap: <http://purl.org/nidash/nidm#NIDM_0000061> .
 @prefix nidm_ResidualMeanSquaresMap: <http://purl.org/nidash/nidm#NIDM_0000066> .
 @prefix nidm_ReselsPerVoxelMap: <http://purl.org/nidash/nidm#NIDM_0000144> .
 @prefix nidm_StatisticMap: <http://purl.org/nidash/nidm#NIDM_0000076> .
@@ -79,7 +80,6 @@
 @prefix nidm_withEstimationMethod: <http://purl.org/nidash/nidm#NIDM_0000134> .
 @prefix nidm_NIDMResults: <http://purl.org/nidash/nidm#NIDM_0000027> .
 @prefix nidm_version: <http://purl.org/nidash/nidm#NIDM_0000127> .
-@prefix nidm_ParameterEstimateMap: <http://purl.org/nidash/nidm#NIDM_0000061> .
 @prefix nidm_PeakDefinitionCriteria: <http://purl.org/nidash/nidm#NIDM_0000063> .
 @prefix nidm_minDistanceBetweenPeaks: <http://purl.org/nidash/nidm#NIDM_0000109> .
 @prefix nidm_maxNumberOfPeaksPerCluster: <http://purl.org/nidash/nidm#NIDM_0000108> .
@@ -132,7 +132,7 @@ niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
 	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
     rdfs:label "Cluster Labels Map" ;
     nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
-    crypto:sha512 "13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"^^xsd:string ;
+    crypto:sha512 "a132bb284da461fd9e20eb2986373a9171c90a342c1e694297bc02f5674a311a560b7ff34bdf045dc191d4afff8c690a373db6408c1fe93f7c25e23707ce65c3"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string .
 
 niiri:contrast_estimation_id prov:used niiri:beta_map_id_2 .
@@ -234,6 +234,20 @@ niiri:mask_id_1_der a prov:Entity , nidm_MaskMap: ;
     crypto:sha512 "fbc254cab29db5532feccce554ec9d3c845197eca9013ec9f0efd5d8d56e3aa008ccee4038fb3651d30447fa0f316938b07c3ad961b623458dcd9b46968a8e11"^^xsd:string .
 
 niiri:mask_id_1 prov:wasDerivedFrom niiri:mask_id_1_der .
+
+niiri:beta_map_id_1_der a prov:Entity , nidm_ParameterEstimateMap: ;
+    nfo:fileName "beta_0001.nii"^^xsd:string ;
+    dct:format "image/nifti"^^xsd:string ;
+    crypto:sha512 "fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c17412731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f"^^xsd:string .
+
+niiri:beta_map_id_1 prov:wasDerivedFrom niiri:beta_map_id_1_der .
+
+niiri:beta_map_id_2_der a prov:Entity , nidm_ParameterEstimateMap: ;
+    nfo:fileName "beta_0002.nii"^^xsd:string ;
+    dct:format "image/nifti"^^xsd:string ;
+    crypto:sha512 "3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008"^^xsd:string .
+
+niiri:beta_map_id_2 prov:wasDerivedFrom niiri:beta_map_id_2_der .
 
 niiri:residual_mean_squares_map_id_der a prov:Entity , nidm_ResidualMeanSquaresMap: ;
     nfo:fileName "ResMS.nii"^^xsd:string ;
@@ -385,20 +399,24 @@ _:blank1 prov:atTime "2014-05-19T10:30:00.000+01:00"^^xsd:dateTime .
 niiri:beta_map_id_1 prov:wasGeneratedBy niiri:model_pe_id .
 
 niiri:beta_map_id_1 a prov:Entity , nidm_ParameterEstimateMap: ;
-    rdfs:label "Beta Map 1" ;
-    nfo:fileName "beta_0001.nii"^^xsd:string ;
+    rdfs:label "Parameter Estimate Map 1" ;
+    nfo:fileName "ParameterEstimate_0001.nii.gz"^^xsd:string ;
     nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
     crypto:sha512 "fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c17412731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f"^^xsd:string ;
-    dct:format "image/nifti"^^xsd:string .
+    dct:format "image/nifti"^^xsd:string ;
+    prov:atLocation "ParameterEstimate_0001.nii.gz"^^xsd:anyURI ;
+    nfo:fileName "ParameterEstimate_0001.nii.gz"^^xsd:string .
 
 niiri:beta_map_id_2 prov:wasGeneratedBy niiri:model_pe_id .
 
 niiri:beta_map_id_2 a prov:Entity , nidm_ParameterEstimateMap: ;
-    rdfs:label "Beta Map 2" ;
-    nfo:fileName "beta_0002.nii"^^xsd:string ;
+    rdfs:label "Parameter Estimate Map 2" ;
+    nfo:fileName "ParameterEstimate_0002.nii.gz"^^xsd:string ;
     nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
     crypto:sha512 "3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008"^^xsd:string ;
-    dct:format "image/nifti"^^xsd:string .
+    dct:format "image/nifti"^^xsd:string ;
+    prov:atLocation "ParameterEstimate_0002.nii.gz"^^xsd:anyURI ;
+    nfo:fileName "ParameterEstimate_0002.nii.gz"^^xsd:string .
 
 niiri:peak_definition_criteria_id a prov:Entity , nidm_PeakDefinitionCriteria: ;
 	rdfs:label "Peak Definition Criteria" ;
