@@ -78,24 +78,44 @@ def main():
             error_model_id="niiri:error_model_id",
             software_id="niiri:software_id"
             ),
-        "ParameterEstimateMap-1": dict(
+        "ParameterEstimateMap_Location-1": dict(
             beta_map_id="niiri:beta_map_id_1",
-            label="Beta Map 1",
+            label="Parameter Estimate Map 1",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            filename="beta_0001.nii",
+            filename="ParameterEstimate_0001.nii.gz",
+            location="ParameterEstimate_0001.nii.gz",
             format="image/nifti",
             sha="fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c174\
 12731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f",
             param_est_id="niiri:model_pe_id"),
-        "ParameterEstimateMap-2": dict(
+        "ParameterEstimateMap_Location-2": dict(
             beta_map_id="niiri:beta_map_id_2",
-            label="Beta Map 2",
+            label="Parameter Estimate Map 2",
             coordinate_space_id="niiri:coordinate_space_id_1",
-            filename="beta_0002.nii",
+            filename="ParameterEstimate_0002.nii.gz",
+            location="ParameterEstimate_0002.nii.gz",
             format="image/nifti",
             sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f\
 784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
             param_est_id="niiri:model_pe_id"),
+        "DerivedMap-ParameterEstimateMap-1": dict(
+            derived_from_map_id="niiri:beta_map_id_1_der",
+            derived_map_type="nidm:NIDM_0000061",
+            filename="beta_0001.nii",
+            format="image/nifti",
+            sha="fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c174\
+12731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f",
+            map_id="niiri:beta_map_id_1"
+            ),
+        "DerivedMap-ParameterEstimateMap-2": dict(
+            derived_from_map_id="niiri:beta_map_id_2_der",
+            derived_map_type="nidm:NIDM_0000061",
+            filename="beta_0002.nii",
+            format="image/nifti",
+            sha="3f72b788762d9ab2c7ddb5e4d446872694ee42fc8897fe5317b54efb7924f\
+784da6499065db897a49595d8763d1893ad65ad102b0c88f2e72e2d028173343008",
+            map_id="niiri:beta_map_id_2"
+            ),
         "CoordinateSpace-1": dict(
             coordinate_space_id="niiri:coordinate_space_id_1",
             label="Coordinate space 1",
@@ -192,7 +212,7 @@ f1dd89befece07e73cf5bca5b3116f55ac4496751ca990db85e8377001a4be941b2",
             contrast_est_id="niiri:contrast_estimation_id"),
         "StatisticMap-T": dict(
             statistic_map_id="niiri:statistic_map_id",
-            label="Statistic Map: passive listening > rest",
+            label="T-Statistic Map: passive listening > rest",
             location="TStatistic.nii.gz",
             format="image/nifti",
             filename="TStatistic.nii.gz",
@@ -536,7 +556,7 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             bundle_id="niiri:spm_results_id",
             label="NIDM-Results",
             object_model="nidm:NIDM_0000027",
-            version="1.1.0",
+            version="1.3.0",
             time="2014-05-19T10:30:00.000+01:00",
             export_id="niiri:export_id"
             ),
@@ -568,7 +588,11 @@ df50ea84deca8de0725641a0105b712a80a0c8931df9bdf3bef788b1041379d00875",
             cluster_label_map_id="niiri:cluster_label_map_id",
             location="ClusterLabels.nii.gz",
             filename="ClusterLabels.nii.gz",
-            format="image/nifti"
+            format="image/nifti",
+            label="Cluster Labels Map",
+            coordinate_space_id="niiri:coordinate_space_id_1",
+            sha="a132bb284da461fd9e20eb2986373a9171c90a342c1e694297bc02f5674a3\
+11a560b7ff34bdf045dc191d4afff8c690a373db6408c1fe93f7c25e23707ce65c3"
             ),
         "SPM_Software": dict(
             software_id="niiri:software_id",

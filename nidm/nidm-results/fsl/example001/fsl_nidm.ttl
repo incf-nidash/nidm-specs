@@ -18,10 +18,11 @@
 @prefix nidm_ClusterDefinitionCriteria: <http://purl.org/nidash/nidm#NIDM_0000007> .
 @prefix nidm_hasConnectivityCriterion: <http://purl.org/nidash/nidm#NIDM_0000099> .
 @prefix nidm_voxel26connected: <http://purl.org/nidash/nidm#NIDM_0000129> .
+@prefix nidm_ClusterLabelsMap: <http://purl.org/nidash/nidm#NIDM_0000008> .
+@prefix nidm_inCoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000104> .
 @prefix nidm_ContrastEstimation: <http://purl.org/nidash/nidm#NIDM_0000001> .
 @prefix nidm_ContrastMap: <http://purl.org/nidash/nidm#NIDM_0000002> .
 @prefix nidm_contrastName: <http://purl.org/nidash/nidm#NIDM_0000085> .
-@prefix nidm_inCoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000104> .
 @prefix nidm_ContrastStandardErrorMap: <http://purl.org/nidash/nidm#NIDM_0000013> .
 @prefix nidm_statisticType: <http://purl.org/nidash/nidm#NIDM_0000123> .
 @prefix nidm_CoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000016> .
@@ -58,6 +59,7 @@
 @prefix nidm_coordinateVector: <http://purl.org/nidash/nidm#NIDM_0000086> .
 @prefix nidm_coordinateVectorInVoxels: <http://purl.org/nidash/nidm#NIDM_0000139> .
 @prefix nidm_ExcursionSetMap: <http://purl.org/nidash/nidm#NIDM_0000025> .
+@prefix nidm_hasClusterLabelsMap: <http://purl.org/nidash/nidm#NIDM_0000098> .
 @prefix nidm_SearchSpaceMaskMap: <http://purl.org/nidash/nidm#NIDM_0000068> .
 @prefix nidm_randomFieldStationarity: <http://purl.org/nidash/nidm#NIDM_0000120> .
 @prefix nidm_searchVolumeInVoxels: <http://purl.org/nidash/nidm#NIDM_0000121> .
@@ -114,6 +116,14 @@
 niiri:cluster_definition_criteria_id_1 a prov:Entity , nidm_ClusterDefinitionCriteria: ;
 	rdfs:label "Cluster Connectivity Criterion: 26" ;
 	nidm_hasConnectivityCriterion: nidm_voxel26connected: .
+
+niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
+	prov:atLocation "ClusterLabels.nii.gz"^^xsd:anyURI ;
+	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
+    rdfs:label "Cluster Labels Map" ;
+    nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
+    crypto:sha512 "13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"^^xsd:string ;
+	dct:format "image/nifti"^^xsd:string .
 
 niiri:contrast_estimation_id_1 a prov:Activity , nidm_ContrastEstimation: ;
 	rdfs:label "Contrast estimation: Generation" ;
@@ -362,6 +372,7 @@ niiri:excursion_set_map_id_1 a prov:Entity , nidm_ExcursionSetMap: ;
 	dct:format "image/nifti"^^xsd:string ;
 	nfo:fileName "ExcursionSet.nii.gz"^^xsd:string ;
 	nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
+    nidm_hasClusterLabelsMap: niiri:cluster_label_map_id ;
 	dc:description niiri:excursion_set_png_id_1 ;
 	crypto:sha512 "c74e3c47e4308f27423a195c7c3e70b64b8fd362d612a2543da76bced67f666949b70272033ab3d4b7d0bbbfe22b7da13d56d25521664be0c96454fd180ee4cc"^^xsd:string ;
 	prov:wasGeneratedBy niiri:inference_id_1 .
@@ -471,7 +482,7 @@ niiri:model_parameters_estimation_id prov:used niiri:error_model_id ;
 
 niiri:fsl_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
-	nidm_version: "1.1.0"^^xsd:string .
+	nidm_version: "1.3.0"^^xsd:string .
 
 _:blank1 a prov:Generation ;
     prov:activity niiri:export_id .
@@ -657,7 +668,7 @@ niiri:residual_mean_squares_map_id a prov:Entity , nidm_ResidualMeanSquaresMap: 
     prov:wasGeneratedBy niiri:model_parameters_estimation_id .
 
 niiri:statistic_map_id_1 a prov:Entity , nidm_StatisticMap: ;
-	rdfs:label "Statistic Map: Generation" ;
+	rdfs:label "T-Statistic Map: Generation" ;
 	prov:atLocation "TStatistic.nii.gz"^^xsd:anyURI ;
 	nidm_statisticType: obo_tstatistic: ;
 	nfo:fileName "TStatistic.nii.gz"^^xsd:string ;

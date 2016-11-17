@@ -19,13 +19,13 @@
 @prefix nidm_hasConnectivityCriterion: <http://purl.org/nidash/nidm#NIDM_0000099> .
 @prefix nidm_voxel18connected: <http://purl.org/nidash/nidm#NIDM_0000128> .
 @prefix nidm_ClusterLabelsMap: <http://purl.org/nidash/nidm#NIDM_0000008> .
+@prefix nidm_inCoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000104> .
 @prefix nidm_ConjunctionInference: <http://purl.org/nidash/nidm#NIDM_0000011> .
 @prefix nidm_hasAlternativeHypothesis: <http://purl.org/nidash/nidm#NIDM_0000097> .
 @prefix nidm_OneTailedTest: <http://purl.org/nidash/nidm#NIDM_0000060> .
 @prefix nidm_ContrastEstimation: <http://purl.org/nidash/nidm#NIDM_0000001> .
 @prefix nidm_ContrastMap: <http://purl.org/nidash/nidm#NIDM_0000002> .
 @prefix nidm_contrastName: <http://purl.org/nidash/nidm#NIDM_0000085> .
-@prefix nidm_inCoordinateSpace: <http://purl.org/nidash/nidm#NIDM_0000104> .
 @prefix nidm_ContrastStandardErrorMap: <http://purl.org/nidash/nidm#NIDM_0000013> .
 @prefix nidm_statisticType: <http://purl.org/nidash/nidm#NIDM_0000123> .
 @prefix nidm_Coordinate: <http://purl.org/nidash/nidm#NIDM_0000015> .
@@ -127,6 +127,9 @@ niiri:cluster_definition_criteria_id a prov:Entity , nidm_ClusterDefinitionCrite
 niiri:cluster_label_map_id a prov:Entity , nidm_ClusterLabelsMap: ;
 	prov:atLocation "ClusterLabels.nii.gz"^^xsd:anyURI ;
 	nfo:fileName "ClusterLabels.nii.gz"^^xsd:string ;
+    rdfs:label "Cluster Labels Map" ;
+    nidm_inCoordinateSpace: niiri:coordinate_space_id_1 ;
+    crypto:sha512 "13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96"^^xsd:string ;
 	dct:format "image/nifti"^^xsd:string .
 
 niiri:inference_id a prov:Activity , nidm_ConjunctionInference: ;
@@ -419,7 +422,7 @@ niiri:model_pe_id prov:used niiri:error_model_id ;
 
 niiri:spm_results_id a prov:Entity , prov:Bundle, nidm_NIDMResults: ;
 	rdfs:label "NIDM-Results" ;
-	nidm_version: "1.1.0"^^xsd:string .
+	nidm_version: "1.3.0"^^xsd:string .
 
 _:blank1 a prov:Generation ;
     prov:activity niiri:export_id .
@@ -552,7 +555,7 @@ niiri:search_space_mask_id a prov:Entity , nidm_SearchSpaceMaskMap: ;
 	prov:wasGeneratedBy niiri:inference_id .
 
 niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
-	rdfs:label "Statistic Map: listening > reading" ;
+	rdfs:label "T-Statistic Map: listening > reading" ;
 	prov:atLocation "TStatistic_0001.nii.gz"^^xsd:anyURI ;
 	nidm_statisticType: obo_tstatistic: ;
 	nfo:fileName "TStatistic_0001.nii.gz"^^xsd:string ;
@@ -565,7 +568,7 @@ niiri:statistic_map_id a prov:Entity , nidm_StatisticMap: ;
 	prov:wasGeneratedBy niiri:contrast_estimation_id.
 
 niiri:statistic_map_id_2 a prov:Entity , nidm_StatisticMap: ;
-	rdfs:label "Statistic Map: motor" ;
+	rdfs:label "T-Statistic Map: motor" ;
 	prov:atLocation "TStatistic_0002.nii.gz"^^xsd:anyURI ;
 	nidm_statisticType: obo_tstatistic: ;
 	nfo:fileName "TStatistic_0002.nii.gz"^^xsd:string ;
