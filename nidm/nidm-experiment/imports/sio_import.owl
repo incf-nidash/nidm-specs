@@ -1,0 +1,1051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:ns0="http://purl.org/dc/terms/"
+  xmlns:ns1="http://protege.stanford.edu/plugins/owl/protege#"
+  xmlns:ns2="http://www.w3.org/2002/07/owl#"
+  xmlns:ns3="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:ns4="http://semanticscience.org/resource/"
+  xmlns:ns5="http://www.w3.org/2001/XMLSchema#">
+
+  <rdf:Description rdf:about="http://semanticscience.org/ontology/sio.owl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <ns0:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://creativecommons.org/licenses/by/4.0/</ns0:license>
+    <ns0:creator xml:lang="en">Michel Dumontier</ns0:creator>
+    <ns0:title xml:lang="en">Semanticscience Integrated Ontology (SIO)</ns0:title>
+    <ns1:defaultLanguage>en</ns1:defaultLanguage>
+    <ns2:versionInfo>1.0.13</ns2:versionInfo>
+    <ns0:contributor xml:lang="en">Contributors are those that engage in discussions in the context of SIO (in alphabetical order):
+christopher baker
+joachim baran
+jerven bolleman
+alison callahan
+leonid chepelev
+kevin cohen
+melanie courtot
+geraint duck
+laura furlong
+luke mccarthy
+jim mccusker
+jose miguel cruz-toledo
+robert hoehndorf
+simon jupp
+jin-dong kim
+dana klassen
+james malone
+chris mungall
+david osumi-sutherland
+nuria queralt
+alexandre riazanov
+matthias samwald
+robert stevens
+mark wilkinson
+karin verspoor
+natalia villanueva-rosales</ns0:contributor>
+    <ns0:rights>free to use,share,modify. modify with attribution [http://creativecommons.org/licenses/by/4.0/].</ns0:rights>
+    <ns0:description xml:lang="en">The semanticscience integrated ontology (SIO) provides a simple, integrated ontology (types, relations) for objects, processes and their attributes.
+
+This project provides foundational support for the Bio2RDF (http://bio2rdf.org) and SADI (http://sadiframework.org) projects. 
+
+website: http://semanticscience.org
+email: sio-ontology@googlegroups.com
+mailing list: http://groups.google.com/group/sio-ontology
+</ns0:description>
+ <ns3:comment xml:lang="en">general class inclusion axioms:
+'is part of' some 'physical entity' subClassOf 'is located in' some 'physical entity'
+
+role chains:
+'has capability' o 'is realized in' -&gt; 'is participant in'</ns3:comment>
+    <ns0:identifier>sio.owl</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+    <ns2:versionIRI rdf:resource="http://semanticscience.org/ontology/sio-v1.0.13-release.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000000">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">entity</ns3:label>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">Every thing is an entity.</ns0:description>
+    <ns0:identifier>SIO_000000</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000004">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">material entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000776"/>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass.</ns0:description>
+    <ns0:identifier>SIO_000004</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000005">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">quality</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000614"/>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">A quality is an attribute that is intrinsically associated with its bearer (or its parts), but whose presence/absence and observed/measured value may vary.</ns0:description>
+    <ns0:identifier>SIO_000005</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000006">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">process</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000000"/>
+    <ns4:subset>process+</ns4:subset>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">A process is an entity that is identifiable only through the unfolding of time, has temporal parts, and unless otherwise specified/predicted, cannot be identified from any instant of time in which it exists.</ns0:description>
+    <ns0:identifier>SIO_000006</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000008">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <ns3:label xml:lang="en">has attribute</ns3:label>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">has attribute is a relation that associates a entity with an attribute where an attribute is an intrinsic characteristic such as a quality, capability, disposition, function, or is an externally derived attribute determined from some descriptor (e.g. a quantity, position, label/identifier) either directly or indirectly through generalization of entities of the same type.</ns0:description>
+    <ns3:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000001"/>
+    <ns0:identifier>SIO_000008</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000009">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">social entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000015"/>
+    <ns0:description xml:lang="en">A social entity pertains to the interaction among individuals and groups.</ns0:description>
+    <ns0:identifier>SIO_000009</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000010">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">social structure</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000009"/>
+    <ns0:description xml:lang="en">A social structure is a social entity which consists of relationships between two or more entities.</ns0:description>
+    <ns0:identifier>SIO_000010</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000059">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    <ns3:label xml:lang="en">has member</ns3:label>
+    <ns4:subset>core</ns4:subset>
+    <ns4:example xml:lang="en">a collection of cars has as a car as a member</ns4:example>
+    <ns0:description xml:lang="en">has member is a mereological relation between a collection and an item.</ns0:description>
+    <ns3:subPropertyOf rdf:resource="http://semanticscience.org/resource/SIO_000008"/>
+    <ns0:identifier>SIO_000059</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000300">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <ns3:label xml:lang="en">has value</ns3:label>
+    <ns4:subset>nlp</ns4:subset>
+    <ns4:subset>relations</ns4:subset>
+    <ns4:subset>core</ns4:subset>
+    <ns4:subset xml:lang="en">sadi</ns4:subset>
+    <ns0:description xml:lang="en">A relation between a informational entity and its actual value (numeric, date, text, etc).</ns0:description>
+    <ns0:identifier>SIO_000300</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000000">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">entity</ns3:label>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">Every thing is an entity.</ns0:description>
+    <ns0:identifier>SIO_000000</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000015">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">information content entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000776"/>
+    <ns4:subset>ice+</ns4:subset>
+    <ns4:subset>core</ns4:subset>
+    <ns0:description xml:lang="en">information content entity is an object that requires some background knowledge or procedure to correctly interpret.</ns0:description>
+    <ns0:identifier>SIO_000015</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000016">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">role</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000340"/>
+    <ns0:description xml:lang="en">A role is a realizable entity that describes behaviours, rights and obligations of an entity in some particular circumstance.</ns0:description>
+    <ns4:subset>core</ns4:subset>
+    <ns0:identifier>SIO_000016</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000026">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">object quality</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000005"/>
+    <ns0:description xml:lang="en">An object quality is quality of an object.</ns0:description>
+    <ns0:identifier>SIO_000026</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+ <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000052">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">quantity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000070"/>
+    <ns0:description xml:lang="en">A quantity is an informational entity that gives the magnitude of a property.</ns0:description>
+    <ns0:identifier>SIO_000052</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000070">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">measurement value</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000366"/>
+    <ns0:description xml:lang="en">A measurement value is a quantitative description that reflects the magnitude of some attribute.</ns0:description>
+    <ns0:identifier>SIO_000070</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000075">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">mathematical entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000015"/>
+    <ns4:subset>math+</ns4:subset>
+    <ns0:description xml:lang="en">A mathematical entity is an information content entity that are components of a mathematical system or can be defined in mathematical terms.</ns0:description>
+    <ns0:identifier>SIO_000075</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000076">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">plan</ns3:label>
+    <ns0:description xml:lang="en">A plan is a set of intended actions, through which one expects to achieve a goal.</ns0:description>
+    <ns0:identifier>SIO_000076</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000078">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">language entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000015"/>
+    <ns0:description xml:lang="en">A language entity implements some language specification for the visual interpretation and is part of some document.</ns0:description>
+    <ns4:subset>nlp+</ns4:subset>
+    <ns0:identifier>SIO_000078</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000079">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">visual language entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000078"/>
+    <ns0:description xml:lang="en">A visual language entity is a language entity that is expressed through physical expression of manual.</ns0:description>
+    <ns0:identifier>SIO_000079</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000089">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">data set</ns3:label>
+    <ns0:description xml:lang="en">A dataset is a data item that is a collection of data items.</ns0:description>
+    <ns0:identifier>SIO_000089</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000090">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">specification</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
+    <ns0:description xml:lang="en">A specification is a description of the essential technical attributes/requirements for an object or procedure, and may be used to determine that the object / procedure meets its requirements/attributes.</ns0:description>
+    <ns0:identifier>SIO_000090</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000091">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">action specification</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000090"/>
+    <ns0:description xml:lang="en">An action specification is a specification composed of a sequence of instructions to achieve some objective.</ns0:description>
+    <ns4:hasSynonym>effective specification</ns4:hasSynonym>
+    <ns0:identifier>SIO_000091</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000094">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">algorithm</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000075"/>
+    <ns0:description xml:lang="en">An algorithm is an effective method expressed as a finite list of well-defined instructions for calculating a function.</ns0:description>
+    <ns0:identifier>SIO_000094</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000097">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">software entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000602"/>
+    <ns0:description xml:lang="en">A software entity is a computational entity that can be interpreted by or directly executed by a processing unit.</ns0:description>
+    <ns0:identifier>SIO_000097</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000115">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">identifier</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000179"/>
+    <ns0:description xml:lang="en">An identifier is a label that specifically refers to (identifies) an entity (instance/type).</ns0:description>
+    <ns0:identifier>SIO_000115</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000116">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">name</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000179"/>
+    <ns0:description xml:lang="en">A name is a label used to identify an entity.</ns0:description>
+    <ns0:identifier>SIO_000116</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000127">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">workflow</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000094"/>
+    <ns0:description xml:lang="en">A workflow is an algorithm that is is a depiction of a sequence of operations to achieve one or more objectives.</ns0:description>
+    <ns0:identifier>SIO_000127</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+ <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000136">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">description</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000078"/>
+    <ns0:description xml:lang="en">A description is language entity in which elements of a language (formal or natural) are used to characterize an entity.</ns0:description>
+    <ns0:identifier>SIO_000136</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000144">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">parameter</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000920"/>
+    <ns0:description xml:lang="en">A parameter is variable whose value changes the characteristics of a system or a function.</ns0:description>
+    <ns0:identifier>SIO_000144</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000148">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">document</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000651"/>
+    <ns0:description xml:lang="en">A document is a bounded physical or digital representation of a body of information designed with the capacity (and usually intent) to communicate.</ns0:description>
+    <ns0:identifier>SIO_000148</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000179">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">label</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000179"/>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000651"/>
+    <ns0:description xml:lang="en">a label is a term that is associated with some entity</ns0:description>
+    <ns0:identifier>SIO_000179</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000186">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">document version</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000653"/>
+    <ns0:description xml:lang="en">A document version is a version of a work in some sequence of derivative works.</ns0:description>
+    <ns0:identifier>SIO_000186</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000257">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">dimensionless quantity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000052"/>
+    <ns2:disjointWith rdf:resource="http://semanticscience.org/resource/SIO_000258"/>
+    <ns0:description xml:lang="en">A dimensionless quantity is a quantity that has no associated unit.</ns0:description>
+    <ns0:identifier>SIO_000257</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000258">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">dimensional quantity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000052"/>
+    <ns0:description xml:lang="en">A dimensional quantity is a quantity that has an associated unit.</ns0:description>
+    <ns0:identifier>SIO_000258</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000289">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">set</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000075"/>
+    <ns0:description xml:lang="en">A set is a collection of entities, for which there may be zero members.</ns0:description>
+    <ns0:identifier>SIO_000289</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000340">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">realizable entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000614"/>
+    <ns0:description xml:lang="en">A realizable entity is an attribute that is exhibited under some condition and is realized in some process.</ns0:description>
+    <ns4:subset>core</ns4:subset>
+    <ns0:identifier>SIO_000340</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000366">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">number</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000075"/>
+    <ns0:description xml:lang="en">A number is a mathematical object used to count, label, and measure.</ns0:description>
+    <ns0:identifier>SIO_000366</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000367">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">variable</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000075"/>
+    <ns0:description xml:lang="en">A variable is a value that may change within the scope of a given problem or set of operations.</ns0:description>
+    <ns0:identifier>SIO_000367</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000396">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">file</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000602"/>
+    <ns0:description xml:lang="en">A file is an information-bearing object that contains a physical embodiment of some information using a particular character encoding.</ns0:description>
+    <ns0:identifier>SIO_000396</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000399">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">study subject</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000498"/>
+    <ns0:description xml:lang="en">A study subject is an individual that is the subject of the study.</ns0:description>
+    <ns0:identifier>SIO_000399</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000403">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">study group</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000620"/>
+    <ns0:description xml:lang="en">A study group is a group of individuals that are subjects in an observational or intervention study.</ns0:description>
+    <ns0:identifier>SIO_000403</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000475">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">biological quality</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000026"/>
+    <ns0:description xml:lang="en">A biological quality is a quality held by a biological entity.</ns0:description>
+    <ns0:identifier>SIO_000475</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000485">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">human</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010375"/>
+    <ns0:description xml:lang="en">A human is a primates of the family Hominidae and are characterized by having a large brain relative to body size, with a well developed neocortex, prefrontal cortex and temporal lobes, making them capable of abstract reasoning, language, introspection, problem solving and culture through social learning.</ns0:description>
+    <ns0:identifier>SIO_000485</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000486">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">mouse</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010375"/>
+    <ns0:description xml:lang="en">A mouse is a small mammal belonging to the order of rodents, characteristically having a pointed snout, small rounded ears, and a long naked or almost hairless tail. </ns0:description>
+    <ns0:identifier>SIO_000486</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000487">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">rat</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010375"/>
+    <ns0:description xml:lang="en">A rat is a medium-sized, long-tailed rodent of the superfamily Muroidea.</ns0:description>
+    <ns0:identifier>SIO_000487</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000498">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">person</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000485"/>
+    <ns0:description xml:lang="en">A person is a being that has certain capacities or attributes constituting personhood.</ns0:description>
+    <ns0:identifier>SIO_000498</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000596">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">data storage device</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000956"/>
+    <ns0:description xml:lang="en">A data storage device is a device that is capable of storing information.</ns0:description>
+    <ns0:identifier>SIO_000596</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000602">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">computational entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000015"/>
+    <ns0:description xml:lang="en">A computational entity is an information content entity operated on using some computational system.</ns0:description>
+    <ns0:identifier>SIO_000602</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000614">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">attribute</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000000"/>
+    <ns0:description xml:lang="en">An attribute is a characteristic of some entity.</ns0:description>
+    <ns4:subset>core</ns4:subset>
+    <ns0:identifier>SIO_000614</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000616">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">collection</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000289"/>
+    <ns0:description xml:lang="en">A collection is a set for which there exists at least one member, although any member need not to exist at any point in the collection's existence.</ns0:description>
+    <ns0:identifier>SIO_000616</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000620">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">collective</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000010"/>
+    <ns4:hasSynonym>group</ns4:hasSynonym>
+    <ns0:description xml:lang="en">A collective is a group of entities that share or are motivated by at least one common issue or interest, or work together on a specific project(s) to achieve a common objective.</ns0:description>
+    <ns0:identifier>SIO_000620</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000651">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">textual entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000079"/>
+    <ns0:description xml:lang="en">A textual entity is language entity that is manifested as one or more distinct characters.</ns0:description>
+    <ns0:identifier>SIO_000651</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000653">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">version label</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000115"/>
+    <ns0:description>A version label is a label for a particular form or variation of an earlier or original type.</ns0:description>
+    <ns0:identifier>SIO_000653</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000654">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">software version label</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000653"/>
+    <ns0:description xml:lang="en">A software version label is a version label for a piece of software.</ns0:description>
+    <ns4:example xml:lang="en">major.minor[.build[.revision]]</ns4:example>
+    <ns0:identifier>SIO_000654</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000675">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">unique identifier</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000115"/>
+    <ns0:description xml:lang="en">A unique identifier is an identifier that uniquely identifies some thing.</ns0:description>
+    <ns0:identifier>SIO_000675</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000729">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">record identifier</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000731"/>
+    <ns0:description xml:lang="en">A record identifier is an identifier for a database entry.</ns0:description>
+    <ns0:identifier>SIO_000729</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000730">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">physical entity identifier</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000115"/>
+    <ns0:description xml:lang="en">A physical entity identifier is an identifier for a physical entity.</ns0:description>
+    <ns0:identifier>SIO_000730</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000731">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">informational entity identifier</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000115"/>
+    <ns0:description xml:lang="en">An informational entity identifier is an identifier for an informational entity.</ns0:description>
+    <ns0:identifier>SIO_000731</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000747">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">investigation</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000999"/>
+    <ns4:hasSynonym>study</ns4:hasSynonym>
+    <ns0:description xml:lang="en">investigation is the process of carrying out a plan or procedure so as to discover facts or information about the object of study.</ns0:description>
+    <ns0:identifier>SIO_000747</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000776">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">object</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000000"/>
+    <ns0:description xml:lang="en">An object is an entity that is wholly identifiable at any instant of time during which it exists.</ns0:description>
+    <ns4:subset>core</ns4:subset>
+    <ns0:identifier>SIO_000776</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000784">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">hermaphrodite</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010029"/>
+    <ns2:disjointWith rdf:resource="http://semanticscience.org/resource/SIO_010048"/>
+    <ns2:disjointWith rdf:resource="http://semanticscience.org/resource/SIO_010052"/>
+    <ns4:equivalentTo>PATO:0001827</ns4:equivalentTo>
+    <ns0:description xml:lang="en">hermaphrodite is a biological sex of an individual with both male and female sexual organs.</ns0:description>
+    <ns0:identifier>SIO_000784</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000794">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">count</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000257"/>
+    <ns0:description xml:lang="en">The number of elements of a finite set of objects.</ns0:description>
+    <ns0:identifier>SIO_000794</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000811">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">URL</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000731"/>
+    <ns0:description xml:lang="en">A Uniform Resource Locator or Universal Resource Locator (URL) is a specific character string that constitutes a reference to an Internet resource.</ns0:description>
+    <ns4:hasSynonym xml:lang="en">Uniform Resource Locator</ns4:hasSynonym>
+    <ns0:identifier>SIO_000811</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000920">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">independent variable</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000367"/>
+    <ns0:description xml:lang="en">An independent variable is a variable that may take on different values independent of other elements in a system.</ns0:description>
+    <ns0:identifier>SIO_000920</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000921">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">dependent variable</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000367"/>
+    <ns0:description xml:lang="en">A dependent variable is one whose value changes as a consequence of changes in other values in the system.</ns0:description>
+    <ns0:identifier>SIO_000921</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000956">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">device</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010462"/>
+    <ns0:description xml:lang="en">A device is usually a constructed tool.</ns0:description>
+    <ns0:identifier>SIO_000956</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000994">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">experiment</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000747"/>
+    <ns0:description xml:lang="en">An experiment is an investigation that has the goal of verifying, falsifying, or establishing the validity of a hypothesis. </ns0:description>
+    <ns0:identifier>SIO_000994</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000999">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">procedure</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000006"/>
+    <ns0:description xml:lang="en">A procedure is a process that attempts to achieve one or more objectives by following an established set of actions.</ns0:description>
+    <ns0:identifier>SIO_000999</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001000">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">clinical trial</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001048"/>
+    <ns0:description xml:lang="en">A clinical trial is an intervention trial to determine the safety and efficacy of  medical interventions (e.g., drugs, diagnostics, devices, therapy protocols). </ns0:description>
+    <ns0:identifier>SIO_001000</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001013">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">age</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000794"/>
+    <ns0:description xml:lang="en">age is the length of time that a person has lived or a thing has existed.</ns0:description>
+    <ns0:identifier>SIO_001013</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001014">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">ethnicity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000475"/>
+    <ns0:description xml:lang="en">ethnicity is the biological quality of membership in a social group based on a common heritage.</ns0:description>
+    <ns0:identifier>SIO_001014</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001015">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">race</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000475"/>
+    <ns0:description xml:lang="en">race is a characteristic of an individual by heritable phenotypic characteristics, geographic ancestry, physical appearance, ethnicity, and social status.</ns0:description>
+    <ns0:identifier>SIO_001015</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001016">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">ethnic group</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001062"/>
+    <ns0:description xml:lang="en">An ethnic group is a group of people whose members identify with each other through a common heritage, consisting of a common culture, including a shared language or dialect. </ns0:description>
+    <ns0:identifier>SIO_001016</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001031">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">minor version number</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000654"/>
+    <ns0:description xml:lang="en">A minor version number is a version of a software that exhibits minor features or significant fix from a prior version.</ns0:description>
+    <ns0:identifier>SIO_001031</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001032">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">revision number</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000654"/>
+    <ns0:description xml:lang="en">A revision number is a version of a software in which bugs have been fixed from a prior version.</ns0:description>
+    <ns0:identifier>SIO_001032</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001041">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">study design</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001043"/>
+    <ns4:hasSynonym>study protocol</ns4:hasSynonym>
+    <ns0:description xml:lang="en">A study design is a protocol for the proper execution of a study which normally requires a carefullly crafted research question or hypothesis and at least one variable under observation and observed values for that variable.</ns0:description>
+    <ns0:identifier>SIO_001041</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001043">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">experimental protocol</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000091"/>
+    <ns0:description xml:lang="en">An experimental protocol is an action specification with respect to the design and implementation of experiments. In addition to providing a detailed set of procedures and lists of required equipment and instruments, experimental protocols often include information on safety precautions, the calculation of results and reporting standards, including statistical analysis and rules for predefining and documenting excluded data to avoid bias.</ns0:description>
+    <ns0:identifier>SIO_001043</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001048">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">intervention study</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000994"/>
+    <ns0:description xml:lang="en">An intervention study has the objective of improving the condition of an individual or a group of individuals, and demonstrates the magnitude of that capability by comparing it to a control group.</ns0:description>
+    <ns0:identifier>SIO_001048</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001061">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">population</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000620"/>
+    <ns0:description xml:lang="en">A population is all the organisms that both belong to the same group or species and live in the same geographical area.</ns0:description>
+    <ns0:identifier>SIO_001061</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001062">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">human population</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001061"/>
+    <ns0:description xml:lang="en">A human population refers to a collection of human beings.</ns0:description>
+    <ns0:identifier>SIO_001062</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001066">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">study</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000747"/>
+    <ns0:description xml:lang="en">A study is a process that realizes the steps of a study design.</ns0:description>
+    <ns0:identifier>SIO_001066</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001068">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">control group</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000403"/>
+    <ns0:description xml:lang="en">A control group is a group of individuals that are not subject to an intervention of interest, but rather serve as a baseline to compare the outcomes in the intervention group.</ns0:description>
+    <ns0:identifier>SIO_001068</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001069">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">intervention group</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000403"/>
+    <ns0:description xml:lang="en">An intervention group is a group of individuals that are subject to an intervention.</ns0:description>
+    <ns0:identifier>SIO_001069</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001196">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">history</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
+    <ns0:description xml:lang="en">history is a sequence of past events.</ns0:description>
+    <ns0:identifier>SIO_001196</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001236">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">data collection device</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000956"/>
+    <ns0:description xml:lang="en">A data collection device is a device that collects information about one or more objects.</ns0:description>
+    <ns0:identifier>SIO_001236</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_001240">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">nmr device</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001236"/>
+    <ns4:equivalentTo rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/OBI_0000566</ns4:equivalentTo>
+    <ns0:description xml:lang="en">A nuclear magnetic resonance (NMR) device is a device that applies a magnetic field to perturb nuclei with an odd number of protons and/or of neutrons in order to hav them absort and re-emit electromagnetic radiation. </ns0:description>
+    <ns4:hasSynonym xml:lang="en">nuclear magnetic resonance device</ns4:hasSynonym>
+    <ns0:identifier>SIO_001240</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010029">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">biological sex</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000475"/>
+    <ns0:description xml:lang="en">biological sex is the quality of a biological organism based on reproductive function or organs.</ns0:description>
+    <ns0:identifier>SIO_010029</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010048">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">male</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010029"/>
+    <ns2:disjointWith rdf:resource="http://semanticscience.org/resource/SIO_010052"/>
+    <ns4:equivalentTo>PATO:0000384</ns4:equivalentTo>
+    <ns0:description xml:lang="en">male is a biological sex of an individual with male sexual organs.</ns0:description>
+    <ns0:identifier>SIO_010048</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010052">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">female</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010029"/>
+    <ns0:description xml:lang="en">female is a biological sex of an individual with female sexual organs.</ns0:description>
+    <ns0:identifier>SIO_010052</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010060">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">family history</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001196"/>
+    <ns0:description xml:lang="en">family history is the systematic narrative and research of past events relating to a specific family, or specific families.</ns0:description>
+    <ns0:identifier>SIO_010060</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010375">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">multicellular organism</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010377"/>
+    <ns0:description xml:lang="en">A multi-cellular organism is an organism that consists of more than one cell.</ns0:description>
+    <ns0:identifier>SIO_010375</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010377">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">cellular organism</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010000"/>
+    <ns0:description xml:lang="en">A cellular organism is an organism that contains one or more cells.</ns0:description>
+    <ns0:identifier>SIO_010377</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010000">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">organism</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010046"/>
+    <ns0:description xml:lang="en">A biological organisn is a biological entity that consists of one or more cells and is capable of genomic replication (independently or not).</ns0:description>
+    <ns0:identifier>SIO_010000</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010046">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">biological entity</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_010462"/>
+    <ns0:description xml:lang="en">A biological entity is a heterogeneous substance that contains genomic material or is the product of a biological process.</ns0:description>
+    <ns4:subset>chemical-</ns4:subset>
+    <ns0:identifier>SIO_010046</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010462">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <ns3:label xml:lang="en">heterogeneous substance</ns3:label>
+    <ns3:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000004"/>
+    <ns0:description xml:lang="en">A heterogeneous substance is a chemical substance that is composed of more than one different kind of component.</ns0:description>
+    <ns0:identifier>SIO_010462</ns0:identifier>
+    <ns3:isDefinedBy rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
+  </rdf:Description>
+
+
+</rdf:RDF>
