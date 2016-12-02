@@ -99,7 +99,7 @@ def main():
             error_model_id="niiri:error_model_id",
             software_id="niiri:software_id"
             ),
-        "ParameterEstimateMap_Location-1": dict(
+        "ParameterEstimateMap-1": dict(
             beta_map_id="niiri:beta_map_id_1",
             label="Beta Map 1",
             location="ParameterEstimate_0001.nii.gz",
@@ -120,7 +120,7 @@ def main():
             sha_header="e43b6e01b0463fe7d40782137867a...",
             map_id="niiri:beta_map_id_1"
             ),
-        "ParameterEstimateMap_Location-2": dict(
+        "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Beta Map 2",
             location="ParameterEstimate_0002.nii",

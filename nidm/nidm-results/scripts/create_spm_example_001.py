@@ -78,7 +78,7 @@ def main():
             error_model_id="niiri:error_model_id",
             software_id="niiri:software_id"
             ),
-        "ParameterEstimateMap_Location-1": dict(
+        "ParameterEstimateMap-1": dict(
             beta_map_id="niiri:beta_map_id_1",
             label="Parameter Estimate Map 1",
             coordinate_space_id="niiri:coordinate_space_id_1",
@@ -88,7 +88,7 @@ def main():
             sha="fab2573099693215bac756bc796fbc983524473dec5c1b2d66fb83694c174\
 12731df7f574094cb6c4a77994af7be11ed9aa545090fbe8ec6565a5c3c3dae8f0f",
             param_est_id="niiri:model_pe_id"),
-        "ParameterEstimateMap_Location-2": dict(
+        "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Parameter Estimate Map 2",
             coordinate_space_id="niiri:coordinate_space_id_1",
