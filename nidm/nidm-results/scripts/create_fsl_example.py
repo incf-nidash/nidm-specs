@@ -81,20 +81,20 @@ def main():
             error_model_id="niiri:error_model_id",
             software_id="niiri:software_id"
             ),
-        "ParameterEstimateMap_Location-1": dict(
+        "ParameterEstimateMap-1": dict(
             beta_map_id="niiri:beta_map_id_1",
             label="Parameter estimate 1",
-            location="file://path/to/ParameterEstimate_0001.nii.gz",
-            filename="ParameterEstimate_0001.nii.gz",
+            location="file://path/to/ParameterEstimate_001.nii.gz",
+            filename="ParameterEstimate_001.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="f51b6e01b0463fe7d40782137867a",
             param_est_id="niiri:model_pe_id"),
-        "ParameterEstimateMap_Location-2": dict(
+        "ParameterEstimateMap-2": dict(
             beta_map_id="niiri:beta_map_id_2",
             label="Parameter estimate 2",
-            location="file://path/to/ParameterEstimate_0002.nii.gz",
-            filename="ParameterEstimate_0002.nii.gz",
+            location="file://path/to/ParameterEstimate_002.nii.gz",
+            filename="ParameterEstimate_002.nii.gz",
             format="image/nifti",
             coordinate_space_id="niiri:coordinate_space_id_1",
             sha="p89b6e01b0463fe7d40782137867a",
