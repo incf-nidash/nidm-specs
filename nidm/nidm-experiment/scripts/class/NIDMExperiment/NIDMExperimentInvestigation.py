@@ -1,4 +1,3 @@
-
 import rdflib as rdf
 import os, sys
 
@@ -13,7 +12,7 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
     and user-supplied graph and namespaces
 
     @author: David Keator <dbkeator@uci.edu>
-    @copyright: University of California, Irvine 2016
+    @copyright: University of California, Irvine 2017
 
     """
     #constructor
@@ -43,6 +42,15 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
 
     #adds and investigation entity to graph and stores URI
     def addInvestigation(self, inv_name, inv_id, inv_description):
+        """
+        Add investigation entity to graph
+
+        :param inv_name: string, name of investigation/project
+        :param inv_id: string, identifier of investigation/project
+        :param inv_description: string, description of investigation
+        :return: URI identifier of this subject
+
+        """
         #create unique ID
         self.uuid = self.getUUID()
         #add to graph
@@ -52,21 +60,21 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["ncit"]["Identifier"], rdf.Literal(inv_id)))
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["dct"]["title"], rdf.Literal(inv_name, datatype=rdf.XSD.String)))
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["dct"]["description"], rdf.Literal(inv_description, lang=self.language)))
+        return self.namespaces["nidm"][self.uuid]
 
-    def addLiteralAttribute(self, pred_namespace, pred_term, object):
-        #figure out datatype of literal
-        datatype = self.getDataType(object)
-        #figure out if predicate namespace is defined, if not, return predicate namespace error
-        try:
-            if (datatype != None):
-                self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces[pred_namespace][pred_term], rdf.Literal(object, datatype=datatype)))
-            else:
-                self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces[pred_namespace][pred_term], rdf.Literal(object)))
-        except (KeyError,),e:
-            print "\nPredicate namespace identifier \"" + str(e).split("'")[1] + "\" not found!"
-            print "Use addNamespace method to add namespace before adding literal attribute"
-            print "No attribute has been added \n"
+    def addInvestigationPI(self,inv_id,family_name, given_name):
+        """
+        Add prov:Person with role of PI, use addLiteralAttribute to add more descriptive attributes
+        :param inv_id: investigation URI to associate with PI
+        :param family_name: string, surname
+        :param given_name: sting, first name or personal name
+        :return: URI identifier of this subject
+        """
+        #Get unique ID
+        uuid = self.addPerson()
+        self.graph.add((uuid, self.namespaces["foaf"]["familyName"], rdf.Literal(family_name, datatype=rdf.XSD.String)))
+        self.graph.add((uuid, self.namespaces["foaf"]["givenName"], rdf.Literal(given_name, datatype=rdf.XSD.String)))
+        self.graph.add((uuid, self.namespaces["prov"]["hadRole"], self.namespaces["nidm"]["PI"]))
+        self.graph.add((uuid, self.namespaces["prov"]["wasAssociatedWith"], inv_id))
+        return uuid
 
-
-    def serializeTurtle(self):
-        return self.graph.serialize(format='turtle')
