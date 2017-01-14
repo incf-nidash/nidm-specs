@@ -25,11 +25,17 @@ XSD = Namespace('http://www.w3.org/2001/XMLSchema#')
 
 OBO_URL = "http://purl.obolibrary.org/obo/"
 OBO = Namespace(OBO_URL)
-
+#Added by DBK for NIDM-Experiment 1/13/17
 NFO = Namespace('http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#')
 SCR = Namespace("http://scicrunch.org/resolver/")
 NLX = Namespace("http://uri.neuinfo.org/nif/nifstd/")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
+FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+VC = Namespace("http://www.w3.org/2006/vcard/ns#")
+DICOM = Namespace("http://neurolex.org/wiki/Category:DICOM_term/")
+DCTYPES = Namespace("http://purl.org/dc/dcmitype/")
+NCIT = Namespace("http://ncitt.ncit.nih.gov/")
+DCAT = Namespace("http://www.w3.org/ns/dcat#")
 
 namespaces = {
     "prov": PROV,
@@ -45,7 +51,13 @@ namespaces = {
     "nfo": NFO,
     "dc": DC,
     "nlx": NLX,
-    "scr": SCR
+    "scr": SCR,
+    "foaf": FOAF,
+    "vc": VC,
+    "dicom": DICOM,
+    "dctypes": DCTYPES,
+    "ncit": NCIT,
+    "dcat": DCAT
     }
 
 # Empty graph used to compute qnames
