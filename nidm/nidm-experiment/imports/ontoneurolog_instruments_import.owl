@@ -1,0 +1,658 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY nidm "http://purl.org/nidash/nidm#" >
+    <!ENTITY sio "http://semanticscience.org/resource/#" >
+    <!ENTITY human "http://neurolog.unice.fr/ontoneurolog/v3.0/human.owl#" >
+    <!ENTITY dolce-particular "http://neurolog.unice.fr/ontoneurolog/v3.0/dolce-particular.owl#" >
+    <!ENTITY study-examination-subject "http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#" >
+    <!ENTITY ontoneurolog-extension-of-dolce "http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#"
+     xml:base="http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dolce-particular="http://neurolog.unice.fr/ontoneurolog/v3.0/dolce-particular.owl#"
+     xmlns:human="http://neurolog.unice.fr/ontoneurolog/v3.0/human.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:nidm="http://purl.org/nidash/nidm#"
+     xmlns:sio="http://semanticscience.org/resource/#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:study-examination-subject="http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:ontoneurolog-extension-of-dolce="http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#">
+    <owl:Ontology rdf:about="http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl">
+        <dc:contributor rdf:datatype="&rdfs;Literal">Benedicte Batrancourt, Michel Dojat, Bernard Gibaud, Gilles Kassel, bernard.gibaud@univ-rennes1.fr</dc:contributor>
+        <dc:date>2009-09-16</dc:date>
+        <owl:imports rdf:resource="http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&skos;definition"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+ 
+
+    <!--http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument -->
+
+    <owl:Class rdf:about="#assessment-instrument">
+        <rdfs:subClassOf rdf:resource="nidm:AcquisitionObject"/>
+        <skos:definition>Instrument (CDISC Clinical Research Glossary, v. 8.0): “A means to capture data (e.g., questionnaire, diary) plus all the information and documentation that support its use. NOTE: Generally, instruments include clearly defined methods and instructions for administration or responding, a standard format for data collection, and well-documented methods for scoring, analysis, and interpretation of results.”
+&quot;Testing procedures are normally designed to be administered under carefully controlled or standardised conditions that embody systematic scoring protocols&quot; (Source: ITC International Guidelines for Test Use, http://www.intestcom.org/Guidelines).
+ASSESSMENT INSTRUMENTS are divided among PSYCHOLOGICAL INSTRUMENTS, BEHAVIOURAL INSTRUMENTS, and NEUROCLINICAL INSTRUMENTS according to the kind of entity (a function or a behaviour) they explore.
+ASSESSMENT INSTRUMENTS are divided among QUESTIONNAIRES and TEST-INSTRUMENTS according to their mode of administration and whether they involve sets of questions, or require the performance of tasks or operations.
+ASSESSMENT INSTRUMENTS are divided among MONO-DOMAIN INSTRUMENTS and MULTI-DOMAINS INSTRUMENTS according to the number of DOMAINS they explore.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#behavioural-instrument -->
+
+    <owl:Class rdf:about="#behavioural-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <owl:disjointWith rdf:resource="#neuroclinical-instrument"/>
+        <owl:disjointWith rdf:resource="#psychological-instrument"/>
+        <skos:definition>A BEHAVIOURAL INSTRUMENT explores the subject&#39;s behavior and provides normative data and consistent measures about intensity/severity of a behavioral trait. In this context, the instrument does not measure the subject performance to realize a specific task and questionnaires are generally used. Each INSTRUMENT VARIABLE of the QUESTIONNAIRE is associated to a SCALE and each subject&#39;s answer corresponds to a SCALE ITEM. Generally, BEHAVIOURAL INSTRUMENTS are QUESTIONNAIRES. However, some exceptions exist especially when the explored domain is at the frontier between cognition and behavior (e.g. executive functions such as motivation, planning or social interaction). In these rare cases BEHAVIOURAL INSTRUMENTS are similar to TEST-INSTRUMENTS.
+“Standardised set of questions or stimuli which are administered to assess or measure the presence or absence of a particular skill, knowledge or behavior.” (Source: CSP/PT). (Concept: (CUI C0683444) behavioral test, Semantic Type: Diagnostic Procedure).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#behavioural-interview -->
+
+    <owl:Class rdf:about="#behavioural-interview">
+        <rdfs:subClassOf rdf:resource="#questionnaire-based-assessment"/>
+        <skos:definition>A behavioural interview is a Questionnaire-based assessment carried out during a behavioral examination.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#behavioural-test -->
+
+    <owl:Class rdf:about="#behavioural-test">
+        <rdfs:subClassOf rdf:resource="#test-based-assessment"/>
+        <owl:disjointWith rdf:resource="#neuroclinical-test"/>
+        <owl:disjointWith rdf:resource="#psychological-test"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#bi-coded-scale-item -->
+
+    <owl:Class rdf:about="#bi-coded-scale-item">
+        <rdfs:subClassOf rdf:resource="#qualitative-scale-item"/>
+        <rdfs:subClassOf rdf:resource="#quantitative-scale-item"/>
+        <skos:definition>A BI-CODED SCALE ITEM refers both to a qualitative value of the measured QUALITY associated to a quantitative value. Generally the behavior rating scales are built with a set of BI-CODED SCALE ITEM. The rater must decide whether the rating lies on the defined QUANTITATIVE SCALE ITEMS, which are associated with QUALITATIVE SCALE ITEMS. 
+Example: The INSTRUMENT ‘Clinical Dementia Rating scale&#39; explores the severity of dementia among the patients. The CODED VARIABLE of the INSTRUMENT ‘Clinical Dementia Rating scale&#39; which measures the QUALITY &#39;Severity of dementia&#39; has for scale a SCALE in whom, each BI-CODED ITEM SCALE refers both to a particular severity of the dementia by a quantitative way with the following QUANTITATIVE SCALE ITEMS (0, 0.5, 1, 2, 3) and to a particular severity of the dementia (meaning) by a qualitative way with the following QUALITATIVE SCALE ITEM (&#39;No evidence of dementia&#39;, &#39;Questionable dementia&#39;, &#39;Mild dementia&#39;, &#39;Moderate dementia&#39;, &#39;Severe dementia&#39;).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#coded-score -->
+
+    <owl:Class rdf:about="#coded-score">
+        <rdfs:subClassOf rdf:resource="#scale-item"/>
+        <rdfs:subClassOf rdf:resource="#score"/>
+        <owl:disjointWith rdf:resource="#numerical-score"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#coded-variable -->
+
+    <owl:Class rdf:about="#coded-variable">
+        <rdfs:subClassOf rdf:resource="#instrument-variable"/>
+        <owl:disjointWith rdf:resource="#numerical-variable"/>
+        <skos:definition>A CODED VARIABLE is an INSTRUMENT VARIABLE which is associated to a SCALE. The CODED VARIABLE measures a QUALITY whose values are coded by ITEMS of this SCALE. 
+The CODED VARIABLE of the INSTRUMENT ‘Beck Depression Inventory’ which measures the QUALITY  ‘Sadness’ has for scale the following 4-item SCALE: (&#39;I do not feel sad&#39;, &#39;I feel sad much of the time&#39;, &#39;I am sad all the time&#39;, &#39;I am so sad or unhappy that I can&#39;t stand it&#39;).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#coded-variable-assessment -->
+
+    <owl:Class rdf:about="#coded-variable-assessment">
+        <rdfs:subClassOf rdf:resource="#variable-assessment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#composite-instrument -->
+
+    <owl:Class rdf:about="#composite-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#corrected-score -->
+
+    <owl:Class rdf:about="#corrected-score">
+        <rdfs:subClassOf rdf:resource="#numerical-score"/>
+        <owl:disjointWith rdf:resource="#raw-score"/>
+        <owl:disjointWith rdf:resource="#standardized-score"/>
+        <skos:definition>The corrected score is the raw score corrected according to the cultural skill, and/or the age, and/or the sex of the subject. The correction is obtained from a table of normative data provided in the manual of the test-based assessment.</skos:definition>
+    </owl:Class>
+    
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#experimental-psychology-instrument -->
+
+    <owl:Class rdf:about="#experimental-psychology-instrument">
+        <rdfs:subClassOf rdf:resource="#psychological-instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#experimental-psychology-test -->
+
+    <owl:Class rdf:about="#experimental-psychology-test">
+        <rdfs:subClassOf rdf:resource="#psychological-test"/>
+
+    </owl:Class>
+    
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment -->
+
+    <owl:Class rdf:about="#instrument-based-assessment">
+        <rdfs:subClassOf rdf:resource="nidm:DataAcquisition"/>
+        <skos:definition>An INSTRUMENT-BASED ASSESSMENT is a SUBJECT DATA ACQUISITION that captures some required information concerning the subject and involves the integration of data from instruments: TEST(-INSTRUMENTS) and/or QUESTIONNAIRES. When the purpose of the patient&#39;s examination is the assessment of her/his behavior, the examiner uses questionnaires rather than tests to rate the level of intensity/severity of a behavioral trait. Then, the appropriate action is a BEHAVIOURAL INTERVIEW rather than a BEHAVIOURAL TEST which is less adapted. 
+INSTRUMENT-BASED ASSESSMENTS are divided among TEST-BASED ASSESSMENTS and QUESTIONNAIRE-BASED ASSESSMENTS according to the kind of instrument which is administrated and therefore to the specific roles played by the subject and the healthcare professional in the assessment.</skos:definition>
+    </owl:Class>
+        
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable -->
+
+    <owl:Class rdf:about="#instrument-variable">
+    <rdfs:subClassOf rdf:resource="nidm:AcquisitionObject"/>
+        <skos:definition>An Instrument variable is the part of an instrument that refers to the precise measurement of a specific quality of a subject’s capacity (function) or a subject’s trait (in a qualitative or quantitative way). Instrument variables specify how the registering of scores must be done, by characterizing the type of values of the scores. Several instrument variables may be necessary to characterize the subject’s function or trait explored by the instrument.
+INSTRUMENT VARIABLES are divided among MAIN and SECONDARY VARIABLES according to whether they explore the same domain than the ASSESSMENT INSTRUMENT.
+INSTRUMENT VARIABLES are divided among NUMERICAL and CODED VARIABLES according to the way the score they register is coded (i.e. by a NUMBER, a SCALAR QUALE or a SCALE ITEM).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#main-variable -->
+
+    <owl:Class rdf:about="#main-variable">
+        <rdfs:subClassOf rdf:resource="#instrument-variable"/>
+        <owl:disjointWith rdf:resource="#secondary-variable"/>
+        <skos:definition>A main variable explores the same cognitive function or trait of the subject than the instrument.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#mono-domain-instrument -->
+
+    <owl:Class rdf:about="#mono-domain-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <owl:disjointWith rdf:resource="#multi-domains-instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#multi-domains-instrument -->
+
+    <owl:Class rdf:about="#multi-domains-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#neuroclinical-instrument -->
+
+    <owl:Class rdf:about="#neuroclinical-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <owl:disjointWith rdf:resource="#psychological-instrument"/>
+        <skos:definition>NEUROCLINICAL INSTRUMENTS are used in neurology, to precisely quantify symptoms and related patient disability. 
+A neuroclinical instrument provides normative data, consistent measures about &quot;the strength, efficiency, reactivity, and appropriateness of the patient&#39;s responses to commands, questions, discrete stimulation of particular neural subsystems&quot; (Lezak et al., 2004).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#neuroclinical-interview -->
+
+    <owl:Class rdf:about="#neuroclinical-interview">
+        <rdfs:subClassOf rdf:resource="#questionnaire-based-assessment"/>
+        <skos:definition>A neuroclinical interview is a Questionnaire-based assessment carried out during a neurological examination.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#neuroclinical-test -->
+
+    <owl:Class rdf:about="#neuroclinical-test">
+        <rdfs:subClassOf rdf:resource="#test-based-assessment"/>
+        <owl:disjointWith rdf:resource="#psychological-test"/>
+        <skos:definition>“The Neuroclinical examination (Neurological test) is the usual clinical approach to the study of the brain functions. The Neurological test includes extensive study of the brain&#39;s chief product-behavior. [...] The neurologist examines the strength, efficiency, reactivity, and appropriateness of the patient&#39;s responses to commands, questions, discrete stimulation of particular neural subsystems, and challenges to specific muscle groups and motor patterns. […] In the neurological examination of behavior, the clinician reviews behavior patterns generated by neuroanatomical subsystems, measuring patients&#39; responses in relatively coarse graduations or nothing their absence&quot; (Lezak et al., 2004).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#neuropsychological-instrument -->
+
+    <owl:Class rdf:about="#neuropsychological-instrument">
+        <rdfs:subClassOf rdf:resource="#psychological-instrument"/>
+        <skos:definition>NEUROPSYCHOLOGICAL INSTRUMENTS are used as tools in NEUROPSYCHOLOGICAL EXAMINATIONS to measure a psychological function known to be linked to a particular brain structure or pathway. 
+“Neuropsychological tests are specifically designed tasks used to measure a psychological function known to be linked to a particular brain structure or pathway. They usually involve the systematic administration of clearly defined procedures in a formal environment. Neuropsychological tests are typically administered to a single person working with an examiner in a quiet office environment, free from distractions. As such, it can be argued that neuropsychological tests at times offer an estimate of a person&#39;s peak level of cognitive performance. Neuropsychological tests are a core component of the process of conducting neuropsychological assessment” (Source: http://en.wikipedia.org).
+“Tests designed to assess neurological function associated with certain behaviors; used in diagnosing brain dysfunction or damage and central nervous system disorders or injury.” (Source: CSP/PT). (Concept: (CUI C0027902) Neuropsychological Tests, Semantic Type: Diagnostic Procedure).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#neuropsychological-test -->
+
+    <owl:Class rdf:about="#neuropsychological-test">
+        <rdfs:subClassOf rdf:resource="#psychological-test"/>
+        <skos:definition>&quot;Neuropsychological assessment is a method of examining the brain by studying its behavioural product. Since the subject matter of neuropsychological assessment is behavior, it relies on many of the same techniques, assumptions, and theories as does psychological assessment. The distinctive character of neuropsychological assessment lies in a conceptual frame of reference that takes brain function as its point of departure. Regardless of whether a behavioral study is undertaken for clinical or research purposes, it is neuropsychological so long as the questions that prompted it, the central issues, the findings, or the inferences drawn from them ultimately relate to brain function&quot; (Lezak et al., 2004).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#numerical-score -->
+
+    <owl:Class rdf:about="#numerical-score">
+        <rdfs:subClassOf rdf:resource="#score"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#numerical-variable -->
+
+    <owl:Class rdf:about="#numerical-variable">
+        <rdfs:subClassOf rdf:resource="#instrument-variable"/>
+        <skos:definition>A NUMERICAL VARIABLE is an INSTRUMENT VARIABLE which measures a QUALITY which has for quales (during a TIME INTERVAL) NUMBERS or SCALAR QUALES (a NUMBER + a UNIT OF MEASURE).
+Example 1: The NUMERICAL VARIABLE ‘FCSRT-IR-3-1v3&#39; of the INSTRUMENT ‘Free and Cued Selective Reminding Test with Immediate Recall 16-item-version-(FCSRT-IR)’ measures the QUALITY ‘Total number of words correctly retrieved on the three successive trials’ which has for quales NUMBERS. This NUMERICAL VARIABLE has for minimum numerical value 0 and has for maximum numerical value 48.
+Example 2: The NUMERICAL VARIABLE of the INSTRUMENT ‘Rey-Osterrieth-Complex-Figure-Test-(CFT)-Copy-administration’ measures the QUALITY ‘length of time needed by the subject to copy the figure’ which has for quales SCALAR QUALES. The test is not timed, but the length of time needed to copy the figure is observed, and the average time is about 180 seconds. This NUMERICAL VARIABLE has for minimum scalar value 0 second and has for maximum scalar value a SCALAR QUALE chosen by the examinator beyond 300 seconds.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#numerical-variable-assessment -->
+
+    <owl:Class rdf:about="#numerical-variable-assessment">
+        <rdfs:subClassOf rdf:resource="#variable-assessment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#psychological-instrument -->
+
+    <owl:Class rdf:about="#psychological-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <skos:definition>PSYCHOLOGICAL INSTRUMENTS are divided among NEUROPSYCHOLOGICAL INSTRUMENTS and EXPERIMENTAL PSYCHOLOGY INSTRUMENTS according to the kind of DOMAINS they explore.
+A psychological instrument provides normative data, consistent measures about intensity/severity of a psychological and/or psychopathological trait.
+“Standardized tests designed to measure abilities, as in intelligence, aptitude, and achievement tests, or to evaluate personality traits”. (Source: MSH/MH). (Concept: (CUI C0033905) Psychological Tests (procedure), Semantic Type: Diagnostic Procedure).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#psychological-interview -->
+
+    <owl:Class rdf:about="#psychological-interview">
+        <rdfs:subClassOf rdf:resource="#questionnaire-based-assessment"/>
+        <skos:definition>A psychological interview is a Questionnaire-based assessment carried out during a psychological examination.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#psychological-test -->
+
+    <owl:Class rdf:about="#psychological-test">
+        <rdfs:subClassOf rdf:resource="#test-based-assessment"/>
+        <skos:definition>&quot;[…] psychological assessment […] involves the intensive study of behavior by means of interviews and standardized scaled tests and questionnaires that provide relatively precise and sensitive indices of behaviour.&quot; (Lezak et al., 2004).
+PSYCHOLOGICAL TESTS are divided among NEUROPSYCHOLOGICAL TESTS and EXPERIMENTAL PSYCHOLOGY TESTS according to the kind of instrument that is used.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#psychophysical-instrument -->
+
+    <owl:Class rdf:about="#psychophysical-instrument">
+        <rdfs:subClassOf rdf:resource="#experimental-psychology-instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#psychophysical-test -->
+
+    <owl:Class rdf:about="#psychophysical-test">
+        <rdfs:subClassOf rdf:resource="#experimental-psychology-test"/>
+ 
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#qualitative-scale-item -->
+
+    <owl:Class rdf:about="#qualitative-scale-item">
+        <rdfs:subClassOf rdf:resource="#scale-item"/>
+
+        <skos:definition>A QUALITATIVE SCALE ITEM refers to a qualitative value of the measured QUALITY. Each QUALITATIVE SCALE ITEM from the SCALE is designed to report a qualitative attribute about the cognitive ability or the psychological trait or the behavior and therefore to reflect the pathological level/intensity/severity of the behavior or the disability by a qualitative way. 
+Example: The INSTRUMENT ‘Beck Depression Inventory&#39; can distinguish between different subtypes of depressive disorders, such as major depression and dysthymia (a less severe form of depression). The CODED VARIABLE of the INSTRUMENT ‘Beck Depression Inventory&#39; which measures the QUALITY &#39;Intensity of depression&#39; has for scale  a SCALE in whom, each QUALITATIVE ITEM SCALE refers to a particular intensity of the depression by a qualitative way (&#39;minimal depressive symptoms&#39;, &#39;mild depression&#39;, &#39;moderate depression, &#39;severe depression&#39;).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#quantitative-scale-item -->
+
+    <owl:Class rdf:about="#quantitative-scale-item">
+        <rdfs:subClassOf rdf:resource="#scale-item"/>
+
+        <skos:definition>A QUANTITATIVE SCALE ITEM refers to a quantitative value of the measured quality. Each QUANTITATIVE SCALE ITEM from the SCALE is designed to report a quantitative attribute about the cognitive ability or the psychological trait or the behavior and therefore to reflect the pathological level/intensity of the behavior or the disability by a quantitative way.
+Example: The INSTRUMENT &#39;Montgomery-Asberg Depression Rating Scale&#39; (MADRS) is a diagnostic questionnaire which psychiatrists use to measure the severity of depressive episodes in patients with mood disorders. For each CODED VARIABLE, associated to a SCALE, the rater must decide whether the rating lies on the defined QUANTITATIVE SCALE ITEMS (0, 1, 2, 3, 4, 5, 6).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#questionnaire -->
+
+    <owl:Class rdf:about="#questionnaire">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <owl:disjointWith rdf:resource="#test-instrument"/>
+        <skos:definition>Questionnaire (CDISC Clinical Research Glossary, v. 6.0): A set of questions or items shown to a respondent in order to get answers for research purposes.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#questionnaire-based-assessment -->
+
+    <owl:Class rdf:about="#questionnaire-based-assessment">
+        <rdfs:subClassOf rdf:resource="#instrument-based-assessment"/>
+
+        <skos:definition>A Questionnaire-based assessment is an Instrument-based assessment which involves the integration of data from questionnaires. A questionnaire-based assessment involves sets of questions (items), carried out in a structured way (known as structured interview) or semi-structured way, to provide normative data. Interview-based measures and rating scales are designed to be completed by clinicians, subjects, parents, caregivers. The scoring of each item contributes to the measure of the explored domain (e.g. Depression).
+“A directed conversation with the subject aimed at eliciting information   for psychiatric diagnosis, evaluation, treatment planning, etc.   The interview may be conducted by a social worker or psychologist.” (Source: MSH/MH). (Concept: [CUI C0021819] Interview, Psychological,   Semantic Type:  Diagnostic Procedure).
+QUESTIONNAIRE-BASED ASSESSMENTS are divided among PSYCHOLOGICAL INTERVIEWS, BEHAVIOURAL INTERVIEWS, and NEUROCLINICAL INTERVIEWS according to the kind of questionnaire that is used.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#raw-score -->
+
+    <owl:Class rdf:about="#raw-score">
+        <rdfs:subClassOf rdf:resource="#numerical-score"/>
+        <owl:disjointWith rdf:resource="#standardized-score"/>
+        <skos:definition>(M.D. Lezak et al., 2004): “The raw score is the simple sum of correct answers or correct answers minus a portion of the incorrect ones. For in itself a raw score communicates nothing about its relative value”</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale -->
+
+    <owl:Class rdf:about="#scale">
+        <rdfs:subClassOf rdf:resource="sio:SIO_000015"/>
+ 
+        <skos:definition>“A rating scale is a set of categories designed to elicit information about a quantitative or a qualitative attribute in the social sciences” (Source: http://en.wikipedia.org).
+“Scales can focus on different aspects of mood, behavior, and functional abilities”. (Source: Lezak et al., 2004).
+“The &quot;levels of measurement&quot;, or scales of measure are expressions that typically refer to the theory of scale types developed by the psychologist Stanley Smith Stevens. Stevens proposed his theory in a 1946 Science article titled &quot;On the theory of scales of measurement&quot;. In that article, Stevens claimed that all measurement in science was conducted using four different types of scales that he called &quot;nominal&quot;, &quot;ordinal&quot;, &quot;interval&quot; and &quot;ratio&quot;. … As a matter of fact, most of the scales used widely and effectively by psychologists are ordinal scales. … Psychometricians like to theorise that psychometric tests produce interval scale measures of cognitive abilities (e.g. Lord &amp; Novick, 1968; von Eye, 2005) but there is little prima facie evidence to suggest that such attributes are anything more than ordinal for most psychological data (Cliff, 1996; Cliff &amp; Keats, 2003; Michell, 2008). …  There has been, and continues to be, debate about the merits of the classifications, particularly in the cases of the nominal and ordinal classifications (Michell, 1986). Thus, while Stevens&#39; classification is widely adopted, it is by no means universally accepted. …  The theory of scale types is the intellectual handmaiden to Stevens&#39; &quot;operational theory of measurement&quot;, which was to become definitive within psychology and the behavioral sciences, despite Michell&#39;s characterization as its being quite at odds with Michell&#39;s understanding of measurement in the natural sciences (Michell, 1999). Essentially, the operational theory of measurement was a reaction to the conclusions of a committee established in 1932 by the British Association for the Advancement of Science to investigate the possibility of genuine scientific measurement in the psychological and behavioral sciences.” (Source: http://en.wikipedia.org). 
+Example: The CODED VARIABLE of the INSTRUMENT ‘Beck Depression Inventory’ which measures the QUALITY  ‘Sadness’ has for scale the following 4-item SCALE: (&#39;I do not feel sad&#39;, &#39;I feel sad much of the time&#39;, &#39;I am sad all the time&#39;, &#39;I am so sad or unhappy that I can&#39;t stand it&#39;). This SCALE has for minimum scale item the SCALE ITEM: &#39;I do not feel sad&#39; and has for maximum scale item the SCALE ITEM: &#39;I am so sad or unhappy that I can&#39;t stand it&#39;.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item -->
+
+    <owl:Class rdf:about="#scale-item">
+        <rdfs:subClassOf rdf:resource="sio:SIO_000015"/>
+
+        <skos:definition>During an observation, the process of approximating the observed QUALITY’s value (called QUALE in DOLCE) turns the continuous QUALE of the observed quality into a discrete approximation entity which is a SCALE ITEM. While the construction of the SCALE, a set of QUALITY&#39;s values are chosen and each of them is coded by a SCALE ITEM. Generally, a SCALE consists of 4 SCALE ITEMS (short version) or of  6 SCALE ITEMS (long version).
+Example: In the INSTRUMENT ‘Beck Depression Inventory&#39;, the SCALE ITEM &#39;I feel sad much of the time&#39; belongs to the SCALE which is the scale of the CODED VARIABLE which measures the QUALITY  ‘Sadness’. This SCALE ITEM refers to a specific level of sadness.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score -->
+
+    <owl:Class rdf:about="#score">
+        <rdfs:subClassOf rdf:resource="sio:SIO_000015"/>
+ 
+        <skos:definition>SCORES are divided into CODED SCORES AND NUMERICAL SCORES according to whether they are coded by a LEXICAL ITEM or a NUMBER.</skos:definition>
+    </owl:Class>
+        
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score-with-unit-of-measure -->
+
+    <owl:Class rdf:about="#score-with-unit-of-measure">
+        <rdfs:subClassOf rdf:resource="#numerical-score"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score-without-unit-of-measure -->
+
+    <owl:Class rdf:about="#score-without-unit-of-measure">
+        <rdfs:subClassOf rdf:resource="#numerical-score"/>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#secondary-variable -->
+
+    <owl:Class rdf:about="#secondary-variable">
+        <rdfs:subClassOf rdf:resource="#instrument-variable"/>
+        <skos:definition>A secondary variable provides some additional information about a cognitive function or a trait of the subject.</skos:definition>
+    </owl:Class>
+    
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#standardized-score -->
+
+    <owl:Class rdf:about="#standardized-score">
+        <rdfs:subClassOf rdf:resource="#numerical-score"/>
+ 
+        <skos:definition>“To make the comparisons necessary for evaluating impairment, test-makers generally reports scores as values of a scale based on the raw scores made by a standardization population (the group of individual tested for the purpose of obtaining normative data on the test). The scale that is most meaningful statistically is one derived from the normal probability curved and based on the standard deviation unit. There are a variety of standard scores that are all translations of the same scale, based on the mean and the standard deviation. [...] The z-score is the basic, unelaborated standard score from which all others can be derived. The z-score represents, in standard deviation units, the amount a score deviates from the mean of the population from which the score is drawn. The mean of the normal curve is set at zero and the standard deviation unit has a value of one. Scores are stated in term of their distance from the mean as measured in standard deviation units. Scores above the mean have a positive value; those below the mean are negative. Neuropsychological test data can be handled very appropriately in a z-score format.
+Elaborations of the z-score are called derived scores. Among the most widely used derived scores are T-scores, which are very popular in educational testing. The T-score has a mean of 50 and a standard deviation of 10.” (Lezak et al., 2004)</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#sub-instrument -->
+
+    <owl:Class rdf:about="#sub-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+ 
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#test-based-assessment -->
+
+    <owl:Class rdf:about="#test-based-assessment">
+        <rdfs:subClassOf rdf:resource="#instrument-based-assessment"/>
+ 
+        <skos:definition>A Test-based assessment is an Instrument-based assessment which involves the integration of data from tests. A Test-based assessment is conducted as a formal testing session to provide normative data.
+TEST-BASED ASSESSMENTS are divided among PSYCHOLOGICAL TESTS, BEHAVIOURAL TESTS and NEUROCLINICAL TESTS according to the kind of instrument that is used.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#test-instrument -->
+
+    <owl:Class rdf:about="#test-instrument">
+        <rdfs:subClassOf rdf:resource="#assessment-instrument"/>
+        <skos:definition>A test-instrument is an instrument that solicits an authentic production from the subject, e.g., a reflex, a performance (such as a drawing, or a 500-meter walk). This production is recorded under control of a healthcare professional, but remains objective.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment -->
+
+    <owl:Class rdf:about="#variable-assessment">
+        <rdfs:subClassOf rdf:resource="nidm:DataAcquisition"/>
+	<skos:definition>A variable assessment is an activity that results in a value assigned to a specific item on an assessment instrument question or test.</skos:definition>
+
+    </owl:Class>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#concept -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;concept"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#conceptual-action -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;conceptual-action"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#definition -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;definition"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#model-acronym -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;model-acronym"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#model-name -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;model-name"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#number -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;number"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#proposition -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;proposition"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#result -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;result"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#scalar-quale -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;scalar-quale"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/ontoneurolog-extension-of-dolce.owl#scientific-article -->
+
+    <owl:Class rdf:about="&ontoneurolog-extension-of-dolce;scientific-article"/>
+    
+
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#behavioural-examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;behavioural-examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#neuro-clinical-examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;neuro-clinical-examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#neuro-psychological-examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;neuro-psychological-examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#psychological-examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;psychological-examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#psychophysical-examination -->
+
+    <owl:Class rdf:about="&study-examination-subject;psychophysical-examination"/>
+    
+
+
+    <!-- http://neurolog.unice.fr/ontoneurolog/v3.0/study-examination-subject.owl#subject -->
+
+    <owl:Class rdf:about="&study-examination-subject;subject"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+

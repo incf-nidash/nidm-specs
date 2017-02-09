@@ -2,6 +2,7 @@
 @prefix ro: <http://www.obofoundry.org/ro/ro.owl#> .
 @prefix bfo: <http://www.ifomis.org/bfo/1.1#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix nlx: <http://neurolex.org/wiki/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -12,6 +13,7 @@
 @prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
 @prefix meta: <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix onli: <file:/home/karl/Work/INCF/nidm/nidm/nidm/nidm-experiment/terms/"http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
 @prefix owl2: <http://www.w3.org/2006/12/owl2#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
@@ -23,7 +25,6 @@
 @prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
-@prefix nlx: <http://neurolex.org/wiki/> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
@@ -32,6 +33,7 @@
               <http://purl.org/nidash/nidm/iao_import.owl> ,
               <http://purl.org/nidash/nidm/nfo_import.owl> ,
               <http://purl.org/nidash/nidm/nlx_import.owl> ,
+              <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
               <http://purl.org/nidash/nidm/qibo_import.ttl> ,
               <http://purl.org/nidash/nidm/sio_import.owl> ,
               <http://www.w3.org/ns/prov-o-20130430>
@@ -72,6 +74,12 @@ obo:IAO_0000116 rdf:type owl:AnnotationProperty .
 ###  http://purl.obolibrary.org/obo/IAO_0000117
 
 obo:IAO_0000117 rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/source
+
+dct:source rdf:type owl:AnnotationProperty .
 
 
 
@@ -164,6 +172,60 @@ nidm:NIDM_0000010 rdf:type owl:ObjectProperty ;
 
 
 
+###  http://purl.org/nidash/nidm#hadForProperPart
+
+nidm:hadForProperPart rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#hadForScale
+
+nidm:hadForScale rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#hadForSubinstrument
+
+nidm:hadForSubinstrument rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#hadForVariable
+
+nidm:hadForVariable rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#wasMeasuredBy
+
+nidm:wasMeasuredBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/nidash/nidm#wasScaleOf
+
+nidm:wasScaleOf rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.w3.org/ns/prov#hadRole
+
+prov:hadRole rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.w3.org/ns/prov#used
+
+prov:used rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasCreatedBy
+
+prov:wasCreatedBy rdf:type owl:ObjectProperty .
+
+
+
 
 
 #################################################################
@@ -186,14 +248,22 @@ dct:description rdf:type owl:DatatypeProperty ;
 dct:license rdf:type owl:DatatypeProperty .
 
 
-### http://purl.org/dc/terms/source
+
+###  http://purl.org/dc/terms/source
 
 dct:source rdf:type owl:DatatypeProperty .
+
 
 
 ###  http://purl.org/dc/terms/title
 
 dct:title rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/nidash/nidm#hadNumericalValue
+
+nidm:hadNumericalValue rdf:type owl:DatatypeProperty .
 
 
 
@@ -248,7 +318,7 @@ nidm:AcquisitionAuxiliaryFile rdf:type owl:Class ;
                               
                               rdfs:label "Acquisition Auxiliary File"^^xsd:string ;
                               
-                              rdfs:subClassOf prov:File ;
+                              rdfs:subClassOf sio:SIO_000396 ;
                               
                               obo:IAO_0000115 "A file, from which parameters used by the acquisition system, are loaded ."^^xsd:string ;
                               
@@ -300,19 +370,19 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#AnatomicalMRIAcquisition
-
-nidm:AnatomicalMRIAcquisition rdf:type owl:Class ;
-                              
-                              rdfs:subClassOf nidm:MRIDataAcquisition .
-
-
-
 ###  http://purl.org/nidash/nidm#AnatomicalObject
 
 nidm:AnatomicalObject rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:ImageObjectUsageType .
+
+
+
+###  http://purl.org/nidash/nidm#Animal
+
+nidm:Animal rdf:type owl:Class ;
+            
+            rdfs:subClassOf prov:Agent .
 
 
 
@@ -334,6 +404,14 @@ nidm:AuxilliaryFileCollection rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#BarnesScale
+
+nidm:BarnesScale rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#BaselineProtocol
 
 nidm:BaselineProtocol rdf:type owl:Class ;
@@ -350,27 +428,19 @@ nidm:BaselineProtocol rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#BehavioralAcquisitionObject
-
-nidm:BehavioralAcquisitionObject rdf:type owl:Class ;
-                                 
-                                 rdfs:label "Behavioral Acquisition Object"^^xsd:string ;
-                                 
-                                 rdfs:subClassOf nidm:AcquisitionObject ;
-                                 
-                                 obo:IAO_0000115 "A behavioral acquisition object is an entity that is collected during a behavioral task by a study participant. The object may be acquired concurrently with other types of data, e.g., imaging data."^^xsd:string ;
-                                 
-                                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                                 
-                                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 ###  http://purl.org/nidash/nidm#BehavioralDataAcquisition
 
 nidm:BehavioralDataAcquisition rdf:type owl:Class ;
                                
                                rdfs:subClassOf nidm:DataAcquisition .
+
+
+
+###  http://purl.org/nidash/nidm#CalgaryDepressionScale
+
+nidm:CalgaryDepressionScale rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -382,27 +452,19 @@ nidm:Cartesian rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ClinicalAssessmentAcquisition
+###  http://purl.org/nidash/nidm#CategoryFluencyTest
 
-nidm:ClinicalAssessmentAcquisition rdf:type owl:Class ;
-                                   
-                                   rdfs:subClassOf prov:Activity .
+nidm:CategoryFluencyTest rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
-###  http://purl.org/nidash/nidm#ClinicalAssessmentAcquisitionObject
+###  http://purl.org/nidash/nidm#ClinicalGlobalImpression
 
-nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
-                                         
-                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
-                                         
-                                         rdfs:subClassOf nidm:AcquisitionObject ;
-                                         
-                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study participant."^^xsd:string ;
-                                         
-                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                                         
-                                         obo:IAO_0000114 obo:IAO_0000125 .
+nidm:ClinicalGlobalImpression rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -411,6 +473,30 @@ nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
 nidm:CoInvestigator rdf:type owl:Class ;
                     
                     rdfs:subClassOf prov:Role .
+
+
+
+###  http://purl.org/nidash/nidm#CombinedAssessment
+
+nidm:CombinedAssessment rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#Computer
+
+nidm:Computer rdf:type owl:Class ;
+              
+              rdfs:subClassOf prov:Agent .
+
+
+
+###  http://purl.org/nidash/nidm#ContinuousPerformanceTest
+
+nidm:ContinuousPerformanceTest rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -437,6 +523,22 @@ nidm:DICOMTagCollection rdf:type owl:Class ;
 nidm:DataAcquisition rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm#DelayedSemanticVerbalLearningTest
+
+nidm:DelayedSemanticVerbalLearningTest rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#DelayedVisualFiguralLearningTest
+
+nidm:DelayedVisualFiguralLearningTest rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -512,6 +614,14 @@ nidm:EchoPlanar rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#EdinburghHandnessTest
+
+nidm:EdinburghHandnessTest rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#ElectrophysiologyAcquisitionObject
 
 nidm:ElectrophysiologyAcquisitionObject rdf:type owl:Class ;
@@ -552,19 +662,51 @@ nidm:ExVivoParticipant rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ExperimentAuxiliaryFile
+
+nidm:ExperimentAuxiliaryFile rdf:type owl:Class ;
+                             
+                             rdfs:label "Experiment Auxiliary File"^^xsd:string ;
+                             
+                             rdfs:subClassOf sio:SIO_000396 ;
+                             
+                             obo:IAO_0000115 "A file that is generated in the course of an experiment that is used either in the acquisition or processing of the data."^^xsd:string ;
+                             
+                             obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#FacialEmotionDiscriminationTest
+
+nidm:FacialEmotionDiscriminationTest rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#FagerstromSmokingTest
+
+nidm:FagerstromSmokingTest rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#FingerTappingTest
+
+nidm:FingerTappingTest rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#FlowWeighted
 
 nidm:FlowWeighted rdf:type owl:Class ;
                   
                   rdfs:subClassOf nidm:ImageContrastType .
-
-
-
-###  http://purl.org/nidash/nidm#FunctionalMRIAcquisition
-
-nidm:FunctionalMRIAcquisition rdf:type owl:Class ;
-                              
-                              rdfs:subClassOf nidm:MRIDataAcquisition .
 
 
 
@@ -581,6 +723,12 @@ nidm:FunctionalObject rdf:type owl:Class ;
 nidm:Group rdf:type owl:Class ;
            
            rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm#Human
+
+nidm:Human rdfs:subClassOf prov:Agent .
 
 
 
@@ -636,14 +784,6 @@ nidm:ImagingStudyParticipant rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Imaging_Subject
-
-nidm:Imaging_Subject rdf:type owl:Class ;
-                     
-                     rdfs:subClassOf prov:Agent .
-
-
-
 ###  http://purl.org/nidash/nidm#InVitroParticipant
 
 nidm:InVitroParticipant rdf:type owl:Class ;
@@ -664,7 +804,7 @@ nidm:InVivoParticipant rdf:type owl:Class ;
 
 nidm:InformedConsentAcquisition rdf:type owl:Class ;
                                 
-                                rdfs:subClassOf prov:Activity .
+                                rdfs:subClassOf nidm:DataAcquisition .
 
 
 
@@ -689,6 +829,22 @@ nidm:Inside-outSpiral rdf:type owl:Class ;
 nidm:InvestigationProcess rdf:type owl:Class ;
                           
                           rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm#LetterFluencyTest
+
+nidm:LetterFluencyTest rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#LetterNumberSpanTest
+
+nidm:LetterNumberSpanTest rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -721,6 +877,14 @@ nidm:MRIDataAcquisition rdf:type owl:Class ;
 nidm:MRScanner rdf:type owl:Class ;
                
                rdfs:subClassOf prov:Agent .
+
+
+
+###  http://purl.org/nidash/nidm#MazeSolvingTest
+
+nidm:MazeSolvingTest rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -757,6 +921,14 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
                   rdfs:label "fmri Design Type"^^xsd:string ;
                   
                   rdfs:subClassOf nidm:AcquisitionObjectQuality .
+
+
+
+###  http://purl.org/nidash/nidm#NorthAmericanAdultReadingTest
+
+nidm:NorthAmericanAdultReadingTest rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -832,11 +1004,27 @@ nidm:ParallelImagingMethod rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#PhantomParticipant
+###  http://purl.org/nidash/nidm#Phantom
 
-nidm:PhantomParticipant rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf nidm:Imaging_Subject .
+nidm:Phantom rdf:type owl:Class ;
+             
+             rdfs:subClassOf prov:Agent .
+
+
+
+###  http://purl.org/nidash/nidm#PositiveAndNegativeSyndromeScale
+
+nidm:PositiveAndNegativeSyndromeScale rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#PremorbidAdjustment
+
+nidm:PremorbidAdjustment rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -954,11 +1142,19 @@ nidm:ResearchAssistant rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#SemanticVerbalLearningTest
+
+nidm:SemanticVerbalLearningTest rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#SeriesAcquisition
 
 nidm:SeriesAcquisition rdf:type owl:Class ;
                        
-                       rdfs:subClassOf prov:Activity .
+                       rdfs:subClassOf nidm:MRIDataAcquisition .
 
 
 
@@ -967,6 +1163,22 @@ nidm:SeriesAcquisition rdf:type owl:Class ;
 nidm:SessionAcquisition rdf:type owl:Class ;
                         
                         rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm#SimpsonAngusRatingScale
+
+nidm:SimpsonAngusRatingScale rdf:type owl:Class ;
+                             
+                             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> ;
+                             
+                             obo:IAO_0000115 "The SAS is a 10-item instrument used to evaluate the presence and severity of parkinsonian symptomatology. It is the most commonly used rating scale for Parkinsonism in clinical trials over the past 25 years. The ten items focus on rigidity rather than bradykinesia, and do not assess subjective rigidity or slowness. Items are rated for severity on a 0-4 scale, with definitions given for each anchor point."^^xsd:string ;
+                             
+                             obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                             
+                             dct:source nlx:birnlex_3047 ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -986,19 +1198,43 @@ nidm:SimultaneousMultisliceMethod rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#SocioeconomicScale
+
+nidm:SocioeconomicScale rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#SpatialMemorySpan
+
+nidm:SpatialMemorySpan rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#StimulusPresentationFile
 
 nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
                               rdfs:label "Stimulus Presentation File"^^xsd:string ;
                               
-                              rdfs:subClassOf prov:ExperimentAuxiliaryFile ;
+                              rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
                               
                               obo:IAO_0000115 "A file that contains stimuli (e.g., words, pictures) that are shown to the study participant in an task-based fMRI experiment."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
                               
                               obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#StroopTest
+
+nidm:StroopTest rdf:type owl:Class ;
+                
+                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -1014,7 +1250,7 @@ nidm:StructuralObject rdf:type owl:Class ;
 
 nidm:StudyAcquisition rdf:type owl:Class ;
                       
-                      rdfs:subClassOf prov:Activity .
+                      rdfs:subClassOf nidm:MRIDataAcquisition .
 
 
 
@@ -1022,7 +1258,8 @@ nidm:StudyAcquisition rdf:type owl:Class ;
 
 nidm:StudyObject rdf:type owl:Class ;
                  
-                 rdfs:label "Study Object"^^xsd:string ;
+                 rdfs:label "Series Object"^^xsd:string ,
+                            "Study Object"^^xsd:string ;
                  
                  rdfs:subClassOf prov:Entity ,
                                  [ rdf:type owl:Restriction ;
@@ -1030,7 +1267,8 @@ nidm:StudyObject rdf:type owl:Class ;
                                    owl:someValuesFrom nidm:AcquisitionObject
                                  ] ;
                  
-                 obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
+                 obo:IAO_0000115 "A series object is an entity that represents one acquisition that take place during the same temporal epoch."^^xsd:string ,
+                                 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
                  
                  obo:IAO_0000114 obo:IAO_0000428 ;
                  
@@ -1054,12 +1292,6 @@ nidm:StudyParticipant rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Subject
-
-nidm:Subject rdfs:subClassOf prov:Agent .
-
-
-
 ###  http://purl.org/nidash/nidm#SusceptibilityWeighted
 
 nidm:SusceptibilityWeighted rdf:type owl:Class ;
@@ -1073,6 +1305,14 @@ nidm:SusceptibilityWeighted rdf:type owl:Class ;
 nidm:SusceptibilityWeightedImagingObject rdf:type owl:Class ;
                                          
                                          rdfs:subClassOf nidm:ImageObjectUsageType .
+
+
+
+###  http://purl.org/nidash/nidm#SymbolDigitAssociationTest
+
+nidm:SymbolDigitAssociationTest rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
 
 
 
@@ -1118,13 +1358,45 @@ nidm:TaskBasedObject rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#TrailsA
+
+nidm:TrailsA rdf:type owl:Class ;
+             
+             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#TrailsB
+
+nidm:TrailsB rdf:type owl:Class ;
+             
+             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#VisualFiguralLearningTest
+
+nidm:VisualFiguralLearningTest rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
+###  http://purl.org/nidash/nidm#WisconsinCardSortingTest
+
+nidm:WisconsinCardSortingTest rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+
+
+
 ###  http://purl.org/nidash/nidm#bValueFile
 
 nidm:bValueFile rdf:type owl:Class ;
                 
                 rdfs:label "b-value File"^^xsd:string ;
                 
-                rdfs:subClassOf prov:ExperimentAuxiliaryFile ;
+                rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
                 
                 obo:IAO_0000115 "A file that contains the b values used in a diffusion-weighted MRI experiment."^^xsd:string ;
                 
@@ -1140,7 +1412,7 @@ nidm:bVectorFile rdf:type owl:Class ;
                  
                  rdfs:label "b-vector File"^^xsd:string ;
                  
-                 rdfs:subClassOf prov:ExperimentAuxiliaryFile ;
+                 rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
                  
                  obo:IAO_0000115 "A file that contains the b vectors used in a diffusion-weighted MRI experiment."^^xsd:string ;
                  
@@ -1182,6 +1454,22 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#nidm:Assessment_Instrument
+
+<http://purl.org/nidash/nidm#nidm:Assessment_Instrument> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
+                                                         
+                                                         rdfs:subClassOf nidm:AcquisitionObject ;
+                                                         
+                                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study participant."^^xsd:string ;
+                                                         
+                                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                                         
+                                                         obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
 ###  http://scicrunch.org/resolver/SCR_002823
 
 <http://scicrunch.org/resolver/SCR_002823> rdfs:subClassOf sio:SIO_000097 .
@@ -1220,6 +1508,12 @@ sio:SIO_000089 rdfs:subClassOf prov:Collection .
 
 
 
+###  http://semanticscience.org/resource/SIO_000616
+
+sio:SIO_000616 owl:equivalentClass prov:Collection .
+
+
+
 ###  http://uri.neuinfo.org/nif/nifstd/birnlex_2094
 
 <http://uri.neuinfo.org/nif/nifstd/birnlex_2094> rdfs:subClassOf sio:SIO_001236 .
@@ -1232,453 +1526,51 @@ sio:SIO_000089 rdfs:subClassOf prov:Collection .
 
 
 
-###  http://purl.org/nidash/nidm#BarnesScale
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Behavioral_Interview
 
-     nidm:BarnesScale rdf:type owl:Class ;
-                                                        
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "TBD"^^xsd:string ;
-
-                 dct:source "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#ClinicalGlobalImpression
-
-     nidm:ClinicalGlobalImpression rdf:type owl:Class ;
-                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "An estimation of the global state of the study participant."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "KGH"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-
-### http://purl.org/nidash/nidm##CalgaryDepressionScale
-
-nidm:CalgaryDepressionScale rdf:type owl:Class ;
+<http://www.co-ode.org/ontologies/ont.owl#msa:Behavioral_Interview> rdf:type owl:Class ;
                                                                     
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Scale is a series of questions specifically developed to assess the level of depression in schizophrenia. It has been extensively evaluated in both relapsed and remitted patients and appears sensitive to change."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "Adapted from http://www.ucalgary.ca/cdss/"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
+                                                                    rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment> .
 
 
 
-###  http://purl.org/nidash/nidm#WisconsinCardSortingTest
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment
 
-     nidm:WisconsinCardSortingTest rdf:type owl:Class ;
-                                                             
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Wisconsin Card Sorting Test utilizes four stimulus cards in which each card is printed with one of four symbols. The examinee is provided with two decks of cards and instructed to place each card under one of the four stimulus cards
-that he or she believes would be a correct strategy. The examiner provides feedback on whether the chosen strategy was correct or incorrect. The examiner changes the sorting strategy throughout the test. Some common measurements regarding the examinee=s sorting strategy include: number of categories completed, perseverative responses, perseverative errors, nonperseverative errors, and failure to maintain set."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
+<http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> rdf:type owl:Class ;
+                                                                           
+                                                                           rdfs:subClassOf nidm:DataAcquisition .
 
 
 
-###  http://purl.org/nidash/nidm#CategoryFluencyTest
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Neuroclinical_Test
 
-     nidm:CategoryFluencyTest rdf:type owl:Class ;
+<http://www.co-ode.org/ontologies/ont.owl#msa:Neuroclinical_Test> rdf:type owl:Class ;
                                                                   
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "Category Fluency (aka: Category Instances, Category Naming, Semantic Fluency) is used to assess the oral production of words belonging to three specific categories (e.g., animals, fruits and vegetables) in a given period of time and thereby provides a measure of the integrity of the lexical system."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
+                                                                  rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> .
 
 
 
-###  http://purl.org/nidash/nidm#CombinedAssessment
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Neuropsychological_Test
 
-     nidm:CombinedAssessment rdf:type owl:Class ;
-                                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "An assessment that combines two or more independent assessments."^^xsd:string ;
-                 
-                 dct:source "KGH"^^xsd:string ;
-
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#ContinuousPerformanceTest
-
-     nidm:ContinuousPerformanceTest rdf:type owl:Class ;
+<http://www.co-ode.org/ontologies/ont.owl#msa:Neuropsychological_Test> rdf:type owl:Class ;
                                                                        
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
+                                                                       rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> .
 
-                 obo:IAO_0000115 "In the Continuous Performance Test, stimuli are presented visually, one stimulus at a time, at a rapid, fixed interval. The stimuli change continuously and the subject is instructed to press the response button when the target stimulus appears."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
 
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
 
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment
 
+<http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment> rdf:type owl:Class ;
+                                                                             
+                                                                             rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> .
 
-###  http://purl.org/nidash/nidm#DelayedSemanticVerbalLearningTest
 
-     nidm:DelayedSemanticVerbalLearningTest rdf:type owl:Class ;
-                                                                                 
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
 
-                 obo:IAO_0000115 "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
+###  http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment
 
-                 dct:source "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#DelayedVisualFiguralLearningTest
-
-     nidm:DelayedVisualFiguralLearningTest rdf:type owl:Class ;
-                                                                                
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#EdinburghHandnessTest
-
-     nidm:EdinburghHandnessTest rdf:type owl:Class ;
-                                                                   
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometime referred to as laterality. The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. (source: Wikipedia, 20161128)"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#FacialEmotionDiscriminationTest
-
-     nidm:FacialEmotionDiscriminationTest rdf:type owl:Class ;
-                                                                              
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "In the Facial Emotion Discrimination Test subjects are presented with two pictures of different human faces and asked to identify whether the two faces are displaying the same or different emotional expressions. (source:CMINDS)"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#FagerstromSmokingTest
-
-     nidm:FagerstromSmokingTest rdf:type owl:Class ;
-                                                              
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Fagerström Test for Nicotine Dependence is a standard instrument for assessing the intensity of physical addiction to nicotine. The test was designed to provide an ordinal measure of nicotine dependence related to cigarette smoking. It contains six items that evaluate the quantity of cigarette consumption, the compulsion to use, and dependence. (source: https://cde.drugabuse.gov/instrument/d7c0b0f5-b865-e4de-e040-bb89ad43202b accessed: 20161128)"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#FingerTappingTest
-
-     nidm:FingerTappingTest rdf:type owl:Class ;
-                                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "In this test, the subject is asked to tap a button as fast as possible for ten seconds each with the index finger alternating trials with each hand. Finger tapping is used to assess subtle motor and other cognitive impairments. (source: CMINDS)"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#LetterFluencyTest
-
-     nidm:LetterFluencyTest rdf:type owl:Class ;
-                                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Letter Fluency test is used to evaluate the spontaneous production of words beginning with a given letter within a limited amount of time (60 seconds)."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#LetterNumberSpanTest
-
-     nidm:LetterNumberSpanTest rdf:type owl:Class ;
-                                                              
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "In this test of auditory working memory, sequences of mixed letters and numbers are verbally presented and the subject is required to reorganize them into a progressive or ascending order and then report the reordered sequence to the examiner."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#MazeSolvingTest
-
-     nidm:MazeSolvingTest rdf:type owl:Class ;
-                                                             
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "Using a pen, in the Maze Solving test, subjects attempt to find their way out of a maze by tracing a path while trying to avoid making mistakes such as tracing to a dead end."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#NorthAmericanAdultReadingTest
-
-     nidm:NorthAmericanAdultReadingTest rdf:type owl:Class ;
-                                                 
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "A method of estimating verbal IQ in patients based upon their ability to read and correctly pronounce “irregular” words that do not necessarily follow common or intuitive rules of phonography and orthography."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#PositiveAndNegativeSyndromeScale
-
-     nidm:PositiveAndNegativeSyndromeScale rdf:type owl:Class ;
-                                                 
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "This scale is used for typological  and dimensional assessment.  Based on two established psychiatric  rating systems,  the 30-item PANSS was conceived  as an operationalized,  drug-sensitive instrument that provides  balanced representation  of positive  and negative symptoms and gauges  their relationship  to one another and to global  psychopathology."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "http://schizophreniabulletin.oxfordjournals.org/content/13/2/261.full.pdf+html"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#PremorbidAdjustment
-
-     nidm:PremorbidAdjustment rdf:type owl:Class ;
-                                                                
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Premorbid Adjustment Scale (PAS) is a rating scale which was developed to be applicable in a research setting. It is designed to evaluate the degree of achievement of developmental goals at each of several periods of a subject's life before the onset of schizophrenia."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "http://schizophreniabulletin.oxfordjournals.org/content/8/3/470.abstract"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#SemanticVerbalLearningTest
-
-     nidm:SemanticVerbalLearningTest rdf:type owl:Class ;
-                                                                         
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "A semantic list-learning task in which a 12-word list consisting of high-frequency nouns is presented verbally over 3 immediate-recall trials. The word list contains 3 semantic categories (four words from each semantic category). A delayed recall trial is presented after 20-25 minutes, followed by a recognition discrimination trial."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#SimpsonAngusRatingScale
-
-     nidm:SimpsonAngusRatingScale rdf:type owl:Class ;
-                                                                      
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The SAS is a 10-item instrument used to evaluate the presence and severity of parkinsonian symptomatology. It is the most commonly used rating scale for Parkinsonism in clinical trials over the past 25 years. The ten items focus on rigidity rather than bradykinesia, and do not assess subjective rigidity or slowness. Items are rated for severity on a 0-4 scale, with definitions given for each anchor point."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source nlx:birnlex_3047 ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#SocioeconomicScale
-
-     nidm:SocioeconomicScale rdf:type owl:Class ;
-                                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "TBD"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#SpatialMemorySpan
-
-     nidm:SpatialMemorySpan rdf:type owl:Class ;
-                                                               
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "This test is used to assess an individual’s capacity for holding a visual-spatial sequence in working memory. The test requires the subject to tap a sequence of boxes (attached to a board in a random arrangement) in the same order that they were tapped by the examiner. The sequences increase in length through 8 levels (two trials at each level) until the subject misses both trials at a given level. The test is then repeated with the subject touching the boxes in the reverse order that they were touched by the examiner. Again, the sequences increase in length for two trials each for 8 levels, or until the subject misses both trials at a given level."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#StroopTest
-
-     nidm:StroopTest rdf:type owl:Class ;
-                                                       
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "This test measures the ease with which a person can shift his or her perceptual set to conform to changing demands and suppress a habitual response in favor of an unusual one. The subject is assessed on his or her ability to read color names compared to the ability to read the color of ink that is not congruent with the color name of the printed words."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#SymbolDigitAssociationTest
-
-     nidm:SymbolDigitAssociationTest rdf:type owl:Class ;
-                                                                         
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "In this test, the subject is presented with a table consisting of 9 symbols and 9 corresponding numbers. The symbol and number table remains on the screen throughout the test. The subject is then presented with a symbol and asked to verbally state which number corresponds to that symbol."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#TrailsA
-
-     nidm:TrailsA rdf:type owl:Class ;
-                                                    
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "This is a test of visual scanning, visuomotor tracking and coordination, sequencing, mental flexibility, and speeded attention. Trails A is the first part of the Trail Making Task. In Trails A, the subject is asked to draw lines connecting consecutively numbered circles; and Part B (“Trails B”), in which the subject must alternately connect numbers and letters in sequence."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#TrailsB
-
-     nidm:TrailsB rdf:type owl:Class ;
-                                                    
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "This is a test of visual scanning, visuomotor tracking and coordination, sequencing, mental flexibility, and speeded attention. Trails B is the second part of the Trail Making Task. In Trails B, the subject must alternately connect numbers and letters in sequence."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-###  http://purl.org/nidash/nidm#VisualFiguralLearningTest
-
-     nidm:VisualFiguralLearningTest rdf:type owl:Class ;
-                                                                        
-                 rdfs:subClassOf nidm:ClinicalAssessmentAcquisitionObject ;
-
-                 obo:IAO_0000115 "The Visual Figure Learning Test is used to assess visual (figural) memory functions: immediate recall, rate of acquisition (learning), delayed recall, and recognition. The subject is visually presented with six geometric figures arrayed in a 3 x 2 matrix for 10 seconds, after which the subject must reproduce (draw) as many of the figures as possible, in the same location as they appeared in the matrix. There is no time limit for recall. The subject is then asked to complete two additional learning trials using the same matrix of stimuli. After approximately 20 minutes containing other, mostly verbal assessments, the subject is asked to reproduce the figures again. Following this delayed recall trial, the subject is then presented with a series of 12 figures (the 6 original and 6 distractors) one at a time, and asked to respond “Yes” if the figure was in the original set, or “No” if it was not."^^xsd:string ;
-                 
-                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
-
-                 dct:source "fBIRN CMINDS document"^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000125 .
+<http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> rdf:type owl:Class ;
+                                                                     
+                                                                     rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> .
 
 
 
@@ -1712,22 +1604,6 @@ prov:Entity rdf:type owl:Class ;
 
 
 
-###  http://www.w3.org/ns/prov#ExperimentAuxiliaryFile
-
-prov:ExperimentAuxiliaryFile rdf:type owl:Class ;
-                             
-                             rdfs:subClassOf sio:SIO_000015 .
-
-
-
-###  http://www.w3.org/ns/prov#File
-
-prov:File rdf:type owl:Class ;
-          
-          rdfs:subClassOf sio:SIO_000015 .
-
-
-
 ###  http://www.w3.org/ns/prov#Plan
 
 prov:Plan rdf:type owl:Class .
@@ -1757,6 +1633,18 @@ prov:SoftwareAgent rdf:type owl:Class ;
 #################################################################
 
 
+###  http://purl.org/nidash/nidm#BarnesScale
+
+nidm:BarnesScale rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#CalgaryDepressionScale
+
+nidm:CalgaryDepressionScale rdf:type owl:NamedIndividual .
+
+
+
 ###  http://purl.org/nidash/nidm#Cartesian
 
 nidm:Cartesian rdf:type owl:NamedIndividual ;
@@ -1765,11 +1653,45 @@ nidm:Cartesian rdf:type owl:NamedIndividual ;
 
 
 
-###  http://purl.org/nidash/nidm#Cartestian
+###  http://purl.org/nidash/nidm#CategoryFluencyTest
 
-nidm:Cartestian rdf:type owl:NamedIndividual ;
-                
-                owl:sameAs nidm:Rectilinear .
+nidm:CategoryFluencyTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#ClinicalGlobalImpression
+
+nidm:ClinicalGlobalImpression rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#CombinedAssessment
+
+nidm:CombinedAssessment rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#ContinuousPerformanceTest
+
+nidm:ContinuousPerformanceTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#DelayedSemanticVerbalLearningTest
+
+nidm:DelayedSemanticVerbalLearningTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#DelayedVisualFiguralLearningTest
+
+nidm:DelayedVisualFiguralLearningTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#EdinburghHandnessTest
+
+nidm:EdinburghHandnessTest rdf:type owl:NamedIndividual .
 
 
 
@@ -1778,6 +1700,24 @@ nidm:Cartestian rdf:type owl:NamedIndividual ;
 nidm:ExVivoParticipant rdf:type owl:NamedIndividual ;
                        
                        owl:sameAs qibo:Ex_vivo_subject .
+
+
+
+###  http://purl.org/nidash/nidm#FacialEmotionDiscriminationTest
+
+nidm:FacialEmotionDiscriminationTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#FagerstromSmokingTest
+
+nidm:FagerstromSmokingTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#FingerTappingTest
+
+nidm:FingerTappingTest rdf:type owl:NamedIndividual .
 
 
 
@@ -1802,6 +1742,24 @@ nidm:InVitroParticipant rdf:type owl:NamedIndividual ;
 nidm:InVivoParticipant rdf:type owl:NamedIndividual ;
                        
                        owl:sameAs qibo:In_vivo_subject .
+
+
+
+###  http://purl.org/nidash/nidm#LetterFluencyTest
+
+nidm:LetterFluencyTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#LetterNumberSpanTest
+
+nidm:LetterNumberSpanTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#MazeSolvingTest
+
+nidm:MazeSolvingTest rdf:type owl:NamedIndividual .
 
 
 
@@ -1850,6 +1808,12 @@ nidm:NIDM_0000154 rdf:type nidm:NIDM_0000155 ,
 
 
 
+###  http://purl.org/nidash/nidm#NorthAmericanAdultReadingTest
+
+nidm:NorthAmericanAdultReadingTest rdf:type owl:NamedIndividual .
+
+
+
 ###  http://purl.org/nidash/nidm#PhantomParticipant
 
 nidm:PhantomParticipant rdf:type owl:NamedIndividual ;
@@ -1858,9 +1822,75 @@ nidm:PhantomParticipant rdf:type owl:NamedIndividual ;
 
 
 
+###  http://purl.org/nidash/nidm#PositiveAndNegativeSyndromeScale
+
+nidm:PositiveAndNegativeSyndromeScale rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#PremorbidAdjustment
+
+nidm:PremorbidAdjustment rdf:type owl:NamedIndividual .
+
+
+
 ###  http://purl.org/nidash/nidm#Rectilinear
 
 nidm:Rectilinear rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#SemanticVerbalLearningTest
+
+nidm:SemanticVerbalLearningTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#SocioeconomicScale
+
+nidm:SocioeconomicScale rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#SpatialMemorySpan
+
+nidm:SpatialMemorySpan rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#StroopTest
+
+nidm:StroopTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#SymbolDigitAssociationTest
+
+nidm:SymbolDigitAssociationTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#TrailsA
+
+nidm:TrailsA rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#TrailsB
+
+nidm:TrailsB rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#VisualFiguralLearningTest
+
+nidm:VisualFiguralLearningTest rdf:type owl:NamedIndividual .
+
+
+
+###  http://purl.org/nidash/nidm#WisconsinCardSortingTest
+
+nidm:WisconsinCardSortingTest rdf:type owl:NamedIndividual .
 
 
 
@@ -1903,7 +1933,53 @@ qibo:Phantom_experimental_subject rdf:type owl:NamedIndividual .
 #################################################################
 
 
-nidm:PhantomParticipant rdfs:label "Phantom Participant"^^xsd:string .
+nidm:DelayedVisualFiguralLearningTest dct:source "TBD"^^xsd:string ;
+                                      
+                                      obo:IAO_0000115 "TBD"^^xsd:string ;
+                                      
+                                      obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                      
+                                      obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:LetterFluencyTest obo:IAO_0000115 "The Letter Fluency test is used to evaluate the spontaneous production of words beginning with a given letter within a limited amount of time (60 seconds)."^^xsd:string ;
+                       
+                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                       
+                       dct:source "fBIRN CMINDS document"^^xsd:string ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:ContinuousPerformanceTest obo:IAO_0000115 "In the Continuous Performance Test, stimuli are presented visually, one stimulus at a time, at a rapid, fixed interval. The stimuli change continuously and the subject is instructed to press the response button when the target stimulus appears."^^xsd:string ;
+                               
+                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                               
+                               dct:source "fBIRN CMINDS document"^^xsd:string ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:DelayedSemanticVerbalLearningTest dct:source "TBD"^^xsd:string ;
+                                       
+                                       obo:IAO_0000115 "TBD"^^xsd:string ;
+                                       
+                                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                       
+                                       obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:NorthAmericanAdultReadingTest obo:IAO_0000115 "A method of estimating verbal IQ in patients based upon their ability to read and correctly pronounce “irregular” words that do not necessarily follow common or intuitive rules of phonography and orthography."^^xsd:string ;
+                                   
+                                   obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                   
+                                   dct:source "fBIRN CMINDS document"^^xsd:string ;
+                                   
+                                   obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1917,7 +1993,108 @@ nidm:Rectilinear rdfs:label "Rectilinear"^^xsd:string ;
 
 
 
-nidm:InVitroParticipant rdfs:label "In Vivo Participant"^^xsd:string .
+nidm:CategoryFluencyTest obo:IAO_0000115 "Category Fluency (aka: Category Instances, Category Naming, Semantic Fluency) is used to assess the oral production of words belonging to three specific categories (e.g., animals, fruits and vegetables) in a given period of time and thereby provides a measure of the integrity of the lexical system."^^xsd:string ;
+                         
+                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                         
+                         dct:source "fBIRN CMINDS document"^^xsd:string ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:SocioeconomicScale obo:IAO_0000115 "TBD"^^xsd:string ;
+                        
+                        dct:source "TBD"^^xsd:string ;
+                        
+                        obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:VisualFiguralLearningTest obo:IAO_0000115 "The Visual Figure Learning Test is used to assess visual (figural) memory functions: immediate recall, rate of acquisition (learning), delayed recall, and recognition. The subject is visually presented with six geometric figures arrayed in a 3 x 2 matrix for 10 seconds, after which the subject must reproduce (draw) as many of the figures as possible, in the same location as they appeared in the matrix. There is no time limit for recall. The subject is then asked to complete two additional learning trials using the same matrix of stimuli. After approximately 20 minutes containing other, mostly verbal assessments, the subject is asked to reproduce the figures again. Following this delayed recall trial, the subject is then presented with a series of 12 figures (the 6 original and 6 distractors) one at a time, and asked to respond “Yes” if the figure was in the original set, or “No” if it was not."^^xsd:string ;
+                               
+                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                               
+                               dct:source "fBIRN CMINDS document"^^xsd:string ;
+                               
+                               obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:ImagingStudyParticipant rdfs:label "Imaging Study Participant"^^xsd:string .
+
+
+
+nidm:SymbolDigitAssociationTest obo:IAO_0000115 "In this test, the subject is presented with a table consisting of 9 symbols and 9 corresponding numbers. The symbol and number table remains on the screen throughout the test. The subject is then presented with a symbol and asked to verbally state which number corresponds to that symbol."^^xsd:string ;
+                                
+                                obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                
+                                dct:source "fBIRN CMINDS document"^^xsd:string ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:CombinedAssessment obo:IAO_0000115 "An assessment that combines two or more independent assessments."^^xsd:string ;
+                        
+                        dct:source "KGH"^^xsd:string ;
+                        
+                        obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                        
+                        obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:LetterNumberSpanTest obo:IAO_0000115 "In this test of auditory working memory, sequences of mixed letters and numbers are verbally presented and the subject is required to reorganize them into a progressive or ascending order and then report the reordered sequence to the examiner."^^xsd:string ;
+                          
+                          obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                          
+                          dct:source "fBIRN CMINDS document"^^xsd:string ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:MazeSolvingTest obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                     
+                     obo:IAO_0000115 "Using a pen, in the Maze Solving test, subjects attempt to find their way out of a maze by tracing a path while trying to avoid making mistakes such as tracing to a dead end."^^xsd:string ;
+                     
+                     dct:source "fBIRN CMINDS document"^^xsd:string ;
+                     
+                     obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:WisconsinCardSortingTest obo:IAO_0000115 """The Wisconsin Card Sorting Test utilizes four stimulus cards in which each card is printed with one of four symbols. The examinee is provided with two decks of cards and instructed to place each card under one of the four stimulus cards
+that he or she believes would be a correct strategy. The examiner provides feedback on whether the chosen strategy was correct or incorrect. The examiner changes the sorting strategy throughout the test. Some common measurements regarding the examinee=s sorting strategy include: number of categories completed, perseverative responses, perseverative errors, nonperseverative errors, and failure to maintain set."""^^xsd:string ;
+                              
+                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                              
+                              dct:source "fBIRN CMINDS document"^^xsd:string ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:StroopTest obo:IAO_0000115 "This test measures the ease with which a person can shift his or her perceptual set to conform to changing demands and suppress a habitual response in favor of an unusual one. The subject is assessed on his or her ability to read color names compared to the ability to read the color of ink that is not congruent with the color name of the printed words."^^xsd:string ;
+                
+                obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                
+                dct:source "fBIRN CMINDS document"^^xsd:string ;
+                
+                obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:PremorbidAdjustment obo:IAO_0000115 "The Premorbid Adjustment Scale (PAS) is a rating scale which was developed to be applicable in a research setting. It is designed to evaluate the degree of achievement of developmental goals at each of several periods of a subject's life before the onset of schizophrenia."^^xsd:string ;
+                         
+                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                         
+                         dct:source "http://schizophreniabulletin.oxfordjournals.org/content/8/3/470.abstract"^^xsd:string ;
+                         
+                         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1925,7 +2102,131 @@ nidm:ExVivoParticipant rdfs:label "Ex Vivo Participant"^^xsd:string .
 
 
 
-nidm:ImagingStudyParticipant rdfs:label "Imaging Study Participant"^^xsd:string .
+nidm:InVivoParticipant rdfs:label "In Vivo Subject"^^xsd:string .
+
+
+
+nidm:SemanticVerbalLearningTest obo:IAO_0000115 "A semantic list-learning task in which a 12-word list consisting of high-frequency nouns is presented verbally over 3 immediate-recall trials. The word list contains 3 semantic categories (four words from each semantic category). A delayed recall trial is presented after 20-25 minutes, followed by a recognition discrimination trial."^^xsd:string ;
+                                
+                                obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                
+                                dct:source "fBIRN CMINDS document"^^xsd:string ;
+                                
+                                obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:InVitroParticipant rdfs:label "In Vivo Participant"^^xsd:string .
+
+
+
+nidm:CalgaryDepressionScale dct:source "Adapted from http://www.ucalgary.ca/cdss/"^^xsd:string ;
+                            
+                            obo:IAO_0000115 "The Scale is a series of questions specifically developed to assess the level of depression in schizophrenia. It has been extensively evaluated in both relapsed and remitted patients and appears sensitive to change."^^xsd:string ;
+                            
+                            obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                            
+                            obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:EdinburghHandnessTest obo:IAO_0000115 "The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometime referred to as laterality. The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. (source: Wikipedia, 20161128)"^^xsd:string ;
+                           
+                           obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                           
+                           dct:source "fBIRN CMINDS document"^^xsd:string ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:TrailsA obo:IAO_0000115 "This is a test of visual scanning, visuomotor tracking and coordination, sequencing, mental flexibility, and speeded attention. Trails A is the first part of the Trail Making Task. In Trails A, the subject is asked to draw lines connecting consecutively numbered circles; and Part B (“Trails B”), in which the subject must alternately connect numbers and letters in sequence."^^xsd:string ;
+             
+             obo:IAO_0000116 "To be discussed"^^xsd:string ;
+             
+             dct:source "fBIRN CMINDS document"^^xsd:string ;
+             
+             obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:TrailsB obo:IAO_0000115 "This is a test of visual scanning, visuomotor tracking and coordination, sequencing, mental flexibility, and speeded attention. Trails B is the second part of the Trail Making Task. In Trails B, the subject must alternately connect numbers and letters in sequence."^^xsd:string ;
+             
+             obo:IAO_0000116 "To be discussed"^^xsd:string ;
+             
+             dct:source "fBIRN CMINDS document"^^xsd:string ;
+             
+             obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:BarnesScale obo:IAO_0000115 "TBD"^^xsd:string ;
+                 
+                 dct:source "TBD"^^xsd:string ;
+                 
+                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                 
+                 obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:SpatialMemorySpan obo:IAO_0000115 "This test is used to assess an individual’s capacity for holding a visual-spatial sequence in working memory. The test requires the subject to tap a sequence of boxes (attached to a board in a random arrangement) in the same order that they were tapped by the examiner. The sequences increase in length through 8 levels (two trials at each level) until the subject misses both trials at a given level. The test is then repeated with the subject touching the boxes in the reverse order that they were touched by the examiner. Again, the sequences increase in length for two trials each for 8 levels, or until the subject misses both trials at a given level."^^xsd:string ;
+                       
+                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                       
+                       dct:source "fBIRN CMINDS document"^^xsd:string ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:ClinicalGlobalImpression obo:IAO_0000115 "An estimation of the global state of the study participant."^^xsd:string ;
+                              
+                              dct:source "KGH"^^xsd:string ;
+                              
+                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:FingerTappingTest obo:IAO_0000115 "In this test, the subject is asked to tap a button as fast as possible for ten seconds each with the index finger alternating trials with each hand. Finger tapping is used to assess subtle motor and other cognitive impairments. (source: CMINDS)"^^xsd:string ;
+                       
+                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                       
+                       dct:source "fBIRN CMINDS document"^^xsd:string ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:FagerstromSmokingTest obo:IAO_0000115 "The Fagerström Test for Nicotine Dependence is a standard instrument for assessing the intensity of physical addiction to nicotine. The test was designed to provide an ordinal measure of nicotine dependence related to cigarette smoking. It contains six items that evaluate the quantity of cigarette consumption, the compulsion to use, and dependence. (source: https://cde.drugabuse.gov/instrument/d7c0b0f5-b865-e4de-e040-bb89ad43202b accessed: 20161128)"^^xsd:string ;
+                           
+                           obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                           
+                           dct:source "fBIRN CMINDS document"^^xsd:string ;
+                           
+                           obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:PositiveAndNegativeSyndromeScale obo:IAO_0000115 "This scale is used for typological  and dimensional assessment.  Based on two established psychiatric  rating systems,  the 30-item PANSS was conceived  as an operationalized,  drug-sensitive instrument that provides  balanced representation  of positive  and negative symptoms and gauges  their relationship  to one another and to global  psychopathology."^^xsd:string ;
+                                      
+                                      obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                      
+                                      dct:source "http://schizophreniabulletin.oxfordjournals.org/content/13/2/261.full.pdf+html"^^xsd:string ;
+                                      
+                                      obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:FacialEmotionDiscriminationTest obo:IAO_0000115 "In the Facial Emotion Discrimination Test subjects are presented with two pictures of different human faces and asked to identify whether the two faces are displaying the same or different emotional expressions. (source:CMINDS)"^^xsd:string ;
+                                     
+                                     obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                     
+                                     dct:source "fBIRN CMINDS document"^^xsd:string ;
+                                     
+                                     obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1936,10 +2237,6 @@ nidm:Cartesian rdfs:label "Cartesian"^^xsd:string ;
                obo:IAO_0000116 "To be discussed"^^xsd:string ;
                
                obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
-nidm:InVivoParticipant rdfs:label "In Vivo Subject"^^xsd:string .
 
 
 
