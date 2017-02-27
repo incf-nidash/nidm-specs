@@ -13,7 +13,7 @@
 @prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
 @prefix meta: <http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
-@prefix onli: <file:/home/karl/Work/INCF/nidm/nidm/nidm/nidm-experiment/terms/"http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
+@prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
 @prefix owl2: <http://www.w3.org/2006/12/owl2#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
@@ -386,6 +386,14 @@ nidm:Animal rdf:type owl:Class ;
 
 
 
+### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument
+
+onli:assessment-instrument rdf:type owl:Class ;
+            
+            rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
 ###  http://purl.org/nidash/nidm#AuxilliaryFileCollection
 
 nidm:AuxilliaryFileCollection rdf:type owl:Class ;
@@ -408,7 +416,7 @@ nidm:AuxilliaryFileCollection rdf:type owl:Class ;
 
 nidm:BarnesScale rdf:type owl:Class ;
                  
-                 rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                 rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -440,7 +448,7 @@ nidm:BehavioralDataAcquisition rdf:type owl:Class ;
 
 nidm:CalgaryDepressionScale rdf:type owl:Class ;
                             
-                            rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                            rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -456,7 +464,7 @@ nidm:Cartesian rdf:type owl:Class ;
 
 nidm:CategoryFluencyTest rdf:type owl:Class ;
                          
-                         rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                         rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -464,7 +472,7 @@ nidm:CategoryFluencyTest rdf:type owl:Class ;
 
 nidm:ClinicalGlobalImpression rdf:type owl:Class ;
                               
-                              rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                              rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -480,7 +488,7 @@ nidm:CoInvestigator rdf:type owl:Class ;
 
 nidm:CombinedAssessment rdf:type owl:Class ;
                         
-                        rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                        rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -496,7 +504,7 @@ nidm:Computer rdf:type owl:Class ;
 
 nidm:ContinuousPerformanceTest rdf:type owl:Class ;
                                
-                               rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                               rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -526,11 +534,35 @@ nidm:DataAcquisition rdf:type owl:Class ;
 
 
 
+### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale
+
+onli:scale rdf:type owl:Class ;
+
+	   	     rdfs:subClassOf prov:Entity .
+
+
+
+### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item
+
+onli:scale-item rdf:type owl:Class ;
+
+                      rdfs:subClassOf prov:Entity .
+
+
+
+### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score
+
+onli:score rdf:type owl:Class ;
+
+                      rdfs:subClassOf prov:Entity .
+
+
+
 ###  http://purl.org/nidash/nidm#DelayedSemanticVerbalLearningTest
 
 nidm:DelayedSemanticVerbalLearningTest rdf:type owl:Class ;
                                        
-                                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                       rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -538,7 +570,7 @@ nidm:DelayedSemanticVerbalLearningTest rdf:type owl:Class ;
 
 nidm:DelayedVisualFiguralLearningTest rdf:type owl:Class ;
                                       
-                                      rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                      rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -550,7 +582,7 @@ nidm:DemographicsAcquisitionObject rdf:type owl:Class ;
                                    
                                    rdfs:subClassOf nidm:AcquisitionObject ;
                                    
-                                   obo:IAO_0000115 "A demographics acquisition object is an entity that represents the demographics information acquired from a person in the participant role."^^xsd:string ;
+                                   obo:IAO_0000115 "A demographics acquisition object is an entity that represents the demographics information acquired from a person in the subject role."^^xsd:string ;
                                    
                                    obo:IAO_0000116 "To be discussed"^^xsd:string ;
                                    
@@ -618,7 +650,7 @@ nidm:EchoPlanar rdf:type owl:Class ;
 
 nidm:EdinburghHandnessTest rdf:type owl:Class ;
                            
-                           rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                           rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -654,13 +686,6 @@ nidm:EventBasedObject rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ExVivoParticipant
-
-nidm:ExVivoParticipant rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf nidm:ImagingStudyParticipant .
-
-
 
 ###  http://purl.org/nidash/nidm#ExperimentAuxiliaryFile
 
@@ -682,7 +707,7 @@ nidm:ExperimentAuxiliaryFile rdf:type owl:Class ;
 
 nidm:FacialEmotionDiscriminationTest rdf:type owl:Class ;
                                      
-                                     rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                     rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -690,7 +715,7 @@ nidm:FacialEmotionDiscriminationTest rdf:type owl:Class ;
 
 nidm:FagerstromSmokingTest rdf:type owl:Class ;
                            
-                           rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                           rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -698,7 +723,7 @@ nidm:FagerstromSmokingTest rdf:type owl:Class ;
 
 nidm:FingerTappingTest rdf:type owl:Class ;
                        
-                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                       rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -776,27 +801,40 @@ nidm:ImageObjectUsageType rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ImagingStudyParticipant
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
 
-nidm:ImagingStudyParticipant rdf:type owl:Class ;
+qibo:Imaging_Subject rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Role .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment
+
+onli:instrument-based-assessment rdf:type owl:Class ;
+
+                     rdfs:subClassOf nidm:DataAcquisition .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable
+
+onli:instrument-variable rdf:type owl:Class ;
+
+                     rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
+
+### http://semanticscience.org/resource/SIO_000015
+sio:SIO_000015 rdf:type owl:Class ;
+
+       rdfs:label "information content entity"^^xsd:string ;
                              
-                             rdfs:subClassOf nidm:StudyParticipant .
+       rdfs:subClassOf prov:Entity ;
+                             
+       obo:IAO_0000115 "information content entity is an object that requires some background knowledge or procedure to correctly interpret."@en .
 
-
-
-###  http://purl.org/nidash/nidm#InVitroParticipant
-
-nidm:InVitroParticipant rdf:type owl:Class ;
-                        
-                        rdfs:subClassOf nidm:ImagingStudyParticipant .
-
-
-
-###  http://purl.org/nidash/nidm#InVivoParticipant
-
-nidm:InVivoParticipant rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf nidm:ImagingStudyParticipant .
 
 
 
@@ -836,7 +874,7 @@ nidm:InvestigationProcess rdf:type owl:Class ;
 
 nidm:LetterFluencyTest rdf:type owl:Class ;
                        
-                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                       rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -844,7 +882,18 @@ nidm:LetterFluencyTest rdf:type owl:Class ;
 
 nidm:LetterNumberSpanTest rdf:type owl:Class ;
                           
-                          rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                          rdfs:subClassOf onli:assessment-instrument .
+
+
+
+### http://semanticscience.org/resource/SIO_000004
+sio:SIO_000004 rdf:type owl:Class ;
+
+       rdfs:label "material entity"^^xsd:string ;
+                             
+       rdfs:subClassOf prov:Entity ;
+                             
+       obo:IAO_0000115 "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."@en .
 
 
 
@@ -884,7 +933,7 @@ nidm:MRScanner rdf:type owl:Class ;
 
 nidm:MazeSolvingTest rdf:type owl:Class ;
                      
-                     rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                     rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -928,7 +977,7 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
 
 nidm:NorthAmericanAdultReadingTest rdf:type owl:Class ;
                                    
-                                   rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                   rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1004,19 +1053,12 @@ nidm:ParallelImagingMethod rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Phantom
-
-nidm:Phantom rdf:type owl:Class ;
-             
-             rdfs:subClassOf prov:Agent .
-
-
 
 ###  http://purl.org/nidash/nidm#PositiveAndNegativeSyndromeScale
 
 nidm:PositiveAndNegativeSyndromeScale rdf:type owl:Class ;
                                       
-                                      rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                      rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1024,7 +1066,7 @@ nidm:PositiveAndNegativeSyndromeScale rdf:type owl:Class ;
 
 nidm:PremorbidAdjustment rdf:type owl:Class ;
                          
-                         rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                         rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1142,11 +1184,12 @@ nidm:ResearchAssistant rdf:type owl:Class ;
 
 
 
+
 ###  http://purl.org/nidash/nidm#SemanticVerbalLearningTest
 
 nidm:SemanticVerbalLearningTest rdf:type owl:Class ;
                                 
-                                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1170,7 +1213,7 @@ nidm:SessionAcquisition rdf:type owl:Class ;
 
 nidm:SimpsonAngusRatingScale rdf:type owl:Class ;
                              
-                             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> ;
+                             rdfs:subClassOf onli:assessment-instrument ;
                              
                              obo:IAO_0000115 "The SAS is a 10-item instrument used to evaluate the presence and severity of parkinsonian symptomatology. It is the most commonly used rating scale for Parkinsonism in clinical trials over the past 25 years. The ten items focus on rigidity rather than bradykinesia, and do not assess subjective rigidity or slowness. Items are rated for severity on a 0-4 scale, with definitions given for each anchor point."^^xsd:string ;
                              
@@ -1202,7 +1245,7 @@ nidm:SimultaneousMultisliceMethod rdf:type owl:Class ;
 
 nidm:SocioeconomicScale rdf:type owl:Class ;
                         
-                        rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                        rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1210,7 +1253,7 @@ nidm:SocioeconomicScale rdf:type owl:Class ;
 
 nidm:SpatialMemorySpan rdf:type owl:Class ;
                        
-                       rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                       rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1222,7 +1265,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
                               
-                              obo:IAO_0000115 "A file that contains stimuli (e.g., words, pictures) that are shown to the study participant in an task-based fMRI experiment."^^xsd:string ;
+                              obo:IAO_0000115 "A file that contains stimuli (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
                               
@@ -1234,7 +1277,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
 
 nidm:StroopTest rdf:type owl:Class ;
                 
-                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1276,15 +1319,15 @@ nidm:StudyObject rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#StudyParticipant
+###  http://purl.org/nidash/nidm#StudySubject
 
-nidm:StudyParticipant rdf:type owl:Class ;
+nidm:StudySubject rdf:type owl:Class ;
                       
-                      rdfs:label "Study Participant"^^xsd:string ;
+                      rdfs:label "Study Subject"^^xsd:string ;
                       
                       rdfs:subClassOf prov:Role ;
                       
-                      obo:IAO_0000115 "A study participant is a role for a person that has data collected from them during a study and is enrolled in a project."^^xsd:string ;
+                      obo:IAO_0000115 "A study subject is a role for an Agent (either living or non-living) that has data collected from them during a study."^^xsd:string ;
                       
                       obo:IAO_0000114 obo:IAO_0000428 ;
                       
@@ -1312,7 +1355,7 @@ nidm:SusceptibilityWeightedImagingObject rdf:type owl:Class ;
 
 nidm:SymbolDigitAssociationTest rdf:type owl:Class ;
                                 
-                                rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                                rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1362,7 +1405,7 @@ nidm:TaskBasedObject rdf:type owl:Class ;
 
 nidm:TrailsA rdf:type owl:Class ;
              
-             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+             rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1370,7 +1413,7 @@ nidm:TrailsA rdf:type owl:Class ;
 
 nidm:TrailsB rdf:type owl:Class ;
              
-             rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+             rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1378,7 +1421,7 @@ nidm:TrailsB rdf:type owl:Class ;
 
 nidm:VisualFiguralLearningTest rdf:type owl:Class ;
                                
-                               rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                               rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1386,7 +1429,7 @@ nidm:VisualFiguralLearningTest rdf:type owl:Class ;
 
 nidm:WisconsinCardSortingTest rdf:type owl:Class ;
                               
-                              rdfs:subClassOf <http://purl.org/nidash/nidm#nidm:Assessment_Instrument> .
+                              rdfs:subClassOf onli:assessment-instrument .
 
 
 
@@ -1454,15 +1497,15 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#nidm:Assessment_Instrument
+###  http://purl.org/nidash/nidm#ClinicalAssessmentAcquisitionObject
 
-<http://purl.org/nidash/nidm#nidm:Assessment_Instrument> rdf:type owl:Class ;
+nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
                                                          
                                                          rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
                                                          
                                                          rdfs:subClassOf nidm:AcquisitionObject ;
                                                          
-                                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study participant."^^xsd:string ;
+                                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
                                                          
                                                          obo:IAO_0000116 "To be discussed"^^xsd:string ;
                                                          
@@ -1695,14 +1738,6 @@ nidm:EdinburghHandnessTest rdf:type owl:NamedIndividual .
 
 
 
-###  http://purl.org/nidash/nidm#ExVivoParticipant
-
-nidm:ExVivoParticipant rdf:type owl:NamedIndividual ;
-                       
-                       owl:sameAs qibo:Ex_vivo_subject .
-
-
-
 ###  http://purl.org/nidash/nidm#FacialEmotionDiscriminationTest
 
 nidm:FacialEmotionDiscriminationTest rdf:type owl:NamedIndividual .
@@ -1718,30 +1753,6 @@ nidm:FagerstromSmokingTest rdf:type owl:NamedIndividual .
 ###  http://purl.org/nidash/nidm#FingerTappingTest
 
 nidm:FingerTappingTest rdf:type owl:NamedIndividual .
-
-
-
-###  http://purl.org/nidash/nidm#ImagingStudyParticipant
-
-nidm:ImagingStudyParticipant rdf:type owl:NamedIndividual ;
-                             
-                             owl:sameAs qibo:Imaging_Subject .
-
-
-
-###  http://purl.org/nidash/nidm#InVitroParticipant
-
-nidm:InVitroParticipant rdf:type owl:NamedIndividual ;
-                        
-                        owl:sameAs qibo:In_vitro_subject .
-
-
-
-###  http://purl.org/nidash/nidm#InVivoParticipant
-
-nidm:InVivoParticipant rdf:type owl:NamedIndividual ;
-                       
-                       owl:sameAs qibo:In_vivo_subject .
 
 
 
@@ -1879,6 +1890,14 @@ nidm:TrailsA rdf:type owl:NamedIndividual .
 ###  http://purl.org/nidash/nidm#TrailsB
 
 nidm:TrailsB rdf:type owl:NamedIndividual .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment
+
+onli:variable-assessment rdf:type owl:Class ;
+
+                     rdfs:subClassOf nidm:DataAcquisition .
 
 
 
@@ -2023,7 +2042,7 @@ nidm:VisualFiguralLearningTest obo:IAO_0000115 "The Visual Figure Learning Test 
 
 
 
-nidm:ImagingStudyParticipant rdfs:label "Imaging Study Participant"^^xsd:string .
+nidm:ImagingStudySubject rdfs:label "Imaging Study Subject"^^xsd:string .
 
 
 
@@ -2180,7 +2199,7 @@ nidm:SpatialMemorySpan obo:IAO_0000115 "This test is used to assess an individua
 
 
 
-nidm:ClinicalGlobalImpression obo:IAO_0000115 "An estimation of the global state of the study participant."^^xsd:string ;
+nidm:ClinicalGlobalImpression obo:IAO_0000115 "An estimation of the global state of the study subject."^^xsd:string ;
                               
                               dct:source "KGH"^^xsd:string ;
                               
