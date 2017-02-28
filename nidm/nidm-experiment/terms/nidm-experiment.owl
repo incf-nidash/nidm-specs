@@ -306,6 +306,62 @@ nidm:hasOrganismType rdf:type owl:DatatypeProperty .
 #################################################################
 
 
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument
+
+onli:assessment-instrument rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment
+
+onli:instrument-based-assessment rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf nidm:DataAcquisition .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable
+
+onli:instrument-variable rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale
+
+onli:scale rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Entity .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item
+
+onli:scale-item rdf:type owl:Class ;
+                
+                rdfs:subClassOf prov:Entity .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score
+
+onli:score rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Entity .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment
+
+onli:variable-assessment rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf nidm:DataAcquisition .
+
+
+
 ###  http://purl.org/dc/dcmitype/Image
 
 <http://purl.org/dc/dcmitype/Image> rdfs:subClassOf nidm:ReconstructedAcquisitionObject .
@@ -386,14 +442,6 @@ nidm:Animal rdf:type owl:Class ;
 
 
 
-### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument
-
-onli:assessment-instrument rdf:type owl:Class ;
-            
-            rdfs:subClassOf nidm:AcquisitionObject .
-
-
-
 ###  http://purl.org/nidash/nidm#AuxilliaryFileCollection
 
 nidm:AuxilliaryFileCollection rdf:type owl:Class ;
@@ -468,6 +516,22 @@ nidm:CategoryFluencyTest rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ClinicalAssessmentAcquisitionObject
+
+nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
+                                         
+                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
+                                         
+                                         rdfs:subClassOf nidm:AcquisitionObject ;
+                                         
+                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
+                                         
+                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                         
+                                         obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
 ###  http://purl.org/nidash/nidm#ClinicalGlobalImpression
 
 nidm:ClinicalGlobalImpression rdf:type owl:Class ;
@@ -531,30 +595,6 @@ nidm:DICOMTagCollection rdf:type owl:Class ;
 nidm:DataAcquisition rdf:type owl:Class ;
                      
                      rdfs:subClassOf prov:Activity .
-
-
-
-### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale
-
-onli:scale rdf:type owl:Class ;
-
-	   	     rdfs:subClassOf prov:Entity .
-
-
-
-### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item
-
-onli:scale-item rdf:type owl:Class ;
-
-                      rdfs:subClassOf prov:Entity .
-
-
-
-### http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score
-
-onli:score rdf:type owl:Class ;
-
-                      rdfs:subClassOf prov:Entity .
 
 
 
@@ -686,7 +726,6 @@ nidm:EventBasedObject rdf:type owl:Class ;
 
 
 
-
 ###  http://purl.org/nidash/nidm#ExperimentAuxiliaryFile
 
 nidm:ExperimentAuxiliaryFile rdf:type owl:Class ;
@@ -753,7 +792,9 @@ nidm:Group rdf:type owl:Class ;
 
 ###  http://purl.org/nidash/nidm#Human
 
-nidm:Human rdfs:subClassOf prov:Agent .
+nidm:Human rdf:type owl:Class ;
+           
+           rdfs:subClassOf prov:Agent .
 
 
 
@@ -798,43 +839,6 @@ nidm:ImageObjectUsageType rdf:type owl:Class ;
                           rdfs:label "Image Object Usage Type"^^xsd:string ;
                           
                           rdfs:subClassOf nidm:AcquisitionObjectQuality .
-
-
-
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
-
-qibo:Imaging_Subject rdf:type owl:Class ;
-                     
-                     rdfs:subClassOf prov:Role .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment
-
-onli:instrument-based-assessment rdf:type owl:Class ;
-
-                     rdfs:subClassOf nidm:DataAcquisition .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable
-
-onli:instrument-variable rdf:type owl:Class ;
-
-                     rdfs:subClassOf nidm:AcquisitionObject .
-
-
-
-
-### http://semanticscience.org/resource/SIO_000015
-sio:SIO_000015 rdf:type owl:Class ;
-
-       rdfs:label "information content entity"^^xsd:string ;
-                             
-       rdfs:subClassOf prov:Entity ;
-                             
-       obo:IAO_0000115 "information content entity is an object that requires some background knowledge or procedure to correctly interpret."@en .
-
 
 
 
@@ -883,17 +887,6 @@ nidm:LetterFluencyTest rdf:type owl:Class ;
 nidm:LetterNumberSpanTest rdf:type owl:Class ;
                           
                           rdfs:subClassOf onli:assessment-instrument .
-
-
-
-### http://semanticscience.org/resource/SIO_000004
-sio:SIO_000004 rdf:type owl:Class ;
-
-       rdfs:label "material entity"^^xsd:string ;
-                             
-       rdfs:subClassOf prov:Entity ;
-                             
-       obo:IAO_0000115 "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."@en .
 
 
 
@@ -1053,7 +1046,6 @@ nidm:ParallelImagingMethod rdf:type owl:Class ;
 
 
 
-
 ###  http://purl.org/nidash/nidm#PositiveAndNegativeSyndromeScale
 
 nidm:PositiveAndNegativeSyndromeScale rdf:type owl:Class ;
@@ -1181,7 +1173,6 @@ nidm:ResearchAssistant rdf:type owl:Class ;
                        obo:IAO_0000115 obo:IAO_0000428 ;
                        
                        obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
 
 
 
@@ -1322,16 +1313,16 @@ nidm:StudyObject rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#StudySubject
 
 nidm:StudySubject rdf:type owl:Class ;
-                      
-                      rdfs:label "Study Subject"^^xsd:string ;
-                      
-                      rdfs:subClassOf prov:Role ;
-                      
-                      obo:IAO_0000115 "A study subject is a role for an Agent (either living or non-living) that has data collected from them during a study."^^xsd:string ;
-                      
-                      obo:IAO_0000114 obo:IAO_0000428 ;
-                      
-                      obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+                  
+                  rdfs:label "Study Subject"^^xsd:string ;
+                  
+                  rdfs:subClassOf prov:Role ;
+                  
+                  obo:IAO_0000115 "A study subject is a role for an Agent (either living or non-living) that has data collected from them during a study."^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+                  obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
 
 
 
@@ -1497,22 +1488,6 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ClinicalAssessmentAcquisitionObject
-
-nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
-                                                         
-                                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
-                                                         
-                                                         rdfs:subClassOf nidm:AcquisitionObject ;
-                                                         
-                                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
-                                                         
-                                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                                                         
-                                                         obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 ###  http://scicrunch.org/resolver/SCR_002823
 
 <http://scicrunch.org/resolver/SCR_002823> rdfs:subClassOf sio:SIO_000097 .
@@ -1528,6 +1503,30 @@ nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
 ###  http://semanticscience.org/resource/SIO_000000
 
 sio:SIO_000000 owl:equivalentClass prov:Entity .
+
+
+
+###  http://semanticscience.org/resource/SIO_000004
+
+sio:SIO_000004 rdf:type owl:Class ;
+               
+               rdfs:label "material entity"^^xsd:string ;
+               
+               rdfs:subClassOf prov:Entity ;
+               
+               obo:IAO_0000115 "A material entity is a physical entity that is spatially extended, exists as a whole at any point in time and has mass."@en .
+
+
+
+###  http://semanticscience.org/resource/SIO_000015
+
+sio:SIO_000015 rdf:type owl:Class ;
+               
+               rdfs:label "information content entity"^^xsd:string ;
+               
+               rdfs:subClassOf prov:Entity ;
+               
+               obo:IAO_0000115 "information content entity is an object that requires some background knowledge or procedure to correctly interpret."@en .
 
 
 
@@ -1569,51 +1568,11 @@ sio:SIO_000616 owl:equivalentClass prov:Collection .
 
 
 
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Behavioral_Interview
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
 
-<http://www.co-ode.org/ontologies/ont.owl#msa:Behavioral_Interview> rdf:type owl:Class ;
-                                                                    
-                                                                    rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment> .
-
-
-
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment
-
-<http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> rdf:type owl:Class ;
-                                                                           
-                                                                           rdfs:subClassOf nidm:DataAcquisition .
-
-
-
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Neuroclinical_Test
-
-<http://www.co-ode.org/ontologies/ont.owl#msa:Neuroclinical_Test> rdf:type owl:Class ;
-                                                                  
-                                                                  rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> .
-
-
-
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Neuropsychological_Test
-
-<http://www.co-ode.org/ontologies/ont.owl#msa:Neuropsychological_Test> rdf:type owl:Class ;
-                                                                       
-                                                                       rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> .
-
-
-
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment
-
-<http://www.co-ode.org/ontologies/ont.owl#msa:Questionaire-based_Assessment> rdf:type owl:Class ;
-                                                                             
-                                                                             rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> .
-
-
-
-###  http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment
-
-<http://www.co-ode.org/ontologies/ont.owl#msa:Test-based_Assessment> rdf:type owl:Class ;
-                                                                     
-                                                                     rdfs:subClassOf <http://www.co-ode.org/ontologies/ont.owl#msa:Instrument-based_Assessment> .
+qibo:Imaging_Subject rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Role .
 
 
 
@@ -1893,14 +1852,6 @@ nidm:TrailsB rdf:type owl:NamedIndividual .
 
 
 
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment
-
-onli:variable-assessment rdf:type owl:Class ;
-
-                     rdfs:subClassOf nidm:DataAcquisition .
-
-
-
 ###  http://purl.org/nidash/nidm#VisualFiguralLearningTest
 
 nidm:VisualFiguralLearningTest rdf:type owl:NamedIndividual .
@@ -2042,10 +1993,6 @@ nidm:VisualFiguralLearningTest obo:IAO_0000115 "The Visual Figure Learning Test 
 
 
 
-nidm:ImagingStudySubject rdfs:label "Imaging Study Subject"^^xsd:string .
-
-
-
 nidm:SymbolDigitAssociationTest obo:IAO_0000115 "In this test, the subject is presented with a table consisting of 9 symbols and 9 corresponding numbers. The symbol and number table remains on the screen throughout the test. The subject is then presented with a symbol and asked to verbally state which number corresponds to that symbol."^^xsd:string ;
                                 
                                 obo:IAO_0000116 "To be discussed"^^xsd:string ;
@@ -2176,6 +2123,10 @@ nidm:TrailsB obo:IAO_0000115 "This is a test of visual scanning, visuomotor trac
              dct:source "fBIRN CMINDS document"^^xsd:string ;
              
              obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:ImagingStudySubject rdfs:label "Imaging Study Subject"^^xsd:string .
 
 
 
