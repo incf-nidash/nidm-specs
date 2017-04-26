@@ -94,9 +94,14 @@ class NIDMExperimentCore(object):
             return XSD.long
         elif type(var) is FloatType:
             return XSD.float
-        elif (type(var) is StringType) or (type(var) is UnicodeType):
+        elif (type(var) is StringType):
             return XSD.string
+        elif (type(var) is UnicodeType):
+            return XSD.unicode
+        elif (type(var) is list):
+            return list
         else:
+            print "datatype not found..."
             return None
     def addLiteralAttribute(self, id, pred_namespace, pred_term, object):
         """
@@ -109,6 +114,7 @@ class NIDMExperimentCore(object):
         """
         #figure out datatype of literal
         datatype = self.getDataType(object)
+        #print "datatype = " + datatype
         #figure out if predicate namespace is defined, if not, return predicate namespace error
         try:
             if (datatype != None):
@@ -119,6 +125,30 @@ class NIDMExperimentCore(object):
             print "\nPredicate namespace identifier \"" + str(e).split("'")[1] + "\" not found!"
             print "Use addNamespace method to add namespace before adding literal attribute"
             print "No attribute has been added \n"
+    def addListAttribute(self,id,pred_namespace,pred_term, object):
+        """
+        Adds generic literal to subject [id] and inserts into the graph
+        :param id: subject identifier/URI
+        :param pred_namespace: predicate namespace URL
+        :param pred_term: predidate term to associate with tuple
+        :param object: literal to add as object of tuple
+        :return: none
+        """
+        #convert list to string
+        str1 = ''.join(object)
+        datatype = XSD.string
+        #self.graph.add((id, self.namespaces[pred_namespace][pred_term], rdf.Literal(str1, datatype=datatype)))
+        self.graph.add((id, self.namespaces[pred_namespace][pred_term], rdf.Literal(str1)))
+    def addURIRef(self,id,pred_namespace,pred_term, object):
+        """
+        Adds URIRef attribute and inserts into the graph
+        :param id: subject identifier/URI
+        :param pred_namespace: predicate namespace URL
+        :param pred_term: predidate term to associate with tuple
+        :param object: URIRef to add as object of tuple
+        :return: none
+        """
+        self.graph.add((id, self.namespaces[pred_namespace][pred_term], object))
     def addPerson(self):
         """
         Generic add prov:Person, use addLiteralAttribute to add more descriptive attributes
@@ -143,5 +173,11 @@ class NIDMExperimentCore(object):
         :return: text of serialized graph in Turtle format
         """
         return self.graph.serialize(format='turtle')
+    def serializeJSONLD(self):
+        """
+        Serializes graph to JSON-LD format
+        :return: text of serialized graph in JSON-LD format
+        """
+        return self.graph.serialize(format='json-ld', indent=4)
     def __str__(self):
         return "NIDM-Experiment Base Class"

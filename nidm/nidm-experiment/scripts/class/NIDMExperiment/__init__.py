@@ -1,3 +1,5 @@
 from NIDMExperimentCore import NIDMExperimentCore
-from NIDMExperimentInvestigation import NIDMExperimentInvestigation
+from NIDMExperimentProject import NIDMExperimentProject
+from NIDMExperimentStudy import NIDMExperimentStudy
+from NIDMExperimentAcquisitionObject import NIDMExperimentAcquisitionObject
 
