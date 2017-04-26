@@ -1,5 +1,5 @@
 from NIDMExperimentCore import NIDMExperimentCore
 from NIDMExperimentProject import NIDMExperimentProject
-from NIDMExperimentStudy import NIDMExperimentStudy
+from NIDMExperimentSession import NIDMExperimentSession
 from NIDMExperimentAcquisitionObject import NIDMExperimentAcquisitionObject
 

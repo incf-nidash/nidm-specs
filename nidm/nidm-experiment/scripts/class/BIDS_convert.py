@@ -30,9 +30,9 @@ def main(argv):
     nidm_doc.addLiteralAttribute(proj,"dcat","license", dataset_data['License'])
     nidm_doc.addListAttribute(proj,"ncit","Author",dataset_data['Authors'])
 
-    #create study object
-    study = NIDMExperimentStudy()
-    study_obj = study.addStudy(proj)
+    #create session object
+    study = NIDMExperimentSession()
+    study_obj = study.addSession(proj)
 
 
     #Parse participants.tsv file in BIDS directory and create study and acquisition objects
