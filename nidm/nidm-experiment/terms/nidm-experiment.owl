@@ -16,6 +16,7 @@
 @prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
 @prefix owl2: <http://www.w3.org/2006/12/owl2#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix provone: <http://purl.org/provone#> .
 @prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix snap: <http://www.ifomis.org/bfo/1.1/snap#> .
@@ -387,6 +388,30 @@ nidm:AcquisitionAuxiliaryFile rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#AcquisitionDeviceOperator
 
 nidm:AcquisitionDeviceOperator rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf prov:Role .
+
+
+
+###  http://purl.org/nidash/nidm#AssessmentInstrumentAdministrator
+
+nidm:AssessmentInstrumentAdministrator rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf prov:Role .
+
+
+
+###  http://purl.org/nidash/nidm#DemographicsInstrumentAdministrator
+
+nidm:DemographicsInstrumentAdministrator rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf prov:Role .
+
+
+
+###  http://purl.org/nidash/nidm#InformedConsentAdministrator
+
+nidm:InformedConsentAdministrator rdf:type owl:Class ;
                                
                                rdfs:subClassOf prov:Role .
 
@@ -866,13 +891,6 @@ nidm:Inside-outSpiral rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#InvestigationProcess
-
-nidm:InvestigationProcess rdf:type owl:Class ;
-                          
-                          rdfs:subClassOf prov:Activity .
-
-
 
 ###  http://purl.org/nidash/nidm#LetterFluencyTest
 
@@ -998,6 +1016,22 @@ nidm:Outside-inSpiral rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#PerformedPlan
+
+nidm:PerformedPlan rdf:type owl:Class ;
+
+rdfs:label "Performed Plan"^^xsd:string ;
+
+obo:IAO_0000115 "The actual implementation of a plan during a data acquisition session."^^xsd:string ;
+
+obo:IAO_0000116 "To be discussed"^^xsd:string ;
+
+                     rdfs:subClassOf prov:Plan ;
+                              
+                     obo:IAO_0000114 obo:IAO_0000125 .
+                     
+
+
 ###  http://purl.org/nidash/nidm#PETAcquisitionObject
 
 nidm:PETAcquisitionObject rdf:type owl:Class ;
@@ -1083,6 +1117,14 @@ nidm:PrincipalInvestigator rdf:type owl:Class ;
                            obo:IAO_0000114 obo:IAO_0000428 ;
                            
                            obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
+
+###  http://purl.org/nidash/nidm#Project
+
+nidm:Project rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf prov:Activity .
 
 
 
@@ -1192,9 +1234,11 @@ nidm:SeriesAcquisition rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#SessionAcquisition
+###  http://purl.org/nidash/nidm#Session
 
-nidm:SessionAcquisition rdf:type owl:Class ;
+nidm:Session rdf:type owl:Class ;
+
+                      provone:isPartOf nidm:Project ;
                         
                         rdfs:subClassOf prov:Activity .
 
@@ -1247,6 +1291,22 @@ nidm:SpatialMemorySpan rdf:type owl:Class ;
                        rdfs:subClassOf onli:assessment-instrument .
 
 
+###  http://purl.org/nidash/nidm#SpecifiedPlan
+
+nidm:SpecifiedPlan rdf:type owl:Class ;
+
+rdfs:label "Specified Plan"^^xsd:string ;
+
+obo:IAO_0000115 "The intended implementation of a plan during a data acquisition session."^^xsd:string ;
+
+obo:IAO_0000116 "To be discussed"^^xsd:string ;
+
+                     rdfs:subClassOf prov:Plan ;
+                              
+                     obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
 
 ###  http://purl.org/nidash/nidm#StimulusPresentationFile
 
@@ -1256,7 +1316,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
                               
-                              obo:IAO_0000115 "A file that contains stimuli (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment."^^xsd:string ;
+                              obo:IAO_0000115 "A file that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
                               
@@ -1565,6 +1625,38 @@ sio:SIO_000616 owl:equivalentClass prov:Collection .
 ###  http://uri.neuinfo.org/nif/nifstd/birnlex_2177
 
 <http://uri.neuinfo.org/nif/nifstd/birnlex_2177> rdfs:subClassOf prov:Plan .
+
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#AcquisitionDevice
+
+<http://www.co-ode.org/ontologies/ont.owl#AcquisitionDevice> rdf:type owl:Class ;
+                                                             
+                                                             rdfs:label "Acquisition Device" ;
+                                                             
+                                                             rdfs:subClassOf prov:Entity .
+
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#ModelDesigner
+
+<http://www.co-ode.org/ontologies/ont.owl#ModelDesigner> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Model Designer" ;
+                                                         
+                                                         rdfs:subClassOf prov:Role .
+
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#StimulusFile
+
+<http://www.co-ode.org/ontologies/ont.owl#StimulusFile> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Stimulus File" ;
+                                                        
+                                                        rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
+                                                        
+                                                        prov:definition "The object or action of the object that produces a reaction by the experimental subject." .
 
 
 
