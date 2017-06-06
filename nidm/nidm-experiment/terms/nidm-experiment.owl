@@ -1233,6 +1233,25 @@ nidm:SeriesAcquisition rdf:type owl:Class ;
                        rdfs:subClassOf nidm:MRIDataAcquisition .
 
 
+###  http://purl.org/nidash/nidm#SeriesObject
+
+	nidm:SeriesObject rdf:type owl:Class ;
+
+                 rdfs:label "Series Object"^^xsd:string ;
+
+                 rdfs:subClassOf prov:Entity ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty dct:hasPart ;
+                                   owl:someValuesFrom nidm:AcquisitionObject
+                                 ] ;
+
+                 obo:IAO_0000115 "A series object is an entity that represents one acquisition that take place during the same temporal epoch."^^xsd:string ;
+
+                 obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+                 obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+
+
 
 ###  http://purl.org/nidash/nidm#Session
 
@@ -1350,19 +1369,18 @@ nidm:StudyAcquisition rdf:type owl:Class ;
 
 ###  http://purl.org/nidash/nidm#StudyObject
 
-nidm:StudyObject rdf:type owl:Class ;
+		nidm:StudyObject rdf:type owl:Class ;
                  
-                 rdfs:label "Series Object"^^xsd:string ,
-                            "Study Object"^^xsd:string ;
+
+                rdfs:label  "Study Object"^^xsd:string ;
                  
                  rdfs:subClassOf prov:Entity ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty dct:hasPart ;
                                    owl:someValuesFrom nidm:AcquisitionObject
                                  ] ;
-                 
-                 obo:IAO_0000115 "A series object is an entity that represents one acquisition that take place during the same temporal epoch."^^xsd:string ,
-                                 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
+
+                 obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
                  
                  obo:IAO_0000114 obo:IAO_0000428 ;
                  
