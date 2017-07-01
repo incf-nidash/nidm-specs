@@ -28,7 +28,7 @@ We use the [incf-nidash](https://github.com/incf-nidash/) organisation to foster
 
 Thanks for your interest in contributing to NIDM! 
 
-The NIDM working group is a collaboration supported by the [INCF](http://www.incf.org). We meet every week by videoconference on Mondays at 8:30-9:30am PDT / 11:30am-12:30pm EDT / 4:30-5:30pm BST. The group is always open to new contributors who are interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. There are many ways to contribute. To get started, take a look at [CONTRIBUTING.md](CONTRIBUTING.md).
+The NIDM working group is a collaboration supported by the [INCF](http://www.incf.org). We meet every week by videoconference on Mondays at 8:30-9:30am PDT / 11:30am-12:30pm EDT / 4:30-5:30pm BST. The group is always open to new contributors who are interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. There are many ways to contribute. To get started, take a look at our [issue tracker](https://github.com/incf-nidash/nidm/issues).
 
 ## Other resources
  * [NIDM specifications](http://nidm.nidash.org)
