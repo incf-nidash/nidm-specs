@@ -16,7 +16,9 @@ and is described an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/) 
 
 ## Getting Started
 
-The goal of this repo is to foster collaboration among the developers working on NIDM, other repositories include: 
+How to use NIDM-Results to publish your SPM/FSL fMRI results: http://nidm.nidash.org/getting-started/
+
+The goal of this repository is to foster collaboration among the developers working on NIDM, other repositories include: 
 
  * NIDM-Results: [NIDM-Results python library](https://github.com/incf-nidash/nidmresults), [FSL to NIDM-Results](https://github.com/incf-nidash/nidmresults-fsl), [SPM to NIDM-Results](https://github.com/incf-nidash/nidmresults-spm), [View NIDM-Results in SPM](https://github.com/incf-nidash/nidmresults-spmhtml), [View NIDM-Results in FSL](https://github.com/incf-nidash/nidmresults-fslhtml)
  * NIDM-Experiment: [NIDM-Experiment python library](https://github.com/incf-nidash/pyNIDM)
