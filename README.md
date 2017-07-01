@@ -25,7 +25,7 @@ The goal of this repo is to foster collaboration among the developers working on
 
 Thanks for your interest in contributing to NIDM! 
 
-The NIDM working group is a collaboration supported by the [INCF](http://www.incf.org). We meet every week by videoconference. The group is always open to new contributors who are interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. There are many ways to contribute. To get started, take a look at [CONTRIBUTING.md](CONTRIBUTING.md).
+The NIDM working group is a collaboration supported by the [INCF](http://www.incf.org). We meet every week by videoconference. The group is always open to new contributors who are interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. There are many ways to contribute. To get started, take a look at our [issue tracker](https://github.com/incf-nidash/nidm/issues).
 
 ### Other resources
  * [NIDM specifications](http://nidm.nidash.org)
