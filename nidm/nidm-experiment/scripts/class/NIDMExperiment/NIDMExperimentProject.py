@@ -1,11 +1,12 @@
 import rdflib as rdf
 import os, sys
+from Constants import *
 
 from NIDMExperiment import NIDMExperimentCore
 
 
-class NIDMExperimentInvestigation(NIDMExperimentCore):
-    """Class for NIDM-Experimenent Investigation-Level Objects.
+class NIDMExperimentProject(NIDMExperimentCore):
+    """Class for NIDM-Experimenent Project-Level Objects.
 
     Default constructor uses empty graph with namespaces added from NIDM/Scripts/Constants.py.
     Additional alternate constructors for user-supplied graphs and default namespaces (i.e. from Constants.py)
@@ -38,10 +39,10 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
 
 
     def __str__(self):
-        return "NIDM-Experiment Investigation Class"
+        return "NIDM-Experiment Project Class"
 
-    #adds and investigation entity to graph and stores URI
-    def addInvestigation(self, inv_name, inv_id, inv_description):
+    #adds and project entity to graph and stores URI
+    def addProject(self, inv_name, inv_id, inv_description):
         """
         Add investigation entity to graph
 
@@ -55,14 +56,15 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
         self.uuid = self.getUUID()
         #add to graph
         self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, self.namespaces["dctypes"]["Dataset"]))
-        self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, self.namespaces["nidm"]["Investigation"]))
-        self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, self.namespaces["prov"]["Entity"]))
+        #self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, self.namespaces["nidm"]["Investigation"]))
+        self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, NIDM_PROJECT))
+        self.graph.add((self.namespaces["nidm"][self.uuid], rdf.RDF.type, self.namespaces["prov"]["Activity"]))
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["ncit"]["Identifier"], rdf.Literal(inv_id)))
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["dct"]["title"], rdf.Literal(inv_name, datatype=rdf.XSD.String)))
         self.graph.add((self.namespaces["nidm"][self.uuid], self.namespaces["dct"]["description"], rdf.Literal(inv_description, lang=self.language)))
         return self.namespaces["nidm"][self.uuid]
 
-    def addInvestigationPI(self,inv_id,family_name, given_name):
+    def addProjectPI(self,inv_id,family_name, given_name):
         """
         Add prov:Person with role of PI, use addLiteralAttribute to add more descriptive attributes
         :param inv_id: investigation URI to associate with PI
@@ -77,4 +79,5 @@ class NIDMExperimentInvestigation(NIDMExperimentCore):
         self.graph.add((uuid, self.namespaces["prov"]["hadRole"], self.namespaces["nidm"]["PI"]))
         self.graph.add((uuid, self.namespaces["prov"]["wasAssociatedWith"], inv_id))
         return uuid
+
 

@@ -6,6 +6,7 @@ Create csv file listing preferred prefixes for NIDM terms
 
 import os
 import sys
+import glob
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -25,7 +26,11 @@ def main(owl=None):
         owl = os.path.join(NIDMRESULTSPATH, "terms",
                            "nidm-results.owl")
 
-    owl_reader = OwlReader(owl)
+    owl_imports = glob.glob(
+        os.path.join(os.path.dirname(owl),
+                     os.pardir, os.pardir, "imports", '*.ttl'))
+
+    owl_reader = OwlReader(owl, import_owl_files=owl_imports)
 
     owl_file = os.path.basename(owl)
     if "_" in owl_file:
