@@ -11,3 +11,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+----------------
+
+The README was created based on [Mozilla README template](https://github.com/acabunoc/mozsprint-repo-template).
