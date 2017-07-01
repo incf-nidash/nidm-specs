@@ -6,7 +6,7 @@ A model to represent all neuroimaging data and metadata!
 
 NIDM provides structured representations of neuroimaging data with the goal of supporting data sharing in the neuroimaging community. 
  
-![alt text](http://nidm.nidash.org/specs/img/nidm-layer-cake.png "NIDM components")
+![alt text](https://raw.githubusercontent.com/cmaumet/nidm/contributing/doc/content/specs/img/nidm-layer-cake.png "NIDM components")
 
 NIDM is currently made up of 3 components:
  - **NIDM-Results**: software-agnostic representation of GLM results
