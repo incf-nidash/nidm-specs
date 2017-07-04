@@ -18,8 +18,11 @@ and is described an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/) 
 
 Interested in using NIDM? See the [get started with NIDM](http://nidm.nidash.org/getting-started/) page where you will find how to publish your fMRI results from SPM and FSL & upload to NeuroVault.
 
-We use the [incf-nidash](https://github.com/incf-nidash/) organisation to foster collaboration among the developers working on NIDM. There are multiple repositories, including:
- * NIDM: [current repository](https://github.com/cmaumet/nidm) is the main NIDM repository, used to foster collaboration on the NIDM models 
+We use the [incf-nidash GitHub](https://github.com/incf-nidash/) organisation and [NIDASH shared Google folder](https://drive.google.com/drive/folders/0B-BLof5_SOh8bWR3UDE4WTdELXM?usp=sharing) to foster collaboration among the developers working on NIDM:
+ * NIDM-Results and NIDM-Experiment: [current repository](https://github.com/cmaumet/nidm) is the main NIDM repository, used to foster discussions on the NIDM models. See the [list of issues](https://github.com/incf-nidash/nidm/issues) for open questions/comments. 
+ * NIDM-Workflows: Comment on work-in-progress [NIDM-Worklows specification](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ/edit).
+
+You can also contribute to our ecosystem of tools to read/write/interact with NIDM, including:
  * NIDM-Results: [NIDM-Results python library](https://github.com/incf-nidash/nidmresults), [FSL to NIDM-Results](https://github.com/incf-nidash/nidmresults-fsl), [SPM to NIDM-Results](https://github.com/incf-nidash/nidmresults-spm), [View NIDM-Results in SPM](https://github.com/incf-nidash/nidmresults-spmhtml), [View NIDM-Results in FSL](https://github.com/incf-nidash/nidmresults-fslhtml)
  * NIDM-Experiment: [NIDM-Experiment python library](https://github.com/incf-nidash/pyNIDM)
 
