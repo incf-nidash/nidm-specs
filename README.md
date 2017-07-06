@@ -20,7 +20,7 @@ and is defined as an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/)
 Interested in using NIDM? See the [get started with NIDM](http://nidm.nidash.org/getting-started/) page where you will find how to publish your fMRI results from SPM and FSL & upload to NeuroVault.
 
 We use the [incf-nidash GitHub](https://github.com/incf-nidash/) organisation and [NIDASH shared Google folder](https://drive.google.com/drive/folders/0B-BLof5_SOh8bWR3UDE4WTdELXM?usp=sharing) to foster collaboration among the developers working on NIDM:
- * NIDM-Results and NIDM-Experiment: [current repository](https://github.com/cmaumet/nidm) is used to foster discussions on all NIDM components. See the [list of issues](https://github.com/incf-nidash/nidm/issues) for open questions/comments. 
+ * All components: the [current repository](https://github.com/cmaumet/nidm) is used to foster discussions on all NIDM components. See our issues on [NIDM-Results](https://github.com/incf-nidash/nidm/labels/nidm-results), [NIDM-Workflows](https://github.com/incf-nidash/nidm/labels/nidm-workflows), [NIDM-Experiment](https://github.com/incf-nidash/nidm/labels/nidm-experiment) or the [full list](https://github.com/incf-nidash/nidm/issues) of open questions/comments. 
  * NIDM-Workflows: Comment on work-in-progress [NIDM-Worklows specification](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ/edit).
 
 You can also contribute to our ecosystem of tools to read/write/interact with NIDM, including:
