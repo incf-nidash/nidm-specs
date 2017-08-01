@@ -256,7 +256,7 @@ NIDM_CONTRAST_ESTIMATION = NIDM['NIDM_0000001']
 NIDM_CONTRAST_MAP = NIDM['NIDM_0000002']
 #NIDM-Experiment##############################################################
 NIDM_PROJECT = NIDM["Project"]
-NIDM_STUDY = NIDM["Study"]
+NIDM_SESSION = NIDM["Session"]
 NIDM_ACQUISITION_OBJECT = NIDM["AcquisitionObject"]
 NIDM_PARTICIPANT = NIDM["Participant"]
 
