@@ -26,7 +26,6 @@
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix provone: <http://purl.org/provone#> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
-@base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
   owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
@@ -403,7 +402,7 @@ nidm:AcquisitionDeviceOperator rdf:type owl:Class ;
 
 nidm:AcquisitionMethod rdf:type owl:Class ;
                        
-                       rdfs:label "'Acquisition Method'" ;
+                       rdfs:label "Acquisition Method" ;
                        
                        rdfs:subClassOf nidm:AcquisitionObjectQuality .
 
@@ -433,11 +432,11 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#AnatomicalObject
+###  http://purl.org/nidash/nidm#Anatomical
 
-nidm:AnatomicalObject rdf:type owl:Class ;
+nidm:Anatomical rdf:type owl:Class ;
                       
-                      rdfs:subClassOf nidm:ImageObjectUsageType .
+                      rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -471,7 +470,7 @@ nidm:AuxilliaryFileCollection rdf:type owl:Class ;
                               
                               obo:IAO_0000114 obo:IAO_0000125 ;
                               
-                              prov:wasMemberOf nidm:StudyObject .
+                              prov:wasAssociatedWith nidm:AcquisitionObject .
 
 
 
@@ -519,15 +518,15 @@ nidm:CategoryFluencyTest rdf:type owl:Class ;
 
 nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
                                          
-                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
+                              rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
                                          
-                                         rdfs:subClassOf nidm:AcquisitionObject ;
+                              rdfs:subClassOf nidm:AcquisitionObject ;
                                          
-                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
+                              obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
                                          
-                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
                                          
-                                         obo:IAO_0000114 obo:IAO_0000125 .
+                              obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -636,6 +635,8 @@ nidm:DemographicsAcquisitionObject rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DemographicsDataAcquisition
 
 nidm:DemographicsDataAcquisition rdf:type owl:Class ;
+
+                                 rdfs:label "Demographics Data Acquisition"^^xsd:string ;
                                  
                                  rdfs:subClassOf nidm:DataAcquisition .
 
@@ -644,40 +645,50 @@ nidm:DemographicsDataAcquisition rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DemographicsInstrumentAdministrator
 
 nidm:DemographicsInstrumentAdministrator rdf:type owl:Class ;
+
+                                         rdfs:label "Demographics Instrument Administrator"^^xsd:string ;
                                          
                                          rdfs:subClassOf prov:Role .
 
 
 
-###  http://purl.org/nidash/nidm#DiffusionTensorObject
+###  http://purl.org/nidash/nidm#DiffusionTensor
 
-nidm:DiffusionTensorObject rdf:type owl:Class ;
+nidm:DiffusionTensor rdf:type owl:Class ;
+
+                           rdfs:label "Diffusion Tensor"^^xsd:string ;
                            
-                           rdfs:subClassOf nidm:ImageObjectUsageType .
+                           rdfs:subClassOf nidm:ImageUsageType .
 
 
 
 ###  http://purl.org/nidash/nidm#DiffusionWeighted
 
 nidm:DiffusionWeighted rdf:type owl:Class ;
+
+                       rdfs:label "Diffusion Weighted"^^xsd:string ;
                        
                        rdfs:subClassOf nidm:ImageContrastType .
 
 
 
-###  http://purl.org/nidash/nidm#DynamicContrastEnhancementObject
+###  http://purl.org/nidash/nidm#DynamicContrastEnhancement
 
-nidm:DynamicContrastEnhancementObject rdf:type owl:Class ;
+nidm:DynamicContrastEnhancement rdf:type owl:Class ;
+
+                                      rdfs:label "Dynamic Susceptibility Enhancement"^^xsd:string ;
                                       
-                                      rdfs:subClassOf nidm:ImageObjectUsageType .
+                                      rdfs:subClassOf nidm:ImageUsageType .
 
 
 
-###  http://purl.org/nidash/nidm#DynamicSusceptibilityContrastObject
+###  http://purl.org/nidash/nidm#DynamicSusceptibilityContrast
 
-nidm:DynamicSusceptibilityContrastObject rdf:type owl:Class ;
+nidm:DynamicSusceptibilityContrast rdf:type owl:Class ;
+
+                                     rdfs:label "Dynamic Susceptibility Contrast"^^xsd:string ;
                                          
-                                         rdfs:subClassOf nidm:ImageObjectUsageType .
+                                         rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -729,11 +740,11 @@ nidm:ElectrophysiologyDataAcquisition rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#EventBasedObject
+###  http://purl.org/nidash/nidm#EventBased
 
-nidm:EventBasedObject rdf:type owl:Class ;
+nidm:EventBased rdf:type owl:Class ;
                       
-                      rdfs:subClassOf nidm:FunctionalObject .
+                      rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
@@ -785,11 +796,11 @@ nidm:FlowWeighted rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#FunctionalObject
+###  http://purl.org/nidash/nidm#Functional
 
-nidm:FunctionalObject rdf:type owl:Class ;
+nidm:Functional rdf:type owl:Class ;
                       
-                      rdfs:subClassOf nidm:ImageObjectUsageType .
+                      rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -829,7 +840,7 @@ nidm:ImageAcquisitionMethod rdf:type owl:Class ;
 
 nidm:ImageContrastType rdf:type owl:Class ;
                        
-                       rdfs:label "Image Object Contrast Type"^^xsd:string ;
+                       rdfs:label "Image Contrast Type"^^xsd:string ;
                        
                        rdfs:subClassOf nidm:AcquisitionObjectQuality .
 
@@ -843,11 +854,11 @@ nidm:ImageDataReconstruction rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ImageObjectUsageType
+###  http://purl.org/nidash/nidm#ImageUsageType
 
-nidm:ImageObjectUsageType rdf:type owl:Class ;
+nidm:ImageUsageType rdf:type owl:Class ;
                           
-                          rdfs:label "Image Object Usage Type"^^xsd:string ;
+                          rdfs:label "Image Usage Type"^^xsd:string ;
                           
                           rdfs:subClassOf nidm:AcquisitionObjectQuality .
 
@@ -915,6 +926,8 @@ nidm:LetterNumberSpanTest rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#MEGDataAcquisition
 
 nidm:MEGDataAcquisition rdf:type owl:Class ;
+
+                        rdfs:label "MEG Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
 
@@ -933,6 +946,8 @@ nidm:MEGScanner rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#MRIDataAcquisition
 
 nidm:MRIDataAcquisition rdf:type owl:Class ;
+
+                        rdfs:label "MRI Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
 
@@ -956,19 +971,17 @@ nidm:MazeSolvingTest rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#MixedObject
+###  http://purl.org/nidash/nidm#Mixed
 
-nidm:MixedObject rdf:type owl:Class ;
+nidm:Mixed rdf:type owl:Class ;             
                  
-                 rdfs:subClassOf nidm:FunctionalObject .
+                 rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
 ###  http://purl.org/nidash/nidm#Model
 
 nidm:Model rdf:type owl:Class ;
-           
-           rdfs:label "Model" ;
            
            rdfs:subClassOf prov:Entity .
 
@@ -977,18 +990,10 @@ nidm:Model rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#ModelSpecification
 
 nidm:ModelSpecification rdf:type owl:Class ;
+
+                        rdfs:label "Model Specification" ;
                         
                         rdfs:subClassOf prov:Activity .
-
-
-
-###  http://purl.org/nidash/nidm#NIDM_0000155
-
-nidm:NIDM_0000155 rdf:type owl:Class ;
-                  
-                  rdfs:label "fmri Design Type"^^xsd:string ;
-                  
-                  rdfs:subClassOf nidm:AcquisitionObjectQuality .
 
 
 
@@ -1042,7 +1047,9 @@ nidm:PETAcquisitionObject rdf:type owl:Class ;
 
 ###  http://purl.org/nidash/nidm#PETDataAcquisition
 
-nidm:PETDataAcquisition rdf:type owl:Class ;
+nidm:PETDataAcquisition rdf:type owl:Class ;  
+
+                       rdfs:label "PET Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
 
@@ -1144,29 +1151,12 @@ nidm:Project rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ProjectObject
-
-nidm:ProjectObject rdf:type owl:Class ;
-                   
-                   rdfs:label "Project Object"^^xsd:string ;
-                   
-                   rdfs:subClassOf prov:Entity ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty dct:hasPart ;
-                                     owl:someValuesFrom nidm:StudyObject
-                                   ] ;
-                   
-                   obo:IAO_0000115 "A project object is an entity that represents administrative information about one or more studies. THIS IS VAGUE AND MAY NOT BE NEEDED ANYMORE."^^xsd:string ;
-                   
-                   obo:IAO_0000114 obo:IAO_0000428 ;
-                   
-                   obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
-
-
 
 ###  http://purl.org/nidash/nidm#ProtonDensityWeighted
 
 nidm:ProtonDensityWeighted rdf:type owl:Class ;
+
+                           rdfs:label "Proton Density Weighted" ;
                            
                            rdfs:subClassOf nidm:ImageContrastType .
 
@@ -1250,23 +1240,16 @@ nidm:SeriesAcquisition rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#SeriesObject
+###  http://purl.org/nidash/nidm#Series
 
-nidm:SeriesObject rdf:type owl:Class ;
+nidm:Series rdf:type prov:Activity ;
                   
-                  rdfs:label "Series Object"^^xsd:string ;
+                  rdfs:label "Series"^^xsd:string ;
                   
-                  rdfs:subClassOf prov:Entity ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty dct:hasPart ;
-                                    owl:someValuesFrom nidm:AcquisitionObject
-                                  ] ;
+                  obo:IAO_0000115 "A series is an activity in which data is acquired such that one acquisition takes place during the same temporal epoch."^^xsd:string ;
                   
-                  obo:IAO_0000115 "A series object is an entity that represents one acquisition that take place during the same temporal epoch."^^xsd:string ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000428 ;
-                  
-                  obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+                  obo:IAO_0000114 obo:IAO_0000428 .
+          
 
 
 
@@ -1276,7 +1259,7 @@ nidm:Session rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Activity ;
              
-             obo:IAO_0000115 "'An activity during which data is acquired from a subject by an experimenter.'" ;
+             obo:IAO_0000115 "'An activity during which data is acquired from a subject by an experimenter during a single unbroken time period.'" ;
              
              provone:isPartOf nidm:Project .
 
@@ -1370,11 +1353,11 @@ nidm:StroopTest rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#StructuralObject
+###  http://purl.org/nidash/nidm#Structural
 
-nidm:StructuralObject rdf:type owl:Class ;
+nidm:Structural rdf:type owl:Class ;
                       
-                      rdfs:subClassOf nidm:ImageObjectUsageType .
+                      rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1425,16 +1408,20 @@ nidm:Subject rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#SusceptibilityWeighted
 
 nidm:SusceptibilityWeighted rdf:type owl:Class ;
+
+                            rdfs:label "Susceptibility Weighted"^^xsd:string ;
                             
                             rdfs:subClassOf nidm:ImageContrastType .
 
 
 
-###  http://purl.org/nidash/nidm#SusceptibilityWeightedImagingObject
+###  http://purl.org/nidash/nidm#SusceptibilityWeightedImaging
 
-nidm:SusceptibilityWeightedImagingObject rdf:type owl:Class ;
+nidm:SusceptibilityWeightedImaging rdf:type owl:Class ;
+
+                           rdfs:label "Susceptibility Weighted Imaging"^^xsd:string ;
                                          
-                                         rdfs:subClassOf nidm:ImageObjectUsageType .
+                           rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1480,11 +1467,13 @@ nidm:Task rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#TaskBasedObject
+###  http://purl.org/nidash/nidm#TaskBased
 
-nidm:TaskBasedObject rdf:type owl:Class ;
+nidm:TaskBased rdf:type owl:Class ;
+
+                rdfs:label "Task Based"^^xsd:string ;
                      
-                     rdfs:subClassOf nidm:FunctionalObject .
+                     rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
@@ -1552,9 +1541,9 @@ nidm:bVectorFile rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#fMRIDesignType
+###  http://purl.org/nidash/nidm#NIDM_0000155
 
-nidm:fMRIDesignType rdf:type owl:Class ;
+nidm:NIDM_0000155 rdf:type owl:Class ;
                     
                     rdfs:label "fMRI Design Type"^^xsd:string ;
                     
@@ -1731,8 +1720,8 @@ prov:Collection rdf:type owl:Class ;
 ###  http://www.w3.org/ns/prov#Entity
 
 prov:Entity rdf:type owl:Class ;
-            
-            rdfs:subClassOf prov:Entity .
+
+            rdfs:label "Entity"^^xsd:string .
 
 
 
