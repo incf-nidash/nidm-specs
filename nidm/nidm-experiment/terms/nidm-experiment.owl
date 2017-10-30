@@ -219,6 +219,10 @@ nidm:wasScaleOf rdf:type owl:ObjectProperty .
 prov:hadRole rdf:type owl:ObjectProperty .
 
 
+###  http://www.w3.org/ns/prov#hadMember
+
+prov:hadMember rdf:type owl:ObjectProperty .
+
 
 ###  http://www.w3.org/ns/prov#used
 
@@ -374,15 +378,15 @@ onli:variable-assessment rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#AcquisitionAuxiliaryFile
+###  http://purl.org/nidash/nidm#AuxiliaryFile
 
-nidm:AcquisitionAuxiliaryFile rdf:type owl:Class ;
+nidm:AuxiliaryFile rdf:type owl:Class ;
                               
-                              rdfs:label "Acquisition Auxiliary File"^^xsd:string ;
+                              rdfs:label "Auxiliary File"^^xsd:string ;
                               
                               rdfs:subClassOf sio:SIO_000396 ;
                               
-                              obo:IAO_0000115 "A file, from which parameters used by the acquisition system, are loaded ."^^xsd:string ;
+                              obo:IAO_0000115 "A file that is used either to inform the execution of an experiment (e.g., b-vector file in diffusion-weighted MR imaging) or that is generated during the execution of the experiment (e.g., a stimulus response file in functional MR imaging)."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
                               
@@ -456,15 +460,15 @@ nidm:AssessmentInstrumentAdministrator rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#AuxilliaryFileCollection
+###  http://purl.org/nidash/nidm#AuxiliaryFileCollection
 
-nidm:AuxilliaryFileCollection rdf:type owl:Class ;
+nidm:AuxiliaryFileCollection rdf:type owl:Class ;
                               
-                              rdfs:label "Auxilliary File Collection"^^xsd:string ;
+                              rdfs:label "Auxiliary File Collection"^^xsd:string ;
                               
                               rdfs:subClassOf prov:Collection ;
                               
-                              obo:IAO_0000115 "An entity that contains the URI's of files that are necessary for the processing of the data, behavioral response files in fMRI experiments, b-value and b-vector files in diffusion-weighted MR imaging."^^xsd:string ;
+                              obo:IAO_0000115 "An entity that contains the URI's of files that are necessary for the execution of the experiment or the processing of the data, e.g., behavioral response files in fMRI experiments, b-value and b-vector files in diffusion-weighted MR imaging."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed."^^xsd:string ;
                               
@@ -746,21 +750,6 @@ nidm:EventBased rdf:type owl:Class ;
                       
                       rdfs:subClassOf nidm:NIDM_0000155 .
 
-
-
-###  http://purl.org/nidash/nidm#ExperimentAuxiliaryFile
-
-nidm:ExperimentAuxiliaryFile rdf:type owl:Class ;
-                             
-                             rdfs:label "Experiment Auxiliary File"^^xsd:string ;
-                             
-                             rdfs:subClassOf sio:SIO_000396 ;
-                             
-                             obo:IAO_0000115 "A file that is generated in the course of an experiment that is used either in the acquisition or processing of the data."^^xsd:string ;
-                             
-                             obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                             
-                             obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1335,7 +1324,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
                               rdfs:label "Stimulus Presentation File"^^xsd:string ;
                               
-                              rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
+                              rdfs:subClassOf nidm:AuxiliaryFile ;
                               
                               obo:IAO_0000115 "A file that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment."^^xsd:string ;
                               
@@ -1462,8 +1451,10 @@ nidm:T2Weighted rdf:type owl:Class ;
 nidm:Task rdf:type owl:Class ;
           
           rdfs:label "Task"^^xsd:string ;
+
+          obo:IAO_0000115 "In the field of pyschology, a task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
           
-          rdfs:subClassOf prov:Collection .
+          rdfs:subClassOf prov:Activity .
 
 
 
@@ -1515,7 +1506,7 @@ nidm:bValueFile rdf:type owl:Class ;
                 
                 rdfs:label "b-value File"^^xsd:string ;
                 
-                rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
+                rdfs:subClassOf nidm:AuxiliaryFile ;
                 
                 obo:IAO_0000115 "A file that contains the b values used in a diffusion-weighted MRI experiment."^^xsd:string ;
                 
@@ -1531,7 +1522,7 @@ nidm:bVectorFile rdf:type owl:Class ;
                  
                  rdfs:label "b-vector File"^^xsd:string ;
                  
-                 rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
+                 rdfs:subClassOf nidm:AuxiliaryFile ;
                  
                  obo:IAO_0000115 "A file that contains the b vectors used in a diffusion-weighted MRI experiment."^^xsd:string ;
                  
@@ -1681,7 +1672,7 @@ sio:SIO_000616 owl:equivalentClass prov:Collection .
                                                         
                                                         rdfs:label "Stimulus File" ;
                                                         
-                                                        rdfs:subClassOf nidm:ExperimentAuxiliaryFile ;
+                                                        rdfs:subClassOf nidm:AuxiliaryFile ;
                                                         
                                                         prov:definition "The object or action of the object that produces a reaction by the experimental subject." .
 
@@ -1713,7 +1704,9 @@ prov:Collection rdf:type owl:Class ;
                 
                 rdfs:label "Collection"^^xsd:string ;
                 
-                rdfs:subClassOf prov:Entity .
+                rdfs:subClassOf prov:Entity ;
+
+                obo:IAO_0000115 "A collection is an entity that provides structure to some constituents, which are themselves entities. These constituents are said to be member of the collections."^^xsd:string .
 
 
 
