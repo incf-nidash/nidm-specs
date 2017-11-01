@@ -26,6 +26,7 @@
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix provone: <http://purl.org/provone#> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
   owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
@@ -214,14 +215,16 @@ nidm:wasScaleOf rdf:type owl:ObjectProperty .
 
 
 
+###  http://www.w3.org/ns/prov#hadMember
+
+prov:hadMember rdf:type owl:ObjectProperty .
+
+
+
 ###  http://www.w3.org/ns/prov#hadRole
 
 prov:hadRole rdf:type owl:ObjectProperty .
 
-
-###  http://www.w3.org/ns/prov#hadMember
-
-prov:hadMember rdf:type owl:ObjectProperty .
 
 
 ###  http://www.w3.org/ns/prov#used
@@ -378,25 +381,19 @@ onli:variable-assessment rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#AuxiliaryFile
+###  http://purl.org/nidash/nidm#Acquisition
 
-nidm:AuxiliaryFile rdf:type owl:Class ;
-                              
-                              rdfs:label "Auxiliary File"^^xsd:string ;
-                              
-                              rdfs:subClassOf sio:SIO_000396 ;
-                              
-                              obo:IAO_0000115 "A file that is used either to inform the execution of an experiment (e.g., b-vector file in diffusion-weighted MR imaging) or that is generated during the execution of the experiment (e.g., a stimulus response file in functional MR imaging)."^^xsd:string ;
-                              
-                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                              
-                              obo:IAO_0000114 obo:IAO_0000125 .
+nidm:Acquisition rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf prov:Activity .
 
 
 
 ###  http://purl.org/nidash/nidm#AcquisitionDeviceOperator
 
 nidm:AcquisitionDeviceOperator rdf:type owl:Class ;
+                               
+                               rdfs:label "Acquisition Device Operator" ;
                                
                                rdfs:subClassOf prov:Role .
 
@@ -420,7 +417,7 @@ nidm:AcquisitionObject rdf:type owl:Class ;
                        
                        rdfs:subClassOf prov:Entity ;
                        
-                       obo:IAO_0000115 "An acquisition object is an entity that represents a single stream of data, where multiple acquisitions in the same study take place simultaneously. For example, fMRI and physiological recordings."^^xsd:string ;
+                       obo:IAO_0000115 "An acquisition object is an entity that represents a single stream of data."^^xsd:string ;
                        
                        obo:IAO_0000114 obo:IAO_0000428 ;
                        
@@ -439,8 +436,8 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#Anatomical
 
 nidm:Anatomical rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:ImageUsageType .
+                
+                rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -456,25 +453,43 @@ nidm:Animal rdf:type owl:Class ;
 
 nidm:AssessmentInstrumentAdministrator rdf:type owl:Class ;
                                        
+                                       rdfs:label "Assessment Instrument Administrator" ;
+                                       
                                        rdfs:subClassOf prov:Role .
+
+
+
+###  http://purl.org/nidash/nidm#AuxiliaryFile
+
+nidm:AuxiliaryFile rdf:type owl:Class ;
+                   
+                   rdfs:label "Auxiliary File"^^xsd:string ;
+                   
+                   rdfs:subClassOf sio:SIO_000396 ;
+                   
+                   obo:IAO_0000115 "A file that is used either to inform the execution of an experiment (e.g., b-vector file in diffusion-weighted MR imaging) or that is generated during the execution of the experiment (e.g., a stimulus response file in functional MR imaging)."^^xsd:string ;
+                   
+                   obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
 ###  http://purl.org/nidash/nidm#AuxiliaryFileCollection
 
 nidm:AuxiliaryFileCollection rdf:type owl:Class ;
-                              
-                              rdfs:label "Auxiliary File Collection"^^xsd:string ;
-                              
-                              rdfs:subClassOf prov:Collection ;
-                              
-                              obo:IAO_0000115 "An entity that contains the URI's of files that are necessary for the execution of the experiment or the processing of the data, e.g., behavioral response files in fMRI experiments, b-value and b-vector files in diffusion-weighted MR imaging."^^xsd:string ;
-                              
-                              obo:IAO_0000116 "To be discussed."^^xsd:string ;
-                              
-                              obo:IAO_0000114 obo:IAO_0000125 ;
-                              
-                              prov:wasAssociatedWith nidm:AcquisitionObject .
+                             
+                             rdfs:label "Auxiliary File Collection"^^xsd:string ;
+                             
+                             rdfs:subClassOf prov:Collection ;
+                             
+                             obo:IAO_0000115 "An entity that contains the URI's of files that are necessary for the execution of the experiment or the processing of the data, e.g., behavioral response files in fMRI experiments, b-value and b-vector files in diffusion-weighted MR imaging."^^xsd:string ;
+                             
+                             obo:IAO_0000116 "To be discussed."^^xsd:string ;
+                             
+                             obo:IAO_0000114 obo:IAO_0000125 ;
+                             
+                             prov:wasAssociatedWith nidm:AcquisitionObject .
 
 
 
@@ -522,15 +537,15 @@ nidm:CategoryFluencyTest rdf:type owl:Class ;
 
 nidm:ClinicalAssessmentAcquisitionObject rdf:type owl:Class ;
                                          
-                              rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
+                                         rdfs:label "Clinical Assessment Acquisition Object"^^xsd:string ;
                                          
-                              rdfs:subClassOf nidm:AcquisitionObject ;
+                                         rdfs:subClassOf nidm:AcquisitionObject ;
                                          
-                              obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a study subject."^^xsd:string ;
+                                         obo:IAO_0000115 "A clinical assessment acquisition object is an entity that is collected during a clinical visit by a project subject"^^xsd:string ;
                                          
-                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
                                          
-                              obo:IAO_0000114 obo:IAO_0000125 .
+                                         obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -639,7 +654,7 @@ nidm:DemographicsAcquisitionObject rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DemographicsDataAcquisition
 
 nidm:DemographicsDataAcquisition rdf:type owl:Class ;
-
+                                 
                                  rdfs:label "Demographics Data Acquisition"^^xsd:string ;
                                  
                                  rdfs:subClassOf nidm:DataAcquisition .
@@ -649,7 +664,7 @@ nidm:DemographicsDataAcquisition rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DemographicsInstrumentAdministrator
 
 nidm:DemographicsInstrumentAdministrator rdf:type owl:Class ;
-
+                                         
                                          rdfs:label "Demographics Instrument Administrator"^^xsd:string ;
                                          
                                          rdfs:subClassOf prov:Role .
@@ -659,17 +674,17 @@ nidm:DemographicsInstrumentAdministrator rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DiffusionTensor
 
 nidm:DiffusionTensor rdf:type owl:Class ;
-
-                           rdfs:label "Diffusion Tensor"^^xsd:string ;
-                           
-                           rdfs:subClassOf nidm:ImageUsageType .
+                     
+                     rdfs:label "Diffusion Tensor"^^xsd:string ;
+                     
+                     rdfs:subClassOf nidm:ImageUsageType .
 
 
 
 ###  http://purl.org/nidash/nidm#DiffusionWeighted
 
 nidm:DiffusionWeighted rdf:type owl:Class ;
-
+                       
                        rdfs:label "Diffusion Weighted"^^xsd:string ;
                        
                        rdfs:subClassOf nidm:ImageContrastType .
@@ -679,20 +694,20 @@ nidm:DiffusionWeighted rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#DynamicContrastEnhancement
 
 nidm:DynamicContrastEnhancement rdf:type owl:Class ;
-
-                                      rdfs:label "Dynamic Susceptibility Enhancement"^^xsd:string ;
-                                      
-                                      rdfs:subClassOf nidm:ImageUsageType .
+                                
+                                rdfs:label "Dynamic Susceptibility Enhancement"^^xsd:string ;
+                                
+                                rdfs:subClassOf nidm:ImageUsageType .
 
 
 
 ###  http://purl.org/nidash/nidm#DynamicSusceptibilityContrast
 
 nidm:DynamicSusceptibilityContrast rdf:type owl:Class ;
-
-                                     rdfs:label "Dynamic Susceptibility Contrast"^^xsd:string ;
-                                         
-                                         rdfs:subClassOf nidm:ImageUsageType .
+                                   
+                                   rdfs:label "Dynamic Susceptibility Contrast"^^xsd:string ;
+                                   
+                                   rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -728,7 +743,7 @@ nidm:ElectrophysiologyAcquisitionObject rdf:type owl:Class ;
                                         
                                         rdfs:subClassOf nidm:AcquisitionObject ;
                                         
-                                        obo:IAO_0000115 "An electrophysiology acquisition object represents the data from a specific series or scan during an electrophysiology study."^^xsd:string ;
+                                        obo:IAO_0000115 "An electrophysiology acquisition object represents the data from a specific series or scan acquired during in the course of a project session."^^xsd:string ;
                                         
                                         obo:IAO_0000114 obo:IAO_0000428 ;
                                         
@@ -747,9 +762,8 @@ nidm:ElectrophysiologyDataAcquisition rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#EventBased
 
 nidm:EventBased rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:NIDM_0000155 .
-
+                
+                rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
@@ -788,8 +802,8 @@ nidm:FlowWeighted rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#Functional
 
 nidm:Functional rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:ImageUsageType .
+                
+                rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -846,21 +860,22 @@ nidm:ImageDataReconstruction rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#ImageUsageType
 
 nidm:ImageUsageType rdf:type owl:Class ;
-                          
-                          rdfs:label "Image Usage Type"^^xsd:string ;
-                          
-                          rdfs:subClassOf nidm:AcquisitionObjectQuality .
+                    
+                    rdfs:label "Image Usage Type"^^xsd:string ;
+                    
+                    rdfs:subClassOf nidm:AcquisitionObjectQuality .
+
 
 
 ###  http://purl.org/nidash/nidm#ImagingProtocol
 
-nidm:ImagingProtocol rdf:type owl:Class ;                          
-
-                          rdfs:label "Imaging Protocol"^^xsd:string ;
-
-                          obo:IAO_0000115 "An imaging protocol is a document that contains the types of images to be acquired during a session and the acquisition device parameters that are used in that acquisition."^^xsd:string ;
-
-                          rdfs:subClassOf nidm:PerformedPlan .
+nidm:ImagingProtocol rdf:type owl:Class ;
+                     
+                     rdfs:label "Imaging Protocol"^^xsd:string ;
+                     
+                     rdfs:subClassOf nidm:PerformedPlan ;
+                     
+                     obo:IAO_0000115 "An imaging protocol is a document that contains the types of images to be acquired during a session and the acquisition device parameters that are used in that acquisition."^^xsd:string .
 
 
 
@@ -875,6 +890,8 @@ nidm:InformedConsentAcquisition rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#InformedConsentAdministrator
 
 nidm:InformedConsentAdministrator rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Informed Consent Administrator" ;
                                   
                                   rdfs:subClassOf prov:Role .
 
@@ -915,7 +932,7 @@ nidm:LetterNumberSpanTest rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#MEGDataAcquisition
 
 nidm:MEGDataAcquisition rdf:type owl:Class ;
-
+                        
                         rdfs:label "MEG Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
@@ -935,7 +952,7 @@ nidm:MEGScanner rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#MRIDataAcquisition
 
 nidm:MRIDataAcquisition rdf:type owl:Class ;
-
+                        
                         rdfs:label "MRI Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
@@ -962,9 +979,9 @@ nidm:MazeSolvingTest rdf:type owl:Class ;
 
 ###  http://purl.org/nidash/nidm#Mixed
 
-nidm:Mixed rdf:type owl:Class ;             
-                 
-                 rdfs:subClassOf nidm:NIDM_0000155 .
+nidm:Mixed rdf:type owl:Class ;
+           
+           rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
@@ -979,10 +996,26 @@ nidm:Model rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#ModelSpecification
 
 nidm:ModelSpecification rdf:type owl:Class ;
-
+                        
                         rdfs:label "Model Specification" ;
                         
                         rdfs:subClassOf prov:Activity .
+
+
+
+###  http://purl.org/nidash/nidm#NIDM_0000155
+
+nidm:NIDM_0000155 rdf:type owl:Class ;
+                  
+                  rdfs:label "fMRI Design Type"^^xsd:string ;
+                  
+                  rdfs:subClassOf nidm:AcquisitionObjectQuality ;
+                  
+                  obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299"^^xsd:string ;
+                  
+                  obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design."^^xsd:string ;
+                  
+                  obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -1026,7 +1059,7 @@ nidm:PETAcquisitionObject rdf:type owl:Class ;
                           
                           rdfs:subClassOf nidm:AcquisitionObject ;
                           
-                          obo:IAO_0000115 "An PET acquisition object represents the data from a specific series or scan during an PET study."^^xsd:string ;
+                          obo:IAO_0000115 "An PET acquisition object represents the data from a specific PET acquisition during a project session."^^xsd:string ;
                           
                           obo:IAO_0000114 obo:IAO_0000428 ;
                           
@@ -1036,9 +1069,9 @@ nidm:PETAcquisitionObject rdf:type owl:Class ;
 
 ###  http://purl.org/nidash/nidm#PETDataAcquisition
 
-nidm:PETDataAcquisition rdf:type owl:Class ;  
-
-                       rdfs:label "PET Data Acquisition" ;
+nidm:PETDataAcquisition rdf:type owl:Class ;
+                        
+                        rdfs:label "PET Data Acquisition" ;
                         
                         rdfs:subClassOf nidm:DataAcquisition .
 
@@ -1140,11 +1173,10 @@ nidm:Project rdf:type owl:Class ;
 
 
 
-
 ###  http://purl.org/nidash/nidm#ProtonDensityWeighted
 
 nidm:ProtonDensityWeighted rdf:type owl:Class ;
-
+                           
                            rdfs:label "Proton Density Weighted" ;
                            
                            rdfs:subClassOf nidm:ImageContrastType .
@@ -1205,7 +1237,7 @@ nidm:ResearchAssistant rdf:type owl:Class ;
                        
                        rdfs:subClassOf prov:Role ;
                        
-                       obo:IAO_0000114 "A research assistant is a role for a person that participates in an experiment activity that generates study or acquisition data."^^xsd:string ;
+                       obo:IAO_0000114 "A research assistant is a role for a person that participates in an acquisition activity that generates data."^^xsd:string ;
                        
                        obo:IAO_0000115 obo:IAO_0000428 ;
                        
@@ -1229,19 +1261,6 @@ nidm:SeriesAcquisition rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Series
-
-nidm:Series rdf:type prov:Activity ;
-                  
-                  rdfs:label "Series"^^xsd:string ;
-                  
-                  obo:IAO_0000115 "A series is an activity in which data is acquired such that one acquisition takes place during the same temporal epoch."^^xsd:string ;
-                  
-                  obo:IAO_0000114 obo:IAO_0000428 .
-          
-
-
-
 ###  http://purl.org/nidash/nidm#Session
 
 nidm:Session rdf:type owl:Class ;
@@ -1251,6 +1270,26 @@ nidm:Session rdf:type owl:Class ;
              obo:IAO_0000115 "'An activity during which data is acquired from a subject by an experimenter during a single unbroken time period.'" ;
              
              provone:isPartOf nidm:Project .
+
+
+
+###  http://purl.org/nidash/nidm#SessionObject
+
+nidm:SessionObject rdf:type owl:Class ;
+                   
+                   rdfs:label "Session Object"^^xsd:string ;
+                   
+                   rdfs:subClassOf prov:Entity ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty dct:hasPart ;
+                                     owl:someValuesFrom nidm:AcquisitionObject
+                                   ] ;
+                   
+                   obo:IAO_0000115 "A session object is an entity that represents one or more acquisitions that take place during the same temporal epoch (session)."^^xsd:string ;
+                   
+                   obo:IAO_0000114 obo:IAO_0000428 ;
+                   
+                   obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
 
 
 
@@ -1326,7 +1365,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
                               rdfs:subClassOf nidm:AuxiliaryFile ;
                               
-                              obo:IAO_0000115 "A file that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study subject in an task-based fMRI experiment."^^xsd:string ;
+                              obo:IAO_0000115 "A file that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the subject in an task-based fMRI experiment."^^xsd:string ;
                               
                               obo:IAO_0000116 "To be discussed"^^xsd:string ;
                               
@@ -1345,36 +1384,8 @@ nidm:StroopTest rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#Structural
 
 nidm:Structural rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:ImageUsageType .
-
-
-
-###  http://purl.org/nidash/nidm#StudyAcquisition
-
-nidm:StudyAcquisition rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf nidm:MRIDataAcquisition .
-
-
-
-###  http://purl.org/nidash/nidm#StudyObject
-
-nidm:StudyObject rdf:type owl:Class ;
-                 
-                 rdfs:label "Study Object"^^xsd:string ;
-                 
-                 rdfs:subClassOf prov:Entity ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty dct:hasPart ;
-                                   owl:someValuesFrom nidm:AcquisitionObject
-                                 ] ;
-                 
-                 obo:IAO_0000115 "A study object is an entity that represents one or more acquisitions that take place during the same temporal epoch."^^xsd:string ;
-                 
-                 obo:IAO_0000114 obo:IAO_0000428 ;
-                 
-                 obo:IAO_0000117 <http://purl.org/nicholsn/card.ttl> .
+                
+                rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1386,7 +1397,7 @@ nidm:Subject rdf:type owl:Class ;
              
              rdfs:subClassOf prov:Role ;
              
-             obo:IAO_0000115 "A study subject is a role for an Agent (either living or non-living) that has data collected from them during a study."^^xsd:string ;
+             obo:IAO_0000115 "A subject is a role for an Agent (either living or non-living) that participates in a data acquisition session by having data collected from them."^^xsd:string ;
              
              obo:IAO_0000117 "NIDM" ;
              
@@ -1397,7 +1408,7 @@ nidm:Subject rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#SusceptibilityWeighted
 
 nidm:SusceptibilityWeighted rdf:type owl:Class ;
-
+                            
                             rdfs:label "Susceptibility Weighted"^^xsd:string ;
                             
                             rdfs:subClassOf nidm:ImageContrastType .
@@ -1407,10 +1418,10 @@ nidm:SusceptibilityWeighted rdf:type owl:Class ;
 ###  http://purl.org/nidash/nidm#SusceptibilityWeightedImaging
 
 nidm:SusceptibilityWeightedImaging rdf:type owl:Class ;
-
-                           rdfs:label "Susceptibility Weighted Imaging"^^xsd:string ;
-                                         
-                           rdfs:subClassOf nidm:ImageUsageType .
+                                   
+                                   rdfs:label "Susceptibility Weighted Imaging"^^xsd:string ;
+                                   
+                                   rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1451,20 +1462,20 @@ nidm:T2Weighted rdf:type owl:Class ;
 nidm:Task rdf:type owl:Class ;
           
           rdfs:label "Task"^^xsd:string ;
-
-          obo:IAO_0000115 "In the field of pyschology, a task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
           
-          rdfs:subClassOf prov:Activity .
+          rdfs:subClassOf prov:Activity ;
+          
+          obo:IAO_0000115 "In the field of pyschology, a task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string .
 
 
 
 ###  http://purl.org/nidash/nidm#TaskBased
 
 nidm:TaskBased rdf:type owl:Class ;
-
-                rdfs:label "Task Based"^^xsd:string ;
-                     
-                     rdfs:subClassOf nidm:NIDM_0000155 .
+               
+               rdfs:label "Task Based"^^xsd:string ;
+               
+               rdfs:subClassOf nidm:NIDM_0000155 .
 
 
 
@@ -1532,22 +1543,6 @@ nidm:bVectorFile rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#NIDM_0000155
-
-nidm:NIDM_0000155 rdf:type owl:Class ;
-                    
-                    rdfs:label "fMRI Design Type"^^xsd:string ;
-                    
-                    rdfs:subClassOf nidm:AcquisitionObjectQuality ;
-                    
-                    obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299"^^xsd:string ;
-                    
-                    obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design."^^xsd:string ;
-                    
-                    obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 ###  http://purl.org/nidash/nidm#k-spaceTraversalScheme
 
 nidm:k-spaceTraversalScheme rdf:type owl:Class ;
@@ -1566,13 +1561,17 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
 
 ###  http://scicrunch.org/resolver/SCR_002823
 
-<http://scicrunch.org/resolver/SCR_002823> rdfs:subClassOf sio:SIO_000097 .
+<http://scicrunch.org/resolver/SCR_002823> rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf sio:SIO_000097 .
 
 
 
 ###  http://scicrunch.org/resolver/SCR_007037
 
-<http://scicrunch.org/resolver/SCR_007037> rdfs:subClassOf sio:SIO_000097 .
+<http://scicrunch.org/resolver/SCR_007037> rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf sio:SIO_000097 .
 
 
 
@@ -1620,27 +1619,27 @@ sio:SIO_000076 owl:equivalentClass prov:Plan ;
 
 
 
-###  http://semanticscience.org/resource/SIO_000089
-
-sio:SIO_000089 rdfs:subClassOf prov:Collection .
-
-
-
 ###  http://semanticscience.org/resource/SIO_000616
 
 sio:SIO_000616 owl:equivalentClass prov:Collection .
 
 
 
+###  http://semanticscience.org/resource/SIO_001068
+
+sio:SIO_001068 rdfs:subClassOf nidm:Group .
+
+
+
+###  http://semanticscience.org/resource/SIO_001069
+
+sio:SIO_001069 rdfs:subClassOf nidm:Group .
+
+
+
 ###  http://uri.neuinfo.org/nif/nifstd/birnlex_2094
 
 <http://uri.neuinfo.org/nif/nifstd/birnlex_2094> rdfs:subClassOf sio:SIO_001236 .
-
-
-
-###  http://uri.neuinfo.org/nif/nifstd/birnlex_2177
-
-<http://uri.neuinfo.org/nif/nifstd/birnlex_2177> rdfs:subClassOf prov:Plan .
 
 
 
@@ -1678,11 +1677,27 @@ sio:SIO_000616 owl:equivalentClass prov:Collection .
 
 
 
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#Ex_vivo_subject
 
-qibo:Imaging_Subject rdf:type owl:Class ;
-                     
-                     rdfs:subClassOf prov:Role .
+qibo:Ex_vivo_subject rdfs:subClassOf nidm:Subject .
+
+
+
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vitro_subject
+
+qibo:In_vitro_subject rdfs:subClassOf nidm:Subject .
+
+
+
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vivo_subject
+
+qibo:In_vivo_subject rdfs:subClassOf nidm:Subject .
+
+
+
+###  http://www.owl-ontologies.com/Ontology1298855822.owl#Phantom_experimental_subject
+
+qibo:Phantom_experimental_subject rdfs:subClassOf nidm:Subject .
 
 
 
@@ -1704,8 +1719,8 @@ prov:Collection rdf:type owl:Class ;
                 
                 rdfs:label "Collection"^^xsd:string ;
                 
-                rdfs:subClassOf prov:Entity ;
-
+                rdfs:subClassOf sio:SIO_000289 ;
+                
                 obo:IAO_0000115 "A collection is an entity that provides structure to some constituents, which are themselves entities. These constituents are said to be member of the collections."^^xsd:string .
 
 
@@ -1713,7 +1728,7 @@ prov:Collection rdf:type owl:Class ;
 ###  http://www.w3.org/ns/prov#Entity
 
 prov:Entity rdf:type owl:Class ;
-
+            
             rdfs:label "Entity"^^xsd:string .
 
 
@@ -1928,6 +1943,19 @@ nidm:SemanticVerbalLearningTest rdf:type owl:NamedIndividual .
 
 
 
+###  http://purl.org/nidash/nidm#Series
+
+nidm:Series rdf:type owl:NamedIndividual ,
+                     prov:Activity ;
+            
+            rdfs:label "Series"^^xsd:string ;
+            
+            obo:IAO_0000115 "A series is an activity in which data is acquired such that one acquisition takes place during the same temporal epoch."^^xsd:string ;
+            
+            obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#SocioeconomicScale
 
 nidm:SocioeconomicScale rdf:type owl:NamedIndividual .
@@ -1982,12 +2010,6 @@ qibo:Ex_vivo_subject rdf:type owl:NamedIndividual .
 
 
 
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#Imaging_Subject
-
-qibo:Imaging_Subject rdf:type owl:NamedIndividual .
-
-
-
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vitro_subject
 
 qibo:In_vitro_subject rdf:type owl:NamedIndividual .
@@ -2015,16 +2037,6 @@ qibo:Phantom_experimental_subject rdf:type owl:NamedIndividual .
 #################################################################
 
 
-nidm:LetterFluencyTest obo:IAO_0000115 "The Letter Fluency test is used to evaluate the spontaneous production of words beginning with a given letter within a limited amount of time (60 seconds)."^^xsd:string ;
-                       
-                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                       
-                       dct:source "fBIRN CMINDS document"^^xsd:string ;
-                       
-                       obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 nidm:DelayedVisualFiguralLearningTest dct:source "TBD"^^xsd:string ;
                                       
                                       obo:IAO_0000115 "TBD"^^xsd:string ;
@@ -2032,6 +2044,16 @@ nidm:DelayedVisualFiguralLearningTest dct:source "TBD"^^xsd:string ;
                                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
                                       
                                       obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:LetterFluencyTest obo:IAO_0000115 "The Letter Fluency test is used to evaluate the spontaneous production of words beginning with a given letter within a limited amount of time (60 seconds)."^^xsd:string ;
+                       
+                       obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                       
+                       dct:source "fBIRN CMINDS document"^^xsd:string ;
+                       
+                       obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2115,16 +2137,6 @@ nidm:SymbolDigitAssociationTest obo:IAO_0000115 "In this test, the subject is pr
 
 
 
-nidm:LetterNumberSpanTest obo:IAO_0000115 "In this test of auditory working memory, sequences of mixed letters and numbers are verbally presented and the subject is required to reorganize them into a progressive or ascending order and then report the reordered sequence to the examiner."^^xsd:string ;
-                          
-                          obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                          
-                          dct:source "fBIRN CMINDS document"^^xsd:string ;
-                          
-                          obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 nidm:CombinedAssessment obo:IAO_0000115 "An assessment that combines two or more independent assessments."^^xsd:string ;
                         
                         dct:source "KGH"^^xsd:string ;
@@ -2132,6 +2144,16 @@ nidm:CombinedAssessment obo:IAO_0000115 "An assessment that combines two or more
                         obo:IAO_0000116 "To be discussed"^^xsd:string ;
                         
                         obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:LetterNumberSpanTest obo:IAO_0000115 "In this test of auditory working memory, sequences of mixed letters and numbers are verbally presented and the subject is required to reorganize them into a progressive or ascending order and then report the reordered sequence to the examiner."^^xsd:string ;
+                          
+                          obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                          
+                          dct:source "fBIRN CMINDS document"^^xsd:string ;
+                          
+                          obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2238,10 +2260,6 @@ nidm:TrailsB obo:IAO_0000115 "This is a test of visual scanning, visuomotor trac
 
 
 
-nidm:ImagingStudySubject rdfs:label "Imaging Study Subject"^^xsd:string .
-
-
-
 nidm:BarnesScale obo:IAO_0000115 "TBD"^^xsd:string ;
                  
                  dct:source "TBD"^^xsd:string ;
@@ -2249,6 +2267,16 @@ nidm:BarnesScale obo:IAO_0000115 "TBD"^^xsd:string ;
                  obo:IAO_0000116 "To be discussed"^^xsd:string ;
                  
                  obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:ClinicalGlobalImpression obo:IAO_0000115 "An estimation of the global state of the subject."^^xsd:string ;
+                              
+                              dct:source "KGH"^^xsd:string ;
+                              
+                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                              
+                              obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
@@ -2262,16 +2290,6 @@ nidm:SpatialMemorySpan obo:IAO_0000115 "This test is used to assess an individua
 
 
 
-nidm:ClinicalGlobalImpression obo:IAO_0000115 "An estimation of the global state of the study subject."^^xsd:string ;
-                              
-                              dct:source "KGH"^^xsd:string ;
-                              
-                              obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                              
-                              obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 nidm:FingerTappingTest obo:IAO_0000115 "In this test, the subject is asked to tap a button as fast as possible for ten seconds each with the index finger alternating trials with each hand. Finger tapping is used to assess subtle motor and other cognitive impairments. (source: CMINDS)"^^xsd:string ;
                        
                        obo:IAO_0000116 "To be discussed"^^xsd:string ;
@@ -2282,16 +2300,6 @@ nidm:FingerTappingTest obo:IAO_0000115 "In this test, the subject is asked to ta
 
 
 
-nidm:PositiveAndNegativeSyndromeScale obo:IAO_0000115 "This scale is used for typological  and dimensional assessment.  Based on two established psychiatric  rating systems,  the 30-item PANSS was conceived  as an operationalized,  drug-sensitive instrument that provides  balanced representation  of positive  and negative symptoms and gauges  their relationship  to one another and to global  psychopathology."^^xsd:string ;
-                                      
-                                      obo:IAO_0000116 "To be discussed"^^xsd:string ;
-                                      
-                                      dct:source "http://schizophreniabulletin.oxfordjournals.org/content/13/2/261.full.pdf+html"^^xsd:string ;
-                                      
-                                      obo:IAO_0000114 obo:IAO_0000125 .
-
-
-
 nidm:FagerstromSmokingTest obo:IAO_0000115 "The Fagerström Test for Nicotine Dependence is a standard instrument for assessing the intensity of physical addiction to nicotine. The test was designed to provide an ordinal measure of nicotine dependence related to cigarette smoking. It contains six items that evaluate the quantity of cigarette consumption, the compulsion to use, and dependence. (source: https://cde.drugabuse.gov/instrument/d7c0b0f5-b865-e4de-e040-bb89ad43202b accessed: 20161128)"^^xsd:string ;
                            
                            obo:IAO_0000116 "To be discussed"^^xsd:string ;
@@ -2299,6 +2307,16 @@ nidm:FagerstromSmokingTest obo:IAO_0000115 "The Fagerström Test for Nicotine De
                            dct:source "fBIRN CMINDS document"^^xsd:string ;
                            
                            obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+nidm:PositiveAndNegativeSyndromeScale obo:IAO_0000115 "This scale is used for typological  and dimensional assessment.  Based on two established psychiatric  rating systems,  the 30-item PANSS was conceived  as an operationalized,  drug-sensitive instrument that provides  balanced representation  of positive  and negative symptoms and gauges  their relationship  to one another and to global  psychopathology."^^xsd:string ;
+                                      
+                                      obo:IAO_0000116 "To be discussed"^^xsd:string ;
+                                      
+                                      dct:source "http://schizophreniabulletin.oxfordjournals.org/content/13/2/261.full.pdf+html"^^xsd:string ;
+                                      
+                                      obo:IAO_0000114 obo:IAO_0000125 .
 
 
 
