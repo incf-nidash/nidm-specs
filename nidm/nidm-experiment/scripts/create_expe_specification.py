@@ -59,9 +59,9 @@ def main():
         NIDM['PrincipalInvestigator'], NIDM['Project'],
         NIDM['Protocol'], NIDM['ResearchAssistant'], 
         NIDM['SpecifiedPlan'], NIDM['Subject']]
-    subcomponents["Acquisition"] = [NIDM['AcquisitionMethod'],NIDM['AcquisitionModality']
+    subcomponents["Acquisition"] = [NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
         NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'], NIDM['AssessmentInstrumentAdministrator'],
-        NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'] 
+        NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'], 
         NIDM['BehavioralDataAcquisition'],NIDM['ClinicalAssessmentAcquisitionObject'], NIDM['Computer'],
         NIDM['DICOMTagCollection'],NIDM['DataAcquisitionDeviceOperator'], NIDM['DemographicsDataAcquisition'],
         NIDM['DemographicsInstrumentAdministrator'], NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
@@ -74,7 +74,7 @@ def main():
         NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'],
         NIDM['DynamicContrastEnhancement'], NIDM['DynamicSusceptibilityContrast'],
         NIDM['EchoPlanar'], NIDM['Electrocorticography'], NIDM['Electroencephalography'],
-        NIDM['EventBased'], NIDM['ExtracellularElectrophysiologyRecording'] 
+        NIDM['EventBased'], NIDM['ExtracellularElectrophysiologyRecording'], 
         NIDM['FieldPotential'],NIDM['FingerTappingTest'], NIDM['FlowWeighted'],
         NIDM['Functional'],NIDM['Inside-outSpiral'], NIDM['IntracellularElectrophysiologyRecording'],
         NIDM['MagneticResonanceImaging'], NIDM['Mixed'], NIDM['MultiUnitReccording'],
@@ -94,7 +94,7 @@ def main():
         NIDM['FacialEmotionDiscriminationTest'], NIDM['FagerstromSmokingTest'], NIDM['LetterFluencyTest'],
         NIDM['LetterNumberSpanTest'], NIDM['MazeSolvingTest'], NIDM['NorthAmericanAdultReadingTest'], 
         NIDM['PositiveAndNegativeSyndromeScale'],NIDM['PremorbidAdjustment'], NIDM['SemanticVerbalLearningTest'],
-        NIDM['SimpsonAngusRatingScale'],NIDM['SocioeconomicScal'], NIDM['SpatialMemorySpan'], 
+        NIDM['SimpsonAngusRatingScale'],NIDM['SocioeconomicScale'], NIDM['SpatialMemorySpan'], 
         NIDM['StroopTest'], NIDM['SymbolDigitAssociationTest'], NIDM['TrailsA'], NIDM['TrailsB'], 
         NIDM['VisualFiguralLearningTest'], NIDM['WisconsinCardSortingTest'] ]
     subcomponents["Other"] = []
