@@ -3,6 +3,8 @@
 
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
 @copyright: University of Warwick 2014
+
+@author: Karl G. Helmer <helmer@nmr.mgh.harvard.edu>
 '''
 
 import logging
@@ -51,19 +53,50 @@ def main():
 
     subcomponents =  collections.OrderedDict()
 
-    subcomponents["Investigation"] = [NIDM['InvestigationCollection'],
-        NIDM['InvestigationProcess'],NIDM['Model'],
-        NIDM['ModelSpecification'],NIDM['Group'],
-        NIDM['Contrast'], NIDM['Task'],NIDM['Condition']]
-    subcomponents["Session"] = [NIDM['DataCollection'],NIDM['SessionAcquisition']]
-    subcomponents["Serie"] = [NIDM['AnatomyImagingAcquisition'],
-        NIDM['TaskBasedImagingAcquisition'], NIDM['AnatomicalScan'],
-        NIDM['FunctionalScan'], NIDM['BehaviorAndConditionOnsets'],
-        NIDM['MRScanner'], NIDM['PresentationSoftware']]
-
-    subcomponents["Project"] = [NIDM['ProjectObject']]
-    subcomponents["Study"] = [NIDM['StudyObject']]
-    subcomponents["Acquisition"] = [NIDM['AcquisitionObject']]
+    subcomponents["Project"] = [NIDM['CoInvestigator'],
+        NIDM['Group'],NIDM['Model'], NIDM['ModelDesigner'],
+        NIDM['ModelSpecification'],NIDM['OrganismType'],
+        NIDM['PrincipalInvestigator'], NIDM['Project'],
+        NIDM['Protocol'], NIDM['ResearchAssistant'], 
+        NIDM['SpecifiedPlan'], NIDM['Subject']]
+    subcomponents["Acquisition"] = [NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
+        NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'], NIDM['AssessmentInstrumentAdministrator'],
+        NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
+        NIDM['BehavioralDataAcquisition'],NIDM['ClinicalAssessmentAcquisitionObject'], NIDM['Computer'],
+        NIDM['DICOMTagCollection'],NIDM['DataAcquisitionDeviceOperator'], NIDM['DemographicsDataAcquisition'],
+        NIDM['DemographicsInstrumentAdministrator'], NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
+        NIDM['ImageUsageType'], NIDM['InformedConsentAcquisition'], NIDM['InformedConsentAdministrator'],
+        NIDM['PerformedPlan'], NIDM['PresentationSoftware'],  NIDM['PulseSequence'],
+        NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Session'],
+        NIDM['SessionObject'] ]
+    subcomponents["Modality"] = [NIDM['Amperometry'], NIDM['Anatomical'],
+        NIDM['Cartesian'],NIDM['ComputedTomography'], NIDM['CurrentClamp'],
+        NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'],
+        NIDM['DynamicContrastEnhancement'], NIDM['DynamicSusceptibilityContrast'],
+        NIDM['EchoPlanar'], NIDM['Electrocorticography'], NIDM['Electroencephalography'],
+        NIDM['ExtracellularElectrophysiologyRecording'], 
+        NIDM['FieldPotential'],NIDM['FingerTappingTest'], NIDM['FlowWeighted'],
+        NIDM['Functional'],NIDM['Inside-outSpiral'], NIDM['IntracellularElectrophysiologyRecording'],
+        NIDM['MagneticResonanceImaging'], NIDM['MultiUnitReccording'],
+        NIDM['NuclearMagneticResonanceSpectroscopy'], NIDM['Outside-inSpiral'],
+        NIDM['ParallelImagingMethod'], NIDM['PatchClamp'],  NIDM['PositronEmissionTomography'],
+        NIDM['ProtonDensityWeighted'],NIDM['Rectilinear'], NIDM['Session'],
+        NIDM['SharpElectrode'],NIDM['SimultaneousMultisliceMethod'], NIDM['SingleUnitReccording'],
+        NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'], NIDM['Structural'], 
+        NIDM['SusceptibilityWeighted'], NIDM['SusceptibilityWeightedImaging'], NIDM['Task'],
+        NIDM['T1Weighted'], NIDM['T2StarWeighted'],  
+        NIDM['T2Weighted'],NIDM['VoltageClamp'], NIDM['bValueFile'],
+        NIDM['bVectorFile'],NIDM['k-spaceTraversalScheme'] ]
+    subcomponents["Assessments"] = [NIDM['BarnesScale'], NIDM['CalgaryDepressionScale'],
+        NIDM['CategoryFluencyTest'],NIDM['ClinicalGlobalImpression'], NIDM['CombinedAssessment'],
+        NIDM['ContinuousPerformanceTest'],NIDM['DelayedSemanticVerbalLearningTest'],
+        NIDM['DelayedVisualFiguralLearningTest'], NIDM['EdinburghHandnessTest'],
+        NIDM['FacialEmotionDiscriminationTest'], NIDM['FagerstromSmokingTest'], NIDM['LetterFluencyTest'],
+        NIDM['LetterNumberSpanTest'], NIDM['MazeSolvingTest'], NIDM['NorthAmericanAdultReadingTest'], 
+        NIDM['PositiveAndNegativeSyndromeScale'],NIDM['PremorbidAdjustment'], NIDM['SemanticVerbalLearningTest'],
+        NIDM['SimpsonAngusRatingScale'],NIDM['SocioeconomicScale'], NIDM['SpatialMemorySpan'], 
+        NIDM['StroopTest'], NIDM['SymbolDigitAssociationTest'], NIDM['TrailsA'], NIDM['TrailsB'], 
+        NIDM['VisualFiguralLearningTest'], NIDM['WisconsinCardSortingTest'] ]
     subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the
