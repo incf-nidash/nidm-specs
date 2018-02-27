@@ -1,4 +1,4 @@
-[![alt text](https://www.incf.org/themes/incf/images/logo.svg "INCF")](http://incf.org) [![Build Status](https://travis-ci.org/incf-nidash/nidm.png?branch=master)](https://travis-ci.org/incf-nidash/nidm) 
+[![alt text](https://www.incf.org/themes/incf/images/logo.svg "INCF")](http://incf.org) [![Build Status](https://travis-ci.org/incf-nidash/nidm-specs.png?branch=master)](https://travis-ci.org/incf-nidash/nidm-specs) 
 
 # NeuroImaging Data Model (NIDM)
 
