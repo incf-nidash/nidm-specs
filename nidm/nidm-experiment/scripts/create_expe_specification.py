@@ -41,7 +41,7 @@ def main():
     # Retreive owl file for NIDM-Results
     if nidm_version == "dev":
         owl_file = os.path.join(TERMS_FOLDER, 'nidm-experiment.owl')
-        import_files = glob.glob(os.path.join(NIDMPATH, "imports", '*.ttl'))
+        import_files = glob.glob(os.path.join(NIDM_EXPE_PATH, "imports", '*.ttl'))
     else:
         owl_file = os.path.join(RELEASED_TERMS_FOLDER, \
             'nidm-experiment_'+nidm_version+'.owl')
