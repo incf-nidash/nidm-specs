@@ -20,6 +20,7 @@ class OwlSpecification(object):
         self.owl = OwlReader(owl_file, import_files)
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
         self.owl.graph.bind('sio', 'http://semanticscience.org/resource/')
+        self.owl.graph.bind('neuro', 'http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#')
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
