@@ -53,50 +53,50 @@ def main():
 
     subcomponents =  collections.OrderedDict()
 
-    subcomponents["Project"] = [NIDM['CoInvestigator'],
+    subcomponents['Project'] = [NIDM['CoInvestigator'],
         NIDM['Group'],NIDM['ModelDesigner'],
         NIDM['ModelSpecification'],
         NIDM['PrincipalInvestigator'], NIDM['Project'],
         NIDM['Protocol'], NIDM['ResearchAssistant'], 
         NIDM['SpecifiedPlan'], NIDM['Subject']]
-    subcomponents["Acquisition"] = [NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
+    subcomponents['Acquisition'] = [NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
         NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'], NIDM['AssessmentInstrumentAdministrator'],
         NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
         NIDM['BehavioralDataAcquisition'],NIDM['ClinicalAssessmentAcquisitionObject'], 
-        NIDM['DICOMTagCollection'],NIDM['AcquisitionDeviceOperator'], NIDM['DemographicsDataAcquisition'],
+        NIDM['AcquisitionDeviceOperator'], NIDM['DemographicsDataAcquisition'],
         NIDM['DemographicsInstrumentAdministrator'], NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
         NIDM['ImageUsageType'], NIDM['InformedConsentAcquisition'], NIDM['InformedConsentInstrumentAdministrator'],
         NIDM['PerformedPlan'], NIDM['PresentationSoftware'],  NIDM['PulseSequence'],
         NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Session'],
-        NIDM['SessionObject'] ]
-    subcomponents["Modality"] = [NIDM['Amperometry'], NIDM['Anatomical'],
-        NIDM['Cartesian'],NIDM['X-rayComputedTomography'], NIDM['CurrentClamp'],
-        NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'],
+        NIDM['SessionObject']]
+    subcomponents['Magnetic Resonance Imaging'] = [NIDM['Anatomical'], NIDM['Cartesian'], 
+        NIDM['DICOMTagCollection'], NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'], 
         NIDM['DynamicContrastEnhanced'], NIDM['DynamicSusceptibilityContrast'],
-        NIDM['EchoPlanar'], NIDM['Electrocorticography'], NIDM['Electroencephalography'],
-        NIDM['ExtracellularElectrophysiologyRecording'], 
-        NIDM['FieldPotential'],NIDM['FingerTappingTest'], NIDM['FlowWeighted'],
-        NIDM['Functional'],NIDM['Inside-outSpiral'], NIDM['IntracellularElectrophysiologyRecording'],
-        NIDM['MagneticResonanceImaging'], NIDM['MultiUnitReccording'],
-        NIDM['NuclearMagneticResonanceSpectroscopy'], NIDM['Outside-inSpiral'],
-        NIDM['ParallelImaging'], NIDM['PatchClamp'],  NIDM['PositronEmissionTomography'],
-        NIDM['ProtonDensityWeighted'],NIDM['Rectilinear'], NIDM['Session'],
-        NIDM['SharpElectrode'],NIDM['SimultaneousMultisliceMethod'], NIDM['SingleUnitReccording'],
+        NIDM['EchoPlanar'], NIDM['FlowWeighted'],
+        NIDM['Functional'],NIDM['Inside-outSpiral'], NIDM['MagneticResonanceImaging'],
+        NIDM['NuclearMagneticResonanceSpectroscopy'], NIDM['Outside-inSpiral'], NIDM['ParallelImaging'], 
+        NIDM['ProtonDensityWeighted'],NIDM['Rectilinear'], NIDM['Session'],NIDM['SimultaneousMultisliceMethod'], 
         NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'], NIDM['Structural'], 
         NIDM['SusceptibilityWeighted'], NIDM['SusceptibilityWeightedImaging'], NIDM['Task'],
-        NIDM['T1Weighted'], NIDM['T2StarWeighted'],  
-        NIDM['T2Weighted'],NIDM['VoltageClamp'], NIDM['b-ValueFile'],
-        NIDM['b-VectorFile'],NIDM['k-spaceTraversalScheme'] ]
-    subcomponents["Assessments"] = [NIDM['BarnesAkathisiaScale'], NIDM['CalgaryDepressionScale'],
+        NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],  NIDM['b-ValueFile'],
+        NIDM['b-VectorFile'],NIDM['k-spaceTraversalScheme']]
+    subcomponents['Electrophysiology'] = [NIDM['Amperometry'], NIDM['CurrentClamp'], 
+        NIDM['Electroencephalography'], NIDM['ExtracellularElectrophysiologyRecording'],  NIDM['Electrocorticography'],
+        NIDM['FieldPotential'], NIDM['IntracellularElectrophysiologyRecording'], 
+        NIDM['MultiUnitReccording'],  NIDM['SharpElectrode'], NIDM['SingleUnitReccording'], 
+        NIDM['PatchClamp'], NIDM['VoltageClamp'] ]
+    subcomponents['Positron Emission Tomography'] = [NIDM['PositronEmissionTomography']]
+    subcomponents['X-ray Computed Tomography'] = [NIDM['X-rayComputedTomography']]
+    subcomponents['Assessment Instruments'] = [NIDM['BarnesAkathisiaScale'], NIDM['CalgaryDepressionScale'],
         NIDM['CategoryFluencyTest'],NIDM['ClinicalGlobalImpression'], 
         NIDM['ContinuousPerformanceTest'],NIDM['DelaySemanticVerbalLearningTest'],
-        NIDM['DelayVisualFiguralLearningTest'], NIDM['EdinburghHandednessTest'],
+        NIDM['DelayVisualFiguralLearningTest'], NIDM['EdinburghHandednessTest'],  NIDM['FingerTappingTest'],
         NIDM['FacialEmotionDiscriminationTest'], NIDM['FagerstromTestForNicotineDependence'], NIDM['LetterFluencyTest'],
         NIDM['LetterNumberSpanTest'], NIDM['MazeSolvingTest'], NIDM['NorthAmericanAdultReadingTest'], 
-        NIDM['PositiveAndNegativeSyndromeScale'],NIDM['PremorbidAdjustment'], NIDM['SemanticVerbalLearningTest'],
-        NIDM['SimpsonAngusRatingScale'],NIDM['SocioeconomicScale'], NIDM['SpatialMemorySpan'], 
+        NIDM['PositiveAndNegativeSyndromeScale'],NIDM['PremorbidAdjustment'], 
+        NIDM['SimpsonAngusRatingScale'],NIDM['SocioeconomicScale'], NIDM['SpatialMemorySpanTest'], 
         NIDM['StroopTest'], NIDM['SymbolDigitAssociationTest'], NIDM['TrailsA'], NIDM['TrailsB'], 
-        NIDM['VisualFiguralLearningTest'], NIDM['WisconsinCardSortingTest'] ]
+        NIDM['WisconsinCardSortingTest'] ]
     subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the
