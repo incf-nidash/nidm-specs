@@ -4,10 +4,10 @@
 
 A model to represent neuroimaging data with their metadata in support of data sharing and reuse! 
 
-NIDM is currently made up of 
- - 1 released model:
+NIDM is currently made up of:
+ - 1 released model
    - [**NIDM-Results**](#nidm-results): harmonised representation of mass univariate neuroimaging results (such as fMRI)
- - 2 models under development:
+ - 2 models under development
    - [**NIDM-Workflows**](#nidm-workflows): representation of neuroimaging workflows
    - [**NIDM-Experiment**](#nidm-experiment): representation of neuroimaging raw data
 
