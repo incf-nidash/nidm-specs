@@ -2,18 +2,21 @@
 
 # NeuroImaging Data Model (NIDM)
 
-A model to represent all neuroimaging data and metadata! 
+A model to represent neuroimaging data with their metadata in support of data sharing and reuse! 
 
-NIDM provides structured representations of neuroimaging data with the goal of supporting data sharing in the neuroimaging community. 
+NIDM is currently made up of 
+ - 1 released model:
+   - [**NIDM-Results**](#nidm-results): harmonised representation of mass univariate neuroimaging results (such as fMRI)
+ - 2 models under development:
+   - [**NIDM-Workflows**](#nidm-workflows): representation of neuroimaging workflows
+   - [**NIDM-Experiment**](#nidm-experiment): representation of neuroimaging raw data
 
-![alt text](https://raw.githubusercontent.com/cmaumet/nidm/contributing/doc/content/specs/img/nidm-layer-cake.png "NIDM components")
 
-NIDM is currently made up of 3 components:
- - **NIDM-Results**: software-agnostic representation of GLM results
- - **NIDM-Workflows**: representation of neuroimaging workflows
- - **NIDM-Experiment**: representation of neuroimaging raw data
+![alt text](https://raw.githubusercontent.com/cmaumet/nidm/contributing/doc/content/specs/img/nidm-layer-cake.png)
 
-and is defined as an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/) standard for provenance.
+NIDM is defined as an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/) standard for provenance.
+
+## NIDM-Results
 
 ## Getting Started
 
