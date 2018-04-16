@@ -37,20 +37,25 @@ Thanks for you interest in contributing to NIDM-Results! If you would like to su
 
 ## NIDM-Workflows
 
+### Documentation
+The work-in-progress NIDM-Workflows specification is available [here](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ).
+
+### Tools
+ * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
+
 ### Contributing
-Contributions to NIDM-Workflows are gathered on the work-in-progress [NIDM-Worklows specification](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ/edit). Please feel free to commment directly on this document or [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new). . You can also join our [weekly calls](#nidm-weekly-calls)!
+Thanks for you interest in contributing to NIDM-Workflows! Contributions to NIDM-Workflows are gathered on the work-in-progress [NIDM-Worklows specification](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ/edit). Please feel free to commment directly on this document, [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
 
 ## NIDM-Experiment
 
-### Preview 
+### Documentation
+The work-in-progress NIDM-Experiment specification is available [here](http://nidm.nidash.org/specs/nidm-experiment_dev.html).
 
-## Contributing
-We use the [incf-nidash GitHub](https://github.com/incf-nidash/) organisation and  to foster collaboration among the developers working on NIDM:
- * All components: the [current repository](https://github.com/cmaumet/nidm) is used to foster discussions on all NIDM components. See our issues on [NIDM-Results](https://github.com/incf-nidash/nidm/labels/nidm-results), [NIDM-Workflows](https://github.com/incf-nidash/nidm/labels/nidm-workflows), [NIDM-Experiment](https://github.com/incf-nidash/nidm/labels/nidm-experiment) or the [full list](https://github.com/incf-nidash/nidm/issues) of open questions/comments. 
- * NIDM-Workflows: 
+### Tools
+ * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
 
- * NIDM-Experiment: [NIDM-Experiment python library](https://github.com/incf-nidash/pyNIDM)
-
+### Contributing
+Thanks for you interest in contributing to NIDM-Experiment! Please feel free to [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
 
 ## NIDM weekly calls
 We meet every week by videoconference on Mondays at 8-9am PDT / 11am-12pm EDT / 4-5pm BST. The group is always open to new contributors interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. [Meeting minutes](https://drive.google.com/drive/folders/0B3KAfE6L3piOMWsyc0FyU1JWY3c?usp=sharing).
