@@ -12,7 +12,7 @@ NIDM is currently made up of:
    - [**NIDM-Experiment**](#nidm-experiment): representation of neuroimaging raw data
 
 
-![alt text](https://raw.githubusercontent.com/cmaumet/nidm/contributing/doc/content/specs/img/nidm-layer-cake.png)
+![alt text](doc/content/specs/img/nidm-layer-cake.png)
 
 NIDM is defined as an extension the [W3C PROV](http://www.w3.org/TR/prov-primer/) standard for provenance.
 
