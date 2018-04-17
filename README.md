@@ -41,7 +41,7 @@ Thanks for you interest in contributing to NIDM-Results! If you would like to su
 The work-in-progress NIDM-Workflows specification is available [here](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ).
 
 ### Tools
- * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
+ * NIDM-Workflows I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
  * Project management: [Brainverse](https://github.com/ReproNim/brainverse)
 
 ### Contributing
