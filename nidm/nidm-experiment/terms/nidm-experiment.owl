@@ -1,19 +1,21 @@
 @prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix nlx: <http://neurolex.org/wiki/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pato: <http://purl.obolibrary.org/obo/pato#> .
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix provone: <http://purl.org/provone#> .
+@prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix nidm: <http://purl.org/nidash/nidm#> .
-@prefix nlx: <http://neurolex.org/wiki/> .
-@prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
-@prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
 @prefix sio: <http://semanticscience.org/resource/> .
-
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
@@ -24,6 +26,8 @@
                <http://purl.org/nidash/nidm/nlx_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
+               <http://purl.org/nidash/nidm/obi_import.owl> ,
+               <http://purl.org/nidash/nidm/pato_import.owl> ,
                <http://purl.org/nidash/nidm/qibo_import.owl> ,
                <http://purl.org/nidash/nidm/sio_import.owl> ,
                <http://www.w3.org/ns/prov-o-20130430>
@@ -229,6 +233,10 @@ dct:description rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty .
 
 
+###  http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName
+
+nfo:fileName rdf:type owl:DatatypeProperty .
+
 
 ###  http://purl.org/dc/terms/license
 
@@ -283,67 +291,6 @@ nidm:hadImageUsageType rdf:type owl:DatatypeProperty ;
 #    Classes
 #
 #################################################################
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument
-
-onli:assessment-instrument rdf:type owl:Class ;
-                           
-               rdfs:subClassOf nidm:AcquisitionObject .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment
-
-onli:instrument-based-assessment rdf:type owl:Class ;
-                                 
-               rdfs:subClassOf nidm:Acquisition .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable
-
-onli:instrument-variable rdf:type owl:Class ;
-                         
-               rdfs:subClassOf nidm:AcquisitionObject .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale
-
-onli:scale rdf:type owl:Class ;
-           
-               rdfs:subClassOf sio:SIO_000078 .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item
-
-onli:scale-item rdf:type owl:Class ;
-                
-               rdfs:subClassOf sio:SIO_000015 .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score
-
-onli:score rdf:type owl:Class ;
-           
-               rdfs:subClassOf sio:SIO_000015 .
-
-
-
-###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment
-
-onli:variable-assessment rdf:type owl:Class ;
-                         
-               rdfs:subClassOf nidm:Acquisition .
-
-
-
-###  http://purl.org/dc/dcmitype/Image
-
-<http://purl.org/dc/dcmitype/Image> rdfs:subClassOf nidm:ReconstructedAcquisitionObject .
 
 
 
@@ -415,7 +362,7 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                               
-               rdfs:subClassOf sio:SIO_000026 .
+               rdfs:subClassOf obo:PATO_0000001 .
 
 
 
@@ -524,6 +471,7 @@ nidm:BehavioralDataAcquisition rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                                
                rdfs:subClassOf nidm:Acquisition .
+
 
 
 
@@ -660,7 +608,7 @@ nidm:DemographicsAcquisitionObject rdf:type owl:Class ;
                                    
                obo:IAO_0000115 "A demographics acquisition object is an object that contains the demographic information acquired from a person in the investigation subject role."^^xsd:string ;
                                    
-               obo:IAO_0000114 obo:IAO_0000428.
+               obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
@@ -774,7 +722,7 @@ nidm:Electrocorticography rdf:type owl:Class ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                           
-               rdfs:label "Electrocorticography" ;
+               rdfs:label "Electrocorticography"^^xsd:string ;
                           
                rdfs:subClassOf nidm:AcquisitionMethod .
 
@@ -788,7 +736,7 @@ nidm:Electroencephalography rdf:type owl:Class ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                             
-               rdfs:label "Electroencephalography" ;
+               rdfs:label "Electroencephalography"^^xsd:string ;
                             
                rdfs:subClassOf nidm:AcquisitionMethod .
 
@@ -798,7 +746,7 @@ nidm:Electroencephalography rdf:type owl:Class ;
 
 nidm:ElectrophysiologyRecording rdf:type owl:Class ;
                                              
-               rdfs:label "Electrophysiology Recording" ;
+               rdfs:label "Electrophysiology Recording"^^xsd:string ;
 
                obo:IAO_0000115 "Electrophysiology Recording is an acquisition modality in which electrical signals are recorded from one or more electrodes inserted into living tissue."^^xsd:string ;
                 
@@ -892,6 +840,20 @@ nidm:Group rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
            
                rdfs:subClassOf prov:Collection .
+
+
+
+###  http://purl.org/nidash/nidm#Gender
+
+nidm:Gender rdf:type owl:Class ;
+
+               rdfs:label "Gender"^^xsd:string ;
+
+               obo:IAO_0000115 "Gender is a social entity that identifies which of either male or female that a person identifies as, which may be different from biological sex."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+           
+               rdfs:subClassOf sio:SIO_000009 .
 
 
 
@@ -1093,7 +1055,7 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
                   
               obo:IAO_0000116 "Discussed at https://github.com/incf-nidash/nidm/issues/299"^^xsd:string ;
                   
-              obo:IAO_0000115 "The type of stimulus presentation used in the data acquisition, one of block-based design, event-related design or mixed design."^^xsd:string ;
+              obo:IAO_0000115 "An fMRI design type is the type of stimulus presentation used in the data acquisition; one of block-based design, event-related design or mixed design."^^xsd:string ;
                   
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1247,9 +1209,9 @@ nidm:Protocol rdf:type owl:Class ;
               
               rdfs:label "Protocol"^^xsd:string ;
               
-              rdfs:subClassOf nidm:PerformedPlan ;
+              rdfs:subClassOf nidm:SpecifiedPlan ;
               
-              obo:IAO_0000115 "An protocol is a performed plan that contains information necessary to acquire the desired data during a session and the acquisition device parameters that are to be used in that acquisition."^^xsd:string ;
+              obo:IAO_0000115 "An protocol is a specified plan that contains information necessary to acquire the desired data during a session and the acquisition device parameters that are to be used in that acquisition."^^xsd:string ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1351,8 +1313,10 @@ nidm:Series rdf:type owl:Class ;
 
               provone:isPartOf nidm:Session ;
             
-              obo:IAO_0000115 "A series is an activity in which data is acquired such that one acquisition takes place during the same temporal epoch."^^xsd:string ;
+              obo:IAO_0000115 "A series is an activity in which data of a single type is acquired such that one acquisition takes place during the same temporal epoch."^^xsd:string ;
             
+              rdfs:comment "During a MRI session, for example, T1-weighted and resting-state data were acquired.  Both the T1-weighted and resting state data are Acquisition Objects and the activity during which they were acquired is the Session. The Series is the activity that led to the production of each Acquisition Object." ;
+
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
@@ -1363,9 +1327,11 @@ nidm:Session rdf:type owl:Class ;
              
               rdfs:subClassOf prov:Activity ;
 
-              rdfs:label "Series"^^xsd:string ;
+              rdfs:label "Session"^^xsd:string ;
              
-              obo:IAO_0000115 "An activity during which data is acquired from a subject by an experimenter during a single unbroken time period." ;
+              obo:IAO_0000115 "A session is an activity during which data, potentially of different types, is acquired from a subject by an experimenter during a single unbroken time period." ;
+
+              rdfs:comment "During a MRI session, for example, T1-weighted and resting-state data were acquired.  Both the T1-weighted and resting state data are Acquisition Objects and the time period during which they were acquired is the Session." ;
              
               provone:isPartOf nidm:Project ;
 
@@ -1497,7 +1463,7 @@ nidm:Structural rdf:type owl:Class ;
                 
               rdfs:subClassOf nidm:ImageUsageType ;
 
-              rdfs:label "Stimulus Response File"^^xsd:string ;
+              rdfs:label "Structural"^^xsd:string ;
                           
               obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
                           
@@ -1516,6 +1482,7 @@ nidm:Subject rdf:type owl:Class ;
               obo:IAO_0000115 "A subject is a role for an agent (either living or non-living) which is characterized by being the object of study in an acquisition sctivity."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
+
 
 
 
@@ -1699,6 +1666,18 @@ sio:SIO_001000 rdfs:subClassOf nidm:Project .
 
 
 
+###  http://semanticscience.org/resource/SIO_001014
+
+sio:SIO_001014 rdfs:subClassOf obo:PATO_0001995 .
+
+
+
+###  http://semanticscience.org/resource/SIO_001015
+
+sio:SIO_001015 rdfs:subClassOf obo:PATO_0001995 .
+
+
+
 ###  http://semanticscience.org/resource/SIO_001068
 
 sio:SIO_001068 rdfs:subClassOf nidm:Group .
@@ -1708,6 +1687,12 @@ sio:SIO_001068 rdfs:subClassOf nidm:Group .
 ###  http://semanticscience.org/resource/SIO_001069
 
 sio:SIO_001069 rdfs:subClassOf nidm:Group .
+
+
+
+###  http://purl.obolibrary.org/obo/PATO_0000001
+
+obo:PATO_0000001 rdfs:subClassOf sio:SIO_000614 .
 
 
 
@@ -1792,6 +1777,63 @@ prov:SoftwareAgent rdf:type owl:Class ;
 obo:OBI_0400107 rdf:type owl:Class ;
                    
               rdfs:subClassOf sio:SIO_000956 .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#assessment-instrument
+
+onli:assessment-instrument rdf:type owl:Class ;
+                           
+               rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-based-assessment
+
+onli:instrument-based-assessment rdf:type owl:Class ;
+                                 
+               rdfs:subClassOf nidm:Acquisition .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#instrument-variable
+
+onli:instrument-variable rdf:type owl:Class ;
+                         
+               rdfs:subClassOf nidm:AcquisitionObject .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale
+
+onli:scale rdf:type owl:Class ;
+           
+               rdfs:subClassOf sio:SIO_000078 .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#variable-assessment
+
+onli:variable-assessment rdfs:subClassOf nidm:Acquisition .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#score
+
+onli:score rdfs:subClassOf sio:SIO_000366 .
+
+
+
+###  http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#scale-item
+
+onli:scale-item rdfs:subClassOf sio:SIO_000366 .
+
+
+
+###  http://purl.org/dc/dcmitype/Image
+
+<http://purl.org/dc/dcmitype/Image> rdfs:subClassOf nidm:ReconstructedAcquisitionObject .
+
 
 
 #################################################################
