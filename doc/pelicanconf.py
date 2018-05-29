@@ -52,5 +52,11 @@ DEFAULT_PAGINATION = 10
 
 READERS = {'html': None}
 
+PLUGIN_PATHS = ['/home/karl/Work/packages/pelican-plugins/', ]
+PLUGINS = ['i18n_subsites', ]
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
