@@ -52,7 +52,7 @@ DEFAULT_PAGINATION = 10
 
 READERS = {'html': None}
 
-PLUGIN_PATHS = ['/home/karl/Work/packages/pelican-plugins/', ]
+PLUGIN_PATHS = ['../pelican-plugins/', ]
 PLUGINS = ['i18n_subsites', ]
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
