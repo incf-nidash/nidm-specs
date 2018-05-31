@@ -54,40 +54,43 @@ def main():
     subcomponents =  collections.OrderedDict()
 
     subcomponents['Project'] = [
-        NIDM['CoInvestigator'], NIDM['Group'], NIDM['ModelDesigner'], NIDM['ModelSpecification'],
+        NIDM['CoInvestigator'], NIDM['Gender'],NIDM['Group'], NIDM['ModelDesigner'], NIDM['ModelSpecification'],
         NIDM['PrincipalInvestigator'], NIDM['Project'], NIDM['Protocol'], NIDM['ResearchAssistant'], 
         NIDM['SpecifiedPlan'], NIDM['Subject']
         ]
     subcomponents['Acquisition'] = [
-        NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
-        NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'], NIDM['AssessmentInstrumentAdministrator'],
+        NIDM['Acquisition'],NIDM['AcquisitionDeviceOperator'],NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
+        NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'],NIDM['BehavioralInstrument'], 
         NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
-        NIDM['BehavioralDataAcquisition'],NIDM['ClinicalAssessmentAcquisitionObject'], 
-        NIDM['AcquisitionDeviceOperator'], NIDM['DemographicsDataAcquisition'],
-        NIDM['DemographicsInstrumentAdministrator'], NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
-        NIDM['ImageUsageType'], NIDM['InformedConsentAcquisition'], NIDM['InformedConsentInstrumentAdministrator'],
-        NIDM['PerformedPlan'], NIDM['PresentationSoftware'],  NIDM['PulseSequence'],
+        NIDM['ClinicalInstrument'], NIDM['DemographicsInstrument'],
+        NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
+        NIDM['ImageUsageType'],NIDM['InformedConsentInstrument'],NIDM['InstrumentAdministrator'],
+        NIDM['InstrumentUsageType'],
+        NIDM['PerformedPlan'],NIDM['PresentationSoftware'],NIDM['ProcessedAcquisitionObject'],
         NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Session'],
-        NIDM['SessionObject']
+        NIDM['SessionObject'],NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'],NIDM['Task']
         ]
     subcomponents['Magnetic Resonance Imaging'] = [
-        NIDM['Anatomical'], NIDM['Cartesian'], 
+        NIDM['Anatomical'], NIDM['ArterialSpinLabeling'],NIDM['Cartesian'], 
         NIDM['DICOMTagCollection'], NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'], 
         NIDM['DynamicContrastEnhanced'], NIDM['DynamicSusceptibilityContrast'],
-        NIDM['EchoPlanar'], NIDM['FlowWeighted'],
-        NIDM['Functional'],NIDM['Inside-outSpiral'], NIDM['MagneticResonanceImaging'],
-        NIDM['NuclearMagneticResonanceSpectroscopy'], NIDM['Outside-inSpiral'], NIDM['ParallelImaging'], 
-        NIDM['ProtonDensityWeighted'],NIDM['Rectilinear'], NIDM['Session'],NIDM['SimultaneousMultisliceMethod'], 
-        NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'], NIDM['Structural'], 
-        NIDM['SusceptibilityWeighted'], NIDM['SusceptibilityWeightedImaging'], NIDM['Task'],
-        NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],  NIDM['b-ValueFile'],
+        NIDM['EchoPlanar'], NIDM['FlowWeighted'],NIDM['Functional'],NIDM['ImageContrastType'],
+        NIDM['ImageDataReconstruction'], NIDM['ImageUsageType'], NIDM['Inside-outSpiral'], 
+        NIDM['MagneticResonanceImaging'],NIDM['NuclearMagneticResonanceSpectroscopy'],
+        NIDM['NuclearMagneticResonanceSpectroscopicImaging'],NIDM['Outside-inSpiral'], NIDM['ParallelImaging'], 
+        NIDM['ProtonDensityWeighted'],NIDM['PulseSequence'],NIDM['QuantitativeSusceptibilityMapping'],
+        NIDM['Rectilinear'],NIDM['SimultaneousMultisliceMethod'], 
+        NIDM['Structural'], 
+        NIDM['SusceptibilityWeighted'],NIDM['SusceptibilityWeightedImaging'],
+        NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],NIDM['b-ValueFile'],
         NIDM['b-VectorFile'], NIDM['k-spaceTraversalScheme'], NIDM['NIDM_0000152'], NIDM['NIDM_0000153'],
         NIDM['NIDM_0000154'], NIDM['NIDM_0000155']
         ]
     subcomponents['Electrophysiology'] = [
         NIDM['Amperometry'], NIDM['CurrentClamp'], 
-        NIDM['Electroencephalography'], NIDM['ExtracellularElectrophysiologyRecording'],  NIDM['Electrocorticography'],
-        NIDM['FieldPotential'], NIDM['IntracellularElectrophysiologyRecording'], 
+        NIDM['Electroencephalography'], NIDM['Electrocorticography'],NIDM['ElectrophysiologyRecording'],
+        NIDM['ExtracellularElectrophysiologyRecording'],NIDM['FieldPotential'],
+        NIDM['IntracellularElectrophysiologyRecording'],NIDM['Magnetoencephalography'],
         NIDM['MultiUnitReccording'],  NIDM['SharpElectrode'], NIDM['SingleUnitReccording'], 
         NIDM['PatchClamp'], NIDM['VoltageClamp']
         ]
