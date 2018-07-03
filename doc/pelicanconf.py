@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
 
 AUTHOR = u'NIDM Working Group'
 SITENAME = u'Neuroimaging Data Model'
@@ -52,7 +53,7 @@ DEFAULT_PAGINATION = 10
 
 READERS = {'html': None}
 
-PLUGIN_PATHS = ['../pelican-plugins/', ]
+PLUGIN_PATHS = [os.path.join('..' 'doc' 'pelican-plugins/'), ]
 PLUGINS = ['i18n_subsites', ]
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
