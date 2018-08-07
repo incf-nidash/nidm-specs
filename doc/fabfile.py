@@ -58,10 +58,10 @@ def serve(c, fpp=''):
 
 
 @task
-def publish(c, fpp=''):
+def publish(c, fpp='', ghpp=''):
     clean(c)
     c.local(fpp + 'pelican content/ -s publishconf.py')
-    c.local('ghp-import output')
+    c.local(ghpp + 'ghp-import output')
     c.local('git push upstream gh-pages --force')
 
 
