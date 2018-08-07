@@ -1,4 +1,5 @@
 import os
+import shutil
 from invoke import task
 # from invoke.context.Context import prefix
 
@@ -21,18 +22,16 @@ def test2(c):
 @task
 def clean(c):
     if os.path.isdir('output'):
-        c.local('rm -rf output')
-        c.local('mkdir output')
+        shutil.rmtree('output')
+        os.makedirs('output')
     else:
-        c.local('mkdir output')
+        os.makedirs('output')
 
 
 @task
-def build(c, ve=None, envname='root'):
-    with (c.prefix('source ' + ve + 'activate ' + envname)) \
-            if (ve is not None) else dummy_context_mgr():
-        clean(c)
-        c.local("pelican content/ -s pelicanconf.py")
+def build(c, fpp='', envname='root'):
+    clean(c)
+    c.local(fpp + "pelican content/ -s pelicanconf.py")
 
 
 @task
@@ -42,36 +41,28 @@ def rebuild(c):
 
 
 @task
-def regenerate(c, ve=None, envname='root'):
-    with (c.prefix('source ' + ve + 'activate ' + envname)) \
-            if (ve is not None) else dummy_context_mgr():
-        c.local('pelican content/ -r -s pelicanconf.py')
+def regenerate(c, fpp=''):
+    c.local(fpp + 'pelican content/ -r -s pelicanconf.py')
 
 
 @task
-def autobuild(c, ve=None, envname='root'):
-    with (c.prefix('source ' + ve + 'activate ' + envname)) \
-            if (ve is not None) else dummy_context_mgr():
-        c.local('pelican -r -s pelicanconf.py')
+def autobuild(c, fpp=''):
+    c.local(fpp + 'pelican -r -s pelicanconf.py')
 
 
 @task
-def serve(c, ve=None, envname='root'):
-    with (c.prefix('source ' + ve + 'activate ' + envname)) \
-            if (ve is not None) else dummy_context_mgr():
-        build(c, ve, envname)
-        c.local('cd output && open http://localhost:8000 '
+def serve(c, fpp=''):
+    build(c, fpp)
+    c.local('cd output && open http://localhost:8000 '
                 '&& python -m SimpleHTTPServer')
 
 
 @task
-def publish(c, ve=None, envname='root'):
-    with (c.prefix('source ' + ve + 'activate ' + envname)) \
-            if (ve is not None) else dummy_context_mgr():
-        clean(c)
-        c.local('pelican content/ -s publishconf.py')
-        c.local('ghp-import output')
-        c.local('git push upstream gh-pages --force')
+def publish(c, fpp='', ghpp=''):
+    clean(c)
+    c.local(fpp + 'pelican content/ -s publishconf.py')
+    c.local(ghpp + 'ghp-import output')
+    c.local('git push upstream gh-pages --force')
 
 
 # Creation of dummy context if conda environement is not needed
