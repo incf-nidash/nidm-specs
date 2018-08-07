@@ -1,4 +1,5 @@
 import os
+import shutil
 from invoke import task
 # from invoke.context.Context import prefix
 
@@ -21,10 +22,10 @@ def test2(c):
 @task
 def clean(c):
     if os.path.isdir('output'):
-        c.local('rm -rf output')
-        c.local('mkdir output')
+        shutil.rmtree('output')
+        os.makedirs('output')
     else:
-        c.local('mkdir output')
+        os.makedirs('output')
 
 
 @task
