@@ -10,6 +10,8 @@ import sys
 REL_PATH = os.path.dirname(os.path.abspath(__file__))
 NIDM_PATH = os.path.join(REL_PATH, os.pardir, "nidm")
 
+# Adding nidm-results/scripts and nidm-experiment/scripts to the path
+# This is required because the nidm-specs repository is not a Python module
 for component in ["nidm-results", "nidm-experiment"]:
     COMPONENT_SCRIPTS = os.path.join(NIDM_PATH, component, "scripts")
     sys.path.append(COMPONENT_SCRIPTS)
@@ -20,9 +22,15 @@ import UpdateTermReadme
 import create_results_specification
 import create_expe_specification
 import create_prefixes
+import UpdateExpTermReadme
 
 
 def main():
+    # --- NIDM-Experiment
+    # Update terms README
+    UpdateExpTermReadme.main()
+
+    # --- NIDM-Results
     # Re-create turtle examples from template
     recompute_all_ex.main()
     # Convert turtle to provn and upload to Prov Store
