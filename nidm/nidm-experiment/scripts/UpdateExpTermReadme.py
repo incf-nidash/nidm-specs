@@ -1,10 +1,15 @@
-# For each document in the NIDM repository, this script checks if there is a public document with the same content (from title)
-# in the Prov Store (https://provenance.ecs.soton.ac.uk/store). If there is none, the document is uploaded and its README file is updated
+# For each document in the NIDM repository, this script checks if there is 
+# a public document with the same content (from title)
+# in the Prov Store (https://provenance.ecs.soton.ac.uk/store). If there is 
+# none, the document is uploaded and its README file is updated
 # to link to the json, turtle, svg, PDF and png serialisations. 
 
-# To use this script you need to have an account on the Prov Store (cf. https://provenance.ecs.soton.ac.uk/store/account/signup/) and to
-# create a file named store_login_key.txt in the same directory including the following text: "mylogin:mykey" where mylogin 
-# must be replaced by your Prov Store login and mykey by your ApiKey (cf. https://provenance.ecs.soton.ac.uk/store/account/developer/)
+# To use this script you need to have an account on the Prov Store (cf. 
+# https://provenance.ecs.soton.ac.uk/store/account/signup/) and to
+# create a file named store_login_key.txt in the same directory including 
+# the following text: "mylogin:mykey" where mylogin must be replaced by your 
+# Prov Store login and mykey by your ApiKey 
+# (cf. https://provenance.ecs.soton.ac.uk/store/account/developer/)
 
 import logging
 import os
@@ -49,11 +54,13 @@ class UpdateExpTermReadme():
     def __init__(self, owl_file):
         self.owl = OwlReader(owl_file)
 
+
     # Write out Readme
     def write_readme(self, readme_file, readme_txt):
         readme_file_open = open(readme_file, 'w')
         readme_file_open.write(readme_txt)
         readme_file_open.close()
+
 
     def create_term_row(self, term_name, definition, same_as, editor, note, 
         color, range_value=None, domain=None, indiv_type=None):
@@ -103,6 +110,7 @@ class UpdateExpTermReadme():
 </tr>"""
         return term_row
 
+
     def create_curation_legend(self, order):
         curation_legend = "<b>Curation status</b>: \n"
         curation_colors_sorted = [(key, CURATION_COLORS.get(key)) for key in order]
@@ -115,10 +123,13 @@ class UpdateExpTermReadme():
 
             color =  curation_color[1]
             if not color in covered_colors:
-                curation_legend = curation_legend+'<img src="../../../doc/content/specs/img/'+color+'.png?raw=true"/>&nbsp;'+\
-                    CURATION_LEGEND[color]+";\n"
+                curation_legend = curation_legend+\
+                '<img src="../../../doc/content/specs/img/'+color+\
+                '.png?raw=true"/>&nbsp;'+CURATION_LEGEND[color]+";\n"
                 covered_colors.append(color)
         return curation_legend
+
+
 
     # Get README text according to owl file information
     def update_readme(self, readme_file): 
@@ -168,6 +179,7 @@ class UpdateExpTermReadme():
 
         # Include missing keys and do not display ready for release terms
         order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([OBO_READY]))))
+        print 'order = ', order
         class_terms_sorted = [(key, class_terms.get(key)) for key in order]
         prpty_terms_sorted = [(key, prpty_terms.get(key)) for key in order]
         indiv_terms_sorted = [(key, indiv_terms.get(key)) for key in order]
@@ -225,9 +237,9 @@ class UpdateExpTermReadme():
         title = "<h1>NIDM-Experiment Terms curation status</h1>"
         intro = """You will find below a listing of the NIDM-Experiment terms that \
 need to be curated. If you would like to help with the curation of a term, \
-please follow those steps:
- 1. Check if the term is already under discussion in an issue.
- 2. If not, create a new issue, including the current definition (available in\
+please follow those steps: first, check if the term is already under discussion in an \ 
+issue and if it is please contribute to the discussion there. If not, create a new issue, \
+including the current definition (available in\
   the table below) and your proposed update.
 
 If possible, priority should be given to uncurated terms (in red).
@@ -235,6 +247,7 @@ If possible, priority should be given to uncurated terms (in red).
 Thank you in advance for taking part in NIDM-Experiment term curation!\n\n"""
         self.write_readme(readme_file, title+intro+\
             curation_legend+class_table_txt+prpty_table_txt+indiv_table_txt)
+
 
 def main():
     # Retrieve owl file for NIDM-Experiment
