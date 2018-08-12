@@ -100,7 +100,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a> and <a href="https://github.com/incf-nidash/nidm/pull/145">#145</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate Vector'"> [more] </a></td>
-    <td><b>nidm:'coordinate Vector': </b>A vector with one number per dimension. The first element corresponds to the <a title=NIDM_0000015>'Coordinate'</a> along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the <a title=NIDM_0000015>'Coordinate'</a> along the second dimension etc</td>
+    <td><b>nidm:'coordinate Vector': </b>A vector with one number per dimension. The first element corresponds to the <a title=NIDM_0000015>'Coordinate'</a> along the first dimension measured in world units (e.g. 'mm'), the second element to the <a title=NIDM_0000015>'Coordinate'</a> along the second dimension etc</td>
     <td>nidm:NIDM_0000015 </td>
     <td>xsd:string </td>
 </tr>
@@ -219,7 +219,7 @@ Thank you in advance for taking part in NIDM-Results term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Under discussion at: <a href="https://github.com/incf-nidash/nidm/pull/270">#270</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='coordinate Vector In Voxels'"> [more] </a></td>
-    <td><b>nidm:'coordinate Vector In Voxels': </b>Coordinate along the first dimension in voxels. (This definition needs to be re-worked as this term was renamed from coordinate1 to coordinate in https://github.com/incf-nidash/nidm/issues/270)</td>
+    <td><b>nidm:'coordinate Vector In Voxels': </b>A vector with one number per dimension. The first element corresponds to the <a title=NIDM_0000015>'Coordinate'</a> along the first dimension measured in map elements (e.g., pixels, voxels, vertices, or faces), the second element to the <a title=NIDM_0000015>'Coordinate'</a> along the second dimension etc</td>
     <td>nidm:NIDM_0000015 </td>
     <td>xsd:string </td>
 </tr>
