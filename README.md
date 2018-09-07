@@ -59,12 +59,13 @@ The work-in-progress NIDM-Experiment specification is available [here](http://ni
 Thanks for you interest in contributing to NIDM-Experiment! Please feel free to [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
 
 ## NIDM weekly calls
-We meet every week by videoconference on Mondays at 8-9am PDT / 11am-12pm EDT / 4-5pm BST. The group is always open to new contributors interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com. [Meeting minutes](https://drive.google.com/drive/folders/0B3KAfE6L3piOMWsyc0FyU1JWY3c?usp=sharing).
+We meet every week by videoconference on Mondays at 8-9am PDT / 11am-12pm EDT / 4-5pm BST. The group is always open to new contributors interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com.
 
 ## Other resources
  * [NIDM website](http://nidm.nidash.org)
  * [NIDASH shared Google folder](https://drive.google.com/drive/folders/0B-BLof5_SOh8bWR3UDE4WTdELXM?usp=sharing)
- * [Abstracts](https://drive.google.com/drive/folders/0B3KAfE6L3piOTExkaWdlaVZGaHc)
+ * [Week meeting minutes](https://drive.google.com/drive/folders/0B-BLof5_SOh8ZURQV1RmdU53Z0k).
+ * [Abstracts](https://drive.google.com/drive/folders/0B-BLof5_SOh8LS1Jb3p4YVpqX1k)
 
-## Acknoledgments
+## Acknowledgements
 The NIDM working group is a collaboration supported by the [INCF](http://www.incf.org).
