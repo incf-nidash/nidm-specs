@@ -40,7 +40,6 @@ def main(owl=None):
 
     owl_reader.prefixes_as_csv(os.path.join(os.path.dirname(owl),
                                "prefixes" + version + ".csv"))
-    owl_reader.prefixes_in_owl_file()
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
