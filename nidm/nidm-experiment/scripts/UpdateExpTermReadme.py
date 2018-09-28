@@ -179,7 +179,7 @@ class UpdateExpTermReadme():
 
         # Include missing keys and do not display ready for release terms
         order=CURATION_ORDER+(list(set(class_terms.keys()).union(set(prpty_terms.keys())) - set(CURATION_ORDER+list([OBO_READY]))))
-        print 'order = ', order
+        # print 'order = ', order
         class_terms_sorted = [(key, class_terms.get(key)) for key in order]
         prpty_terms_sorted = [(key, prpty_terms.get(key)) for key in order]
         indiv_terms_sorted = [(key, indiv_terms.get(key)) for key in order]
