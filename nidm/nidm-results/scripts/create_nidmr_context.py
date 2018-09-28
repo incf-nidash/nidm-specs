@@ -32,7 +32,7 @@ def main(owl=None):
         os.path.join(os.path.dirname(owl),
                      os.pardir, os.pardir, "imports", '*.ttl'))
 
-    owl_reader = OwlReader(owl, import_owl_files=owl_imports)
+    owl = OwlReader(owl, import_owl_files=owl_imports)
 
     prefix_file = os.path.join(
         os.path.dirname(__file__), '..', 'terms', 'prefixes.csv')
@@ -61,13 +61,44 @@ cryptographicHashFunctions#'
     context['@context']['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
     context['@context']['skos'] = 'http://www.w3.org/2004/02/skos/core#'
 
-    with open(prefix_file) as csvfile:
-        reader = csv.reader(csvfile)
-        next(reader, None)  # skip the headers
-        for alphanum_id, prefix, uri in reader:
-            context['@context'][prefix] = OrderedDict()
-            context['@context'][prefix]['@id'] = uri
-            context['@context'][prefix]['@type'] = '@id'
+    #     sep = \
+    #         '#################################################################'
+
+    #     with open(self.file, 'r') as fp:
+    #         owl_txt = fp.read()
+    # For anything that has a label
+    for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
+        print(str(s))
+        print(str(o))
+        print('---')
+        context['@context'][str(o)] = OrderedDict()
+        context['@context'][str(o)]['@id'] = str(s)
+        context['@context'][str(o)]['@type'] = '@id'
+        # try:
+        #     owl.graph.qname(s)
+        # except Exception:
+        #     # Some URIs don't have qname
+        #     # (e.g. http://www.w3.org/ns/prov-o#)
+        #     continue
+        # prefix = owl.get_preferred_prefix(s)
+
+        # if prefix is not None:
+        #     # Add prefix as preferred label in the owl file
+        #     preflabel = str('<' + str(s) + '> ' +
+        #                     '<' + str(SKOS.prefLabel) + '> ' +
+        #                     '"' + prefix + '" . \n')
+        #     owl_txt = owl_txt.replace(sep, preflabel + sep, 1)
+
+    #     with open(owl.file, 'w') as fp:
+    #         fp.write(owl_txt)
+
+    # with open(prefix_file) as csvfile:
+    #     reader = csv.reader(csvfile)
+    #     next(reader, None)  # skip the headers
+    #     for alphanum_id, prefix, uri in reader:
+    #         context['@context'][prefix] = OrderedDict()
+    #         context['@context'][prefix]['@id'] = uri
+    #         context['@context'][prefix]['@type'] = '@id'
     with open(os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json"), 'w+') as c:
         c.write(json.dumps(context, indent=2))
 
