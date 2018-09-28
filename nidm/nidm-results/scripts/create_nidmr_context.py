@@ -39,6 +39,9 @@ def main(owl=None):
     context = OrderedDict()
     context['@context'] = OrderedDict()
     context['@context']['@version'] = 1.1
+    context['@context']['records'] = OrderedDict()
+    context['@context']['records']['@container'] = "@type"
+    context['@context']['records']['@id'] = "@graph"
     with open(prefix_file) as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)  # skip the headers
@@ -48,7 +51,6 @@ def main(owl=None):
             context['@context'][prefix]['@type'] = '@id'
     with open(os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json"), 'w+') as c:
         c.write(json.dumps(context, indent=2))
-
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
