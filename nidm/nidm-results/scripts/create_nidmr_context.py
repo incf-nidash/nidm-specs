@@ -69,14 +69,16 @@ cryptographicHashFunctions#'
     #         owl_txt = fp.read()
     # For anything that has a label
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
-        context['@context'][str(o)] = OrderedDict()
-        # ranges = sorted(owl.graph.objects(s, RDFS['range']))
-        # if ranges:
+        json_key = str(o)
+        if '_' in json_key:
+            json_key = str(o).split('_')[1]
+        context['@context'][json_key] = OrderedDict()
+
         if s in owl.ranges:
-            context['@context'][str(o)]['@id'] = str(s)
-            context['@context'][str(o)]['@type'] = next(iter(owl.ranges[s]))
+            context['@context'][json_key]['@id'] = str(s)
+            context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
         else:
-            context['@context'][str(o)] = str(s)
+            context['@context'][json_key] = str(s)
 
     ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json")
     with open(ctxfile, 'w+') as c:
