@@ -22,6 +22,7 @@ import UpdateTermReadme
 import create_results_specification
 import create_expe_specification
 import create_prefixes
+import create_nidmr_context
 import UpdateExpTermReadme
 
 
@@ -42,6 +43,8 @@ def main():
     create_expe_specification.main()
     # Update csv file of preferred prefixes
     create_prefixes.main()
+    # Create a JSON-LD context for NIDM-Results
+    create_nidmr_context.main()
 
 
 if __name__ == '__main__':
