@@ -9,6 +9,9 @@ from string import Template
 import logging
 import re
 import glob
+import rdflib as rl
+import pyld as ld
+import json
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'terms')
@@ -137,9 +140,21 @@ class ExampleFromTemplate(object):
                                     class_example
                 if not os.path.isdir(os.path.dirname(self.file)):
                     os.mkdir(os.path.dirname(self.file))
-                example_fid = open(self.file, 'w')
+                example_file = self.file
+                example_fid = open(example_file, 'w')
                 example_fid.write(str(example))
                 example_fid.close()
+
+                # Create JSON-LD version
+                g = rl.ConjunctiveGraph()
+                g.parse(example_file, format='turtle')
+                g2 = g.serialize(format='json-ld')
+
+                # Create nice JSON-LD version
+                context = {"@context": "https://raw.githubusercontent.com/satra/nidm-jsonld/master/nidm-results.jsonld"}
+                foo = ld.jsonld.compact(json.loads(g2), context)
+                with open(self.file.replace('.ttl', '.json'), "w+") as fid:
+                    fid.write(json.dumps(foo, indent=2))
 
     def remove_attributes(self, terms, example):
         for term in terms:
