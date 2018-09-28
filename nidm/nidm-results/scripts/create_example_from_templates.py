@@ -159,7 +159,7 @@ class ExampleFromTemplate(object):
                 # context = {"@context":
                 #            os.path.join(TPL_DIR, "..", "nidmr.json")}
                 foo = ld.jsonld.compact(json.loads(g2), context)
-                with open(self.file.replace('.ttl', '.json'), "w+") as fid:
+                with open(self.file.replace('.ttl', '.json'), "w") as fid:
                     fid.write(json.dumps(foo, indent=2))
 
     def remove_attributes(self, terms, example):
