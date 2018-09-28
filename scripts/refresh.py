@@ -43,5 +43,6 @@ def main():
     # Update csv file of preferred prefixes
     create_prefixes.main()
 
+
 if __name__ == '__main__':
     main()
