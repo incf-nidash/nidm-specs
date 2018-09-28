@@ -151,7 +151,7 @@ class ExampleFromTemplate(object):
                 g2 = g.serialize(format='json-ld')
 
                 # Create nice JSON-LD version
-                context = {"@context": "https://raw.githubusercontent.com/satra/nidm-jsonld/master/nidm-results.jsonld"}
+                context = {"@context": "https://raw.githubusercontent.com/incf-nidash/nidm-specs/506e54c4f493065edd7b5e1eee5bd336cc5b4d7b/nidm/nidm-results/terms/nidmr.json"}
                 foo = ld.jsonld.compact(json.loads(g2), context)
                 with open(self.file.replace('.ttl', '.json'), "w+") as fid:
                     fid.write(json.dumps(foo, indent=2))
