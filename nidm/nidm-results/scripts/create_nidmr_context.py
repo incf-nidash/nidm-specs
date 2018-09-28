@@ -42,6 +42,25 @@ def main(owl=None):
     context['@context']['records'] = OrderedDict()
     context['@context']['records']['@container'] = "@type"
     context['@context']['records']['@id'] = "@graph"
+    context['prov'] = 'http://www.w3.org/ns/prov#'
+    context['nidm'] = 'http://purl.org/nidash/nidm#'
+    context['niiri'] = 'http://iri.nidash.org/'
+    context['afni'] = 'http://purl.org/nidash/afni#'
+    context['spm'] = 'http://purl.org/nidash/spm#'
+    context['fsl'] = 'http://purl.org/nidash/fsl#'
+    context['rdfs'] = 'http://www.w3.org/2000/01/rdf-schema#'
+    context['crypto'] = 'http://id.loc.gov/vocabulary/preservation/\
+cryptographicHashFunctions#'
+    context['dc'] = 'http://purl.org/dc/elements/1.1/'
+    context['dct'] = 'http://purl.org/dc/terms/'
+    context['owl'] = 'http://www.w3.org/2002/07/owl#'
+    context['xsd'] = 'http://www.w3.org/2001/XMLSchema#'
+    context['obo'] = 'http://purl.obolibrary.org/obo/'
+    context['nfo'] = 'http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#'
+    context['scr'] = 'http://scicrunch.org/resolver/'
+    context['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
+    context['skos'] = 'http://www.w3.org/2004/02/skos/core#'
+
     with open(prefix_file) as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)  # skip the headers
