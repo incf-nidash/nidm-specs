@@ -153,6 +153,8 @@ class ExampleFromTemplate(object):
                 # Create nice JSON-LD version
                 with open(os.path.join(TPL_DIR, "..", "nidmr.json")) as jnidm:
                     context = json.load(jnidm)
+                print(context)
+                print('---')
 
                 # context = {"@context":
                 #            os.path.join(TPL_DIR, "..", "nidmr.json")}
