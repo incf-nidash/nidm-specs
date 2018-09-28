@@ -32,6 +32,8 @@ def main():
     UpdateExpTermReadme.main()
 
     # --- NIDM-Results
+    # Create a JSON-LD context for NIDM-Results
+    create_nidmr_context.main()
     # Re-create turtle examples from template
     recompute_all_ex.main()
     # Convert turtle to provn and upload to Prov Store
@@ -43,8 +45,6 @@ def main():
     create_expe_specification.main()
     # Update csv file of preferred prefixes
     create_prefixes.main()
-    # Create a JSON-LD context for NIDM-Results
-    create_nidmr_context.main()
 
 
 if __name__ == '__main__':
