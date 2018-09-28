@@ -78,8 +78,20 @@ cryptographicHashFunctions#'
         else:
             context['@context'][str(o)] = str(s)
 
-    with open(os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json"), 'w+') as c:
+    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json")
+    with open(ctxfile, 'w+') as c:
         c.write(json.dumps(context, indent=2))
+
+    # Replace double by float and PositiveInteger by int i.e. compatible
+    # Python types
+    with open(ctxfile, 'r') as c:
+        ctxt = c.read()
+    ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
+    ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
+    ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
+    with open(ctxfile, 'w+') as c:
+        c.write(ctxt)
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
