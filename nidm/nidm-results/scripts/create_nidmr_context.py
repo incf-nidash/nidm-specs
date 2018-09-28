@@ -62,10 +62,6 @@ cryptographicHashFunctions#'
     context['@context']['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
     context['@context']['skos'] = 'http://www.w3.org/2004/02/skos/core#'
 
-    print(owl.ranges)
-    print('------')
-
-
     #     sep = \
     #         '#################################################################'
 
@@ -74,48 +70,14 @@ cryptographicHashFunctions#'
     # For anything that has a label
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
         context['@context'][str(o)] = OrderedDict()
-        ranges = sorted(owl.graph.objects(s, RDFS['range']))
-        if ranges:
+        # ranges = sorted(owl.graph.objects(s, RDFS['range']))
+        # if ranges:
+        if s in owl.ranges:
             context['@context'][str(o)]['@id'] = str(s)
-
-            if isinstance(ranges[0], rdflib.term.BNode):
-                ranges = sorted(
-                    owl.graph.objects(ranges[0], OWL['onDatatype']))
-
-            context['@context'][str(o)]['@type'] = ranges
+            context['@context'][str(o)]['@type'] = next(iter(owl.ranges[s]))
         else:
             context['@context'][str(o)] = str(s)
-        # for rg in sorted(owl.graph.objects(s, RDFS['range'])):
-        #     print(str(o))
-        #     print(str(rg))
-        # print('---')
 
-
-        # try:
-        #     owl.graph.qname(s)
-        # except Exception:
-        #     # Some URIs don't have qname
-        #     # (e.g. http://www.w3.org/ns/prov-o#)
-        #     continue
-        # prefix = owl.get_preferred_prefix(s)
-
-        # if prefix is not None:
-        #     # Add prefix as preferred label in the owl file
-        #     preflabel = str('<' + str(s) + '> ' +
-        #                     '<' + str(SKOS.prefLabel) + '> ' +
-        #                     '"' + prefix + '" . \n')
-        #     owl_txt = owl_txt.replace(sep, preflabel + sep, 1)
-
-    #     with open(owl.file, 'w') as fp:
-    #         fp.write(owl_txt)
-
-    # with open(prefix_file) as csvfile:
-    #     reader = csv.reader(csvfile)
-    #     next(reader, None)  # skip the headers
-    #     for alphanum_id, prefix, uri in reader:
-    #         context['@context'][prefix] = OrderedDict()
-    #         context['@context'][prefix]['@id'] = uri
-    #         context['@context'][prefix]['@type'] = '@id'
     with open(os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json"), 'w+') as c:
         c.write(json.dumps(context, indent=2))
 
