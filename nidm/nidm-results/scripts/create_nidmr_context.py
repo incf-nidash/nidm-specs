@@ -9,6 +9,7 @@ import sys
 import glob
 import json
 from collections import OrderedDict
+import rdflib
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
@@ -61,6 +62,10 @@ cryptographicHashFunctions#'
     context['@context']['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
     context['@context']['skos'] = 'http://www.w3.org/2004/02/skos/core#'
 
+    print(owl.ranges)
+    print('------')
+
+
     #     sep = \
     #         '#################################################################'
 
@@ -68,12 +73,24 @@ cryptographicHashFunctions#'
     #         owl_txt = fp.read()
     # For anything that has a label
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
-        print(str(s))
-        print(str(o))
-        print('---')
         context['@context'][str(o)] = OrderedDict()
-        context['@context'][str(o)]['@id'] = str(s)
-        context['@context'][str(o)]['@type'] = '@id'
+        ranges = sorted(owl.graph.objects(s, RDFS['range']))
+        if ranges:
+            context['@context'][str(o)]['@id'] = str(s)
+
+            if isinstance(ranges[0], rdflib.term.BNode):
+                ranges = sorted(
+                    owl.graph.objects(ranges[0], OWL['onDatatype']))
+
+            context['@context'][str(o)]['@type'] = ranges
+        else:
+            context['@context'][str(o)] = str(s)
+        # for rg in sorted(owl.graph.objects(s, RDFS['range'])):
+        #     print(str(o))
+        #     print(str(rg))
+        # print('---')
+
+
         # try:
         #     owl.graph.qname(s)
         # except Exception:
