@@ -38,7 +38,7 @@ def main(owl=None):
         os.path.dirname(__file__), '..', 'terms', 'prefixes.csv')
     context = OrderedDict()
     context['@context'] = OrderedDict()
-    context['@context']['@version'] = '1.1'
+    context['@context']['@version'] = 1.1
     with open(prefix_file) as csvfile:
         reader = csv.reader(csvfile)
         next(reader, None)  # skip the headers
