@@ -2,7 +2,6 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
-@prefix nlx: <http://neurolex.org/wiki/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
@@ -23,7 +22,6 @@
                <http://purl.org/nidash/nidm/dc_import.owl> ,
                <http://purl.org/nidash/nidm/iao_import.owl> ,
                <http://purl.org/nidash/nidm/nfo_import.owl> ,
-               <http://purl.org/nidash/nidm/nlx_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
@@ -262,13 +260,85 @@ nidm:hadNumericalValue rdf:type owl:DatatypeProperty .
 
 
 
+###  http://purl.org/nidash/nidm#BathSolution
+
+nidm:BathSolution rdf:type owl:DatatypeProperty ;
+                          
+               rdfs:label "Bath Solution"^^xsd:string ;
+                          
+               obo:IAO_0000115 "A bath solution is a property that associates a string describing the solution that engulfs a sample with the data acquisition object obtained from that sample."^^xsd:string ;
+                          
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#CellType
+
+nidm:CellType rdf:type owl:DatatypeProperty ;
+                       
+               rdfs:label "Cell Type"^^xsd:string ;
+                       
+               obo:IAO_0000115 "Cell type is property that associates a string that is the name of the cells on which measurements are made, with a data acquisition object."^^xsd:string ;
+                       
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#ChannelNumber
+
+nidm:ChannelNumber rdf:type owl:DatatypeProperty ;
+                       
+               rdfs:label "Channel Number"^^xsd:string ;
+                       
+               obo:IAO_0000115 "Channel number is property that associates the numeric label of a data acquisition channel of a device to the data acquisition object that was acquired using that device."^^xsd:string ;
+                       
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#ElectrodeImpedance
+
+nidm:ElectrodeImpedance rdf:type owl:DatatypeProperty ;
+                       
+               rdfs:label "Electrode Impedance"^^xsd:string ;
+                       
+               obo:IAO_0000115 "Electrode impedance is property that associates the numeric value of the ratio of the voltage across the electrodes to the measured AC current (impedance) with the data acquisition object that was acquired."^^xsd:string ;
+                       
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#GroupLabel
+
+nidm:GroupLabel rdf:type owl:DatatypeProperty ;
+
+               rdfs:label "Group Label"^^xsd:string ;
+
+               obo:IAO_0000115 "Group label is a property that associates the label used to denote membership in a particular collection with a person or sample."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#HollowElectrodeSolution
+
+nidm:HollowElectrodeSolution rdf:type owl:DatatypeProperty ;
+                          
+               rdfs:label "Hollow Electrode Solution"^^xsd:string ;
+                          
+               obo:IAO_0000115 "A hollow electrode solution is a property that associates a string describing the solution that is placed in a hollow electrode used to make an electrophysiology measurement with the data acquisition object obtained from that sample."^^xsd:string ;
+                          
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
 ###  http://purl.org/nidash/nidm#hadImageContrastType
 
 nidm:hadImageContrastType rdf:type owl:DatatypeProperty ;
                           
-               rdfs:label "had Image Contrast Type"^^xsd:string ;
+               rdfs:label "Image Contrast Type"^^xsd:string ;
                           
-               obo:IAO_0000115 "A property that associates an ImageContrastType with a AcquisitionObject."^^xsd:string ;
+               obo:IAO_0000115 "Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object."^^xsd:string ;
                           
                obo:IAO_0000116 "To be discussed"^^xsd:string .
 
@@ -280,9 +350,57 @@ nidm:hadImageUsageType rdf:type owl:DatatypeProperty ;
                        
                rdfs:label "had Image Usage Type"^^xsd:string ;
                        
-               obo:IAO_0000115 "A property that associates an ImageUsageType with a AcquisitionObject."^^xsd:string ;
+               obo:IAO_0000115 "Had Image usage type is a property that associates a string that describes the purpose for which an image was acquired with the image data acquisition object."^^xsd:string ;
                        
                obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#NumberOfChannels
+
+nidm:NumberOfChannels rdf:type owl:DatatypeProperty ;
+                       
+               rdfs:label "Number Of Channels"^^xsd:string ;
+                       
+               obo:IAO_0000115 "Number of channels is a property that associates the number of data acquisition meassurenments concurrently acquired by a data acquisition device to the data acquisition object acquired by that device."^^xsd:string ;
+                       
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+           
+###  http://purl.org/nidash/nidm#AppliedFilter
+
+nidm:AppliedFilter rdf:type owl:DatatypeProperty ;
+
+               rdfs:label "Applied Filter"^^xsd:string ;
+
+               obo:IAO_0000115 "Applied filter is a property that associates the string name of the filter type used to remove or modify certain components of the input signal with a data acquisition object that includes that signal."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 .
+
+           
+
+###  http://purl.org/nidash/nidm#SolutionFlowSpeed
+
+nidm:SolutionFlowSpeed rdf:type owl:DatatypeProperty ;
+
+               rdfs:label "Solution Flow Speed"^^xsd:string ;
+
+               obo:IAO_0000115 "Solution flow speed is a property that associates the value of the speed at which the bathing solution moves across the sample with a data acquisition object."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 .
+
+           
+
+###  http://purl.org/nidash/nidm#RecordingLocation
+
+nidm:RecordingLocation rdf:type owl:DatatypeProperty ;
+
+               rdfs:label "Recording Location"^^xsd:string ;
+
+               obo:IAO_0000115 "Recording location is a property that associates a string that describes the anatomical location at which the electrophysiological measurement was made with a data acquisition object."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
@@ -426,12 +544,25 @@ nidm:ArterialSpinLabeling rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Attenuator
+
+nidm:Attenuator rdf:type owl:Class ;
+                  
+               rdfs:label "Attenuator" ;
+
+               rdfs:subClassOf nidm:DataProcessingDevice ;
+
+               obo:IAO_0000115 "An attenuator is a device that reduces the amplitude of an input signal by a fixed amount while keeping the timecourse of the signal essentially unchanged." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
 
 ###  http://purl.org/nidash/nidm#AuxiliaryFile
 
 nidm:AuxiliaryFile rdf:type owl:Class ;
                    
-               rdfs:label "Auxiliary File"^^xsd:string ;
+               rdfs:label "AuxiliaryFile"^^xsd:string ;
                    
                rdfs:subClassOf sio:SIO_000396 ;
                    
@@ -458,6 +589,20 @@ nidm:AuxiliaryFileCollection rdf:type owl:Class ;
                rdfs:comment "An example of an auxiliary file collection is the b-value and b-vector files in diffusion-weighted MR imaging."^^xsd:string ;
                              
                prov:wasAssociatedWith nidm:AcquisitionObject .
+
+
+
+###  http://purl.org/nidash/nidm#BandpassFilter
+
+nidm:BandpassFilter rdf:type owl:Class ;
+                  
+               rdfs:label "Bandpass Filter" ;
+
+               rdfs:subClassOf nidm:SignalFilter ;
+
+               obo:IAO_0000115 "A bandpass filter is a device that modifies or removes certain signal components outside a selected frequency range from an electrical signal." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
 
 
 
@@ -508,17 +653,20 @@ nidm:Cartesian rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ClinicalInstrument
+###  http://purl.org/nidash/nidm#Cartesian
 
-nidm:ClinicalInstrument rdf:type owl:Class ;
+nidm:Cartesian rdf:type owl:Class ;
 
-               rdfs:label "Clinical Instrument"^^xsd:string ;
+               rdfs:label "Cartesian"^^xsd:string ;
 
-               obo:IAO_0000115 "A clinical instrument is a instrument usage type that signifies that the type of data to be collected by the instrument is clinically-related data."^^xsd:string ;
+               obo:IAO_0000115 "Cartesian is a k-space traversal scheme in MRI in which the path of the data acquisition follows a straight line parallel to one axis of the defined k-space and perpendicular to the other k=space axis."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
-               rdfs:subClassOf nidm:InstrumentUsageType .
+               rdfs:subClassOf nidm:k-spaceTraversalScheme ;
+
+               owl:synonym nidm:Rectilinear .
+
 
 
 
@@ -536,6 +684,20 @@ nidm:CoInvestigator rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#CurrentAmplifier
+
+nidm:CurrentAmplifier rdf:type owl:Class ;
+                  
+               rdfs:label "Current Amplifier" ;
+
+               rdfs:subClassOf nidm:DataProcessingDevice ;
+
+               obo:IAO_0000115 "A current amplifier is a device that increases the electrical current amplitude of an input electrical signal by a fixed amount, while keeping the voltage constant." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
 ###  http://purl.org/nidash/nidm#CurrentClamp
 
 nidm:CurrentClamp rdf:type owl:Class ;
@@ -547,6 +709,34 @@ nidm:CurrentClamp rdf:type owl:Class ;
                obo:IAO_0000115 "A current clamp is an intracellular electrophysiology acquisition method in which current is injected into a cell and the voltage generated by the cell is recorded." ;
                   
                obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
+###  http://purl.org/nidash/nidm#DataAcquisitionDevice
+
+nidm:DataAcquisitionDevice rdf:type owl:Class ;
+                  
+               rdfs:label "Data Acquisition Device" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A data acquisition device is a device that collects a packet or stream of analog or digital information from an entity." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .  
+
+
+
+###  http://purl.org/nidash/nidm#DataProcessingDevice
+
+nidm:DataProcessingDevice rdf:type owl:Class ;
+                  
+               rdfs:label "Data Processing Device" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A data processing device is a device that manipulates a data packet, stream, or file by performing an operation on the data." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .  
 
 
 
@@ -668,6 +858,20 @@ nidm:Electrocorticography rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Electrode
+
+nidm:Electrode rdf:type owl:Class ;
+
+               rdfs:label "Electrode"^^xsd:string ;
+
+               obo:IAO_0000115 "An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from subject or sample."^^xsd:string ;
+                             
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+
 ###  http://purl.org/nidash/nidm#Electroencephalography
 
 nidm:Electroencephalography rdf:type owl:Class ;
@@ -679,6 +883,20 @@ nidm:Electroencephalography rdf:type owl:Class ;
                rdfs:label "Electroencephalography"^^xsd:string ;
                             
                rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#ElectroencephalographyAcquisitionDevice
+
+nidm:ElectroencephalographyAcquisitionDevice rdf:type owl:Class ;
+
+               obo:IAO_0000115 "An electroencephalography (EEG) acquisition device is a device that measures the electrical activity of the brain and consists of a set of electrodes placed on the surface of the head and a recording device that collects the signal from each electrode."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Electroencephalography Acquisition Device"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
 
@@ -724,6 +942,20 @@ nidm:ExtracellularElectrophysiologyRecording rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                                              
                rdfs:subClassOf nidm:ElectrophysiologyRecording .
+
+
+
+###  http://purl.org/nidash/nidm#EyeTrackingDevice
+
+nidm:EyeTrackingDevice rdf:type owl:Class ;
+                    
+               rdfs:label "Eye Tracking Device" ;
+
+               obo:IAO_0000115 "An eye tracking device is a device that consists of hardware that follows the motion of a subjects eye so that allows the determination of either the location of the subject's gaze or of relative eye motion."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                    
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
 
@@ -794,6 +1026,48 @@ nidm:Gender rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
            
                rdfs:subClassOf sio:SIO_000009 .
+
+
+
+##  http://purl.org/nidash/nidm#HeartRateMonitor
+
+nidm:HeartRateMonitor rdf:type owl:Class ;
+
+               rdfs:label "Heart Rate Monitor"^^xsd:string ;
+
+               obo:IAO_0000115 "A heart rate monitor is a data acquisition device that records the number of heart beats in a given period of time of a subject."^^xsd:string ;
+                             
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+
+###  http://purl.org/nidash/nidm#HighpassFilter
+
+nidm:HighpassFilter rdf:type owl:Class ;
+                  
+               rdfs:label "Highpass Filter" ;
+
+               rdfs:subClassOf nidm:SignalFilter ;
+
+               obo:IAO_0000115 "A highpass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
+###  http://purl.org/nidash/nidm#ImageAcquisitionDevice
+
+nidm:ImageAcquisitionDevice rdf:type owl:Class ;
+
+               rdfs:label "Image Acquisition Device"^^xsd:string ;
+
+               obo:IAO_0000115 "An image acquisition device is a data acquisition device that has an image as its primary output."^^xsd:string ;
+                             
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
 
@@ -915,6 +1189,20 @@ nidm:IntracellularElectrophysiologyRecording rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#LowpassFilter
+
+nidm:LowpassFilter rdf:type owl:Class ;
+                  
+               rdfs:label "Lowpass Filter" ;
+
+               rdfs:subClassOf nidm:SignalFilter ;
+
+               obo:IAO_0000115 "A lowpass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
 ###  http://purl.org/nidash/nidm#MagneticResonanceImaging
 
 nidm:MagneticResonanceImaging rdf:type owl:Class ;
@@ -923,7 +1211,21 @@ nidm:MagneticResonanceImaging rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different spatial locations."^^xsd:string ;
+              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
+                      
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#MagneticResonanceImagingScanner
+
+nidm:MagneticResonanceImagingScanner rdf:type owl:Class ;
+                              
+              rdfs:label "Magnetic Resonance Imaging Scanner" ;
+                              
+              rdfs:subClassOf nidm:ImageAcquisitionDevice ;
+
+              obo:IAO_0000115 "A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a sample or subject and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -937,9 +1239,23 @@ nidm:Magnetoencephalography rdf:type owl:Class ;
                             
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Magnetoencephalography is an acquisition modality in which the magnetic fields, resulting from electrical activity in the brain, are detected and used to elucidate the time course of brain electrical activity."^^xsd:string ;
+              obo:IAO_0000115 "Magnetoencephalography (MEG) is an acquisition modality in which the magnetic fields, resulting from electrical activity in the brain, are detected and used to elucidate the time course of brain electrical activity."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#MagnetoencephalographyAcquisitionDevice
+
+nidm:MagnetoencephalographyAcquisitionDevice rdf:type owl:Class ;
+
+               obo:IAO_0000115 "An magnetoencephalography (MEG) acquisition device is a device that measures magnetic signals generated by the electrical activity of the brain and consists of a set of magnetometers placed near the surface of the head and a recording device that collects the signal from each electrode."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Magnetoencephalography Acquisition Device"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
 
@@ -987,6 +1303,20 @@ nidm:ModelSpecification rdf:type owl:Class ;
 
 
 
+##  http://purl.org/nidash/nidm#MultielectrodeArray
+
+nidm:MultielectrodeArray rdf:type owl:Class ;
+
+               rdfs:label "Multi-electrode Array"^^xsd:string ;
+
+               obo:IAO_0000115 "A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from subject or sample."^^xsd:string ;
+                             
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+
 ###  http://purl.org/nidash/nidm#MultiUnitReccording
 
 nidm:MultiUnitReccording rdf:type owl:Class ;
@@ -995,7 +1325,7 @@ nidm:MultiUnitReccording rdf:type owl:Class ;
                          
               rdfs:subClassOf nidm:AcquisitionMethod ;
 
-              obo:IAO_0000115 "Multiunit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices." ;
+              obo:IAO_0000115 "Multi-unit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1112,6 +1442,20 @@ nidm:PositronEmissionTomography rdf:type owl:Class ;
               rdfs:subClassOf nidm:AcquisitionModality ;
 
               obo:IAO_0000115 "Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the subject and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated."^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#PositronEmissionTomographyScanner
+
+nidm:PositronEmissionTomographyScanner rdf:type owl:Class ;
+                                
+              rdfs:label "Positron Emission Tomography Scanner" ;
+                                
+              rdfs:subClassOf nidm:ImageAcquisitionDevice ;
+
+              obo:IAO_0000115 "A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a subject who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1271,7 +1615,21 @@ nidm:ResearchAssistant rdf:type owl:Class ;
               obo:IAO_0000115 "A research assistant is a role for a person who participates in laboratory- and study-related activities, but who is not leading the project in any fashion."^^xsd:string ;
                        
               obo:IAO_0000114 obo:IAO_0000428 .
-                       
+
+
+
+##  http://purl.org/nidash/nidm#RespirationRateMonitor
+
+nidm:RespirationRateMonitor rdf:type owl:Class ;
+
+               rdfs:label "Respiration Rate Monitor"^^xsd:string ;
+
+               obo:IAO_0000115 "A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time."^^xsd:string ;
+                             
+               obo:IAO_0000114 obo:IAO_0000428 ;
+               
+               rdfs:subClassOf nidm:DataAcquisitionDevice .
+
 
 
 ###  http://purl.org/nidash/nidm#Series
@@ -1342,6 +1700,34 @@ nidm:SharpElectrode rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#SignalFilter
+
+nidm:SignalFilter rdf:type owl:Class ;
+                  
+               rdfs:label "Signal Filter" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A signal filter is a device that modifies or removes certain components of an electrical signal." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
+###  http://purl.org/nidash/nidm#SignalGenerator
+
+nidm:SignalGenerator rdf:type owl:Class ;
+                  
+               rdfs:label "Signal Generator" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A signal generator is a device that supplies an electrical voltage signal of a specified amplitude and shape." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
 ###  http://purl.org/nidash/nidm#SimultaneousMultisliceMethod
 
 nidm:SimultaneousMultisliceMethod rdf:type owl:Class ;
@@ -1353,6 +1739,34 @@ nidm:SimultaneousMultisliceMethod rdf:type owl:Class ;
               obo:IAO_0000115 "Simultaneous multislice is an acquisition method in magnetic resonance imaging used to acquire the k-space in which data from multiple slices are acquired at the same time and the coil sensitivity profiles are used to separate the data from each slice."^^xsd:string ;
                                   
               obo:IAO_0000114 obo:IAO_0000125 .
+
+
+
+###  http://purl.org/nidash/nidm#SinglePhotonEmissionComputedTomography
+
+nidm:SinglePhotonEmissionComputedTomography rdf:type owl:Class ;
+                                
+              rdfs:label "Single Photon Emission Computed Tomography" ;
+                                
+              rdfs:subClassOf nidm:AcquisitionModality ;
+
+              obo:IAO_0000115 "Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the subject and the gamma rays emitted are detected in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#SinglePhotonEmissionComputedTomographyScanner
+
+nidm:SinglePhotonEmissionComputedTomographyScanner rdf:type owl:Class ;
+                                
+              rdfs:label "Single Photon Emission Computed Tomography Scanner" ;
+                                
+              rdfs:subClassOf nidm:ImageAcquisitionDevice ;
+
+              obo:IAO_0000115 "A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a subject in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
@@ -1383,6 +1797,34 @@ nidm:SpecifiedPlan rdf:type owl:Class ;
               rdfs:comment "Note that this is related to nidm:PerformedPlan, which is the plan that is actually carried out." ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#StimulusGenerator
+
+nidm:StimulusGenerator rdf:type owl:Class ;
+                  
+               rdfs:label "Stimulus Generator" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A stimulus generator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
+###  http://purl.org/nidash/nidm#StimulusIsolator
+
+nidm:StimulusIsolator rdf:type owl:Class ;
+                  
+               rdfs:label "Stimulus Isolator" ;
+
+               rdfs:subClassOf sio:SIO_000956 ;
+
+               obo:IAO_0000115 "A stimulus isolatator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part, but is isolated from electrical ground, which both decreases the stimulus artifact in the acquired signal and increases the safety for the user." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
 
 
 
@@ -1541,6 +1983,20 @@ nidm:Task rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#VoltageAmplifier
+
+nidm:VoltageAmplifier rdf:type owl:Class ;
+                  
+               rdfs:label "Voltage Amplifier" ;
+
+               rdfs:subClassOf nidm:DataProcessingDevice ;
+
+               obo:IAO_0000115 "A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+
 ###  http://purl.org/nidash/nidm#VoltageClamp
 
 nidm:VoltageClamp rdf:type owl:Class ;
@@ -1664,12 +2120,6 @@ sio:SIO_001069 rdfs:subClassOf nidm:Group .
 ###  http://purl.obolibrary.org/obo/PATO_0000001
 
 obo:PATO_0000001 rdfs:subClassOf sio:SIO_000614 .
-
-
-
-###  http://uri.neuinfo.org/nif/nifstd/birnlex_2094
-
-<http://uri.neuinfo.org/nif/nifstd/birnlex_2094> rdfs:subClassOf sio:SIO_001236 .
 
 
 
@@ -2187,7 +2637,7 @@ nidm:SimpsonAngusRatingScale rdfs:label "Simpson Angus Rating Scale" ;
                              
               obo:IAO_0000115 "The Simpson Angus Rating Scale is an assessment instrument used to evaluate the presence and severity of parkinsonian symptomatology and focuses on rigidity rather than bradykinesia."^^xsd:string ;
                              
-              dct:source nlx:birnlex_3047 ;
+              dct:source "wikipedia"^^xsd:string ;
                              
               obo:IAO_0000114 obo:IAO_0000428 .
 
