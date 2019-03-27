@@ -62,7 +62,7 @@ def main():
         NIDM['Acquisition'],NIDM['AcquisitionDeviceOperator'],NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
         NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'],NIDM['BehavioralInstrument'], 
         NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
-        NIDM['ClinicalInstrument'], NIDM['DemographicsInstrument'],
+        NIDM['DemographicsInstrument'],
         NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
         NIDM['ImageUsageType'],NIDM['InformedConsentInstrument'],NIDM['InstrumentAdministrator'],
         NIDM['InstrumentUsageType'],
@@ -87,12 +87,20 @@ def main():
         NIDM['NIDM_0000154'], NIDM['NIDM_0000155']
         ]
     subcomponents['Electrophysiology'] = [
-        NIDM['Amperometry'], NIDM['CurrentClamp'], 
+        NIDM['Amperometry'],  NIDM['CurrentClamp'], 
         NIDM['Electroencephalography'], NIDM['Electrocorticography'],NIDM['ElectrophysiologyRecording'],
         NIDM['ExtracellularElectrophysiologyRecording'],NIDM['FieldPotential'],
         NIDM['IntracellularElectrophysiologyRecording'],NIDM['Magnetoencephalography'],
         NIDM['MultiUnitReccording'],  NIDM['SharpElectrode'], NIDM['SingleUnitReccording'], 
         NIDM['PatchClamp'], NIDM['VoltageClamp']
+        ]
+    subcomponents['Devices'] = [
+        NIDM['CurrentAmplifier'], NIDM['SignalGenerator'], NIDM['StimulusGenerator'], NIDM['StimulusIsolator'], 
+        NIDM['VoltageAmplifier'], NIDM['EyeTrackingDevice'], NIDM['HeartRateMonitor'], NIDM['Electrode'], 
+        NIDM['ElectroencephalographyAcquisitionDevice'], NIDM['MagneticResonanceImagingScanner'],
+        NIDM['PositronEmissionTomographyScanner'], NIDM['SinglePhotonEmissionComputedTomographyScanner'], 
+        NIDM['MagnetoencephalographyAcquisitionDevice'], NIDM['MultielectrodeArray'], NIDM['Attenuator'],
+        NIDM['RespirationRateMonitor'], NIDM['SignalFilter']
         ]
     subcomponents['Positron Emission Tomography'] = [NIDM['PositronEmissionTomography']]
     subcomponents['X-ray Computed Tomography'] = [NIDM['X-rayComputedTomography']]
