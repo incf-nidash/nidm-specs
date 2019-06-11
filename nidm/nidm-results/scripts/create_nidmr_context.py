@@ -79,18 +79,21 @@ cryptographicHashFunctions#'
             context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
         else:
             context['@context'][json_key] = str(s)
-
-    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json")
+            
+    # join one path components from terms ans nidmr.json
+    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json") 
     with open(ctxfile, 'w+') as c:
         c.write(json.dumps(context, indent=2))
 
     # Replace double by float and PositiveInteger by int i.e. compatible
     # Python types
+    # Suppress boolean and string 
     with open(ctxfile, 'r') as c:
         ctxt = c.read()
     ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
+    ctxt = ctxt.replace('http://www.w3.org/2001/XMLSchema#boolean', '')
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
