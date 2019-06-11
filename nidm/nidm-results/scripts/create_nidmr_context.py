@@ -93,7 +93,7 @@ cryptographicHashFunctions#'
     ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
-    ctxt = ctxt.replace('http://www.w3.org/2001/XMLSchema#boolean', '')
+    ctxt = ctxt.replace(', \n     "@type": "http://www.w3.org/2001/XMLSchema#boolean"', '')
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
