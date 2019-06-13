@@ -525,31 +525,31 @@
   }, 
   "@id": "file:///Users/camaumet/Softs/nidm-specs/nidm/nidm-results/test/ground_truth/voxelwise_p050_fwe/nidm.ttl", 
   "records": {
-    "Inference": {
-      "prov:used": [
-        {
-          "@id": "niiri:height_threshold_id"
-        }, 
-        {
-          "@id": "niiri:extent_threshold_id"
-        }
-      ], 
-      "@id": "niiri:inference_id"
-    }, 
-    "HeightThreshold": {
-      "rdfs:label": "Height Threshold: p<0.05 (FWE)", 
-      "@id": "niiri:height_threshold_id", 
-      "@type": "FWERAdjustedPValue", 
-      "prov:value": {
-        "@type": "xsd:float", 
-        "@value": "0.05"
-      }
-    }, 
     "Statistic": {
       "clusterSizeInVoxels": "0", 
       "@id": "niiri:extent_threshold_id", 
       "@type": "ExtentThreshold", 
       "rdfs:label": "Extent Threshold: k>=0"
+    }, 
+    "Inference": {
+      "prov:used": [
+        {
+          "@id": "niiri:extent_threshold_id"
+        }, 
+        {
+          "@id": "niiri:height_threshold_id"
+        }
+      ], 
+      "@id": "niiri:inference_id"
+    }, 
+    "FWERAdjustedPValue": {
+      "rdfs:label": "Height Threshold: p<0.05 (FWE)", 
+      "@id": "niiri:height_threshold_id", 
+      "@type": "HeightThreshold", 
+      "prov:value": {
+        "@type": "xsd:float", 
+        "@value": "0.05"
+      }
     }
   }
 }

@@ -245,8 +245,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Image Contrast Type': </b>Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Image Contrast Type': </b>Image Contrast Type is an acquisition object quality that denotes the physical properties on which differences in image intensity, in an image, are based</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -646,8 +646,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Image Contrast Type': </b>Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Image Contrast Type': </b>Image Contrast Type is an acquisition object quality that denotes the physical properties on which differences in image intensity, in an image, are based</td>
     <td></td>
     <td></td>
 </tr>
