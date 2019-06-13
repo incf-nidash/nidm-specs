@@ -70,13 +70,23 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Attenuator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Attenuator': </b>An attenuator is a device that reduces the amplitude of an input signal by a fixed amount while keeping the timecourse of the signal essentially unchanged</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Auxiliary File Collection'"> [find issues/PR] </a></td>
     <td><b>nidm:'Auxiliary File Collection': </b>An auxiliary file collection is a grouping that contains the URI's of files that are necessary for the execution of the experiment or the processing of the data</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Auxiliary File'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Auxiliary File': </b>An auxiliary file is an information-bearing object that is either used to inform the execution of an experiment or that is generated during the execution of the experiment</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='AuxiliaryFile'"> [find issues/PR] </a></td>
+    <td><b>nidm:'AuxiliaryFile': </b>An auxiliary file is an information-bearing object that is either used to inform the execution of an experiment or that is generated during the execution of the experiment</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Bandpass Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Bandpass Filter': </b>A bandpass filter is a device that modifies or removes certain signal components outside a selected frequency range from an electrical signal</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -95,13 +105,13 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Clinical Instrument'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Clinical Instrument': </b>A clinical instrument is a instrument usage type that signifies that the type of data to be collected by the instrument is clinically-related data</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Co-Investigator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Co-Investigator': </b>A co-investigator is a role for a person that shares responsibility for the oversight and performance of an investigation activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Co-Investigator'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Co-Investigator': </b>A co-investigator is a role for a person that shares responsibility for the oversight and performance of an investigation activity</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Current Amplifier'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Current Amplifier': </b>A current amplifier is a device that increases the electrical current amplitude of an input electrical signal by a fixed amount, while keeping the voltage constant</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -112,6 +122,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='DICOM Tag Collection'"> [find issues/PR] </a></td>
     <td><b>nidm:'DICOM Tag Collection': </b>A DICOM tag collection is a group of identifiers and their values that are stored in the headers of DICOM-formatted acquisition objects and that record the acquisition and reconstruction parameters for that acquisition object</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Acquisition Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data Acquisition Device': </b>A data acquisition device is a device that collects a packet or stream of analog or digital information from an entity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Processing Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data Processing Device': </b>A data processing device is a device that manipulates a data packet, stream, or file by performing an operation on the data</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -150,6 +170,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrode'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrode': </b>An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from subject or sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography Acquisition Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electroencephalography Acquisition Device': </b>An electroencephalography (EEG) acquisition device is a device that measures the electrical activity of the brain and consists of a set of electrodes placed on the surface of the head and a recording device that collects the signal from each electrode</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography'"> [find issues/PR] </a></td>
     <td><b>nidm:'Electroencephalography': </b>Electroencephalography (EEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed on the surface of the head</td>
 </tr>
@@ -167,6 +197,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Extracellular Electrophysiology Recording'"> [find issues/PR] </a></td>
     <td><b>nidm:'Extracellular Electrophysiology Recording': </b>Extracellular Electrophysiology Recording is an acquisition modality in which one or more electrodes are inserted into living tissue and the electrical signals from adjacent cells are recorded</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Eye Tracking Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Eye Tracking Device': </b>An eye tracking device is a device that consists of hardware that follows the motion of a subjects eye so that allows the determination of either the location of the subject's gaze or of relative eye motion</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -195,8 +230,23 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Image Contrast Type': </b>Image Contrast Type is an acquisition object quality that denotes the physical properties on which differences in image intensity, in an image, are based</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Heart Rate Monitor'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Heart Rate Monitor': </b>A heart rate monitor is a data acquisition device that records the number of heart beats in a given period of time of a subject</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Highpass Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Highpass Filter': </b>A highpass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Acquisition Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Image Acquisition Device': </b>An image acquisition device is a data acquisition device that has an image as its primary output</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Image Contrast Type': </b>Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -235,13 +285,28 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Lowpass Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Lowpass Filter': </b>A lowpass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetic Resonance Imaging Scanner'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Magnetic Resonance Imaging Scanner': </b>A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a sample or subject and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetic Resonance Imaging'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Magnetic Resonance Imaging': </b>Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different spatial locations</td>
+    <td><b>nidm:'Magnetic Resonance Imaging': </b>Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetoencephalography Acquisition Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Magnetoencephalography Acquisition Device': </b>An magnetoencephalography (MEG) acquisition device is a device that measures magnetic signals generated by the electrical activity of the brain and consists of a set of magnetometers placed near the surface of the head and a recording device that collects the signal from each electrode</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetoencephalography'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Magnetoencephalography': </b>Magnetoencephalography is an acquisition modality in which the magnetic fields, resulting from electrical activity in the brain, are detected and used to elucidate the time course of brain electrical activity</td>
+    <td><b>nidm:'Magnetoencephalography': </b>Magnetoencephalography (MEG) is an acquisition modality in which the magnetic fields, resulting from electrical activity in the brain, are detected and used to elucidate the time course of brain electrical activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -260,8 +325,13 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multi-electrode Array'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Multi-electrode Array': </b>A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from subject or sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multi-unit Recording'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Multi-unit Recording': </b>Multiunit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices</td>
+    <td><b>nidm:'Multi-unit Recording': </b>Multi-unit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -292,6 +362,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Performed Plan'"> [find issues/PR] </a></td>
     <td><b>nidm:'Performed Plan': </b>A performed plan is a plan that is actually implemented during an acquisition activity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Positron Emission Tomography Scanner'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Positron Emission Tomography Scanner': </b>A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a subject who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -360,6 +435,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Respiration Rate Monitor'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Respiration Rate Monitor': </b>A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Series'"> [find issues/PR] </a></td>
     <td><b>nidm:'Series': </b>A series is an activity in which data of a single type is acquired such that one acquisition takes place during the same temporal epoch</td>
 </tr>
@@ -380,8 +460,38 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Signal Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Signal Filter': </b>A signal filter is a device that modifies or removes certain components of an electrical signal</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Signal Generator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Signal Generator': </b>A signal generator is a device that supplies an electrical voltage signal of a specified amplitude and shape</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Single Photon Emission Computed Tomography Scanner'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Single Photon Emission Computed Tomography Scanner': </b>A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a subject in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Single Photon Emission Computed Tomography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Single Photon Emission Computed Tomography': </b>Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the subject and the gamma rays emitted are detected in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Specified Plan'"> [find issues/PR] </a></td>
     <td><b>nidm:'Specified Plan': </b>A specified plan is a plan that describes how the acquisition activity is to be carried out</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Generator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Stimulus Generator': </b>A stimulus generator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Isolator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Stimulus Isolator': </b>A stimulus isolatator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part, but is isolated from electrical ground, which both decreases the stimulus artifact in the acquired signal and increases the safety for the user</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -435,6 +545,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Amplifier'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Voltage Amplifier': </b>A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Clamp'"> [find issues/PR] </a></td>
     <td><b>nidm:'Voltage Clamp': </b>Voltage clamp is an intracellular electrophysiological acquisition method in in which the cell membrane potential is fixed to a set value and the ionic current that crosses the cell membrane at that potential is measured</td>
 </tr>
@@ -467,16 +582,86 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <table>
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th><th>Domain</th><th>Range</th></tr>
 <tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Applied Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Applied Filter': </b>Applied filter is a property that associates the string name of the filter type used to remove or modify certain components of the input signal with a data acquisition object that includes that signal</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Group Label'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Group Label': </b>Group label is a property that associates the label used to denote membership in a particular collection with a person or sample</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Recording Location'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Recording Location': </b>Recording location is a property that associates a string that describes the anatomical location at which the electrophysiological measurement was made with a data acquisition object</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Solution Flow Speed'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Solution Flow Speed': </b>Solution flow speed is a property that associates the value of the speed at which the bathing solution moves across the sample with a data acquisition object</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
-    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='had Image Contrast Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'had Image Contrast Type': </b>A property that associates an ImageContrastType with a AcquisitionObject</td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Bath Solution'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Bath Solution': </b>A bath solution is a property that associates a string describing the solution that engulfs a sample with the data acquisition object obtained from that sample</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Cell Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Cell Type': </b>Cell type is property that associates a string that is the name of the cells on which measurements are made, with a data acquisition object</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Channel Number'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Channel Number': </b>Channel number is property that associates the numeric label of a data acquisition channel of a device to the data acquisition object that was acquired using that device</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrode Impedance'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrode Impedance': </b>Electrode impedance is property that associates the numeric value of the ratio of the voltage across the electrodes to the measured AC current (impedance) with the data acquisition object that was acquired</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Hollow Electrode Solution'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Hollow Electrode Solution': </b>A hollow electrode solution is a property that associates a string describing the solution that is placed in a hollow electrode used to make an electrophysiology measurement with the data acquisition object obtained from that sample</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Image Contrast Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Image Contrast Type': </b>Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
+    <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Number Of Channels'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Number Of Channels': </b>Number of channels is a property that associates the number of data acquisition meassurenments concurrently acquired by a data acquisition device to the data acquisition object acquired by that device</td>
     <td></td>
     <td></td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='had Image Usage Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'had Image Usage Type': </b>A property that associates an ImageUsageType with a AcquisitionObject</td>
+    <td><b>nidm:'had Image Usage Type': </b>Had Image usage type is a property that associates a string that describes the purpose for which an image was acquired with the image data acquisition object</td>
     <td></td>
     <td></td>
 </tr>
