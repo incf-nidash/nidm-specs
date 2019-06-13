@@ -71,11 +71,6 @@ Thank you in advance for taking part in NIDM-Results term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
-    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Arbitrarily Correlated Error'"> [more] </a></td>
-    <td><b>nidm:'Arbitrarily Correlated Error': </b>&lt;undefined&gt; (editor: TN)</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Exchangeable Error'"> [more] </a></td>
     <td><b>nidm:'Exchangeable Error': </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
@@ -83,6 +78,11 @@ Thank you in advance for taking part in NIDM-Results term curation!
     <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
     <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Independent Error'"> [more] </a></td>
     <td><b>nidm:'Independent Error': </b>&lt;undefined&gt; (editor: TN)</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/yellow.png?raw=true"/>  </td>
+    <td>Under discussion at <a href="https://github.com/ISA-tools/stato/pull/28">ISA-tools/stato#28</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='deprecated Arbitrarily Correlated Error'"> [more] </a></td>
+    <td><b>nidm:'deprecated Arbitrarily Correlated Error': </b>&lt;undefined&gt; (editor: TN)</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
