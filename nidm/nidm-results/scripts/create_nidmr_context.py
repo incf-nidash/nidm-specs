@@ -88,6 +88,7 @@ cryptographicHashFunctions#'
     # Replace double by float and PositiveInteger by int i.e. compatible
     # Python types
     # Suppress boolean and string
+    
     import re 
     with open(ctxfile, 'r') as c:
         ctxt = c.read()
@@ -95,7 +96,6 @@ cryptographicHashFunctions#'
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
     ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#boolean"', '', ctxt)
-    ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#string"', '', ctxt)
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
