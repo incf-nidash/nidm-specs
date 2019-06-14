@@ -87,7 +87,7 @@ cryptographicHashFunctions#'
 
     # Replace double by float and PositiveInteger by int i.e. compatible
     # Python types
-    # Suppress boolean and string
+    # Suppress boolean and string type 
     
     import re 
     with open(ctxfile, 'r') as c:
