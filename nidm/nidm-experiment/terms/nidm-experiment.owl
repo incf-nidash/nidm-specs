@@ -2,6 +2,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix dicom: <http://purl.org/nidash/dicom#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
@@ -20,6 +21,7 @@
 [ rdf:type owl:Ontology ;
   owl:imports <http://purl.org/nidash/nidm/crypto_import.owl> ,
                <http://purl.org/nidash/nidm/dc_import.owl> ,
+               <http://purl.org/nidash/nidm/dicom_import.owl> ,
                <http://purl.org/nidash/nidm/iao_import.owl> ,
                <http://purl.org/nidash/nidm/nfo_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
@@ -336,9 +338,9 @@ nidm:HollowElectrodeSolution rdf:type owl:DatatypeProperty ;
 
 nidm:hadImageContrastType rdf:type owl:DatatypeProperty ;
                           
-               rdfs:label "Image Contrast Type"^^xsd:string ;
+               rdfs:label "had Image Contrast Type"^^xsd:string ;
                           
-               obo:IAO_0000115 "Image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object."^^xsd:string ;
+               obo:IAO_0000115 "Had image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object."^^xsd:string ;
                           
                obo:IAO_0000116 "To be discussed"^^xsd:string .
 
@@ -399,6 +401,18 @@ nidm:RecordingLocation rdf:type owl:DatatypeProperty ;
                rdfs:label "Recording Location"^^xsd:string ;
 
                obo:IAO_0000115 "Recording location is a property that associates a string that describes the anatomical location at which the electrophysiological measurement was made with a data acquisition object."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#DICOMTag
+
+nidm:DICOMTag rdf:type owl:DatatypeProperty ;
+
+               rdfs:label "DICOM Tag"^^xsd:string ;
+
+               obo:IAO_0000115 "DICOM tag is a property that associates a string that denotes a specific DICOM standard identifier with a data acquisition object."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 .
 
