@@ -11,32 +11,35 @@ import json
 from collections import OrderedDict
 import rdflib
 
-RELPATH = os.path.dirname(os.path.abspath(__file__))
-NIDMRESULTSPATH = os.path.dirname(RELPATH)
-NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
+RELPATH = os.path.dirname(os.path.abspath(__file__)) 
+NIDMRESULTSPATH = os.path.dirname(RELPATH) 
+NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir) 
 
 # Append parent script directory to path
-sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
+sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts")) 
 from nidmresults.owl.owl_reader import *
 from nidmresults.objects.constants_rdflib import *
 
-logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w') 
 logger = logging.getLogger(__name__)
 
-
 def main(owl=None):
-    if owl is None:
-        owl = os.path.join(NIDMRESULTSPATH, "terms",
-                           "nidm-results.owl")
 
-    owl_imports = glob.glob(
+    if owl is None:
+        owl = os.path.join(NIDMRESULTSPATH, "terms", 
+                           "nidm-results.owl")
+       
+
+    owl_imports = glob.glob(                        
         os.path.join(os.path.dirname(owl),
                      os.pardir, os.pardir, "imports", '*.ttl'))
-
-    owl = OwlReader(owl, import_owl_files=owl_imports)
-
+    
+    owl = OwlReader(owl, import_owl_files=owl_imports) 
+    
     prefix_file = os.path.join(
         os.path.dirname(__file__), '..', 'terms', 'prefixes.csv')
+
+
     context = OrderedDict()
     context['@context'] = OrderedDict()
     context['@context']['@version'] = 1.1
@@ -50,8 +53,7 @@ def main(owl=None):
     context['@context']['spm'] = 'http://purl.org/nidash/spm#'
     context['@context']['fsl'] = 'http://purl.org/nidash/fsl#'
     context['@context']['rdfs'] = 'http://www.w3.org/2000/01/rdf-schema#'
-    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/\
-cryptographicHashFunctions#'
+    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/\cryptographicHashFunctions#'
     context['@context']['dc'] = 'http://purl.org/dc/elements/1.1/'
     context['@context']['dct'] = 'http://purl.org/dc/terms/'
     context['@context']['owl'] = 'http://www.w3.org/2002/07/owl#'
@@ -62,6 +64,7 @@ cryptographicHashFunctions#'
     context['@context']['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
     context['@context']['skos'] = 'http://www.w3.org/2004/02/skos/core#'
 
+
     #     sep = \
     #         '#################################################################'
 
@@ -69,19 +72,24 @@ cryptographicHashFunctions#'
     #         owl_txt = fp.read()
     # For anything that has a label
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
-        json_key = str(o)
-        if '_' in json_key:
-            json_key = str(o).split('_')[1]
+        json_key = str(o)  
         context['@context'][json_key] = OrderedDict()
-
         if s in owl.ranges:
             context['@context'][json_key]['@id'] = str(s)
             context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
         else:
             context['@context'][json_key] = str(s)
+        if owl.is_deprecated(s): 
+            del context['@context'][json_key]
+            
+    for json_key in context['@context']:
+        if '_' in json_key:
+           new_key = json_key.split('_')[1] 
+           context['@context'][new_key]=context['@context'].pop(json_key)
+                             
             
     # join one path components from terms ans nidmr.json
-    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json") 
+    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json")
     with open(ctxfile, 'w+') as c:
         c.write(json.dumps(context, indent=2))
 
