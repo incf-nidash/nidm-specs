@@ -106,7 +106,7 @@
     "voxelUnits": "http://purl.org/nidash/nidm#NIDM_0000133", 
     "DiscreteCosineTransformbasisDriftModel": "http://purl.org/nidash/spm#SPM_0000002", 
     "noiseFWHMInVoxels": "http://purl.org/nidash/nidm#NIDM_0000159", 
-    "crypto": "http://id.loc.gov/vocabulary/preservation/\\cryptographicHashFunctions#", 
+    "crypto": "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#", 
     "LegendrePolynomialOrder": {
       "@id": "http://purl.org/nidash/nidm#NIDM_0000014", 
       "@type": "http://www.w3.org/2001/XMLSchema#int"
@@ -407,20 +407,20 @@
       ], 
       "@id": "niiri:inference_id"
     }, 
-    "ExtentThreshold": {
-      "clusterSizeInVoxels": "0", 
-      "@id": "niiri:extent_threshold_id", 
-      "@type": "Statistic", 
-      "rdfs:label": "Extent Threshold: k>=0"
-    }, 
-    "PValueUncorrected": {
+    "HeightThreshold": {
       "rdfs:label": "Height Threshold: p<0.05 (uncorrected)", 
       "@id": "niiri:height_threshold_id", 
-      "@type": "HeightThreshold", 
+      "@type": "PValueUncorrected", 
       "prov:value": {
         "@type": "xsd:float", 
         "@value": "0.05"
       }
+    }, 
+    "Statistic": {
+      "clusterSizeInVoxels": "0", 
+      "@id": "niiri:extent_threshold_id", 
+      "@type": "ExtentThreshold", 
+      "rdfs:label": "Extent Threshold: k>=0"
     }
   }
 }

@@ -106,7 +106,7 @@
     "voxelUnits": "http://purl.org/nidash/nidm#NIDM_0000133", 
     "DiscreteCosineTransformbasisDriftModel": "http://purl.org/nidash/spm#SPM_0000002", 
     "noiseFWHMInVoxels": "http://purl.org/nidash/nidm#NIDM_0000159", 
-    "crypto": "http://id.loc.gov/vocabulary/preservation/\\cryptographicHashFunctions#", 
+    "crypto": "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#", 
     "LegendrePolynomialOrder": {
       "@id": "http://purl.org/nidash/nidm#NIDM_0000014", 
       "@type": "http://www.w3.org/2001/XMLSchema#int"
@@ -412,42 +412,16 @@
       "@id": "niiri:software_id", 
       "featVersion": "6.00"
     }, 
-    "MaskMap": {
-      "rdfs:label": "Mask", 
-      "prov:wasGeneratedBy": {
-        "@id": "niiri:model_parameters_estimation_id"
-      }, 
-      "isUserDefined": false, 
-      "inCoordinateSpace": {
-        "@id": "niiri:coordinate_space_id_1"
-      }, 
-      "nfo:fileName": "Mask.nii.gz", 
-      "prov:atLocation": {
-        "@type": "xsd:anyURI", 
-        "@value": "Mask.nii.gz"
-      }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b", 
-      "@id": "niiri:mask_id_1", 
-      "dct:format": "image/nifti"
+    "HeightThreshold": {
+      "rdfs:label": "Height Threshold: Z>2.3", 
+      "@id": "niiri:height_threshold_id", 
+      "@type": "Statistic", 
+      "prov:value": {
+        "@type": "xsd:float", 
+        "@value": "2.3"
+      }
     }, 
     "ParameterEstimateMap": [
-      {
-        "rdfs:label": "Parameter estimate 3", 
-        "prov:wasGeneratedBy": {
-          "@id": "niiri:model_parameters_estimation_id"
-        }, 
-        "inCoordinateSpace": {
-          "@id": "niiri:coordinate_space_id_1"
-        }, 
-        "nfo:fileName": "ParameterEstimate_003.nii.gz", 
-        "prov:atLocation": {
-          "@type": "xsd:anyURI", 
-          "@value": "ParameterEstimate_003.nii.gz"
-        }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "f5dd8123b389fe755086f7ad3becb5b79f39d70cf0095b08ed8c3e5cb717942711264528f08fa99e58aaaf24e03581c64567864110518247d95031ef3fe2e761", 
-        "@id": "niiri:beta_map_id_3", 
-        "dct:format": "image/nifti"
-      }, 
       {
         "rdfs:label": "Parameter estimate 2", 
         "prov:wasGeneratedBy": {
@@ -461,7 +435,7 @@
           "@type": "xsd:anyURI", 
           "@value": "ParameterEstimate_002.nii.gz"
         }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "b6146d013976c471fe43a083a56b8852c39a13e0566b2d04e172275bd2fc7b7ffb0c0ae99fac11337d3c27f131c4a00e92f5df15d32723148639a3cc9ffd7c1f", 
+        "crypto:sha512": "b6146d013976c471fe43a083a56b8852c39a13e0566b2d04e172275bd2fc7b7ffb0c0ae99fac11337d3c27f131c4a00e92f5df15d32723148639a3cc9ffd7c1f", 
         "@id": "niiri:beta_map_id_2", 
         "dct:format": "image/nifti"
       }, 
@@ -478,8 +452,25 @@
           "@type": "xsd:anyURI", 
           "@value": "ParameterEstimate_001.nii.gz"
         }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "4c755c0ae6088f8001e0458f89e51fea0e2719b5dc747fed6f617ae12ad5c6a643e1afcb886bcabaaac7911f5e69086c1bd084af9f75dae75913d44a783151f6", 
+        "crypto:sha512": "4c755c0ae6088f8001e0458f89e51fea0e2719b5dc747fed6f617ae12ad5c6a643e1afcb886bcabaaac7911f5e69086c1bd084af9f75dae75913d44a783151f6", 
         "@id": "niiri:beta_map_id_1", 
+        "dct:format": "image/nifti"
+      }, 
+      {
+        "rdfs:label": "Parameter estimate 3", 
+        "prov:wasGeneratedBy": {
+          "@id": "niiri:model_parameters_estimation_id"
+        }, 
+        "inCoordinateSpace": {
+          "@id": "niiri:coordinate_space_id_1"
+        }, 
+        "nfo:fileName": "ParameterEstimate_003.nii.gz", 
+        "prov:atLocation": {
+          "@type": "xsd:anyURI", 
+          "@value": "ParameterEstimate_003.nii.gz"
+        }, 
+        "crypto:sha512": "f5dd8123b389fe755086f7ad3becb5b79f39d70cf0095b08ed8c3e5cb717942711264528f08fa99e58aaaf24e03581c64567864110518247d95031ef3fe2e761", 
+        "@id": "niiri:beta_map_id_3", 
         "dct:format": "image/nifti"
       }, 
       {
@@ -495,22 +486,12 @@
           "@type": "xsd:anyURI", 
           "@value": "ParameterEstimate_004.nii.gz"
         }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "aca2503769bfb6ee3801bc50c2e033755cd9844d13ee78a38aa23140ad558b5c6f0517c4748f84acac27cf6608222553003f418097c18f254312b49b5522b831", 
+        "crypto:sha512": "aca2503769bfb6ee3801bc50c2e033755cd9844d13ee78a38aa23140ad558b5c6f0517c4748f84acac27cf6608222553003f418097c18f254312b49b5522b831", 
         "@id": "niiri:beta_map_id_4", 
         "dct:format": "image/nifti"
       }
     ], 
     "SupraThresholdCluster": [
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:excursion_set_map_id_1"
-        }, 
-        "rdfs:label": "Supra-Threshold Cluster 0004", 
-        "clusterSizeInVoxels": "1203", 
-        "pValueFWER": "8.02e-24", 
-        "clusterLabelId": "4", 
-        "@id": "niiri:supra_threshold_cluster_0004"
-      }, 
       {
         "prov:wasDerivedFrom": {
           "@id": "niiri:excursion_set_map_id_1"
@@ -525,37 +506,58 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:excursion_set_map_id_1"
         }, 
-        "rdfs:label": "Supra-Threshold Cluster 0001", 
-        "clusterSizeInVoxels": "81", 
-        "pValueFWER": "0.00894", 
-        "clusterLabelId": "1", 
-        "@id": "niiri:supra_threshold_cluster_0001"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:excursion_set_map_id_1"
-        }, 
         "rdfs:label": "Supra-Threshold Cluster 0002", 
         "clusterSizeInVoxels": "117", 
         "pValueFWER": "0.000621", 
         "clusterLabelId": "2", 
         "@id": "niiri:supra_threshold_cluster_0002"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:excursion_set_map_id_1"
+        }, 
+        "rdfs:label": "Supra-Threshold Cluster 0004", 
+        "clusterSizeInVoxels": "1203", 
+        "pValueFWER": "8.02e-24", 
+        "clusterLabelId": "4", 
+        "@id": "niiri:supra_threshold_cluster_0004"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:excursion_set_map_id_1"
+        }, 
+        "rdfs:label": "Supra-Threshold Cluster 0001", 
+        "clusterSizeInVoxels": "81", 
+        "pValueFWER": "0.00894", 
+        "clusterLabelId": "1", 
+        "@id": "niiri:supra_threshold_cluster_0001"
       }
     ], 
     "ContrastVarianceMap": {
+      "crypto:sha512": "7d183bbacc0b99cd1db84174d32445457f532bca9f774fdcc53bc1d0faa5e7d250a1abf03864bd90b30f96f5a7516e0056104a729a565019b0f254a8a7bced1e", 
       "nfo:fileName": "varcope1.nii.gz", 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "7d183bbacc0b99cd1db84174d32445457f532bca9f774fdcc53bc1d0faa5e7d250a1abf03864bd90b30f96f5a7516e0056104a729a565019b0f254a8a7bced1e", 
       "@id": "niiri:d4de4b20b2d408cd8d825ac0edb6030a", 
       "dct:format": "image/nifti"
     }, 
-    "HeightThreshold": {
-      "rdfs:label": "Height Threshold: Z>2.3", 
-      "@id": "niiri:height_threshold_id", 
-      "@type": "Statistic", 
-      "prov:value": {
-        "@type": "xsd:float", 
-        "@value": "2.3"
-      }
+    "DesignMatrix": {
+      "rdfs:label": "Design Matrix", 
+      "description": {
+        "@id": "niiri:design_matrix_png_id"
+      }, 
+      "hasDriftModel": {
+        "@id": "niiri:drift_model_id"
+      }, 
+      "nfo:fileName": "DesignMatrix.csv", 
+      "prov:atLocation": {
+        "@type": "xsd:anyURI", 
+        "@value": "DesignMatrix.csv"
+      }, 
+      "hasHRFBasis": {
+        "@id": "fsl:FSL_0000001"
+      }, 
+      "regressorNames": "[\"Gen\", \"Gen*temporal_derivative\", \"Shad\", \"Shad*temporal_derivative\"]", 
+      "@id": "niiri:design_matrix_id", 
+      "dct:format": "text/csv"
     }, 
     "ExtentThreshold": {
       "rdfs:label": "Extent Threshold: p<0.05 (FWE)", 
@@ -583,7 +585,7 @@
         "@type": "xsd:dateTime", 
         "@value": "2014-05-19T10:30:00+01:00"
       }, 
-      "@id": "_:f30bb43ab490d4c23bd179b3cab1552a5b1", 
+      "@id": "_:fdc9b69dee3d14927ac264e3f455d4144b1", 
       "prov:activity": {
         "@id": "niiri:export_id"
       }
@@ -607,22 +609,34 @@
         "@type": "xsd:anyURI", 
         "@value": "ExcursionSet.nii.gz"
       }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "c74e3c47e4308f27423a195c7c3e70b64b8fd362d612a2543da76bced67f666949b70272033ab3d4b7d0bbbfe22b7da13d56d25521664be0c96454fd180ee4cc", 
+      "crypto:sha512": "c74e3c47e4308f27423a195c7c3e70b64b8fd362d612a2543da76bced67f666949b70272033ab3d4b7d0bbbfe22b7da13d56d25521664be0c96454fd180ee4cc", 
       "@id": "niiri:excursion_set_map_id_1", 
       "dct:format": "image/nifti"
     }, 
     "Peak": [
       {
         "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0004"
+        }, 
+        "rdfs:label": "Peak 4_05", 
+        "equivalentZStatistic": "5.6", 
+        "pValueUncorrected": "1.07176e-08", 
+        "prov:atLocation": {
+          "@id": "niiri:coordinate_0004_5"
+        }, 
+        "@id": "niiri:peak_0004_5"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0003"
         }, 
-        "rdfs:label": "Peak 3_02", 
-        "equivalentZStatistic": "5.12", 
-        "pValueUncorrected": "1.52768e-07", 
+        "rdfs:label": "Peak 3_01", 
+        "equivalentZStatistic": "5.61", 
+        "pValueUncorrected": "1.01163e-08", 
         "prov:atLocation": {
-          "@id": "niiri:coordinate_0003_2"
+          "@id": "niiri:coordinate_0003_1"
         }, 
-        "@id": "niiri:peak_0003_2"
+        "@id": "niiri:peak_0003_1"
       }, 
       {
         "prov:wasDerivedFrom": {
@@ -676,18 +690,6 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0001"
         }, 
-        "rdfs:label": "Peak 1_03", 
-        "equivalentZStatistic": "3.03", 
-        "pValueUncorrected": "0.00122277", 
-        "prov:atLocation": {
-          "@id": "niiri:coordinate_0001_3"
-        }, 
-        "@id": "niiri:peak_0001_3"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0001"
-        }, 
         "rdfs:label": "Peak 1_02", 
         "equivalentZStatistic": "3.16", 
         "pValueUncorrected": "0.000788846", 
@@ -695,18 +697,6 @@
           "@id": "niiri:coordinate_0001_2"
         }, 
         "@id": "niiri:peak_0001_2"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0003"
-        }, 
-        "rdfs:label": "Peak 3_01", 
-        "equivalentZStatistic": "5.61", 
-        "pValueUncorrected": "1.01163e-08", 
-        "prov:atLocation": {
-          "@id": "niiri:coordinate_0003_1"
-        }, 
-        "@id": "niiri:peak_0003_1"
       }, 
       {
         "prov:wasDerivedFrom": {
@@ -719,6 +709,18 @@
           "@id": "niiri:coordinate_0001_1"
         }, 
         "@id": "niiri:peak_0001_1"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0001"
+        }, 
+        "rdfs:label": "Peak 1_03", 
+        "equivalentZStatistic": "3.03", 
+        "pValueUncorrected": "0.00122277", 
+        "prov:atLocation": {
+          "@id": "niiri:coordinate_0001_3"
+        }, 
+        "@id": "niiri:peak_0001_3"
       }, 
       {
         "prov:wasDerivedFrom": {
@@ -794,6 +796,18 @@
       }, 
       {
         "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0003"
+        }, 
+        "rdfs:label": "Peak 3_02", 
+        "equivalentZStatistic": "5.12", 
+        "pValueUncorrected": "1.52768e-07", 
+        "prov:atLocation": {
+          "@id": "niiri:coordinate_0003_2"
+        }, 
+        "@id": "niiri:peak_0003_2"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0002"
         }, 
         "rdfs:label": "Peak 2_01", 
@@ -815,18 +829,6 @@
           "@id": "niiri:coordinate_0002_2"
         }, 
         "@id": "niiri:peak_0002_2"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "rdfs:label": "Peak 4_05", 
-        "equivalentZStatistic": "5.6", 
-        "pValueUncorrected": "1.07176e-08", 
-        "prov:atLocation": {
-          "@id": "niiri:coordinate_0004_5"
-        }, 
-        "@id": "niiri:peak_0004_5"
       }
     ], 
     "ClusterCenterOfGravity": [
@@ -875,19 +877,19 @@
       "rdfs:label": "Contrast estimation: Generation", 
       "prov:used": [
         {
-          "@id": "niiri:residual_mean_squares_map_id"
-        }, 
-        {
-          "@id": "niiri:mask_id_1"
+          "@id": "niiri:beta_map_id_1"
         }, 
         {
           "@id": "niiri:contrast_id_1"
         }, 
         {
-          "@id": "niiri:design_matrix_id"
+          "@id": "niiri:mask_id_1"
         }, 
         {
-          "@id": "niiri:beta_map_id_1"
+          "@id": "niiri:residual_mean_squares_map_id"
+        }, 
+        {
+          "@id": "niiri:design_matrix_id"
         }
       ], 
       "@id": "niiri:contrast_estimation_id_1", 
@@ -940,22 +942,17 @@
         "@id": "niiri:exporter_id"
       }
     }, 
-    "Magnetic resonance imaging scanner": {
-      "rdfs:label": "MRI Scanner", 
-      "@id": "niiri:mr_scanner_id", 
-      "@type": "Imaging instrument"
-    }, 
     "ModelParameterEstimation": {
       "rdfs:label": "Model Parameters Estimation", 
       "prov:used": [
+        {
+          "@id": "niiri:data_id"
+        }, 
         {
           "@id": "niiri:error_model_id"
         }, 
         {
           "@id": "niiri:design_matrix_id"
-        }, 
-        {
-          "@id": "niiri:data_id"
         }
       ], 
       "prov:wasAssociatedWith": {
@@ -966,22 +963,21 @@
       }, 
       "@id": "niiri:model_parameters_estimation_id"
     }, 
-    "GrandMeanMap": {
-      "rdfs:label": "Grand Mean Map", 
+    "ResidualMeanSquaresMap": {
+      "rdfs:label": "Residual Mean Squares Map", 
       "prov:wasGeneratedBy": {
         "@id": "niiri:model_parameters_estimation_id"
       }, 
-      "maskedMedian": "9597.36", 
       "inCoordinateSpace": {
         "@id": "niiri:coordinate_space_id_1"
       }, 
-      "nfo:fileName": "GrandMean.nii.gz", 
+      "nfo:fileName": "ResidualMeanSquares.nii.gz", 
       "prov:atLocation": {
         "@type": "xsd:anyURI", 
-        "@value": "GrandMean.nii.gz"
+        "@value": "ResidualMeanSquares.nii.gz"
       }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "7a2703cea740e27a5170fb19e4a09b5e815e4b7e477bc75958404d675aa408f53f747892a2ef4472f933cf5f12cd21cea99d5f5e551938081636fb6d4049473e", 
-      "@id": "niiri:grand_mean_map_id", 
+      "crypto:sha512": "1327a300eb1e20d42c67abb3c49a47b80ecabfebd13d0ba0aca0560e8bf43891f0e35a958c1afa84e041f62cf0038f58b4ab71f68b0b50d4153210aeed74f4ff", 
+      "@id": "niiri:residual_mean_squares_map_id", 
       "dct:format": "image/nifti"
     }, 
     "ContrastWeightMatrix": {
@@ -1013,46 +1009,31 @@
         "dct:format": "image/png"
       }
     ], 
+    "Imaging instrument": {
+      "rdfs:label": "MRI Scanner", 
+      "@id": "niiri:mr_scanner_id", 
+      "@type": "Magnetic resonance imaging scanner"
+    }, 
     "NIDMResults": {
       "prov:qualifiedGeneration": {
-        "@id": "_:f30bb43ab490d4c23bd179b3cab1552a5b1"
+        "@id": "_:fdc9b69dee3d14927ac264e3f455d4144b1"
       }, 
       "rdfs:label": "NIDM-Results", 
       "version": "1.3.0", 
       "@id": "niiri:fsl_results_id"
     }, 
-    "DesignMatrix": {
-      "rdfs:label": "Design Matrix", 
-      "description": {
-        "@id": "niiri:design_matrix_png_id"
-      }, 
-      "hasDriftModel": {
-        "@id": "niiri:drift_model_id"
-      }, 
-      "nfo:fileName": "DesignMatrix.csv", 
-      "prov:atLocation": {
-        "@type": "xsd:anyURI", 
-        "@value": "DesignMatrix.csv"
-      }, 
-      "hasHRFBasis": {
-        "@id": "fsl:FSL_0000001"
-      }, 
-      "regressorNames": "[\"Gen\", \"Gen*temporal_derivative\", \"Shad\", \"Shad*temporal_derivative\"]", 
-      "@id": "niiri:design_matrix_id", 
-      "dct:format": "text/csv"
-    }, 
     "Coordinate": [
-      {
-        "coordinateVectorInVoxels": "[ 32.3, 39.2, 31.0 ]", 
-        "rdfs:label": "Coordinate 0001", 
-        "@id": "niiri:COG_coordinate_0001", 
-        "coordinateVector": "[ -4.39, 28.6, 55.9 ]"
-      }, 
       {
         "coordinateVectorInVoxels": "[ 36, 39, 30 ]", 
         "rdfs:label": "Coordinate 1_03", 
         "@id": "niiri:coordinate_0001_3", 
         "coordinateVector": "[-17.5, 28.0, 52.5]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 40, 37, 28 ]", 
+        "rdfs:label": "Coordinate 3_05", 
+        "@id": "niiri:coordinate_0003_5", 
+        "coordinateVector": "[-31.5, 21.0, 45.5]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 47, 20, 22 ]", 
@@ -1067,6 +1048,18 @@
         "coordinateVector": "[ -35.0, -49.0, -7.0 ]"
       }, 
       {
+        "coordinateVectorInVoxels": "[ 28, 7, 16 ]", 
+        "rdfs:label": "Coordinate 4_03", 
+        "@id": "niiri:coordinate_0004_3", 
+        "coordinateVector": "[ 10.5, -84.0, 3.5]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 42, 21, 12 ]", 
+        "rdfs:label": "Coordinate 4_02", 
+        "@id": "niiri:coordinate_0004_2", 
+        "coordinateVector": "[-38.5, -35.0, -10.5]"
+      }, 
+      {
         "coordinateVectorInVoxels": "[ 39, 13, 12 ]", 
         "rdfs:label": "Coordinate 4_05", 
         "@id": "niiri:coordinate_0004_5", 
@@ -1077,12 +1070,6 @@
         "rdfs:label": "Coordinate 4_06", 
         "@id": "niiri:coordinate_0004_6", 
         "coordinateVector": "[-3.5, -73.5, 3.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 33, 38, 31 ]", 
-        "rdfs:label": "Coordinate 1_01", 
-        "@id": "niiri:coordinate_0001_1", 
-        "coordinateVector": "[-7.0, 24.5, 56.0]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 47.1, 19.2, 19.7 ]", 
@@ -1103,6 +1090,12 @@
         "coordinateVector": "[-56.0, -45.5, 10.5]"
       }, 
       {
+        "coordinateVectorInVoxels": "[ 32.3, 39.2, 31.0 ]", 
+        "rdfs:label": "Coordinate 0001", 
+        "@id": "niiri:COG_coordinate_0001", 
+        "coordinateVector": "[ -4.39, 28.6, 55.9 ]"
+      }, 
+      {
         "coordinateVectorInVoxels": "[ 34.0, 14.7, 14.0 ]", 
         "rdfs:label": "Coordinate 0004", 
         "@id": "niiri:COG_coordinate_0004", 
@@ -1113,12 +1106,6 @@
         "rdfs:label": "Coordinate 3_02", 
         "@id": "niiri:coordinate_0003_2", 
         "coordinateVector": "[-42.0, 35.0, 17.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 48, 37, 21 ]", 
-        "rdfs:label": "Coordinate 3_03", 
-        "@id": "niiri:coordinate_0003_3", 
-        "coordinateVector": "[-59.5, 21.0, 21.0]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 41, 41, 25 ]", 
@@ -1133,22 +1120,10 @@
         "coordinateVector": "[-49.0, 38.5, 35.0]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 28, 7, 16 ]", 
-        "rdfs:label": "Coordinate 4_03", 
-        "@id": "niiri:coordinate_0004_3", 
-        "coordinateVector": "[ 10.5, -84.0, 3.5]"
-      }, 
-      {
         "coordinateVectorInVoxels": "[ 46, 45, 22 ]", 
         "rdfs:label": "Coordinate 3_04", 
         "@id": "niiri:coordinate_0003_4", 
         "coordinateVector": "[-52.5, 49.0, 24.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 40, 37, 28 ]", 
-        "rdfs:label": "Coordinate 3_05", 
-        "@id": "niiri:coordinate_0003_5", 
-        "coordinateVector": "[-31.5, 21.0, 45.5]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 33, 46, 27 ]", 
@@ -1157,10 +1132,10 @@
         "coordinateVector": "[-7.0, 52.5, 42.0]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 42, 21, 12 ]", 
-        "rdfs:label": "Coordinate 4_02", 
-        "@id": "niiri:coordinate_0004_2", 
-        "coordinateVector": "[-38.5, -35.0, -10.5]"
+        "coordinateVectorInVoxels": "[ 33, 38, 31 ]", 
+        "rdfs:label": "Coordinate 1_01", 
+        "@id": "niiri:coordinate_0001_1", 
+        "coordinateVector": "[-7.0, 24.5, 56.0]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 33, 43, 28 ]", 
@@ -1169,12 +1144,36 @@
         "coordinateVector": "[-7.0, 42.0, 45.5]"
       }, 
       {
+        "coordinateVectorInVoxels": "[ 48, 37, 21 ]", 
+        "rdfs:label": "Coordinate 3_03", 
+        "@id": "niiri:coordinate_0003_3", 
+        "coordinateVector": "[-59.5, 21.0, 21.0]"
+      }, 
+      {
         "coordinateVectorInVoxels": "[ 45, 15, 14 ]", 
         "rdfs:label": "Coordinate 4_04", 
         "@id": "niiri:coordinate_0004_4", 
         "coordinateVector": "[-49.0, -56.0, -3.5]"
       }
     ], 
+    "MaskMap": {
+      "rdfs:label": "Mask", 
+      "prov:wasGeneratedBy": {
+        "@id": "niiri:model_parameters_estimation_id"
+      }, 
+      "isUserDefined": false, 
+      "inCoordinateSpace": {
+        "@id": "niiri:coordinate_space_id_1"
+      }, 
+      "nfo:fileName": "Mask.nii.gz", 
+      "prov:atLocation": {
+        "@type": "xsd:anyURI", 
+        "@value": "Mask.nii.gz"
+      }, 
+      "crypto:sha512": "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b", 
+      "@id": "niiri:mask_id_1", 
+      "dct:format": "image/nifti"
+    }, 
     "ContrastMap": {
       "rdfs:label": "Contrast Map: Generation", 
       "prov:wasGeneratedBy": {
@@ -1189,7 +1188,7 @@
         "@type": "xsd:anyURI", 
         "@value": "Contrast.nii.gz"
       }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "4c755c0ae6088f8001e0458f89e51fea0e2719b5dc747fed6f617ae12ad5c6a643e1afcb886bcabaaac7911f5e69086c1bd084af9f75dae75913d44a783151f6", 
+      "crypto:sha512": "4c755c0ae6088f8001e0458f89e51fea0e2719b5dc747fed6f617ae12ad5c6a643e1afcb886bcabaaac7911f5e69086c1bd084af9f75dae75913d44a783151f6", 
       "@id": "niiri:contrast_map_id_1", 
       "dct:format": "image/nifti"
     }, 
@@ -1197,22 +1196,22 @@
       "rdfs:label": "Inference: Generation", 
       "prov:used": [
         {
-          "@id": "niiri:extent_threshold_id"
+          "@id": "niiri:peak_definition_criteria_id_1"
         }, 
         {
-          "@id": "niiri:height_threshold_id"
+          "@id": "niiri:z_statistic_map_id_1"
         }, 
         {
           "@id": "niiri:cluster_definition_criteria_id_1"
         }, 
         {
+          "@id": "niiri:extent_threshold_id"
+        }, 
+        {
           "@id": "niiri:mask_id_1"
         }, 
         {
-          "@id": "niiri:peak_definition_criteria_id_1"
-        }, 
-        {
-          "@id": "niiri:z_statistic_map_id_1"
+          "@id": "niiri:height_threshold_id"
         }
       ], 
       "prov:wasAssociatedWith": {
@@ -1233,7 +1232,7 @@
         "@type": "xsd:anyURI", 
         "@value": "ClusterLabels.nii.gz"
       }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96", 
+      "crypto:sha512": "13093aae03897e2518307d000eb298f4b1439814d8d3d77c622b717423f93506dd5de5669513ab65c6dd74a7d27ee9df08620f546ed00575517b40e5878c2c96", 
       "@id": "niiri:cluster_label_map_id", 
       "dct:format": "image/nifti"
     }, 
@@ -1256,7 +1255,7 @@
           "@type": "xsd:anyURI", 
           "@value": "ZStatistic.nii.gz"
         }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03", 
+        "crypto:sha512": "3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03", 
         "effectDegreesOfFreedom": "1.0", 
         "@id": "niiri:z_statistic_map_id_1", 
         "dct:format": "image/nifti"
@@ -1279,7 +1278,7 @@
           "@type": "xsd:anyURI", 
           "@value": "TStatistic.nii.gz"
         }, 
-        "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "b6286d36e678c23622b5b0486f0efb5b274f9a5e2a3ee6aceb6a0338f7745fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527", 
+        "crypto:sha512": "b6286d36e678c23622b5b0486f0efb5b274f9a5e2a3ee6aceb6a0338f7745fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527", 
         "effectDegreesOfFreedom": "1.0", 
         "@id": "niiri:statistic_map_id_1", 
         "dct:format": "image/nifti"
@@ -1301,8 +1300,26 @@
         "@type": "xsd:anyURI", 
         "@value": "ContrastStandardError.nii.gz"
       }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "8529f3ff9f10da8f332ced9d579990321475c1498b56d79ede560ba2eccf6d68718757dc7af78eb1e86617a41e6c9f55161f756d184e2b0fb06c3d419dc99856", 
+      "crypto:sha512": "8529f3ff9f10da8f332ced9d579990321475c1498b56d79ede560ba2eccf6d68718757dc7af78eb1e86617a41e6c9f55161f756d184e2b0fb06c3d419dc99856", 
       "@id": "niiri:contrast_standard_error_map_id_1", 
+      "dct:format": "image/nifti"
+    }, 
+    "GrandMeanMap": {
+      "rdfs:label": "Grand Mean Map", 
+      "prov:wasGeneratedBy": {
+        "@id": "niiri:model_parameters_estimation_id"
+      }, 
+      "maskedMedian": "9597.36", 
+      "inCoordinateSpace": {
+        "@id": "niiri:coordinate_space_id_1"
+      }, 
+      "nfo:fileName": "GrandMean.nii.gz", 
+      "prov:atLocation": {
+        "@type": "xsd:anyURI", 
+        "@value": "GrandMean.nii.gz"
+      }, 
+      "crypto:sha512": "7a2703cea740e27a5170fb19e4a09b5e815e4b7e477bc75958404d675aa408f53f747892a2ef4472f933cf5f12cd21cea99d5f5e551938081636fb6d4049473e", 
+      "@id": "niiri:grand_mean_map_id", 
       "dct:format": "image/nifti"
     }, 
     "prov:Person": {
@@ -1336,26 +1353,9 @@
         "@value": "SearchSpaceMask.nii.gz"
       }, 
       "reselSizeInVoxels": "12.0418", 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b", 
+      "crypto:sha512": "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b", 
       "searchVolumeInUnits": "1938080.0", 
       "@id": "niiri:search_space_mask_id", 
-      "dct:format": "image/nifti"
-    }, 
-    "ResidualMeanSquaresMap": {
-      "rdfs:label": "Residual Mean Squares Map", 
-      "prov:wasGeneratedBy": {
-        "@id": "niiri:model_parameters_estimation_id"
-      }, 
-      "inCoordinateSpace": {
-        "@id": "niiri:coordinate_space_id_1"
-      }, 
-      "nfo:fileName": "ResidualMeanSquares.nii.gz", 
-      "prov:atLocation": {
-        "@type": "xsd:anyURI", 
-        "@value": "ResidualMeanSquares.nii.gz"
-      }, 
-      "http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#sha512": "1327a300eb1e20d42c67abb3c49a47b80ecabfebd13d0ba0aca0560e8bf43891f0e35a958c1afa84e041f62cf0038f58b4ab71f68b0b50d4153210aeed74f4ff", 
-      "@id": "niiri:residual_mean_squares_map_id", 
       "dct:format": "image/nifti"
     }
   }
