@@ -53,7 +53,7 @@ def main(owl=None):
     context['@context']['spm'] = 'http://purl.org/nidash/spm#'
     context['@context']['fsl'] = 'http://purl.org/nidash/fsl#'
     context['@context']['rdfs'] = 'http://www.w3.org/2000/01/rdf-schema#'
-    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/\cryptographicHashFunctions#'
+    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#'
     context['@context']['dc'] = 'http://purl.org/dc/elements/1.1/'
     context['@context']['dct'] = 'http://purl.org/dc/terms/'
     context['@context']['owl'] = 'http://www.w3.org/2002/07/owl#'
@@ -85,8 +85,7 @@ def main(owl=None):
             context['@context'][json_key] = str(s)
         if owl.is_deprecated(s): 
             del context['@context'][json_key]
-        
-            
+      
     for json_key in context['@context']:
         if '_' in json_key:
            new_key = json_key.split('_')[1] 
@@ -100,33 +99,12 @@ def main(owl=None):
 
     # Replace double by float and PositiveInteger by int i.e. compatible
     # Python types
-    # Suppress boolean and string type 
-    
-    import re 
+
     with open(ctxfile, 'r') as c:
         ctxt = c.read()
     ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#boolean"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#string"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/spm#SPM_0000002"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000074"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000060"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000008"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000064"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000405"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000067"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000028"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000053"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000016"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000017"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000057"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000176"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000119"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/dc/dcmitype/Image"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000162"', '', ctxt)
-    #ctxt = re.sub(r',\s*\n\s*"@type": "http://uri.neuinfo.org/nif/nifstd/nlx_inv_20090249"', '', ctxt)
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
