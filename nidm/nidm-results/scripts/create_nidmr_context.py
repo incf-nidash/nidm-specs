@@ -71,16 +71,21 @@ def main(owl=None):
     #     with open(self.file, 'r') as fp:
     #         owl_txt = fp.read()
     # For anything that has a label
+ 
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
         json_key = str(o)  
         context['@context'][json_key] = OrderedDict()
         if s in owl.ranges:
-            context['@context'][json_key]['@id'] = str(s)
-            context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
+            if 'http://www.w3.org/2001/XMLSchema#int' in next(iter(owl.ranges[s])) or 'http://www.w3.org/2001/XMLSchema#double' in next(iter(owl.ranges[s])) or 'http://www.w3.org/2001/XMLSchema#integer' in next(iter(owl.ranges[s])) or  'http://www.w3.org/2001/XMLSchema#positiveInteger' in next(iter(owl.ranges[s])) : 
+                context['@context'][json_key]['@id'] = str(s)
+                context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
+            else: 
+                context['@context'][json_key] = str(s)           
         else:
             context['@context'][json_key] = str(s)
         if owl.is_deprecated(s): 
             del context['@context'][json_key]
+        
             
     for json_key in context['@context']:
         if '_' in json_key:
@@ -103,8 +108,25 @@ def main(owl=None):
     ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
-    ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#boolean"', '', ctxt)
-    ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#string"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#boolean"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#string"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/spm#SPM_0000002"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000074"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000060"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000008"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000064"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000405"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000067"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000028"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000053"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000016"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000017"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000057"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000176"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.obolibrary.org/obo/STATO_0000119"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/dc/dcmitype/Image"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://purl.org/nidash/nidm#NIDM_0000162"', '', ctxt)
+    #ctxt = re.sub(r',\s*\n\s*"@type": "http://uri.neuinfo.org/nif/nifstd/nlx_inv_20090249"', '', ctxt)
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
