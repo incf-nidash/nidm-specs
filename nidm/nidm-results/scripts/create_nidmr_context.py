@@ -23,11 +23,12 @@ from nidmresults.objects.constants_rdflib import *
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
-
 def main(owl=None):
+
     if owl is None:
         owl = os.path.join(NIDMRESULTSPATH, "terms",
                            "nidm-results.owl")
+       
 
     owl_imports = glob.glob(
         os.path.join(os.path.dirname(owl),
@@ -37,6 +38,8 @@ def main(owl=None):
 
     prefix_file = os.path.join(
         os.path.dirname(__file__), '..', 'terms', 'prefixes.csv')
+
+
     context = OrderedDict()
     context['@context'] = OrderedDict()
     context['@context']['@version'] = 1.1
@@ -50,8 +53,7 @@ def main(owl=None):
     context['@context']['spm'] = 'http://purl.org/nidash/spm#'
     context['@context']['fsl'] = 'http://purl.org/nidash/fsl#'
     context['@context']['rdfs'] = 'http://www.w3.org/2000/01/rdf-schema#'
-    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/\
-cryptographicHashFunctions#'
+    context['@context']['crypto'] = 'http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#'
     context['@context']['dc'] = 'http://purl.org/dc/elements/1.1/'
     context['@context']['dct'] = 'http://purl.org/dc/terms/'
     context['@context']['owl'] = 'http://www.w3.org/2002/07/owl#'
@@ -62,40 +64,48 @@ cryptographicHashFunctions#'
     context['@context']['nlx'] = 'http://uri.neuinfo.org/nif/nifstd/'
     context['@context']['skos'] = 'http://www.w3.org/2004/02/skos/core#'
 
+
     #     sep = \
     #         '#################################################################'
 
     #     with open(self.file, 'r') as fp:
     #         owl_txt = fp.read()
     # For anything that has a label
+ 
     for s, o in sorted(owl.graph.subject_objects(SKOS['prefLabel'])):
-        json_key = str(o)
-        if '_' in json_key:
-            json_key = str(o).split('_')[1]
+        json_key = str(o)  
         context['@context'][json_key] = OrderedDict()
-
         if s in owl.ranges:
-            context['@context'][json_key]['@id'] = str(s)
-            context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
+            ranges = next(iter(owl.ranges[s]))
+            if 'http://www.w3.org/2001/XMLSchema#int' in ranges or 'http://www.w3.org/2001/XMLSchema#double' in ranges or 'http://www.w3.org/2001/XMLSchema#integer' in ranges or  'http://www.w3.org/2001/XMLSchema#positiveInteger' in ranges: 
+                context['@context'][json_key]['@id'] = str(s)
+                context['@context'][json_key]['@type'] = ranges
+            else: 
+                context['@context'][json_key] = str(s)           
         else:
             context['@context'][json_key] = str(s)
+        if owl.is_deprecated(s): 
+            del context['@context'][json_key]
+      
+    for json_key in context['@context']:
+        if '_' in json_key:
+           new_key = json_key.split('_')[1] 
+           context['@context'][new_key]=context['@context'].pop(json_key)
+                             
             
     # join one path components from terms ans nidmr.json
-    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json") 
+    ctxfile = os.path.join(NIDMRESULTSPATH, "terms", "nidmr.json")
     with open(ctxfile, 'w+') as c:
         c.write(json.dumps(context, indent=2))
 
     # Replace double by float and PositiveInteger by int i.e. compatible
     # Python types
-    # Suppress boolean and string
-    
-    import re 
+
     with open(ctxfile, 'r') as c:
         ctxt = c.read()
     ctxt = ctxt.replace('XMLSchema#double', 'XMLSchema#float')
     ctxt = ctxt.replace('XMLSchema#positiveInteger', 'XMLSchema#int')
     ctxt = ctxt.replace('XMLSchema#integer', 'XMLSchema#int')
-    ctxt = re.sub(r',\s*\n\s*"@type": "http://www.w3.org/2001/XMLSchema#boolean"', '', ctxt)
     with open(ctxfile, 'w+') as c:
         c.write(ctxt)
 
