@@ -11,31 +11,31 @@ import json
 from collections import OrderedDict
 import rdflib
 
-RELPATH = os.path.dirname(os.path.abspath(__file__)) 
-NIDMRESULTSPATH = os.path.dirname(RELPATH) 
-NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir) 
+RELPATH = os.path.dirname(os.path.abspath(__file__))
+NIDMRESULTSPATH = os.path.dirname(RELPATH)
+NIDMPATH = os.path.join(NIDMRESULTSPATH, os.pardir)
 
 # Append parent script directory to path
-sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts")) 
+sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
 from nidmresults.owl.owl_reader import *
 from nidmresults.objects.constants_rdflib import *
 
-logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w') 
+logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
 def main(owl=None):
 
     if owl is None:
-        owl = os.path.join(NIDMRESULTSPATH, "terms", 
+        owl = os.path.join(NIDMRESULTSPATH, "terms",
                            "nidm-results.owl")
        
 
-    owl_imports = glob.glob(                        
+    owl_imports = glob.glob(
         os.path.join(os.path.dirname(owl),
                      os.pardir, os.pardir, "imports", '*.ttl'))
-    
-    owl = OwlReader(owl, import_owl_files=owl_imports) 
-    
+
+    owl = OwlReader(owl, import_owl_files=owl_imports)
+
     prefix_file = os.path.join(
         os.path.dirname(__file__), '..', 'terms', 'prefixes.csv')
 
@@ -76,9 +76,10 @@ def main(owl=None):
         json_key = str(o)  
         context['@context'][json_key] = OrderedDict()
         if s in owl.ranges:
-            if 'http://www.w3.org/2001/XMLSchema#int' in next(iter(owl.ranges[s])) or 'http://www.w3.org/2001/XMLSchema#double' in next(iter(owl.ranges[s])) or 'http://www.w3.org/2001/XMLSchema#integer' in next(iter(owl.ranges[s])) or  'http://www.w3.org/2001/XMLSchema#positiveInteger' in next(iter(owl.ranges[s])) : 
+            ranges = next(iter(owl.ranges[s]))
+            if 'http://www.w3.org/2001/XMLSchema#int' in ranges or 'http://www.w3.org/2001/XMLSchema#double' in ranges or 'http://www.w3.org/2001/XMLSchema#integer' in ranges or  'http://www.w3.org/2001/XMLSchema#positiveInteger' in ranges: 
                 context['@context'][json_key]['@id'] = str(s)
-                context['@context'][json_key]['@type'] = next(iter(owl.ranges[s]))
+                context['@context'][json_key]['@type'] = ranges
             else: 
                 context['@context'][json_key] = str(s)           
         else:
