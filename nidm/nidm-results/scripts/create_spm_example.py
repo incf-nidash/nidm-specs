@@ -9,15 +9,15 @@ import os
 from create_example_from_templates import ExampleFromTemplate
 
 import sys
+from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR,\
+    STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME, \
+    NIDM_P_VALUE_UNCORRECTED_QNAME, q_graph, NLX_MRI_SCANNER, \
+    NLX_FMRI_PROTOCOL
 
 RELPATH = os.path.dirname(os.path.abspath(__file__))
 NIDMRESULTSPATH = os.path.dirname(RELPATH)
 # Append parent script directory to path
 sys.path.append(os.path.join(NIDMRESULTSPATH, os.pardir, os.pardir, "scripts"))
-from Constants import STATO_OLS_STR, STATO_OLS_LABEL, STATO_TSTATISTIC_STR,\
-    STATO_TSTATISTIC_LABEL, OBO_P_VALUE_FWER_QNAME, OBO_STATISTIC_QNAME, \
-    NIDM_P_VALUE_UNCORRECTED_QNAME, q_graph, NLX_MRI_SCANNER, \
-    NLX_FMRI_PROTOCOL
 
 
 def main():
@@ -647,6 +647,7 @@ def main():
     ttl_file = os.path.join(NIDM_SPM_DIR, 'spm_results.ttl')
     example = ExampleFromTemplate(nidm_classes, ttl_file, False)
     example.create_example()
+
 
 if __name__ == '__main__':
     main()
