@@ -151,7 +151,7 @@ class ExampleFromTemplate(object):
                 g2 = g.serialize(format='json-ld')
 
                 # Create nice JSON-LD version
-                
+
                 with open(os.path.join(TPL_DIR, "..", "nidmr.json")) as jnidm:
                     context = json.load(jnidm)
 
