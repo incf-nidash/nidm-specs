@@ -152,12 +152,13 @@ class ExampleFromTemplate(object):
 
                 # Create nice JSON-LD version
 
-                with open(os.path.join(TPL_DIR, "..", "nidmr.json")) as jnidm:
-                    context = json.load(jnidm)
+                # with open(os.path.join(TPL_DIR, "..", "nidmr.json")) as jnidm:
+                #     context = json.load(jnidm)
 
                 # context = {"@context":
                 #            os.path.join(TPL_DIR, "..", "nidmr.json")}
-                foo = ld.jsonld.compact(json.loads(g2), context)
+                foo = ld.jsonld.compact(json.loads(g2), 
+                                        'http://purl.org/nidash/context')
                 with open(self.file.replace('.ttl', '.json'), "w") as fid:
                     fid.write(json.dumps(foo, indent=2))
 
