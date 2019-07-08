@@ -9,6 +9,9 @@ from string import Template
 import logging
 import re
 import glob
+import rdflib as rl
+import pyld as ld
+import json
 
 NIDM_TERMS_DIR = os.path.join(os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))), 'terms')
@@ -18,24 +21,27 @@ EX_DIR = os.path.join(NIDM_TERMS_DIR, 'examples')
 
 # Append parent script directory to path
 RELPATH = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
+sys.path.append(
+    os.path.join(RELPATH, os.pardir, os.pardir, os.pardir, "scripts"))
 from nidmresults.owl.owl_reader import OwlReader
 from nidmresults.objects.constants_rdflib import *
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG, filemode='w')
 logger = logging.getLogger(__name__)
 
+
 class ExampleFromTemplate(object):
-    
-    def __init__(self, nidm_classes, example_file, one_file_per_class=False, 
-        owl_file=None, remove_att=None):
+
+    def __init__(self, nidm_classes, example_file, one_file_per_class=False,
+                 owl_file=None, remove_att=None):
         self.nidm_classes = nidm_classes
         self.one_file_per_class = one_file_per_class
         self.remove_att = remove_att
 
         self.owl = None
         if owl_file is None:
-            import_files = glob.glob(os.path.join(NIDMPATH, "imports", '*.ttl'))
+            import_files = glob.glob(
+                os.path.join(NIDMPATH, "imports", '*.ttl'))
             owl_file = os.path.join(NIDM_TERMS_DIR, 'nidm-results.owl')
 
         self.owl = OwlReader(owl_file, import_files)
@@ -46,7 +52,7 @@ class ExampleFromTemplate(object):
             self.dir = example_file
 
     def create_example(self):
-        # To make a complete document, we need to add namespaces at 
+        # To make a complete document, we need to add namespaces at
         # the beginning
         fid = open(os.path.join(TPL_DIR, "Namespaces.txt"), 'r')
         namespaces = fid.read()
@@ -57,13 +63,15 @@ class ExampleFromTemplate(object):
 
             templates = str.split(nidm_class, "_")
             if len(templates) > 1:
-                base_template_name = templates[0]            
+                base_template_name = templates[0]
             else:
                 base_template_name = None
 
             if base_template_name and \
-                os.path.isfile(os.path.join(TPL_DIR, base_template_name+".txt")):
-                fid = open(os.path.join(TPL_DIR, base_template_name+".txt"), 'r')
+                os.path.isfile(
+                    os.path.join(TPL_DIR, base_template_name+".txt")):
+                fid = open(
+                    os.path.join(TPL_DIR, base_template_name+".txt"), 'r')
                 nidm_base_tpm = Template(fid.read())
                 fid.close()
             else:
@@ -80,7 +88,7 @@ class ExampleFromTemplate(object):
                     logger.debug(self.file)
                     logger.debug(nidm_class)
                     logger.debug(substitutes)
-                    raise KeyError(k);
+                    raise KeyError(k)
 
             for template in templates[1:]:
                 template_name = str.split(template, "-")[0]
@@ -92,7 +100,7 @@ class ExampleFromTemplate(object):
 
                 fid = open(os.path.join(TPL_DIR, template_name+".txt"), 'r')
                 nidm_tpm = Template(fid.read())
-                fid.close()                
+                fid.close()
 
                 try:
                     class_example += nidm_tpm.substitute(**substitutes)
@@ -109,32 +117,50 @@ class ExampleFromTemplate(object):
                 if self.remove_att is not None:
                     class_example = \
                         self.remove_attributes(self.remove_att, class_example)
-                if self.owl:     
-                    class_example = self.replace_alphanum_id_by_prefixes(class_example)   
+                if self.owl:
+                    class_example = self.replace_alphanum_id_by_prefixes(
+                        class_example)
                 if "comment" in substitutes.keys():
                     class_example = "#  " + substitutes['comment'] + "\n\n" + \
                                     class_example
                 example_fid.write(str(class_example))
                 example_fid.close()
 
-
             else:
                 example += class_example+"\n\n"
 
         if not self.one_file_per_class:
                 if self.remove_att is not None:
-                    example = self.remove_attributes(self.remove_att, example)            
-                if self.owl:     
-                    example = self.replace_alphanum_id_by_prefixes(example)   
+                    example = self.remove_attributes(self.remove_att, example)
+                if self.owl:
+                    example = self.replace_alphanum_id_by_prefixes(example)
                 example = namespaces+"\n"+example
                 if "comment" in substitutes.keys():
                     class_example = "#  " + substitutes['comment'] + "\n\n" + \
                                     class_example
                 if not os.path.isdir(os.path.dirname(self.file)):
                     os.mkdir(os.path.dirname(self.file))
-                example_fid = open(self.file, 'w')
+                example_file = self.file
+                example_fid = open(example_file, 'w')
                 example_fid.write(str(example))
                 example_fid.close()
+
+                # Create JSON-LD version
+                g = rl.ConjunctiveGraph()
+                g.parse(example_file, format='turtle')
+                g2 = g.serialize(format='json-ld')
+
+                # Create nice JSON-LD version
+
+                # with open(os.path.join(TPL_DIR, "..", "nidmr.json")) as jnidm:
+                #     context = json.load(jnidm)
+
+                # context = {"@context":
+                #            os.path.join(TPL_DIR, "..", "nidmr.json")}
+                foo = ld.jsonld.compact(json.loads(g2), 
+                                        'http://purl.org/nidash/context')
+                with open(self.file.replace('.ttl', '.json'), "w") as fid:
+                    fid.write(json.dumps(foo, indent=2))
 
     def remove_attributes(self, terms, example):
         for term in terms:
@@ -197,12 +223,13 @@ class ExampleFromTemplate(object):
                                                       .replace(":", "_")\
                                                       .replace("'", "")\
                                                       .replace("-", "")+":"
-            prefix_definition = "@prefix "+prefix_name+" <"+str(term_uri)+"> .\n"
-            if not prefix_definition in prefix_definitions:
+            prefix_definition = "@prefix " + prefix_name + " <" + \
+                                str(term_uri)+"> .\n"
+            if prefix_definition not in prefix_definitions:
                 prefix_definitions += prefix_definition
 
             example = example.replace(idt, prefix_name)
-        
+
         if prefix_definitions:
             example = prefix_definitions+"\n\n"+example
 

@@ -4,6 +4,7 @@ owl files) and term README (based on owl files)
 @author: Camille Maumet <c.m.j.maumet@warwick.ac.uk>
 @copyright: University of Warwick 2015
 """
+
 import os
 import sys
 
@@ -16,21 +17,23 @@ for component in ["nidm-results", "nidm-experiment"]:
     COMPONENT_SCRIPTS = os.path.join(NIDM_PATH, component, "scripts")
     sys.path.append(COMPONENT_SCRIPTS)
 
-import recompute_all_ex
-import UpdateExampleReadmes
-import UpdateTermReadme
-import create_results_specification
-import create_expe_specification
-import create_prefixes
 import UpdateExpTermReadme
+import create_nidmr_context
+import create_prefixes
+import create_expe_specification
+import create_results_specification
+import UpdateTermReadme
+import UpdateExampleReadmes
+import recompute_all_ex
 
 
 def main():
     # --- NIDM-Experiment
     # Update terms README
     UpdateExpTermReadme.main()
-
     # --- NIDM-Results
+    # Create a JSON-LD context for NIDM-Results
+    create_nidmr_context.main()
     # Re-create turtle examples from template
     recompute_all_ex.main()
     # Convert turtle to provn and upload to Prov Store
@@ -42,6 +45,7 @@ def main():
     create_expe_specification.main()
     # Update csv file of preferred prefixes
     create_prefixes.main()
+
 
 if __name__ == '__main__':
     main()

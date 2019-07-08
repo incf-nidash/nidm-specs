@@ -254,7 +254,7 @@ NIDM_BINOMIAL_DISTRIBUTION = NIDM['NIDM_0000005']
 NIDM_BINARY_MAP = NIDM['NIDM_0000004']
 NIDM_CONTRAST_ESTIMATION = NIDM['NIDM_0000001']
 NIDM_CONTRAST_MAP = NIDM['NIDM_0000002']
-#NIDM-Experiment##############################################################
+# NIDM-Experiment##############################################################
 NIDM_PROJECT = NIDM["Project"]
 NIDM_STUDY = NIDM["Study"]
 NIDM_ACQUISITION_OBJECT = NIDM["AcquisitionObject"]
