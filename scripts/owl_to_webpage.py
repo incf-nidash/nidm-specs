@@ -18,9 +18,14 @@ class OwlSpecification(object):
                  attributed_to=None, prefix=None, commentable=False,
                  intro=None):
         self.owl = OwlReader(owl_file, import_files)
+        self.owl.graph.bind('dct', 'http://purl.org/dc/terms/')
+        self.owl.graph.bind('dicom', 'http://purl.org/nidash/dicom#')
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
-        self.owl.graph.bind('sio', 'http://semanticscience.org/resource/')
         self.owl.graph.bind('onli', 'http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#')
+        self.owl.graph.bind('pato', 'http://purl.obolibrary.org/obo/pato#')
+        self.owl.graph.bind('prov', 'http://www.w3.org/ns/prov')
+        self.owl.graph.bind('qibo', 'http://www.owl-ontologies.com/Ontology1298855822.owl')
+        self.owl.graph.bind('sio', 'http://semanticscience.org/resource/')
         self.name = spec_name
         self.component = self.name.lower().replace("-", "_")
         self.section_open = 0
@@ -35,6 +40,8 @@ class OwlSpecification(object):
     def create_specification(self, subcomponents, used_by, generated_by,
                              derived_from, attributed_to, prefix, intro=None):
         self.create_title(self.name+": Types and relations", "definitions")
+
+        print "into create_specification"
 
         if intro is not None:
             self.text += intro
@@ -72,6 +79,9 @@ class OwlSpecification(object):
 
     def create_subcomponent_table(self, classes, table_num,
                                   subcomponent_name=None):
+
+        print "into create_subcomponent"
+
         if subcomponent_name:
             self.text += """
         <section><h1>"""+subcomponent_name+"""</h1>"""
@@ -145,6 +155,9 @@ class OwlSpecification(object):
             </div>"""
 
     def create_title(self, title, id=None):
+
+        print "into create_title"
+
         if id is None:
             self.text += """
         <section>
@@ -159,6 +172,9 @@ class OwlSpecification(object):
         self.section_open += 1
 
     def _format_markdown(self, text):
+
+        print "into _format_markdown"
+
         # Replace links specified in markdown by html
         text = markdown2.markdown(text).replace("<p>", "").replace("</p>", "")
         # Remove trailing new line
@@ -166,6 +182,9 @@ class OwlSpecification(object):
         return text
 
     def format_definition(self, definition):
+
+        print "into format_definition"
+
         # Capitalize first letter, format markdown and end with dot
         if definition:
             definition = definition[0].upper() + definition[1:]
@@ -175,6 +194,9 @@ class OwlSpecification(object):
         return definition
 
     def linked_listing(self, uri_list, prefix="", suffix="", sort=True):
+
+        print "into linked_listing"
+
         linked_listing = prefix
 
         if sort:
@@ -192,6 +214,9 @@ class OwlSpecification(object):
         return linked_listing+suffix
 
     def term_link(self, term_uri, tag="a", text=None):
+
+        print "into term_link"
+
         href = ""
         if self.owl.is_external_namespace(term_uri):
             href = " href =\""+str(term_uri)+"\""
@@ -241,6 +266,8 @@ class OwlSpecification(object):
         class_name = self.owl.get_name(class_uri)
 
         definition = self.format_definition(definition)
+
+        print "into create_class_section"
 
         self.text += """
             <!-- """+class_label+""" ("""+class_name+""")"""+""" -->
@@ -452,12 +479,19 @@ class OwlSpecification(object):
                 </section>"""
 
     def close_sections(self):
+
+        print "into close_sections"
+
         for x in range(0, self.section_open):
             self.text += "\t"*x+"</section>\n"
 
     # Write out specification
     def write_specification(self, spec_file=None, component=None,
                             version=None):
+
+        print "into write_specification"
+
+
         if component and version:
             spec_file = os.path.join(DOC_FOLDER, component+"_"+version+".html")
 
@@ -467,6 +501,8 @@ class OwlSpecification(object):
 
     def _header_footer(self, prev_file=None, follow_file=None, component=None,
                        version=None):
+
+        print "into _header_footer"
 
         release_notes = None
         if component:

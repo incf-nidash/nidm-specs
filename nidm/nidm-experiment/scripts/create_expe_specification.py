@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 TERMS_FOLDER = os.path.join(NIDM_EXPE_PATH, 'terms')
 RELEASED_TERMS_FOLDER = os.path.join(TERMS_FOLDER, "releases")
 
+
 def main():
     if len(sys.argv) > 1:
         nidm_original_version = sys.argv[1]
@@ -38,7 +39,7 @@ def main():
         nidm_original_version = "dev"
         nidm_version = 'dev'
 
-    # Retreive owl file for NIDM-Results
+    # Retrieve owl file for NIDM-Results
     if nidm_version == "dev":
         owl_file = os.path.join(TERMS_FOLDER, 'nidm-experiment.owl')
         import_files = glob.glob(os.path.join(NIDM_EXPE_PATH, "imports", '*.ttl'))
@@ -62,9 +63,7 @@ def main():
         NIDM['Acquisition'],NIDM['AcquisitionDeviceOperator'],NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
         NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'],NIDM['BehavioralInstrument'], 
         NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
-        NIDM['DemographicsInstrument'],
-        NIDM['ImageContrastType'], NIDM['ImageDataReconstruction'],
-        NIDM['ImageUsageType'],NIDM['InformedConsentInstrument'],NIDM['InstrumentAdministrator'],
+        NIDM['DemographicsInstrument'],NIDM['InformedConsentInstrument'],NIDM['InstrumentAdministrator'],
         NIDM['InstrumentUsageType'],
         NIDM['PerformedPlan'],NIDM['PresentationSoftware'],NIDM['ProcessedAcquisitionObject'],
         NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Session'],
@@ -115,13 +114,11 @@ def main():
     derived_from = {
     }
 
-    owlspec = OwlSpecification(owl_file, import_files, "NIDM-Experiment",
-        subcomponents, used_by, generated_by, derived_from,
-        prefix=str(NIDM))
+    owlspec = OwlSpecification(owl_file,import_files,"NIDM-Experiment",subcomponents,used_by,generated_by,derived_from,prefix=str(NIDM))
 
     if not nidm_version == "dev":
         owlspec.text = owlspec.text.replace("(under development)", nidm_original_version)
-        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/")
+        owlspec.text = owlspec.text.replace("img/", "img/nidm-results_"+nidm_version+"/") #where versions are included
 
     component_name = "nidm-experiment"
     owlspec._header_footer(component=component_name, version=nidm_version)
