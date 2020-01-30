@@ -61,13 +61,15 @@ def main():
         ]
     subcomponents['Acquisition'] = [
         NIDM['Acquisition'],NIDM['AcquisitionDeviceOperator'],NIDM['AcquisitionMethod'],NIDM['AcquisitionModality'],
-        NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'],NIDM['BehavioralInstrument'], 
+        NIDM['AcquisitionObject'], NIDM['AcquisitionObjectQuality'],
         NIDM['AuxiliaryFile'], NIDM['AuxiliaryFileCollection'],  
-        NIDM['DemographicsInstrument'],NIDM['InformedConsentInstrument'],NIDM['InstrumentAdministrator'],
-        NIDM['InstrumentUsageType'],
         NIDM['PerformedPlan'],NIDM['PresentationSoftware'],NIDM['ProcessedAcquisitionObject'],
         NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Session'],
         NIDM['SessionObject'],NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'],NIDM['Task']
+        ]
+    subcomponents['Assessment Instrument'] = [
+        NIDM['BehavioralInstrument'],  NIDM['DemographicsInstrument'],
+        NIDM['InformedConsentInstrument'], NIDM['InstrumentAdministrator']
         ]
     subcomponents['Magnetic Resonance Imaging'] = [
         NIDM['Anatomical'], NIDM['ArterialSpinLabeling'],NIDM['Cartesian'], 
@@ -75,11 +77,10 @@ def main():
         NIDM['DynamicContrastEnhanced'], NIDM['DynamicSusceptibilityContrast'],
         NIDM['EchoPlanar'], NIDM['FlowWeighted'],NIDM['Functional'],NIDM['ImageContrastType'],
         NIDM['ImageDataReconstruction'], NIDM['ImageUsageType'], NIDM['Inside-outSpiral'], 
-        NIDM['MagneticResonanceImaging'],NIDM['NuclearMagneticResonanceSpectroscopy'],
+        NIDM['MagneticResonanceImaging'], NIDM['MagneticResonanceImagingScanner'], NIDM['NuclearMagneticResonanceSpectroscopy'],
         NIDM['NuclearMagneticResonanceSpectroscopicImaging'],NIDM['Outside-inSpiral'], NIDM['ParallelImaging'], 
         NIDM['ProtonDensityWeighted'],NIDM['PulseSequence'],NIDM['QuantitativeSusceptibilityMapping'],
-        NIDM['Rectilinear'],NIDM['SimultaneousMultisliceMethod'], 
-        NIDM['Structural'], 
+        NIDM['Rectilinear'],NIDM['SimultaneousMultisliceMethod'], NIDM['Structural'], 
         NIDM['SusceptibilityWeighted'],NIDM['SusceptibilityWeightedImaging'],
         NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],NIDM['b-ValueFile'],
         NIDM['b-VectorFile'], NIDM['k-spaceTraversalScheme'], NIDM['NIDM_0000152'], NIDM['NIDM_0000153'],
@@ -87,22 +88,22 @@ def main():
         ]
     subcomponents['Electrophysiology'] = [
         NIDM['Amperometry'],  NIDM['CurrentClamp'], 
-        NIDM['Electroencephalography'], NIDM['Electrocorticography'],NIDM['ElectrophysiologyRecording'],
+        NIDM['Electrocorticography'],NIDM['ElectrophysiologyRecording'],
         NIDM['ExtracellularElectrophysiologyRecording'],NIDM['FieldPotential'],
-        NIDM['IntracellularElectrophysiologyRecording'],NIDM['Magnetoencephalography'],
+        NIDM['IntracellularElectrophysiologyRecording'],
         NIDM['MultiUnitReccording'],  NIDM['SharpElectrode'], NIDM['SingleUnitReccording'], 
         NIDM['PatchClamp'], NIDM['VoltageClamp']
         ]
     subcomponents['Devices'] = [
         NIDM['CurrentAmplifier'], NIDM['SignalGenerator'], NIDM['StimulusGenerator'], NIDM['StimulusIsolator'], 
-        NIDM['VoltageAmplifier'], NIDM['EyeTrackingDevice'], NIDM['HeartRateMonitor'], NIDM['Electrode'], 
-        NIDM['ElectroencephalographyAcquisitionDevice'], NIDM['MagneticResonanceImagingScanner'],
-        NIDM['PositronEmissionTomographyScanner'], NIDM['SinglePhotonEmissionComputedTomographyScanner'], 
-        NIDM['MagnetoencephalographyAcquisitionDevice'], NIDM['MultielectrodeArray'], NIDM['Attenuator'],
-        NIDM['RespirationRateMonitor'], NIDM['SignalFilter']
+        NIDM['VoltageAmplifier'], NIDM['EyeTrackingDevice'], NIDM['HeartRateMonitor'], NIDM['Electrode'],        
+        NIDM['MultielectrodeArray'], NIDM['Attenuator'],NIDM['RespirationRateMonitor'], NIDM['SignalFilter']
         ]
-    subcomponents['Positron Emission Tomography'] = [NIDM['PositronEmissionTomography']]
+    subcomponents['Positron Emission Tomography'] = [NIDM['PositronEmissionTomography'], NIDM['PositronEmissionTomographyScanner']]
     subcomponents['X-ray Computed Tomography'] = [NIDM['X-rayComputedTomography']]
+    subcomponents['Magnetoencephalography'] = [NIDM['Magnetoencephalography'], NIDM['MagnetoencephalographyAcquisitionDevice']]
+    subcomponents['Electroencephalography'] = [NIDM['Electroencephalography'], NIDM['ElectroencephalographyAcquisitionDevice']]
+    subcomponents['SinglePhotonEmissionComputedTomography'] = [NIDM['SinglePhotonEmissionComputedTomography'], NIDM['SinglePhotonEmissionComputedTomographyScanner']]
     subcomponents["Other"] = []
 
     # Add manually used and wasDerivedFrom because these are not stored in the
