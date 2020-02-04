@@ -16,6 +16,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix crypto: <http://id.loc.gov/vocabulary/preservation/cryptographicHashFunctions#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
 [ rdf:type owl:Ontology ;
@@ -1398,6 +1399,46 @@ nidm:Magnitude rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#NIDM_0000052
+nidm:NIDM_0000052 rdf:type owl:Class ;
+
+                  rdfs:subClassOf sio:SIO_000612 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty prov:atLocation ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onClass prov:Location
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty crypto:sha512 ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dct:format ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty nfo:fileName ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Map_atLocation-nii.txt"^^xsd:anyURI ,
+                                  "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/Map_atLocation_hasMapHeader-img.txt"^^xsd:anyURI ;
+
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+
+                  obo:IAO_0000115 "Ordered set of values corresponding to the discrete sampling of some process (e.g. brain MRI data measured on a regular 3D lattice; or brain cortical surface data measured irregularly over the cortex)." ;
+
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/pull/149" ;
+
+		  rdfs:comment "This term is from NIDM-Results."^^xsd:string ;
+
+                  rdfs:label "Map" .
+
+
+
 ###  http://purl.org/nidash/nidm#NIDM_0000154
 
 nidm:NIDM_0000154 rdf:type owl:Class ; 
@@ -1556,6 +1597,25 @@ nidm:ParallelImaging rdf:type owl:Class ;
               obo:IAO_0000115 "Parallel imaging is an acquisition method used in magnetic resonance imaging to acquire the k-space data in which multiple coils are employed and the signals from each coil are disambiguated using the coil sensitivity profile."^^xsd:string ;
                            
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+##  http://purl.org/nidash/nidm#NIDM_0000061
+
+nidm:NIDM_0000061 rdf:type owl:Class ;
+
+                  rdfs:subClassOf nidm:NIDM_0000052 ;
+
+                  obo:IAO_0000112 "https://raw.githubusercontent.com/incf-nidash/nidm/master/nidm/nidm-results/terms/examples/ParameterEstimateMap.txt"^^xsd:anyURI ;
+
+                  obo:IAO_0000114 obo:IAO_0000122 ;
+
+                  obo:IAO_0000115 "A map whose value at each element (e.g., pixel, voxel, vertex, or face) is a [model parameter estimate](http://purl.obolibrary.org/obo/STATO_0000144)." ;
+
+                  obo:IAO_0000116 "Discussed in https://github.com/incf-nidash/nidm/issues/255 and https://github.com/incf-nidash/nidm/issues/141 (see also https://github.com/ISA-tools/stato/issues/18)" ;
+
+		  rdfs:comment "This is from NIDM-Results"^^xsd:string ;
+
+                  rdfs:label "Parameter Estimate Map" .
 
 
 
