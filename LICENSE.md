@@ -1,4 +1,4 @@
-   Copyright 2012-2016 NIDM working group
+   Copyright 2012-2020 NIDM working group
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
