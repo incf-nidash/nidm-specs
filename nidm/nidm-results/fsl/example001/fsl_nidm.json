@@ -1,11 +1,28 @@
 {
   "@context": "http://purl.org/nidash/context", 
-  "@id": "file:///Users/camaumet/Softs/nidm-specs/nidm/nidm-results/fsl/example001/fsl_nidm.ttl", 
+  "@id": "file:///home/karl/Work/INCF/nidm/nidm/nidm/nidm-results/fsl/example001/fsl_nidm.ttl", 
   "records": {
     "PeakDefinitionCriteria": {
-      "minDistanceBetweenPeaks": "0.0", 
+      "minDistanceBetweenPeaks": {
+        "@type": "xsd:float", 
+        "@value": "0.0"
+      }, 
       "@id": "niiri:peak_definition_criteria_id_1", 
       "label": "Peak Definition Criteria"
+    }, 
+    "GaussianRunningLineDriftModel": {
+      "driftCutoffPeriod": {
+        "@type": "xsd:float", 
+        "@value": "1908.0"
+      }, 
+      "@id": "niiri:drift_model_id", 
+      "label": "FSL's Gaussian Running Line Drift Model"
+    }, 
+    "FSL": {
+      "softwareVersion": "5.0.x", 
+      "label": "FSL", 
+      "@id": "niiri:software_id", 
+      "featVersion": "6.00"
     }, 
     "DesignMatrix": {
       "description": {
@@ -27,39 +44,7 @@
       "label": "Design Matrix", 
       "@id": "niiri:design_matrix_id"
     }, 
-    "FSL": {
-      "softwareVersion": "5.0.x", 
-      "label": "FSL", 
-      "@id": "niiri:software_id", 
-      "featVersion": "6.00"
-    }, 
-    "HeightThreshold": {
-      "@id": "niiri:height_threshold_id", 
-      "@type": "Statistic", 
-      "prov:value": {
-        "@type": "xsd:float", 
-        "@value": "2.3"
-      }, 
-      "label": "Height Threshold: Z>2.3"
-    }, 
     "ParameterEstimateMap": [
-      {
-        "prov:wasGeneratedBy": {
-          "@id": "niiri:model_parameters_estimation_id"
-        }, 
-        "format": "image/nifti", 
-        "inCoordinateSpace": {
-          "@id": "niiri:coordinate_space_id_1"
-        }, 
-        "fileName": "ParameterEstimate_004.nii.gz", 
-        "atLocation": {
-          "@type": "xsd:anyURI", 
-          "@value": "ParameterEstimate_004.nii.gz"
-        }, 
-        "crypto:sha512": "aca2503769bfb6ee3801bc50c2e033755cd9844d13ee78a38aa23140ad558b5c6f0517c4748f84acac27cf6608222553003f418097c18f254312b49b5522b831", 
-        "label": "Parameter estimate 4", 
-        "@id": "niiri:beta_map_id_4"
-      }, 
       {
         "prov:wasGeneratedBy": {
           "@id": "niiri:model_parameters_estimation_id"
@@ -102,6 +87,23 @@
         "inCoordinateSpace": {
           "@id": "niiri:coordinate_space_id_1"
         }, 
+        "fileName": "ParameterEstimate_004.nii.gz", 
+        "atLocation": {
+          "@type": "xsd:anyURI", 
+          "@value": "ParameterEstimate_004.nii.gz"
+        }, 
+        "crypto:sha512": "aca2503769bfb6ee3801bc50c2e033755cd9844d13ee78a38aa23140ad558b5c6f0517c4748f84acac27cf6608222553003f418097c18f254312b49b5522b831", 
+        "label": "Parameter estimate 4", 
+        "@id": "niiri:beta_map_id_4"
+      }, 
+      {
+        "prov:wasGeneratedBy": {
+          "@id": "niiri:model_parameters_estimation_id"
+        }, 
+        "format": "image/nifti", 
+        "inCoordinateSpace": {
+          "@id": "niiri:coordinate_space_id_1"
+        }, 
         "fileName": "ParameterEstimate_003.nii.gz", 
         "atLocation": {
           "@type": "xsd:anyURI", 
@@ -117,27 +119,10 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:excursion_set_map_id_1"
         }, 
-        "pValueFWER": "0.000621", 
-        "clusterSizeInVoxels": "117", 
-        "label": "Supra-Threshold Cluster 0002", 
-        "clusterLabelId": "2", 
-        "@id": "niiri:supra_threshold_cluster_0002"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:excursion_set_map_id_1"
+        "pValueFWER": {
+          "@type": "xsd:float", 
+          "@value": "8.02e-24"
         }, 
-        "pValueFWER": "0.00894", 
-        "clusterSizeInVoxels": "81", 
-        "label": "Supra-Threshold Cluster 0001", 
-        "clusterLabelId": "1", 
-        "@id": "niiri:supra_threshold_cluster_0001"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:excursion_set_map_id_1"
-        }, 
-        "pValueFWER": "8.02e-24", 
         "clusterSizeInVoxels": "1203", 
         "label": "Supra-Threshold Cluster 0004", 
         "clusterLabelId": "4", 
@@ -147,11 +132,40 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:excursion_set_map_id_1"
         }, 
-        "pValueFWER": "1.26e-12", 
+        "pValueFWER": {
+          "@type": "xsd:float", 
+          "@value": "1.26e-12"
+        }, 
         "clusterSizeInVoxels": "499", 
         "label": "Supra-Threshold Cluster 0003", 
         "clusterLabelId": "3", 
         "@id": "niiri:supra_threshold_cluster_0003"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:excursion_set_map_id_1"
+        }, 
+        "pValueFWER": {
+          "@type": "xsd:float", 
+          "@value": "0.000621"
+        }, 
+        "clusterSizeInVoxels": "117", 
+        "label": "Supra-Threshold Cluster 0002", 
+        "clusterLabelId": "2", 
+        "@id": "niiri:supra_threshold_cluster_0002"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:excursion_set_map_id_1"
+        }, 
+        "pValueFWER": {
+          "@type": "xsd:float", 
+          "@value": "0.00894"
+        }, 
+        "clusterSizeInVoxels": "81", 
+        "label": "Supra-Threshold Cluster 0001", 
+        "clusterLabelId": "1", 
+        "@id": "niiri:supra_threshold_cluster_0001"
       }
     ], 
     "FWERAdjustedPValue": {
@@ -204,7 +218,7 @@
         "@type": "xsd:dateTime", 
         "@value": "2014-05-19T10:30:00+01:00"
       }, 
-      "@id": "_:fe1bf3cd8d90f4cd6a55a382cb6df4489b1", 
+      "@id": "_:f998ec51201ab4e0bb85972beea7b8710b1", 
       "prov:activity": {
         "@id": "niiri:export_id"
       }
@@ -237,32 +251,14 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0003"
         }, 
-        "equivalentZStatistic": "4.22", 
-        "pValueUncorrected": "1.22151e-05", 
-        "label": "Peak 3_05", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0003_5"
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.61"
         }, 
-        "@id": "niiri:peak_0003_5"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0003"
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.01163e-08"
         }, 
-        "equivalentZStatistic": "4.27", 
-        "pValueUncorrected": "9.77365e-06", 
-        "label": "Peak 3_04", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0003_4"
-        }, 
-        "@id": "niiri:peak_0003_4"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0003"
-        }, 
-        "equivalentZStatistic": "5.61", 
-        "pValueUncorrected": "1.01163e-08", 
         "label": "Peak 3_01", 
         "atLocation": {
           "@id": "niiri:coordinate_0003_1"
@@ -273,8 +269,14 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0003"
         }, 
-        "equivalentZStatistic": "5.12", 
-        "pValueUncorrected": "1.52768e-07", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.12"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.52768e-07"
+        }, 
         "label": "Peak 3_02", 
         "atLocation": {
           "@id": "niiri:coordinate_0003_2"
@@ -283,10 +285,70 @@
       }, 
       {
         "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0003"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.22"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.22151e-05"
+        }, 
+        "label": "Peak 3_05", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0003_5"
+        }, 
+        "@id": "niiri:peak_0003_5"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0003"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.27"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "9.77365e-06"
+        }, 
+        "label": "Peak 3_04", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0003_4"
+        }, 
+        "@id": "niiri:peak_0003_4"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0001"
         }, 
-        "equivalentZStatistic": "3.03", 
-        "pValueUncorrected": "0.00122277", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "2.54"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "0.00554262"
+        }, 
+        "label": "Peak 1_04", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0001_4"
+        }, 
+        "@id": "niiri:peak_0001_4"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0001"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "3.03"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "0.00122277"
+        }, 
         "label": "Peak 1_03", 
         "atLocation": {
           "@id": "niiri:coordinate_0001_3"
@@ -297,8 +359,14 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0001"
         }, 
-        "equivalentZStatistic": "3.16", 
-        "pValueUncorrected": "0.000788846", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "3.16"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "0.000788846"
+        }, 
         "label": "Peak 1_02", 
         "atLocation": {
           "@id": "niiri:coordinate_0001_2"
@@ -309,8 +377,14 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0001"
         }, 
-        "equivalentZStatistic": "4.61", 
-        "pValueUncorrected": "2.01334e-06", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.61"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "2.01334e-06"
+        }, 
         "label": "Peak 1_01", 
         "atLocation": {
           "@id": "niiri:coordinate_0001_1"
@@ -319,58 +393,16 @@
       }, 
       {
         "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0001"
-        }, 
-        "equivalentZStatistic": "2.54", 
-        "pValueUncorrected": "0.00554262", 
-        "label": "Peak 1_04", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0001_4"
-        }, 
-        "@id": "niiri:peak_0001_4"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "equivalentZStatistic": "5.56", 
-        "pValueUncorrected": "1.34887e-08", 
-        "label": "Peak 4_06", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0004_6"
-        }, 
-        "@id": "niiri:peak_0004_6"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "equivalentZStatistic": "5.61", 
-        "pValueUncorrected": "1.01163e-08", 
-        "label": "Peak 4_04", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0004_4"
-        }, 
-        "@id": "niiri:peak_0004_4"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "equivalentZStatistic": "5.63", 
-        "pValueUncorrected": "9.01048e-09", 
-        "label": "Peak 4_02", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0004_2"
-        }, 
-        "@id": "niiri:peak_0004_2"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0003"
         }, 
-        "equivalentZStatistic": "4.12", 
-        "pValueUncorrected": "1.89436e-05", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.12"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.89436e-05"
+        }, 
         "label": "Peak 3_06", 
         "atLocation": {
           "@id": "niiri:coordinate_0003_6"
@@ -379,22 +411,34 @@
       }, 
       {
         "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0003"
+          "@id": "niiri:supra_threshold_cluster_0004"
         }, 
-        "equivalentZStatistic": "4.63", 
-        "pValueUncorrected": "1.82833e-06", 
-        "label": "Peak 3_03", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.63"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "9.01048e-09"
+        }, 
+        "label": "Peak 4_02", 
         "atLocation": {
-          "@id": "niiri:coordinate_0003_3"
+          "@id": "niiri:coordinate_0004_2"
         }, 
-        "@id": "niiri:peak_0003_3"
+        "@id": "niiri:peak_0004_2"
       }, 
       {
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0004"
         }, 
-        "equivalentZStatistic": "5.62", 
-        "pValueUncorrected": "9.54787e-09", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.62"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "9.54787e-09"
+        }, 
         "label": "Peak 4_03", 
         "atLocation": {
           "@id": "niiri:coordinate_0004_3"
@@ -405,8 +449,68 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0004"
         }, 
-        "equivalentZStatistic": "5.6", 
-        "pValueUncorrected": "1.07176e-08", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.79"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "3.51932e-09"
+        }, 
+        "label": "Peak 4_01", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0004_1"
+        }, 
+        "@id": "niiri:peak_0004_1"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0004"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.56"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.34887e-08"
+        }, 
+        "label": "Peak 4_06", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0004_6"
+        }, 
+        "@id": "niiri:peak_0004_6"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0004"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.61"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.01163e-08"
+        }, 
+        "label": "Peak 4_04", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0004_4"
+        }, 
+        "@id": "niiri:peak_0004_4"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0004"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "5.6"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.07176e-08"
+        }, 
         "label": "Peak 4_05", 
         "atLocation": {
           "@id": "niiri:coordinate_0004_5"
@@ -415,10 +519,34 @@
       }, 
       {
         "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0003"
+        }, 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.63"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.82833e-06"
+        }, 
+        "label": "Peak 3_03", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0003_3"
+        }, 
+        "@id": "niiri:peak_0003_3"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0002"
         }, 
-        "equivalentZStatistic": "4.64", 
-        "pValueUncorrected": "1.74205e-06", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.64"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "1.74205e-06"
+        }, 
         "label": "Peak 2_01", 
         "atLocation": {
           "@id": "niiri:coordinate_0002_1"
@@ -429,28 +557,32 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0002"
         }, 
-        "equivalentZStatistic": "4.43", 
-        "pValueUncorrected": "4.71165e-06", 
+        "equivalentZStatistic": {
+          "@type": "xsd:float", 
+          "@value": "4.43"
+        }, 
+        "pValueUncorrected": {
+          "@type": "xsd:float", 
+          "@value": "4.71165e-06"
+        }, 
         "label": "Peak 2_02", 
         "atLocation": {
           "@id": "niiri:coordinate_0002_2"
         }, 
         "@id": "niiri:peak_0002_2"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "equivalentZStatistic": "5.79", 
-        "pValueUncorrected": "3.51932e-09", 
-        "label": "Peak 4_01", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0004_1"
-        }, 
-        "@id": "niiri:peak_0004_1"
       }
     ], 
     "ClusterCenterOfGravity": [
+      {
+        "atLocation": {
+          "@id": "niiri:COG_coordinate_0004"
+        }, 
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0004"
+        }, 
+        "@id": "niiri:center_of_gravity_4", 
+        "label": "Center of gravity 4"
+      }, 
       {
         "atLocation": {
           "@id": "niiri:COG_coordinate_0001"
@@ -480,42 +612,27 @@
         }, 
         "@id": "niiri:center_of_gravity_3", 
         "label": "Center of gravity 3"
-      }, 
-      {
-        "atLocation": {
-          "@id": "niiri:COG_coordinate_0004"
-        }, 
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0004"
-        }, 
-        "@id": "niiri:center_of_gravity_4", 
-        "label": "Center of gravity 4"
       }
     ], 
-    "GaussianRunningLineDriftModel": {
-      "driftCutoffPeriod": "1908.0", 
-      "@id": "niiri:drift_model_id", 
-      "label": "FSL's Gaussian Running Line Drift Model"
-    }, 
     "ContrastEstimation": {
       "prov:wasAssociatedWith": {
         "@id": "niiri:software_id"
       }, 
       "prov:used": [
         {
-          "@id": "niiri:beta_map_id_1"
-        }, 
-        {
-          "@id": "niiri:residual_mean_squares_map_id"
-        }, 
-        {
-          "@id": "niiri:contrast_id_1"
+          "@id": "niiri:mask_id_1"
         }, 
         {
           "@id": "niiri:design_matrix_id"
         }, 
         {
-          "@id": "niiri:mask_id_1"
+          "@id": "niiri:beta_map_id_1"
+        }, 
+        {
+          "@id": "niiri:contrast_id_1"
+        }, 
+        {
+          "@id": "niiri:residual_mean_squares_map_id"
         }
       ], 
       "@id": "niiri:contrast_estimation_id_1", 
@@ -554,7 +671,10 @@
           "@id": "niiri:mr_scanner_id"
         }
       ], 
-      "targetIntensity": "10000.0", 
+      "targetIntensity": {
+        "@type": "xsd:float", 
+        "@value": "10000.0"
+      }, 
       "grandMeanScaling": true, 
       "label": "Data", 
       "@id": "niiri:data_id"
@@ -574,10 +694,10 @@
     "ModelParameterEstimation": {
       "prov:used": [
         {
-          "@id": "niiri:design_matrix_id"
+          "@id": "niiri:error_model_id"
         }, 
         {
-          "@id": "niiri:error_model_id"
+          "@id": "niiri:design_matrix_id"
         }, 
         {
           "@id": "niiri:data_id"
@@ -596,7 +716,10 @@
       "prov:wasGeneratedBy": {
         "@id": "niiri:model_parameters_estimation_id"
       }, 
-      "maskedMedian": "9597.36", 
+      "maskedMedian": {
+        "@type": "xsd:float", 
+        "@value": "9597.36"
+      }, 
       "format": "image/nifti", 
       "inCoordinateSpace": {
         "@id": "niiri:coordinate_space_id_1"
@@ -641,7 +764,7 @@
     ], 
     "NIDMResults": {
       "prov:qualifiedGeneration": {
-        "@id": "_:fe1bf3cd8d90f4cd6a55a382cb6df4489b1"
+        "@id": "_:f998ec51201ab4e0bb85972beea7b8710b1"
       }, 
       "version": "1.3.0", 
       "@id": "niiri:fsl_results_id", 
@@ -649,34 +772,16 @@
     }, 
     "Coordinate": [
       {
-        "coordinateVectorInVoxels": "[ 47, 20, 22 ]", 
-        "label": "Coordinate 2_02", 
-        "@id": "niiri:coordinate_0002_2", 
-        "coordinateVector": "[-56.0, -38.5, 24.5]"
+        "coordinateVectorInVoxels": "[ 32.3, 39.2, 31.0 ]", 
+        "label": "Coordinate 0001", 
+        "@id": "niiri:COG_coordinate_0001", 
+        "coordinateVector": "[ -4.39, 28.6, 55.9 ]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 42, 21, 12 ]", 
-        "label": "Coordinate 4_02", 
-        "@id": "niiri:coordinate_0004_2", 
-        "coordinateVector": "[-38.5, -35.0, -10.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 39, 13, 12 ]", 
-        "label": "Coordinate 4_05", 
-        "@id": "niiri:coordinate_0004_5", 
-        "coordinateVector": "[-28.0, -63.0, -10.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 45, 15, 14 ]", 
-        "label": "Coordinate 4_04", 
-        "@id": "niiri:coordinate_0004_4", 
-        "coordinateVector": "[-49.0, -56.0, -3.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 32, 10, 16 ]", 
-        "label": "Coordinate 4_06", 
-        "@id": "niiri:coordinate_0004_6", 
-        "coordinateVector": "[-3.5, -73.5, 3.5]"
+        "coordinateVectorInVoxels": "[ 43.4, 40.3, 23.9 ]", 
+        "label": "Coordinate 0003", 
+        "@id": "niiri:COG_coordinate_0003", 
+        "coordinateVector": "[-43.5, 32.6, 31.1]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 41, 17, 13 ]", 
@@ -691,10 +796,16 @@
         "coordinateVector": "[ 10.5, -84.0, 3.5]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 34.0, 14.7, 14.0 ]", 
-        "label": "Coordinate 0004", 
-        "@id": "niiri:COG_coordinate_0004", 
-        "coordinateVector": "[-10.5, -56.9, -3.41]"
+        "coordinateVectorInVoxels": "[ 32, 10, 16 ]", 
+        "label": "Coordinate 4_06", 
+        "@id": "niiri:coordinate_0004_6", 
+        "coordinateVector": "[-3.5, -73.5, 3.5]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 48, 37, 21 ]", 
+        "label": "Coordinate 3_03", 
+        "@id": "niiri:coordinate_0003_3", 
+        "coordinateVector": "[-59.5, 21.0, 21.0]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 47.1, 19.2, 19.7 ]", 
@@ -703,10 +814,10 @@
         "coordinateVector": "[ -56.4, -41.4, 16.5 ]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 43.4, 40.3, 23.9 ]", 
-        "label": "Coordinate 0003", 
-        "@id": "niiri:COG_coordinate_0003", 
-        "coordinateVector": "[-43.5, 32.6, 31.1]"
+        "coordinateVectorInVoxels": "[ 47, 20, 22 ]", 
+        "label": "Coordinate 2_02", 
+        "@id": "niiri:coordinate_0002_2", 
+        "coordinateVector": "[-56.0, -38.5, 24.5]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 47, 18, 18 ]", 
@@ -715,10 +826,22 @@
         "coordinateVector": "[-56.0, -45.5, 10.5]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 32.3, 39.2, 31.0 ]", 
-        "label": "Coordinate 0001", 
-        "@id": "niiri:COG_coordinate_0001", 
-        "coordinateVector": "[ -4.39, 28.6, 55.9 ]"
+        "coordinateVectorInVoxels": "[ 34.0, 14.7, 14.0 ]", 
+        "label": "Coordinate 0004", 
+        "@id": "niiri:COG_coordinate_0004", 
+        "coordinateVector": "[-10.5, -56.9, -3.41]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 43, 41, 20 ]", 
+        "label": "Coordinate 3_02", 
+        "@id": "niiri:coordinate_0003_2", 
+        "coordinateVector": "[-42.0, 35.0, 17.5]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 41, 41, 25 ]", 
+        "label": "Coordinate 3_01", 
+        "@id": "niiri:coordinate_0003_1", 
+        "coordinateVector": "[-35.0, 35.0, 35.0]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 45, 42, 25 ]", 
@@ -733,28 +856,22 @@
         "coordinateVector": "[-52.5, 49.0, 24.5]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 43, 41, 20 ]", 
-        "label": "Coordinate 3_02", 
-        "@id": "niiri:coordinate_0003_2", 
-        "coordinateVector": "[-42.0, 35.0, 17.5]"
-      }, 
-      {
-        "coordinateVectorInVoxels": "[ 48, 37, 21 ]", 
-        "label": "Coordinate 3_03", 
-        "@id": "niiri:coordinate_0003_3", 
-        "coordinateVector": "[-59.5, 21.0, 21.0]"
-      }, 
-      {
         "coordinateVectorInVoxels": "[ 40, 37, 28 ]", 
         "label": "Coordinate 3_05", 
         "@id": "niiri:coordinate_0003_5", 
         "coordinateVector": "[-31.5, 21.0, 45.5]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 41, 41, 25 ]", 
-        "label": "Coordinate 3_01", 
-        "@id": "niiri:coordinate_0003_1", 
-        "coordinateVector": "[-35.0, 35.0, 35.0]"
+        "coordinateVectorInVoxels": "[ 33, 46, 27 ]", 
+        "label": "Coordinate 1_04", 
+        "@id": "niiri:coordinate_0001_4", 
+        "coordinateVector": "[-7.0, 52.5, 42.0]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 42, 21, 12 ]", 
+        "label": "Coordinate 4_02", 
+        "@id": "niiri:coordinate_0004_2", 
+        "coordinateVector": "[-38.5, -35.0, -10.5]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 33, 38, 31 ]", 
@@ -775,10 +892,16 @@
         "coordinateVector": "[-17.5, 28.0, 52.5]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 33, 46, 27 ]", 
-        "label": "Coordinate 1_04", 
-        "@id": "niiri:coordinate_0001_4", 
-        "coordinateVector": "[-7.0, 52.5, 42.0]"
+        "coordinateVectorInVoxels": "[ 39, 13, 12 ]", 
+        "label": "Coordinate 4_05", 
+        "@id": "niiri:coordinate_0004_5", 
+        "coordinateVector": "[-28.0, -63.0, -10.5]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 45, 15, 14 ]", 
+        "label": "Coordinate 4_04", 
+        "@id": "niiri:coordinate_0004_4", 
+        "coordinateVector": "[-49.0, -56.0, -3.5]"
       }
     ], 
     "ContrastMap": {
@@ -802,16 +925,16 @@
     "Inference": {
       "prov:used": [
         {
-          "@id": "niiri:cluster_definition_criteria_id_1"
-        }, 
-        {
-          "@id": "niiri:mask_id_1"
+          "@id": "niiri:height_threshold_id"
         }, 
         {
           "@id": "niiri:extent_threshold_id"
         }, 
         {
-          "@id": "niiri:height_threshold_id"
+          "@id": "niiri:mask_id_1"
+        }, 
+        {
+          "@id": "niiri:cluster_definition_criteria_id_1"
         }, 
         {
           "@id": "niiri:peak_definition_criteria_id_1"
@@ -849,7 +972,10 @@
           "@id": "niiri:contrast_estimation_id_1"
         }, 
         "format": "image/nifti", 
-        "errorDegreesOfFreedom": "inf", 
+        "errorDegreesOfFreedom": {
+          "@type": "xsd:float", 
+          "@value": "inf"
+        }, 
         "inCoordinateSpace": {
           "@id": "niiri:coordinate_space_id_1"
         }, 
@@ -864,7 +990,10 @@
         }, 
         "crypto:sha512": "3a68a4e5963766af86d22a871a4dbca9568a46441a567855b3a84dbd47ea01acea11ed77b37ce85078a219adaa92264296a4548c1ba39b11ff028e8fefd95d03", 
         "fileName": "ZStatistic.nii.gz", 
-        "effectDegreesOfFreedom": "1.0", 
+        "effectDegreesOfFreedom": {
+          "@type": "xsd:float", 
+          "@value": "1.0"
+        }, 
         "@id": "niiri:z_statistic_map_id_1"
       }, 
       {
@@ -872,7 +1001,10 @@
           "@id": "niiri:contrast_estimation_id_1"
         }, 
         "format": "image/nifti", 
-        "errorDegreesOfFreedom": "102.0", 
+        "errorDegreesOfFreedom": {
+          "@type": "xsd:float", 
+          "@value": "102.0"
+        }, 
         "inCoordinateSpace": {
           "@id": "niiri:coordinate_space_id_1"
         }, 
@@ -887,7 +1019,10 @@
         }, 
         "crypto:sha512": "b6286d36e678c23622b5b0486f0efb5b274f9a5e2a3ee6aceb6a0338f7745fb8a4d8f72b8af22c4ffb40c860bfb65940c87b03a7336cdf1a665f9cb07a5c2527", 
         "fileName": "TStatistic.nii.gz", 
-        "effectDegreesOfFreedom": "1.0", 
+        "effectDegreesOfFreedom": {
+          "@type": "xsd:float", 
+          "@value": "1.0"
+        }, 
         "@id": "niiri:statistic_map_id_1"
       }
     ], 
@@ -915,6 +1050,15 @@
       "@id": "niiri:subject_id", 
       "label": "Person"
     }, 
+    "Statistic": {
+      "@id": "niiri:height_threshold_id", 
+      "@type": "HeightThreshold", 
+      "prov:value": {
+        "@type": "xsd:float", 
+        "@value": "2.3"
+      }, 
+      "label": "Height Threshold: Z>2.3"
+    }, 
     "ClusterDefinitionCriteria": {
       "@id": "niiri:cluster_definition_criteria_id_1", 
       "hasConnectivityCriterion": {
@@ -935,16 +1079,28 @@
       "noiseFWHMInUnits": "[8.35811, 8.5142, 7.2551]", 
       "noiseFWHMInVoxels": "[2.38803, 2.43263, 2.07288]", 
       "fileName": "SearchSpaceMask.nii.gz", 
-      "noiseRoughnessInVoxels": "0.384676", 
+      "noiseRoughnessInVoxels": {
+        "@type": "xsd:float", 
+        "@value": "0.384676"
+      }, 
       "atLocation": {
         "@type": "xsd:anyURI", 
         "@value": "SearchSpaceMask.nii.gz"
       }, 
-      "searchVolumeInResels": "3753.84", 
+      "searchVolumeInResels": {
+        "@type": "xsd:float", 
+        "@value": "3753.84"
+      }, 
       "label": "Search Space Mask Map", 
-      "reselSizeInVoxels": "12.0418", 
+      "reselSizeInVoxels": {
+        "@type": "xsd:float", 
+        "@value": "12.0418"
+      }, 
       "crypto:sha512": "cc1a96a6111e5107eb08487e38e6d7f8164b9d1d3f1fc10948bdbcfaea642fe9bfae278c7fc372b65cac7232ea58fd8fb5914014e7b9a5d6200592b12b2a728b", 
-      "searchVolumeInUnits": "1938080.0", 
+      "searchVolumeInUnits": {
+        "@type": "xsd:float", 
+        "@value": "1938080.0"
+      }, 
       "@id": "niiri:search_space_mask_id"
     }, 
     "ResidualMeanSquaresMap": {
