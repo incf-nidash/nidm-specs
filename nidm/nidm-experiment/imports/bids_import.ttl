@@ -1,0 +1,2845 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix nidm: <http://purl.org/nidash/nidm#> .
+@prefix dicom: <http://purl.org/nidash/dicom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pato: <http://purl.obolibrary.org/obo/pato#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix skos: <https://www.w3.org/TR/2009/REC-skos-reference-20090818#> .
+@prefix bids: <http://purl.org/nidash/bids#> .
+@base <http://www.w3.org/2002/07/owl#> . 
+
+[ rdf:type owl:Ontology ] .
+
+################################################################
+#
+#    Annotation Properties
+#
+#################################################################
+
+###  http://purl.org/nidash/bids#Name
+
+bids:Name rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "Name"^^xsd:string ;
+
+            dct:description "REQUIRED. Name of the dataset."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#BIDSVersion
+
+bids:BIDSVersion rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "BIDSVersion"^^xsd:string ;
+
+            dct:description "REQUIRED. The version of the BIDS standard that was used."^^xsd:string ;
+
+            skos:closeMatch owl:versionInfo ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#License
+
+bids:License rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "License"^^xsd:string ;
+
+            dct:description "RECOMMENDED. What license is this dataset distributed under? The use of license name abbreviations is suggested for specifying a license. A list of common licenses with suggested abbreviations can be found in Appendix II."^^xsd:string ;
+
+            owl:sameAs dct:license ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Authors
+
+bids:Authors rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "Authors"^^xsd:string ;
+
+            dct:description "OPTIONAL. List of individuals who contributed to the creation/curation of the dataset."^^xsd:string ;
+
+            skos:closeMatch dct:contributor  ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Acknowledgements
+
+bids:Acknowledgements rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "Acknowledgements"^^xsd:string ;
+
+            dct:description "OPTIONAL. Text acknowledging contributions of individuals or institutions beyond those listed in Authors or Funding."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HowToAcknowledge
+
+bids:HowToAcknowledge rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "HowToAcknowledge"^^xsd:string ;
+
+            dct:description "OPTIONAL. Instructions how researchers using this dataset should acknowledge the original authors. This field can also be used to define a publication that should be cited in publications that use the dataset."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Funding
+
+bids:Funding rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "Funding"^^xsd:string ;
+
+            dct:description "OPTIONAL. List of sources of funding (grant numbers)"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ReferencesAndLinks
+
+bids:ReferencesAndLinks rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "ReferencesAndLinks"^^xsd:string ;
+
+            dct:description "OPTIONAL. List of references to publication that contain information on the dataset, or links."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGCoordinateProcessingReference
+
+bids:iEEGCoordinateProcessingReference rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "iEEGCoordinateProcessingReference"^^xsd:string ;
+
+            dct:description "RECOMMENDED. A reference to a paper that defines in more detail the method used to localize the electrodes and to post-process the electrode positions. ."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DatasetDOI
+
+bids:DatasetDOI rdf:type owl:AnnotationProperty ;
+
+            rdfs:label "DatasetDOI"^^xsd:string ;
+
+            dct:description "OPTIONAL. The Document Object Identifier of the dataset (not the corresponding paper)."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+################################################################
+#
+#    Datatype Properties
+#
+#################################################################
+
+###  http://purl.org/nidash/bids#Manufacturer
+
+bids:Manufacturer rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "Manufacturer"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Manufacturer of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 0070 Manufacturer"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00080070 ;
+
+            obo:IAO_0000136 sio:SIO_000956 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ManufacturersModelName
+
+bids:ManufacturersModelName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ManufacturersModelName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Manufacturer's model name of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 1090 Manufacturers Model Name"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00081090 ;
+
+            obo:IAO_0000136 sio:SIO_000956 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DeviceSerialNumber
+
+bids:DeviceSerialNumber rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DeviceSerialNumber"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The serial number of the equipment that produced the composite instances. Corresponds to DICOM Tag 0018, 1000 DeviceSerialNumber. A pseudonym can also be used to prevent the equipment from being identifiable, so long as each pseudonym is unique within the dataset"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00181000 ;
+
+            obo:IAO_0000136 sio:SIO_000956 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#StationName
+
+bids:StationName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "StationName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Institution defined name of the machine that produced the composite instances. Corresponds to DICOM Tag 0008, 1010 Station Name"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00081010 ;
+
+            obo:IAO_0000136 nidm:DataAcquisitionDevice ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SoftwareVersions
+
+bids:SoftwareVersions rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SoftwareVersions"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Manufacturer’s designation of software version of the equipment that produced the composite instances. Corresponds to DICOM Tag 0018, 1020 Software Versions"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00181020 ;
+
+            obo:IAO_0000136 sio:SIO_000097 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HardcopyDeviceSoftwareVersion
+
+bids:HardcopyDeviceSoftwareVersion rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HardcopyDeviceSoftwareVersion"^^xsd:string ;
+
+            dct:description "(Deprecated) Manufacturer’s designation of the software of the device that created this Hardcopy Image (the printer). Corresponds to DICOM Tag 0018, 101A Hardcopy Device Software Version"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_0018101A ;
+
+            obo:IAO_0000136 sio:SIO_000097 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MagneticFieldStrength
+
+bids:MagneticFieldStrength rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MagneticFieldStrength"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Nominal field strength of MR magnet in Tesla. Corresponds to DICOM Tag 0018,0087 Magnetic Field Strength"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180087 ;
+
+            sio:SIO_000221 "T"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ReceiveCoilName
+
+bids:ReceiveCoilName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ReceiveCoilName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Information describing the receiver coil. Corresponds to DICOM Tag 0018, 1250 Receive Coil Name, although not all vendors populate that DICOM Tag, in which case this field can be derived from an appropriate private DICOM field"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00181250 ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:DataAcquisitionDevice, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice, nidm:ReceiveCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ReceiveCoilActiveElements
+
+bids:ReceiveCoilActiveElements rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ReceiveCoilActiveElements"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Information describing the active/selected elements of the receiver coil. This doesn’t correspond to a tag in the DICOM ontology. The vendor-defined terminology for active coil elements can go in this field. As an example, for Siemens, coil channels are typically not activated/selected individually, but rather in pre-defined selectable groups of individual channels, and the list of the groups of elements that are active/selected in any given scan populates the Coil String entry in Siemens’ private DICOM fields (e.g., HEA;HEP for the Siemens standard 32 ch coil when both the anterior and posterior groups are activated). This is a flexible field that can be used as most appropriate for a given vendor and coil to define the active coil elements. Since individual scans can sometimes not have the intended coil elements selected, it is preferable for this field to be populated directly from the DICOM for each individual scan, so that it can be used as a mechanism for checking that a given scan was collected with the intended coil elements selected"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:DataAcquisitionDevice, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice, nidm:ReceiveCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#GradientSetType
+
+bids:GradientSetType rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "GradientSetType"^^xsd:string ;
+
+            dct:description "RECOMMENDED. It should be possible to infer the gradient coil from the scanner model. If not, e.g. because of a custom upgrade or use of a gradient insert set, then the specifications of the actual gradient coil should be reported independently"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MRTransmitCoilSequence
+
+bids:MRTransmitCoilSequence rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MRTransmitCoilSequence"^^xsd:string ;
+
+            dct:description "RECOMMENDED. This is a relevant field if a non-standard transmit coil is used. Corresponds to DICOM Tag 0018, 9049 MR Transmit Coil Sequence"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189049 ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice, nidm:TransmitCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MatrixCoilMode
+
+bids:MatrixCoilMode rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MatrixCoilMode"^^xsd:string ;
+
+            dct:description "RECOMMENDED. (If used) A method for reducing the number of independent channels by combining in analog the signals from multiple coil elements. There are typically different default modes when using un-accelerated or accelerated (e.g. GRAPPA, SENSE) imaging"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice, nidm:ReceiveCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CoilCombinationMethod
+
+bids:CoilCombinationMethod rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "CoilCombinationMethod"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Almost all fMRI studies using phased-array coils use root-sum-of-squares (rSOS) combination, but other methods exist. The image reconstruction is changed by the coil combination method (as for the matrix coil mode above), so anything non-standard should be reported"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:MagneticResonanceImagingScanner, nidm:NuclearMagneticResonanceDevice, nidm:ReceiveCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PulseSequenceType
+
+bids:PulseSequenceType rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PulseSequenceType"^^xsd:string ;
+
+            dct:description "RECOMMENDED. A general description of the pulse sequence used for the scan (i.e. MPRAGE, Gradient Echo EPI, Spin Echo EPI, Multiband gradient echo EPI)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging, nidm:NuclearMagneticResonanceSpectroscopy, nidm:NuclearMagneticResonanceSpectroscopicImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ScanningSequence
+
+bids:ScanningSequence rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ScanningSequence"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Description of the type of data acquired. Corresponds to DICOM Tag 0018, 0020 Scanning Sequence."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180020 ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging, nidm:NuclearMagneticResonanceSpectroscopy, nidm:NuclearMagneticResonanceSpectroscopicImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SequenceVariant
+
+bids:SequenceVariant rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SequenceVariant"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Variant of the ScanningSequence. Corresponds to DICOM Tag 0018, 0021 Sequence Variant."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180021 ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging, nidm:NuclearMagneticResonanceSpectroscopy, nidm:NuclearMagneticResonanceSpectroscopicImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ScanOptions
+
+bids:ScanOptions rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ScanOptions"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Parameters of ScanningSequence. Corresponds to DICOM Tag 0018, 0022 Scan Options."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180022 ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SequenceName
+
+bids:SequenceName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SequenceName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Manufacturer’s designation of the sequence name. Corresponds to DICOM Tag 0018, 0024 Sequence Name."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180024 ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging, nidm:NuclearMagneticResonanceSpectroscopy, nidm:NuclearMagneticResonanceSpectroscopicImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PulseSequenceDetails
+
+bids:PulseSequenceDetails rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PulseSequenceDetails"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Information beyond pulse sequence type that identifies the specific pulse sequence used (i.e. Standard Siemens Sequence distributed with the VB17 software, Siemens WIP ### version #.##, or Sequence written by X using a version compiled on MM/DD/YYYY)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#NonlinearGradientCorrection
+
+bids:NonlinearGradientCorrection rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "NonlinearGradientCorrection"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Boolean stating if the image saved has been corrected for gradient nonlinearities by the scanner sequence."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000097, nidm:MagneticResonanceImaging, nidm:DataProcessing  ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#NumberShots
+
+bids:NumberShots rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "NumberShots"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The number of RF excitations need to reconstruct a slice or volume. Please mind that this is not the same as Echo Train Length which denotes the number of lines of k-space collected after an excitation."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ParallelReductionFactorInPlane
+
+bids:ParallelReductionFactorInPlane rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ParallelReductionFactorInPlane"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The parallel imaging (e.g, GRAPPA) factor. Use the denominator of the fraction of k-space encoded for each slice. For example, 2 means half of k-space is encoded. Corresponds to DICOM Tag 0018, 9069 Parallel Reduction Factor In-plane."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189069 ;
+
+            obo:IAO_0000136 nidm:AcquisitionMethod, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ParallelAcquisitionTechnique
+
+bids:ParallelAcquisitionTechnique rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ParallelAcquisitionTechnique"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The type of parallel imaging used (e.g. GRAPPA, SENSE). Corresponds to DICOM Tag 0018, 9078 Parallel Acquisition Technique."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189078 ;
+
+            obo:IAO_0000136 nidm:AcquisitionMethod, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PartialFourier
+
+bids:PartialFourier rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PartialFourier"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The fraction of partial Fourier information collected. Corresponds to DICOM Tag 0018, 9081 Partial Fourier."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189081 ;
+
+            obo:IAO_0000136 nidm:k-spaceTraversalScheme, nidm:AcquisitionMethod, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PartialFourierDirection
+
+bids:PartialFourierDirection rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PartialFourierDirection"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The direction where only partial Fourier information was collected. Corresponds to DICOM Tag 0018, 9036 Partial Fourier Direction."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189036 ;
+
+            obo:IAO_0000136 nidm:k-spaceTraversalScheme, nidm:AcquisitionMethod, nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PhaseEncodingDirection
+
+bids:PhaseEncodingDirection rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PhaseEncodingDirection"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Possible values: i, j, k, i-, j- k-. The letters i, j, kcorrespond to the first, second and third axis of the data in the NIFTI file. The polarity of the phase encoding is assumed to go from zero index to maximum index unless - sign is present (then the order is reversed - starting from the highest index instead of zero). PhaseEncodingDirection is defined as the direction along which phase is was modulated which may result in visible distortions. Note that this is not the same as the DICOM term InPlanePhaseEncodingDirection which can have ROW or COL values. This parameter is REQUIRED if corresponding fieldmap data is present or when using multiple runs with different phase encoding directions (which can be later used for field inhomogeneity correction)."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EffectiveEchoSpacing
+
+bids:EffectiveEchoSpacing rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EffectiveEchoSpacing"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The effective sampling interval, specified in seconds, between lines in the phase-encoding direction, defined based on the size of the reconstructed image in the phase direction. It is frequently, but incorrectly, referred to as dwell time (see DwellTime parameter below for actual dwell time). It is required for unwarping distortions using field maps. Note that beyond just in-plane acceleration, a variety of other manipulations to the phase encoding need to be accounted for properly, including partial fourier, phase oversampling, phase resolution, phase field-of-view and interpolation.2This parameter is REQUIRED if corresponding fieldmap data is present."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#TotalReadoutTime
+
+bids:TotalReadoutTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "TotalReadoutTime"^^xsd:string ;
+
+            dct:description "RECOMMENDED. This is actually the effective total readout time , defined as the readout duration, specified in seconds, that would have generated data with the given level of distortion. It is NOT the actual, physical duration of the readout train. If EffectiveEchoSpacing has been properly computed, it is just EffectiveEchoSpacing * (ReconMatrixPE - 1).3. This parameter is REQUIRED if corresponding field/distortion maps acquired with opposing phase encoding directions are present (see 8.9.4)."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EchoTime
+
+bids:EchoTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EchoTime"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The echo time (TE) for the acquisition, specified in seconds. This parameter is REQUIRED if corresponding fieldmap data is present or the data comes from a multi echo sequence. Corresponds to DICOM Tag 0018, 0081 Echo Time(please note that the DICOM term is in milliseconds not seconds)."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180081 ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InversionTime
+
+bids:InversionTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "InversionTime"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The inversion time (TI) for the acquisition, specified in seconds. Inversion time is the time after the middle of inverting RF pulse to middle of excitation pulse to detect the amount of longitudinal magnetization. Corresponds to DICOM Tag 0018, 0082 Inversion Time (please note that the DICOM term is in milliseconds not seconds)."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180082 ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SliceTiming
+
+bids:SliceTiming rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SliceTiming"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The time at which each slice was acquired within each volume (frame) of the acquisition. Slice timing is not slice order -- rather, it is a list of times (in JSON format) containing the time (in seconds) of each slice acquisition in relation to the beginning of volume acquisition. The list goes through the slices along the slice axis in the slice encoding dimension (see below). Note that to ensure the proper interpretation of the SliceTiming field, it is important to check if the OPTIONAL SliceEncodingDirection exists. In particular, if SliceEncodingDirection is negative, the entries in SliceTiming are defined in reverse order with respect to the slice axis (i.e., the final entry in the SliceTiming list is the time of acquisition of slice 0). This parameter is REQUIRED for sparse sequences that do not have the DelayTimefield set. In addition without this parameter slice time correction will not be possible."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SliceEncodingDirection
+
+bids:SliceEncodingDirection rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SliceEncodingDirection"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Possible values: i, j, k, i-, j-, k- (the axis of the NIfTI data along which slices were acquired, and the direction in which SliceTiming is defined with respect to). i, j, k identifiers correspond to the first, second and third axis of the data in the NIfTI file. A - sign indicates that the contents of SliceTiming are defined in reverse order - that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. When present, the axis defined by SliceEncodingDirection needs to be consistent with the slice dim field in the NIfTI header. When absent, the entries in SliceTiming must be in the order of increasing slice index as defined by the NIfTI header."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DwellTime
+
+bids:DwellTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DwellTime"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Actual dwell time (in seconds) of the receiver per point in the readout direction, including any oversampling. For Siemens, this corresponds to DICOM field (0019,1018) (in ns). This value is necessary for the optional readout distortion correction of anatomicals in the HCP Pipelines. It also usefully provides a handle on the readout bandwidth, which isn’t captured in the other metadata tags. Not to be confused with EffectiveEchoSpacing, and the frequent mislabeling of echo spacing (which is spacing in the phase encoding direction) as dwell time (which is spacing in the readout direction)."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            owl:sameAs dicom:dicom_00191018 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FlipAngle
+
+bids:FlipAngle rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FlipAngle"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Flip angle for the acquisition, specified in degrees. Corresponds to: DICOM Tag 0018, 1314 Flip Angle."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00181314 ;
+
+            sio:SIO_000221 "o"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MultibandAccelerationFactor
+
+bids:MultibandAccelerationFactor rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MultibandAccelerationFactor"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The multiband factor, for multiband acquisitions."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#NegativeContrast
+
+bids:NegativeContrast rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "NegativeContrast"^^xsd:string ;
+
+            dct:description "OPTIONAL. Boolean (true or false) value specifying whether increasing voxel intensity (within sample voxels) denotes a decreased value with respect to the contrast suffix. This is commonly the case when Cerebral Blood Volume is estimated via usage of a contrast agent in conjunction with a T2* weighted acquisition protocol."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:hadImageContrastType, nidm:CerebralBloodFlow, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AnatomicalLandmarkCoordinates
+
+bids:AnatomicalLandmarkCoordinates rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AnatomicalLandmarkCoordinates"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Key:value pairs of any number of additional anatomical landmarks and their coordinates in voxel units (where first voxel has index 0,0,0) relative to the associated anatomical MRI, (e.g. {AC: [127,119,149], PC: [128,93,141], IH: [131,114,206]}, or {NAS: [127,213,139], LPA: [52,113,96], RPA: [202,113,91]})."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:MagneticResonanceImaging, nidm:Anatomical ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InstitutionName
+
+bids:InstitutionName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "InstitutionName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The name of the institution in charge of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 0080 InstitutionName."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00080080 ;
+
+            obo:IAO_0000136 prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InstitutionAddress
+
+bids:InstitutionAddress rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "InstitutionAddress"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The address of the institution in charge of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 0081 InstitutionAddress."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00080081 ;
+
+            obo:IAO_0000136 prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InstitutionalDepartmentName
+
+bids:InstitutionalDepartmentName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "InstitutionalDepartmentName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. The department in the institution in charge of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 1040 Institutional Department Name."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00081040 ;
+
+            obo:IAO_0000136 prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Phase
+
+bids:Phase rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "Phase"^^xsd:string ;
+
+            dct:description "phase"^^xsd:string ;
+
+            owl:sameAs nidm:Phase ;
+
+            sio:SIO_000221 "unspecified"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Phase ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#RepetitionTime
+
+bids:RepetitionTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "RepetitionTime"^^xsd:string ;
+
+            dct:description "REQUIRED. The time in seconds between the beginning of an acquisition of one volume and the beginning of acquisition of the volume following it (TR). Please note that this definition includes time between scans (when no data has been acquired) in case of sparse acquisition schemes. This value needs to be consistent with the pixdim[4] field (after accounting for units stored in xyzt units field) in the NIfTI header. This field is mutually exclusive with VolumeTiming and is derived from DICOM Tag 0018, 0080 and converted to seconds."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00180080 ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#VolumeTiming
+
+bids:VolumeTiming rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "VolumeTiming"^^xsd:string ;
+
+            dct:description "REQUIRED. The time at which each volume was acquired during the acquisition. It is described using a list of times (in JSON format) referring to the onset of each volume in the BOLD series. The list must have the same length as the BOLD series, and the values must be non-negative and monotonically increasing. This field is mutually exclusive with RepetitionTime and DelayTime. If defined, this requires acquisition time (TA) be defined via either SliceTiming or AcquisitionDuration be defined."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#TaskName
+
+bids:TaskName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "TaskName"^^xsd:string ;
+
+            dct:description "REQUIRED. Name of the task. No two tasks should have the same name. Task label (task-) included in the file name is derived from this field by removing all non alphanumeric ([a-zA-Z0-9]) characters. For example task name faces n-back will corresponds to task label facesnback. A RECOMMENDED convention is to name resting state task using labels beginning with rest."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Functional, nidm:Task ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#NumberOfVolumesDiscardedByScanner
+
+bids:NumberOfVolumesDiscardedByScanner rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "NumberOfVolumesDiscardedByScanner"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of volumes (dummy scans) discarded by the scanner (as opposed to those discarded by the user post hoc) before saving the imaging file. For example, a sequence that automatically discards the first 4 volumes before saving would have this field as 4. A sequence that doesn't discard dummy scans would have this set to 0. Please note that the onsets recorded in the event.tsv file should always refer to the beginning of the acquisition of the first volume in the corresponding imaging file - independent of the value of NumberOfVolumesDiscardedByScanner field."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#NumberOfVolumesDiscardedByUser
+
+bids:NumberOfVolumesDiscardedByUser rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "NumberOfVolumesDiscardedByUser"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of volumes (also known as dummy scans) discarded by the user before including the file in the dataset. If possible, including all of the volumes is strongly recommended. Please note that the onsets recorded in the event.tsv file should always refer to the beginning of the acquisition of the first volume in the corresponding imaging file - independent of the value of NumberOfVolumesDiscardedByUser field."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:DataProcessing, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DelayTime
+
+bids:DelayTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DelayTime"^^xsd:string ;
+
+            dct:description "RECOMMENDED. User specified time (in seconds) to delay the acquisition of data for the following volume. If the field is not present it is assumed to be set to zero. Corresponds to Siemens CSA header field lDelayTimeInTR. This field is REQUIRED for sparse sequences using the RepetitionTime field that do not have the SliceTiming field set to allowed for accurate calculation of acquisition time. This field is mutually exclusive with VolumeTiming."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AcquisitionDuration
+
+bids:AcquisitionDuration rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AcquisitionDuration"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Duration (in seconds) of volume acquisition. Corresponds to DICOM Tag 0018,9073 Acquisition Duration. This field is REQUIRED for sequences that are described with the VolumeTiming field and that not have the SliceTiming field set to allowed for accurate calculation of acquisition time. This field is mutually exclusive with RepetitionTime."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_00189073 ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DelayAfterTrigger
+
+bids:DelayAfterTrigger rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DelayAfterTrigger"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Duration (in seconds) from trigger delivery to scan onset. This delay is commonly caused by adjustments and loading times. This specification is entirely independent of NumberOfVolumesDiscardedByScanner or NumberOfVolumesDiscardedByUser, as the delay precedes the acquisition."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:PulseSequence, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Instructions
+
+bids:Instructions rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "Instructions"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Text of the instructions given to participants before the scan. This is especially important in context of resting state fMRI and distinguishing between eyes open and eyes closed paradigms."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:MagneticResonanceImaging ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#TaskDescription
+
+bids:TaskDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "TaskDescription"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Longer description of the task."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Functional, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CogAtlasID
+
+bids:CogAtlasID rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "CogAtlasID"^^xsd:string ;
+
+            dct:description "RECOMMENDED. URL of the corresponding Cognitive Atlas Task term."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000115 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CogPOID
+
+bids:CogPOID rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "CogPOID"^^xsd:string ;
+
+            dct:description "RECOMMENDED. URL of the corresponding CogPO term."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000115 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SamplingFrequency
+
+bids:SamplingFrequency rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SamplingFrequency"^^xsd:string ;
+
+            dct:description "REQUIRED. Sampling frequency (in Hz) of all the data in the recording, regardless of their type (e.g., 2400)"^^xsd:string ;
+
+            owl:sameAs dicom:dicom_003A001A ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:AcquisitionObjectQuality ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PowerLineFrequency
+
+bids:PowerLineFrequency rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "PowerLineFrequency"^^xsd:string ;
+
+            dct:description "REQUIRED. Frequency (in Hz) of the power grid at the geographical location of the MEG instrument (i.e. 50 or 60)"^^xsd:string ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:AcquisitionObjectQuality ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DewarPosition
+
+bids:DewarPosition rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DewarPosition"^^xsd:string ;
+
+            dct:description "REQUIRED. Position of the dewar during the MEG scan: upright, supine or degrees of angle from vertical: for example on CTF systems, upright=15 degrees, supine = 90 degrees."^^xsd:string ;
+
+            sio:SIO_000221 "o"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SoftwareFilters
+
+bids:SoftwareFilters rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SoftwareFilters"^^xsd:string ;
+
+            dct:description "REQUIRED. List of temporal and/or spatial software filters applied, or ideally key:value pairs of pre-applied software filters and their parameter values: e.g., {SSS: {frame: head, badlimit: 7}}, {SpatialCompensation: {GradientOrder: Order of the gradient compensation}}. Write n/a if no software filters applied."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:SignalFilter, nidm:DataProcessing ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedLandmarks
+
+bids:DigitizedLandmarks rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedLandmarks"^^xsd:string ;
+
+            dct:description "REQUIRED. Boolean (true or false) value indicating whether anatomical landmark points (i.e. fiducials) are contained within this recording."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedHeadPoints
+
+bids:DigitizedHeadPoints rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedHeadPoints"^^xsd:string ;
+
+            dct:description "REQUIRED. Boolean (true or false) value indicating whether head points outlining the scalp/face surface are contained within this recording."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MEGChannelCount
+
+bids:MEGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MEGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of MEG channels (e.g. 275)"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Magnetoencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MEGREFChannelCount
+
+bids:MEGREFChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MEGREFChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of MEG reference channels (e.g. 23). For systems without such channels (e.g. Neuromag Vectorview), MEGREFChannelCount=0"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Magnetoencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGChannelCount
+
+bids:EEGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EEG channels recorded simultaneously (e.g. 21)"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ECOGChannelCount
+
+bids:ECOGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ECOGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of ECoG channels"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels  ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Electrocorticography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SEEGChannelCount
+
+bids:SEEGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SEEGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of SEEG channels"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Stereolectroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EOGChannelCount
+
+bids:EOGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EOGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EOG channels"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Electrooculography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ECGChannelCount
+
+bids:ECGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ECGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of ECG channels"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Electrocardiography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EMGChannelCount
+
+bids:EMGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EMGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EMG channels"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794, nidm:Electromyography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MiscChannelCount
+
+bids:MiscChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MiscChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of miscellaneous analog channels for auxiliary signals"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#TriggerChannelCount
+
+bids:TriggerChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "TriggerChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of channels for digital (TTL bit level) triggers"^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#RecordingDuration
+
+bids:RecordingDuration rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "RecordingDuration"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Length of the recording in seconds (e.g. 3600)"^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#RecordingType
+
+bids:RecordingType rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "RecordingType"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Defines whether the recording is continuous or epoched; this latter limited to time windows about events of interest (e.g., stimulus presentations, subject responses etc.)"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:AcquisitionUsageType ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EpochLength
+
+bids:EpochLength rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EpochLength"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Duration of individual epochs in seconds (e.g. 1) in case of epoched data"^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ContinuousHeadLocalization
+
+bids:ContinuousHeadLocalization rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ContinuousHeadLocalization"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Boolean (true or false) value indicating whether continuous head localisation was performed."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCoilFrequency
+
+bids:HeadCoilFrequency rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCoilFrequency"^^xsd:string ;
+
+            dct:description "RECOMMENDED. List of frequencies (in Hz) used by the head localisation coils (HLC in CTF systems, HPI in Elekta, COH in BTi/4D) that track the subject’s head position in the MEG helmet (e.g. [293, 307, 314, 321])"^^xsd:string ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, nidm:ReceiveCoil ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MaxMovement
+
+bids:MaxMovement rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MaxMovement"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Maximum head movement (in mm) detected during the recording, as measured by the head localisation coils (e.g., 4.8)"^^xsd:string ;
+
+            sio:SIO_000221 "mm"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000038 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SubjectArtefactDescription
+
+bids:SubjectArtefactDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SubjectArtefactDescription"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Freeform description of the observed subject artefact and its possible cause (e.g. Vagus Nerve Stimulator, non-removable implant). If this field is set to n/a, it will be interpreted as absence of major source of artifacts except cardiac and blinks."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Magnetoencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AssociatedEmptyRoom
+
+bids:AssociatedEmptyRoom rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AssociatedEmptyRoom"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Relative path in BIDS folder structure to empty-room file associated with the subject’s MEG recording. The path needs to use forward slashes instead of backward slashes (e.g. sub-emptyroom/ses-/meg/sub-emptyroom/ses-task-noise/run-meg.ds)."^^xsd:string ;
+
+            rdfs:comment "This term should be more specific so that it is clear that it refers to a file. Could also use nidm:AcquisitionObject resulting from a nidm:Acquisition activity where the label is Empty Room."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000396 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HardwareFilters
+
+bids:HardwareFilters rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HardwareFilters"^^xsd:string ;
+
+            dct:description "RECOMMENDED. List of temporal hardware filters applied. Ideally key:value pairs of pre-applied hardware filters and their parameter values: e.g., {HardwareFilters: {Highpass RC filter: {Half amplitude cutoff (Hz): 0.0159, Roll-off: 6dB/Octave}}}. Write n/a if no hardware filters applied."^^xsd:string ;
+
+            rdfs:comment "This is a specific usage (hardware) of nidm:AppliedFilter that covers both hard- and software filters."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, nidm:SignalFilter ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGPlacementScheme
+
+bids:EEGPlacementScheme rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGPlacementScheme"^^xsd:string ;
+
+            dct:description "OPTIONAL. Placement scheme of EEG electrodes. Either the name of a standardised placement system (e.g., 10-20) or a list of standardised electrode names (e.g. [Cz, Pz])."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Electroencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CapManufacturer
+
+bids:CapManufacturer rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "CapManufacturer"^^xsd:string ;
+
+            dct:description "OPTIONAL. Manufacturer of the EEG cap (e.g. EasyCap)"^^xsd:string ;
+
+            skos:closeMatch dicom:dicom_00080070 ;
+
+	    rdfs:comment "Instead of a specific term, could use the DICOM tag Manufacturer and use it as a object property for the prov:Entity cap."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Electroencephalography, nidm:Manufacturer ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CapManufacturersModelName
+
+bids:CapManufacturersModelName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "CapManufacturersModelName"^^xsd:string ;
+
+            dct:description "OPTIONAL. Manufacturer’s designation of the EEG cap model (e.g., M10)"^^xsd:string ;
+
+            skos:closeMatch dicom:dicom_00081090 ;
+
+            obo:IAO_0000136 nidm:Electroencephalography, sio:SIO_000116 ;
+
+            rdfs:comment "Instead of a specific term, could use the DICOM tag ManufacturerModelName and use it as a object property for the prov:Entity cap."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGReference
+
+bids:EEGReference rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGReference"^^xsd:string ;
+
+            dct:description "OPTIONAL. Description of the type of EEG reference used (e.g., M1 for left mastoid, average, or longitudinal bipolar)."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Electroencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#sampling_frequency
+
+bids:sampling_frequency rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "sampling_frequency"^^xsd:string ;
+
+            dct:description "OPTIONAL. Sampling rate of the channel in Hz."^^xsd:string ;
+
+            owl:sameAs dicom:dicom_003A001A ;
+
+            rdfs:comment "The DICOM term also uses the same units as the BIDS version."^^xsd:string ;
+	    
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000956 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#low_cutoff
+
+bids:low_cutoff rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "low_cutoff"^^xsd:string ;
+
+            dct:description "OPTIONAL. Frequencies used for the high-pass filter applied to the channel in Hz. If no high-pass filter applied, use n/a."^^xsd:string ;
+
+            skos:closeMatch dicom:dicom_003A0221 ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:SignalFilter ;
+
+            rdfs:comment "The DICOM term is the nominal 3dB point of upper frequency of pass band, in Hz."^^xsd:string ;	   
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#high_cutoff
+
+bids:high_cutoff rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "high_cutoff"^^xsd:string ;
+
+            dct:description "OPTIONAL. Frequencies used for the low-pass filter applied to the channel in Hz. If no low-pass filter applied, use n/a. Note that hardware anti-aliasing in A/D conversion of all MEG/EEG electronics applies a low-pass filter; specify its frequency here if applicable."^^xsd:string ;
+
+            skos:closeMatch dicom:dicom_003A0220 ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            rdfs:comment "The DICOM term is the nominal 3dB point of lower frequency of pass band, in Hz."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:SignalFilter ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#notch
+
+bids:notch rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "notch"^^xsd:string ;
+
+            dct:description "OPTIONAL. Frequencies used for the notch filter applied to the channel, in Hz. If no notch filter applied, use n/a."^^xsd:string ;
+
+            skos:closeMatch dicom:dicom_003A0222 ;
+
+            sio:SIO_000221 "Hz"^^xsd:string ;
+
+            rdfs:comment "The DICOM term is the center frequency of notch filter, in Hz."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:SignalFilter ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#software_filters
+
+bids:software_filters rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "software_filters"^^xsd:string ;
+
+            dct:description "OPTIONAL. List of temporal and/or spatial software filters applied (e.g. SSS, SpatialCompensation). Note that parameters should be defined in the general MEG sidecar .json file. Indicate n/a in the absence of software filters applied."^^xsd:string ;
+
+            owl:sameAs nidm:AppliedFilters ;
+
+            rdfs:comment "Note that the NIDM-E term is more general and applies to both hardware and software filters."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:SignalFilter ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#status
+
+bids:status rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "status"^^xsd:string ;
+
+            dct:description "OPTIONAL. Data quality observed on the channel (good/bad). A channel is considered bad if its data quality is compromised by excessive noise. Description of noise type SHOULD be provided in [status_description]."^^xsd:string ;
+
+            rdfs:comment "This should be attached to a nidm:AcquisitionObject."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#status_description
+
+bids:status_description rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "status_description"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description of noise or artifact affecting data quality on the channel. It is meant to explain why the channel was declared bad in [status]."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MEGCoordinateSystem
+
+bids:MEGCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MEGCoordinateSystem"^^xsd:string ;
+
+            dct:description "REQUIRED. Defines the coordinate system for the MEG sensors. See Appendix VIII: preferred names of Coordinate systems. If Other, provide definition of the coordinate system in [MEGCoordinateSystemDescription]."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MEGCoordinateUnits
+
+bids:MEGCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MEGCoordinateUnits"^^xsd:string ;
+
+            dct:description "REQUIRED. Units of the coordinates of MEGCoordinateSystem. MUST be m, cm, or mm."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MEGCoordinateSystemDescription
+
+bids:MEGCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MEGCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description or link to document describing the MEG coordinate system system in detail."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGCoordinateSystem
+
+bids:EEGCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGCoordinateSystem"^^xsd:string ;
+
+            dct:description "OPTIONAL. Describes how the coordinates of the EEG sensors are to be interpreted."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Electyroencephalography, sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGCoordinateUnits
+
+bids:EEGCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGCoordinateUnits"^^xsd:string ;
+
+            dct:description "OPTIONAL. Units of the coordinates of EEGCoordinateSystem. MUST be m, cm, or mm."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Electroencephalography, sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGCoordinateSystemDescription
+
+bids:EEGCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description or link to document describing the EEG coordinate system system in detail."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCoilCoordinates
+
+bids:HeadCoilCoordinates rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCoilCoordinates"^^xsd:string ;
+
+            dct:description "OPTIONAL. Key:value pairs describing head localization coil labels and their coordinates, interpreted following the HeadCoilCoordinateSystem, e.g., {NAS: [12.7,21.3,13.9], LPA: [5.2,11.3,9.6], RPA: [20.2,11.3,9.1]}. Note that coils are not always placed at locations that have a known anatomical name (e.g. for Elekta, Yokogawa systems); in that case generic labels can be used (e.g. {coil1: [12.2,21.3,12.3], coil2: [6.7,12.3,8.6], coil3: [21.9,11.0,8.1]} )."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000956, sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCoilCoordinateSystem
+
+bids:HeadCoilCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCoilCoordinateSystem"^^xsd:string ;
+
+            dct:description "OPTIONAL. Defines the coordinate system for the coils. See Appendix VIII: preferred names of Coordinate systems. If Other, provide definition of the coordinate system in HeadCoilCoordinateSystemDescription."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000956, sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCoilCoordinateUnits
+
+bids:HeadCoilCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCoilCoordinateUnits"^^xsd:string ;
+
+            dct:description "OPTIONAL. Units of the coordinates of HeadCoilCoordinateSystem. MUST be m, cm, or mm."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Electroencephalography, sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCoilCoordinateSystemDescription
+
+bids:HeadCoilCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCoilCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description or link to document describing the Head Coil coordinate system system in detail."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedHeadPoints
+
+bids:DigitizedHeadPoints rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedHeadPoints"^^xsd:string ;
+
+            dct:description "OPTIONAL. Relative path to the file containing the locations of digitized head points collected during the session (e.g., sub-01_headshape.pos). RECOMMENDED for all MEG systems, especially for CTF and BTi/4D. For Elekta/Neuromag the head points will be stored in the fif file."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:Magnetoencephalography, sio:SIO_000956, sio:SIO_000396 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedHeadPointsCoordinateSystem
+
+bids:DigitizedHeadPointsCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedHeadPointsCoordinateSystem"^^xsd:string ;
+
+            dct:description "OPTIONAL. Defines the coordinate system for the digitized head points. See Appendix VIII: preferred names of Coordinate systems. If Other, provide definition of the coordinate system in DigitizedHeadPointsCoordinateSystemDescription."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000956, sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedHeadPointsCoordinateUnits
+
+bids:DigitizedHeadPointsCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedHeadPointsCoordinateUnits"^^xsd:string ;
+
+            dct:description "OPTIONAL. Units of the coordinates of DigitizedHeadPointsCoordinateSystem. MUST be m, cm, or mm."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DigitizedHeadPointsCoordinateSystemDescription
+
+bids:DigitizedHeadPointsCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DigitizedHeadPointsCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description or link to document describing the Digitized head Points coordinate system system in detail."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#IntendedFor
+
+bids:IntendedFor rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "IntendedFor"^^xsd:string ;
+
+            dct:description "OPTIONAL. Path or list of path relative to the subject subfolder pointing to the structural MRI, possibly of different types if a list is specified, to be used with the MEG recording. The path(s) need(s) to use forward slashes instead of backward slashes (e.g. ses-/anat/sub-01_T1w.nii.gz)."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Magnetoencephalography, prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AnatomicalLandmarkCoordinates
+
+bids:AnatomicalLandmarkCoordinates rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AnatomicalLandmarkCoordinates"^^xsd:string ;
+
+            dct:description "OPTIONAL. Key:value pairs of the labels and 3-D digitized locations of anatomical landmarks, interpreted following the AnatomicalLandmarkCoordinateSystem, e.g., {NAS: [12.7,21.3,13.9], LPA: [5.2,11.3,9.6], RPA: [20.2,11.3,9.1]}."^^xsd:string ;
+
+            obo:IAO_0000136  prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AnatomicalLandmarkCoordinateSystem
+
+bids:AnatomicalLandmarkCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AnatomicalLandmarkCoordinateSystem"^^xsd:string ;
+
+            dct:description "OPTIONAL. Defines the coordinate system for the anatomical landmarks. See Appendix VIII: preferred names of Coordinate systems. If Other, provide definition of the coordinate system in AnatomicalLandmarkCoordinateSystemDescription."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000320;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AnatomicalLandmarkCoordinateUnits
+
+bids:AnatomicalLandmarkCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AnatomicalLandmarkCoordinateUnits"^^xsd:string ;
+
+            dct:description "OPTIONAL. Units of the coordinates of AnatomicalLandmarkCoordinateSystem. MUST be m, cm, or mm."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#AnatomicalLandmarkCoordinateSystemDescription
+
+bids:AnatomicalLandmarkCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "AnatomicalLandmarkCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. Freeform text description or link to document describing the Head Coil coordinate system system in detail."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FiducialsDescription
+
+bids:FiducialsDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FiducialsDescription"^^xsd:string ;
+
+            dct:description "OPTIONAL. A freeform text field documenting the anatomical landmarks that were used and how the head localization coils were placed relative to these. This field can describe, for instance, whether the true anatomical locations of the left and right pre-auricular points were used and digitized, or rather whether they were defined as the intersection between the tragus and the helix (the entry of the ear canal), or any other anatomical description of selected points in the vicinity of the ears."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGReference
+
+bids:EEGReference rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGReference"^^xsd:string ;
+
+            dct:description "REQUIRED. General description of the reference scheme used and (when applicable) of location of the reference electrode in the raw recordings (e.g., left mastoid, Cz, CMS). If different channels have a different reference, this field should have a general description and the channel specific reference should be defined in the channels.tsv file."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGChannelCount
+
+bids:EEGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EEG channels included in the recording (e.g., 128)."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Electroencephalography, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ECGChannelCount
+
+bids:ECGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ECGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of ECG channels."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Electrocardiography, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EMGChannelCount
+
+bids:EMGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EMGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EMG channels."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Electromyography, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EOGChannelCount
+
+bids:EOGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EOGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of EOG channels."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 nidm:Electrooculography, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#MiscChannelCount
+
+bids:MiscChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "MiscChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of miscellaneous analog channels for auxiliary signals."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#TriggerChannelCount
+
+bids:TriggerChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "TriggerChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of channels for digital (TTL bit level) trigger."^^xsd:string ;
+
+            owl:sameAs nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#HeadCircumference
+
+bids:HeadCircumference rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "HeadCircumference"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Circumference of the participants head, expressed in cm (e.g., 58)."^^xsd:string ;
+
+            sio:SIO_000221 "cm"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000047 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGPlacementScheme
+
+bids:EEGPlacementScheme rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGPlacementScheme"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Placement scheme of EEG electrodes. Either the name of a standardized placement system (e.g., 10-20) or a list of standardized electrode names (e.g., [Cz, Pz])."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000320, sio:SIO_000116, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#EEGGround
+
+bids:EEGGround rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "EEGGround"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Description of the location of the ground electrode (e.g., placed on right mastoid (M2))."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000136, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#reference
+
+bids:reference rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "reference"^^xsd:string ;
+
+            dct:description "OPTIONAL. Name of the reference electrode(s) (not needed when it is common to all channels, in that case it can be specified in * eeg.json as EEGReference)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000116, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#name
+
+bids:name rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "name"^^xsd:string ;
+
+            dct:description "Term used to label a prov:Entity. This is a generalization of the way the term is used within the BIDS specification."^^xsd:string ;
+
+            owl:sameAs rdfs:label ;
+
+            obo:IAO_0000136 sio:SIO_000116 ;
+
+	    obo:IAO_0000117 "K. Helmer"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#type
+
+bids:type rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "type"^^xsd:string ;
+
+            dct:description "Term used to indicate the sub-category of the general class being described. Example: if the prov:Entity is an electrode, the bids:type could be disk or needle. This is a generalization of the way the term is used within the BIDS specification."^^xsd:string ;
+
+	    obo:IAO_0000117 "K. Helmer"^^xsd:string ;
+
+            obo:IAO_0000136 obo:PATO_0000001 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#description
+
+bids:description rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "type"^^xsd:string ;
+
+            dct:description "Term used to indicate a string that provides clarifying information about another term. This is a generalization of the way the term is used within the BIDS specification."^^xsd:string ;
+
+	    obo:IAO_0000117 "K. Helmer"^^xsd:string ;
+
+            owl:sameAs dct:description ;
+
+            obo:IAO_0000136 sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#material
+
+bids:material rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "material"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Material of the electrode, e.g., Tin, Ag/AgCl, Gold"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_010462 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#impedance
+
+bids:impedance rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "impedance"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Impedance of the electrode in kOhm"^^xsd:string ;
+
+            owl:sameAs nidm:ElectrodeImpedance ;
+
+            sio:SIO_000221 "kOhm"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FiducialsCoordinates
+
+bids:FiducialsCoordinates rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FiducialsCoordinates"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Key:value pairs of the labels and 3-D digitized position of anatomical landmarks, interpreted following the FiducialsCoordinateSystem (e.g., {NAS: [12.7,21.3,13.9], LPA: [5.2,11.3,9.6], RPA: [20.2,11.3,9.1]})."^^xsd:string ;
+
+            obo:IAO_0000136 prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FiducialsCoordinateSystem
+
+bids:FiducialsCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FiducialsCoordinateSystem"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Refers to the coordinate space to which the landmarks positions are to be interpreted - preferably the same as the EEGCoordinateSystem."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000320 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FiducialsCoordinateUnits
+
+bids:FiducialsCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FiducialsCoordinateUnits"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Units in which the coordinates that are listed in the field AnatomicalLandmarkCoordinateSystem are represented (e.g., mm, cm)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000074 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FiducialsCoordinateSystemDescription
+
+bids:FiducialsCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "FiducialsCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGReference
+
+bids:iEEGReference rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGReference"^^xsd:string ;
+
+            dct:description "REQUIRED. General description of the reference scheme used and (when applicable) of location of the reference electrode in the raw recordings (e.g., left mastoid, bipolar, T01 for electrode with name T01, intracranial electrode on top of a grid, not included with data, upside down electrode). If different channels have a different reference, this field should have a general description and the channel specific reference should be defined in the channels.tsv file."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#DCOffsetCorrection
+
+bids:DCOffsetCorrection rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "DCOffsetCorrection"^^xsd:string ;
+
+            dct:description "RECOMMENDED. A description of the method (if any) used to correct for a DC offset. If the method used was subtracting the mean value for each channel, use mean."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ElectrodeManufacturer
+
+bids:ElectrodeManufacturer rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ElectrodeManufacturer"^^xsd:string ;
+
+            dct:description "RECOMMENDED. can be used if all electrodes are of the same manufacturer (e.g., AD-TECH, DIXI). If electrodes of different manufacturers are used, please use the corresponding table in the _electrodes.tsv file."^^xsd:string ;
+
+            rdfs:comment "Note that this term does not exist in the EEG specifications."^^xsd:string  ;
+
+            obo:IAO_0000136 sio:SIO_000956, nidm:Manufacturer ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ElectrodeManufacturersModelName
+
+bids:ElectrodeManufacturersModelName rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ElectrodeManufacturersModelName"^^xsd:string ;
+
+            dct:description "RECOMMENDED. If different electrode types are used, please use the corresponding table in the electrodes.tsv file."^^xsd:string ;
+
+            rdfs:comment "Note that this term does not exist in the EEG specifications."^^xsd:string  ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000116 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ECOGChannelCount
+
+bids:ECOGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ECOGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of iEEG surface channels included in the recording (e.g., 120)."^^xsd:string ;
+
+            skos:closeMatch nidm:NumberOfChannels ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000794, nidm:Electrocorticography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#SEEGChannelCount
+
+bids:SEEGChannelCount rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "SEEGChannelCount"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Number of iEEG depth channels included in the recording (e.g., 8)."^^xsd:string ;
+
+            skos:closeMatch nidm:NumberOfChannels  ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000794, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGGround
+
+bids:iEEGGround rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGGround"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Description of the location of the ground electrode (e.g., placed on right mastoid (M2))."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, prov:Location, sio:SIO_000136, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGPlacementScheme
+
+bids:iEEGPlacementScheme rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGPlacementScheme"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Freeform description of the placement of the iEEG electrodes. Left/right/bilateral/depth/surface (e.g., left frontal grid and bilateral hippocampal depth or surface strip and STN depth or clinical indication bitemporal, bilateral temporal strips and left grid)."^^xsd:string ;
+
+            skos:closeMatch bids:EEGPlacementScheme ;
+
+            obo:IAO_0000136 sio:SIO_000956, prov:Location, sio:SIO_000136, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGElectrodeGroups
+
+bids:iEEGElectrodeGroups rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGElectrodeGroups"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Field to describe the way electrodes are grouped into strips, grids or depth probes e.g., {grid1: 10x8 grid on left temporal pole, strip2: 1x8 electrode strip on xxx}."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000136, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ElectricalStimulation
+
+bids:ElectricalStimulation rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ElectricalStimulation"^^xsd:string ;
+
+            dct:description "OPTIONAL. Boolean field to specify if electrical stimulation was done during the recording (options are true or false). Parameters for event-like stimulation should be specified in the events.tsv file (see example below)."^^xsd:string ;
+
+            obo:IAO_0000136 nidm:Acquisition, nidm:AcquisitionMethod ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ElectricalStimulationParameters
+
+bids:ElectricalStimulationParameters rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "ElectricalStimulationParameters"^^xsd:string ;
+
+            dct:description "OPTIONAL. Free form description of stimulation parameters, such as frequency, shape etc. Specific onsets can be specified in the events.tsv file. Specific shapes can be described here in freeform text."^^xsd:string ;
+
+            obo:IAO_0000136 prov:Collection, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#group
+
+bids:group rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "group"^^xsd:string ;
+
+            dct:description "OPTIONAL. Which group of channels (grid/strip/seeg/depth) this channel belongs to. This is relevant because one group has one cable-bundle and noise can be shared. This can be a name or number. Note that any groups specified in electrodes.tsv must match those present here."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, prov:Collection ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#size
+
+bids:size rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "size"^^xsd:string ;
+
+            dct:description "REQUIRED. Surface area of the electrode, in mm^2."^^xsd:string ;
+
+            rdfs:comment "The description for this term is specific to electrodes."^^xsd:string ;
+
+            sio:SIO_000221 "mm^2"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000045 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#hemisphere
+
+bids:hemisphere rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "hemisphere"^^xsd:string ;
+
+            dct:description "OPTIONAL. Optional field to specify the hemisphere in which the electrode is placed, one of [L or R] (use capital)."^^xsd:string ;
+
+            obo:IAO_0000136 prov:Location ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#dimension
+
+bids:dimension rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "dimension"^^xsd:string ;
+
+            dct:description "OPTIONAL. Size of the group (grid/strip/probe) that this electrode belongs to. Must be of form [AxB] with the smallest dimension first (e.g., [1x8])."^^xsd:string ;
+
+            sio:SIO_000221 "unspecified"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000956, sio:SIO_000794 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGCoordinateSystem
+
+bids:iEEGCoordinateSystem rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGCoordinateSystem"^^xsd:string ;
+
+            dct:description "REQUIRED. Defines the coordinate system for the iEEG electrodes. See Appendix VIII for a list of restricted keywords. If positions correspond to pixel indices in a 2D image (of either a volume-rendering, surface-rendering, operative photo, or operative drawing), this must be Pixels. For more information, see the section on 2D coordinate systems"^^xsd:string ;
+
+            skos:closeMatch bids:EEGCoordinateSystem ;
+
+            obo:IAO_0000136 sio:SIO_000320, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGCoordinateUnits
+
+bids:iEEGCoordinateUnits rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGCoordinateUnits"^^xsd:string ;
+
+            dct:description "REQUIRED. Units of the electrodes.tsv, MUST be m, mm, cm or pixels."^^xsd:string ;
+
+            skos:closeMatch bids:EEGCoordinateUnits ;
+
+            obo:IAO_0000136 sio:SIO_000074, nidm:Electroencephalography ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGCoordinateSystemDescription
+
+bids:iEEGCoordinateSystemDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGCoordinateSystemDescription"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Freeform text description or link to document describing the iEEG coordinate system system in detail (e.g., Coordinate system with the origin at anterior commissure (AC), negative y-axis going through the posterior commissure (PC), z-axis going to a mid-hemisperic point which lies superior to the AC-PC line, x-axis going to the right)."^^xsd:string ;
+
+            skos:closeMatch bids:EEGCoordinateSystemDescription ;
+
+            obo:IAO_0000136 sio:SIO_000320, nidm:Electroencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#iEEGCoordinateProcessingDescription
+
+bids:iEEGCoordinateProcessingDescription rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "iEEGCoordinateProcessingDescription"^^xsd:string ;
+
+            dct:description "RECOMMENDED. Has any post-processing (such as projection) been done on the electrode positions (e.g., surface_projection, none)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000320, nidm:Electroencephalography, sio:SIO_000136 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#onset
+
+bids:onset rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "onset"^^xsd:string ;
+
+            dct:description "REQUIRED. Onset (in seconds) of the event measured from the beginning of the acquisition of the first volume in the corresponding task imaging data file. If any acquired scans have been discarded before forming the imaging data file, ensure that a time of 0 corresponds to the first image stored. In other words negative numbers in onset are allowed."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#duration
+
+bids:duration rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "duration"^^xsd:string ;
+
+            dct:description "REQUIRED. Duration of the event (measured from onset) in seconds. Must always be either zero or positive. A duration value of zero implies that the delta function or event is so short as to be effectively modeled as an impulse."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#sample
+
+bids:sample rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "sample"^^xsd:string ;
+
+            dct:description "OPTIONAL. Onset of the event according to the sampling scheme of the recorded modality (i.e., referring to the raw data file that the events.tsv file accompanies)."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#trial_type
+
+bids:trial_type rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "trial_type"^^xsd:string ;
+
+            dct:description "OPTIONAL. Primary categorisation of each trial to identify them as instances of the experimental conditions. For example: for a response inhibition task, it could take on values go and no-go to refer to response initiation and response inhibition experimental conditions."^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000116, nidm:Task, nidm:Acquisition ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#response_time
+
+bids:response_time rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "response_time"^^xsd:string ;
+
+            dct:description "OPTIONAL. Response time measured in seconds. A negative response time can be used to represent preemptive responses and n/a denotes a missed response."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+            obo:IAO_0000136 sio:SIO_000391 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#stim_file
+
+bids:stim_file rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "stim_file"^^xsd:string ;
+
+            dct:description "OPTIONAL. Represents the location of the stimulus file (image, video, sound etc.) presented at the given onset time. There are no restrictions on the file formats of the stimuli files, but they should be stored in the /stimuli folder (under the root folder of the dataset; with optional subfolders). The values under the stim_file column correspond to a path relative to /stimuli. For example images/cat03.jpg will be translated to /stimuli/images/cat03.jpg."^^xsd:string ;
+
+            obo:IAO_0000136 prov:Location, nidm:AuxiliaryFile, nidm:StimulusPresentationFile ;
+
+             obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#StartTime
+
+bids:StartTime rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "StartTime"^^xsd:string ;
+
+            dct:description "REQUIRED. Start time in seconds in relation to the start of acquisition of the first data sample in the corresponding neural dataset (negative values are allowed)."^^xsd:string ;
+
+            sio:SIO_000221 "s"^^xsd:string ;
+
+           obo:IAO_0000136 sio:SIO_000418 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Columns
+
+bids:Columns rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "Columns"^^xsd:string ;
+
+            dct:description "REQUIRED. Names of columns in file."^^xsd:string ;
+
+           obo:IAO_0000136 sio:SIO_000116, sio:SIO_000396 ; 
+
+           obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#respiratory
+
+bids:respiratory rdf:type owl:DatatypeProperty ;
+
+            rdfs:label "respiratory"^^xsd:string ;
+
+            dct:description "continuous breathing measurement"^^xsd:string ;
+
+           obo:IAO_0000136 nidm:Acquisition, nidm:AcquisitionMethod ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+################################################################
+#
+#    Classes
+#
+#################################################################
+
+###  http://purl.org/nidash/bids#T1weighted
+
+bids:T1weighted rdf:type owl:Class ;
+
+            rdfs:label "T1 weighted"^^xsd:string ;
+
+            dct:description "T1w"^^xsd:string ;
+
+            owl:sameAs nidm:T1Weighted ;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+	    rdfs:comment "This relation to nidm:T1Weighted is proposed and would make this term a child of nidm:ImageContrastType"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#T2weighted
+
+bids:T2weighted rdf:type owl:Class ;
+
+            rdfs:label "T2 weighted"^^xsd:string ;
+
+            dct:description "T2w"^^xsd:string ;
+
+	    rdfs:comment "This relation to nidm:T2Weighted is proposed and would make this term a child of nidm:imageContrastType"^^xsd:string ;
+
+            owl:sameAs nidm:T2Weighted;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#T2Star
+
+bids:T2Star rdf:type owl:Class ;
+
+            rdfs:label "T2*"^^xsd:string ;
+
+            dct:description "T2star"^^xsd:string ;
+
+            owl:sameAs nidm:T2StarWeighted ;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+            rdfs:comment "The relation here is has only proposed status and would make this a child term to nidm:ImageContrastType"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+
+###  http://purl.org/nidash/bids#Protondensity
+
+bids:Protondensity rdf:type owl:Class ;
+
+            rdfs:label "Proton density"^^xsd:string ;
+
+            dct:description "PD"^^xsd:string ;
+
+            owl:sameAs nidm:ProtonDensityWeighted ;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+            rdfs:comment "The relation here is has only proposed status and would make this a child term  to nidm:ImageContrastType"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CombinedPDT2
+
+bids:CombinedPDT2 rdf:type owl:Class ;
+
+            rdfs:label "Combined PD/T2"^^xsd:string ;
+
+            dct:description "PDT2"^^xsd:string ;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FLAIR
+
+bids:FLAIR rdf:type owl:Class ;
+
+            rdfs:label "FLAIR"^^xsd:string ;
+
+            dct:description "FLAIR"^^xsd:string ;
+
+            owl:sameAs nidm:FluidAttenuatedInversionRecovery ;
+
+            rdfs:subClassOf nidm:AcquisitionMethod ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#FLASH
+
+bids:FLASH rdf:type owl:Class ;
+
+            rdfs:label "FLASH"^^xsd:string ;
+
+            dct:description "FLASH"^^xsd:string ;
+
+            owl:sameAs nidm:FastLowAngleShot ;
+
+            rdfs:subClassOf nidm:AcquisitionMethod ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Angiography
+
+bids:Angiography rdf:type owl:Class ;
+
+            rdfs:label "Angiography"^^xsd:string ;
+
+            dct:description "angio"^^xsd:string ;
+
+            owl:sameAs nidm:Angiography ;
+
+            rdfs:subClassOf nidm:AcquisitionMethod ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#BOLD
+
+bids:BOLD rdf:type owl:Class ;
+
+            rdfs:label "BOLD"^^xsd:string ;
+
+            dct:description "bold"^^xsd:string ;
+
+            owl:sameAs nidm:BloodOxygenLevelDependent ;
+
+            rdfs:subClassOf nidm:ImageContrastType ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CBV
+
+bids:CBV rdf:type owl:Class ;
+
+            rdfs:label "CBV"^^xsd:string ;
+
+            dct:description "cbv"^^xsd:string ;
+
+            owl:sameAs nidm:CerebralBloodVolume ;
+
+            rdfs:subClassOf nidm:CalculatedParameter ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+###  http://purl.org/nidash/bids#T1Rhomap
+
+bids:T1Rhomap rdf:type owl:NamedIndividual, nidm:ParameterEstimateMap .
+
+
+
+###  http://purl.org/nidash/bids#T1map
+
+bids:T1map rdf:type owl:NamedIndividual, nidm:ParameterEstimateMap .
+
+
+
+###  http://purl.org/nidash/bids#T2map
+
+bids:T2map rdf:type owl:NamedIndividual, nidm:ParameterEstimateMap .
+
+
+
+###  http://purl.org/nidash/bids#Protondensitymap
+
+bids:Protondensitymap rdf:type owl:NamedIndividual, nidm:ParameterEstimateMap .
+
+
+
+###  http://purl.org/nidash/bids#InplaneT1
+
+bids:InplaneT1 rdf:type owl:NamedIndividual, nidm:AcquisitionObject .
+
+
+
+###  http://purl.org/nidash/bids#InplaneT2
+
+bids:InplaneT2 rdf:type owl:NamedIndividual, nidm:AcquisitionObject .
+
+
+
+bids:T1Rhomap rdfs:label "T1 Rho map"^^xsd:string ;
+
+            dct:description "T1 rho"^^xsd:string ;
+
+ 	    rdfs:comment "This is related to nidm:0000052, which is nidm:Map, in NIDM-Results, but is unrelated to nidm:ContrastMap since the contrast in that case is related to fMRI condition contrasts, rather than an NMR physics-related concept.  It is related to nidm:ParameterEstimateMap from NIDM-Results in the sense that calculation of a parameter map from a set of images in which the contrast is changed by modifying an acquisition parameter related to a parameter of interest (in this case T1 rho), is an estimate of a parameter resulting from the fitting of image data on a pixel-by-pixel basis."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+bids:T1map rdfs:label "T1 map"^^xsd:string ;
+
+            dct:description "T1 map"^^xsd:string ;
+
+	    rdfs:comment "This is related to nidm:0000052, which is nidm:Map, in NIDM-Results, but is unrelated to nidm:ContrastMap since the contrast in that case is related to fMRI condition contrasts, rather than an NMR physics-related concept.  It is related to nidm:ParameterEstimateMap from NIDM-Results in the sense that calculation of a parameter map from a set of images in which the contrast is changed by modifying an acquisition parameter related to a parameter of interest (in this case T1), is an estimate of a parameter resulting from the fitting of image data on a pixel-by-pixel basis."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+bids:T2map rdfs:label "T2 map"^^xsd:string ;
+
+            dct:description "T2 map"^^xsd:string ;
+
+	    rdfs:comment "This is related to nidm:0000052, which is nidm:Map, in NIDM-Results, but is unrelated to nidm:ContrastMap since the contrast in that case is related to fMRI condition contrasts, rather than an NMR physics-related concept.  It is related to nidm:ParameterEstimateMap from NIDM-Results in the sense that calculation of a parameter map from a set of images in which the contrast is changed by modifying an acquisition parameter related to a parameter of interest (in this case T2), is an estimate of a parameter resulting from the fitting of image data on a pixel-by-pixel basis."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Protondensitymap
+
+bids:Protondensitymap rdfs:label "Proton density map"^^xsd:string ;
+
+            dct:description "PDmap"^^xsd:string ;
+
+	    rdfs:comment "This is related to nidm:0000052, which is nidm:Map from NIDM-Results, but is unrelated to nidm:ContrastMap since the contrast in that case is related to fMRI condition contrasts, rather than an NMR physics-related concept.  It is related to nidm:ParameterEstimateMap from NIDM-Results in the sense that calculation of a parameter map from a set of images in which the contrast is changed by modifying an acquisition parameter related to a parameter of interest (in this case proton density), is an estimate of a parameter resulting from the fitting of image data on a pixel-by-pixel basis."^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InplaneT1
+
+bids:InplaneT1 rdfs:label "Inplane T1"^^xsd:string ;
+
+            dct:description "T1-weighted anatomical image matched to functional acquisition"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#InplaneT2
+
+bids:InplaneT2 rdfs:label "Inplane T2"^^xsd:string ;
+
+            dct:description "T2-weighted anatomical image matched to functional acquisition"^^xsd:string ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+

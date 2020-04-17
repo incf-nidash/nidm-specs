@@ -50,6 +50,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition Usage Type'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Acquisition Usage Type': </b>Acquisition usage type is an acquisition object quality that denotes to what purpose the acquired object will be employed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition'"> [find issues/PR] </a></td>
     <td><b>nidm:'Acquisition': </b>An acquisition is an activty in which data about a subject is gathered</td>
 </tr>
@@ -62,6 +67,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Anatomical'"> [find issues/PR] </a></td>
     <td><b>nidm:'Anatomical': </b>Anatomical is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information on the anatomy of the object on which the acquisition was performed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Angiography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Angiography': </b>Angiography is an acquisition method that visualizes the venus and arterial systems of the body</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -100,8 +110,28 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Blood Oxygen Level Dependent'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Blood Oxygen Level Dependent': </b>Blood Oxygen Level Dependent is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Calculated Parameter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Calculated Parameter': </b>A Calculated Parameter is a variable that is the result of the processing of a set of measurements</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Cartesian'"> [find issues/PR] </a></td>
     <td><b>nidm:'Cartesian': </b>Cartesian is a k-space traversal scheme in MRI in which the path of the data acquisition follows a straight line parallel to one axis of the defined k-space and perpendicular to the other k=space axis</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Cerebral Blood Flow'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Cerebral Blood Flow': </b>Cerebral Blood Flow (CBF) is a calculated parameter that characterizes the blood volume in the brain</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Cerebral Blood Volume'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Cerebral Blood Volume': </b>Cerebral Blood Volume (CBV) is a calculated parameter that characterizes the blood volume in the brain</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -135,13 +165,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Processing'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data Processing': </b>Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Demographics Instrument'"> [find issues/PR] </a></td>
     <td><b>nidm:'Demographics Instrument': </b>A demographics instrument is a instrument usage type that signifies that the type of data to be collected by the instrument is demographics-related data</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Diffusion Tensor'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Diffusion Tensor': </b>Diffusion tensor is an image usage type that denotes that the acquisition object collected can be use to construct the diffusion tensor of the imaged tissue</td>
+    <td><b>nidm:'Diffusion Tensor': </b>Diffusion tensor is an image usage type that denotes that the acquisition object collected can be used to construct the diffusion tensor of the imaged tissue</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -165,6 +200,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrocardiography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrocardiography': </b>Electrocardiography (ECG) is an electrophysiological acquisition method in which electrodes placed on the skin measure the electrical activity of the heart</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrocorticography'"> [find issues/PR] </a></td>
     <td><b>nidm:'Electrocorticography': </b>Electrocorticography (ECoG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed directly on the cortical surface of the brain</td>
 </tr>
@@ -182,6 +222,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography'"> [find issues/PR] </a></td>
     <td><b>nidm:'Electroencephalography': </b>Electroencephalography (EEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed on the surface of the head</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electromyography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electromyography': </b>Electromyography (EMG) is an electrophysiological acquisition method in which the electrical activity of the muscles is measured using either surface or inserted electrodes</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrooculography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrooculography': </b>Electrooculography (EOG) is an electrophysiological acquisition method in which the resting potential between the cornea of the eye and Bruch's membrance is measured</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -212,6 +262,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Flow Weighted'"> [find issues/PR] </a></td>
     <td><b>nidm:'Flow Weighted': </b>Flow weighted is an image contrast type in which differences in voxel intensity are based on the bulk motion behavior of the species that generates the detected signal from that voxel</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fluid Attenuated Inversion Recovery'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fluid Attenuated Inversion Recovery': </b>Fluid Attenuated Inversion Recovery, which is often known by its acronym, FLAIR, is a magnetic resonance imaging acquisition method in which images are acquired after an initial magnetization inversion pulse is applied and a delay duration that is selected such that the signal from bulk fluid such as cerebral spinal fluid or fluid in lesions is nulled</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -310,6 +365,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnitude'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Magnitude': </b>Magnitude is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Manufacturer'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Manufacturer': </b>A manufacturer is a role for an agent, who may be a person or company, who creates an entity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Mixed Design'"> [find issues/PR] </a></td>
     <td><b>nidm:'Mixed Design': </b>A mixed design is a fMRI design comprised of both epochs & discrete events of stimulus and/or behavior</td>
 </tr>
@@ -332,6 +397,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multi-unit Recording'"> [find issues/PR] </a></td>
     <td><b>nidm:'Multi-unit Recording': </b>Multi-unit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Noise Measurement'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Noise Measurement': </b>Noise measurement is an acquisition usage type that denotes that the acquisition object collected has been used to measure the intrinsic noise level of the acquisition hardware</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Nuclear Magnetic Resonance Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Nuclear Magnetic Resonance Device': </b>A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -362,6 +437,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Performed Plan'"> [find issues/PR] </a></td>
     <td><b>nidm:'Performed Plan': </b>A performed plan is a plan that is actually implemented during an acquisition activity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Phase'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Phase': </b>Phase is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -417,6 +497,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Raw Acquisition Object'"> [find issues/PR] </a></td>
     <td><b>nidm:'Raw Acquisition Object': </b>A raw acquisition object is an acquisition object that has not yet undergone any further processing steps such asthe image reconstruction process</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Receive Coil'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Receive Coil': </b>A receive coil is a data acquisition device used in nuclear magnetic resonance and magnetic resonance imaging to receive the signal from the sample. </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -485,6 +570,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Steady State Free Precession'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Steady State Free Precession': </b>Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, low flip angle gradient recalled echoes and short repetition times to form images</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stereoelectroencephalography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Stereoelectroencephalography': </b>Stereoelectroencephalography (SEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured with stereotactically-implanted electrodes, usually to localize an epileptogenic zone</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Generator'"> [find issues/PR] </a></td>
     <td><b>nidm:'Stimulus Generator': </b>A stimulus generator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part</td>
 </tr>
@@ -545,13 +640,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Amplifier'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Voltage Amplifier': </b>A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Transmit Coil'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Transmit Coil': </b>A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Clamp'"> [find issues/PR] </a></td>
     <td><b>nidm:'Voltage Clamp': </b>Voltage clamp is an intracellular electrophysiological acquisition method in in which the cell membrane potential is fixed to a set value and the ionic current that crosses the cell membrane at that potential is measured</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='X-ray Computed Tomography Acquisition Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'X-ray Computed Tomography Acquisition Device': </b>X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -591,7 +691,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='DICOM Tag'"> [find issues/PR] </a></td>
-    <td><b>nidm:'DICOM Tag': </b>DICOM tag is a property that associates a string that denotes a specific DICOM standard identifier with a data acquisition object</td>
+    <td><b>nidm:'DICOM Tag': </b>DICOM tag is a property that associates a string that denotes a specific DICOM standard tag identifier with a data acquisition object</td>
     <td></td>
     <td></td>
 </tr>
@@ -661,7 +761,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/red.png?raw=true"/>  </td>
     <td>To be discussed<br/><a href="https://github.com/incf-nidash/nidm//issues?&q='had Image Contrast Type'"> [find issues/PR] </a></td>
-    <td><b>nidm:'had Image Contrast Type': </b>Had image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
+    <td><b>nidm:'had Image Contrast Type': </b>Had image contrast type is a property that associates a string that describes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object</td>
     <td></td>
     <td></td>
 </tr>
@@ -753,6 +853,12 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Continuous Performance Test'"> [find issues/PR] </a></td>
     <td><b>nidm:'Continuous Performance Test': </b>A Continuous Performance Test is an assessment instrument that measures sustained and selective attention by having the subject perform a task continuously for a given duration of time</td>
     <td>onli:assessment-instrument</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Enhanced Fast Field Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Contrast Enhanced Fast Field Echo': </b>Contrast Enhanced Fast Field Echo, is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time</td>
+    <td>nidm:AcquisitionMethod</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

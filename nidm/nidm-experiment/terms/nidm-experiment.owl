@@ -3,6 +3,7 @@
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
 @prefix dicom: <http://purl.org/nidash/dicom#> .
+@prefix bids: <http://purl.org/nidash/bids#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
@@ -25,6 +26,7 @@
                <http://purl.org/nidash/nidm/iao_import.owl> ,
                <http://purl.org/nidash/nidm/nfo_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
+               <http://purl.org/nidash/nidm/bids_import.owl> ,
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/pato_import.owl> ,
@@ -77,12 +79,6 @@ dct:source rdf:type owl:AnnotationProperty .
 
 
 
-###  http://purl.org/provone#isPartOf
-
-provone:isPartOf rdf:type owl:AnnotationProperty .
-
-
-
 ###  http://www.w3.org/2000/01/rdf-schema#comment
 
 rdfs:comment rdf:type owl:AnnotationProperty ;
@@ -119,16 +115,6 @@ owl:versionInfo rdf:type owl:AnnotationProperty .
 
 
 
-###  http://www.w3.org/ns/prov#wasAssociatedWith
-
-prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
-
-
-
-###  http://www.w3.org/ns/prov#wasMemberOf
-
-prov:wasMemberOf rdf:type owl:AnnotationProperty .
-
 
 
 #################################################################
@@ -136,7 +122,6 @@ prov:wasMemberOf rdf:type owl:AnnotationProperty .
 #    Object Properties
 #
 #################################################################
-
 
 ###  http://purl.org/dc/terms/hasPart
 
@@ -183,6 +168,12 @@ nidm:hadForVariable rdf:type owl:ObjectProperty .
 
 
 
+###  http://purl.org/provone#isPartOf
+
+provone:isPartOf rdf:type owl:AnnotationProperty .
+
+
+
 ###  http://purl.org/nidash/nidm#wasMeasuredBy
 
 nidm:wasMeasuredBy rdf:type owl:ObjectProperty .
@@ -198,6 +189,18 @@ nidm:wasScaleOf rdf:type owl:ObjectProperty .
 ###  http://www.w3.org/ns/prov#hadMember
 
 prov:hadMember rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+
+prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasMemberOf
+
+prov:wasMemberOf rdf:type owl:AnnotationProperty .
 
 
 
@@ -219,6 +222,12 @@ prov:wasCreatedBy rdf:type owl:ObjectProperty .
 
 
 
+###  http://purl.org/dc/terms/title
+
+dct:title rdf:type owl:DatatypeProperty .
+
+
+
 #################################################################
 #
 #    Data properties
@@ -231,6 +240,7 @@ prov:wasCreatedBy rdf:type owl:ObjectProperty .
 dct:description rdf:type owl:DatatypeProperty ;
                 
                rdfs:subPropertyOf owl:topDataProperty .
+
 
 
 ###  http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName
@@ -250,21 +260,15 @@ dct:source rdf:type owl:DatatypeProperty .
 
 
 
-###  http://purl.org/dc/terms/title
-
-dct:title rdf:type owl:DatatypeProperty .
-
-
-
 ###  http://purl.org/nidash/nidm#hadNumericalValue
 
 nidm:hadNumericalValue rdf:type owl:DatatypeProperty .
 
 
 
-###  http://purl.org/nidash/nidm#BathSolution
+###  http://purl.org/nidash/nidm#bathSolution
 
-nidm:BathSolution rdf:type owl:DatatypeProperty ;
+nidm:bathSolution rdf:type owl:DatatypeProperty ;
                           
                rdfs:label "Bath Solution"^^xsd:string ;
                           
@@ -274,9 +278,9 @@ nidm:BathSolution rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#CellType
+###  http://purl.org/nidash/nidm#cellType
 
-nidm:CellType rdf:type owl:DatatypeProperty ;
+nidm:cellType rdf:type owl:DatatypeProperty ;
                        
                rdfs:label "Cell Type"^^xsd:string ;
                        
@@ -286,9 +290,9 @@ nidm:CellType rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#ChannelNumber
+###  http://purl.org/nidash/nidm#channelNumber
 
-nidm:ChannelNumber rdf:type owl:DatatypeProperty ;
+nidm:channelNumber rdf:type owl:DatatypeProperty ;
                        
                rdfs:label "Channel Number"^^xsd:string ;
                        
@@ -298,9 +302,9 @@ nidm:ChannelNumber rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#ElectrodeImpedance
+###  http://purl.org/nidash/nidm#electrodeImpedance
 
-nidm:ElectrodeImpedance rdf:type owl:DatatypeProperty ;
+nidm:electrodeImpedance rdf:type owl:DatatypeProperty ;
                        
                rdfs:label "Electrode Impedance"^^xsd:string ;
                        
@@ -310,9 +314,9 @@ nidm:ElectrodeImpedance rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#GroupLabel
+###  http://purl.org/nidash/nidm#groupLabel
 
-nidm:GroupLabel rdf:type owl:DatatypeProperty ;
+nidm:groupLabel rdf:type owl:DatatypeProperty ;
 
                rdfs:label "Group Label"^^xsd:string ;
 
@@ -322,9 +326,9 @@ nidm:GroupLabel rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#HollowElectrodeSolution
+###  http://purl.org/nidash/nidm#hollowElectrodeSolution
 
-nidm:HollowElectrodeSolution rdf:type owl:DatatypeProperty ;
+nidm:hollowElectrodeSolution rdf:type owl:DatatypeProperty ;
                           
                rdfs:label "Hollow Electrode Solution"^^xsd:string ;
                           
@@ -340,7 +344,7 @@ nidm:hadImageContrastType rdf:type owl:DatatypeProperty ;
                           
                rdfs:label "had Image Contrast Type"^^xsd:string ;
                           
-               obo:IAO_0000115 "Had image contrast type is a property that associates a string that deswcribes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object."^^xsd:string ;
+               obo:IAO_0000115 "Had image contrast type is a property that associates a string that describes the physical parameter that was manipulated to achieve the contrast of a given image with that image data acquisition object."^^xsd:string ;
                           
                obo:IAO_0000116 "To be discussed"^^xsd:string .
 
@@ -358,9 +362,9 @@ nidm:hadImageUsageType rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#NumberOfChannels
+###  http://purl.org/nidash/nidm#numberOfChannels
 
-nidm:NumberOfChannels rdf:type owl:DatatypeProperty ;
+nidm:numberOfChannels rdf:type owl:DatatypeProperty ;
                        
                rdfs:label "Number Of Channels"^^xsd:string ;
                        
@@ -370,21 +374,21 @@ nidm:NumberOfChannels rdf:type owl:DatatypeProperty ;
 
 
            
-###  http://purl.org/nidash/nidm#AppliedFilter
+###  http://purl.org/nidash/nidm#appliedFilter
 
-nidm:AppliedFilter rdf:type owl:DatatypeProperty ;
+nidm:appliedFilter rdf:type owl:DatatypeProperty ;
 
                rdfs:label "Applied Filter"^^xsd:string ;
 
                obo:IAO_0000115 "Applied filter is a property that associates the string name of the filter type used to remove or modify certain components of the input signal with a data acquisition object that includes that signal."^^xsd:string ;
-                       
+
                obo:IAO_0000114 obo:IAO_0000428 .
 
            
 
-###  http://purl.org/nidash/nidm#SolutionFlowSpeed
+###  http://purl.org/nidash/nidm#solutionFlowSpeed
 
-nidm:SolutionFlowSpeed rdf:type owl:DatatypeProperty ;
+nidm:solutionFlowSpeed rdf:type owl:DatatypeProperty ;
 
                rdfs:label "Solution Flow Speed"^^xsd:string ;
 
@@ -394,9 +398,9 @@ nidm:SolutionFlowSpeed rdf:type owl:DatatypeProperty ;
 
            
 
-###  http://purl.org/nidash/nidm#RecordingLocation
+###  http://purl.org/nidash/nidm#recordingLocation
 
-nidm:RecordingLocation rdf:type owl:DatatypeProperty ;
+nidm:recordingLocation rdf:type owl:DatatypeProperty ;
 
                rdfs:label "Recording Location"^^xsd:string ;
 
@@ -406,13 +410,13 @@ nidm:RecordingLocation rdf:type owl:DatatypeProperty ;
 
 
 
-###  http://purl.org/nidash/nidm#DICOMTag
+###  http://purl.org/nidash/nidm#dicomTag
 
-nidm:DICOMTag rdf:type owl:DatatypeProperty ;
+nidm:dicomTag rdf:type owl:DatatypeProperty ;
 
                rdfs:label "DICOM Tag"^^xsd:string ;
 
-               obo:IAO_0000115 "DICOM tag is a property that associates a string that denotes a specific DICOM standard identifier with a data acquisition object."^^xsd:string ;
+               obo:IAO_0000115 "DICOM tag is a property that associates a string that denotes a specific DICOM standard tag identifier with a data acquisition object."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -516,6 +520,22 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#AcquisitionUsageType
+
+nidm:AcquisitionUsageType rdf:type owl:Class ;
+                    
+               rdfs:label "Acquisition Usage Type"^^xsd:string ;
+
+               obo:IAO_0000115 "Acquisition usage type is an acquisition object quality that denotes to what purpose the acquired object will be employed."^^xsd:string ;
+                     
+               rdfs:comment  "This is used for a non-imaging based acquisition modality."^^xsd:string ;
+  
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:subClassOf nidm:AcquisitionObjectQuality .
+
+
+
 ###  http://purl.org/nidash/nidm#Amperometry
 
 nidm:Amperometry rdf:type owl:Class ;
@@ -541,6 +561,22 @@ nidm:Anatomical rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                 
                rdfs:subClassOf nidm:ImageUsageType .
+
+
+
+###  http://purl.org/nidash/nidm#Angiography
+
+nidm:Angiography rdf:type owl:Class ;
+                                   
+               rdfs:label "Angiography"^^xsd:string ;
+
+               obo:IAO_0000115 "Angiography is an acquisition method that visualizes the venus and arterial systems of the body."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "Angiography is a general term for a method that exists in several image-based modalities such as magnetic resonance imaging."^^xsd:string ;
+                                   
+               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -651,6 +687,38 @@ nidm:NIDM_0000152 rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#BloodOxygenLevelDependent
+
+nidm:BloodOxygenLevelDependent rdf:type owl:Class ;
+                  
+               rdfs:label "Blood Oxygen Level Dependent"^^xsd:string ;
+
+               obo:IAO_0000115 "Blood Oxygen Level Dependent is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "This term is a special case of nidm:SusceptibilityWeighted, in which the image contrast is primarily due to differences in magnetic susceptibility of oxygenated versus de-oxygenated blood. Susceptibility weighting can have numerous causes, such as differences in tissue iron content."^^xsd:string ;
+                  
+               rdfs:subClassOf nidm:ImageContrastType .
+
+
+
+###  http://purl.org/nidash/nidm#CalculatedParameter
+
+nidm:CalculatedParameter rdf:type owl:Class ;
+                  
+               rdfs:label "Calculated Parameter"^^xsd:string ;
+
+               obo:IAO_0000115 "A Calculated Parameter is a variable that is the result of the processing of a set of measurements."^^xsd:string ;
+
+               rdfs:comment "Note that this is similar to, but distinct from a dependent variable, which is a variable that changes in response to changes in a system.  The T2 value would be an example of a dependent variable since changing the echo time allows for calculation of the T2.  Cerebral Blood Flow (CBV) is an example of a Calculated Parameter since it is measure by taking a series of images after the injection of a contrast agent; however the experimenter is not actually changing any independent variable to see a change in the CBV and therefore it is a Calculated Parameter rather than a dependent variable."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:subClassOf sio:SIO_000367 .
+
+
+
 ###  http://purl.org/nidash/nidm#Cartesian
 
 nidm:Cartesian rdf:type owl:Class ;
@@ -667,20 +735,34 @@ nidm:Cartesian rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Cartesian
+###  http://purl.org/nidash/nidm#CerebralBloodFlow
 
-nidm:Cartesian rdf:type owl:Class ;
+nidm:CerebralBloodFlow rdf:type owl:Class ;
+                  
+               rdfs:label "Cerebral Blood Flow"^^xsd:string ;
 
-               rdfs:label "Cartesian"^^xsd:string ;
-
-               obo:IAO_0000115 "Cartesian is a k-space traversal scheme in MRI in which the path of the data acquisition follows a straight line parallel to one axis of the defined k-space and perpendicular to the other k=space axis."^^xsd:string ;
-                             
+               obo:IAO_0000115 "Cerebral Blood Flow (CBF) is a calculated parameter that characterizes the blood volume in the brain."^^xsd:string ;
+                
                obo:IAO_0000114 obo:IAO_0000428 ;
-               
-               rdfs:subClassOf nidm:k-spaceTraversalScheme ;
 
-               owl:synonym nidm:Rectilinear .
+	       rdfs:comment "This calculated parameter is usually displayed as a map that displays the CBF in quantitative or relative units."^^xsd:string ;
+                  
+               rdfs:subClassOf nidm:CalculatedParameter .
 
+
+
+
+nidm:CerebralBloodVolume rdf:type owl:Class ;
+                  
+               rdfs:label "Cerebral Blood Volume"^^xsd:string ;
+
+               obo:IAO_0000115 "Cerebral Blood Volume (CBV) is a calculated parameter that characterizes the blood volume in the brain."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "This calculated parameter is usually displayed as a map that displays the CBV in quantitative or relative units."^^xsd:string ;
+                  
+               rdfs:subClassOf nidm:CalculatedParameter .
 
 
 
@@ -740,6 +822,20 @@ nidm:DataAcquisitionDevice rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#DataProcessing
+
+nidm:DataProcessing rdf:type owl:Class ;
+
+               rdfs:label "Data Processing" ;
+
+               obo:IAO_0000115 "Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf prov:Activity .
+
+
+
 ###  http://purl.org/nidash/nidm#DataProcessingDevice
 
 nidm:DataProcessingDevice rdf:type owl:Class ;
@@ -794,7 +890,7 @@ nidm:DiffusionTensor rdf:type owl:Class ;
                      
                rdfs:label "Diffusion Tensor"^^xsd:string ;
 
-               obo:IAO_0000115 "Diffusion tensor is an image usage type that denotes that the acquisition object collected can be use to construct the diffusion tensor of the imaged tissue."^^xsd:string ;
+               obo:IAO_0000115 "Diffusion tensor is an image usage type that denotes that the acquisition object collected can be used to construct the diffusion tensor of the imaged tissue."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ; 
                      
@@ -857,6 +953,19 @@ nidm:EchoPlanar rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 .
 
 
+###  http://purl.org/nidash/nidm#Electrocardiography
+
+nidm:Electrocardiography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electrocardiography (ECG) is an electrophysiological acquisition method in which electrodes placed on the skin measure the electrical activity of the heart."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                          
+               rdfs:label "Electrocardiography"^^xsd:string ;
+                          
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
 
 ###  http://purl.org/nidash/nidm#Electrocorticography
 
@@ -911,6 +1020,33 @@ nidm:ElectroencephalographyAcquisitionDevice rdf:type owl:Class ;
                rdfs:label "Electroencephalography Acquisition Device"^^xsd:string ;
                             
                rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+###  http://purl.org/nidash/nidm#Electromyography
+
+nidm:Electromyography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electromyography (EMG) is an electrophysiological acquisition method in which the electrical activity of the muscles is measured using either surface or inserted electrodes."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                          
+               rdfs:label "Electromyography"^^xsd:string ;
+                          
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#Electrooculography
+
+nidm:Electrooculography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electrooculography (EOG) is an electrophysiological acquisition method in which the resting potential between the cornea of the eye and Bruch's membrance is measured."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Electrooculography"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -983,6 +1119,21 @@ nidm:FieldPotential rdf:type owl:Class ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+
+###  http://purl.org/nidash/nidm#FluidAttenuatedInversionRecovery
+
+nidm:FluidAttenuatedInversionRecovery rdf:type owl:Class ;
+                                   
+               rdfs:label "Fluid Attenuated Inversion Recovery"^^xsd:string ;
+
+               obo:IAO_0000115 "Fluid Attenuated Inversion Recovery, which is often known by its acronym, FLAIR, is a magnetic resonance imaging acquisition method in which images are acquired after an initial magnetization inversion pulse is applied and a delay duration that is selected such that the signal from bulk fluid such as cerebral spinal fluid or fluid in lesions is nulled."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
                rdfs:subClassOf nidm:AcquisitionMethod .
 
 
@@ -1273,6 +1424,36 @@ nidm:MagnetoencephalographyAcquisitionDevice rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Magnitude
+
+nidm:Magnitude rdf:type owl:Class ;
+                  
+               rdfs:label "Magnitude"^^xsd:string ;
+
+               obo:IAO_0000115 "Magnitude is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "In MRI the acquired signal is in the form of a magnitude and phase that are then combined to form an image. In some applications, such as susceptibility-weighted imaging, the phase map is used to enhance the final image."^^xsd:string ;
+                  
+               rdfs:subClassOf nidm:CalculatedParameter .
+
+
+
+###  http://purl.org/nidash/nidm#Manufacturer
+
+nidm:Manufacturer rdf:type owl:Class ;
+                   
+              rdfs:label "Manufacturer" ;
+                   
+              rdfs:subClassOf prov:Role ;
+                   
+              obo:IAO_0000115 "A manufacturer is a role for an agent, who may be a person or company, who creates an entity." ;
+
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#NIDM_0000154
 
 nidm:NIDM_0000154 rdf:type owl:Class ; 
@@ -1360,6 +1541,21 @@ nidm:NIDM_0000155 rdf:type owl:Class ;
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
+###  http://purl.org/nidash/nidm#NoiseMeasurement
+
+nidm:NoiseMeasurement rdf:type owl:Class ;
+                     
+               rdfs:label "Noise Measurement"^^xsd:string ;
+
+               obo:IAO_0000115 "Noise measurement is an acquisition usage type that denotes that the acquisition object collected has been used to measure the intrinsic noise level of the acquisition hardware."^^xsd:string ;
+                       
+               rdfs:comment "This type is also called 'Empty' in Magnetoencepholography, since the acquisition activity is undertaken with no subject or sample present."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ; 
+                     
+               rdfs:subClassOf nidm:AcquisitionUsageType .
+
+
 
 ###  http://purl.org/nidash/nidm#NuclearMagneticResonanceSpectroscopy
 
@@ -1372,6 +1568,20 @@ nidm:NuclearMagneticResonanceSpectroscopy rdf:type owl:Class ;
               obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
 
               rdfs:comment "The volume of interest may be selected either by the natural extent of the excited volume (e.g., surface coils) or by selecting for excitation, a thick slab through the use of magnetic field gradients."^^xsd:string ;
+                      
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+nidm:NuclearMagneticResonanceDevice rdf:type owl:Class ;
+                                          
+              rdfs:label "Nuclear Magnetic Resonance Device" ;
+                                          
+              rdfs:subClassOf nidm:DataAcquisitionDevice ;
+
+              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
+
+              rdfs:comment "This is a generic term that may be applied to a magnetic resonance imaging scanner, but is most often used for devices used for nuclear magnetic resonance spectroscopy based experiments."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1444,6 +1654,22 @@ nidm:PerformedPlan rdf:type owl:Class ;
               obo:IAO_0000115 "A performed plan is a plan that is actually implemented during an acquisition activity."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#Phase
+
+nidm:Phase rdf:type owl:Class ;
+                  
+               rdfs:label "Phase"^^xsd:string ;
+
+               obo:IAO_0000115 "Phase is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "In MRI the acquired signal is in the form of a magnitude and phase that are then combined to form an image. In some applications, such as susceptibility-weighted imaging, the phase map is used to enhance the final image."^^xsd:string ;
+                  
+               rdfs:subClassOf nidm:CalculatedParameter .
 
 
 
@@ -1583,6 +1809,20 @@ nidm:RawAcquisitionObject rdf:type owl:Class ;
                           
               obo:IAO_0000115 "A raw acquisition object is an acquisition object that has not yet undergone any further processing steps such asthe image reconstruction process."^^xsd:string ;
 
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#ReceiveCoil
+
+nidm:ReceiveCoil rdf:type owl:Class ;
+                                
+              rdfs:label "Receive Coil" ;
+                                
+              rdfs:subClassOf nidm:DataAcquisitionDevice ;
+
+              obo:IAO_0000115 "A receive coil is a data acquisition device used in nuclear magnetic resonance and magnetic resonance imaging to receive the signal from the sample. "^^xsd:string ;
+                   
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
@@ -1814,6 +2054,20 @@ nidm:SpecifiedPlan rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Stereoelectroencephalography
+
+nidm:Stereoelectroencephalography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Stereoelectroencephalography (SEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured with stereotactically-implanted electrodes, usually to localize an epileptogenic zone."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Stereoelectroencephalography"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
 ###  http://purl.org/nidash/nidm#StimulusGenerator
 
 nidm:StimulusGenerator rdf:type owl:Class ;
@@ -1853,6 +2107,20 @@ nidm:QuantitativeSusceptibilityMapping rdf:type owl:Class ;
               obo:IAO_0000115 "Quantitative susceptibility mapping is a magentic resonance imaging image-usage type in which differences in voxel intensity reflect quantitative differences magnetic susceptibilty of the underlying sample."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#SteadyStateFreePrecession
+
+nidm:SteadyStateFreePrecession rdf:type owl:Class ;
+                                   
+               rdfs:label "Steady State Free Precession"^^xsd:string ;
+
+               obo:IAO_0000115 "Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, low flip angle gradient recalled echoes and short repetition times to form images."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
+               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -1997,17 +2265,31 @@ nidm:Task rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#VoltageAmplifier
+###  http://purl.org/nidash/nidm#Task
 
-nidm:VoltageAmplifier rdf:type owl:Class ;
-                  
-               rdfs:label "Voltage Amplifier" ;
+nidm:Task rdf:type owl:Class ;
+          
+              rdfs:label "Task"^^xsd:string ;
+          
+              rdfs:subClassOf prov:Activity ;
+          
+              obo:IAO_0000115 "A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
 
-               rdfs:subClassOf nidm:DataProcessingDevice ;
+              obo:IAO_0000114 obo:IAO_0000428 .
 
-               obo:IAO_0000115 "A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant." ;
-                  
-               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+###  http://purl.org/nidash/nidm#TransmitCoil
+
+nidm:TransmitCoil rdf:type owl:Class ;
+                                
+              rdfs:label "Transmit Coil" ;
+                                
+              rdfs:subClassOf sio:SIO_000956 ;
+
+              obo:IAO_0000115 "A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. "^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
@@ -2039,6 +2321,22 @@ nidm:X-rayComputedTomography rdf:type owl:Class ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
               
+
+
+###  http://purl.org/nidash/nidm#X-rayComputedTomographyAcquisitionDevice
+
+nidm:X-rayComputedTomographyAcquisitionDevice rdf:type owl:Class ;
+                        
+              rdfs:label "X-ray Computed Tomography Acquisition Device" ;
+
+              owl:synonym "Computerized Axial Tomography Acquisition Device" ; 
+
+              rdfs:subClassOf nidm:ImageAcquisitionDevice ;                        
+                    
+              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
+
+              obo:IAO_0000114 obo:IAO_0000428 .
+
 
 
 ###  http://purl.org/nidash/nidm#b-ValueFile
@@ -2423,6 +2721,13 @@ nidm:SpatialMemorySpanTest rdf:type owl:NamedIndividual ,
 
 
 
+###  http://purl.org/nidash/nidm#ContrastEnhancedFastFieldEcho
+
+nidm:ContrastEnhancedFastFieldEcho rdf:type owl:NamedIndividual ,
+               nidm:AcquisitionMethod .
+                                   
+
+
 ###  http://purl.org/nidash/nidm#StroopTest
 
 nidm:StroopTest rdf:type owl:NamedIndividual ,
@@ -2521,6 +2826,16 @@ nidm:ContinuousPerformanceTest rdfs:label "Continuous Performance Test"^^xsd:str
 
 
 
+nidm:ContrastEnhancedFastFieldEcho rdfs:label "Contrast Enhanced Fast Field Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Contrast Enhanced Fast Field Echo, is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that CE-FFE is the Philips name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Fast Low Angle Shot (FLASH)"^^xsd:string .
+
+
+
 nidm:DelaySemanticLearningTest rdfs:label "Delay Semantic Learning Test"^^xsd:string ;
 
               obo:IAO_0000115 "The Delay Semantic Learning Test (Delay SLT) is an assessment instrument in which subjects are asked to recall as many words that have been presented to the subject previous to a delay period."^^xsd:string ;
@@ -2572,6 +2887,16 @@ nidm:FagerstromTestForNicotineDependence rdfs:label "Fagerstrom Test for Nicotin
               dct:source "https://cde.drugabuse.gov/instrument/d7c0b0f5-b865-e4de-e040-bb89ad43202b accessed: 20161128"^^xsd:string ;
                            
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+nidm:FastLowAngleShot rdfs:label "Fast Low Angle Shot"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast Low Angle Shot (FLASH), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that FLASH is the Siemens name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
 
 
 
@@ -2676,6 +3001,16 @@ nidm:SpatialMemorySpan rdfs:label "Spatial Memory Span" ;
               dct:source "fBIRN CMINDS document - not in the online version through"^^xsd:string ;
                        
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+nidm:SpoiledGradientRecalledEcho rdfs:label "Spoiled Gradient Recalled Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Spoiled Gradient Recalled Echo (SPGR), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that SPGR is the GE name for their implementation of this pulse sequence.  Siemens calls their implementation Fast Low Angle Shot (FLASH) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
 
 
 
