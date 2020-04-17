@@ -3,6 +3,7 @@
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix nidm: <http://purl.org/nidash/nidm#> .
 @prefix dicom: <http://purl.org/nidash/dicom#> .
+@prefix bids: <http://purl.org/nidash/bids#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix oboInOwl: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix onli: <http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#> .
@@ -78,12 +79,6 @@ dct:source rdf:type owl:AnnotationProperty .
 
 
 
-###  http://purl.org/provone#isPartOf
-
-provone:isPartOf rdf:type owl:AnnotationProperty .
-
-
-
 ###  http://www.w3.org/2000/01/rdf-schema#comment
 
 rdfs:comment rdf:type owl:AnnotationProperty ;
@@ -119,16 +114,6 @@ rdfs:seeAlso rdf:type owl:AnnotationProperty .
 owl:versionInfo rdf:type owl:AnnotationProperty .
 
 
-
-###  http://www.w3.org/ns/prov#wasAssociatedWith
-
-prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
-
-
-
-###  http://www.w3.org/ns/prov#wasMemberOf
-
-prov:wasMemberOf rdf:type owl:AnnotationProperty .
 
 
 
@@ -183,6 +168,12 @@ nidm:hadForVariable rdf:type owl:ObjectProperty .
 
 
 
+###  http://purl.org/provone#isPartOf
+
+provone:isPartOf rdf:type owl:AnnotationProperty .
+
+
+
 ###  http://purl.org/nidash/nidm#wasMeasuredBy
 
 nidm:wasMeasuredBy rdf:type owl:ObjectProperty .
@@ -201,6 +192,18 @@ prov:hadMember rdf:type owl:ObjectProperty .
 
 
 
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+
+prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasMemberOf
+
+prov:wasMemberOf rdf:type owl:AnnotationProperty .
+
+
+
 ###  http://www.w3.org/ns/prov#hadRole
 
 prov:hadRole rdf:type owl:ObjectProperty .
@@ -216,6 +219,12 @@ prov:used rdf:type owl:ObjectProperty .
 ###  http://www.w3.org/ns/prov#wasCreatedBy
 
 prov:wasCreatedBy rdf:type owl:ObjectProperty .
+
+
+
+###  http://purl.org/dc/terms/title
+
+dct:title rdf:type owl:DatatypeProperty .
 
 
 
@@ -239,7 +248,6 @@ dct:description rdf:type owl:DatatypeProperty ;
 nfo:fileName rdf:type owl:DatatypeProperty .
 
 
-
 ###  http://purl.org/dc/terms/license
 
 dct:license rdf:type owl:DatatypeProperty .
@@ -249,12 +257,6 @@ dct:license rdf:type owl:DatatypeProperty .
 ###  http://purl.org/dc/terms/source
 
 dct:source rdf:type owl:DatatypeProperty .
-
-
-
-###  http://purl.org/dc/terms/title
-
-dct:title rdf:type owl:DatatypeProperty .
 
 
 
@@ -820,6 +822,20 @@ nidm:DataAcquisitionDevice rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#DataProcessing
+
+nidm:DataProcessing rdf:type owl:Class ;
+
+               rdfs:label "Data Processing" ;
+
+               obo:IAO_0000115 "Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf prov:Activity .
+
+
+
 ###  http://purl.org/nidash/nidm#DataProcessingDevice
 
 nidm:DataProcessingDevice rdf:type owl:Class ;
@@ -937,6 +953,19 @@ nidm:EchoPlanar rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 .
 
 
+###  http://purl.org/nidash/nidm#Electrocardiography
+
+nidm:Electrocardiography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electrocardiography (ECG) is an electrophysiological acquisition method in which electrodes placed on the skin measure the electrical activity of the heart."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                          
+               rdfs:label "Electrocardiography"^^xsd:string ;
+                          
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
 
 ###  http://purl.org/nidash/nidm#Electrocorticography
 
@@ -991,6 +1020,33 @@ nidm:ElectroencephalographyAcquisitionDevice rdf:type owl:Class ;
                rdfs:label "Electroencephalography Acquisition Device"^^xsd:string ;
                             
                rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+###  http://purl.org/nidash/nidm#Electromyography
+
+nidm:Electromyography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electromyography (EMG) is an electrophysiological acquisition method in which the electrical activity of the muscles is measured using either surface or inserted electrodes."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                          
+               rdfs:label "Electromyography"^^xsd:string ;
+                          
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#Electrooculography
+
+nidm:Electrooculography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Electrooculography (EOG) is an electrophysiological acquisition method in which the resting potential between the cornea of the eye and Bruch's membrance is measured."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Electrooculography"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -1384,6 +1440,20 @@ nidm:Magnitude rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Manufacturer
+
+nidm:Manufacturer rdf:type owl:Class ;
+                   
+              rdfs:label "Manufacturer" ;
+                   
+              rdfs:subClassOf prov:Role ;
+                   
+              obo:IAO_0000115 "A manufacturer is a role for an agent, who may be a person or company, who creates an entity." ;
+
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#NIDM_0000154
 
 nidm:NIDM_0000154 rdf:type owl:Class ; 
@@ -1498,6 +1568,20 @@ nidm:NuclearMagneticResonanceSpectroscopy rdf:type owl:Class ;
               obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
 
               rdfs:comment "The volume of interest may be selected either by the natural extent of the excited volume (e.g., surface coils) or by selecting for excitation, a thick slab through the use of magnetic field gradients."^^xsd:string ;
+                      
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+nidm:NuclearMagneticResonanceDevice rdf:type owl:Class ;
+                                          
+              rdfs:label "Nuclear Magnetic Resonance Device" ;
+                                          
+              rdfs:subClassOf nidm:DataAcquisitionDevice ;
+
+              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
+
+              rdfs:comment "This is a generic term that may be applied to a magnetic resonance imaging scanner, but is most often used for devices used for nuclear magnetic resonance spectroscopy based experiments."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1729,6 +1813,20 @@ nidm:RawAcquisitionObject rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ReceiveCoil
+
+nidm:ReceiveCoil rdf:type owl:Class ;
+                                
+              rdfs:label "Receive Coil" ;
+                                
+              rdfs:subClassOf nidm:DataAcquisitionDevice ;
+
+              obo:IAO_0000115 "A receive coil is a data acquisition device used in nuclear magnetic resonance and magnetic resonance imaging to receive the signal from the sample. "^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#ReconstructedAcquisitionObject
 
 nidm:ReconstructedAcquisitionObject rdf:type owl:Class ;
@@ -1956,6 +2054,20 @@ nidm:SpecifiedPlan rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Stereoelectroencephalography
+
+nidm:Stereoelectroencephalography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Stereoelectroencephalography (SEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured with stereotactically-implanted electrodes, usually to localize an epileptogenic zone."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Stereoelectroencephalography"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
 ###  http://purl.org/nidash/nidm#StimulusGenerator
 
 nidm:StimulusGenerator rdf:type owl:Class ;
@@ -2153,17 +2265,31 @@ nidm:Task rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#VoltageAmplifier
+###  http://purl.org/nidash/nidm#Task
 
-nidm:VoltageAmplifier rdf:type owl:Class ;
-                  
-               rdfs:label "Voltage Amplifier" ;
+nidm:Task rdf:type owl:Class ;
+          
+              rdfs:label "Task"^^xsd:string ;
+          
+              rdfs:subClassOf prov:Activity ;
+          
+              obo:IAO_0000115 "A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
 
-               rdfs:subClassOf nidm:DataProcessingDevice ;
+              obo:IAO_0000114 obo:IAO_0000428 .
 
-               obo:IAO_0000115 "A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant." ;
-                  
-               obo:IAO_0000114 obo:IAO_0000428 .                    
+
+
+###  http://purl.org/nidash/nidm#TransmitCoil
+
+nidm:TransmitCoil rdf:type owl:Class ;
+                                
+              rdfs:label "Transmit Coil" ;
+                                
+              rdfs:subClassOf sio:SIO_000956 ;
+
+              obo:IAO_0000115 "A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. "^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
 
 
 

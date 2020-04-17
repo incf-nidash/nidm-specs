@@ -21,6 +21,7 @@ class OwlSpecification(object):
         self.owl.graph.bind('dct', 'http://purl.org/dc/terms/')
         self.owl.graph.bind('dicom', 'http://purl.org/nidash/dicom#')
         self.owl.graph.bind('nidm', 'http://purl.org/nidash/nidm#')
+        self.owl.graph.bind('bids', 'http://purl.org/nidash/bids#')
         self.owl.graph.bind('onli', 'http://neurolog.unice.fr/ontoneurolog/v3.0/instrument.owl#')
         self.owl.graph.bind('pato', 'http://purl.obolibrary.org/obo/pato#')
         self.owl.graph.bind('prov', 'http://www.w3.org/ns/prov')
@@ -41,7 +42,7 @@ class OwlSpecification(object):
                              derived_from, attributed_to, prefix, intro=None):
         self.create_title(self.name+": Types and relations", "definitions")
 
-        print "into create_specification"
+        #print "into create_specification"
 
         if intro is not None:
             self.text += intro
@@ -80,7 +81,7 @@ class OwlSpecification(object):
     def create_subcomponent_table(self, classes, table_num,
                                   subcomponent_name=None):
 
-        print "into create_subcomponent"
+        #print "into create_subcomponent"
 
         if subcomponent_name:
             self.text += """
@@ -156,7 +157,7 @@ class OwlSpecification(object):
 
     def create_title(self, title, id=None):
 
-        print "into create_title"
+        #print "into create_title"
 
         if id is None:
             self.text += """
@@ -173,7 +174,7 @@ class OwlSpecification(object):
 
     def _format_markdown(self, text):
 
-        print "into _format_markdown"
+        #print "into _format_markdown"
 
         # Replace links specified in markdown by html
         text = markdown2.markdown(text).replace("<p>", "").replace("</p>", "")
@@ -183,7 +184,7 @@ class OwlSpecification(object):
 
     def format_definition(self, definition):
 
-        print "into format_definition"
+        #print "into format_definition"
 
         # Capitalize first letter, format markdown and end with dot
         if definition:
@@ -195,7 +196,7 @@ class OwlSpecification(object):
 
     def linked_listing(self, uri_list, prefix="", suffix="", sort=True):
 
-        print "into linked_listing"
+        #print "into linked_listing"
 
         linked_listing = prefix
 
@@ -215,7 +216,7 @@ class OwlSpecification(object):
 
     def term_link(self, term_uri, tag="a", text=None):
 
-        print "into term_link"
+        #print "into term_link"
 
         href = ""
         if self.owl.is_external_namespace(term_uri):
@@ -267,7 +268,7 @@ class OwlSpecification(object):
 
         definition = self.format_definition(definition)
 
-        print "into create_class_section"
+        #print "into create_class_section"
 
         self.text += """
             <!-- """+class_label+""" ("""+class_name+""")"""+""" -->
@@ -480,7 +481,7 @@ class OwlSpecification(object):
 
     def close_sections(self):
 
-        print "into close_sections"
+        #print "into close_sections"
 
         for x in range(0, self.section_open):
             self.text += "\t"*x+"</section>\n"
@@ -489,7 +490,7 @@ class OwlSpecification(object):
     def write_specification(self, spec_file=None, component=None,
                             version=None):
 
-        print "into write_specification"
+        #print "into write_specification"
 
 
         if component and version:
@@ -502,7 +503,7 @@ class OwlSpecification(object):
     def _header_footer(self, prev_file=None, follow_file=None, component=None,
                        version=None):
 
-        print "into _header_footer"
+        #print "into _header_footer"
 
         release_notes = None
         if component:

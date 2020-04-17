@@ -165,6 +165,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Processing'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data Processing': </b>Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Demographics Instrument'"> [find issues/PR] </a></td>
     <td><b>nidm:'Demographics Instrument': </b>A demographics instrument is a instrument usage type that signifies that the type of data to be collected by the instrument is demographics-related data</td>
 </tr>
@@ -195,6 +200,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrocardiography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrocardiography': </b>Electrocardiography (ECG) is an electrophysiological acquisition method in which electrodes placed on the skin measure the electrical activity of the heart</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrocorticography'"> [find issues/PR] </a></td>
     <td><b>nidm:'Electrocorticography': </b>Electrocorticography (ECoG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed directly on the cortical surface of the brain</td>
 </tr>
@@ -212,6 +222,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography'"> [find issues/PR] </a></td>
     <td><b>nidm:'Electroencephalography': </b>Electroencephalography (EEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed on the surface of the head</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electromyography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electromyography': </b>Electromyography (EMG) is an electrophysiological acquisition method in which the electrical activity of the muscles is measured using either surface or inserted electrodes</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrooculography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electrooculography': </b>Electrooculography (EOG) is an electrophysiological acquisition method in which the resting potential between the cornea of the eye and Bruch's membrance is measured</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -350,6 +370,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Manufacturer'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Manufacturer': </b>A manufacturer is a role for an agent, who may be a person or company, who creates an entity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td>Discussed at <a href="https://github.com/incf-nidash/nidm/pull/299">#299</a><br/><a href="https://github.com/incf-nidash/nidm//issues?&q='Mixed Design'"> [find issues/PR] </a></td>
     <td><b>nidm:'Mixed Design': </b>A mixed design is a fMRI design comprised of both epochs & discrete events of stimulus and/or behavior</td>
 </tr>
@@ -377,6 +402,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Noise Measurement'"> [find issues/PR] </a></td>
     <td><b>nidm:'Noise Measurement': </b>Noise measurement is an acquisition usage type that denotes that the acquisition object collected has been used to measure the intrinsic noise level of the acquisition hardware</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Nuclear Magnetic Resonance Device'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Nuclear Magnetic Resonance Device': </b>A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -470,6 +500,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Receive Coil'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Receive Coil': </b>A receive coil is a data acquisition device used in nuclear magnetic resonance and magnetic resonance imaging to receive the signal from the sample. </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Reconstructed Acquisition Object'"> [find issues/PR] </a></td>
     <td><b>nidm:'Reconstructed Acquisition Object': </b>A reconstructed acquisition object is an acquisition object that has undergone an image reconstruction activity resulting in a matrix of values that when viewed form an image</td>
 </tr>
@@ -540,6 +575,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stereoelectroencephalography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Stereoelectroencephalography': </b>Stereoelectroencephalography (SEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured with stereotactically-implanted electrodes, usually to localize an epileptogenic zone</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Generator'"> [find issues/PR] </a></td>
     <td><b>nidm:'Stimulus Generator': </b>A stimulus generator is a device that can deliver a current or voltage waveform that is used to stimulate a sample, cell, or body part</td>
 </tr>
@@ -600,8 +640,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Amplifier'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Voltage Amplifier': </b>A voltage amplifier is a device that increases the electrical voltage amplitude of an input electrical signal by a fixed amount, while keeping the current constant</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Transmit Coil'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Transmit Coil': </b>A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. </td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
