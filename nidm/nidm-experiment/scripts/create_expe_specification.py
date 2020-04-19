@@ -55,7 +55,7 @@ def main():
     subcomponents =  collections.OrderedDict()
 
     subcomponents['Project'] = [
-        NIDM['CoInvestigator'], NIDM['Gender'],NIDM['Group'], NIDM['groupLabel'], NIDM['ModelDesigner'], 
+        NIDM['CoInvestigator'], NIDM['Gender'],NIDM['Group'], NIDM['ModelDesigner'], 
         NIDM['ModelSpecification'],
         NIDM['PrincipalInvestigator'], NIDM['Project'], NIDM['Protocol'], NIDM['ResearchAssistant'], 
         NIDM['SpecifiedPlan'], NIDM['Subject']
@@ -79,7 +79,7 @@ def main():
         NIDM['DICOMTagCollection'], NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'], 
         NIDM['DynamicContrastEnhanced'], NIDM['DynamicSusceptibilityContrast'],
         NIDM['EchoPlanar'], NIDM['FlowWeighted'],NIDM['FluidAttenuatedInversionRecovery'], 
-        NIDM['Functional'],NIDM['hadImageContrastType'], NIDM['hadImageUsageType'], NIDM['ImageContrastType'],
+        NIDM['Functional'], NIDM['ImageContrastType'],
         NIDM['ImageDataReconstruction'], NIDM['ImageUsageType'], NIDM['Inside-outSpiral'], 
         NIDM['MagneticResonanceImaging'], NIDM['MagneticResonanceImagingScanner'], 
         NIDM['NuclearMagneticResonanceSpectroscopy'],
@@ -92,22 +92,20 @@ def main():
         NIDM['NIDM_0000154'], NIDM['NIDM_0000155']
         ]
     subcomponents['Electrophysiology'] = [
-        NIDM['Amperometry'],  NIDM['bathSolution'], NIDM['cellType'], NIDM['CurrentClamp'], 
-        NIDM['Electrocorticography'], NIDM['electrodeImpedance'], NIDM['ElectrophysiologyRecording'],
+        NIDM['Amperometry'],  NIDM['CurrentClamp'], 
+        NIDM['Electrocorticography'], NIDM['ElectrophysiologyRecording'],
         NIDM['ExtracellularElectrophysiologyRecording'],NIDM['FieldPotential'],
-        NIDM['hollowElectrodeSolution'], NIDM['IntracellularElectrophysiologyRecording'],
+        NIDM['IntracellularElectrophysiologyRecording'],
         NIDM['MultiUnitReccording'],  NIDM['SharpElectrode'], NIDM['SingleUnitReccording'], 
-        NIDM['solutionFlowSpeed'], NIDM['PatchClamp'], NIDM['recordingLocation'], NIDM['VoltageClamp']
+        NIDM['PatchClamp'], NIDM['VoltageClamp']
         ]
     subcomponents['Devices'] = [
-        NIDM['Attenuator'], NIDM['appliedFilter'], NIDM['BandpassFilter'], NIDM['DataAcquisitionDevice'], 
-        NIDM['DataProcessingDevice'], NIDM['ElectroencephalographyAcquisitionDevice'], NIDM['HighPassFilter'], 
-        NIDM['ImageAcquisitionDevice'], NIDM['LowPassFilter'], 
-        NIDM['CurrentAmplifier'], NIDM['SignalFilter'], NIDM['SignalGenerator'], NIDM['StimulusGenerator'], 
-        NIDM['StimulusIsolator'], 
-        NIDM['VoltageAmplifier'], NIDM['HeartRateMonitor'], NIDM['Electrode'], NIDM['EyeTrackingDevice'],     
-        NIDM['MultielectrodeArray'],NIDM['MultiUnitRecording'], NIDM['RespirationRateMonitor'], NIDM['SignalFilter'],
-        NIDM['channelNumber'], NIDM['numberOfChannels'], NIDM['VoltageClamp']
+        NIDM['Attenuator'], NIDM['BandpassFilter'], NIDM['CurrentAmplifier'], NIDM['DataAcquisitionDevice'], 
+        NIDM['DataProcessingDevice'], NIDM['Electrode'], NIDM['ElectroencephalographyAcquisitionDevice'], 
+        NIDM['EyeTrackingDevice'], NIDM['HeartRateMonitor'], NIDM['HighPassFilter'], 
+        NIDM['ImageAcquisitionDevice'], NIDM['LowPassFilter'], NIDM['MultielectrodeArray'], NIDM['ReceiveCoil'], 
+        NIDM['RespirationRateMonitor'], NIDM['SignalFilter'], NIDM['SignalGenerator'], NIDM['StimulusGenerator'], 
+        NIDM['StimulusIsolator'], NIDM['TransmitCoil'], NIDM['VoltageAmplifier']
         ]
     subcomponents['Positron Emission Tomography'] = [
         NIDM['PositronEmissionTomography'], NIDM['PositronEmissionTomographyScanner']
@@ -123,14 +121,6 @@ def main():
     ]
     subcomponents['SinglePhotonEmissionComputedTomography'] = [
         NIDM['SinglePhotonEmissionComputedTomography'], NIDM['SinglePhotonEmissionComputedTomographyScanner']
-    ]
-    subcomponents["Properties"] = [
-        NIDM['dicomTag'], NIDM['bathSolution'],
-        NIDM['cellType'], NIDM['channelNumber'], NIDM['electrodeImpedance'], NIDM['groupLabel'], 
-        NIDM['hollowElectrodeSolution'], NIDM['hadImageContrastType'], NIDM['hadImageUsageType'], NIDM['hadForProperPart'], 
-        NIDM['hadForScale'], NIDM['hadForVariable'], NIDM['wasMeasuredBy'], NIDM['hadForSubinstrument'], NIDM['wasScaleOf'], 
-        NIDM['hadNumericalValue'], NIDM['numberOfChannels'], NIDM['appliedFilter'], NIDM['solutionFlowSpeed'], 
-        NIDM['recordingLocation']
     ]
 
     # Add manually used and wasDerivedFrom because these are not stored in the
