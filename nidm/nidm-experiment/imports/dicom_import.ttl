@@ -8,11 +8,13 @@
 @prefix dicom: <http://purl.org/nidash/dicom#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <http://purl.org/nidash/nidm/dicom_import.owl> .
 
-[ rdf:type owl:Ontology ] .
+<http://purl.org/nidash/nidm/dicom_import.owl> rdf:type owl:Ontology .
+
 
 #################################################################
 #
@@ -52053,6 +52055,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Attribute"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	owl:sameAs sio:SIO_000614 ;
         
         obo:IAO_0000115 "A property of an Information Object. An Attribute has a name and a value that are independent of any encoding scheme." .
 
@@ -52065,6 +52069,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000091 ;
+
         obo:IAO_0000115 "A request to operate on information across a network."  .
 
 
@@ -52076,6 +52082,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000612 ;
+
         obo:IAO_0000115 "An encoding of a parameter of a command that conveys this parameters value." ;
 
 	dicom:dicom_00000086 dicom:dicom_0000000 .
@@ -52086,6 +52094,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
      dicom:dicom_xxxx0004 rdf:type owl:Class  ;
 
         rdfs:label "Command Stream"^^xsd:string ;
+
+	rdfs:subClassOf sio:SIO_000612 ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
@@ -52100,6 +52110,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000136 ;
+
         obo:IAO_0000115 "A formal statement that describes a specific product implementation that uses the DICOM Standard. It specifies the Service Classes, Information Objects, and Communication Protocols supported by the implementation." .
 
 
@@ -52113,7 +52125,7 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000115 "A registry of DICOM Data Elements that assigns a unique tag, a name, value characteristics, and semantics to each Data Element. Data Element A unit of information as defined by a single entry in the data dictionary." ;
 
-	dicom:dicom_xxxx0086 dicom:dicom_xxxx0035 .
+	rdfs:subClassOf sio:SIO_000090 .
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0007
@@ -52123,6 +52135,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Data Set"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
 
         obo:IAO_0000115 "Exchanged information consisting of a structured set of Attributes. The value of each Attribute in a Data Set is expressed as a Data Element." .
 
@@ -52135,6 +52149,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "The result of encoding a Data Set using the DICOM encoding scheme (Data Element Numbers and representations as specified by the Data Dictionary)."  .
 
 
@@ -52145,6 +52161,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Information Object"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	owl:sameAs sio:SIO_000015 ;
+
+	rdfs:subClassOf prov:Entity ;
 
         obo:IAO_0000115 "An abstraction of a real information entity (e.g., CT Image, Structured Report, etc.) that is acted upon by one or more DICOM Commands. Note: This term is primarily used in PS3.1, with a few references in PS3.3. It is an informal term corresponding to a formal term that is introduced in PS3.3. In all other parts of the DICOM Standard this formal term is known as an Information Object Definition." .
 
@@ -52157,6 +52177,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000136 ;
+
         obo:IAO_0000115 "A formal description of an Information Object, which includes a description of its purpose and the Attributes it possesses. It does not include values for these attributes. Note This term is only used in PS3.1. It is an informal term corresponding to a formal term that is introduced in PS3.4. This formal term is known as a Service-Object Pair Class or more commonly as a SOP Class." .
 
 
@@ -52168,9 +52190,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
-        obo:IAO_0000115 "A representation of an occurrence of an real-world entity, which includes values for the Attributes of the Information Object Class to which the entity belongs. Note This term is only used in PS3.1. It is an informal term corresponding to a formal term that is introduced in PS3.4. This formal term is known as a Service-Object Pair Instance or more commonly as a SOP Instance." ;
+	rdfs:subClassOf sio:SIO_000396 ;
 
-	rdfs:subClassOf dicom:dicom_xxxx0009  .
+        obo:IAO_0000115 "A representation of an occurrence of an real-world entity, which includes values for the Attributes of the Information Object Class to which the entity belongs. Note This term is only used in PS3.1. It is an informal term corresponding to a formal term that is introduced in PS3.4. This formal term is known as a Service-Object Pair Instance or more commonly as a SOP Instance." .
+
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0012
@@ -52180,6 +52203,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Message"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000602 ;
 
         obo:IAO_0000115 "A data unit of the Message Exchange Protocol exchanged between two cooperating DICOM Applications. A Message is composed of a Command Stream followed by an optional Data Stream." .
 
@@ -52192,6 +52217,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000136 ;
+
         obo:IAO_0000115 "A structured description of a service that is supported by cooperating DICOM Applications using specific DICOM Commands acting on a specific class of Information Object." .
 
 
@@ -52202,6 +52229,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Acquisition Context"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000136 ;
 
         obo:IAO_0000115 "A description of the conditions present during data acquisition." .
 
@@ -52240,6 +52269,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000614 ;
+
         obo:IAO_0000115 "Attribute that (usually) includes the string 'Code Sequence' in the Attribute Name and has a VR of SQ (Sequence of Items). Its purpose is to encode concepts using code values and optional text meanings from coding schemes. Section 8.1 through Section 8.8 specify the Attributes of which the Sequence Items (Attribute Sets) of Code Sequence Attributes are constructed." .
 
 
@@ -52250,6 +52281,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Composite IOD"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000136 ;
 
         obo:IAO_0000115 "An Information Object Definition that represents parts of several entities in the DICOM Application Model. Such an IOD includes Attributes that are not inherent in the Real-World Object that the IOD represents but rather are inherent in related Real-World Objects. Derived image an image in which the pixel data was constructed from pixel data of one or more other images (source images)." .
 
@@ -52262,6 +52295,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000510 ;
+
         obo:IAO_0000115  "An Entity-Relationship diagram used to model the relationships between Real-World Objects that are within the area of interest of the DICOM Standard." .
 
 
@@ -52272,6 +52307,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "DICOM Information Model"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000510 ;
 
         obo:IAO_0000115  "An Entity-Relationship diagram that is used to model the relationships between the Information Object Definitions representing classes of Real-World Objects defined by the DICOM Application Model." .
 
@@ -52284,7 +52321,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "A set of logically related Attributes that are likely to vary together. May be used in Multi-frame IODs to describe parameters that change on a per frame basis." .
+
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0022
@@ -52294,6 +52334,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Information entity"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000015 ;
 
         obo:IAO_0000115 "That portion of information defined by a Composite IOD that is related to one specific class of Real-World Object. There is a one-to-one correspondence between Information Entities and entities in the DICOM Application Model. Information object definition (IOD) a data abstraction of a class of similar Real-World Objects that defines the nature and Attributes relevant to the class of Real-World Objects represented." .
 
@@ -52306,6 +52348,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "A set of Attributes within an Information Entity or Normalized IOD that are logically related to each other." .
 
 
@@ -52316,6 +52360,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Multi-frame Image"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf dct:Image ;
 
         obo:IAO_0000115 "Image that contains multiple two-dimensional pixel planes." .
 
@@ -52328,6 +52374,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000136 ;
+
         obo:IAO_0000115 "An Information Object Definition (IOD) that represents a single entity in the DICOM Application Model. Such an IOD includes Attributes that are only inherent in the Real-World Object that the IOD represents."  .
 
 
@@ -52338,6 +52386,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Protocol Element"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000091 ;
 
         obo:IAO_0000115 "A sequential component of a protocol, consisting of all the parameters necessary to perform that component of the protocol." .
 
@@ -52362,6 +52412,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Specialization"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+        rdfs:subClassOf prov:Activity ;
    
         obo:IAO_0000115 "Specialization is the replacement of the Type, value range and/or description of an Attribute in a general Module of an IOD, by its Type, value range and/or description defined in a modality-specific Module of an IOD. Note: The same Attribute may be present in multiple Modules in the same IOD but not specified to be specialized." .
 
@@ -52400,6 +52452,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000612 ;
+
         obo:IAO_0000115A "A table of pointers to individual frames of an encapsulated multi-frame image." .
 
 
@@ -52408,6 +52462,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
      dicom:dicom_xxxx0032 rdf:type owl:Class  ;
 
         rdfs:label "Big Endian"^^xsd:string ;
+
+	rdfs:subClassOf sio:SIO_000612 ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
@@ -52422,6 +52478,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000612 ;
+
         obo:IAO_0000115 "A finite set of different characters that is considered to be complete for a given purpose and is specified independently of their encoding (also referred to as a character set)." .
 
 
@@ -52433,6 +52491,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000651 ;
+
         obo:IAO_0000115 "A string of characters identifying a controlled concept, including Defined Terms and Enumerated Values when represented as character strings. The scope of the controlled concept is limited to the attribute for which the string provides the value; i.e., the attribute defines the allowed set of values for the Code String, and a particular string may have different meanings in different attributes. A Code String is formally an arbitrary code representing a semantic concept; however, English language words (using the constrained character set of the CS Value Representation) are often used as codes for the semantics of those words."  .
 
 
@@ -52443,6 +52503,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Data Element"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000651 ;
 
         obo:IAO_0000115 "A unit of information as defined by a single entry in the data dictionary. An encoded Information Object Definition (IOD) Attribute that is composed of, at a minimum, three fields: a Data Element Tag, a Value Length, and a Value Field. For some specific Transfer Syntaxes, a Data Element also contains a VR Field where the Value Representation of that Data Element is specified explicitly." .
 
@@ -52468,6 +52530,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000179 ;
+
         obo:IAO_0000115 "Used to specify whether an Attribute of an Information Object Definition or an Attribute of a SOP Class Definition is mandatory, mandatory only under certain conditions, or optional. This translates to whether a Data Element of a Data Set is mandatory, mandatory only under certain conditions, or optional." .
 
 
@@ -52478,6 +52542,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Data Set"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
 
         obo:IAO_0000115 "Exchanged information consisting of a structured set of Attribute values directly or indirectly related to Information Objects. The value of each Attribute in a Data Set is expressed as a Data Element. A collection of Data Elements ordered by increasing Data Element Tag number that is an encoding of the values of Attributes of a real world object." .
 
@@ -52490,6 +52556,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000651 ;
+
         obo:IAO_0000115 "The Value of a Data Element is a Defined Term when the Value of the element may be one of an explicitly specified set of standard values, and these values may be extended by implementers." .
 
 
@@ -52500,6 +52568,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Element Number"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000115 ;
 
         obo:IAO_0000115 "The second number in the ordered pair of numbers that makes up a Data Element Tag." .
 
@@ -52512,6 +52582,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000366 ;
+
         obo:IAO_0000115 "The Value of a Data Element is an Enumerated Value when the value of the element must be one of an explicitly specified set of standard values, and these values shall not be extended by implementers." .
 
 
@@ -52522,6 +52594,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Group Number"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000115 ;
 
         obo:IAO_0000115 "The first number in the ordered pair of numbers that makes up a Data Element Tag." .
 
@@ -52534,7 +52608,9 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
-        obo:IAO_0000115 "A component of the Value of a Data Element that is of Value Representation Sequence of Items. An Item contains a Data Set." .
+	rdfs:subClassOf sio:SIO_000651 ;
+
+        obo:IAO_0000115 "A component of the Value of a Data Element that is of Value Representation Sequence of Items." .
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0044
@@ -52544,6 +52620,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Item Delimitation Data Element"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000651 ;
 
         obo:IAO_0000115 "Used to mark the end of an Item of Undefined Length in a Sequence of Items. This is the last Data Element in an Item of Undefined Length." ;
 
@@ -52558,6 +52636,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000612 ;
+
         obo:IAO_0000115  "A form of byte ordering where multiple byte binary values are encoded with the least significant byte encoded first; and the remaining bytes encoded in increasing order of significance." .
 
 
@@ -52568,6 +52648,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Nested Data Set"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428  ;
+
+	rdfs:subClassOf prov:Collection ;
 
        obo:IAO_0000115 "A Data Set contained within a Data Element of another Data Set. Data Sets can be nested recursively. Only Data Elements with Value Representation Sequence of Items may, themselves, contain Data Sets." .
 
@@ -52580,6 +52662,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000015 ;
+
         obo:IAO_0000115 "The container for a single Pixel Sample Value that may include unused bits. The size of a Pixel Cell shall be specified by the Bits Allocated (0028, 0100) Data Element." .
 
 
@@ -52591,6 +52675,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf dct:Image ;
+
         obo:IAO_0000115 "Graphical data (e.g., images) of variable pixel-depth encoded in the Pixel Data, Float Pixel Data or Double Float Pixel Data Element." .
 
 
@@ -52601,6 +52687,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Pixel Sample Value"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000070 ;
 
         obo:IAO_0000115 "A value associated with an individual pixel. An individual pixel consists of one or more Pixel Sample Values (e.g., color images)." .
 
@@ -52626,6 +52714,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000115 ;
+
         obo:IAO_0000115 "Standard Data Elements within a particular range of Group Numbers where elements that have identical Element Numbers have the same meaning within each Group (and the same VR, VM, and Data Element Type). Repeating Groups shall only exist for Curves and Overlay Planes (Group Numbers (50xx,eeee) and (60xx,eeee), respectively) and are a remnant of versions of this standard prior to V3.0." .
 
 
@@ -52650,6 +52740,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf dicom:dicom_xxxx0043 ;
+
         obo:IAO_0000115 "Item used to mark the end of a Sequence of Items of Undefined Length. This Item is the last Item in a Sequence of Items of Undefined Length."  .
 
 
@@ -52660,6 +52752,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Sequence of Items"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
 
         obo:IAO_0000115 "A Value Representation for Data Elements that contain a sequence of Data Sets. Sequence of Items allows for Nested Data Sets. (The Value Representation is denoted SQ.)" .
 
@@ -52685,6 +52779,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000651 ;
+
         obo:IAO_0000115  "A set of encoding rules that allow Application Entities to unambiguously negotiate the encoding techniques (e.g., Data Element structure, byte ordering, compression) they are able to support, thereby allowing these Application Entities to communicate. (This is for both Standard and Private)." .
 
 
@@ -52695,6 +52791,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Undefined Length"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:comment "The given description is ambiguous, in that it describes Undefined Length both as an ability to specify and as a condition.  We are choosing to interpret this as an attribute."^^xsd:string ;
+
+	rdfs:subClassOf sio:SIO_000614 ;
 
         obo:IAO_0000115 "The ability to specify an unknown length for a Data Element Value (of Value Representation SQ, UN, OW, or OB) or Item. Data Elements and Items of Undefined Length are delimited with Sequence Delimitation Items and Item Delimiter Data Elements, respectively." .
 
@@ -52707,6 +52807,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000115 ;
+
         obo:IAO_0000115 "A string of characters that uniquely identifies a wide variety of items; guaranteeing uniqueness across multiple countries, sites, vendors and equipment. (The acronym is UID)" .
 
 
@@ -52717,6 +52819,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Value"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000015 ;
 
         obo:IAO_0000115 "A component of a Value Field. A Value Field may consist of one or more of these components." .
 
@@ -52729,6 +52833,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "The field within a Data Element that contains the Value(s) of that Data Element." .
 
 
@@ -52739,6 +52845,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Value Length"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000366 ;
+
+	rdfs:comment "The description is ambiguous. Does this refer to the (abstract) field or to the actual Value Length value?  We interpret as the latter. "^^xsd:string ;
 
         obo:IAO_0000115 "The field within a Data Element that contains the length of the Value Field of the Data Element." .
 
@@ -52751,6 +52861,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000366 ;
+
         obo:IAO_0000115 " Specifies the number of Values contained in the Value Field of a Data Element. (VM)" .
 
 
@@ -52762,6 +52874,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000179 ;
+
         obo:IAO_0000115 "Specifies the data type and format of the Value(s) contained in the Value Field of a Data Element. (VR)" .
 
 
@@ -52772,6 +52886,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Value Representation Field"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
 
         obo:IAO_0000115 "The field where the Value Representation of a Data Element is stored in the encoding of a Data Element structure with explicit VR." .
 
@@ -52797,6 +52913,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "A Media Storage Application Profile defines a selection of choices at the various layers of the DICOM Media Storage Model that are applicable to a specific need or context in which the media interchange is intended to be performed." .
 
 
@@ -52807,6 +52925,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "DICOM File Service"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000090 ;
 
        obo:IAO_0000115  "The DICOM File Service specifies a minimum abstract view of files to be provided by the Media Format Layer. Constraining access to the content of files by the Application Entities through such a DICOM File Service boundary ensures Media Format and Physical Media independence." .
 
@@ -52844,8 +52964,12 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "File"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000602 ;
  
         obo:IAO_0000115 "A File is an ordered string of zero or more bytes, where the first byte is at the beginning of the file and the last byte at the end of the File. Files are identified by a unique File ID and may by written, read and/or deleted." ;
+
+	owl:sameAs sio:SIO_000396 ;
 
 	dct:hasPart dicom:dicom_xxxx0073 .
 
@@ -52857,6 +52981,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "File ID"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000115 ;
 
         obo:IAO_0000115 "Files are identified by a File ID that is unique within the context of the File-set they belong to. A set of ordered File ID Components (up to a maximum of eight) forms a File ID." ;
 
@@ -52871,6 +52997,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000115 ;
+
         obo:IAO_0000115 "A string of one to eight characters of a defined character set." .
 
 
@@ -52882,6 +53010,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "The File Meta Information includes identifying information on the encapsulated Data Set. It is a mandatory header at the beginning of every DICOM File." .
 
 
@@ -52892,6 +53022,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "File-set"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
  
         obo:IAO_0000115 "A File-set is a collection of DICOM Files (and possibly non-DICOM Files) that share a common naming space within which File IDs are unique." .
 
@@ -52904,6 +53036,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Agent ;
+
         obo:IAO_0000115 "An Application Entity that creates the DICOMDIR File (see Section 8.6) and zero or more DICOM Files." .
 
 
@@ -52914,6 +53048,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "File-set Reader"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Agent ;
 
         obo:IAO_0000115  "An Application Entity that accesses one or more files in a File-set." ;
 
@@ -52928,9 +53064,12 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Agent ;
+
         obo:IAO_0000115 "An Application Entity that accesses Files, creates additional Files, or deletes existing Files in a File-set. A File-set Updater makes the appropriate alterations to the DICOMDIR file reflecting the additions or deletions." ;
 
 	  prov:used dicom:dicom_xxxx0074 .
+
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0078
@@ -52941,7 +53080,10 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000090 ;
+
         obo:IAO_0000115 "The DICOM File Format provides a means to encapsulate in a File the Data Set representing a SOP Instance related to a DICOM Information Object." .
+
 
 
 ###  http://purl.org/nidash/dicom#dicom_xxxx0079
@@ -52951,6 +53093,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Media Format"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000090 ;
 
        obo:IAO_0000115 "Data structures and associated policies that organize the bit streams defined by the Physical Media format into data file structures and associated file directories." .
 
@@ -52963,6 +53107,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf sio:SIO_000510 ;
+
         obo:IAO_0000115 "The DICOM Media Storage Model pertains to the data structures used at different layers to achieve interoperability through media interchange." .
 
 
@@ -52974,6 +53120,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
 
+	rdfs:subClassOf prov:Collection ;
+
         obo:IAO_0000115 "DICOM Media Storage Services define a set of operations with media that facilitate storage to and retrieval from the media of DICOM SOP Instances." .
 
 
@@ -52984,6 +53132,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Physical Media"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf sio:SIO_000596 ;
 
         obo:IAO_0000115 "A piece of material with recording capabilities for streams of bits. Characteristics of a Physical Media include form factor, mechanical characteristics, recording properties and rules for recording and organizing bit streams in accessible structures." .
 
@@ -53021,6 +53171,8 @@ dicom:dicom_00189064 rdf:type owl:DatatypeProperty  ;
         rdfs:label "Secure Media Storage Application Profile"^^xsd:string ;
 
         obo:IAO_0000114  obo:IAO_0000428 ;
+
+	rdfs:subClassOf prov:Collection ;
 
         obo:IAO_0000115 " A DICOM Media Storage Application Profile that requires a Secure File-set." .
 
