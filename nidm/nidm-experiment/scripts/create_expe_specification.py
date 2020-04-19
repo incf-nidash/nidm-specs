@@ -127,8 +127,10 @@ def main():
     subcomponents["Properties"] = [
         NIDM['dicomTag'], NIDM['bathSolution'],
         NIDM['cellType'], NIDM['channelNumber'], NIDM['electrodeImpedance'], NIDM['groupLabel'], 
-        NIDM['hollowElectrodeSolution'], NIDM['hadImageContrastType'], NIDM['hadImageUsageType'], 
-        NIDM['numberOfChannels'], NIDM['appliedFilter'], NIDM['solutionFlowSpeed'], NIDM['recordingLocation']
+        NIDM['hollowElectrodeSolution'], NIDM['hadImageContrastType'], NIDM['hadImageUsageType'], NIDM['hadForProperPart'], 
+        NIDM['hadForScale'], NIDM['hadForVariable'], NIDM['wasMeasuredBy'], NIDM['hadForSubinstrument'], NIDM['wasScaleOf'], 
+        NIDM['hadNumericalValue'], NIDM['numberOfChannels'], NIDM['appliedFilter'], NIDM['solutionFlowSpeed'], 
+        NIDM['recordingLocation']
     ]
 
     # Add manually used and wasDerivedFrom because these are not stored in the
