@@ -166,7 +166,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Processing'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Data Processing': </b>Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis</td>
+    <td><b>nidm:'Data Processing': </b>Data processing is an activity in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -290,8 +290,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Highpass Filter'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Highpass Filter': </b>A highpass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='High-Pass Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'High-Pass Filter': </b>A high-pass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -340,8 +340,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Lowpass Filter'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Lowpass Filter': </b>A lowpass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Low-Pass Filter'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Low-Pass Filter': </b>A low-pass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -642,6 +642,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Transmit Coil'"> [find issues/PR] </a></td>
     <td><b>nidm:'Transmit Coil': </b>A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Voltage Amplifier'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Voltage Amplifier': </b>Voltage amplifier is an device that produces a higher output voltage than was input into the device</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

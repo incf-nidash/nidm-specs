@@ -25,7 +25,6 @@
                <http://purl.org/nidash/nidm/dicom_import.owl> ,
                <http://purl.org/nidash/nidm/iao_import.owl> ,
                <http://purl.org/nidash/nidm/nfo_import.owl> ,
-               <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/bids_import.owl> ,
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
@@ -93,6 +92,12 @@ rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
 
 
 
+###  http://purl.org/provone#isPartOf
+
+provone:isPartOf rdf:type owl:AnnotationProperty .
+
+
+
 ###  http://www.w3.org/2000/01/rdf-schema#label
 
 rdfs:label rdf:type owl:AnnotationProperty ;
@@ -113,6 +118,17 @@ rdfs:seeAlso rdf:type owl:AnnotationProperty .
 
 owl:versionInfo rdf:type owl:AnnotationProperty .
 
+
+
+###  http://www.w3.org/ns/prov#wasMemberOf
+
+prov:wasMemberOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+
+prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
 
 
 
@@ -168,12 +184,6 @@ nidm:hadForVariable rdf:type owl:ObjectProperty .
 
 
 
-###  http://purl.org/provone#isPartOf
-
-provone:isPartOf rdf:type owl:AnnotationProperty .
-
-
-
 ###  http://purl.org/nidash/nidm#wasMeasuredBy
 
 nidm:wasMeasuredBy rdf:type owl:ObjectProperty .
@@ -189,18 +199,6 @@ nidm:wasScaleOf rdf:type owl:ObjectProperty .
 ###  http://www.w3.org/ns/prov#hadMember
 
 prov:hadMember rdf:type owl:ObjectProperty .
-
-
-
-###  http://www.w3.org/ns/prov#wasAssociatedWith
-
-prov:wasAssociatedWith rdf:type owl:AnnotationProperty .
-
-
-
-###  http://www.w3.org/ns/prov#wasMemberOf
-
-prov:wasMemberOf rdf:type owl:AnnotationProperty .
 
 
 
@@ -222,17 +220,16 @@ prov:wasCreatedBy rdf:type owl:ObjectProperty .
 
 
 
-###  http://purl.org/dc/terms/title
-
-dct:title rdf:type owl:DatatypeProperty .
-
-
-
 #################################################################
 #
 #    Data properties
 #
 #################################################################
+
+###  http://purl.org/dc/terms/title
+
+dct:title rdf:type owl:DatatypeProperty .
+
 
 
 ###  http://purl.org/dc/terms/description
@@ -828,7 +825,7 @@ nidm:DataProcessing rdf:type owl:Class ;
 
                rdfs:label "Data Processing" ;
 
-               obo:IAO_0000115 "Data processing is an activty in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis."^^xsd:string ;
+               obo:IAO_0000115 "Data processing is an activity in which data is tranformed from its initial state at acquisition to a different state more amenable to analysis."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                  
@@ -1208,15 +1205,15 @@ nidm:HeartRateMonitor rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#HighpassFilter
+###  http://purl.org/nidash/nidm#HighPassFilter
 
-nidm:HighpassFilter rdf:type owl:Class ;
+nidm:HighPassFilter rdf:type owl:Class ;
                   
-               rdfs:label "Highpass Filter" ;
+               rdfs:label "High-Pass Filter" ;
 
                rdfs:subClassOf nidm:SignalFilter ;
 
-               obo:IAO_0000115 "A highpass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal." ;
+               obo:IAO_0000115 "A high-pass filter is a device that removes or attenuates signal components below a selected frequency value from an electrical signal." ;
                   
                obo:IAO_0000114 obo:IAO_0000428 .                    
 
@@ -1354,15 +1351,15 @@ nidm:IntracellularElectrophysiologyRecording rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#LowpassFilter
+###  http://purl.org/nidash/nidm#LowPassFilter
 
-nidm:LowpassFilter rdf:type owl:Class ;
+nidm:LowPassFilter rdf:type owl:Class ;
                   
-               rdfs:label "Lowpass Filter" ;
+               rdfs:label "Low-Pass Filter" ;
 
                rdfs:subClassOf nidm:SignalFilter ;
 
-               obo:IAO_0000115 "A lowpass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal." ;
+               obo:IAO_0000115 "A low-pass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal." ;
                   
                obo:IAO_0000114 obo:IAO_0000428 .                    
 
@@ -2289,6 +2286,20 @@ nidm:TransmitCoil rdf:type owl:Class ;
 
               obo:IAO_0000115 "A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. "^^xsd:string ;
                    
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#VoltageAmplifier
+
+nidm:VoltageAmplifier rdf:type owl:Class ;
+                  
+              rdfs:label "Voltage Amplifier" ;
+                  
+              rdfs:subClassOf nidm:DataProcessingDevice ;
+
+              obo:IAO_0000115 "Voltage amplifier is an device that produces a higher output voltage than was input into the device."^^xsd:string ;
+
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
