@@ -3185,3 +3185,226 @@ bids:stim rdf:type owl:Class ;
             rdfs:subClassOf bids:BIDSSuffix ;
 
             obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#BIDSEntity
+
+bids:BIDSEntity rdf:type owl:Class ;
+
+            rdfs:label "BIDS Entity"^^xsd:string ;
+
+            dct:description "BIDS Entity is a name that is one of the restricted set of terms used to encode metadata into a filename."^^xsd:string ;
+
+	    rdfs:comment "Note that a BIDS Entity is a key-value pair that is to be used in an order defined in the BIDS Specfication and is separated from the value by a dash. The "^^xsd:string ;
+	    
+	    rdfs:subClassOf sio:SIO_000116 ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Subject
+
+bids:Subject rdf:type owl:Class ;
+
+            rdfs:label "Subject"^^xsd:string ;
+
+            dct:description "Subject is a BIDS entity name that refers to a person or animal participating in the study."^^xsd:string ;
+
+	    rdfs:comment "Used interchangeably with term Participant."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Session
+
+bids:Session rdf:type owl:Class ;
+
+            rdfs:label "Session"^^xsd:string ;
+
+            dct:description "Session is a BIDS entity name that refers to a logical grouping of neuroimaging and behavioral data consistent across subjects.."^^xsd:string ;
+
+	    rdfs:comment "Session can (but doesn't have to) be synonymous to a visit in a longitudinal study. In general, subjects will stay in the scanner during one session. However, for example, if a subject has to leave the scanner room and then be re-positioned on the scanner bed, the set of MRI acquisitions will still be considered as a session and match sessions acquired in other subjects. Similarly, in situations where different data types are obtained over several visits (for example fMRI on one day followed by DWI the day after) those can be grouped in one session. Defining multiple sessions is appropriate when several identical or similar data acquisitions are planned and performed on all -or most- subjects, often in the case of some intervention between sessions (e.g., training)."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Task
+
+bids:Task rdf:type owl:Class ;
+
+            rdfs:label "Task"^^xsd:string ;
+
+            dct:description "Task is a BIDS entity name that refers to a set of structured activities performed by the participant."^^xsd:string ;
+
+	    rdfs:comment "asks are usually accompanied by stimuli and responses, and can greatly vary in complexity. For the purpose of this specification we consider the so-called resting state a task. In the context of brain scanning, a task is always tied to one data acquisition. Therefore, even if during one acquisition the subject performed multiple conceptually different behaviors (with different sets of instructions) they will be considered one (combined) task."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Acquisition
+
+bids:Acquisition rdf:type owl:Class ;
+
+            rdfs:label "Acquisition"^^xsd:string ;
+
+            dct:description "Acquisition is a BIDS entity name that identifies data files as being acquired with the same scanning parameters"^^xsd:string ;
+
+	    rdfs:comment "Note that in the description of run, the BIDS specification says that: Run is a synonym of a data acquisition.  This is true in the sense that runs with the same acq value were acquired with the same acquisition parameters"^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#ContrastEnhancingAgent
+
+bids:ContrastEnhancingAgent rdf:type owl:Class ;
+
+            rdfs:label "Contrast Enhancing Agent"^^xsd:string ;
+
+            dct:description "Contrast Enhancing Agent is a BIDS entity name that is used to distinguish between runs that used different contrast agents."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+
+###  http://purl.org/nidash/bids#Reconstruction
+
+bids:Reconstruction rdf:type owl:Class ;
+
+            rdfs:label "Reconstruction"^^xsd:string ;
+
+            dct:description "Reconstruction is a BIDS entity name that identifies a data file as being related to a specific reconstruction algorithm or method."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#PhaseEncodingDirection
+
+bids:PhaseEncodingDirection rdf:type owl:Class ;
+
+            rdfs:label "Phase-Encoding Direction"^^xsd:string ;
+
+            dct:description "Phase-Encoding Direction is a BIDS entity name that identifies the phase-encoding application direction for a data file."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Run
+
+bids:Run rdf:type owl:Class ;
+
+            rdfs:label "Run"^^xsd:string ;
+
+            dct:description "Run is a BIDS entity name that is used to identify between multiple acquisitions using the same acquisition parameters."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#CorrespondingModality
+
+bids:CorrespondingModality rdf:type owl:Class ;
+
+            rdfs:label "Corresponding Modality"^^xsd:string ;
+
+            dct:description "Corresponding Modality is a BIDS entity name that is used to identify the modality for defacing masksbetween multiple acquisitions using the same acquisition parameters."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Echo
+
+bids:Echo rdf:type owl:Class ;
+
+            rdfs:label "Echo"^^xsd:string ;
+
+            dct:description "Echo is a BIDS entity name that is used to identify the echo number since the standard requires that multi-echo data is split into one echo per file."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Recording
+
+bids:Recording rdf:type owl:Class ;
+
+            rdfs:label "Recording"^^xsd:string ;
+
+            dct:description "Recording is a BIDS entity name that is used to identify between multiple continuous recording files."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Processed
+
+bids:Processed rdf:type owl:Class ;
+
+            rdfs:label "Processed"^^xsd:string ;
+
+            dct:description "Processed is a BIDS entity name that is used to identify the variant of a file that was the result of a particular processing performed on the device."^^xsd:string ;
+
+	    rdfs:comment "This is analagous to Reconstruction used for MRI data."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Space
+
+bids:Space rdf:type owl:Class ;
+
+            rdfs:label "Space"^^xsd:string ;
+
+            dct:description "Space is a BIDS entity name that is used to indicate the way in which electrode positions are interpreted."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/bids#Split
+
+bids:Split rdf:type owl:Class ;
+
+            rdfs:label "Split"^^xsd:string ;
+
+            dct:description "Split is a BIDS entity name that is used to identify cases in which data files are split into multiple parts due to their size."^^xsd:string ;
+
+            rdfs:subClassOf bids:BIDSEntity ;
+
+            obo:IAO_0000116 "To be discussed"^^xsd:string .
