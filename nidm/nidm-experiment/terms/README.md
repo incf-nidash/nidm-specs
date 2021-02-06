@@ -15,8 +15,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr><th>Curation Status</th><th>Issue/PR</th><th>Term</th></tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Simultaneous Multislice Method'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Simultaneous Multislice Method': </b>Simultaneous multislice is an acquisition method in magnetic resonance imaging used to acquire the k-space in which data from multiple slices are acquired at the same time and the coil sensitivity profiles are used to separate the data from each slice</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Simultaneous Multislice'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Simultaneous Multislice': </b>Simultaneous multislice is an acquisition method in magnetic resonance imaging used to acquire the k-space in which data from multiple slices are acquired at the same time and the coil sensitivity profiles are used to separate the data from each slice</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
@@ -110,8 +110,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Blood Oxygen Level Dependent'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Blood Oxygen Level Dependent': </b>Blood Oxygen Level Dependent is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Blood Oxygen Level Dependent Weighted'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Blood Oxygen Level Dependent Weighted': </b>Blood Oxygen Level Dependent Weighted is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -135,8 +135,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Clinical Research Coordinator'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Clinical Research Coordinator': </b>A clinical research coordinator is a role for a person who performs an activity during which clinical data is acquired from study participants</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Co-Investigator'"> [find issues/PR] </a></td>
     <td><b>nidm:'Co-Investigator': </b>A co-investigator is a role for a person that shares responsibility for the oversight and performance of an investigation activity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Continuous Arterial Spin Labeling'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Continuous Arterial Spin Labeling': </b>Continuous arterial spin labeling is a magnetic resonance imaging acquisition method that uses continuous irradiation to invert the magnetization of flowing spins to measure perfusion</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -185,6 +195,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='DistortionCorrection'"> [find issues/PR] </a></td>
+    <td><b>nidm:'DistortionCorrection': </b>Distortion correction is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information used to correct distortions in a set of images</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Dynamic Contrast Enhanced'"> [find issues/PR] </a></td>
     <td><b>nidm:'Dynamic Contrast Enhanced': </b>Dynamic contrast enhanced is a magnetic resonance imaging acquisition method in which T1-weighted images are acquired both before and then sequentially after a contrast agent has been injected in order to quantify metrics related to the permeability of the blood-brain barrier</td>
 </tr>
@@ -221,7 +236,12 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Electroencephalography': </b>Electroencephalography (EEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed on the surface of the head</td>
+    <td><b>nidm:'Electroencephalography': </b>Encephalography is an acquisition modality in which the electrical activity or structure of the brain is measured using a variety of techniques</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electroencephalography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Electroencephalography': </b>Encephalography is an acquisition modality in which the electrical activity or structure of the brain is measured using a variety of techniques</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -340,6 +360,21 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Intracranial Electroencephalography'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Intracranial Electroencephalography': </b>Intracranial Electroencephalography (iEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed directly on the surface of the brain</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Linear Attenuation Coefficient'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Linear Attenuation Coefficient': </b>Linear attenuation coefficient is an image contrast type in which differences in voxel intensity reflect differences in the density and atomic number of the sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Localization'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Localization': </b>Localization is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information on the placement and orientation of the imaged object in space</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Low-Pass Filter'"> [find issues/PR] </a></td>
     <td><b>nidm:'Low-Pass Filter': </b>A low-pass filter is a device that removes or attenuates signal components above a selected frequency value from an electrical signal</td>
 </tr>
@@ -372,6 +407,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Manufacturer'"> [find issues/PR] </a></td>
     <td><b>nidm:'Manufacturer': </b>A manufacturer is a role for an agent, who may be a person or company, who creates an entity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Maximum Intensity Projection'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Maximum Intensity Projection': </b>Maximum intensity projection is an image contrast type in which differences in voxel intensity reflect differences in the maximum value of the collection of that voxel and its surrounding neighbors</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -440,6 +480,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Perfusion'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Perfusion': </b>Perfusion is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information on the blood flow of the object on which the acquisition was performed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Phase'"> [find issues/PR] </a></td>
     <td><b>nidm:'Phase': </b>Phase is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration</td>
 </tr>
@@ -485,8 +530,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Pseudo Continuous Arterial Spin Labeling'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Pseudo Continuous Arterial Spin Labeling': </b>Pseudo-continuous arterial spin labeling (pCASL)is a magnetic resonance imaging acquisition method that uses a long series of short RF-pulses and strong slice-selection gradients to invert the magnetization of flowing spins from a thin slice to measure perfusion</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Pulse Sequence'"> [find issues/PR] </a></td>
     <td><b>nidm:'Pulse Sequence': </b>A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the subject or sample and the acquisition of data</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Pulsed Arterial Spin Labeling'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Pulsed Arterial Spin Labeling': </b>Pulsed arterial spin labeling (pCASL)is a magnetic resonance imaging acquisition method that inverts the magnetization of flowing spins in a slab of tissue below the imaging slice to measure perfusion</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -522,6 +577,16 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Respiration Rate Monitor'"> [find issues/PR] </a></td>
     <td><b>nidm:'Respiration Rate Monitor': </b>A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Resting State'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Resting State': </b>Resting state is an image usage type that indicates that no specific task was performed during the data acquisition</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Resting'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Resting': </b>Resting is an activity in which a subject does not perform a specific task</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -620,8 +685,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='T1 Rho Weighted'"> [find issues/PR] </a></td>
+    <td><b>nidm:'T1 Rho Weighted': </b>T1 Rho weighted is an image contrast type in which the transvers magnetization is locked into the transverse plane and therefore differences in voxel intensity reflect differences in interactions of the transverse magnetization of the probe molecule with the lattice (rather than the spin-lattice relaxation time) in the underlying sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='T1 Weighted'"> [find issues/PR] </a></td>
     <td><b>nidm:'T1 Weighted': </b>T1 weighted is an image contrast type in which differences in voxel intensity reflect differences in the spin-lattice relaxation time of the probe in the underlying sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='T2 Star Weighted'"> [find issues/PR] </a></td>
+    <td><b>nidm:'T2 Star Weighted': </b>T2 star weighted is an image contrast type in which differences in voxel intensity reflect differences in the spin-spin relaxation time  of the probe as well as the field inhomogeneities in the underlying sample</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -630,8 +705,8 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='T2-Star Weighted'"> [find issues/PR] </a></td>
-    <td><b>nidm:'T2-Star Weighted': </b>T2-star weighted is an image contrast type in which differences in voxel intensity reflect differences in the spin-spin relaxation time  of the probe as well as the field inhomogeneities in the underlying sample</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Task Based'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Task Based': </b>Task based is an image usage type indicating that a specific task was performed during the data acquisition</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

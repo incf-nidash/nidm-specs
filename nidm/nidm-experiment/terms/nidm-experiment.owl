@@ -684,13 +684,13 @@ nidm:NIDM_0000152 rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#BloodOxygenLevelDependent
+###  http://purl.org/nidash/nidm#BloodOxygenLevelDependentWeighted
 
-nidm:BloodOxygenLevelDependent rdf:type owl:Class ;
+nidm:BloodOxygenLevelDependentWeighted rdf:type owl:Class ;
                   
-               rdfs:label "Blood Oxygen Level Dependent"^^xsd:string ;
+               rdfs:label "Blood Oxygen Level Dependent Weighted"^^xsd:string ;
 
-               obo:IAO_0000115 "Blood Oxygen Level Dependent is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood."^^xsd:string ;
+               obo:IAO_0000115 "Blood Oxygen Level Dependent Weighted is an image contrast type in which differences in voxel intensity are based on magnetic susceptibility differences between oxygenated and de-oxygenated blood."^^xsd:string ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
 
@@ -763,6 +763,20 @@ nidm:CerebralBloodVolume rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ClinicalResearchCoordinator
+
+nidm:ClinicalResearchCoordinator rdf:type owl:Class ;
+                           
+              rdfs:label "Clinical Research Coordinator"^^xsd:string ;
+                           
+              rdfs:subClassOf prov:Role ;
+                           
+              obo:IAO_0000115 "A clinical research coordinator is a role for a person who performs an activity during which clinical data is acquired from study participants."^^xsd:string ;
+                           
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#CoInvestigator
 
 nidm:CoInvestigator rdf:type owl:Class ;
@@ -774,6 +788,20 @@ nidm:CoInvestigator rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
                obo:IAO_0000115 "A co-investigator is a role for a person that shares responsibility for the oversight and performance of an investigation activity." .
+
+
+
+###  http://purl.org/nidash/nidm#ContinuousArterialSpinLabeling
+
+nidm:ContinuousArterialSpinLabeling rdf:type owl:Class ;
+                                   
+               rdfs:label "Continuous Arterial Spin Labeling"^^xsd:string ;
+
+               obo:IAO_0000115 "Continuous arterial spin labeling is a magnetic resonance imaging acquisition method that uses continuous irradiation to invert the magnetization of flowing spins to measure perfusion."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
+               rdfs:subClassOf nidm:ArterialSpinLabeling .
 
 
 
@@ -909,6 +937,20 @@ nidm:DiffusionWeighted rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#DistortionCorrection
+
+nidm:DistortionCorrection rdf:type owl:Class ;
+
+               rdfs:label "DistortionCorrection" ;
+
+               obo:IAO_0000115 "Distortion correction is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information used to correct distortions in a set of images."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf nidm:ImageUsageType .
+
+
+
 ###  http://purl.org/nidash/nidm#DynamicContrastEnhanced
 
 nidm:DynamicContrastEnhanced rdf:type owl:Class ;
@@ -1019,6 +1061,7 @@ nidm:ElectroencephalographyAcquisitionDevice rdf:type owl:Class ;
                rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
+
 ###  http://purl.org/nidash/nidm#Electromyography
 
 nidm:Electromyography rdf:type owl:Class ;
@@ -1057,6 +1100,20 @@ nidm:ElectrophysiologyRecording rdf:type owl:Class ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                                              
+               rdfs:subClassOf nidm:AcquisitionModality .
+
+
+
+###  http://purl.org/nidash/nidm#Encephalography
+
+nidm:Encephalography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Encephalography is an acquisition modality in which the electrical activity or structure of the brain is measured using a variety of techniques."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Electroencephalography"^^xsd:string ;
+                            
                rdfs:subClassOf nidm:AcquisitionModality .
 
 
@@ -1273,7 +1330,7 @@ nidm:ImageUsageType rdf:type owl:Class ;
 
                rdfs:comment "Common image usage types in magnetic resonance imaging are anatomical and functional"^^xsd:string ;
                     
-               rdfs:subClassOf nidm:AcquisitionObjectQuality .
+               rdfs:subClassOf nidm:AcquisitionUsageType .
 
 
 
@@ -1348,6 +1405,48 @@ nidm:IntracellularElectrophysiologyRecording rdf:type owl:Class ;
               obo:IAO_0000115 "Intracellular Electrophysiology Recording is an activity in which electrical measurements of the interior cell environment are made."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#IntracranialElectroencephalography
+
+nidm:IntracranialElectroencephalography rdf:type owl:Class ;
+
+               obo:IAO_0000115 "Intracranial Electroencephalography (iEEG) is an electrophysiological acquisition method in which the electrical activity of the brain is measured using electrodes that are placed directly on the surface of the brain."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                            
+               rdfs:label "Intracranial Electroencephalography"^^xsd:string ;
+                            
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#LinearAttenuationCoefficient
+
+nidm:LinearAttenuationCoefficient rdf:type owl:Class ;
+                
+              rdfs:label "Linear Attenuation Coefficient"^^xsd:string ;
+                
+              rdfs:subClassOf nidm:ImageContrastType ;
+
+              obo:IAO_0000115 "Linear attenuation coefficient is an image contrast type in which differences in voxel intensity reflect differences in the density and atomic number of the sample."^^xsd:string ;
+             
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#Localization
+
+nidm:Localization rdf:type owl:Class ;
+
+               rdfs:label "Localization" ;
+
+               obo:IAO_0000115 "Localization is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information on the placement and orientation of the imaged object in space."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1448,6 +1547,21 @@ nidm:Manufacturer rdf:type owl:Class ;
               obo:IAO_0000115 "A manufacturer is a role for an agent, who may be a person or company, who creates an entity." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#MaximumIntensityProjection
+
+nidm:MaximumIntensityProjection rdf:type owl:Class ;
+                
+              rdfs:label "Maximum Intensity Projection"^^xsd:string ;
+                
+              rdfs:subClassOf nidm:ImageContrastType ;
+
+              obo:IAO_0000115 "Maximum intensity projection is an image contrast type in which differences in voxel intensity reflect differences in the maximum value of the collection of that voxel and its surrounding neighbors."^^xsd:string ;
+             
+              obo:IAO_0000114 obo:IAO_0000428 .
+
 
 
 
@@ -1570,6 +1684,8 @@ nidm:NuclearMagneticResonanceSpectroscopy rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#NuclearMagneticResonanceDevice
+
 nidm:NuclearMagneticResonanceDevice rdf:type owl:Class ;
                                           
               rdfs:label "Nuclear Magnetic Resonance Device" ;
@@ -1651,6 +1767,20 @@ nidm:PerformedPlan rdf:type owl:Class ;
               obo:IAO_0000115 "A performed plan is a plan that is actually implemented during an acquisition activity."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#Perfusion
+
+nidm:Perfusion rdf:type owl:Class ;
+
+               rdfs:label "Perfusion" ;
+
+               obo:IAO_0000115 "Perfusion is a description of the usage of a given acquisition object, indicating that the purpose of the object is to provide information on the blood flow of the object on which the acquisition was performed."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf nidm:ImageUsageType .
 
 
 
@@ -1782,6 +1912,34 @@ nidm:ProtonDensityWeighted rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#PseudoContinuousArterialSpinLabeling
+
+nidm:PseudoContinuousArterialSpinLabeling rdf:type owl:Class ;
+                                   
+               rdfs:label "Pseudo Continuous Arterial Spin Labeling"^^xsd:string ;
+
+               obo:IAO_0000115 "Pseudo-continuous arterial spin labeling (pCASL)is a magnetic resonance imaging acquisition method that uses a long series of short RF-pulses and strong slice-selection gradients to invert the magnetization of flowing spins from a thin slice to measure perfusion."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
+               rdfs:subClassOf nidm:ArterialSpinLabeling .
+
+
+
+###  http://purl.org/nidash/nidm#PulsedArterialSpinLabeling
+
+nidm:PulsedArterialSpinLabeling rdf:type owl:Class ;
+                                   
+               rdfs:label "Pulsed Arterial Spin Labeling"^^xsd:string ;
+
+               obo:IAO_0000115 "Pulsed arterial spin labeling (pCASL)is a magnetic resonance imaging acquisition method that inverts the magnetization of flowing spins in a slab of tissue below the imaging slice to measure perfusion."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
+               rdfs:subClassOf nidm:ArterialSpinLabeling .
+
+
+
 ###  http://purl.org/nidash/nidm#PulseSequence
 
 nidm:PulseSequence rdf:type owl:Class ;
@@ -1883,6 +2041,34 @@ nidm:RespirationRateMonitor rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Resting
+
+nidm:Resting rdf:type owl:Class ;
+          
+              rdfs:label "Resting"^^xsd:string ;
+          
+              rdfs:subClassOf prov:Activity ;
+          
+              obo:IAO_0000115 "Resting is an activity in which a subject does not perform a specific task."^^xsd:string ;
+
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#RestingState
+
+nidm:RestingState rdf:type owl:Class ;
+
+               rdfs:label "Resting State"^^xsd:string ;
+
+               obo:IAO_0000115 "Resting state is an image usage type that indicates that no specific task was performed during the data acquisition."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf nidm:Functional .
+	       
+
+
 ###  http://purl.org/nidash/nidm#Series
 
 nidm:Series rdf:type owl:Class ;
@@ -1979,11 +2165,11 @@ nidm:SignalGenerator rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#SimultaneousMultisliceMethod
+###  http://purl.org/nidash/nidm#SimultaneousMultislice
 
-nidm:SimultaneousMultisliceMethod rdf:type owl:Class ;
+nidm:SimultaneousMultislice rdf:type owl:Class ;
                                   
-              rdfs:label "Simultaneous Multislice Method"^^xsd:string ;
+              rdfs:label "Simultaneous Multislice"^^xsd:string ;
                                   
               rdfs:subClassOf nidm:AcquisitionMethod ;
                                   
@@ -2220,15 +2406,29 @@ nidm:T1Weighted rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#T1RhoWeighted
+
+nidm:T1RhoWeighted rdf:type owl:Class ;
+                
+              rdfs:label "T1 Rho Weighted"^^xsd:string ;
+                
+              rdfs:subClassOf nidm:ImageContrastType ;
+
+              obo:IAO_0000115 "T1 Rho weighted is an image contrast type in which the transvers magnetization is locked into the transverse plane and therefore differences in voxel intensity reflect differences in interactions of the transverse magnetization of the probe molecule with the lattice (rather than the spin-lattice relaxation time) in the underlying sample."^^xsd:string ;
+             
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#T2StarWeighted
 
 nidm:T2StarWeighted rdf:type owl:Class ;
                     
-              rdfs:label "T2-Star Weighted"^^xsd:string ;
+              rdfs:label "T2 Star Weighted"^^xsd:string ;
                     
               rdfs:subClassOf nidm:ImageContrastType ;
 
-              obo:IAO_0000115 "T2-star weighted is an image contrast type in which differences in voxel intensity reflect differences in the spin-spin relaxation time  of the probe as well as the field inhomogeneities in the underlying sample."^^xsd:string ;
+              obo:IAO_0000115 "T2 star weighted is an image contrast type in which differences in voxel intensity reflect differences in the spin-spin relaxation time  of the probe as well as the field inhomogeneities in the underlying sample."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2262,17 +2462,17 @@ nidm:Task rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#Task
+###  http://purl.org/nidash/nidm#TaskBased
 
-nidm:Task rdf:type owl:Class ;
+nidm:TaskBased rdf:type owl:Class ;
           
-              rdfs:label "Task"^^xsd:string ;
+              rdfs:label "Task Based"^^xsd:string ;
           
-              rdfs:subClassOf prov:Activity ;
-          
-              obo:IAO_0000115 "A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
+              obo:IAO_0000115 "Task based is an image usage type indicating that a specific task was performed during the data acquisition."^^xsd:string ;
 
-              obo:IAO_0000114 obo:IAO_0000428 .
+              obo:IAO_0000114 obo:IAO_0000428 ;
+
+	      rdfs:subClassOf nidm:Functional .
 
 
 
