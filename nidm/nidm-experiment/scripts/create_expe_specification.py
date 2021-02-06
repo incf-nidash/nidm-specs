@@ -55,7 +55,7 @@ def main():
     subcomponents =  collections.OrderedDict()
 
     subcomponents['Project'] = [
-        NIDM['CoInvestigator'], NIDM['Gender'],NIDM['Group'], NIDM['ModelDesigner'], 
+        NIDM['CoInvestigator'], NIDM['ClinicalResearchCoordinator'],NIDM['Gender'],NIDM['Group'], NIDM['ModelDesigner'], 
         NIDM['ModelSpecification'],
         NIDM['PrincipalInvestigator'], NIDM['Project'], NIDM['Protocol'], NIDM['ResearchAssistant'], 
         NIDM['SpecifiedPlan'], NIDM['Subject']
@@ -67,27 +67,28 @@ def main():
         NIDM['Magnitude'], NIDM['PerformedPlan'], NIDM['Phase'], NIDM['PresentationSoftware'],
         NIDM['ProcessedAcquisitionObject'],
         NIDM['RawAcquisitionObject'],NIDM['ReconstructedAcquisitionObject'], NIDM['Series'], NIDM['Session'],
-        NIDM['SessionObject'],NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'],NIDM['Task']
+        NIDM['SessionObject'],NIDM['StimulusPresentationFile'], NIDM['StimulusResponseFile'],NIDM['Task'],NIDM['Resting']
         ]
     subcomponents['Assessment Instrument'] = [
         NIDM['BehavioralInstrument'],  NIDM['DemographicsInstrument'],
         NIDM['InformedConsentInstrument'], NIDM['InstrumentAdministrator'], NIDM['InstrumentUsageType']
         ]
     subcomponents['Magnetic Resonance Imaging'] = [
-        NIDM['Anatomical'], NIDM['Angiography'], NIDM['ArterialSpinLabeling'], NIDM['BloodOxygenLevelDependent'], 
-        NIDM['Cartesian'], NIDM['CerebralBloodFlow'], NIDM['CerebralBloodVolume'], 
-        NIDM['DICOMTagCollection'], NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'], 
+        NIDM['Anatomical'], NIDM['Angiography'], NIDM['ArterialSpinLabeling'], NIDM['BloodOxygenLevelDependentWeighted'], 
+        NIDM['Cartesian'], NIDM['CerebralBloodFlow'], NIDM['CerebralBloodVolume'],NIDM['ContinuousArterialSpinLabeling'],
+        NIDM['DICOMTagCollection'], NIDM['DiffusionTensor'],NIDM['DiffusionWeighted'],NIDM['DistortionCorrection'],
         NIDM['DynamicContrastEnhanced'], NIDM['DynamicSusceptibilityContrast'],
         NIDM['EchoPlanar'], NIDM['FlowWeighted'],NIDM['FluidAttenuatedInversionRecovery'], 
         NIDM['Functional'], NIDM['ImageContrastType'],
-        NIDM['ImageDataReconstruction'], NIDM['ImageUsageType'], NIDM['Inside-outSpiral'], 
+        NIDM['ImageDataReconstruction'], NIDM['ImageUsageType'], NIDM['Inside-outSpiral'],NIDM['Localization'],
         NIDM['MagneticResonanceImaging'], NIDM['MagneticResonanceImagingScanner'], 
         NIDM['NuclearMagneticResonanceSpectroscopy'],
         NIDM['NuclearMagneticResonanceSpectroscopicImaging'],NIDM['Outside-inSpiral'], NIDM['ParallelImaging'], 
-        NIDM['ProtonDensityWeighted'],NIDM['PulseSequence'],NIDM['QuantitativeSusceptibilityMapping'],
-        NIDM['Rectilinear'],NIDM['SimultaneousMultisliceMethod'], NIDM['SteadyStateFreePrecession'], NIDM['Structural'], 
+        NIDM['ProtonDensityWeighted'],NIDM['PseudoContinuousArterialSpinLabeling'],NIDM['PulsedArterialSpinLabeling'],
+        NIDM['PulseSequence'],NIDM['QuantitativeSusceptibilityMapping'],
+        NIDM['Rectilinear'],NIDM['RestingState'],NIDM['SimultaneousMultislice'], NIDM['SteadyStateFreePrecession'], NIDM['Structural'], 
         NIDM['SusceptibilityWeighted'],NIDM['SusceptibilityWeightedImaging'],
-        NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],NIDM['b-ValueFile'],
+        NIDM['T1Weighted'], NIDM['T2StarWeighted'], NIDM['T2Weighted'],NIDM['TaskBased'],NIDM['b-ValueFile'],
         NIDM['b-VectorFile'], NIDM['k-spaceTraversalScheme'], NIDM['NIDM_0000152'], NIDM['NIDM_0000153'],
         NIDM['NIDM_0000154'], NIDM['NIDM_0000155']
         ]
