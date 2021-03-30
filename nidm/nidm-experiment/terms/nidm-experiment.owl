@@ -12,7 +12,6 @@
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix provone: <http://purl.org/provone#> .
-@prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/resource/> .
@@ -29,7 +28,6 @@
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/pato_import.owl> ,
-               <http://purl.org/nidash/nidm/qibo_import.owl> ,
                <http://purl.org/nidash/nidm/sio_import.owl> ,
                <http://www.w3.org/ns/prov-o-20130430>
 ] .
@@ -433,7 +431,7 @@ nidm:Acquisition rdf:type owl:Class ;
 
                rdfs:label "Acquisition" ;
 
-               obo:IAO_0000115 "An acquisition is an activty in which data about a subject is gathered."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition is an activty in which data about a study participant is gathered."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                  
@@ -465,7 +463,7 @@ nidm:AcquisitionMethod rdf:type owl:Class ;
                        
                rdfs:label "Acquisition Method" ;
 
-               obo:IAO_0000115 "An acquisition method is a specific form of a procedure that was used to gather data from a subject."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition method is a specific form of a procedure that was used to gather data from a study participant."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                        
@@ -479,7 +477,7 @@ nidm:AcquisitionModality rdf:type owl:Class ;
                          
                rdfs:label "Acquisition Modality" ;
 
-               obo:IAO_0000115 "An acquisition modality is a description of the general type of experiment that was used to gather data from a subject."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition modality is a description of the general type of experiment that was used to gather data from a study participant."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                          
@@ -509,7 +507,7 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 
                rdfs:label "Acquisition Object Quality"^^xsd:string ;
 
-               obo:IAO_0000115 "An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a subject during an acquisition activity."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a study participant during an acquisition activity."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                               
@@ -1053,7 +1051,7 @@ nidm:Electrode rdf:type owl:Class ;
 
                rdfs:label "Electrode"^^xsd:string ;
 
-               obo:IAO_0000115 "An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from subject or sample."^^xsd:string ;
+               obo:IAO_0000115 "An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from a study participant."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1176,13 +1174,29 @@ nidm:ExtracellularElectrophysiologyRecording rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ExVivo
+
+nidm:ExVivo rdf:type owl:Class ;
+
+               rdfs:label "Ex Vivo" ;
+
+               obo:IAO_0000115 "Ex vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes was once part of a living organism, but has been removed."^^xsd:string ;
+
+	       rdfs:comment "A common example is a tissue sample."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
 ###  http://purl.org/nidash/nidm#EyeTrackingDevice
 
 nidm:EyeTrackingDevice rdf:type owl:Class ;
                     
                rdfs:label "Eye Tracking Device" ;
 
-               obo:IAO_0000115 "An eye tracking device is a device that consists of hardware that follows the motion of a subjects eye so that allows the determination of either the location of the subject's gaze or of relative eye motion."^^xsd:string ;
+               obo:IAO_0000115 "An eye tracking device is a device that consists of hardware that follows the motion of one or both eyes of the study participant, which allows the determination of either the gaze location or of relative eye motion."^^xsd:string ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
@@ -1253,7 +1267,7 @@ nidm:Group rdf:type owl:Class ;
 
                rdfs:label "Group"^^xsd:string ;
 
-               obo:IAO_0000115 "A group is a collection of subjects or objects formed by the assignment of membership through the selection of one or more common characteristics."^^xsd:string ;
+               obo:IAO_0000115 "A group is a collection of agents or entities formed by the assignment of membership through the selection of one or more common characteristics."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
            
@@ -1267,7 +1281,7 @@ nidm:Gender rdf:type owl:Class ;
 
                rdfs:label "Gender"^^xsd:string ;
 
-               obo:IAO_0000115 "Gender is a social entity that identifies which of either male or female that a person identifies as, which may be different from biological sex."^^xsd:string ;
+               obo:IAO_0000115 "Gender is a social entity that identifies which of either male or female a person identifies as, and which may be different from biological sex."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
            
@@ -1367,7 +1381,7 @@ nidm:InformedConsentInstrument rdf:type owl:Class ;
 
                rdfs:label "Informed Consent Instrument"^^xsd:string ;
 
-               obo:IAO_0000115 "An informed consent instrument is a instrument usage type that provides the subject with information regarding the study during which data will be collected from the subject and is used to collect the subjects consent to being a part of that study."^^xsd:string ;
+               obo:IAO_0000115 "An informed consent instrument is a instrument usage type used for an instrument is used to collect the consent of the study participant after providing information about the study, such as what data will be collected and under what conditions."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1381,7 +1395,7 @@ nidm:InstrumentAdministrator rdf:type owl:Class ;
                                   
                rdfs:label "Instrument Administrator" ;
 
-               obo:IAO_0000115 "An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the subject to the contents of the instrument."^^xsd:string ;
+               obo:IAO_0000115 "An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the study participant to the contents of the instrument."^^xsd:string ;
 
                rdfs:comment "The instrument administrator could either be a computer-based system or a person, hence the use of who/that. Common catagories of instruments are behavioral, clinical, or demographic instruments." ;
                        
@@ -1449,6 +1463,38 @@ nidm:IntracranialElectroencephalography rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#InVitro
+
+nidm:InVitro rdf:type owl:Class ;
+
+               rdfs:label "In Vitro" ;
+
+               obo:IAO_0000115 "In vitro is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is outside of a living organism."^^xsd:string ;
+
+	       rdfs:comment "A common example is a sample consisting of perfused cells."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
+###  http://purl.org/nidash/nidm#InVivo
+
+nidm:InVivo rdf:type owl:Class ;
+
+               rdfs:label "In Vivo" ;
+
+               obo:IAO_0000115 "In vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is a living organism."^^xsd:string ;
+
+	       rdfs:comment "A common example is a person."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
 ###  http://purl.org/nidash/nidm#LinearAttenuationCoefficient
 
 nidm:LinearAttenuationCoefficient rdf:type owl:Class ;
@@ -1499,7 +1545,7 @@ nidm:MagneticResonanceImaging rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
+              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1513,7 +1559,7 @@ nidm:MagneticResonanceImagingScanner rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a sample or subject and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
+              obo:IAO_0000115 "A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a study participant and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1642,7 +1688,7 @@ nidm:MultielectrodeArray rdf:type owl:Class ;
 
                rdfs:label "Multi-electrode Array"^^xsd:string ;
 
-               obo:IAO_0000115 "A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from subject or sample."^^xsd:string ;
+               obo:IAO_0000115 "A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from study participant or sample."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1687,7 +1733,7 @@ nidm:NoiseMeasurement rdf:type owl:Class ;
 
                obo:IAO_0000115 "Noise measurement is an acquisition usage type that denotes that the acquisition object collected has been used to measure the intrinsic noise level of the acquisition hardware."^^xsd:string ;
                        
-               rdfs:comment "This type is also called 'Empty' in Magnetoencepholography, since the acquisition activity is undertaken with no subject or sample present."^^xsd:string ;
+               rdfs:comment "This type is also called 'Empty' in Magnetoencepholography, since the acquisition activity is undertaken with no study participant present."^^xsd:string ;
 
                obo:IAO_0000114 obo:IAO_0000428 ; 
                      
@@ -1703,7 +1749,7 @@ nidm:NuclearMagneticResonanceSpectroscopy rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
+              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
 
               rdfs:comment "The volume of interest may be selected either by the natural extent of the excited volume (e.g., surface coils) or by selecting for excitation, a thick slab through the use of magnetic field gradients."^^xsd:string ;
                       
@@ -1719,7 +1765,7 @@ nidm:NuclearMagneticResonanceDevice rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:DataAcquisitionDevice ;
 
-              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
+              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
 
               rdfs:comment "This is a generic term that may be applied to a magnetic resonance imaging scanner, but is most often used for devices used for nuclear magnetic resonance spectroscopy based experiments."^^xsd:string ;
                       
@@ -1735,7 +1781,7 @@ nidm:NuclearMagneticResonanceSpectroscopicImaging rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas."^^xsd:string ;
+              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1810,6 +1856,7 @@ nidm:Perfusion rdf:type owl:Class ;
                rdfs:subClassOf nidm:ImageUsageType .
 
 
+
 ###  http://purl.org/nidash/nidm#PersonalDataElement
 
 nidm:PersonalDataElement rdf:type owl:Class ;
@@ -1821,6 +1868,20 @@ nidm:PersonalDataElement rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                  
                rdfs:subClassOf nidm:DataElement .
+
+
+
+###  http://purl.org/nidash/nidm#Phantom
+
+nidm:Phantom rdf:type owl:Class ;
+
+               rdfs:label "Phantom" ;
+
+               obo:IAO_0000115 "A phantom is a device that is used in a study as an inanimate study participant from which data is acquired to measure performancde, variability or reproducibility of an data acquisition device."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf sio:SIO_000956 .
 
 
 
@@ -1848,7 +1909,7 @@ nidm:PositronEmissionTomography rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the subject and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated."^^xsd:string ;
+              obo:IAO_0000115 "Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the study participant and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1862,7 +1923,7 @@ nidm:PositronEmissionTomographyScanner rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a subject who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays."^^xsd:string ;
+              obo:IAO_0000115 "A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a study participant who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1876,7 +1937,7 @@ nidm:PresentationSoftware rdf:type owl:Class ;
 
               rdfs:label "Presentation Software"^^xsd:string ;
 
-              obo:IAO_0000115 "Presentation software is a software agent that provides the stimulus to the subject during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity."^^xsd:string ;
+              obo:IAO_0000115 "Presentation software is a software agent that provides the stimulus to the study participant during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1988,7 +2049,7 @@ nidm:PulseSequence rdf:type owl:Class ;
                    
               rdfs:subClassOf prov:SoftwareAgent ;
                    
-              obo:IAO_0000115 "A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the subject or sample and the acquisition of data."^^xsd:string ;
+              obo:IAO_0000115 "A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the study participant and the acquisition of data."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2073,7 +2134,7 @@ nidm:RespirationRateMonitor rdf:type owl:Class ;
 
                rdfs:label "Respiration Rate Monitor"^^xsd:string ;
 
-               obo:IAO_0000115 "A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time."^^xsd:string ;
+               obo:IAO_0000115 "A respiration rate monitor is a data acquisition device that records the number of breaths taken by a study participant in a given period of time."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -2089,7 +2150,7 @@ nidm:Resting rdf:type owl:Class ;
           
               rdfs:subClassOf prov:Activity ;
           
-              obo:IAO_0000115 "Resting is an activity in which a subject does not perform a specific task."^^xsd:string ;
+              obo:IAO_0000115 "Resting is an activity in which the study participant does not perform a specific task."^^xsd:string ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2135,7 +2196,7 @@ nidm:Session rdf:type owl:Class ;
 
               rdfs:label "Session"^^xsd:string ;
              
-              obo:IAO_0000115 "A session is an activity during which data, potentially of different types, is acquired from a subject by an experimenter during a single unbroken time period." ;
+              obo:IAO_0000115 "A session is an activity during which data, potentially of different types, is acquired from a study participant by an experimenter during a single unbroken time period." ;
 
               rdfs:comment "During a MRI session, for example, T1-weighted and resting-state data were acquired.  Both the T1-weighted and resting state data are Acquisition Objects and the time period during which they were acquired is the Session." ;
              
@@ -2227,7 +2288,7 @@ nidm:SinglePhotonEmissionComputedTomography rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the subject and the gamma rays emitted are detected in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+              obo:IAO_0000115 "Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the study participant and the emitted gamma rays are detected in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2241,7 +2302,7 @@ nidm:SinglePhotonEmissionComputedTomographyScanner rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a subject in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+              obo:IAO_0000115 "A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a study participant in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2255,7 +2316,7 @@ nidm:SingleUnitReccording rdf:type owl:Class ;
                           
               rdfs:subClassOf nidm:AcquisitionMethod ;
 
-              obo:IAO_0000115 "Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of a sample or subject and the action potential from a single neuron is recorded."^^xsd:string ;
+              obo:IAO_0000115 "Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of the study participant and the action potential from a single neuron is recorded."^^xsd:string ;
                                   
               obo:IAO_0000114 obo:IAO_0000125 .
 
@@ -2355,7 +2416,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:AuxiliaryFile ;
                               
-              obo:IAO_0000115 "A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the subject in a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study participant in a task-based assessment activity."^^xsd:string ;
                                 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2369,7 +2430,7 @@ nidm:StimulusResponseFile rdf:type owl:Class ;
                           
               rdfs:subClassOf nidm:AuxiliaryFile ;
                           
-              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
                           
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2383,24 +2444,25 @@ nidm:Structural rdf:type owl:Class ;
 
               rdfs:label "Structural"^^xsd:string ;
                           
-              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
                           
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
-###  http://purl.org/nidash/nidm#Subject
+###  http://purl.org/nidash/nidm#StudyParticipant
 
-nidm:Subject rdf:type owl:Class ;
+nidm:StudyParticipatn rdf:type owl:Class ;
              
-              rdfs:label "Subject"^^xsd:string ;
+              rdfs:label "Study Participant"^^xsd:string ;
              
               rdfs:subClassOf prov:Role ;
+
+	      rdfs:comment "This role is meant as the parent term for all types agents from which Acquisition Objects are acquired.  This term is based on the STATO term http://purl.obolibrary.org/obo/OBI_0000097, Participant Under Investigation Role.  STATO also has the term Specimen, which can be a Participant, but is not necessarily, since the Specimen itself may not be the thing under investigation, ie, it may be a constituent of the Specimen that the what is actually under investigation."^^xsd:string ;
              
-              obo:IAO_0000115 "A subject is a role for an agent (either living or non-living) which is characterized by being the object of study in an acquisition activity."^^xsd:string ;
+              obo:IAO_0000115 "A study participant is a role for an agent, either living or non-living, which is characterized by being the object of study in an acquisition activity."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
-
 
 
 
@@ -2496,7 +2558,7 @@ nidm:Task rdf:type owl:Class ;
           
               rdfs:subClassOf prov:Activity ;
           
-              obo:IAO_0000115 "A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
+              obo:IAO_0000115 "A task is an activity that is performed by a study Participant to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2568,7 +2630,7 @@ nidm:X-rayComputedTomography rdf:type owl:Class ;
                         
               rdfs:subClassOf nidm:AcquisitionModality ;
                     
-              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
+              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
               
@@ -2584,7 +2646,7 @@ nidm:X-rayComputedTomographyAcquisitionDevice rdf:type owl:Class ;
 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;                        
                     
-              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
+              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2688,25 +2750,25 @@ obo:PATO_0000001 rdfs:subClassOf sio:SIO_000614 .
 
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#Ex_vivo_subject
 
-qibo:Ex_vivo_subject rdfs:subClassOf nidm:Subject .
+#qibo:Ex_vivo_subject rdfs:subClassOf nidm:Subject .
 
 
 
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vitro_subject
 
-qibo:In_vitro_subject rdfs:subClassOf nidm:Subject .
+#qibo:In_vitro_subject rdfs:subClassOf nidm:Subject .
 
 
 
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vivo_subject
 
-qibo:In_vivo_subject rdfs:subClassOf nidm:Subject .
+#qibo:In_vivo_subject rdfs:subClassOf nidm:Subject .
 
 
 
 ###  http://www.owl-ontologies.com/Ontology1298855822.owl#Phantom_experimental_subject
 
-qibo:Phantom_experimental_subject rdfs:subClassOf nidm:Subject .
+#qibo:Phantom_experimental_subject rdfs:subClassOf nidm:Subject .
 
 
 
