@@ -21,7 +21,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/green.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Single-unit Recording'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Single-unit Recording': </b>Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of a sample or subject and the action potential from a single neuron is recorded</td>
+    <td><b>nidm:'Single-unit Recording': </b>Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of the study participant and the action potential from a single neuron is recorded</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -31,17 +31,17 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition Method'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Acquisition Method': </b>An acquisition method is a specific form of a procedure that was used to gather data from a subject</td>
+    <td><b>nidm:'Acquisition Method': </b>An acquisition method is a specific form of a procedure that was used to gather data from a study participant</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition Modality'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Acquisition Modality': </b>An acquisition modality is a description of the general type of experiment that was used to gather data from a subject</td>
+    <td><b>nidm:'Acquisition Modality': </b>An acquisition modality is a description of the general type of experiment that was used to gather data from a study participant</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition Object Quality'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Acquisition Object Quality': </b>An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a subject during an acquisition activity</td>
+    <td><b>nidm:'Acquisition Object Quality': </b>An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a study participant during an acquisition activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -56,7 +56,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Acquisition'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Acquisition': </b>An acquisition is an activty in which data about a subject is gathered</td>
+    <td><b>nidm:'Acquisition': </b>An acquisition is an activty in which data about a study participant is gathered</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -145,6 +145,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Common Data Element'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Common Data Element': </b>A common data element is a data element that is part of a collection of data elements, curated or not, which are available for reuse</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Continuous Arterial Spin Labeling'"> [find issues/PR] </a></td>
     <td><b>nidm:'Continuous Arterial Spin Labeling': </b>Continuous arterial spin labeling is a magnetic resonance imaging acquisition method that uses continuous irradiation to invert the magnetization of flowing spins to measure perfusion</td>
 </tr>
@@ -167,6 +172,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Acquisition Device'"> [find issues/PR] </a></td>
     <td><b>nidm:'Data Acquisition Device': </b>A data acquisition device is a device that collects a packet or stream of analog or digital information from an entity</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Data Element'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Data Element': </b>A data element is a variable, used in a scientific study, used to store either information regarding the acquisition, processing, or analysis of the acquisition object that resulted from the study activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -226,7 +236,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Electrode'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Electrode': </b>An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from subject or sample</td>
+    <td><b>nidm:'Electrode': </b>An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from a study participant</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -265,13 +275,43 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Ex Vivo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Ex Vivo': </b>Ex vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes was once part of a living organism, but has been removed</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Extracellular Electrophysiology Recording'"> [find issues/PR] </a></td>
     <td><b>nidm:'Extracellular Electrophysiology Recording': </b>Extracellular Electrophysiology Recording is an acquisition modality in which one or more electrodes are inserted into living tissue and the electrical signals from adjacent cells are recorded</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Eye Tracking Device'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Eye Tracking Device': </b>An eye tracking device is a device that consists of hardware that follows the motion of a subjects eye so that allows the determination of either the location of the subject's gaze or of relative eye motion</td>
+    <td><b>nidm:'Eye Tracking Device': </b>An eye tracking device is a device that consists of hardware that follows the motion of one or both eyes of the study participant, which allows the determination of either the gaze location or of relative eye motion</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fast Field Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fast Field Echo': </b>Fast Field Echo is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, a gradient-recalled echo, which is then measured</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fast Imaging Employing Steady State Acquisition'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fast Imaging Employing Steady State Acquisition': </b>Fast imaging employing steady state acquisition (FIESTA) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fast Imaging With Steady State'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fast Imaging With Steady State': </b>Fast imaging with steady state precession (FISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with spoiler and rewinder gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fast Low Angle Shot'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fast Low Angle Shot': </b>Fast Low Angle Shot is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured, and an additional gradient to destroy any residual magnetization at the end of the pulse sequence</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Fast Spin Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Fast Spin Echo': </b>Fast spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses, the latter in conjunction with a different phase-encoding gradient at each refocussed echo</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -296,12 +336,22 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Gender'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Gender': </b>Gender is a social entity that identifies which of either male or female that a person identifies as, which may be different from biological sex</td>
+    <td><b>nidm:'Gender': </b>Gender is a social entity that identifies which of either male or female a person identifies as, and which may be different from biological sex</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Gradient Recalled Acquisition in Steady State'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Gradient Recalled Acquisition in Steady State': </b>Gradient recalled acquisition in steady state (GRASS) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Gradient Recalled Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Gradient Recalled Echo': </b>Gradient recalled echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application and subsequent reversal of the frequency-encoding gradient and is characterized by flip angles of less than 90 degrees and the evolution being governed by T2star decay</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Group'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Group': </b>A group is a collection of subjects or objects formed by the assignment of membership through the selection of one or more common characteristics</td>
+    <td><b>nidm:'Group': </b>A group is a collection of agents or entities formed by the assignment of membership through the selection of one or more common characteristics</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -335,8 +385,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='In Vitro'"> [find issues/PR] </a></td>
+    <td><b>nidm:'In Vitro': </b>In vitro is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is outside of a living organism</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='In Vivo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'In Vivo': </b>In vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is a living organism</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Informed Consent Instrument'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Informed Consent Instrument': </b>An informed consent instrument is a instrument usage type that provides the subject with information regarding the study during which data will be collected from the subject and is used to collect the subjects consent to being a part of that study</td>
+    <td><b>nidm:'Informed Consent Instrument': </b>An informed consent instrument is a instrument usage type used for an instrument is used to collect the consent of the study participant after providing information about the study, such as what data will be collected and under what conditions</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -346,7 +406,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Instrument Administrator'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Instrument Administrator': </b>An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the subject to the contents of the instrument</td>
+    <td><b>nidm:'Instrument Administrator': </b>An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the study participant to the contents of the instrument</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -381,12 +441,12 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetic Resonance Imaging Scanner'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Magnetic Resonance Imaging Scanner': </b>A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a sample or subject and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
+    <td><b>nidm:'Magnetic Resonance Imaging Scanner': </b>A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a study participant and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Magnetic Resonance Imaging'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Magnetic Resonance Imaging': </b>Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
+    <td><b>nidm:'Magnetic Resonance Imaging': </b>Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -431,12 +491,17 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multi-electrode Array'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Multi-electrode Array': </b>A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from subject or sample</td>
+    <td><b>nidm:'Multi-electrode Array': </b>A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from study participant or sample</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multi-unit Recording'"> [find issues/PR] </a></td>
     <td><b>nidm:'Multi-unit Recording': </b>Multi-unit recording is an extracellular electrophysiological acquisition method in which an acquisition object is gathered using multiple recording devices</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Multiple Spin Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Multiple Spin Echo': </b>Multiple spin echo is a magnetic resonance imaging acquisition method in which the echoes used in the measurement are generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses,and each succeeding echo is used as a k-space line in an image with a longer echo time</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -446,17 +511,17 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Nuclear Magnetic Resonance Device'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Nuclear Magnetic Resonance Device': </b>A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample</td>
+    <td><b>nidm:'Nuclear Magnetic Resonance Device': </b>A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Nuclear Magnetic Resonance Spectroscopic Imaging'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Nuclear Magnetic Resonance Spectroscopic Imaging': </b>Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas</td>
+    <td><b>nidm:'Nuclear Magnetic Resonance Spectroscopic Imaging': </b>Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Nuclear Magnetic Resonance Spectroscopy'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Nuclear Magnetic Resonance Spectroscopy': </b>Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object</td>
+    <td><b>nidm:'Nuclear Magnetic Resonance Spectroscopy': </b>Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -485,23 +550,33 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Personal Data Element'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Personal Data Element': </b>A personal data element is a data element that is part of a collection of data elements that have been defined locally, e.g., used to single study, lab, or project, but that are not meant for adoption by a wider community</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Phantom'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Phantom': </b>A phantom is a device that is used in a study as an inanimate study participant from which data is acquired to measure performancde, variability or reproducibility of an data acquisition device</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Phase'"> [find issues/PR] </a></td>
     <td><b>nidm:'Phase': </b>Phase is a calculated parameter that measures the number of periods accumulated by a variable during an evolution duration</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Positron Emission Tomography Scanner'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Positron Emission Tomography Scanner': </b>A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a subject who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays</td>
+    <td><b>nidm:'Positron Emission Tomography Scanner': </b>A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a study participant who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Positron Emission Tomography'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Positron Emission Tomography': </b>Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the subject and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated</td>
+    <td><b>nidm:'Positron Emission Tomography': </b>Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the study participant and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Presentation Software'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Presentation Software': </b>Presentation software is a software agent that provides the stimulus to the subject during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity</td>
+    <td><b>nidm:'Presentation Software': </b>Presentation software is a software agent that provides the stimulus to the study participant during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -536,7 +611,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Pulse Sequence'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Pulse Sequence': </b>A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the subject or sample and the acquisition of data</td>
+    <td><b>nidm:'Pulse Sequence': </b>A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the study participant and the acquisition of data</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -576,7 +651,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Respiration Rate Monitor'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Respiration Rate Monitor': </b>A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time</td>
+    <td><b>nidm:'Respiration Rate Monitor': </b>A respiration rate monitor is a data acquisition device that records the number of breaths taken by a study participant in a given period of time</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -586,7 +661,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Resting'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Resting': </b>Resting is an activity in which a subject does not perform a specific task</td>
+    <td><b>nidm:'Resting': </b>Resting is an activity in which the study participant does not perform a specific task</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -601,7 +676,7 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Session'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Session': </b>A session is an activity during which data, potentially of different types, is acquired from a subject by an experimenter during a single unbroken time period</td>
+    <td><b>nidm:'Session': </b>A session is an activity during which data, potentially of different types, is acquired from a study participant by an experimenter during a single unbroken time period</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -621,12 +696,12 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Single Photon Emission Computed Tomography Scanner'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Single Photon Emission Computed Tomography Scanner': </b>A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a subject in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
+    <td><b>nidm:'Single Photon Emission Computed Tomography Scanner': </b>A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a study participant in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Single Photon Emission Computed Tomography'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Single Photon Emission Computed Tomography': </b>Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the subject and the gamma rays emitted are detected in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
+    <td><b>nidm:'Single Photon Emission Computed Tomography': </b>Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the study participant and the emitted gamma rays are detected in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -635,8 +710,18 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Spin Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Spin Echo': </b>Spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency pulse and a subsequent pulse, generally, though not necessarily, with flip angles of 90 and 180 degrees respectively</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Spoiled Gradient Recalled Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Spoiled Gradient Recalled Echo': </b>Spoiled Gradient Recalled Echo (SPGR), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Steady State Free Precession'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Steady State Free Precession': </b>Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, low flip angle gradient recalled echoes and short repetition times to form images</td>
+    <td><b>nidm:'Steady State Free Precession': </b>Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, formed by a series of phase-alternated radiofrequency pulses, spoiler gradients in the slice-selection direction, rewinder gradients in the phase-encoding direction to form images</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -656,22 +741,22 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Presentation File'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Stimulus Presentation File': </b>A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the subject in a task-based assessment activity</td>
+    <td><b>nidm:'Stimulus Presentation File': </b>A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study participant in a task-based assessment activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Stimulus Response File'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Stimulus Response File': </b>A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity</td>
+    <td><b>nidm:'Stimulus Response File': </b>A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Structural'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Structural': </b>A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity</td>
+    <td><b>nidm:'Structural': </b>A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Subject'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Subject': </b>A subject is a role for an agent (either living or non-living) which is characterized by being the object of study in an acquisition activity</td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Study Participant'"> [find issues/PR] </a></td>
+    <td><b>nidm:'Study Participant': </b>A study participant is a role for an agent, either living or non-living, which is characterized by being the object of study in an acquisition activity</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -682,6 +767,11 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Susceptibility Weighted'"> [find issues/PR] </a></td>
     <td><b>nidm:'Susceptibility Weighted': </b>Susceptibility weighted is a magentic resonance imaging image-contrast type in which differences in voxel intensity reflect differences in magnetic susceptibilty of the underlying sample</td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='T1 Fast Field Echo'"> [find issues/PR] </a></td>
+    <td><b>nidm:'T1 Fast Field Echo': </b>T1 Fast Field Echo, is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured and an additional gradient to destroy any residual magnetization at the end of the pulse sequence</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -711,12 +801,17 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Task'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Task': </b>A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process</td>
+    <td><b>nidm:'Task': </b>A task is an activity that is performed by a study Participant to elucidate some aspect of human behavior or underlying process</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Transmit Coil'"> [find issues/PR] </a></td>
     <td><b>nidm:'Transmit Coil': </b>A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. </td>
+</tr>
+<tr>
+    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
+    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='True Fast Imaging With Steady State'"> [find issues/PR] </a></td>
+    <td><b>nidm:'True Fast Imaging With Steady State': </b>True fast imaging with steady state precession (TrueFISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -731,12 +826,12 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='X-ray Computed Tomography Acquisition Device'"> [find issues/PR] </a></td>
-    <td><b>nidm:'X-ray Computed Tomography Acquisition Device': </b>X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays</td>
+    <td><b>nidm:'X-ray Computed Tomography Acquisition Device': </b>X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='X-ray Computed Tomography'"> [find issues/PR] </a></td>
-    <td><b>nidm:'X-ray Computed Tomography': </b>X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays</td>
+    <td><b>nidm:'X-ray Computed Tomography': </b>X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
@@ -933,12 +1028,6 @@ Thank you in advance for taking part in NIDM-Experiment term curation!
     <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Continuous Performance Test'"> [find issues/PR] </a></td>
     <td><b>nidm:'Continuous Performance Test': </b>A Continuous Performance Test is an assessment instrument that measures sustained and selective attention by having the subject perform a task continuously for a given duration of time</td>
     <td>onli:assessment-instrument</td>
-</tr>
-<tr>
-    <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>
-    <td><a href="https://github.com/incf-nidash/nidm//issues?&q='Contrast Enhanced Fast Field Echo'"> [find issues/PR] </a></td>
-    <td><b>nidm:'Contrast Enhanced Fast Field Echo': </b>Contrast Enhanced Fast Field Echo, is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time</td>
-    <td>nidm:AcquisitionMethod</td>
 </tr>
 <tr>
     <td><img src="../../../doc/content/specs/img/orange.png?raw=true"/>  </td>

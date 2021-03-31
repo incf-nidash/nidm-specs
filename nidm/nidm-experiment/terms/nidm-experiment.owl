@@ -12,7 +12,6 @@
 @prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix provone: <http://purl.org/provone#> .
-@prefix qibo: <http://www.owl-ontologies.com/Ontology1298855822.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sio: <http://semanticscience.org/resource/> .
@@ -29,7 +28,6 @@
                <http://purl.org/nidash/nidm/ontoneurolog_instruments_import.owl> ,
                <http://purl.org/nidash/nidm/obi_import.owl> ,
                <http://purl.org/nidash/nidm/pato_import.owl> ,
-               <http://purl.org/nidash/nidm/qibo_import.owl> ,
                <http://purl.org/nidash/nidm/sio_import.owl> ,
                <http://www.w3.org/ns/prov-o-20130430>
 ] .
@@ -433,7 +431,7 @@ nidm:Acquisition rdf:type owl:Class ;
 
                rdfs:label "Acquisition" ;
 
-               obo:IAO_0000115 "An acquisition is an activty in which data about a subject is gathered."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition is an activty in which data about a study participant is gathered."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                  
@@ -465,7 +463,7 @@ nidm:AcquisitionMethod rdf:type owl:Class ;
                        
                rdfs:label "Acquisition Method" ;
 
-               obo:IAO_0000115 "An acquisition method is a specific form of a procedure that was used to gather data from a subject."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition method is a specific form of a procedure that was used to gather data from a study participant."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                        
@@ -479,7 +477,7 @@ nidm:AcquisitionModality rdf:type owl:Class ;
                          
                rdfs:label "Acquisition Modality" ;
 
-               obo:IAO_0000115 "An acquisition modality is a description of the general type of experiment that was used to gather data from a subject."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition modality is a description of the general type of experiment that was used to gather data from a study participant."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                          
@@ -509,7 +507,7 @@ nidm:AcquisitionObjectQuality rdf:type owl:Class ;
 
                rdfs:label "Acquisition Object Quality"^^xsd:string ;
 
-               obo:IAO_0000115 "An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a subject during an acquisition activity."^^xsd:string ;
+               obo:IAO_0000115 "An acquisition object quality is an quality that describes an essential feature of an object that is gathered from a study participant during an acquisition activity."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
                               
@@ -667,7 +665,6 @@ nidm:BehavioralInstrument rdf:type owl:Class ;
 
 
 
-
 ###  http://purl.org/nidash/nidm#NIDM_0000152
 
 nidm:NIDM_0000152 rdf:type owl:Class ;
@@ -748,6 +745,7 @@ nidm:CerebralBloodFlow rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#CerebralBloodVolume
 
 nidm:CerebralBloodVolume rdf:type owl:Class ;
                   
@@ -788,6 +786,20 @@ nidm:CoInvestigator rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
                obo:IAO_0000115 "A co-investigator is a role for a person that shares responsibility for the oversight and performance of an investigation activity." .
+
+
+
+###  http://purl.org/nidash/nidm#CommonDataElement
+
+nidm:CommonDataElement rdf:type owl:Class ;
+
+               rdfs:label "Common Data Element" ;
+
+               obo:IAO_0000115 "A common data element is a data element that is part of a collection of data elements, curated or not, which are available for reuse."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf nidm:DataElement .
 
 
 
@@ -847,6 +859,20 @@ nidm:DataAcquisitionDevice rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#DataElement
+
+nidm:DataElement rdf:type owl:Class ;
+
+               rdfs:label "Data Element" ;
+
+               obo:IAO_0000115 "A data element is a variable, used in a scientific study, used to store either information regarding the acquisition, processing, or analysis of the acquisition object that resulted from the study activity."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf sio:SIO_000367 .
+
+
+
 ###  http://purl.org/nidash/nidm#DataProcessing
 
 nidm:DataProcessing rdf:type owl:Class ;
@@ -891,7 +917,6 @@ nidm:DemographicsInstrument rdf:type owl:Class ;
 
 
 
-
 ###  http://purl.org/nidash/nidm#DICOMTagCollection
 
 nidm:DICOMTagCollection rdf:type owl:Class ;
@@ -905,7 +930,6 @@ nidm:DICOMTagCollection rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
                         
                prov:wasAssociatedWith nidm:AcquisitionObject .
-
 
 
 
@@ -1026,7 +1050,7 @@ nidm:Electrode rdf:type owl:Class ;
 
                rdfs:label "Electrode"^^xsd:string ;
 
-               obo:IAO_0000115 "An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from subject or sample."^^xsd:string ;
+               obo:IAO_0000115 "An electrode is a data acquisition device that consists of a conductor that is used to record an electrical signal from a study participant."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1149,17 +1173,114 @@ nidm:ExtracellularElectrophysiologyRecording rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#ExVivo
+
+nidm:ExVivo rdf:type owl:Class ;
+
+               rdfs:label "Ex Vivo" ;
+
+               obo:IAO_0000115 "Ex vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes was once part of a living organism, but has been removed."^^xsd:string ;
+
+	       rdfs:comment "A common example is a tissue sample."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
 ###  http://purl.org/nidash/nidm#EyeTrackingDevice
 
 nidm:EyeTrackingDevice rdf:type owl:Class ;
                     
                rdfs:label "Eye Tracking Device" ;
 
-               obo:IAO_0000115 "An eye tracking device is a device that consists of hardware that follows the motion of a subjects eye so that allows the determination of either the location of the subject's gaze or of relative eye motion."^^xsd:string ;
+               obo:IAO_0000115 "An eye tracking device is a device that consists of hardware that follows the motion of one or both eyes of the study participant, which allows the determination of either the gaze location or of relative eye motion."^^xsd:string ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
                rdfs:subClassOf nidm:DataAcquisitionDevice .
+
+
+
+###  http://purl.org/nidash/nidm#FastFieldEcho
+
+nidm:FastFieldEcho rdf:type owl:Class ;
+
+               rdfs:label "Fast Field Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast Field Echo is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, a gradient-recalled echo, which is then measured."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that FFE is the Philips name for their implementation of the gradient recalled echo pulse sequence."^^xsd:string ;
+
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#FastImagingEmployingSteadyStateAcquisition
+
+nidm:FastImagingEmployingSteadyStateAcquisition rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Imaging Employing Steady State Acquisition"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast imaging employing steady state acquisition (FIESTA) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FIESTA is the name given to this sequence by GE, True FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+###  http://purl.org/nidash/nidm#FastImagingWithSteadyStatePrecession
+
+nidm:FastImagingWithSteadyStatePrecession rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Imaging With Steady State"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast imaging with steady state precession (FISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with spoiler and rewinder gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "GRASS is the name given to this sequence by GE, FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+
+###  http://purl.org/nidash/nidm#FastLowAngleShot
+
+nidm:FastLowAngleShot rdf:type owl:Class ;
+
+               rdfs:label "Fast Low Angle Shot"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast Low Angle Shot is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured, and an additional gradient to destroy any residual magnetization at the end of the pulse sequence."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:subClassOf nidm:SpoiledGradientRecalledEcho ;
+
+               rdfs:comment "Note that FLASH is the Siemens name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Contrast Enhanced or T1 Fast Field Echo (T1-FFE)"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#FastSpinEcho
+
+nidm:FastSpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses, the latter in conjunction with a different phase-encoding gradient at each refocussed echo."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FSE is also known as turbo spin echo"^^xsd:string ;
+                                
+               rdfs:subClassOf nidm:SpinEcho .
 
 
 
@@ -1173,21 +1294,6 @@ nidm:FieldPotential rdf:type owl:Class ;
                 
                obo:IAO_0000114 obo:IAO_0000428 ;
                     
-               rdfs:subClassOf nidm:AcquisitionMethod .
-
-
-
-
-###  http://purl.org/nidash/nidm#FluidAttenuatedInversionRecovery
-
-nidm:FluidAttenuatedInversionRecovery rdf:type owl:Class ;
-                                   
-               rdfs:label "Fluid Attenuated Inversion Recovery"^^xsd:string ;
-
-               obo:IAO_0000115 "Fluid Attenuated Inversion Recovery, which is often known by its acronym, FLAIR, is a magnetic resonance imaging acquisition method in which images are acquired after an initial magnetization inversion pulse is applied and a delay duration that is selected such that the signal from bulk fluid such as cerebral spinal fluid or fluid in lesions is nulled."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-                                   
                rdfs:subClassOf nidm:AcquisitionMethod .
 
 
@@ -1206,6 +1312,20 @@ nidm:FlowWeighted rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#FluidAttenuatedInversionRecovery
+
+nidm:FluidAttenuatedInversionRecovery rdf:type owl:Class ;
+                                   
+               rdfs:label "Fluid Attenuated Inversion Recovery"^^xsd:string ;
+
+               obo:IAO_0000115 "Fluid Attenuated Inversion Recovery, which is often known by its acronym, FLAIR, is a magnetic resonance imaging acquisition method in which images are acquired after an initial magnetization inversion pulse is applied and a delay duration that is selected such that the signal from bulk fluid such as cerebral spinal fluid or fluid in lesions is nulled."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                   
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
 ###  http://purl.org/nidash/nidm#Functional
 
 nidm:Functional rdf:type owl:Class ;
@@ -1219,18 +1339,33 @@ nidm:Functional rdf:type owl:Class ;
                rdfs:subClassOf nidm:ImageUsageType .
 
 
+###  http://purl.org/nidash/nidm#GradientRecalledAcquisitionInSteadyState
 
-###  http://purl.org/nidash/nidm#Group
+nidm:GradientRecalledAcquisitionInSteadyState rdf:type owl:Class ;
+                                
+               rdfs:label "Gradient Recalled Acquisition in Steady State"^^xsd:string ;
 
-nidm:Group rdf:type owl:Class ;
+               obo:IAO_0000115 "Gradient recalled acquisition in steady state (GRASS) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
 
-               rdfs:label "Group"^^xsd:string ;
-
-               obo:IAO_0000115 "A group is a collection of subjects or objects formed by the assignment of membership through the selection of one or more common characteristics."^^xsd:string ;
-                       
                obo:IAO_0000114 obo:IAO_0000428 ;
-           
-               rdfs:subClassOf prov:Collection .
+
+	       rdfs:comment "GRASS is the name given to this sequence by GE, FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+###  http://purl.org/nidash/nidm#GradientRecalledEcho
+
+nidm:GradientRecalledEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Gradient Recalled Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Gradient recalled echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application and subsequent reversal of the frequency-encoding gradient and is characterized by flip angles of less than 90 degrees and the evolution being governed by T2star decay."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                
+               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -1240,11 +1375,25 @@ nidm:Gender rdf:type owl:Class ;
 
                rdfs:label "Gender"^^xsd:string ;
 
-               obo:IAO_0000115 "Gender is a social entity that identifies which of either male or female that a person identifies as, which may be different from biological sex."^^xsd:string ;
+               obo:IAO_0000115 "Gender is a social entity that identifies which of either male or female a person identifies as, and which may be different from biological sex."^^xsd:string ;
                        
                obo:IAO_0000114 obo:IAO_0000428 ;
            
                rdfs:subClassOf sio:SIO_000009 .
+
+
+
+###  http://purl.org/nidash/nidm#Group
+
+nidm:Group rdf:type owl:Class ;
+
+               rdfs:label "Group"^^xsd:string ;
+
+               obo:IAO_0000115 "A group is a collection of agents or entities formed by the assignment of membership through the selection of one or more common characteristics."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+           
+               rdfs:subClassOf prov:Collection .
 
 
 
@@ -1340,7 +1489,7 @@ nidm:InformedConsentInstrument rdf:type owl:Class ;
 
                rdfs:label "Informed Consent Instrument"^^xsd:string ;
 
-               obo:IAO_0000115 "An informed consent instrument is a instrument usage type that provides the subject with information regarding the study during which data will be collected from the subject and is used to collect the subjects consent to being a part of that study."^^xsd:string ;
+               obo:IAO_0000115 "An informed consent instrument is a instrument usage type used for an instrument is used to collect the consent of the study participant after providing information about the study, such as what data will be collected and under what conditions."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1354,7 +1503,7 @@ nidm:InstrumentAdministrator rdf:type owl:Class ;
                                   
                rdfs:label "Instrument Administrator" ;
 
-               obo:IAO_0000115 "An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the subject to the contents of the instrument."^^xsd:string ;
+               obo:IAO_0000115 "An instrument administrator is the role of an agent who/that either provides the instrument or collects the responses of the study participant to the contents of the instrument."^^xsd:string ;
 
                rdfs:comment "The instrument administrator could either be a computer-based system or a person, hence the use of who/that. Common catagories of instruments are behavioral, clinical, or demographic instruments." ;
                        
@@ -1422,6 +1571,38 @@ nidm:IntracranialElectroencephalography rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#InVitro
+
+nidm:InVitro rdf:type owl:Class ;
+
+               rdfs:label "In Vitro" ;
+
+               obo:IAO_0000115 "In vitro is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is outside of a living organism."^^xsd:string ;
+
+	       rdfs:comment "A common example is a sample consisting of perfused cells."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
+###  http://purl.org/nidash/nidm#InVivo
+
+nidm:InVivo rdf:type owl:Class ;
+
+               rdfs:label "In Vivo" ;
+
+               obo:IAO_0000115 "In vivo is a organismal quality, usually used as an attribute of an Agent, that indicates that the Agent it describes is a living organism."^^xsd:string ;
+
+	       rdfs:comment "A common example is a person."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                
+               rdfs:subClassOf obo:PATO_0001995 .
+
+
+
 ###  http://purl.org/nidash/nidm#LinearAttenuationCoefficient
 
 nidm:LinearAttenuationCoefficient rdf:type owl:Class ;
@@ -1472,7 +1653,7 @@ nidm:MagneticResonanceImaging rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
+              obo:IAO_0000115 "Magnetic Resonance Imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant and the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1486,7 +1667,7 @@ nidm:MagneticResonanceImagingScanner rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a sample or subject and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
+              obo:IAO_0000115 "A magnetic resonance imaging scanner is a data acquisition device that uses radiofrequency electromagnetic radiation to excite nuclei of a study participant and uses the characteristics of the detected signal are used to generate intensity contrast between different tissue types or structures."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1615,7 +1796,7 @@ nidm:MultielectrodeArray rdf:type owl:Class ;
 
                rdfs:label "Multi-electrode Array"^^xsd:string ;
 
-               obo:IAO_0000115 "A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from subject or sample."^^xsd:string ;
+               obo:IAO_0000115 "A multi-electrode array is a data acquisition device that records more than one concurrent electrical signal from study participant or sample."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -1623,9 +1804,23 @@ nidm:MultielectrodeArray rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#MultiUnitReccording
+###  http://purl.org/nidash/nidm#MultipleSpinEcho
 
-nidm:MultiUnitReccording rdf:type owl:Class ;
+nidm:MultipleSpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Multiple Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Multiple spin echo is a magnetic resonance imaging acquisition method in which the echoes used in the measurement are generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses,and each succeeding echo is used as a k-space line in an image with a longer echo time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:subClassOf nidm:SpinEcho .
+
+
+
+###  http://purl.org/nidash/nidm#MultiUnitRecording
+
+nidm:MultiUnitRecording rdf:type owl:Class ;
                          
               rdfs:label "Multi-unit Recording" ;
                          
@@ -1660,7 +1855,7 @@ nidm:NoiseMeasurement rdf:type owl:Class ;
 
                obo:IAO_0000115 "Noise measurement is an acquisition usage type that denotes that the acquisition object collected has been used to measure the intrinsic noise level of the acquisition hardware."^^xsd:string ;
                        
-               rdfs:comment "This type is also called 'Empty' in Magnetoencepholography, since the acquisition activity is undertaken with no subject or sample present."^^xsd:string ;
+               rdfs:comment "This type is also called 'Empty' in Magnetoencepholography, since the acquisition activity is undertaken with no study participant present."^^xsd:string ;
 
                obo:IAO_0000114 obo:IAO_0000428 ; 
                      
@@ -1676,7 +1871,7 @@ nidm:NuclearMagneticResonanceSpectroscopy rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
+              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopy is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate signal intensity contrast over an entire selected volume, and the resulting signal is displayed as a signal spectrum rather than as matrix meant to be a representation of the underlying object."^^xsd:string ;
 
               rdfs:comment "The volume of interest may be selected either by the natural extent of the excited volume (e.g., surface coils) or by selecting for excitation, a thick slab through the use of magnetic field gradients."^^xsd:string ;
                       
@@ -1692,7 +1887,7 @@ nidm:NuclearMagneticResonanceDevice rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:DataAcquisitionDevice ;
 
-              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
+              obo:IAO_0000115 "A Nuclear magnetic resonance device is an data acquisition device in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to infer information regarding the chemical or physical environment of the sample."^^xsd:string ;
 
               rdfs:comment "This is a generic term that may be applied to a magnetic resonance imaging scanner, but is most often used for devices used for nuclear magnetic resonance spectroscopy based experiments."^^xsd:string ;
                       
@@ -1708,7 +1903,7 @@ nidm:NuclearMagneticResonanceSpectroscopicImaging rdf:type owl:Class ;
                                           
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the sample or subject, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas."^^xsd:string ;
+              obo:IAO_0000115 "Nuclear magnetic resonance spectroscopic imaging is an acquisition modality in which radiofrequency electromagnetic radiation is used to excite nuclei of the study participant, the characteristics of the detected signal are used to generate intensity contrast over a restricted (usually grid-like) area, and the resulting signal is displayed as a spectrum for each one of the spatially-resolved areas."^^xsd:string ;
                       
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1784,6 +1979,34 @@ nidm:Perfusion rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#PersonalDataElement
+
+nidm:PersonalDataElement rdf:type owl:Class ;
+
+               rdfs:label "Personal Data Element" ;
+
+               obo:IAO_0000115 "A personal data element is a data element that is part of a collection of data elements that have been defined locally, e.g., used to single study, lab, or project, but that are not meant for adoption by a wider community."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf nidm:DataElement .
+
+
+
+###  http://purl.org/nidash/nidm#Phantom
+
+nidm:Phantom rdf:type owl:Class ;
+
+               rdfs:label "Phantom" ;
+
+               obo:IAO_0000115 "A phantom is a device that is used in a study as an inanimate study participant from which data is acquired to measure performancde, variability or reproducibility of an data acquisition device."^^xsd:string ;
+                       
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                 
+               rdfs:subClassOf sio:SIO_000956 .
+
+
+
 ###  http://purl.org/nidash/nidm#Phase
 
 nidm:Phase rdf:type owl:Class ;
@@ -1808,7 +2031,7 @@ nidm:PositronEmissionTomography rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the subject and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated."^^xsd:string ;
+              obo:IAO_0000115 "Positron emission tomography is an acquisition modality in which a positron-emitting radioactive tracer is introduced into the study participant and the gamma rays emitted after a positron-electron collision are detected and their originating position calculated."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1822,7 +2045,7 @@ nidm:PositronEmissionTomographyScanner rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a subject who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays."^^xsd:string ;
+              obo:IAO_0000115 "A positron emission tomography scanner is a data-acquisition device that collects gamma rays emitted by a study participant who is administered a positron-emitting radioactive substance and creates an image by calculating the originating position of the gamma rays."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1836,7 +2059,7 @@ nidm:PresentationSoftware rdf:type owl:Class ;
 
               rdfs:label "Presentation Software"^^xsd:string ;
 
-              obo:IAO_0000115 "Presentation software is a software agent that provides the stimulus to the subject during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity."^^xsd:string ;
+              obo:IAO_0000115 "Presentation software is a software agent that provides the stimulus to the study participant during a functional imaging (MRI, MEG, EEG) or behavioral data acquisition activity."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -1946,9 +2169,9 @@ nidm:PulseSequence rdf:type owl:Class ;
                    
               rdfs:label "Pulse Sequence"^^xsd:string ;
                    
-              rdfs:subClassOf prov:Collection ;
+              rdfs:subClassOf prov:SoftwareAgent ;
                    
-              obo:IAO_0000115 "A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the subject or sample and the acquisition of data."^^xsd:string ;
+              obo:IAO_0000115 "A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the study participant and the acquisition of data."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2033,7 +2256,7 @@ nidm:RespirationRateMonitor rdf:type owl:Class ;
 
                rdfs:label "Respiration Rate Monitor"^^xsd:string ;
 
-               obo:IAO_0000115 "A respiration rate monitor is a data acquisition device that records the number of breaths taken by a subject in a given period of time."^^xsd:string ;
+               obo:IAO_0000115 "A respiration rate monitor is a data acquisition device that records the number of breaths taken by a study participant in a given period of time."^^xsd:string ;
                              
                obo:IAO_0000114 obo:IAO_0000428 ;
                
@@ -2049,7 +2272,7 @@ nidm:Resting rdf:type owl:Class ;
           
               rdfs:subClassOf prov:Activity ;
           
-              obo:IAO_0000115 "Resting is an activity in which a subject does not perform a specific task."^^xsd:string ;
+              obo:IAO_0000115 "Resting is an activity in which the study participant does not perform a specific task."^^xsd:string ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2095,7 +2318,7 @@ nidm:Session rdf:type owl:Class ;
 
               rdfs:label "Session"^^xsd:string ;
              
-              obo:IAO_0000115 "A session is an activity during which data, potentially of different types, is acquired from a subject by an experimenter during a single unbroken time period." ;
+              obo:IAO_0000115 "A session is an activity during which data, potentially of different types, is acquired from a study participant by an experimenter during a single unbroken time period." ;
 
               rdfs:comment "During a MRI session, for example, T1-weighted and resting-state data were acquired.  Both the T1-weighted and resting state data are Acquisition Objects and the time period during which they were acquired is the Session." ;
              
@@ -2187,7 +2410,7 @@ nidm:SinglePhotonEmissionComputedTomography rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:AcquisitionModality ;
 
-              obo:IAO_0000115 "Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the subject and the gamma rays emitted are detected in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+              obo:IAO_0000115 "Single-photon emission computed tomography (SPECT)is an acquisition modality in which a gamma-ray-emitting radioisotope is introduced into the study participant and the emitted gamma rays are detected in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2201,7 +2424,7 @@ nidm:SinglePhotonEmissionComputedTomographyScanner rdf:type owl:Class ;
                                 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;
 
-              obo:IAO_0000115 "A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a subject in a series of two-dimensional images around the patient, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
+              obo:IAO_0000115 "A single-photon emission computed tomography (SPECT)scanner is an acquisition device that collects gamma-rays emitted by a study participant in a series of cross-sectional views, acquired in detectors encircling the study participant, enabling a three-dimensional volume to be reconstructed using a tomographic reconstruction method."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2215,7 +2438,7 @@ nidm:SingleUnitReccording rdf:type owl:Class ;
                           
               rdfs:subClassOf nidm:AcquisitionMethod ;
 
-              obo:IAO_0000115 "Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of a sample or subject and the action potential from a single neuron is recorded."^^xsd:string ;
+              obo:IAO_0000115 "Single-unit recording is an extracellular electrophysiological acquisition method, in which a thin electrode is introduced into the extracellular space of the study participant and the action potential from a single neuron is recorded."^^xsd:string ;
                                   
               obo:IAO_0000114 obo:IAO_0000125 .
 
@@ -2234,6 +2457,36 @@ nidm:SpecifiedPlan rdf:type owl:Class ;
               rdfs:comment "Note that this is related to nidm:PerformedPlan, which is the plan that is actually carried out." ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#SpinEcho
+
+nidm:SpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency pulse and a subsequent pulse, generally, though not necessarily, with flip angles of 90 and 180 degrees respectively."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#SpoiledGradientRecalledEcho
+
+nidm:SpoiledGradientRecalledEcho rdf:type owl:Class ;
+
+	       rdfs:label "Spoiled Gradient Recalled Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Spoiled Gradient Recalled Echo (SPGR), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:subClassOf nidm:GradientRecalledEcho ;
+
+               rdfs:comment "Note that SPGR is the GE name for their implementation of this pulse sequence.  Siemens calls their implementation Fast Low Angle Shot (FLASH) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
 
 
 
@@ -2299,7 +2552,7 @@ nidm:SteadyStateFreePrecession rdf:type owl:Class ;
                                    
                rdfs:label "Steady State Free Precession"^^xsd:string ;
 
-               obo:IAO_0000115 "Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, low flip angle gradient recalled echoes and short repetition times to form images."^^xsd:string ;
+               obo:IAO_0000115 "Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, formed by a series of phase-alternated radiofrequency pulses, spoiler gradients in the slice-selection direction, rewinder gradients in the phase-encoding direction to form images."^^xsd:string ;
 
                obo:IAO_0000114 obo:IAO_0000428 ;
                                    
@@ -2315,7 +2568,7 @@ nidm:StimulusPresentationFile rdf:type owl:Class ;
                               
               rdfs:subClassOf nidm:AuxiliaryFile ;
                               
-              obo:IAO_0000115 "A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the subject in a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus presentation file is an auxiliary files that contains the presentation timing and/or location of the experimental stimulus (e.g., words, pictures) that are shown to the study participant in a task-based assessment activity."^^xsd:string ;
                                 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2329,7 +2582,7 @@ nidm:StimulusResponseFile rdf:type owl:Class ;
                           
               rdfs:subClassOf nidm:AuxiliaryFile ;
                           
-              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
                           
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2343,24 +2596,25 @@ nidm:Structural rdf:type owl:Class ;
 
               rdfs:label "Structural"^^xsd:string ;
                           
-              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the subject to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
+              obo:IAO_0000115 "A stimulus response file is an auxiliary file that contains the recorded response of the study participant to an experimental stimulus the course of a task-based assessment activity."^^xsd:string ;
                           
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
-###  http://purl.org/nidash/nidm#Subject
+###  http://purl.org/nidash/nidm#StudyParticipant
 
-nidm:Subject rdf:type owl:Class ;
+nidm:StudyParticipant rdf:type owl:Class ;
              
-              rdfs:label "Subject"^^xsd:string ;
+              rdfs:label "Study Participant"^^xsd:string ;
              
               rdfs:subClassOf prov:Role ;
+
+	      rdfs:comment "This role is meant as the parent term for all types agents from which Acquisition Objects are acquired.  This term is based on the STATO term http://purl.obolibrary.org/obo/OBI_0000097, Participant Under Investigation Role.  STATO also has the term Specimen, which can be a Participant, but is not necessarily, since the Specimen itself may not be the thing under investigation, ie, it may be a constituent of the Specimen that the what is actually under investigation."^^xsd:string ;
              
-              obo:IAO_0000115 "A subject is a role for an agent (either living or non-living) which is characterized by being the object of study in an acquisition activity."^^xsd:string ;
+              obo:IAO_0000115 "A study participant is a role for an agent, either living or non-living, which is characterized by being the object of study in an acquisition activity."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
-
 
 
 
@@ -2389,6 +2643,22 @@ nidm:SusceptibilityWeightedImaging rdf:type owl:Class ;
               obo:IAO_0000115 "Susceptibility weighted imaging is a magentic resonance imaging image-usage type in which differences in voxel intensity reflect differences in magnetic susceptibilty of the underlying sample, but are not caculated values."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#T1FastFieldEcho
+
+nidm:T1FastFieldEcho rdf:type owl:Class ;
+
+               rdfs:label "T1 Fast Field Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "T1 Fast Field Echo, is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured and an additional gradient to destroy any residual magnetization at the end of the pulse sequence."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that T1 FFE is the Philips name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Siemens calls theirs Fast Low Angle Shot (FLASH)"^^xsd:string ;
+
+               rdfs:subClassOf nidm:SpoiledGradientRecalledEcho .
 
 
 
@@ -2456,7 +2726,7 @@ nidm:Task rdf:type owl:Class ;
           
               rdfs:subClassOf prov:Activity ;
           
-              obo:IAO_0000115 "A task is an activity that is performed by a subject to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
+              obo:IAO_0000115 "A task is an activity that is performed by a study Participant to elucidate some aspect of human behavior or underlying process."^^xsd:string ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2487,6 +2757,22 @@ nidm:TransmitCoil rdf:type owl:Class ;
               obo:IAO_0000115 "A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. "^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#TrueFastImagingWithSteadyStatePrecession
+
+nidm:TrueFastImagingWithSteadyStatePrecession rdf:type owl:Class ;
+                                
+               rdfs:label "True Fast Imaging With Steady State"^^xsd:string ;
+
+               obo:IAO_0000115 "True fast imaging with steady state precession (TrueFISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FIESTA is the name given to this sequence by GE, True FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
 
 
 
@@ -2528,7 +2814,7 @@ nidm:X-rayComputedTomography rdf:type owl:Class ;
                         
               rdfs:subClassOf nidm:AcquisitionModality ;
                     
-              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
+              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
               
@@ -2544,7 +2830,7 @@ nidm:X-rayComputedTomographyAcquisitionDevice rdf:type owl:Class ;
 
               rdfs:subClassOf nidm:ImageAcquisitionDevice ;                        
                     
-              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a subject and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
+              obo:IAO_0000115 "X-ray Computed tomography is an acquisition modality in which an x-ray beam is scanned across a study participant and the resulting data is reconstructed into two-dimensional slices or a three-dimensional volume in which the contrast is generated by the differential absorption of x-rays." ;
 
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2643,31 +2929,6 @@ sio:SIO_001069 rdfs:subClassOf nidm:Group .
 ###  http://purl.obolibrary.org/obo/PATO_0000001
 
 obo:PATO_0000001 rdfs:subClassOf sio:SIO_000614 .
-
-
-
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#Ex_vivo_subject
-
-qibo:Ex_vivo_subject rdfs:subClassOf nidm:Subject .
-
-
-
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vitro_subject
-
-qibo:In_vitro_subject rdfs:subClassOf nidm:Subject .
-
-
-
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#In_vivo_subject
-
-qibo:In_vivo_subject rdfs:subClassOf nidm:Subject .
-
-
-
-###  http://www.owl-ontologies.com/Ontology1298855822.owl#Phantom_experimental_subject
-
-qibo:Phantom_experimental_subject rdfs:subClassOf nidm:Subject .
-
 
 
 ###  http://www.w3.org/ns/prov#Activity
@@ -2931,14 +3192,6 @@ nidm:SpatialMemorySpanTest rdf:type owl:NamedIndividual ,
               onli:assessment-instrument .
 
 
-
-###  http://purl.org/nidash/nidm#ContrastEnhancedFastFieldEcho
-
-nidm:ContrastEnhancedFastFieldEcho rdf:type owl:NamedIndividual ,
-               nidm:AcquisitionMethod .
-                                   
-
-
 ###  http://purl.org/nidash/nidm#StroopTest
 
 nidm:StroopTest rdf:type owl:NamedIndividual ,
@@ -3037,16 +3290,6 @@ nidm:ContinuousPerformanceTest rdfs:label "Continuous Performance Test"^^xsd:str
 
 
 
-nidm:ContrastEnhancedFastFieldEcho rdfs:label "Contrast Enhanced Fast Field Echo"^^xsd:string ;
-
-               obo:IAO_0000115 "Contrast Enhanced Fast Field Echo, is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-
-               rdfs:comment "Note that CE-FFE is the Philips name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Fast Low Angle Shot (FLASH)"^^xsd:string .
-
-
-
 nidm:DelaySemanticLearningTest rdfs:label "Delay Semantic Learning Test"^^xsd:string ;
 
               obo:IAO_0000115 "The Delay Semantic Learning Test (Delay SLT) is an assessment instrument in which subjects are asked to recall as many words that have been presented to the subject previous to a delay period."^^xsd:string ;
@@ -3098,16 +3341,6 @@ nidm:FagerstromTestForNicotineDependence rdfs:label "Fagerstrom Test for Nicotin
               dct:source "https://cde.drugabuse.gov/instrument/d7c0b0f5-b865-e4de-e040-bb89ad43202b accessed: 20161128"^^xsd:string ;
                            
               obo:IAO_0000114 obo:IAO_0000428 .
-
-
-
-nidm:FastLowAngleShot rdfs:label "Fast Low Angle Shot"^^xsd:string ;
-
-               obo:IAO_0000115 "Fast Low Angle Shot (FLASH), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-
-               rdfs:comment "Note that FLASH is the Siemens name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
 
 
 
@@ -3212,16 +3445,6 @@ nidm:SpatialMemorySpan rdfs:label "Spatial Memory Span" ;
               dct:source "fBIRN CMINDS document - not in the online version through"^^xsd:string ;
                        
               obo:IAO_0000114 obo:IAO_0000428 .
-
-
-
-nidm:SpoiledGradientRecalledEcho rdfs:label "Spoiled Gradient Recalled Echo"^^xsd:string ;
-
-               obo:IAO_0000115 "Spoiled Gradient Recalled Echo (SPGR), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-
-               rdfs:comment "Note that SPGR is the GE name for their implementation of this pulse sequence.  Siemens calls their implementation Fast Low Angle Shot (FLASH) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
 
 
 
