@@ -817,22 +817,6 @@ nidm:ContinuousArterialSpinLabeling rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#ContrastEnhancedFastFieldEcho
-
-nidm:ContrastEnhancedFastFieldEcho rdf:type owl:Class ;
-
-               rdfs:label "Contrast Enhanced Fast Field Echo"^^xsd:string ;
-
-               obo:IAO_0000115 "Contrast Enhanced Fast Field Echo, is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-
-               rdfs:comment "Note that CE-FFE is the Philips name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Siemens calls theirs Fast Low Angle Shot (FLASH)"^^xsd:string ;
-
-               rdfs:subClassOf nidm:GradientRecalledEcho .
-
-
-
 ###  http://purl.org/nidash/nidm#CurrentAmplifier
 
 nidm:CurrentAmplifier rdf:type owl:Class ;
@@ -1219,19 +1203,85 @@ nidm:EyeTrackingDevice rdf:type owl:Class ;
                rdfs:subClassOf nidm:DataAcquisitionDevice .
 
 
+
+###  http://purl.org/nidash/nidm#FastFieldEcho
+
+nidm:FastFieldEcho rdf:type owl:Class ;
+
+               rdfs:label "Fast Field Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast Field Echo is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, a gradient-recalled echo, which is then measured."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that FFE is the Philips name for their implementation of the gradient recalled echo pulse sequence."^^xsd:string ;
+
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
+###  http://purl.org/nidash/nidm#FastImagingEmployingSteadyStateAcquisition
+
+nidm:FastImagingEmployingSteadyStateAcquisition rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Imaging Employing Steady State Acquisition"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast imaging employing steady state acquisition (FIESTA) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FIESTA is the name given to this sequence by GE, True FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+###  http://purl.org/nidash/nidm#FastImagingWithSteadyStatePrecession
+
+nidm:FastImagingWithSteadyStatePrecession rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Imaging With Steady State"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast imaging with steady state precession (FISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with spoiler and rewinder gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "GRASS is the name given to this sequence by GE, FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+
 ###  http://purl.org/nidash/nidm#FastLowAngleShot
 
 nidm:FastLowAngleShot rdf:type owl:Class ;
 
                rdfs:label "Fast Low Angle Shot"^^xsd:string ;
 
-               obo:IAO_0000115 "Fast Low Angle Shot (FLASH), is a magnetic resonance imaging acquisition method that employs gradient echoes and a low-flip angle radio-frequency excitation of the sample magnetization along with a short repetition time."^^xsd:string ;
+               obo:IAO_0000115 "Fast Low Angle Shot is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured, and an additional gradient to destroy any residual magnetization at the end of the pulse sequence."^^xsd:string ;
 
                obo:IAO_0000114 obo:IAO_0000428 ;
 
-	       rdfs:subClassOf nidm:GradientRecalledEcho ;
+	       rdfs:subClassOf nidm:SpoiledGradientRecalledEcho ;
 
-               rdfs:comment "Note that FLASH is the Siemens name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Contrast Enhanced Fast Field Echo (T1-FFE)"^^xsd:string .
+               rdfs:comment "Note that FLASH is the Siemens name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Philips calls theirs Contrast Enhanced or T1 Fast Field Echo (T1-FFE)"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#FastSpinEcho
+
+nidm:FastSpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Fast Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Fast spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses, the latter in conjunction with a different phase-encoding gradient at each refocussed echo."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FSE is also known as turbo spin echo"^^xsd:string ;
+                                
+               rdfs:subClassOf nidm:SpinEcho .
 
 
 
@@ -1290,6 +1340,35 @@ nidm:Functional rdf:type owl:Class ;
                rdfs:subClassOf nidm:ImageUsageType .
 
 
+###  http://purl.org/nidash/nidm#GradientRecalledAcquisitionInSteadyState
+
+nidm:GradientRecalledAcquisitionInSteadyState rdf:type owl:Class ;
+                                
+               rdfs:label "Gradient Recalled Acquisition in Steady State"^^xsd:string ;
+
+               obo:IAO_0000115 "Gradient recalled acquisition in steady state (GRASS) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "GRASS is the name given to this sequence by GE, FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
+
+###  http://purl.org/nidash/nidm#GradientRecalledEcho
+
+nidm:GradientRecalledEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Gradient Recalled Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Gradient recalled echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application and subsequent reversal of the frequency-encoding gradient and is characterized by flip angles of less than 90 degrees and the evolution being governed by T2star decay."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
 
 ###  http://purl.org/nidash/nidm#Group
 
@@ -1316,20 +1395,6 @@ nidm:Gender rdf:type owl:Class ;
                obo:IAO_0000114 obo:IAO_0000428 ;
            
                rdfs:subClassOf sio:SIO_000009 .
-
-
-
-###  http://purl.org/nidash/nidm#GradientRecalledEcho
-
-nidm:GradientRecalledEcho rdf:type owl:Class ;
-                                
-               rdfs:label "Gradient Recalled Echo"^^xsd:string ;
-
-               obo:IAO_0000115 "Gradient recalled echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application and subsequent reversal of the frequency-encoding gradient and is characterized by flip angles of less than 90 degrees and the evolution being governed by T2star decay."^^xsd:string ;
-
-               obo:IAO_0000114 obo:IAO_0000428 ;
-                                
-               rdfs:subClassOf nidm:AcquisitionMethod .
 
 
 
@@ -1740,9 +1805,23 @@ nidm:MultielectrodeArray rdf:type owl:Class ;
 
 
 
-###  http://purl.org/nidash/nidm#MultiUnitReccording
+###  http://purl.org/nidash/nidm#MultipleSpinEcho
 
-nidm:MultiUnitReccording rdf:type owl:Class ;
+nidm:MultipleSpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Multiple Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Multiple spin echo is a magnetic resonance imaging acquisition method in which the echoes used in the measurement are generated by application of an initial radiofrequency 90 degree pulse and multiple subsequent 180 degree pulses,and each succeeding echo is used as a k-space line in an image with a longer echo time."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:subClassOf nidm:SpinEcho .
+
+
+
+###  http://purl.org/nidash/nidm#MultiUnitRecording
+
+nidm:MultiUnitRecording rdf:type owl:Class ;
                          
               rdfs:label "Multi-unit Recording" ;
                          
@@ -2381,6 +2460,21 @@ nidm:SpecifiedPlan rdf:type owl:Class ;
               obo:IAO_0000114 obo:IAO_0000428 .
 
 
+
+###  http://purl.org/nidash/nidm#SpinEcho
+
+nidm:SpinEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Spin Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Spin echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application of an initial radiofrequency pulse and a subsequent pulse, generally, though not necessarily, with flip angles of 90 and 180 degrees respectively."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
 ###  http://purl.org/nidash/nidm#SpoiledGradientRecalledEcho
 
 nidm:SpoiledGradientRecalledEcho rdf:type owl:Class ;
@@ -2453,13 +2547,27 @@ nidm:QuantitativeSusceptibilityMapping rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#SpoiledGradientRecalledEcho
+
+nidm:SpoiledGradientRecalledEcho rdf:type owl:Class ;
+                                
+               rdfs:label "Spoiled Gradient Recalled Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "Spoiled gradient recalled echo is a magnetic resonance imaging acquisition method in which the echo used in the measurement is generated by application and subsequent reversal of the frequency-encoding gradient and any residual transverse magnetization at the end of the sequence duration is destroyed by the application of a gradient pulse. "^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                                
+               rdfs:subClassOf nidm:GradientRecalledEcho .
+
+
+
 ###  http://purl.org/nidash/nidm#SteadyStateFreePrecession
 
 nidm:SteadyStateFreePrecession rdf:type owl:Class ;
                                    
                rdfs:label "Steady State Free Precession"^^xsd:string ;
 
-               obo:IAO_0000115 "Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, low flip angle gradient recalled echoes and short repetition times to form images."^^xsd:string ;
+               obo:IAO_0000115 "Steady State Free Precession is a magnetic resonance imaging acquisition method that uses the steady state magnetization, formed by a series of phase-alternated radiofrequency pulses, spoiler gradients in the slice-selection direction, rewinder gradients in the phase-encoding direction to form images."^^xsd:string ;
 
                obo:IAO_0000114 obo:IAO_0000428 ;
                                    
@@ -2550,6 +2658,22 @@ nidm:SusceptibilityWeightedImaging rdf:type owl:Class ;
               obo:IAO_0000115 "Susceptibility weighted imaging is a magentic resonance imaging image-usage type in which differences in voxel intensity reflect differences in magnetic susceptibilty of the underlying sample, but are not caculated values."^^xsd:string ;
              
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#T1FastFieldEcho
+
+nidm:T1FastFieldEcho rdf:type owl:Class ;
+
+               rdfs:label "T1 Fast Field Echo"^^xsd:string ;
+
+               obo:IAO_0000115 "T1 Fast Field Echo, is a magnetic resonance imaging acquisition method that employs a gradient to dephase and rephase the signal to create an echo, which is then measured and an additional gradient to destroy any residual magnetization at the end of the pulse sequence."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+               rdfs:comment "Note that T1 FFE is the Philips name for their implementation of this pulse sequence.  GE calls their implementation Spoiled Gradient Echo (SPGR) and Siemens calls theirs Fast Low Angle Shot (FLASH)"^^xsd:string ;
+
+               rdfs:subClassOf nidm:SpoiledGradientRecalledEcho .
 
 
 
@@ -2648,6 +2772,23 @@ nidm:TransmitCoil rdf:type owl:Class ;
               obo:IAO_0000115 "A transmit coil is a data device used in nuclear magnetic resonance and magnetic resonance imaging to apply the stimulating energy to the sample. "^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+###  http://purl.org/nidash/nidm#TrueFastImagingWithSteadyStatePrecession
+
+nidm:TrueFastImagingWithSteadyStatePrecession rdf:type owl:Class ;
+                                
+               rdfs:label "True Fast Imaging With Steady State"^^xsd:string ;
+
+               obo:IAO_0000115 "True fast imaging with steady state precession (TrueFISP) is a gradient recalled echo based magnetic resonance imaging acquisition method in which a series of phase-alternating radiofrequency pulses are applied, in conjunction with a balanced set of gradients, generating free induction decays and a steady-state transverse magnetization, the signal from which is collected."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       rdfs:comment "FIESTA is the name given to this sequence by GE, True FISP is the acronym used by Siemens."^^xsd:string ;
+	       
+               rdfs:subClassOf nidm:SteadyStateFreePrecession .
+
+
 
 
 
