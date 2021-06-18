@@ -16,6 +16,8 @@ NIDM_PATH = os.path.join(REL_PATH, os.pardir, "nidm")
 for component in ["nidm-results", "nidm-experiment"]:
     COMPONENT_SCRIPTS = os.path.join(NIDM_PATH, component, "scripts")
     sys.path.append(COMPONENT_SCRIPTS)
+    COMPONENT_SCRIPTS2 = os.path.join(NIDM_PATH, component, "scripts/nidm_html")
+    sys.path.append(COMPONENT_SCRIPTS2)
 
 import UpdateExpTermReadme
 import create_nidmr_context
@@ -25,7 +27,7 @@ import create_results_specification
 import UpdateTermReadme
 import UpdateExampleReadmes
 import recompute_all_ex
-
+import nidm_html
 
 def main():
     # --- NIDM-Experiment
@@ -45,6 +47,8 @@ def main():
     create_expe_specification.main()
     # Update csv file of preferred prefixes
     create_prefixes.main()
+    # Generate alternative NIDM HTML pages
+    nidm_html.main()
 
 
 if __name__ == '__main__':
