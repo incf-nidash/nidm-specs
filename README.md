@@ -51,7 +51,7 @@ Thanks for you interest in contributing to NIDM-Workflows! Contributions to NIDM
 
 ### Documentation
 The W3C work-in-progress NIDM-Experiment specification is available [here](http://nidm.nidash.org/specs/nidm-experiment_dev.html).
-The entire NIDM-Experiment specification terminology, included imported terms, is available [here](http://nidm.nidash.org/specs/nidm_html/index.html).
+The entire NIDM-Experiment specification terminology, including imported terms, is available [here](http://nidm.nidash.org/specs/nidm_html/index.html).
 
 ### Tools
  * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
