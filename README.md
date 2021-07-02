@@ -8,8 +8,8 @@ NIDM is currently made up of:
  - 1 released model
    - [**NIDM-Results**](#nidm-results): harmonised representation of mass univariate neuroimaging results (such as fMRI)
  - 2 models under development
-   - [**NIDM-Workflows**](#nidm-workflows): representation of neuroimaging workflows
    - [**NIDM-Experiment**](#nidm-experiment): representation of neuroimaging raw data
+   - [**NIDM-Workflows**](#nidm-workflows): representation of neuroimaging workflows
 
 
 ![alt text](doc/content/specs/img/nidm-upper-layer.png)
@@ -35,6 +35,26 @@ Interested in using NIDM-Results? See the [get started with NIDM](http://nidm.ni
 ### Contributing
 Thanks for you interest in contributing to NIDM-Results! If you would like to submit an update or outline an issue with the NIDM-Results specification, please [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
 
+
+## NIDM-Experiment
+
+### Documentation
+The W3C-formatted work-in-progress version of the NIDM-Experiment specification, containing only NIDM namespace terms, is available [here](http://nidm.nidash.org/specs/nidm-experiment_dev.html).
+
+The entire NIDM-Experiment specification terminology is available [here](http://nidm.nidash.org/specs/nidm_html/index.html). Terms from other ontologies and terminologies (BIDS, DICOM, SIO, OBO, ONLI) used in NIDM-Experiment can also be found here by clicking on the buttons at the top of the page. These pages are interconnected, for example, if a nidm: namespace term entry uses a term from SIO, the SIO term will be a link that will refer to the SIO entry that provides the term label and definition.  These pages can be used as a source of URI's, useful when annotating data using PyNIDM or other software. For example, the entry for the term is here [nidm:ImageDataReconstruction] http://nidm.nidash.org/specs/nidm_html/index.html#imagedatareconstruction).
+
+We have created terminologies from the BIDS and DICOM standards and included them in NIDM-Experiment. This means that all terms used in the BIDS specification and each DICOM tag now has a URI that can be used for data annotation.  Note however that BIDS and DICOM terms do not have formal definitions in their respective standards, but the description provided by those standards is provided here in each term entry. 
+
+### Tools
+ * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
+
+### Contributing
+Thanks for you interest in contributing to NIDM-Experiment! Please feel free to [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
+
+## NIDM weekly calls
+We meet to discuss the development of NIDM-Experiment by videoconference, once a month on a Friday at 8-9am PDT / 11am-12pm EDT / 4-5pm BST. The group is always open to new contributors interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com.  
+
+
 ## NIDM-Workflows
 
 ### Documentation
@@ -46,21 +66,6 @@ The work-in-progress NIDM-Workflows specification is available [here](https://do
 
 ### Contributing
 Thanks for you interest in contributing to NIDM-Workflows! Contributions to NIDM-Workflows are gathered on the work-in-progress [NIDM-Worklows specification](https://docs.google.com/document/d/1OjdvKyjSuLXoPrmH18SPj2Fe1bvkomQjowY7TG-F8MQ/edit). Please feel free to commment directly on this document, [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
-
-## NIDM-Experiment
-
-### Documentation
-The W3C work-in-progress NIDM-Experiment specification is available [here](http://nidm.nidash.org/specs/nidm-experiment_dev.html).
-The entire NIDM-Experiment specification terminology, including imported terms, is available [here](http://nidm.nidash.org/specs/nidm_html/index.html).
-
-### Tools
- * NIDM-Experiment I/O (reference implementations): [Python library](https://github.com/incf-nidash/pyNIDM)
-
-### Contributing
-Thanks for you interest in contributing to NIDM-Experiment! Please feel free to [submit an issue](https://github.com/incf-nidash/nidm-specs/issues/new) or [email us](mailto:incf-nidash-nidm<AT>googlegroups<DOT>com). You can also join our [weekly calls](#nidm-weekly-calls)!
-
-## NIDM weekly calls
-We meet every week by videoconference on Mondays at 8-9am PDT / 11am-12pm EDT / 4-5pm BST. The group is always open to new contributors interested in neuroimaging data sharing. To join the call or to ask any question, please email us at incf-nidash-nidm@googlegroups.com.  
 
 ## Other resources
  * [NIDM website](http://nidm.nidash.org)
