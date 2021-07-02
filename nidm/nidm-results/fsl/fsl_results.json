@@ -30,6 +30,12 @@
         "label": "Center of gravity 2"
       }
     ], 
+    "FSL": {
+      "softwareVersion": "5.0.x", 
+      "label": "FSL", 
+      "@id": "niiri:software_id", 
+      "featVersion": "6.00"
+    }, 
     "DesignMatrix": {
       "description": {
         "@id": "niiri:design_matrix_png_id"
@@ -43,42 +49,18 @@
       "fileName": "DesignMatrix.csv", 
       "@id": "niiri:design_matrix_id"
     }, 
-    "FSL": {
-      "softwareVersion": "5.0.x", 
-      "label": "FSL", 
-      "@id": "niiri:software_id", 
-      "featVersion": "6.00"
-    }, 
-    "MaskMap": {
-      "prov:wasGeneratedBy": {
-        "@id": "niiri:model_pe_id"
-      }, 
-      "format": "image/nifti", 
-      "isUserDefined": false, 
-      "inCoordinateSpace": {
-        "@id": "niiri:coordinate_space_id_1"
-      }, 
-      "fileName": "Mask.nii.gz", 
-      "atLocation": {
-        "@type": "xsd:anyURI", 
-        "@value": "file://path/to/Mask.nii.gz"
-      }, 
-      "crypto:sha512": "e43b6e01b0463fe7d40782137867a", 
-      "label": "Mask", 
-      "@id": "niiri:mask_id_1"
-    }, 
     "StudyGroupPopulation": [
-      {
-        "groupName": "Control", 
-        "label": "Group: Control", 
-        "@id": "niiri:group_id", 
-        "numberOfSubjects": "23"
-      }, 
       {
         "groupName": "Patient", 
         "label": "Group: Patient", 
         "@id": "niiri:group2_id", 
         "numberOfSubjects": "21"
+      }, 
+      {
+        "groupName": "Control", 
+        "label": "Group: Control", 
+        "@id": "niiri:group_id", 
+        "numberOfSubjects": "23"
       }
     ], 
     "ParameterEstimateMap": [
@@ -139,15 +121,6 @@
         "@id": "niiri:supra_threshold_cluster_0001"
       }
     ], 
-    "FWERAdjustedPValue": {
-      "@id": "niiri:extent_threshold_id", 
-      "@type": "ExtentThreshold", 
-      "prov:value": {
-        "@type": "xsd:float", 
-        "@value": "1.0"
-      }, 
-      "label": "Cluster Threshold"
-    }, 
     "ContrastVarianceMap": {
       "format": "image/nifti", 
       "inCoordinateSpace": {
@@ -161,10 +134,10 @@
       {
         "equivalentThreshold": [
           {
-            "@id": "niiri:height_threshold_id_3"
+            "@id": "niiri:height_threshold_id_2"
           }, 
           {
-            "@id": "niiri:height_threshold_id_2"
+            "@id": "niiri:height_threshold_id_3"
           }
         ], 
         "@id": "niiri:height_threshold_id", 
@@ -194,6 +167,15 @@
         "label": "Height Threshold"
       }
     ], 
+    "ExtentThreshold": {
+      "@id": "niiri:extent_threshold_id", 
+      "@type": "FWERAdjustedPValue", 
+      "prov:value": {
+        "@type": "xsd:float", 
+        "@value": "1.0"
+      }, 
+      "label": "Cluster Threshold"
+    }, 
     "CoordinateSpace": [
       {
         "voxelUnits": "[ \"mm\", \"mm\", \"mm\" ]", 
@@ -225,7 +207,7 @@
         "@type": "xsd:dateTime", 
         "@value": "2014-05-19T10:30:00+01:00"
       }, 
-      "@id": "_:f8144b1706bcd4f468a6cd0456c3cfb1fb1", 
+      "@id": "_:ff34cdb293c104bbfab39f69952fe449bb1", 
       "prov:activity": {
         "@id": "niiri:export_id"
       }
@@ -258,18 +240,6 @@
         "prov:wasDerivedFrom": {
           "@id": "niiri:supra_threshold_cluster_0001"
         }, 
-        "equivalentZStatistic": "6.04", 
-        "pValueUncorrected": "7.705712e-10", 
-        "label": "Peak 2", 
-        "atLocation": {
-          "@id": "niiri:coordinate_0002"
-        }, 
-        "@id": "niiri:peak_0002"
-      }, 
-      {
-        "prov:wasDerivedFrom": {
-          "@id": "niiri:supra_threshold_cluster_0001"
-        }, 
         "equivalentZStatistic": "6.14", 
         "pValueUncorrected": "4.126074e-10", 
         "label": "Peak 1", 
@@ -289,6 +259,18 @@
           "@id": "niiri:coordinate_0003"
         }, 
         "@id": "niiri:peak_0003"
+      }, 
+      {
+        "prov:wasDerivedFrom": {
+          "@id": "niiri:supra_threshold_cluster_0001"
+        }, 
+        "equivalentZStatistic": "6.04", 
+        "pValueUncorrected": "7.705712e-10", 
+        "label": "Peak 2", 
+        "atLocation": {
+          "@id": "niiri:coordinate_0002"
+        }, 
+        "@id": "niiri:peak_0002"
       }, 
       {
         "prov:wasDerivedFrom": {
@@ -347,22 +329,22 @@
       }, 
       "prov:used": [
         {
-          "@id": "niiri:contrast_id"
-        }, 
-        {
-          "@id": "niiri:beta_map_id_1"
-        }, 
-        {
           "@id": "niiri:mask_id_1"
+        }, 
+        {
+          "@id": "niiri:design_matrix_id"
         }, 
         {
           "@id": "niiri:beta_map_id_2"
         }, 
         {
+          "@id": "niiri:beta_map_id_1"
+        }, 
+        {
           "@id": "niiri:residual_mean_squares_map_id"
         }, 
         {
-          "@id": "niiri:design_matrix_id"
+          "@id": "niiri:contrast_id"
         }
       ], 
       "@id": "niiri:contrast_estimation_id", 
@@ -395,10 +377,10 @@
       }, 
       "prov:wasAttributedTo": [
         {
-          "@id": "niiri:mr_scanner_id"
+          "@id": "niiri:group_id"
         }, 
         {
-          "@id": "niiri:group_id"
+          "@id": "niiri:mr_scanner_id"
         }, 
         {
           "@id": "niiri:group2_id"
@@ -419,13 +401,13 @@
     "ModelParameterEstimation": {
       "prov:used": [
         {
-          "@id": "niiri:design_matrix_id"
-        }, 
-        {
           "@id": "niiri:error_model_id"
         }, 
         {
           "@id": "niiri:data_id"
+        }, 
+        {
+          "@id": "niiri:design_matrix_id"
         }
       ], 
       "prov:wasAssociatedWith": {
@@ -491,7 +473,7 @@
     }, 
     "NIDMResults": {
       "prov:qualifiedGeneration": {
-        "@id": "_:f8144b1706bcd4f468a6cd0456c3cfb1fb1"
+        "@id": "_:ff34cdb293c104bbfab39f69952fe449bb1"
       }, 
       "version": "1.3.0", 
       "@id": "niiri:fsl_results_id", 
@@ -503,6 +485,12 @@
         "label": "Coordinate 2", 
         "@id": "niiri:COG_coordinate_0002", 
         "coordinateVector": "[ 25.6, 12.8, 14.6 ]"
+      }, 
+      {
+        "coordinateVectorInVoxels": "[ 28, 7, 16 ]", 
+        "label": "Coordinate 6", 
+        "@id": "niiri:coordinate_0006", 
+        "coordinateVector": "[ -25.5, -80.4, 15.3 ]"
       }, 
       {
         "coordinateVectorInVoxels": "[ 39, 13, 12 ]", 
@@ -535,18 +523,30 @@
         "coordinateVector": "[ -48.1, -73.7, -9.24 ]"
       }, 
       {
-        "coordinateVectorInVoxels": "[ 28, 7, 16 ]", 
-        "label": "Coordinate 6", 
-        "@id": "niiri:coordinate_0006", 
-        "coordinateVector": "[ -25.5, -80.4, 15.3 ]"
-      }, 
-      {
         "coordinateVectorInVoxels": "[ -30.8, -68.5, -13.4 ]", 
         "label": "Coordinate 1", 
         "@id": "niiri:COG_coordinate_0001", 
         "coordinateVector": "[ 40.2, 16.4, 13.2 ]"
       }
     ], 
+    "MaskMap": {
+      "prov:wasGeneratedBy": {
+        "@id": "niiri:model_pe_id"
+      }, 
+      "format": "image/nifti", 
+      "isUserDefined": false, 
+      "inCoordinateSpace": {
+        "@id": "niiri:coordinate_space_id_1"
+      }, 
+      "fileName": "Mask.nii.gz", 
+      "atLocation": {
+        "@type": "xsd:anyURI", 
+        "@value": "file://path/to/Mask.nii.gz"
+      }, 
+      "crypto:sha512": "e43b6e01b0463fe7d40782137867a", 
+      "label": "Mask", 
+      "@id": "niiri:mask_id_1"
+    }, 
     "ContrastMap": {
       "prov:wasGeneratedBy": {
         "@id": "niiri:contrast_estimation_id"
@@ -568,22 +568,22 @@
     "Inference": {
       "prov:used": [
         {
-          "@id": "niiri:peak_definition_criteria_id"
-        }, 
-        {
           "@id": "niiri:height_threshold_id"
         }, 
         {
-          "@id": "niiri:z_statistic_map_id"
-        }, 
-        {
-          "@id": "niiri:cluster_definition_criteria_id"
+          "@id": "niiri:peak_definition_criteria_id"
         }, 
         {
           "@id": "niiri:extent_threshold_id"
         }, 
         {
+          "@id": "niiri:cluster_definition_criteria_id"
+        }, 
+        {
           "@id": "niiri:mask_id_1"
+        }, 
+        {
+          "@id": "niiri:z_statistic_map_id"
         }
       ], 
       "prov:wasAssociatedWith": {
