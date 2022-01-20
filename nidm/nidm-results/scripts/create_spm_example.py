@@ -646,9 +646,7 @@ def main():
         os.path.dirname(os.path.abspath(__file__))), 'spm')
     ttl_file = os.path.join(NIDM_SPM_DIR, 'spm_results.ttl')
     example = ExampleFromTemplate(nidm_classes, ttl_file, False)
-    #KGH - purl for /nidash/context has raw.githubusercontent.com and certificate has www.github.com
-    #so an error is thrown. Removing the example creation to see if I can get around the error
-    #example.create_example()
+    example.create_example()
 
 
 if __name__ == '__main__':
