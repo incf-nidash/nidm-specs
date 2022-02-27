@@ -310,6 +310,30 @@ nidm:electrodeImpedance rdf:type owl:DatatypeProperty ;
 
 
 
+###  http://purl.org/nidash/nidm#hadFilePath
+nidm:hadFilePath rdf:type owl:DatatypeProperty ;
+                          
+               rdfs:label "had File Path"^^xsd:string ;
+                          
+               obo:IAO_0000115 "Had file path is a datatype property that associates a file on a computor storage volume with the string containing the location of that file on the computer storage volume."^^xsd:string ;
+                          
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
+###  http://purl.org/nidash/nidm#hadPath
+nidm:hadPath rdf:type owl:DatatypeProperty ;
+                          
+               rdfs:label "had Path"^^xsd:string ;
+                          
+               obo:IAO_0000115 "Had path is a datatype property that associates an entity on a computor storage volume with the string containing the location of that entity on the computer storage volume."^^xsd:string ;
+
+	        rdfs:comment "This can be used for entities other than files, such as folders and symbolic links."^^xsd:string ;
+                          
+               obo:IAO_0000116 "To be discussed"^^xsd:string .
+
+
+
 ###  http://purl.org/nidash/nidm#groupLabel
 
 nidm:groupLabel rdf:type owl:DatatypeProperty ;
@@ -684,6 +708,20 @@ nidm:NIDM_0000152 rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#BloodDraw
+
+nidm:BloodDraw rdf:type owl:Class ;
+                  
+               rdfs:label "Blood Draw"^^xsd:string ;
+
+               rdfs:subClassOf prov:Activity ;
+                  
+               obo:IAO_0000115 "Blood draw is an activity in which blood is removed from the body, usually for the purpose of medically-related or scientific measurements."^^xsd:string ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
 ###  http://purl.org/nidash/nidm#BloodOxygenLevelDependentWeighted
 
 nidm:BloodOxygenLevelDependentWeighted rdf:type owl:Class ;
@@ -909,6 +947,20 @@ nidm:DataProcessingDevice rdf:type owl:Class ;
                obo:IAO_0000115 "A data processing device is a device that manipulates a data packet, stream, or file by performing an operation on the data." ;
                   
                obo:IAO_0000114 obo:IAO_0000428 .  
+
+
+
+###  http://purl.org/nidash/nidm#Date
+
+nidm:Date rdf:type owl:Class ;
+                  
+               rdfs:label "Date" ;
+
+               rdfs:subClassOf sio:SIO_000015 ;
+
+               obo:IAO_0000115 "A date is an information content entity compfising the combination of year, month, and numerical value for the day in that month that an event happened." ;
+                  
+               obo:IAO_0000114 obo:IAO_0000428 .
 
 
 
@@ -1327,6 +1379,20 @@ nidm:FieldPotential rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#FilePath
+
+nidm:FilePath rdf:type owl:Class ;
+                  
+               rdfs:label "File Path"^^xsd:string ;
+
+               obo:IAO_0000115 "A file path is the location of a file on a computer storage volume."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+               rdfs:subClassOf nidm:Path .
+
+
+
 ###  http://purl.org/nidash/nidm#FlowWeighted
 
 nidm:FlowWeighted rdf:type owl:Class ;
@@ -1729,6 +1795,22 @@ nidm:MagnetizationPreparedRapidGradientEcho rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#MagnetizationTransfer
+
+nidm:MagnetizationTransfer rdf:type owl:Class ;
+                                
+               rdfs:label "Magnetization Transfer"^^xsd:string ;
+
+               obo:IAO_0000115 "Magnetization transfer is a magnetic resonance imaging acquisition method in which a radiofrequency pulse is applied off resonance (with respect to free protons)and the saturation transfer between protons bound to macromolecules and free protons is measured."^^xsd:string ;
+
+               obo:IAO_0000114 obo:IAO_0000428 ;
+
+	       nidm:hasAcronym "MT"^^xsd:string ;
+                                
+               rdfs:subClassOf nidm:AcquisitionMethod .
+
+
+
 ###  http://purl.org/nidash/nidm#Magnetoencephalography
 
 nidm:Magnetoencephalography rdf:type owl:Class ;
@@ -2016,6 +2098,22 @@ nidm:PatchClamp rdf:type owl:Class ;
 
 
 
+###  http://purl.org/nidash/nidm#Path
+
+nidm:Path rdf:type owl:Class ;
+                  
+               rdfs:label "Path"^^xsd:string ;
+
+               obo:IAO_0000115 "A path is the location of an entity on a computer storage volume."^^xsd:string ;
+
+	       rdfs:comment "This can be used for entities other than files, such as folders and symbolic links."^^xsd:string ;
+                
+               obo:IAO_0000114 obo:IAO_0000428 ;
+                  
+               rdfs:subClassOf prov:Location .
+
+
+
 ###  http://purl.org/nidash/nidm#PerformedPlan
 
 nidm:PerformedPlan rdf:type owl:Class ;
@@ -2243,6 +2341,20 @@ nidm:PulseSequence rdf:type owl:Class ;
               rdfs:subClassOf prov:SoftwareAgent ;
                    
               obo:IAO_0000115 "A pulse sequence is a collection of commands sent to the magnetic resonance imaging or nuclear magnetic resonance hardware to control the excitation of the study participant and the acquisition of data."^^xsd:string ;
+                   
+              obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/nidm#Radioactivity
+
+nidm:Radioactivity rdf:type owl:Class ;
+                   
+              rdfs:label "Radioactivity"^^xsd:string ;
+                   
+              rdfs:subClassOf prov:Activity ;
+                   
+              obo:IAO_0000115 "Radioactivity is a random and spontaneous activity by which a nucleus emits alpha, beta or gamma radiation.."^^xsd:string ;
                    
               obo:IAO_0000114 obo:IAO_0000428 .
 
@@ -2978,6 +3090,12 @@ nidm:k-spaceTraversalScheme rdf:type owl:Class ;
               obo:IAO_0000115 "The k-space traversal scheme is an acquisition object quality that describes, in a magnetic resonance imaging acquisition, the path in k-space along which the signal is acquired."^^xsd:string ;
                             
               obo:IAO_0000114 obo:IAO_0000428 .
+
+
+
+###  http://purl.org/nidash/dicom#dicom_xxxx0001
+
+dicom:dicom_xxxx0001 rdfs:subClassOf prov:Entity .
 
 
 
