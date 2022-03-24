@@ -32,14 +32,14 @@ import nidm_html
 def main():
     # --- NIDM-Experiment
     # Update terms README
-    UpdateExpTermReadme.main()
+    #UpdateExpTermReadme.main()
     # --- NIDM-Results
     # Create a JSON-LD context for NIDM-Results
     create_nidmr_context.main()
     # Re-create turtle examples from template
-    recompute_all_ex.main()
+    #recompute_all_ex.main()
     # Convert turtle to provn and upload to Prov Store
-    UpdateExampleReadmes.main()
+    #UpdateExampleReadmes.main()
     # Update terms README
     UpdateTermReadme.main()
     # Update specifications
